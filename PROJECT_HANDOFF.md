@@ -40,19 +40,19 @@ Plugin Navigator проверен как версия `2.4.1-card-provenance` (�
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.0_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.4.1_Windows_x64.zip`
 
-- SHA-256: `16e37d668b7df0a6e8f3c1251892ca31f1680baf66495547b031e9eb6d7b3274`;
+- SHA-256: `0e79cd1caa94862508f9d2258be58460d8a2a8e62b53eb723e246861977ccf26`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- готовый ZIP/EXE пока содержит HTML 2.4.0; актуальный HTML лежит в `resources/index.html` и требует Neutralino-пересборки;
+- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.1;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`c59d715eb4a4fb882baa9f17cf6872e5bc76adf0a8051b61e51ed49321ac0382`.
+`0fd36f16828b6da9b555a92698c45293705a8740a8147fbffd4382f0e4f8fdc3`.
 
 ## Основные исходники
 
