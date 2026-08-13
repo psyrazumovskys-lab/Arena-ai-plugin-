@@ -4,7 +4,7 @@ from pathlib import Path
 
 DB=json.loads(Path(__file__).resolve().parent.joinpath('plugin_navigator_database.json').read_text())
 chains=DB['chains'];sources=DB['researchSources']
-assert DB['version']=='2.4.5-nav-groups'
+assert DB['version']=='2.4.6-session-balance'
 assert len(chains)==99 and len(sources)>=20
 assert len({s['id'] for s in sources})==len(sources)
 assert {'iZotope','FabFilter','Waves','Sound On Sound'} <= {s['publisher'] for s in sources}

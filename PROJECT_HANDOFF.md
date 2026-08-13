@@ -1,6 +1,6 @@
 # Plugin Navigator — передача проекта в новый чат Arena.ai
 
-**Дата состояния:** 13 августа 2026 (обновлено до 2.4.5-nav-groups)  
+**Дата состояния:** 13 августа 2026 (обновлено до 2.4.6-session-balance)  
 **Язык проекта и общения:** русский  
 **Предпочтение пользователя:** отвечать кратко и по делу.
 
@@ -13,7 +13,7 @@
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.4.5-nav-groups` (поверх 2.4.4 / 2.4.3 / 2.4.2).
+Plugin Navigator проверен как версия `2.4.6-session-balance` (поверх 2.4.5 / 2.4.4 / 2.4.3).
 
 - 364 плагина;
 - 360 exact official product pages (4 vendor hub);
@@ -35,27 +35,27 @@ Plugin Navigator проверен как версия `2.4.5-nav-groups` (пов
 
 ### Автономное HTML-приложение
 
-`Plugin_Navigator_Full.html` и копия с версией `Plugin_Navigator_Full_v2.4.5.html`
+`Plugin_Navigator_Full.html` и копия с версией `Plugin_Navigator_Full_v2.4.6.html`
 
-- размер: 8 384 991 байт;
-- SHA-256: `c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`;
+- размер: 8 388 779 байт;
+- SHA-256: `61aa7e9d81f72aa05ec1a10da631f6c8c7934801bbfcf085203632215e375c47`;
 - файлы побайтно совпадают.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.5_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.4.6_Windows_x64.zip`
 
-- SHA-256: `3c51d6fc97dbb46712e67c3ae1d23bb5ad66223c436e85b7864a9f7ea054cb96`;
+- SHA-256: `e6c93f070e2736eb6c925f7df76bb9bba6a7e4bce6e260aa25b5f84c624d6e71`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.5;
+- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.6;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`c85105ad65d40cf104db44ecfc6155414fbd6d766bb81104ed0c4ce390b4a2ce`.
+`6097b3028a9c9660cf034bbf1ea23a47b877eab1e953f4238a4f449e355970f8`.
 
 ## Основные исходники
 
@@ -89,7 +89,7 @@ python3 build_plugin_navigator.py
 - копию HTML в `Plugin_Navigator_Windows_Source/resources/index.html`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`.
+`61aa7e9d81f72aa05ec1a10da631f6c8c7934801bbfcf085203632215e375c47`.
 
 ## Сборка Windows
 
@@ -101,7 +101,7 @@ python3 build_plugin_navigator.py
 # asar + postject в существующий win_x64 EXE, не в каталог dist
 ```
 
-Windows EXE: `Plugin_Navigator_Full_v2.4.4_Windows_x64.exe`.
+Windows EXE: `Plugin_Navigator_Full_v2.4.6_Windows_x64.exe`.
 
 Windows-оболочка не меняет содержимое HTML. Native API отключён. Официальные внешние ссылки открываются в системном браузере.
 

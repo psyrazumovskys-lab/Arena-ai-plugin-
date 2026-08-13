@@ -1,12 +1,12 @@
-PLUGIN NAVIGATOR 2.4.5 — WINDOWS x64
+PLUGIN NAVIGATOR 2.4.6 — WINDOWS x64
 
-Этот проект упаковывает существующий автономный Plugin Navigator v2.4.5 в настольную оболочку Windows без изменения содержимого приложения.
+Этот проект упаковывает существующий автономный Plugin Navigator v2.4.6 в настольную оболочку Windows без изменения содержимого приложения.
 
 ИСХОДНОЕ ПРИЛОЖЕНИЕ
 - resources/index.html
-- версия: 2.4.5-nav-groups
-- SHA-256: c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0
-- Размер: 8 384 991 байт
+- версия: 2.4.6-session-balance
+- SHA-256: 61aa7e9d81f72aa05ec1a10da631f6c8c7934801bbfcf085203632215e375c47
+- Размер: 8 388 779 байт
 
 ЦЕЛЕВАЯ СИСТЕМА
 - Windows 10/11 x64
