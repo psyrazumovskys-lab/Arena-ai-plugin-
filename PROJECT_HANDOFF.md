@@ -1,6 +1,6 @@
 # Plugin Navigator — передача проекта в новый чат Arena.ai
 
-**Дата состояния:** 13 августа 2026 (обновлено до 2.4.3-session-checklist)  
+**Дата состояния:** 13 августа 2026 (обновлено до 2.4.4-session-lessons)  
 **Язык проекта и общения:** русский  
 **Предпочтение пользователя:** отвечать кратко и по делу.
 
@@ -13,7 +13,7 @@
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.4.2-hub-pages` (поверх 2.4.1).
+Plugin Navigator проверен как версия `2.4.4-session-lessons` (поверх 2.4.3 / 2.4.2 / 2.4.1).
 
 - 364 плагина;
 - 360 exact official product pages (4 vendor hub);
@@ -24,6 +24,7 @@ Plugin Navigator проверен как версия `2.4.2-hub-pages` (пов�
 - быстрые и полные карточки;
 - Controls, Settings, Routing;
 - пользовательские цепочки и локальное сохранение;
+- учебный чеклист сессии до плагинов (база / условные, уроки);
 - полностью автономный HTML;
 - полная portable-версия для Windows x64 без Trial и ограничений.
 
@@ -35,24 +36,24 @@ Plugin Navigator проверен как версия `2.4.2-hub-pages` (пов�
 
 `Plugin_Navigator_Full.html`
 
-- размер: 8 369 797 байт;
-- SHA-256: `7b599296bd5605199da680631bf8744cd039e2c2b37384f124c2cc2bff6df46d`.
+- размер: 8 385 046 байт;
+- SHA-256: `c0e2f379eb18ed7c4705c3e1a1a33676e5e167eb907e78089e42586ede658da6`.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.2_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.4.4_Windows_x64.zip`
 
-- SHA-256: `f6dfcbaa6c24f779141ad5fff1b9d6a7e81f01ba2ac368edef98da3506425f3a`;
+- SHA-256: `bc01f86a8b3302b71d06d9dc28fee8c6911cb45ecf58ca4078346dec0ae3d723`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.2;
+- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.4;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`c7a5651102f9aa812f8c6bed71033ab591e23c43738e6883b612801c93d25b8d`.
+`2cccd2d376c541d79f74f42b2b2c227abacd4f75adcb56cea9465d8ee71c23d1`.
 
 ## Основные исходники
 
@@ -82,26 +83,23 @@ python3 build_plugin_navigator.py
 Генератор создаёт:
 
 - `Plugin_Navigator_Full.html`;
-- `plugin_navigator_database.json`.
+- `plugin_navigator_database.json`;
+- копию HTML в `Plugin_Navigator_Windows_Source/resources/index.html`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`7b599296bd5605199da680631bf8744cd039e2c2b37384f124c2cc2bff6df46d`.
+`c0e2f379eb18ed7c4705c3e1a1a33676e5e167eb907e78089e42586ede658da6`.
 
 ## Сборка Windows
 
-Перед сборкой скопировать актуальный HTML:
+`neu update` с GitHub Releases в этой среде часто недоступен (SSL к `release-assets.githubusercontent.com`). Рабочий путь: собрать `resources.neu` через `@electron/asar` и встроить в существующий Neutralino 6.9.0 EXE через `postject` (`overwrite: true`). Иконку не трогать.
+
+Перед сборкой HTML уже копируется генератором. Затем:
 
 ```bash
-cp Plugin_Navigator_Full.html Plugin_Navigator_Windows_Source/resources/index.html
-cd Plugin_Navigator_Windows_Source
-npx @neutralinojs/neu build --embed-resources
+# asar + postject в существующий win_x64 EXE, не в каталог dist
 ```
 
-Windows EXE появится в:
-
-```text
-dist/Plugin_Navigator_Full/Plugin_Navigator_Full-win_x64.exe
-```
+Windows EXE: `Plugin_Navigator_Full_v2.4.4_Windows_x64.exe`.
 
 Windows-оболочка не меняет содержимое HTML. Native API отключён. Официальные внешние ссылки открываются в системном браузере.
 
@@ -125,6 +123,7 @@ Windows-оболочка не меняет содержимое HTML. Native API
 - аудит дизайна: PASS;
 - аудит цепочек: PASS;
 - аудит карточек и Controls: PASS;
+- UI-тест: PASS;
 - побайтовое сравнение HTML внутри Windows EXE: PASS;
 - формат Windows-файла: PE32+ GUI x86-64.
 
@@ -154,6 +153,16 @@ node ui-test-v2.js
 - Не выдавать family-level Controls за точные элементы конкретного GUI или manual.
 - Иконку Windows, favicon и app icon пока не менять.
 - Текущая Windows-версия должна оставаться полной и без ограничений, пока пользователь не даст другую команду.
+
+## Сессия 2.4.4
+
+- View id: `session`.
+- localStorage: `pn-session-checks`.
+- 7 пунктов: song, edit, phase, faders, headroom, reference, mono.
+- База: song, edit, faders, headroom — только `done` открывает «Можно переходить».
+- Условные: phase, reference, mono — можно пропустить.
+- У каждого пункта урок: зачем / что сделать / что слушать / типичная ошибка / когда пропустить.
+- Это чеклист подготовки, не рецепт микса.
 
 ## Что было удалено при очистке
 

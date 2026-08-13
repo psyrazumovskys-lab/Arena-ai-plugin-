@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
   "applicationId": "app.pluginnavigator.full",
   "applicationName": "Plugin Navigator",
-  "version": "2.4.2",
+  "version": "2.4.4",
   "description": "Автономный справочник и конструктор цепочек аудиоплагинов",
   "defaultMode": "window",
   "port": 49491,

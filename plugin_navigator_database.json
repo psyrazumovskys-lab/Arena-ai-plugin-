@@ -1,5 +1,5 @@
 {
-  "version": "2.4.3-session-checklist",
+  "version": "2.4.4-session-lessons",
   "generated": "2026-08-13",
   "plugins": [
     {
@@ -165811,6 +165811,6 @@
     "webAuditedChains": 99,
     "researchSources": 26,
     "conditionalStepGuides": 351,
-    "mode": "Полная база v2.4.3: добавлен чеклист сессии до плагинов; каталог, цепочки и Controls не менялись."
+    "mode": "Полная база v2.4.4: учебный чеклист сессии (база/условные, уроки); каталог, цепочки и Controls не менялись."
   }
 }
