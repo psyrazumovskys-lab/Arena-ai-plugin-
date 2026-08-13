@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.5.3'
+assert DB['version'] == '2.5.4'
 assert len(plugins) == 365
 assert DB['coverage']['pluginGuides'] == 365
 assert DB['coverage']['productSpecificControlMaps'] >= 80
@@ -54,6 +54,15 @@ q4s = by_name['FabFilter Pro-Q 4']['guide']['simple'].casefold()
 assert 'spectral' in q4s or 'sketch' in q4s or 'pro-q 4' in q4s
 assert by_name['FabFilter Pro-Q 4']['official']['productPage'].endswith('pro-q-4-equalizer-plug-in')
 assert 'audioloom' not in (by_name['FabFilter Pro-Q 4']['official'].get('vendorSite') or '')
+assert by_name['bx_rockrack V3']['official']['productPage'].endswith('/products/bx_rockrack-v3')
+assert by_name['ADPTR Sculpt']['official']['productPage'].endswith('/products/sculpt')
+assert not by_name['bx_rockrack V3']['official']['productPage'].endswith('.html')
+assert by_name['Friedman Dirty Shirley']['official']['productPage'].endswith('/products/ds-40')
+assert by_name['Ampeg SVT-VR Classic']['official']['productPage'].endswith('/products/svt-vr-classic')
+assert not by_name['bx_pultec / bx_pultec Pro']['official']['productPage']
+assert not by_name['Shadow Hills Dual Vandergraph']['official']['productPage']
+assert DB['coverage']['officialExactProductPages'] == 349
+assert DB['coverage']['officialVendorManualHubs'] == 16
 assert 'EQ Sketch' not in by_name['Ozone Spectral Shaper']['guide']['simple']
 assert 'EQ Sketch' not in by_name['ADPTR Sculpt']['guide']['simple']
 assert 'удар начала' not in by_name['Overloud Gem Dopamine']['guide']['simple']

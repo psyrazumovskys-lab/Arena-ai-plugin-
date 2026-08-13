@@ -5,41 +5,42 @@ AudioLoom pages). For other products we provide an official vendor/manual hub,
 clearly labelled as a hub rather than pretending it is an exact product manual.
 """
 
-PA_SITE='https://www.plugin-alliance.com/en/products.html'
+PA_SITE='https://www.plugin-alliance.com/collections/all-products'
 PA_SUPPORT='https://support.plugin-alliance.com/'
+PA_COL='https://www.plugin-alliance.com/collections/'
 
 VENDORS={
 'Waves':('Waves','https://www.waves.com/plugins','https://www.waves.com/downloads/manuals'),
-'Brainworx':('Brainworx / Plugin Alliance','https://www.plugin-alliance.com/en/brand/brainworx.html',PA_SUPPORT),
+'Brainworx':('Brainworx / Plugin Alliance',PA_COL+'brainworx',PA_SUPPORT),
 'Soundtoys':('Soundtoys','https://www.soundtoys.com/product/','https://www.soundtoys.com/support/'),
 'Neural DSP':('Neural DSP','https://neuraldsp.com/plugins','https://neuraldsp.com/downloads'),
 'iZotope':('iZotope','https://www.izotope.com/en/products.html','https://docs.izotope.com/'),
 'FabFilter':('FabFilter','https://www.fabfilter.com/products','https://www.fabfilter.com/help/'),
 'Overloud':('Overloud','https://www.overloud.com/products','https://www.overloud.com/downloads'),
-'Unfiltered Audio':('Unfiltered Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/unfiltered_audio.html',PA_SUPPORT),
-'SPL':('SPL / Plugin Alliance','https://www.plugin-alliance.com/en/brand/spl.html',PA_SUPPORT),
-'Ampeg / Brainworx':('Ampeg / Brainworx','https://www.plugin-alliance.com/en/brand/ampeg.html',PA_SUPPORT),
-'Friedman / Brainworx':('Friedman / Brainworx','https://www.plugin-alliance.com/en/brand/friedman.html',PA_SUPPORT),
-'Lindell Audio':('Lindell Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/lindell_audio.html',PA_SUPPORT),
+'Unfiltered Audio':('Unfiltered Audio / Plugin Alliance',PA_COL+'unfiltered-audio',PA_SUPPORT),
+'SPL':('SPL / Plugin Alliance',PA_COL+'spl',PA_SUPPORT),
+'Ampeg / Brainworx':('Ampeg / Brainworx',PA_COL+'ampeg',PA_SUPPORT),
+'Friedman / Brainworx':('Friedman / Brainworx',PA_COL+'friedman',PA_SUPPORT),
+'Lindell Audio':('Lindell Audio / Plugin Alliance',PA_COL+'lindell-audio',PA_SUPPORT),
 'elysia':('elysia','https://www.elysia.com/software/','https://www.elysia.com/support/'),
-'elysia / Plugin Alliance':('elysia / Plugin Alliance','https://www.plugin-alliance.com/en/brand/elysia.html',PA_SUPPORT),
-'Diezel / Brainworx':('Diezel / Brainworx','https://www.plugin-alliance.com/en/brand/diezel.html',PA_SUPPORT),
+'elysia / Plugin Alliance':('elysia / Plugin Alliance',PA_COL+'elysia',PA_SUPPORT),
+'Diezel / Brainworx':('Diezel / Brainworx',PA_COL+'diezel',PA_SUPPORT),
 'Newfangled Audio':('Newfangled Audio','https://www.newfangledaudio.com/','https://www.newfangledaudio.com/'),
 'Bettermaker':('Bettermaker','https://www.bettermaker.com/plugins','https://www.bettermaker.com/downloads'),
-'Suhr / Brainworx':('Suhr / Brainworx',PA_SITE,PA_SUPPORT),
-'ADPTR Audio':('ADPTR Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/adptr_audio.html',PA_SUPPORT),
+'Suhr / Brainworx':('Suhr / Brainworx',PA_COL+'suhr',PA_SUPPORT),
+'ADPTR Audio':('ADPTR Audio / Plugin Alliance',PA_COL+'adptr-audio',PA_SUPPORT),
 'Dangerous Music':('Dangerous Music / Plugin Alliance',PA_SITE,PA_SUPPORT),
-'ENGL / Brainworx':('ENGL / Brainworx','https://www.plugin-alliance.com/en/brand/engl.html',PA_SUPPORT),
-'Vertigo Sound':('Vertigo Sound / Plugin Alliance',PA_SITE,PA_SUPPORT),
-'AMEK / Brainworx':('AMEK / Brainworx','https://www.plugin-alliance.com/en/brand/amek.html',PA_SUPPORT),
-'Black Box Analog Design':('Black Box Analog Design / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'ENGL / Brainworx':('ENGL / Brainworx',PA_COL+'engl',PA_SUPPORT),
+'Vertigo Sound':('Vertigo Sound / Plugin Alliance',PA_COL+'vertigo',PA_SUPPORT),
+'AMEK / Brainworx':('AMEK / Brainworx',PA_COL+'amek',PA_SUPPORT),
+'Black Box Analog Design':('Black Box Analog Design / Plugin Alliance',PA_COL+'black-box-analog-design',PA_SUPPORT),
 'IK Multimedia':('IK Multimedia','https://www.ikmultimedia.com/products/','https://www.ikmultimedia.com/userarea/manuals/'),
-'Mäag Audio':('Mäag Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/maag_audio.html',PA_SUPPORT),
-'Purple Audio':('Purple Audio / Plugin Alliance',PA_SITE,PA_SUPPORT),
-'Shadow Hills Industries':('Shadow Hills Industries / Plugin Alliance',PA_SITE,PA_SUPPORT),
-'Millennia':('Millennia / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Mäag Audio':('Mäag Audio / Plugin Alliance',PA_COL+'maag-audio',PA_SUPPORT),
+'Purple Audio':('Purple Audio / Plugin Alliance',PA_COL+'purple-audio',PA_SUPPORT),
+'Shadow Hills Industries':('Shadow Hills Industries / Plugin Alliance',PA_COL+'shadow-hills',PA_SUPPORT),
+'Millennia':('Millennia / Plugin Alliance',PA_COL+'millennia',PA_SUPPORT),
 'Gyraf Audio':('Gyraf Audio / Antelope Audio','https://en.antelopeaudio.com/','https://support.antelopeaudio.com/'),
-'Looptrotter':('Looptrotter / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Looptrotter':('Looptrotter / Plugin Alliance',PA_COL+'looptrotter',PA_SUPPORT),
 }
 
 

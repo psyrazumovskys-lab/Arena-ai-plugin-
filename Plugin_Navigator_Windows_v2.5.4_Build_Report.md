@@ -1,0 +1,6 @@
+# Windows 2.5.4
+
+- EXE SHA-256: `b4b450e89efe22a3dd3db00348a8c2538e3ab5a6e2a6242ad233b6c664cca167`
+- ZIP SHA-256: `689c236649c84114935afd1fd03c77d3297a79f0d9b6962a45fb3ff68d8d9f39`
+- HTML внутри EXE = v2.5.4 `72bade58a5e744d6ea941b9f0e74eae0824417f5709edc8f3967ab6316503d60`
+- Neutralino 6.9.0, asar + postject `NEUTRALINOJS_RESOURCES_NEU`, иконка не менялась.

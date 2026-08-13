@@ -1,5 +1,5 @@
 {
-  "version": "2.5.3",
+  "version": "2.5.4",
   "generated": "2026-08-14",
   "plugins": [
     {
@@ -2007,8 +2007,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_masterdesk.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_masterdesk",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -3720,8 +3720,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_amek_9099.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-amek-9099",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -4068,7 +4068,7 @@
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
         "productPage": "",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
@@ -4450,8 +4450,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_focusrite_sc.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-focusrite-sc",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -4833,8 +4833,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_n.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-n",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -5215,8 +5215,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_ssl_4000_e.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-ssl-4000-e",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -5722,8 +5722,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_ssl_4000_g.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-ssl-4000-g",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -6121,8 +6121,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_ssl_9000_j.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_console-ssl-9000-j",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -6598,8 +6598,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_50_series.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/50-series",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -6965,8 +6965,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_80_series.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/80-series",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -20395,8 +20395,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_6x-500.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/6x-500",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -21170,8 +21170,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_de-esser.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/de-esser-collection",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -22996,8 +22996,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_refinement.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_refinement-v3",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -27308,8 +27308,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_byome.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/byome",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -27780,8 +27780,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_triad.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/triad",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -28911,8 +28911,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_dent_2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/dent-2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -30031,8 +30031,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_specops.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/specops",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -34998,8 +34998,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_fault.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/fault",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -35376,8 +35376,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_sandman_pro.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/sandman-pro",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -39335,8 +39335,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_limiter_true_peak.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_limiter-true-peak",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -41436,8 +41436,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_attacker_plus.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/attacker-plus",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -41797,8 +41797,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_transient_designer_plus.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/transient-designer-plus",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -46155,8 +46155,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_zip.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/zip",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -47641,8 +47641,8 @@
       },
       "official": {
         "vendor": "Purple Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/purple_audio_mc77.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/mc77",
+        "vendorSite": "https://www.plugin-alliance.com/collections/purple-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -48599,8 +48599,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_7x-500.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/7x-500",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -50963,8 +50963,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_g8.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/g8",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -55540,8 +55540,8 @@
       },
       "official": {
         "vendor": "ADPTR Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/adptr_sculpt.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/adptr_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/sculpt",
+        "vendorSite": "https://www.plugin-alliance.com/collections/adptr-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -57897,8 +57897,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_opto.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_opto",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -58797,8 +58797,8 @@
       },
       "official": {
         "vendor": "Millennia / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/millennia_tcl-2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/tcl-2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/millennia",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -61388,8 +61388,8 @@
       },
       "official": {
         "vendor": "Shadow Hills Industries / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/shadow_hills_mastering_compressor.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/mastering-compressor",
+        "vendorSite": "https://www.plugin-alliance.com/collections/shadow-hills",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -61843,8 +61843,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_townhouse_buss_compressor.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_townhouse-buss-compressor",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -62325,7 +62325,7 @@
       "official": {
         "vendor": "Dangerous Music / Plugin Alliance",
         "productPage": "",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "vendorSite": "https://www.plugin-alliance.com/collections/all-products",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
@@ -63210,8 +63210,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_sbc.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/sbc",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -63691,12 +63691,12 @@
       },
       "official": {
         "vendor": "Shadow Hills Industries / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/shadow_hills_dual_vandergraph.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/shadow-hills",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -64060,8 +64060,8 @@
       },
       "official": {
         "vendor": "Vertigo Sound / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/vertigo_vsc-2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/vsc-2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/vertigo",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -65904,8 +65904,8 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_mu-66.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/mu-66",
+        "vendorSite": "https://www.plugin-alliance.com/collections/lindell-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -66721,8 +66721,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_iron.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/iron",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -73517,8 +73517,8 @@
       },
       "official": {
         "vendor": "Mäag Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/maag_audio_eq4.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/maag_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/eq4",
+        "vendorSite": "https://www.plugin-alliance.com/collections/maag-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -74295,8 +74295,8 @@
       },
       "official": {
         "vendor": "AMEK / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/amek_eq_200.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/amek.html",
+        "productPage": "https://www.plugin-alliance.com/products/eq-200",
+        "vendorSite": "https://www.plugin-alliance.com/collections/amek",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -74941,8 +74941,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_digital_v3.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_digital-v3",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -76364,8 +76364,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_2098_eq.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_2098-eq",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -79151,12 +79151,12 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_pultec.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -80614,8 +80614,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_passeq.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/passeq",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -81023,7 +81023,7 @@
       "official": {
         "vendor": "Dangerous Music / Plugin Alliance",
         "productPage": "https://www.plugin-alliance.com/products/bax-eq",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "vendorSite": "https://www.plugin-alliance.com/collections/all-products",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -85789,8 +85789,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_eq_ranger_plus.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/eq-ranger-plus",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -87742,8 +87742,8 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_b-15n.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "https://www.plugin-alliance.com/products/b-15n",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -88091,12 +88091,12 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_sgt-di.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -88440,8 +88440,8 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_svt-3pro.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "https://www.plugin-alliance.com/products/svt-3pro",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -88789,12 +88789,12 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_svt-4pro.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -89138,12 +89138,12 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_svt-7pro.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -89506,8 +89506,8 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_svt-vr.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "https://www.plugin-alliance.com/products/svt-vr-classic",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -89855,8 +89855,8 @@
       },
       "official": {
         "vendor": "Ampeg / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/ampeg_v-4b.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/ampeg.html",
+        "productPage": "https://www.plugin-alliance.com/products/v-4b",
+        "vendorSite": "https://www.plugin-alliance.com/collections/ampeg",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -92324,8 +92324,8 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_buxom_betty.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "https://www.plugin-alliance.com/products/buxom-betty",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -92671,8 +92671,8 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_dirty_shirley.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "https://www.plugin-alliance.com/products/ds-40",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -93018,12 +93018,12 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_smallbox_50.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -93365,12 +93365,12 @@
       },
       "official": {
         "vendor": "Suhr / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/suhr_badger_30.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/suhr",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -96648,8 +96648,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_rockrack.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_rockrack-v3",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -97000,12 +97000,12 @@
       },
       "official": {
         "vendor": "Diezel / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/diezel_hagen.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/diezel.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/diezel",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -97352,8 +97352,8 @@
       },
       "official": {
         "vendor": "Diezel / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/diezel_herbert.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/diezel.html",
+        "productPage": "https://www.plugin-alliance.com/products/herbert",
+        "vendorSite": "https://www.plugin-alliance.com/collections/diezel",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -97704,12 +97704,12 @@
       },
       "official": {
         "vendor": "Diezel / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/diezel_schmidt.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/diezel.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/diezel",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -98056,8 +98056,8 @@
       },
       "official": {
         "vendor": "Diezel / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/diezel_vh4.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/diezel.html",
+        "productPage": "https://www.plugin-alliance.com/products/vh4",
+        "vendorSite": "https://www.plugin-alliance.com/collections/diezel",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -98408,8 +98408,8 @@
       },
       "official": {
         "vendor": "ENGL / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/engl_e646_vs.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/engl.html",
+        "productPage": "https://www.plugin-alliance.com/products/e646-vs",
+        "vendorSite": "https://www.plugin-alliance.com/collections/engl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -98760,8 +98760,8 @@
       },
       "official": {
         "vendor": "ENGL / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/engl_e765_rt.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/engl.html",
+        "productPage": "https://www.plugin-alliance.com/products/e765-rt",
+        "vendorSite": "https://www.plugin-alliance.com/collections/engl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -100166,8 +100166,8 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_be-100.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "https://www.plugin-alliance.com/products/be-100",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -100518,12 +100518,12 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_jj-100.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -100870,12 +100870,12 @@
       },
       "official": {
         "vendor": "Friedman / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/friedman_pink_taco_v2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/friedman.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/friedman",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -102302,8 +102302,8 @@
       },
       "official": {
         "vendor": "Suhr / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/suhr_pt100.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/pt100",
+        "vendorSite": "https://www.plugin-alliance.com/collections/suhr",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -103385,8 +103385,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_greenscreamer.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_greenscreamer",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -104059,12 +104059,12 @@
       },
       "official": {
         "vendor": "Suhr / Brainworx",
-        "productPage": "https://www.plugin-alliance.com/en/products/suhr_koji_comp.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "",
+        "vendorSite": "https://www.plugin-alliance.com/collections/suhr",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -105432,8 +105432,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_lion.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/lion",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -107104,8 +107104,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_boom.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_boom",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -107414,8 +107414,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_subfilter.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_subfilter",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -110937,8 +110937,8 @@
       },
       "official": {
         "vendor": "ADPTR Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/adptr_metricab.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/adptr_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/metric-ab",
+        "vendorSite": "https://www.plugin-alliance.com/collections/adptr-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -111256,8 +111256,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_hawkeye.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/hawkeye",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -115539,8 +115539,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_control_v2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_control-v2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -115863,8 +115863,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_solo.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_solo",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -123012,8 +123012,8 @@
       },
       "official": {
         "vendor": "Unfiltered Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/unfiltered_audio_silo.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/unfiltered_audio.html",
+        "productPage": "https://www.plugin-alliance.com/products/silo",
+        "vendorSite": "https://www.plugin-alliance.com/collections/unfiltered-audio",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -129439,8 +129439,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_vitalizer_mk3-t.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/vitalizer-mk3-t",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -135051,8 +135051,8 @@
       },
       "official": {
         "vendor": "Black Box Analog Design / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/black_box_hg-2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/hg-2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/black-box-analog-design",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -135497,8 +135497,8 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_saturator_v2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
+        "productPage": "https://www.plugin-alliance.com/products/bx_saturator-v2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/brainworx",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -136826,8 +136826,8 @@
       },
       "official": {
         "vendor": "Looptrotter / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/looptrotter_sa2rate2.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/sa2rate-2",
+        "vendorSite": "https://www.plugin-alliance.com/collections/looptrotter",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -137257,8 +137257,8 @@
       },
       "official": {
         "vendor": "elysia / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/elysia_phils_cascade.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/elysia.html",
+        "productPage": "https://www.plugin-alliance.com/products/phils-cascade",
+        "vendorSite": "https://www.plugin-alliance.com/collections/elysia",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -138139,8 +138139,8 @@
       },
       "official": {
         "vendor": "SPL / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/spl_twintube.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/brand/spl.html",
+        "productPage": "https://www.plugin-alliance.com/products/twintube",
+        "vendorSite": "https://www.plugin-alliance.com/collections/spl",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -138615,8 +138615,8 @@
       },
       "official": {
         "vendor": "Vertigo Sound / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/vertigo_vsm-3.html",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
+        "productPage": "https://www.plugin-alliance.com/products/vsm-3",
+        "vendorSite": "https://www.plugin-alliance.com/collections/vertigo",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
@@ -166884,12 +166884,12 @@
     "pluginGuides": 365,
     "productSpecificControlMaps": 153,
     "productInformedControlMaps": 174,
-    "officialExactProductPages": 361,
-    "officialVendorManualHubs": 4,
+    "officialExactProductPages": 349,
+    "officialVendorManualHubs": 16,
     "sourceMappedPlugins": 365,
     "webAuditedChains": 99,
     "researchSources": 26,
     "conditionalStepGuides": 351,
-    "mode": "Полная база v2.5.3: живые Waves product pages (H-Reverb, CLA-76/2A/3A, H-Delay, H-Comp, Trans-X, Smack Attack)."
+    "mode": "Полная база v2.5.4: живые Plugin Alliance shop URLs (/products/{handle}); 12 PA без dedicated page — vendor hub."
   }
 }
