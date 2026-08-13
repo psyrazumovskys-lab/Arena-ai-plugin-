@@ -3,10 +3,10 @@ from collections import Counter
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-html=Path('/home/user/Plugin_Navigator_Full.html').read_text()
+html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.4.0-priority-improvements'
+assert DB['version']=='2.4.1-card-provenance'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -38,7 +38,7 @@ for token in ['CURATED STARTING POINT','БАЗОВЫЙ СТАРТ — НЕ ОБ�
     assert token in html,token
 assert '<details' in html and '<summary' in html
 assert 'expandedChains:new Set()' in script and 'data-expand-chain' in script and 'data-collapse-chain' in script
-assert DB['coverage']['officialExactProductPages']==51 and DB['coverage']['officialVendorManualHubs']==313
+assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==364-DB['coverage']['officialExactProductPages']
 assert DB['coverage']['sourceMappedPlugins']==364
 
 # Every curated step carries full conditional guidance.

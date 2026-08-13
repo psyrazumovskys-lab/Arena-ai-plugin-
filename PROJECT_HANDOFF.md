@@ -1,6 +1,6 @@
 # Plugin Navigator — передача проекта в новый чат Arena.ai
 
-**Дата состояния:** 13 августа 2026  
+**Дата состояния:** 13 августа 2026 (обновлено до 2.4.1-card-provenance)  
 **Язык проекта и общения:** русский  
 **Предпочтение пользователя:** отвечать кратко и по делу.
 
@@ -13,9 +13,11 @@
 
 ## Текущее состояние
 
-Plugin Navigator завершён и проверен как версия `2.4.0-priority-improvements`.
+Plugin Navigator проверен как версия `2.4.1-card-provenance` (поверх 2.4.0).
 
 - 364 плагина;
+- 362 exact official product pages (2 оставлены как vendor hub);
+- 152 product-specific и 174 product-informed Control maps; 38 family-level;
 - 99 вручную подготовленных curated chains;
 - 26 источников исследования;
 - Simple mode и Expert mode;
@@ -33,8 +35,8 @@ Plugin Navigator завершён и проверен как версия `2.4.0
 
 `Plugin_Navigator_Full.html`
 
-- размер: 8 363 001 байт;
-- SHA-256: `124d3eaaf30ea82c7a85b65f69037ed482e8c5a30b71e3a75d56ba88f6315a46`.
+- размер: 8 369 833 байт;
+- SHA-256: `e6d2d6547f04bfd2d2e7a04c10845d7f752e184accf545b13ea3128aed68e63a`.
 
 ### Windows x64
 
@@ -46,7 +48,7 @@ Plugin Navigator завершён и проверен как версия `2.4.0
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html`;
+- готовый ZIP/EXE пока содержит HTML 2.4.0; актуальный HTML лежит в `resources/index.html` и требует Neutralino-пересборки;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
@@ -60,6 +62,8 @@ EXE внутри ZIP имеет SHA-256:
 | `build_plugin_navigator.py` | Детерминированный генератор HTML и JSON |
 | `plugin_guide_enrichment.py` | Обогащение карточек и карт Controls |
 | `official_plugin_references.py` | Официальные источники и provenance |
+| `official_product_pages.py` | Точные official product pages |
+| `product_control_maps.py` | Дополнительные product-specific Control maps |
 | `curated_chain_presets.py` | 99 вручную подготовленных цепочек |
 | `chain_research_audit.py` | Аудит цепочек и расширение рекомендаций |
 | `Plugin_Navigator_Windows_Source/` | Исходники Windows-оболочки |
@@ -69,7 +73,7 @@ EXE внутри ZIP имеет SHA-256:
 
 ## Сборка HTML
 
-Из каталога `/home/user`:
+Из каталога репозитория:
 
 ```bash
 python3 build_plugin_navigator.py
@@ -81,7 +85,7 @@ python3 build_plugin_navigator.py
 - `plugin_navigator_database.json`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`124d3eaaf30ea82c7a85b65f69037ed482e8c5a30b71e3a75d56ba88f6315a46`.
+`e6d2d6547f04bfd2d2e7a04c10845d7f752e184accf545b13ea3128aed68e63a`.
 
 ## Сборка Windows
 

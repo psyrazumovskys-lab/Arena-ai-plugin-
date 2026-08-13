@@ -1,4 +1,4 @@
-const fs=require('fs');const {JSDOM,VirtualConsole}=require('jsdom');const html=fs.readFileSync('/home/user/Plugin_Navigator_Full.html','utf8');
+const fs=require('fs');const {JSDOM,VirtualConsole}=require('jsdom');const path=require('path');const html=fs.readFileSync(path.join(__dirname,'..','Plugin_Navigator_Full.html'),'utf8');
 const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));vc.on('error',e=>errors.push(String(e)));
 const dom=new JSDOM(html,{runScripts:'dangerously',resources:'usable',url:'http://pn-v2.local/',pretendToBeVisual:true,virtualConsole:vc,beforeParse(w){w.__prompts=['Saved Test','Renamed Test','Duplicate'];w.prompt=(m,d)=>w.__prompts.shift()||d||'Test';w.confirm=()=>true;w.navigator.clipboard={writeText:async t=>w.__copied=t};w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){w.__download=this.download||this.href}}});
 const w=dom.window,d=w.document,wait=(n=0)=>new Promise(r=>setTimeout(r,n));

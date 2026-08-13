@@ -4,9 +4,11 @@ from openpyxl import load_workbook
 from openpyxl.utils.cell import range_boundaries
 import json, re, html
 
-SOURCE=Path('/home/user/plugin_usage_semantic_hybrid_corrected.xlsx')
-OUTPUT=Path('/home/user/Plugin_Navigator_Full.html')
-DATA_OUT=Path('/home/user/plugin_navigator_database.json')
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'plugin_usage_semantic_hybrid_corrected.xlsx'
+OUTPUT=ROOT/'Plugin_Navigator_Full.html'
+DATA_OUT=ROOT/'plugin_navigator_database.json'
+WIN_HTML=ROOT/'Plugin_Navigator_Windows_Source'/'resources'/'index.html'
 wb=load_workbook(SOURCE,data_only=True,read_only=False)
 
 # ---------- Read semantic catalog ----------
@@ -444,8 +446,8 @@ from official_plugin_references import apply_official_references
 plugins=enrich_plugins(plugins,profiles,source_records,chains)
 plugins=apply_official_references(plugins)
 
-DATA={'version':'2.4.0-priority-improvements','generated':'2026-08-12','plugins':plugins,'families':families,'profiles':profiles,'sources':source_records,'chains':chains,'routing':routing,'researchSources':RESEARCH_SOURCES,
-      'coverage':{'plugins':len(plugins),'families':len(families),'sources':len(source_records),'chains':len(chains),'controlProfiles':len(profiles),'pluginGuides':len(plugins),'productSpecificControlMaps':len(PRODUCT_CONTROLS),'productInformedControlMaps':len(PRODUCT_INFORMED_NAMES),'officialExactProductPages':sum(bool(p['official']['productPage']) for p in plugins),'officialVendorManualHubs':sum(not bool(p['official']['productPage']) for p in plugins),'sourceMappedPlugins':sum(bool(p['uses']) for p in plugins),'webAuditedChains':len(chains),'researchSources':len(RESEARCH_SOURCES),'conditionalStepGuides':sum(len(c['steps']) for c in chains),'mode':'Полная база v2.4: все 364 плагина имеют Source × Stage mapping и official provenance; 17 exact/product-specific и 63 product-informed Control maps; все 351 chain settings расширены condition/listening guidance; семь повторяющихся chain skeletons переработаны; подробности chains загружаются лениво.'}}
+DATA={'version':'2.4.1-card-provenance','generated':'2026-08-13','plugins':plugins,'families':families,'profiles':profiles,'sources':source_records,'chains':chains,'routing':routing,'researchSources':RESEARCH_SOURCES,
+      'coverage':{'plugins':len(plugins),'families':len(families),'sources':len(source_records),'chains':len(chains),'controlProfiles':len(profiles),'pluginGuides':len(plugins),'productSpecificControlMaps':len(PRODUCT_CONTROLS),'productInformedControlMaps':len(PRODUCT_INFORMED_NAMES),'officialExactProductPages':sum(bool(p['official']['productPage']) for p in plugins),'officialVendorManualHubs':sum(not bool(p['official']['productPage']) for p in plugins),'sourceMappedPlugins':sum(bool(p['uses']) for p in plugins),'webAuditedChains':len(chains),'researchSources':len(RESEARCH_SOURCES),'conditionalStepGuides':sum(len(c['steps']) for c in chains),'mode':'Полная база v2.4.1: exact official product pages расширены почти на весь коммерческий каталог; product-specific и product-informed Control maps расширены; family-level сохранён только там, где нет проверяемой карты GUI; цепочки и логика приложения не менялись.'}}
 DATA_OUT.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
 
 # ---------- Single-file offline app ----------
@@ -605,6 +607,8 @@ nav();renderContent();updateCompare();
 
 payload=json.dumps(DATA,ensure_ascii=False,separators=(',',':')).replace('</script>','<\\/script>')
 OUTPUT.write_text(TEMPLATE.replace('__DATA__',payload),encoding='utf-8')
+WIN_HTML.parent.mkdir(parents=True, exist_ok=True)
+WIN_HTML.write_bytes(OUTPUT.read_bytes())
 print(f'Built {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
 print(f'Data: plugins={len(plugins)} families={len(families)} profiles={len(profiles)} sources={len(source_records)} chains={len(chains)}')
 print('Unknown refs:',len(unknown))
@@ -618,6 +622,7 @@ assert len(RESEARCH_SOURCES)>=20 and all(c.get('webAudit') for c in chains)
 assert all(s.get('settings','').strip() for c in chains for s in c['steps'])
 assert all(all(step.get(k) for k in ('necessity','necessityLabel','purpose','condition','skipWhen','listenFor','how')) for c in chains for step in c['steps'])
 assert all(p['uses'] and p.get('official',{}).get('manualHub') for p in plugins)
-assert sum(p['guide']['controlStatus']=='Product-specific curated map' for p in plugins)==17
-assert sum(p['guide']['controlStatus']=='Product-informed curated map' for p in plugins)==63
+assert sum(p['guide']['controlStatus']=='Product-specific curated map' for p in plugins)>=80
+assert sum(p['guide']['controlStatus']=='Product-informed curated map' for p in plugins)>=60
+assert sum(bool(p['official']['productPage']) for p in plugins)>=250
 assert all(len(s['settings'])>=70 for c in chains for s in c['steps'])

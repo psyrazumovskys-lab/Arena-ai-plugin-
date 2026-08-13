@@ -515,3 +515,8 @@ def enrich_plugins(plugins, profiles, source_records, chains):
         plugin['search'] = (plugin.get('search', '') + ' ' + ' '.join(guide_terms)).casefold()
 
     return plugins
+
+
+from product_control_maps import EXTRA_INFORMED_NAMES, EXTRA_PRODUCT_CONTROLS
+PRODUCT_CONTROLS = {**PRODUCT_CONTROLS, **EXTRA_PRODUCT_CONTROLS}
+PRODUCT_INFORMED_NAMES = (PRODUCT_INFORMED_NAMES | EXTRA_INFORMED_NAMES) - set(PRODUCT_CONTROLS)

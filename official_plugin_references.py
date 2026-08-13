@@ -43,6 +43,9 @@ VENDORS={
 }
 
 
+from official_product_pages import PRODUCT_PAGES, SUITE_NOTES
+
+
 def apply_official_references(plugins):
     for p in plugins:
         if p.get('link'):
@@ -52,19 +55,34 @@ def apply_official_references(plugins):
                 'vendorSite':'https://www.audioloom.com/',
                 'manualHub':p['link'],
                 'referenceType':'Exact official product page',
-                'verifiedOn':'2026-08-12',
+                'verifiedOn':'2026-08-13',
                 'note':'Точная официальная product page; manual может быть отдельным download внутри страницы/сайта.',
             }
             continue
         assert p['developer'] in VENDORS,p['developer']
         vendor,site,manual=VENDORS[p['developer']]
+        exact=PRODUCT_PAGES.get(p['name'],'')
+        if exact:
+            suite = p['name'] in SUITE_NOTES
+            p['official']={
+                'vendor':vendor,
+                'productPage':exact,
+                'vendorSite':site,
+                'manualHub':manual,
+                'referenceType':'Exact official product page',
+                'verifiedOn':'2026-08-13',
+                'note':('Официальная страница suite, в которую входит этот module; это не отдельный mini-site модуля. Сверьте установленную версию.'
+                        if suite else
+                        'Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя.'),
+            }
+            continue
         p['official']={
             'vendor':vendor,
             'productPage':'',
             'vendorSite':site,
             'manualHub':manual,
             'referenceType':'Official vendor/manual hub',
-            'verifiedOn':'2026-08-12',
+            'verifiedOn':'2026-08-13',
             'note':'Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию.',
         }
     return plugins
