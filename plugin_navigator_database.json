@@ -1,5 +1,5 @@
 {
-  "version": "2.4.10-session-prep",
+  "version": "2.4.11-chain-analogues",
   "generated": "2026-08-13",
   "plugins": [
     {
@@ -166175,6 +166175,6 @@
     "webAuditedChains": 99,
     "researchSources": 26,
     "conditionalStepGuides": 351,
-    "mode": "Полная база v2.4.10: сессия — сначала собрать стол и Clip Gain исходников; описания 2.4.9 не менялись."
+    "mode": "Полная база v2.4.11: в цепочке можно выбрать аналог из выпадающего списка; каталог не менялся."
   }
 }
