@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.4.2-hub-pages'
+assert DB['version']=='2.4.3-session-checklist'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -34,10 +34,11 @@ assert 'tabindex="0"' in script
 # Honest language and progressive disclosure.
 assert 'ПРОВЕРЕННЫЙ PRESET' not in html
 assert 'Выберите проверенный preset' not in html
-for token in ['CURATED STARTING POINT','БАЗОВЫЙ СТАРТ — НЕ ОБЯЗАТЕЛЬНО','ЕСЛИ ТРЕБУЕТСЯ','CREATIVE — ПРОСЛУШАТЬ','MONITORING — НЕ EXPORT','Полное описание и порядок настройки','Включить, когда','Пропустить, когда','Что слушать']:
+for token in ['CURATED STARTING POINT','БАЗОВЫЙ СТАРТ — НЕ ОБЯЗАТЕЛЬНО','ЕСЛИ ТРЕБУЕТСЯ','CREATIVE — ПРОСЛУШАТЬ','MONITORING — НЕ EXPORT','Полное описание и порядок настройки','Включить, когда','Пропустить, когда','Что слушать','Сессия — до плагинов','Это чеклист подготовки']:
     assert token in html,token
 assert '<details' in html and '<summary' in html
 assert 'expandedChains:new Set()' in script and 'data-expand-chain' in script and 'data-collapse-chain' in script
+assert 'function sessionView' in script and 'SESSION_CHECKS' in script and 'data-check' in script and 'pn-session-checks' in script
 assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==364-DB['coverage']['officialExactProductPages']
 assert DB['coverage']['sourceMappedPlugins']==364
 
