@@ -6,6 +6,7 @@ family profile as a verified transcription of a product manual.
 """
 from collections import defaultdict
 import re
+from beginner_plugin_copy import beginner_copy
 
 
 def ctl(name, role, hear, start):
@@ -445,14 +446,8 @@ def enrich_plugins(plugins, profiles, source_records, chains):
         primary_sources = [u['source'] for u in plugin.get('uses', []) if u.get('primary')]
         all_sources = list(dict.fromkeys(primary_sources + [u['source'] for u in plugin.get('uses', [])]))
         source_phrase = ', '.join(all_sources[:6]) if all_sources else plugin['where']
-        family_text = profile.get('unites', '')
-        full_description = ' '.join(filter(None, [
-            _sentence(f"{plugin['name']} от {plugin['developer']} — {plugin['kind']}"),
-            _sentence(plugin['description']),
-            _sentence(f"Практическая роль: {family_text}"),
-            _sentence(f"Наиболее уместные источники и контексты: {source_phrase}"),
-            _sentence(CATEGORY_SOUND.get(plugin['category'], 'Результат оценивайте в контексте и при одинаковом выходном уровне.')),
-        ]))
+        copy = beginner_copy(plugin, profile, all_sources)
+        full_description = copy['full']
 
         variant_names = [x.strip() for x in plugin['name'].split(' / ')] if ' / ' in plugin['name'] else []
         variants = []
@@ -486,9 +481,10 @@ def enrich_plugins(plugins, profiles, source_records, chains):
             evidence.append({'level': 'Official link', 'text': 'В карточке доступна официальная страница продукта; ссылка требует подключения к интернету.'})
 
         plugin['guide'] = {
+            'simple': copy['simple'],
             'fullDescription': full_description,
-            'sound': CATEGORY_SOUND.get(plugin['category'], 'Оценивайте результат в контексте и при одинаковом Output.'),
-            'whyChoose': _sentence(plugin['note']) + ' ' + _sentence(profile.get('choose', '')),
+            'sound': copy['sound'],
+            'whyChoose': copy['why'],
             'bestFor': all_sources[:8] or [plugin['where']],
             'notFor': list(dict.fromkeys(profile['warnings'] + [
                 'Не добавляйте processing только потому, что preset звучит громче.',
@@ -508,7 +504,7 @@ def enrich_plugins(plugins, profiles, source_records, chains):
             'comparisons': comparisons,
             'evidence': evidence,
         }
-        guide_terms = [full_description, plugin['guide']['whyChoose'], plugin['guide']['routing']]
+        guide_terms = [full_description, plugin['guide']['simple'], plugin['guide']['whyChoose'], plugin['guide']['routing']]
         guide_terms += [u['source'] + ' ' + u['task'] + ' ' + u['goal'] for u in use_cases]
         guide_terms += [c['name'] + ' ' + c['role'] + ' ' + c['start'] for c in controls]
         guide_terms += [r['title'] + ' ' + r['settingsText'] for r in recipes]

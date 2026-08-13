@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.4.7-readable'
+assert DB['version'] == '2.4.8-beginner-guides'
 assert len(plugins) == 364
 assert DB['coverage']['pluginGuides'] == 364
 assert DB['coverage']['productSpecificControlMaps'] >= 80
@@ -17,6 +17,11 @@ for plugin in plugins:
     guide = plugin.get('guide')
     assert guide, plugin['name']
     assert len(guide['fullDescription']) >= 280, plugin['name']
+    simple = guide.get('simple') or ''
+    assert len(simple) >= 80, plugin['name']
+    cyr = sum(('а' <= ch.lower() <= 'я') or ch.lower() == 'ё' for ch in simple)
+    assert cyr >= 35, (plugin['name'], cyr, simple[:140])
+    assert 'Практическая роль:' not in guide['fullDescription'], plugin['name']
     assert len(guide['controls']) >= 4, plugin['name']
     assert 3 <= len(guide['settings']) <= 4, plugin['name']
     assert len(guide['workflow']) >= 6, plugin['name']
