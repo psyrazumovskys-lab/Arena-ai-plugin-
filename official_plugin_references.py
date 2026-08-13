@@ -1,0 +1,70 @@
+"""Official vendor provenance for every catalog entry.
+
+Exact product links are kept where the source workbook contains one (all 51
+AudioLoom pages). For other products we provide an official vendor/manual hub,
+clearly labelled as a hub rather than pretending it is an exact product manual.
+"""
+
+PA_SITE='https://www.plugin-alliance.com/en/products.html'
+PA_SUPPORT='https://support.plugin-alliance.com/'
+
+VENDORS={
+'Waves':('Waves','https://www.waves.com/plugins','https://www.waves.com/downloads/manuals'),
+'Brainworx':('Brainworx / Plugin Alliance','https://www.plugin-alliance.com/en/brand/brainworx.html',PA_SUPPORT),
+'Soundtoys':('Soundtoys','https://www.soundtoys.com/product/','https://www.soundtoys.com/support/'),
+'Neural DSP':('Neural DSP','https://neuraldsp.com/plugins','https://neuraldsp.com/downloads'),
+'iZotope':('iZotope','https://www.izotope.com/en/products.html','https://docs.izotope.com/'),
+'FabFilter':('FabFilter','https://www.fabfilter.com/products','https://www.fabfilter.com/help/'),
+'Overloud':('Overloud','https://www.overloud.com/products','https://www.overloud.com/downloads'),
+'Unfiltered Audio':('Unfiltered Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/unfiltered_audio.html',PA_SUPPORT),
+'SPL':('SPL / Plugin Alliance','https://www.plugin-alliance.com/en/brand/spl.html',PA_SUPPORT),
+'Ampeg / Brainworx':('Ampeg / Brainworx','https://www.plugin-alliance.com/en/brand/ampeg.html',PA_SUPPORT),
+'Friedman / Brainworx':('Friedman / Brainworx','https://www.plugin-alliance.com/en/brand/friedman.html',PA_SUPPORT),
+'Lindell Audio':('Lindell Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/lindell_audio.html',PA_SUPPORT),
+'elysia':('elysia','https://www.elysia.com/software/','https://www.elysia.com/support/'),
+'elysia / Plugin Alliance':('elysia / Plugin Alliance','https://www.plugin-alliance.com/en/brand/elysia.html',PA_SUPPORT),
+'Diezel / Brainworx':('Diezel / Brainworx','https://www.plugin-alliance.com/en/brand/diezel.html',PA_SUPPORT),
+'Newfangled Audio':('Newfangled Audio','https://www.newfangledaudio.com/','https://www.newfangledaudio.com/'),
+'Bettermaker':('Bettermaker','https://www.bettermaker.com/plugins','https://www.bettermaker.com/downloads'),
+'Suhr / Brainworx':('Suhr / Brainworx',PA_SITE,PA_SUPPORT),
+'ADPTR Audio':('ADPTR Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/adptr_audio.html',PA_SUPPORT),
+'Dangerous Music':('Dangerous Music / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'ENGL / Brainworx':('ENGL / Brainworx','https://www.plugin-alliance.com/en/brand/engl.html',PA_SUPPORT),
+'Vertigo Sound':('Vertigo Sound / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'AMEK / Brainworx':('AMEK / Brainworx','https://www.plugin-alliance.com/en/brand/amek.html',PA_SUPPORT),
+'Black Box Analog Design':('Black Box Analog Design / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'IK Multimedia':('IK Multimedia','https://www.ikmultimedia.com/products/','https://www.ikmultimedia.com/userarea/manuals/'),
+'Mäag Audio':('Mäag Audio / Plugin Alliance','https://www.plugin-alliance.com/en/brand/maag_audio.html',PA_SUPPORT),
+'Purple Audio':('Purple Audio / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Shadow Hills Industries':('Shadow Hills Industries / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Millennia':('Millennia / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Gyraf Audio':('Gyraf Audio / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Looptrotter':('Looptrotter / Plugin Alliance',PA_SITE,PA_SUPPORT),
+}
+
+
+def apply_official_references(plugins):
+    for p in plugins:
+        if p.get('link'):
+            p['official']={
+                'vendor':p['developer'],
+                'productPage':p['link'],
+                'vendorSite':'https://www.audioloom.com/',
+                'manualHub':p['link'],
+                'referenceType':'Exact official product page',
+                'verifiedOn':'2026-08-12',
+                'note':'Точная официальная product page; manual может быть отдельным download внутри страницы/сайта.',
+            }
+            continue
+        assert p['developer'] in VENDORS,p['developer']
+        vendor,site,manual=VENDORS[p['developer']]
+        p['official']={
+            'vendor':vendor,
+            'productPage':'',
+            'vendorSite':site,
+            'manualHub':manual,
+            'referenceType':'Official vendor/manual hub',
+            'verifiedOn':'2026-08-12',
+            'note':'Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию.',
+        }
+    return plugins
