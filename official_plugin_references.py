@@ -61,14 +61,28 @@ def _product_note(name):
 def apply_official_references(plugins):
     for p in plugins:
         if p.get('link'):
+            link=p['link']
+            audioloom='audioloom.com' in link.casefold()
+            if audioloom:
+                p['official']={
+                    'vendor':p['developer'],
+                    'productPage':link,
+                    'vendorSite':'https://www.audioloom.com/',
+                    'manualHub':link,
+                    'referenceType':'Exact official product page',
+                    'verifiedOn':'2026-08-14',
+                    'note':'Точная официальная product page; manual может быть отдельным download внутри страницы/сайта.',
+                }
+                continue
+            vendor,site,manual=VENDORS.get(p['developer'], (p['developer'], '', link))
             p['official']={
-                'vendor':p['developer'],
-                'productPage':p['link'],
-                'vendorSite':'https://www.audioloom.com/',
-                'manualHub':p['link'],
+                'vendor':vendor,
+                'productPage':link,
+                'vendorSite':site or link,
+                'manualHub':manual or link,
                 'referenceType':'Exact official product page',
-                'verifiedOn':'2026-08-13',
-                'note':'Точная официальная product page; manual может быть отдельным download внутри страницы/сайта.',
+                'verifiedOn':'2026-08-14',
+                'note':_product_note(p['name']),
             }
             continue
         assert p['developer'] in VENDORS,p['developer']

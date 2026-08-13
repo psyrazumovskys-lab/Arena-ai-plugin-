@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.5.1'
+assert DB['version'] == '2.5.2'
 assert len(plugins) == 365
 assert DB['coverage']['pluginGuides'] == 365
 assert DB['coverage']['productSpecificControlMaps'] >= 80
@@ -45,6 +45,7 @@ by_name = {p['name']: p for p in plugins}
 assert 'держит пики у потолка' not in by_name['Busboy']['guide']['simple']
 assert 'sidechain' in by_name['UltraPump']['guide']['simple'].casefold() or 'pump' in by_name['UltraPump']['guide']['simple'].casefold()
 assert 'второй дубль' not in by_name['ExoDelay']['guide']['simple']
+assert all('роль записана' not in p['guide']['simple'] for p in plugins)
 assert 'сатурац' in by_name['Soundtoys Decapitator']['guide']['simple'].casefold() or 'характер' in by_name['Soundtoys Decapitator']['guide']['simple']
 assert 'FabFilter Pro-Q 4' in by_name
 assert 'указан для' not in by_name['FabFilter Pro-Q 3']['guide']['simple']
@@ -52,6 +53,16 @@ assert 'карта' in by_name['FabFilter Pro-Q 3']['guide']['simple']
 q4s = by_name['FabFilter Pro-Q 4']['guide']['simple'].casefold()
 assert 'spectral' in q4s or 'sketch' in q4s or 'pro-q 4' in q4s
 assert by_name['FabFilter Pro-Q 4']['official']['productPage'].endswith('pro-q-4-equalizer-plug-in')
+assert 'audioloom' not in (by_name['FabFilter Pro-Q 4']['official'].get('vendorSite') or '')
+assert 'EQ Sketch' not in by_name['Ozone Spectral Shaper']['guide']['simple']
+assert 'EQ Sketch' not in by_name['ADPTR Sculpt']['guide']['simple']
+assert 'удар начала' not in by_name['Overloud Gem Dopamine']['guide']['simple']
+assert 'тише делает то, что ниже порога' not in by_name['Renaissance Vox']['guide']['simple']
+assert 'маленькой акустике' not in by_name['Waves LoAir']['guide']['simple']
+assert 'sub' in by_name['Waves LoAir']['guide']['simple'].casefold() or 'ниже' in by_name['Waves LoAir']['guide']['simple']
+assert 'boost+cut низа' not in by_name['PuigTec MEQ-5']['guide']['simple']
+assert 'кабинета' not in by_name['Waves H-Reverb']['guide']['simple']
+assert 'классическая редакция' in (by_name['bx_masterdesk / Classic']['guide']['variants'][1]['note'] if by_name['bx_masterdesk / Classic']['guide']['variants'] else '')
 
 assert curated_occurrences > 200
 assert status['Product-specific curated map'] == DB['coverage']['productSpecificControlMaps']

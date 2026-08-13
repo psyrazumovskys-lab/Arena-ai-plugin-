@@ -467,9 +467,11 @@ def enrich_plugins(plugins, profiles, source_records, chains):
         if variant_names:
             variants = [{
                 'name': name,
-                'note': ('Более новая/расширенная редакция; проверьте дополнительные modes и oversampling в установленной версии.'
-                         if re.search(r'v\d|plus|pro|classic', name, re.I)
-                         else 'Близкий вариант объединён по функции; точные controls сверяйте с GUI установленной версии.')
+                'note': ('Более простая или классическая редакция той же линейки; сверьте GUI установленной версии.'
+                         if re.search(r'classic', name, re.I) else
+                         'Более новая/расширенная редакция; проверьте дополнительные modes и oversampling в установленной версии.'
+                         if re.search(r'v\d|plus|pro', name, re.I) else
+                         'Близкий вариант объединён по функции; точные controls сверяйте с GUI установленной версии.')
             } for name in variant_names]
 
         comparisons = []

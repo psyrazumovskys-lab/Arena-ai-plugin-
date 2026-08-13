@@ -135,6 +135,36 @@ FAMILY_HINT = {
     'Doubling и widening': 'Имитация второго дубля или расширение, сухой центр лучше оставить.',
     'M/S, stereo matrix и mono control': 'Работа с центром и краями, либо проверка mono.',
     'Phase и time alignment': 'Совмещение микрофонов по polarity и времени, до EQ.',
+    'Drum, kick и snare macros': 'Готовая стойка для барабана: тон, плотность и пространство в одном окне.',
+    'Instrument-specific macros': 'Готовая обработка под конкретный инструмент: несколько стадий сразу.',
+    'Современные универсальные strips': 'Современный канал: фильтры, EQ и динамика в одном окне.',
+    'Harmonic enhancers': 'Подчёркивает гармоники и ясность; не всегда синтезирует новые призвуки.',
+    'Modular и multi-FX': 'Набор эффектов в одном рэке: включайте только нужные модули.',
+    'Pitch, granular и lo-fi delays': 'Delay с pitch, freeze или зернистой текстурой, не просто эхо.',
+    'Универсальные и character delays': 'Обычный или окрашенный delay: slap, tempo repeat, analog echo.',
+    'Multiband и spectral dynamics': 'Динамика по полосам спектра, а не весь сигнал сразу.',
+    'Overdrive, distortion и fuzz': 'Перегруз: от лёгкого drive до грубого fuzz.',
+    'Vocal pitch, formant и resynthesis': 'Меняет высоту, formant или превращает голос в другой тембр.',
+    'Synthesizers': 'Сам создаёт звук: бас, лид или пэд.',
+    'Creative и extreme compression': 'Компрессия как эффект: crush, negative ratio, сильный характер.',
+    'Precision mastering compression': 'Очень тонкий glue на шине или мастере.',
+    'Multiband maximizers': 'Лимитирование по нескольким полосам, не один потолок на весь спектр.',
+    'Frequency-dependent transient shaping': 'Атака и хвост по выбранным частотам, не весь сигнал.',
+    'Shelving, BAX и broad tone': 'Очень широкие полки: двигают весь баланс, не точечная хирургия.',
+    'Workflow и session utilities': 'Организация сессии или цепочки плагинов, обычно не красит звук само по себе.',
+    'Tremolo, autopan и rhythmic movement': 'Качает громкость или панораму в ритме.',
+    'Creative и granular spaces': 'Необычное пространство: granular, dark, не стандартный room.',
+    'Cinematic и lo-fi transformations': 'Кинематографическая или lo-fi трансформация отдельного слоя.',
+    'Cinematic и multi-stage dynamics': 'Несколько динамических стадий сразу, для плотного cinematic слоя.',
+    'Educational и diagnostic utilities': 'Подсказка или диагноз сессии, не обработка звука.',
+    'Cassette и lo-fi': 'Кассетная грязь, drift и мягкий верх.',
+    'Фильтры и resonators': 'Режет или подчёркивает полосу: filter sweep, резонанс, formant.',
+    'Air, presence и high-frequency tone': 'Открывает верх: air и presence. Легко добавить резкость.',
+    'Console, preamp и analog path': 'Окрас преампа или консольного тракта до EQ.',
+    'Multi-tap и layered delays': 'Несколько повторов в разных долях — ритмический рисунок, не одно эхо.',
+    'Reference, loudness и spectrum': 'Показывает LUFS, True Peak, спектр и stereo. Не печатать в export.',
+    'Chorus, flanger и phaser': 'Добавляет движение через расстройку, гребёнку или фазовые провалы.',
+    'Monitoring и translation': 'Проверка mono, маленькой колонки или translation. Не экспортировать.',
 }
 
 KEYWORD_HINTS = [
@@ -142,7 +172,7 @@ KEYWORD_HINTS = [
     (r'de-harsh|harsh', 'сглаживает колкую верхнюю середину'),
     (r'de-reverb|dereverb', 'укорачивает комнатный хвост записи'),
     (r'denoise|noise reduc|шумопод', 'убирает постоянный шум и гул'),
-    (r'pro-q 4|spectral dynamics|eq sketch', 'dynamic и spectral EQ плюс EQ Sketch: можно нарисовать кривую и точечно давить вылезающие частоты'),
+    (r'pro-q 4|eq sketch', 'dynamic и spectral EQ плюс EQ Sketch: можно нарисовать кривую и точечно давить вылезающие частоты'),
     (r'crystallizer|reverse pitch|pitch-shifted reverse', 'делает обратные повторы со сдвигом высоты — текстура, не обычный delay'),
     (r'(?<![a-z])pitch correction|autotune|retune', 'подтягивает высоту нот'),
     (r'flip-top|B-15', 'тёплый округлый тон маленького винтажного басового комбо'),
@@ -152,26 +182,27 @@ KEYWORD_HINTS = [
     (r'sidechain|ducking|UltraPump', 'ритмично приседает по внешнему ключу — классический pump, не автоматический фейдер'),
     (r'nameless|granophyre|extremely tight high gain', 'плотный современный перегруз с сильным Gain'),
     (r'clean/crunch|boutique clean|pedal-platform', 'чистый или слегка хрустящий тон, удобный под педали'),
-    (r'LA-2A|opto|оптическ', 'сжимает плавно, как оптический компрессор'),
+    (r'LA-2A|CLA-2A|CLA-3A|Gem Comp LA|bx_opto|оптическ', 'сжимает плавно, как оптический компрессор'),
     (r'1176|FET|CLA-76', 'сжимает быстро и напористо'),
     (r'vari-mu|vari mu', 'мягко округляет и уплотняет по-ламповому'),
     (r'glue|VCA|bus compress', 'слегка склеивает группу, чтобы дорожки звучали вместе'),
     (r'brickwall|maximizer|true-peak limiter', 'держит пики у потолка и поднимает общую громкость'),
     (r'clipper|клиппер', 'срезает самые короткие пики и добавляет плотность'),
-    (r'transient|attack/sustain|attack и sustain', 'меняет удар начала и длину хвоста'),
-    (r'gate|expander', 'тише делает то, что ниже порога'),
-    (r'pultec', 'широкие музыкальные полки и характерный трюк boost+cut низа'),
+    (r'(?<!не )(?<!not a )transient shap|attack/sustain|attack и sustain', 'меняет удар начала и длину хвоста'),
+    (r'gate/expander|\bexpander\b|(?<![/])\bgate\b', 'тише делает то, что ниже порога'),
+    (r'EQP-1A|\bpultec\b(?! midrange)(?!-style)', 'широкие музыкальные полки и характерный трюк boost+cut низа'),
     (r'proportional-Q|API 55', 'напористый API-тон: узкий boost звучит острее'),
     (r'linear phase', 'минимальный сдвиг фазы; на транзиентах возможен pre-ringing'),
-    (r'dynamic eq|dynamic band', 'трогает частоту только когда она вылезает'),
+    (r'dynamic eq', 'трогает частоту только когда она вылезает'),
     (r'plate', 'металлический плотный хвост, частый выбор для вокала и малого'),
-    (r'convolution|IR-1|impulse', 'помещение из записи реального пространства или кабинета'),
+    (r'\bIR-1\b|convolution reverb', 'помещение из записи реального пространства или кабинета'),
     (r'doubler|MicroShift|Double Dare', 'имитирует второй дубль небольшой разницей по времени и высоте'),
     (r'widener|widening|width', 'делает сигнал шире; проверяйте mono'),
     (r'chorus|flanger|phaser', 'добавляет движение через расстройку, гребёнку или фазовые провалы'),
-    (r'tape|кассет|J37|Kramer Master Tape', 'ленточная плотность, мягкий верх и лёгкая компрессия'),
+    (r'\btape machine\b|J37|Kramer Master Tape|Gem Tapedesk|Monarch Tape|ленточн', 'ленточная плотность, мягкий верх и лёгкая компрессия'),
     (r'cassette|lo-fi|felt', 'ностальгическая грязь, мягкость и нестабильность'),
-    (r'subharmonic|psychoacoustic|RBass', 'добавляет гармоники, чтобы низ читался на маленькой акустике'),
+    (r'\bLoAir\b|subharmonic generator', 'синтезирует частоты ниже исходника — это sub, не гармоники для маленькой колонки'),
+    (r'MaxxBass|Renaissance Bass|\bRBass\b', 'добавляет гармоники, чтобы низ читался на маленькой акустике'),
     (r'EchoBoy|echo boy', 'delay с характером разных эхо-машин: от slap до грязного analog repeat'),
     (r'multi-tap|taps для|SuperTap', 'ставит несколько повторов в разных долях — ритмический рисунок, а не одно эхо'),
     (r'IR player|cabinet IR|SuperCabinet', 'подставляет кабинет из импульса; тон кабинета важнее EQ после'),
@@ -179,6 +210,7 @@ KEYWORD_HINTS = [
     (r'mono speaker|translation', 'показывает, как микс сядет на маленькой моно-колонке'),
     (r'Vocal Rider|Bass Rider', 'едет по уровню как автоматический фейдер, а не как обычный компрессор'),
 ]
+
 
 
 def _cyr_ratio(text):
@@ -210,6 +242,20 @@ def _family_hint_for(plugin):
         return 'Ритмичный sidechain-pump: место под удар, не автоматический фейдер.'
     if 'rockrack' in name:
         return 'Восемь amp от clean до metal плюс кабинеты; не один high-gain пресет.'
+    if 'meq-5' in name or 'meq 5' in name:
+        return 'Pultec для середины: peak и dip в mid, не классический low boost+cut.'
+    if 'dopamine' in name:
+        return 'Оживляет уже существующие гармоники как tape encoder, не рисует новые и не делает transient shaping.'
+    if 'oneknob pressure' in name:
+        return 'Одной ручкой добавляет плотность и pump — это не прозрачный компрессор.'
+    if 'mondomod' in name:
+        return 'Качает громкость, высоту или панораму — tremolo, vibrato, auto-pan.'
+    if 'exodelay' in name:
+        return 'Modulation delay нескольких эр: chorus/flange как режимы echo, не doubler.'
+    if name.endswith('torque') or name == 'waves torque':
+        return 'Перенастраивает тональный резонанс барабана, а не просто добавляет низ.'
+    if family == 'Subharmonic и psychoacoustic bass' and ('loair' in name or 'subharmonic generator' in kind):
+        return 'Синтезирует частоты ниже исходника — это sub, не гармоники для маленькой колонки.'
     if family == 'Leveling, riders и upward compression' and 'rider' not in name and 'rider' not in kind:
         return 'Выравнивает громкость: подтягивает тихое или слегка давит громкое.'
     if family == 'High-gain guitar amps и suites' and re.search(r'clean|crunch|jazz|multi-amp|suite', kind):
@@ -221,7 +267,7 @@ def _this_one_does(plugin):
     desc = (plugin.get('description') or '').strip()
     kind = (plugin.get('kind') or '').strip()
     hint = _keyword_hint(plugin)
-    if _cyr_ratio(desc) >= 0.18 and len(desc) >= 36:
+    if _cyr_ratio(desc) >= 0.18 and len(desc) >= 24:
         core = desc.rstrip('.')
         if hint and hint[:18].casefold() not in core.casefold():
             return f'{core}: {hint}'
