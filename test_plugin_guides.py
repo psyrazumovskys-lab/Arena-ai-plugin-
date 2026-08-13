@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.4.4-session-lessons'
+assert DB['version'] == '2.4.5-nav-groups'
 assert len(plugins) == 364
 assert DB['coverage']['pluginGuides'] == 364
 assert DB['coverage']['productSpecificControlMaps'] >= 80

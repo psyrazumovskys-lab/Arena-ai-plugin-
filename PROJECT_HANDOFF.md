@@ -1,6 +1,6 @@
 # Plugin Navigator — передача проекта в новый чат Arena.ai
 
-**Дата состояния:** 13 августа 2026 (обновлено до 2.4.4-session-lessons)  
+**Дата состояния:** 13 августа 2026 (обновлено до 2.4.5-nav-groups)  
 **Язык проекта и общения:** русский  
 **Предпочтение пользователя:** отвечать кратко и по делу.
 
@@ -13,7 +13,7 @@
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.4.4-session-lessons` (поверх 2.4.3 / 2.4.2 / 2.4.1).
+Plugin Navigator проверен как версия `2.4.5-nav-groups` (поверх 2.4.4 / 2.4.3 / 2.4.2).
 
 - 364 плагина;
 - 360 exact official product pages (4 vendor hub);
@@ -25,6 +25,7 @@ Plugin Navigator проверен как версия `2.4.4-session-lessons` (�
 - Controls, Settings, Routing;
 - пользовательские цепочки и локальное сохранение;
 - учебный чеклист сессии до плагинов (база / условные, уроки);
+- левое меню сгруппировано (Подготовка / Каталог / Цепи / Ещё), без списка источников в сайдбаре;
 - полностью автономный HTML;
 - полная portable-версия для Windows x64 без Trial и ограничений.
 
@@ -36,24 +37,24 @@ Plugin Navigator проверен как версия `2.4.4-session-lessons` (�
 
 `Plugin_Navigator_Full.html`
 
-- размер: 8 385 046 байт;
-- SHA-256: `c0e2f379eb18ed7c4705c3e1a1a33676e5e167eb907e78089e42586ede658da6`.
+- размер: 8 384 991 байт;
+- SHA-256: `c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.4_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.4.5_Windows_x64.zip`
 
-- SHA-256: `bc01f86a8b3302b71d06d9dc28fee8c6911cb45ecf58ca4078346dec0ae3d723`;
+- SHA-256: `3c51d6fc97dbb46712e67c3ae1d23bb5ad66223c436e85b7864a9f7ea054cb96`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.4;
+- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.5;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`2cccd2d376c541d79f74f42b2b2c227abacd4f75adcb56cea9465d8ee71c23d1`.
+`c85105ad65d40cf104db44ecfc6155414fbd6d766bb81104ed0c4ce390b4a2ce`.
 
 ## Основные исходники
 
@@ -87,7 +88,7 @@ python3 build_plugin_navigator.py
 - копию HTML в `Plugin_Navigator_Windows_Source/resources/index.html`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`c0e2f379eb18ed7c4705c3e1a1a33676e5e167eb907e78089e42586ede658da6`.
+`c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`.
 
 ## Сборка Windows
 

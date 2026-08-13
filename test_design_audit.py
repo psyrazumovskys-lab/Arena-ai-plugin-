@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.4.4-session-lessons'
+assert DB['version']=='2.4.5-nav-groups'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -28,6 +28,8 @@ for token in ['@media(max-width:900px)','@media(max-width:560px)','@media(max-wi
 script=soup.find_all('script')[-1].string
 assert "['more','⋯','More']" in script
 assert "const bottom=[['dashboard','⌂','Главная'],['wizard','◎','Подбор'],['builder','＋','Цепочка'],['plugins','◫','Каталог'],['more','⋯','More']]" in script
+assert 'function navGroups' in script and 'Подготовка' in script and 'nav-group' in script
+assert 'id="sideSources"' not in html
 assert "['Enter',' ']" in script and 'function activate(' in script
 assert 'tabindex="0"' in script
 
