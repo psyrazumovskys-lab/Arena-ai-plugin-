@@ -13,7 +13,7 @@
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.4.11-chain-analogues` (поверх 2.4.10 / 2.4.9).
+Plugin Navigator проверен как версия `2.4.12-proq4-copy` (поверх 2.4.11 / 2.4.10).
 
 - 364 плагина;
 - 360 exact official product pages (4 vendor hub);

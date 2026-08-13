@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.4.11-chain-analogues'
+assert DB['version']=='2.4.12-proq4-copy'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -45,11 +45,12 @@ assert "kind:'base'" in script and "kind:'conditional'" in script and 'sessionPr
 assert 'SESSION_LEADS' in script and 'sessionLead' in script and 'Главный элемент' in script and "title:'Панорама'" in script
 assert "id:'setup'" in script and 'Рабочий уровень — Clip Gain' in script and 'Clip Gain внутри источника' in script
 assert 'function analogueSelectHTML' in script and 'data-simple-alt' in script and 'data-wizard-alt' in script and 'То же семейство' in script
+assert 'function pluginBlurb' in script and 'Чем отличается' in script and 'pluginBlurb(p)' in script
 assert '.check-lesson>p{margin:0 0 8px;color:#c6d3e4;font-size:15px' in style
 assert '.step-fact{' in style and 'font-size:13px' in style
 assert 'не сдвиг клипа' in script and '−12…−6' in html and '−18 dBFS RMS' in script
-assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==364-DB['coverage']['officialExactProductPages']
-assert DB['coverage']['sourceMappedPlugins']==364
+assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==365-DB['coverage']['officialExactProductPages']
+assert DB['coverage']['sourceMappedPlugins']==365
 
 # Every curated step carries full conditional guidance.
 steps=[s for c in DB['chains'] for s in c['steps']]

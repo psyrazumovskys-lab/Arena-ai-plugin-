@@ -142,6 +142,7 @@ KEYWORD_HINTS = [
     (r'de-harsh|harsh', 'сглаживает колкую верхнюю середину'),
     (r'de-reverb|dereverb', 'укорачивает комнатный хвост записи'),
     (r'denoise|noise reduc|шумопод', 'убирает постоянный шум и гул'),
+    (r'pro-q 4|spectral dynamics|eq sketch', 'dynamic и spectral EQ плюс EQ Sketch: можно нарисовать кривую и точечно давить вылезающие частоты'),
     (r'crystallizer|reverse pitch|pitch-shifted reverse', 'делает обратные повторы со сдвигом высоты — текстура, не обычный delay'),
     (r'(?<![a-z])pitch correction|autotune|retune', 'подтягивает высоту нот'),
     (r'flip-top|B-15', 'тёплый округлый тон маленького винтажного басового комбо'),
@@ -261,11 +262,17 @@ def beginner_copy(plugin, profile, sources):
     dev = plugin.get('developer') or 'разработчика'
     note = (plugin.get('note') or '').strip()
 
+    many_sources = len(sources or []) >= 6
+    catalog_line = (
+        'В каталоге он встречается на разных источниках — это карта базы, не официальное «типичное применение».'
+        if many_sources else
+        f'В каталоге он встречается в том числе на {src}. Это карта этой базы, не официальный список типичных задач.'
+    )
     simple = ' '.join(filter(None, [
         _sentence(f'{name} — {cat["tool"]}'),
         _sentence(does[0].upper() + does[1:] if does and does[0].islower() else does),
         _sentence(family_hint) if family_hint and family_hint[:24].casefold() not in does.casefold() else '',
-        _sentence(f'В этой базе он указан для {src}'),
+        _sentence(catalog_line),
     ]))
 
     sound = ' '.join(filter(None, [
@@ -289,7 +296,7 @@ def beginner_copy(plugin, profile, sources):
         _sentence(cat['what']),
         _sentence(f'Чем этот экземпляр отличается в каталоге: {does}'),
         _sentence(family_hint),
-        _sentence(f'Имеет смысл на {src}, если задача уже слышна на фейдерах'),
+        _sentence(f'В картах этой базы он встречается в том числе на {src}. Это порядок каталога, не официальное типичное применение'),
         _sentence(cat['hear']),
         _sentence(cat['start']),
         _sentence(f'Пометка: {note.rstrip(".")}') if note else '',

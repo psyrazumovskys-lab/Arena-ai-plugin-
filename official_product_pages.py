@@ -180,6 +180,7 @@ PRODUCT_PAGES = {
     'FabFilter Simplon': ff('simplon-filter-plug-in'),
     'FabFilter Volcano 3': ff('volcano-3-filter-plug-in'),
     'FabFilter Pro-Q 3': ff('pro-q-3-equalizer-plug-in'),
+    'FabFilter Pro-Q 4': ff('pro-q-4-equalizer-plug-in'),
     'FabFilter One': ff('one-synthesizer-plug-in'),
     'FabFilter Twin 3': ff('twin-3-synthesizer-plug-in'),
     'FabFilter Pro-R': ff('pro-r-reverb-plug-in'),
