@@ -4,8 +4,8 @@ PLUGIN NAVIGATOR 2.4.1 — WINDOWS x64
 
 ИСХОДНОЕ ПРИЛОЖЕНИЕ
 - resources/index.html
-- SHA-256: e6d2d6547f04bfd2d2e7a04c10845d7f752e184accf545b13ea3128aed68e63a
-- Размер: 8 369 833 байт
+- SHA-256: 51867c3329ef0f28a24ce72755a91dd1322724ef27648d00e7604a5648c78117
+- Размер: 8 370 199 байт
 
 ЦЕЛЕВАЯ СИСТЕМА
 - Windows 10/11 x64
