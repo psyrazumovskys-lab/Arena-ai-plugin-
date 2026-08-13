@@ -38,12 +38,24 @@ VENDORS={
 'Purple Audio':('Purple Audio / Plugin Alliance',PA_SITE,PA_SUPPORT),
 'Shadow Hills Industries':('Shadow Hills Industries / Plugin Alliance',PA_SITE,PA_SUPPORT),
 'Millennia':('Millennia / Plugin Alliance',PA_SITE,PA_SUPPORT),
-'Gyraf Audio':('Gyraf Audio / Plugin Alliance',PA_SITE,PA_SUPPORT),
+'Gyraf Audio':('Gyraf Audio / Antelope Audio','https://en.antelopeaudio.com/','https://support.antelopeaudio.com/'),
 'Looptrotter':('Looptrotter / Plugin Alliance',PA_SITE,PA_SUPPORT),
 }
 
 
-from official_product_pages import PRODUCT_PAGES, SUITE_NOTES
+from official_product_pages import PRODUCT_PAGES, SUITE_NOTES, CURRENT_LICENSE_NOTES, COMPONENT_NOTES
+
+
+def _product_note(name):
+    if name in CURRENT_LICENSE_NOTES:
+        return 'Текущая официальная licensed product page. Отдельной страницы Plugin Alliance больше нет; это не manual снятой PA-версии. Сверьте установленную версию.'
+    if name == 'Waves MS Matrix':
+        return 'Официальная страница S1 Stereo Imager: MS Matrix — utility-компонент S1, отдельного product page нет.'
+    if name in COMPONENT_NOTES:
+        return 'Официальная страница продукта, в который входит этот module/режим; это не отдельный mini-site модуля. Сверьте установленную версию.'
+    if name in SUITE_NOTES:
+        return 'Официальная страница suite, в которую входит этот module; это не отдельный mini-site модуля. Сверьте установленную версию.'
+    return 'Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя.'
 
 
 def apply_official_references(plugins):
@@ -63,7 +75,6 @@ def apply_official_references(plugins):
         vendor,site,manual=VENDORS[p['developer']]
         exact=PRODUCT_PAGES.get(p['name'],'')
         if exact:
-            suite = p['name'] in SUITE_NOTES
             p['official']={
                 'vendor':vendor,
                 'productPage':exact,
@@ -71,9 +82,7 @@ def apply_official_references(plugins):
                 'manualHub':manual,
                 'referenceType':'Exact official product page',
                 'verifiedOn':'2026-08-13',
-                'note':('Официальная страница suite, в которую входит этот module; это не отдельный mini-site модуля. Сверьте установленную версию.'
-                        if suite else
-                        'Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя.'),
+                'note':_product_note(p['name']),
             }
             continue
         p['official']={

@@ -245,8 +245,22 @@ PRODUCT_PAGES = {
     'Ozone Imager': IZ + 'ozone.html',
     'Ozone Exciter': IZ + 'ozone.html',
 
-    # Overloud — only pages that resolved as live product pages
+    # Overloud — current public product pages (old /products/gem-* slugs 404)
+    'Gem Voice': OL + 'products/voice',
+    'Overloud Gem Comp 76': OL + 'products/comp76-fet-compressor-limiter',
+    'Overloud Gem Comp LA': OL + 'products/comp-la',
+    'Overloud Gem Comp 670': OL + 'products/comp670-compressor-limiter',
+    'Gem EQ550': OL + 'products/eq550',
+    'Gem EQ84': OL + 'products/eq84',
+    'Gem EQP-1A': OL + 'products/eqp',
+    'Mark Studio 2': OL + 'products/mark-studio-2',
     'TH-U / TH-U Premium': OL + 'thu',
+    'Overloud Breverb 2': OL + 'products/breverb-2',
+    'Overloud Gem Dopamine': OL + 'products/dopamine',
+    'Overloud Gem Tapedesk': OL + 'products/tapedesk',
+
+    # Waves utility shipped inside S1 (no standalone product page)
+    'Waves MS Matrix': w('s1-stereo-imager'),
 
     # Plugin Alliance / Brainworx and partner brands
     'bx_masterdesk / Classic': pa('bx_masterdesk'),
@@ -312,6 +326,8 @@ PRODUCT_PAGES = {
     'Suhr Koji Comp': pa('suhr_koji_comp'),
     'ADPTR Sculpt': pa('adptr_sculpt'),
     'ADPTR Metric AB': pa('adptr_metricab'),
+    'Dangerous BAX EQ': 'https://www.plugin-alliance.com/products/bax-eq',
+    'Gyraf Gyratec X': 'https://en.antelopeaudio.com/products/gyratec-x/',
     'ENGL E646 VS': pa('engl_e646_vs'),
     'ENGL E765 Retro Tube': pa('engl_e765_rt'),
     'Shadow Hills Mastering Compressor': pa('shadow_hills_mastering_compressor'),
@@ -351,4 +367,16 @@ SUITE_NOTES = {
     'Ozone Vintage Limiter', 'Ozone Vintage Compressor', 'Ozone Dynamics',
     'Ozone Match EQ', 'Ozone Vintage EQ', 'Ozone Equalizer', 'Ozone Stabilizer',
     'Ozone Low End Focus', 'Ozone Imager', 'Ozone Exciter',
+    'Waves MS Matrix',
+}
+
+# Official live page is a current licensed recreation, not the discontinued PA listing.
+CURRENT_LICENSE_NOTES = {
+    'Gyraf Gyratec X',
+}
+
+# Catalog name is a mode/module of a larger official product page.
+COMPONENT_NOTES = {
+    'Gem EQP-1A',
+    'Waves MS Matrix',
 }

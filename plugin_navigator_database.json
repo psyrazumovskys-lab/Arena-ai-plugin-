@@ -1,5 +1,5 @@
 {
-  "version": "2.4.1-card-provenance",
+  "version": "2.4.2-hub-pages",
   "generated": "2026-08-13",
   "plugins": [
     {
@@ -18243,12 +18243,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/voice",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -48849,12 +48849,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/comp76-fet-compressor-limiter",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -59086,12 +59086,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/comp-la",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -65283,13 +65283,13 @@
         ]
       },
       "official": {
-        "vendor": "Gyraf Audio / Plugin Alliance",
-        "productPage": "",
-        "vendorSite": "https://www.plugin-alliance.com/en/products.html",
-        "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Official vendor/manual hub",
+        "vendor": "Gyraf Audio / Antelope Audio",
+        "productPage": "https://en.antelopeaudio.com/products/gyratec-x/",
+        "vendorSite": "https://en.antelopeaudio.com/",
+        "manualHub": "https://support.antelopeaudio.com/",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Текущая официальная licensed product page. Отдельной страницы Plugin Alliance больше нет; это не manual снятой PA-версии. Сверьте установленную версию."
       }
     },
     {
@@ -66210,12 +66210,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/comp670-compressor-limiter",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -72420,12 +72420,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/eq550",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -76490,12 +76490,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/eq84",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -79325,12 +79325,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/eqp",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Официальная страница продукта, в который входит этот module/режим; это не отдельный mini-site модуля. Сверьте установленную версию."
       }
     },
     {
@@ -80813,12 +80813,12 @@
       },
       "official": {
         "vendor": "Dangerous Music / Plugin Alliance",
-        "productPage": "",
+        "productPage": "https://www.plugin-alliance.com/products/bax-eq",
         "vendorSite": "https://www.plugin-alliance.com/en/products.html",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -90309,12 +90309,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/mark-studio-2",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -116823,12 +116823,12 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "",
+        "productPage": "https://www.waves.com/plugins/s1-stereo-imager",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Официальная страница S1 Stereo Imager: MS Matrix — utility-компонент S1, отдельного product page нет."
       }
     },
     {
@@ -119485,12 +119485,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/breverb-2",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -128350,12 +128350,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/dopamine",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -132826,12 +132826,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "",
+        "productPage": "https://www.overloud.com/products/tapedesk",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Official vendor/manual hub",
+        "referenceType": "Exact official product page",
         "verifiedOn": "2026-08-13",
-        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
+        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
       }
     },
     {
@@ -165805,12 +165805,12 @@
     "pluginGuides": 364,
     "productSpecificControlMaps": 152,
     "productInformedControlMaps": 174,
-    "officialExactProductPages": 346,
-    "officialVendorManualHubs": 18,
+    "officialExactProductPages": 360,
+    "officialVendorManualHubs": 4,
     "sourceMappedPlugins": 364,
     "webAuditedChains": 99,
     "researchSources": 26,
     "conditionalStepGuides": 351,
-    "mode": "Полная база v2.4.1: exact official product pages расширены почти на весь коммерческий каталог; product-specific и product-informed Control maps расширены; family-level сохранён только там, где нет проверяемой карты GUI; цепочки и логика приложения не менялись."
+    "mode": "Полная база v2.4.2: для бывших hub-карточек добавлены живые official product pages (Overloud, Dangerous BAX EQ, Waves MS Matrix, Gyraf/Antelope); 4 позиции без отдельной страницы остаются vendor hub; цепочки, Controls и логика приложения не менялись."
   }
 }

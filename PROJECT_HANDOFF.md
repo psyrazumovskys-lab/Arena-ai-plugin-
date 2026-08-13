@@ -1,6 +1,6 @@
 # Plugin Navigator — передача проекта в новый чат Arena.ai
 
-**Дата состояния:** 13 августа 2026 (обновлено до 2.4.1-card-provenance)  
+**Дата состояния:** 13 августа 2026 (обновлено до 2.4.2-hub-pages)  
 **Язык проекта и общения:** русский  
 **Предпочтение пользователя:** отвечать кратко и по делу.
 
@@ -13,10 +13,10 @@
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.4.1-card-provenance` (поверх 2.4.0).
+Plugin Navigator проверен как версия `2.4.2-hub-pages` (поверх 2.4.1).
 
 - 364 плагина;
-- 346 exact official product pages (18 vendor hub после аудита ссылок);
+- 360 exact official product pages (4 vendor hub);
 - 152 product-specific и 174 product-informed Control maps; 38 family-level;
 - 99 вручную подготовленных curated chains;
 - 26 источников исследования;
@@ -35,24 +35,24 @@ Plugin Navigator проверен как версия `2.4.1-card-provenance` (�
 
 `Plugin_Navigator_Full.html`
 
-- размер: 8 370 199 байт;
-- SHA-256: `51867c3329ef0f28a24ce72755a91dd1322724ef27648d00e7604a5648c78117`.
+- размер: 8 369 797 байт;
+- SHA-256: `7b599296bd5605199da680631bf8744cd039e2c2b37384f124c2cc2bff6df46d`.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.1_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.4.2_Windows_x64.zip`
 
-- SHA-256: `1ed43ac9dbd467660c0565b4d124f3b58fdd172c50b488baa916f35eb8cdc697`;
+- SHA-256: `f6dfcbaa6c24f779141ad5fff1b9d6a7e81f01ba2ac368edef98da3506425f3a`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.1;
+- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.2;
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`b48ce57324351ea332eb6da029202b9acb7e2cc98ced058bea8cc508992265ec`.
+`c7a5651102f9aa812f8c6bed71033ab591e23c43738e6883b612801c93d25b8d`.
 
 ## Основные исходники
 
@@ -85,7 +85,7 @@ python3 build_plugin_navigator.py
 - `plugin_navigator_database.json`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`51867c3329ef0f28a24ce72755a91dd1322724ef27648d00e7604a5648c78117`.
+`7b599296bd5605199da680631bf8744cd039e2c2b37384f124c2cc2bff6df46d`.
 
 ## Сборка Windows
 
@@ -117,10 +117,11 @@ Windows-оболочка не меняет содержимое HTML. Native API
 
 Последние результаты:
 
-- функциональный UI-тест: PASS;
 - плагины: 364;
 - curated chains: 99;
 - source groups: 33;
+- exact official product pages: 360;
+- vendor hubs: 4;
 - аудит дизайна: PASS;
 - аудит цепочек: PASS;
 - аудит карточек и Controls: PASS;
