@@ -7,7 +7,7 @@ settings remain starting points that must be auditioned on the user's audio.
 from collections import defaultdict
 
 RESEARCH_SOURCES = [
-    {'id':'signal-order','title':'Signal chain: order of operations','publisher':'iZotope','url':'https://www.izotope.com/en/learn/signal-chain-order-of-operations','principle':'Plugin order changes the result. Corrective EQ before compression is conventional, but the best order depends on the source and purpose.'},
+    {'id':'signal-order','title':'Signal chain: order of operations','publisher':'iZotope','url':'https://www.izotope.com/community/blog/signal-chain-order-of-operations','principle':'Plugin order changes the result. Corrective EQ before compression is conventional, but the best order depends on the source and purpose.'},
     {'id':'eq-compression','title':'Which Comes First: EQ or Compressor?','publisher':'iZotope','url':'https://www.izotope.com/en/learn/eq-before-or-after-compression.html','principle':'Technical cleanup EQ before compression prevents unwanted energy from driving the detector; creative EQ may follow compression.'},
     {'id':'send-return','title':'How To Use Reverb Like A Pro: 1','publisher':'Sound On Sound','url':'https://www.soundonsound.com/techniques/how-use-reverb-pro-1','principle':'Shared reverb/delay normally uses a post-fader send and a 100% wet return.'},
     {'id':'send-routing','title':'Using Aux Sends & Returns','publisher':'Sound On Sound','url':'https://www.soundonsound.com/techniques/using-aux-sends-returns','principle':'Aux returns allow independent filtering and processing; parallel compression blends a heavily processed return with the dry signal.'},
@@ -32,7 +32,7 @@ RESEARCH_SOURCES = [
     {'id':'mix-bus','title':'Essential tips for mix bus processing','publisher':'iZotope','url':'https://www.izotope.com/en/learn/tips-for-mix-bus-processing','principle':'EQ, compression and saturation are typical but should be subtle; do not rely on a limiter to repair mix peaks.'},
     {'id':'mix-bus-compression','title':'Mix Bus Compression 101','publisher':'iZotope','url':'https://www.izotope.com/community/blog/mix-bus-compression','principle':'Use conservative ratio and gain reduction, time release to the track, consider sidechain HPF, and always level-match.'},
     {'id':'mastering','title':'What is an ideal mastering signal chain?','publisher':'iZotope','url':'https://www.izotope.com/en/learn/what-is-an-ideal-mastering-signal-chain.html','principle':'Listen and plan first, perform corrective work before sweetening as needed, and use the fewest stages that solve the problem.'},
-    {'id':'limiter','title':'Getting to know brickwall limiters','publisher':'iZotope','url':'https://www.izotope.com/en/learn/brickwall-limiters.html','principle':'A brickwall limiter normally ends mastering processing; True Peak is a delivery-dependent choice and limiting should be judged for transient damage.'},
+    {'id':'limiter','title':'Getting to know brickwall limiters','publisher':'iZotope','url':'https://www.izotope.com/community/blog/brickwall-limiters','principle':'A brickwall limiter normally ends mastering processing; True Peak is a delivery-dependent choice and limiting should be judged for transient damage.'},
 ]
 
 

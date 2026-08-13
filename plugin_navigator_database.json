@@ -1,5 +1,5 @@
 {
-  "version": "2.5.2",
+  "version": "2.5.3",
   "generated": "2026-08-14",
   "plugins": [
     {
@@ -37850,7 +37850,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/h-delay",
+        "productPage": "https://www.waves.com/plugins/h-delay-hybrid-delay",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -41100,7 +41100,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/smack-attack",
+        "productPage": "https://www.waves.com/plugins/smack-attack-transient-shaper",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -42164,7 +42164,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/trans-x",
+        "productPage": "https://www.waves.com/plugins/transx",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -49303,7 +49303,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/cla-76",
+        "productPage": "https://www.waves.com/plugins/cla-76-compressor-limiter",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -60212,7 +60212,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/cla-2a",
+        "productPage": "https://www.waves.com/plugins/cla-2a-compressor-limiter",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -60521,7 +60521,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/cla-3a",
+        "productPage": "https://www.waves.com/plugins/cla-3a-compressor-limiter",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -70220,7 +70220,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/h-comp",
+        "productPage": "https://www.waves.com/plugins/h-comp-hybrid-compressor",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -166696,7 +166696,7 @@
       "id": "signal-order",
       "title": "Signal chain: order of operations",
       "publisher": "iZotope",
-      "url": "https://www.izotope.com/en/learn/signal-chain-order-of-operations",
+      "url": "https://www.izotope.com/community/blog/signal-chain-order-of-operations",
       "principle": "Plugin order changes the result. Corrective EQ before compression is conventional, but the best order depends on the source and purpose."
     },
     {
@@ -166871,7 +166871,7 @@
       "id": "limiter",
       "title": "Getting to know brickwall limiters",
       "publisher": "iZotope",
-      "url": "https://www.izotope.com/en/learn/brickwall-limiters.html",
+      "url": "https://www.izotope.com/community/blog/brickwall-limiters",
       "principle": "A brickwall limiter normally ends mastering processing; True Peak is a delivery-dependent choice and limiting should be judged for transient damage."
     }
   ],
@@ -166890,6 +166890,6 @@
     "webAuditedChains": 99,
     "researchSources": 26,
     "conditionalStepGuides": 351,
-    "mode": "Полная база v2.5.2: сверка описаний, карточки на beginner-тексте, без ложных ярлыков EQ Sketch / transient / subharmonic."
+    "mode": "Полная база v2.5.3: живые Waves product pages (H-Reverb, CLA-76/2A/3A, H-Delay, H-Comp, Trans-X, Smack Attack)."
   }
 }
