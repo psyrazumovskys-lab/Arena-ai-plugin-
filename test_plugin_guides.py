@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.4.8-beginner-guides'
+assert DB['version'] == '2.4.9-copy-audit'
 assert len(plugins) == 364
 assert DB['coverage']['pluginGuides'] == 364
 assert DB['coverage']['productSpecificControlMaps'] >= 80
@@ -40,6 +40,12 @@ for plugin in plugins:
         assert len(recipe['order']) >= 4, (plugin['name'], recipe['title'])
         settings_status[recipe['status']] += 1
         curated_occurrences += recipe['status'] == 'Curated preset occurrence'
+
+by_name = {p['name']: p for p in plugins}
+assert 'держит пики у потолка' not in by_name['Busboy']['guide']['simple']
+assert 'sidechain' in by_name['UltraPump']['guide']['simple'].casefold() or 'pump' in by_name['UltraPump']['guide']['simple'].casefold()
+assert 'второй дубль' not in by_name['ExoDelay']['guide']['simple']
+assert 'сатурац' in by_name['Soundtoys Decapitator']['guide']['simple'].casefold() or 'характер' in by_name['Soundtoys Decapitator']['guide']['simple']
 
 assert curated_occurrences > 200
 assert status['Product-specific curated map'] == DB['coverage']['productSpecificControlMaps']

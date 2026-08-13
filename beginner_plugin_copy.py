@@ -119,7 +119,7 @@ FAMILY_HINT = {
     'Pultec и passive EQ': 'Широкие музыкальные полки; классический одновременный boost и cut низа.',
     'Чистый parametric и dynamic EQ': 'Точная коррекция. Dynamic EQ трогает частоту только когда она вылезает.',
     'Linear-phase и mastering EQ': 'Аккуратный тон на шине/мастере; linear phase берегите из‑за pre-ringing.',
-    'High-gain guitar amps и suites': 'Плотный современный перегруз для ритм-гитар.',
+    'High-gain guitar amps и suites': 'Набор гитарных усилителей: от плотного crunch до сильного Gain.',
     'Clean, crunch и boutique guitar amps': 'Чистый или слегка хрустящий гитарный amp.',
     'Bass amps, DI и multiband rigs': 'Басовый усилитель или DI: фундамент плюс читаемый верх.',
     'Pedals, cabinets и IR': 'Педаль, кабинет или проигрыватель IR — тон кабинета часто решает всё.',
@@ -146,13 +146,16 @@ KEYWORD_HINTS = [
     (r'(?<![a-z])pitch correction|autotune|retune', 'подтягивает высоту нот'),
     (r'flip-top|B-15', 'тёплый округлый тон маленького винтажного басового комбо'),
     (r'\bSVT\b', 'плотный громкий басовый amp-характер'),
-    (r'high.?gain|metal|nameless|granophyre', 'плотный современный перегруз с сильным Gain'),
+    (r'rockrack', 'восемь amp в одном окне: от clean Marshall до metal; не только высокий Gain'),
+    (r'decapitator|punish', 'аналоговая сатурация пяти характеров: от лёгкой плотности до сильного перегруза'),
+    (r'sidechain|ducking|UltraPump', 'ритмично приседает по внешнему ключу — классический pump, не автоматический фейдер'),
+    (r'nameless|granophyre|extremely tight high gain', 'плотный современный перегруз с сильным Gain'),
     (r'clean/crunch|boutique clean|pedal-platform', 'чистый или слегка хрустящий тон, удобный под педали'),
     (r'LA-2A|opto|оптическ', 'сжимает плавно, как оптический компрессор'),
     (r'1176|FET|CLA-76', 'сжимает быстро и напористо'),
     (r'vari-mu|vari mu', 'мягко округляет и уплотняет по-ламповому'),
     (r'glue|VCA|bus compress', 'слегка склеивает группу, чтобы дорожки звучали вместе'),
-    (r'brickwall|true-peak|true peak|limiter|лимитер', 'держит пики у потолка и поднимает общую громкость'),
+    (r'brickwall|maximizer|true-peak limiter', 'держит пики у потолка и поднимает общую громкость'),
     (r'clipper|клиппер', 'срезает самые короткие пики и добавляет плотность'),
     (r'transient|attack/sustain|attack и sustain', 'меняет удар начала и длину хвоста'),
     (r'gate|expander', 'тише делает то, что ниже порога'),
@@ -162,7 +165,7 @@ KEYWORD_HINTS = [
     (r'dynamic eq|dynamic band', 'трогает частоту только когда она вылезает'),
     (r'plate', 'металлический плотный хвост, частый выбор для вокала и малого'),
     (r'convolution|IR-1|impulse', 'помещение из записи реального пространства или кабинета'),
-    (r'doubl', 'имитирует второй дубль небольшой разницей по времени и высоте'),
+    (r'doubler|MicroShift|Double Dare', 'имитирует второй дубль небольшой разницей по времени и высоте'),
     (r'widener|widening|width', 'делает сигнал шире; проверяйте mono'),
     (r'chorus|flanger|phaser', 'добавляет движение через расстройку, гребёнку или фазовые провалы'),
     (r'tape|кассет|J37|Kramer Master Tape', 'ленточная плотность, мягкий верх и лёгкая компрессия'),
@@ -173,7 +176,7 @@ KEYWORD_HINTS = [
     (r'IR player|cabinet IR|SuperCabinet', 'подставляет кабинет из импульса; тон кабинета важнее EQ после'),
     (r'reference|Metric AB', 'сравнивает ваш микс с референсом на одной громкости'),
     (r'mono speaker|translation', 'показывает, как микс сядет на маленькой моно-колонке'),
-    (r'rider', 'едет по уровню как автоматический фейдер, а не как обычный компрессор'),
+    (r'Vocal Rider|Bass Rider', 'едет по уровню как автоматический фейдер, а не как обычный компрессор'),
 ]
 
 
@@ -190,19 +193,33 @@ def _sentence(text):
     return text if text.endswith(('.', '!', '?')) else text + '.'
 
 
-def _keyword_hint(blob):
-    blob = (blob or '').casefold()
+def _keyword_hint(plugin):
+    blob = f'{plugin.get("name", "")} {plugin.get("kind", "")}'.casefold()
     for pattern, hint in KEYWORD_HINTS:
         if re.search(pattern, blob, re.I):
             return hint
     return ''
 
 
+def _family_hint_for(plugin):
+    family = plugin.get('family') or ''
+    kind = (plugin.get('kind') or '').casefold()
+    name = (plugin.get('name') or '').casefold()
+    if 'sidechain' in kind or 'ducking' in kind or 'ultrapump' in name:
+        return 'Ритмичный sidechain-pump: место под удар, не автоматический фейдер.'
+    if 'rockrack' in name:
+        return 'Восемь amp от clean до metal плюс кабинеты; не один high-gain пресет.'
+    if family == 'Leveling, riders и upward compression' and 'rider' not in name and 'rider' not in kind:
+        return 'Выравнивает громкость: подтягивает тихое или слегка давит громкое.'
+    if family == 'High-gain guitar amps и suites' and re.search(r'clean|crunch|jazz|multi-amp|suite', kind):
+        return 'Несколько каналов amp: не только высокий Gain.'
+    return FAMILY_HINT.get(family, '')
+
+
 def _this_one_does(plugin):
     desc = (plugin.get('description') or '').strip()
     kind = (plugin.get('kind') or '').strip()
-    blob = f'{kind} {desc} {plugin.get("name", "")} {plugin.get("family", "")}'
-    hint = _keyword_hint(blob)
+    hint = _keyword_hint(plugin)
     if _cyr_ratio(desc) >= 0.18 and len(desc) >= 36:
         core = desc.rstrip('.')
         if hint and hint[:18].casefold() not in core.casefold():
@@ -212,11 +229,11 @@ def _this_one_does(plugin):
         return hint
     if kind and _cyr_ratio(kind) >= 0.18:
         return kind.rstrip('.')
-    family_hint = FAMILY_HINT.get(plugin.get('family'), '')
+    family_hint = _family_hint_for(plugin)
     if family_hint:
         return family_hint.rstrip('.')
     if kind:
-        return f'в каталоге его роль записана как {kind}. Смотрите, что меняется на слух, а не только список модулей'
+        return f'в каталоге его роль записана как {kind}'
     return 'меняет звук в рамках своего семейства'
 
 
@@ -237,23 +254,18 @@ def beginner_copy(plugin, profile, sources):
         'when': 'Когда задача уже слышна без стойки.',
         'start': 'Начните с малого Amount и сравните Bypass.',
     })
-    family_hint = FAMILY_HINT.get(plugin.get('family'), '')
+    family_hint = _family_hint_for(plugin)
     does = _this_one_does(plugin)
     src = _source_phrase(sources)
     name = plugin['name']
     dev = plugin.get('developer') or 'разработчика'
     note = (plugin.get('note') or '').strip()
-    honest = ''
-    status_note = ''
-    # Keep family-level honesty without dumping it into the card.
-    if plugin.get('name') not in getattr(beginner_copy, '_specific', set()):
-        pass
 
     simple = ' '.join(filter(None, [
         _sentence(f'{name} — {cat["tool"]}'),
-        _sentence(does),
-        _sentence(family_hint) if family_hint and family_hint[:20].casefold() not in does.casefold() else '',
-        _sentence(f'Чаще всего его ставят на {src}'),
+        _sentence(does[0].upper() + does[1:] if does and does[0].islower() else does),
+        _sentence(family_hint) if family_hint and family_hint[:24].casefold() not in does.casefold() else '',
+        _sentence(f'В этой базе он указан для {src}'),
     ]))
 
     sound = ' '.join(filter(None, [
