@@ -16,7 +16,7 @@
 Plugin Navigator проверен как версия `2.4.1-card-provenance` (поверх 2.4.0).
 
 - 364 плагина;
-- 362 exact official product pages (2 оставлены как vendor hub);
+- 346 exact official product pages (18 vendor hub после аудита ссылок);
 - 152 product-specific и 174 product-informed Control maps; 38 family-level;
 - 99 вручную подготовленных curated chains;
 - 26 источников исследования;
@@ -35,14 +35,14 @@ Plugin Navigator проверен как версия `2.4.1-card-provenance` (�
 
 `Plugin_Navigator_Full.html`
 
-- размер: 8 369 833 байт;
-- SHA-256: `e6d2d6547f04bfd2d2e7a04c10845d7f752e184accf545b13ea3128aed68e63a`.
+- размер: 8 370 199 байт;
+- SHA-256: `51867c3329ef0f28a24ce72755a91dd1322724ef27648d00e7604a5648c78117`.
 
 ### Windows x64
 
 `Plugin_Navigator_Full_v2.4.1_Windows_x64.zip`
 
-- SHA-256: `0e79cd1caa94862508f9d2258be58460d8a2a8e62b53eb723e246861977ccf26`;
+- SHA-256: `1ed43ac9dbd467660c0565b4d124f3b58fdd172c50b488baa916f35eb8cdc697`;
 - содержит автономный portable EXE;
 - оболочка Neutralinojs 6.9.0;
 - целевая система: Windows 10/11 x64;
@@ -52,7 +52,7 @@ Plugin Navigator проверен как версия `2.4.1-card-provenance` (�
 - Trial, ключи и функциональные ограничения отсутствуют.
 
 EXE внутри ZIP имеет SHA-256:  
-`0fd36f16828b6da9b555a92698c45293705a8740a8147fbffd4382f0e4f8fdc3`.
+`b48ce57324351ea332eb6da029202b9acb7e2cc98ced058bea8cc508992265ec`.
 
 ## Основные исходники
 
@@ -85,7 +85,7 @@ python3 build_plugin_navigator.py
 - `plugin_navigator_database.json`.
 
 Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`e6d2d6547f04bfd2d2e7a04c10845d7f752e184accf545b13ea3128aed68e63a`.
+`51867c3329ef0f28a24ce72755a91dd1322724ef27648d00e7604a5648c78117`.
 
 ## Сборка Windows
 

@@ -8,10 +8,10 @@
 
 | | Было | Стало |
 |---|---:|---:|
-| Exact official product page | 51 | 362 |
-| Vendor/manual hub only | 313 | 2 |
+| Exact official product page | 51 | 346 после аудита |
+| Vendor/manual hub only | 313 | 18 |
 
-Остались без отдельной product page: `UltraPump` и `Waves MS Matrix` — честный hub, страница не подтверждена.
+См. `Plugin_Navigator_v2.4.1_Link_Audit_Report.md`.
 
 Ozone-модули ведут на официальную страницу suite и так подписаны.
 

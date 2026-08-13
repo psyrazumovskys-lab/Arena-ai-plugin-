@@ -4056,12 +4056,12 @@
       },
       "official": {
         "vendor": "Brainworx / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/bx_console_n.html",
+        "productPage": "",
         "vendorSite": "https://www.plugin-alliance.com/en/brand/brainworx.html",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -13503,7 +13503,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/jjp-gtrs",
+        "productPage": "https://www.waves.com/plugins/jjp-guitars",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -14235,7 +14235,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/jjp-pianos",
+        "productPage": "https://www.waves.com/plugins/jjp-strings-keys",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -18243,12 +18243,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-voice",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -30646,7 +30646,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/ovox-vocal-synthesis-reimagined",
+        "productPage": "https://www.waves.com/plugins/ovox-vocal-resynthesis",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -48849,12 +48849,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-comp76",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -59086,12 +59086,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-comp-la",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -62160,12 +62160,12 @@
       },
       "official": {
         "vendor": "Dangerous Music / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/dangerous_music_compressor.html",
+        "productPage": "",
         "vendorSite": "https://www.plugin-alliance.com/en/products.html",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -65284,12 +65284,12 @@
       },
       "official": {
         "vendor": "Gyraf Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/gyraf_audio_gyratec_x.html",
+        "productPage": "",
         "vendorSite": "https://www.plugin-alliance.com/en/products.html",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -65732,7 +65732,7 @@
       },
       "official": {
         "vendor": "Lindell Audio / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/lindell_mub-66.html",
+        "productPage": "https://www.plugin-alliance.com/en/products/lindell_mu-66.html",
         "vendorSite": "https://www.plugin-alliance.com/en/brand/lindell_audio.html",
         "manualHub": "https://support.plugin-alliance.com/",
         "referenceType": "Exact official product page",
@@ -66210,12 +66210,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-comp670",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -72420,12 +72420,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-eq550",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -76490,12 +76490,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-eq84",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -79325,12 +79325,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-eqp",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -80813,12 +80813,12 @@
       },
       "official": {
         "vendor": "Dangerous Music / Plugin Alliance",
-        "productPage": "https://www.plugin-alliance.com/en/products/dangerous_music_bax_eq.html",
+        "productPage": "",
         "vendorSite": "https://www.plugin-alliance.com/en/products.html",
         "manualHub": "https://support.plugin-alliance.com/",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -90309,12 +90309,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/mark-studio-2",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -103451,12 +103451,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/rir",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -105473,7 +105473,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/element-2-0",
+        "productPage": "https://www.waves.com/plugins/element",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -119485,12 +119485,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/breverb-2",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -128350,12 +128350,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-dopamine",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -129515,7 +129515,7 @@
       },
       "official": {
         "vendor": "Waves",
-        "productPage": "https://www.waves.com/plugins/vitamin-sonic-enhancer",
+        "productPage": "https://www.waves.com/plugins/vitamin",
         "vendorSite": "https://www.waves.com/plugins",
         "manualHub": "https://www.waves.com/downloads/manuals",
         "referenceType": "Exact official product page",
@@ -132826,12 +132826,12 @@
       },
       "official": {
         "vendor": "Overloud",
-        "productPage": "https://www.overloud.com/products/gem-tapedesk",
+        "productPage": "",
         "vendorSite": "https://www.overloud.com/products",
         "manualHub": "https://www.overloud.com/downloads",
-        "referenceType": "Exact official product page",
+        "referenceType": "Official vendor/manual hub",
         "verifiedOn": "2026-08-13",
-        "note": "Точная официальная product page. Manual конкретной версии может быть отдельным download на сайте производителя."
+        "note": "Официальный vendor/manual hub, не точная ссылка на manual конкретной версии. Найдите продукт по оригинальному названию и сверьте установленную версию."
       }
     },
     {
@@ -165805,8 +165805,8 @@
     "pluginGuides": 364,
     "productSpecificControlMaps": 152,
     "productInformedControlMaps": 174,
-    "officialExactProductPages": 362,
-    "officialVendorManualHubs": 2,
+    "officialExactProductPages": 346,
+    "officialVendorManualHubs": 18,
     "sourceMappedPlugins": 364,
     "webAuditedChains": 99,
     "researchSources": 26,
