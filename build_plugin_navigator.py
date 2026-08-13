@@ -625,8 +625,12 @@ nav();renderContent();updateCompare();
 payload=json.dumps(DATA,ensure_ascii=False,separators=(',',':')).replace('</script>','<\\/script>')
 OUTPUT.write_text(TEMPLATE.replace('__DATA__',payload),encoding='utf-8')
 WIN_HTML.parent.mkdir(parents=True, exist_ok=True)
-WIN_HTML.write_bytes(OUTPUT.read_bytes())
+html_bytes=OUTPUT.read_bytes()
+WIN_HTML.write_bytes(html_bytes)
+versioned=ROOT/f"Plugin_Navigator_Full_v{DATA['version'].split('-',1)[0]}.html"
+versioned.write_bytes(html_bytes)
 print(f'Built {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
+print(f'Versioned {versioned.name} ({versioned.stat().st_size} bytes)')
 print(f'Data: plugins={len(plugins)} families={len(families)} profiles={len(profiles)} sources={len(source_records)} chains={len(chains)}')
 print('Unknown refs:',len(unknown))
 for key,p in profiles.items():

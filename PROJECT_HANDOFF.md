@@ -35,10 +35,11 @@ Plugin Navigator проверен как версия `2.4.5-nav-groups` (пов
 
 ### Автономное HTML-приложение
 
-`Plugin_Navigator_Full.html`
+`Plugin_Navigator_Full.html` и копия с версией `Plugin_Navigator_Full_v2.4.5.html`
 
 - размер: 8 384 991 байт;
-- SHA-256: `c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`.
+- SHA-256: `c6130ceac2369c7730c4cb6f38640ac51e4e5fd142f18a24a0b9298e29e2a6a0`;
+- файлы побайтно совпадают.
 
 ### Windows x64
 
