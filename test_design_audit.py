@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.5.4'
+assert DB['version']=='2.5.5'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -26,12 +26,16 @@ style='\n'.join(x.get_text() for x in soup.select('style'))
 for token in ['@media(max-width:900px)','@media(max-width:560px)','@media(max-width:600px)','@media(prefers-reduced-motion:reduce)','focus-visible','.topbar #modeToggle{display:block']:
     assert token in style,token
 script=soup.find_all('script')[-1].string
-assert "['more','⋯','More']" in script
-assert "const bottom=[['dashboard','⌂','Главная'],['wizard','◎','Подбор'],['builder','＋','Цепочка'],['plugins','◫','Каталог'],['more','⋯','More']]" in script
+assert "['more','⋯','Ещё']" in script
+assert "const bottom=[['dashboard','⌂','Главная'],['wizard','◎','Подбор'],['builder','＋','Цепочка'],['plugins','◫','Каталог'],['more','⋯','Ещё']]" in script
 assert 'function navGroups' in script and 'Подготовка' in script and 'nav-group' in script
 assert 'id="sideSources"' not in html
 assert "['Enter',' ']" in script and 'function activate(' in script
 assert 'tabindex="0"' in script
+assert 'USER_DATA_SCHEMA=1' in script and 'normalizeBuilder' in script and 'builder-context' in script
+assert 'moreExportData' in script and 'moreImportData' in script and 'confirmReplaceBuilder' in script
+assert 'devFilter' in script and "p.developer!==state.developer" in script
+assert 'role="tablist"' in script and 'aria-selected' in script
 
 # Honest language and progressive disclosure.
 assert 'ПРОВЕРЕННЫЙ PRESET' not in html

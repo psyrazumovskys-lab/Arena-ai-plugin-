@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ui-test-v2.js",
+    "test:browser": "node browser-smoke-test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "DOM regression tests for Plugin Navigator",
   "dependencies": {
     "jsdom": "^26.1.0",
     "playwright": "^1.54.1"
