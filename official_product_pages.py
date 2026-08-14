@@ -186,6 +186,9 @@ PRODUCT_PAGES = {
     'FabFilter Pro-R': ff('pro-r-reverb-plug-in'),
     'FabFilter Saturn 2': ff('saturn-2-multiband-distortion-saturation-plug-in'),
 
+    # Celemony
+    'Celemony Melodyne': 'https://www.celemony.com/en/melodyne/what-is-melodyne',
+
     # Soundtoys
     'Soundtoys Effect Rack': st('effect-rack'),
     'Soundtoys Little AlterBoy': st('little-alterboy'),

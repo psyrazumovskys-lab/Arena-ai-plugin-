@@ -39,6 +39,16 @@ PRODUCT_CONTROLS = {
         ctl('Processing Mode', 'Выбирает Zero Latency, Natural Phase или Linear Phase.', 'Меняет phase/latency и transient response.', 'Zero/Natural для tracks; Linear Phase только по задаче.'),
         ctl('Output / Auto Gain', 'Компенсирует общий уровень.', 'Позволяет честно сравнить bypass.', 'Сверять вручную при одинаковой loudness.'),
     ],
+    'Celemony Melodyne': [
+        ctl('ARA / Transfer', 'Передаёт чистый аудиоматериал в Note Editor: напрямую через ARA или записью Transfer.', 'Определение нот надёжнее на dry-сигнале без напечатанных EQ, compression и reverb.', 'Использовать ARA, если DAW поддерживает; иначе поставить Melodyne первым insert и выполнить Transfer.'),
+        ctl('Algorithm / Note Assignment', 'Выбирает способ анализа материала и позволяет исправить неверно распознанные ноты.', 'Ошибки detection иначе принимаются за плохую интонацию и ведут к неверной правке.', 'Сначала проверить Melodic/Percussive и Note Assignment, затем редактировать.'),
+        ctl('Main Tool / Blobs', 'Перемещает отдельные ноты по pitch и времени, меняет длину и note separations.', 'Позволяет исправлять конкретные ошибки вместо обработки всей фразы.', 'Начать с явно неверных нот; двойной клик применяет полную коррекцию только осознанно.'),
+        ctl('Correct Pitch Macro', 'Подтягивает выбранные ноты к целевой высоте и уменьшает Pitch Drift.', 'Малые значения сохраняют живую интонацию; 100% может сделать фразу механической.', 'Использовать на выделенном фрагменте и начать примерно с 20–50%, затем править вручную.'),
+        ctl('Pitch Center / Pitch Drift', 'Раздельно корректирует среднюю высоту ноты и медленное отклонение внутри неё.', 'Pitch Center чинит саму ноту, Pitch Drift стабилизирует её траекторию.', 'Не выпрямлять естественные подъезды и окончания, если они музыкальны.'),
+        ctl('Quantize Time Macro', 'Сдвигает музыкальные начала нот к найденному beat или Time Grid.', 'Уплотняет timing, но большое значение стирает естественную фразировку.', 'Начать с малого Amount и исправлять только слышимые опоздания/опережения.'),
+        ctl('Note Separation', 'Разделяет или объединяет распознанные ноты перед точной правкой.', 'Правильные границы сохраняют переходы и не тянут соседний слог.', 'Сначала поправить границы там, где один blob содержит две ноты или наоборот.'),
+        ctl('Pitch / Formant / Amplitude tools', 'Расширенные edition могут отдельно менять vibrato, formants, amplitude и другие параметры.', 'Позволяет тонко менять подачу, но доступность зависит от Essential, Assistant, Editor или Studio.', 'Использовать только Controls, которые есть в установленной edition; свериться с GUI/manual.'),
+    ],
     'FabFilter Pro-C 2': [
         ctl('Style', 'Выбирает алгоритм compression.', 'Меняет envelope, color и плотность.', 'Сначала выбрать Style под задачу.'),
         ctl('Threshold', 'Определяет начало gain reduction.', 'Ниже — больше и чаще compression.', 'Настроить по целевому GR.'),
@@ -380,6 +390,16 @@ def _fallback_recipe(plugin, profile, base, index):
 
 
 def _workflow(plugin, controls, profile):
+    if plugin['name'] == 'Celemony Melodyne':
+        return [
+            '1. Завершите comping, clip editing и выбор лучших дублей до детальной коррекции нот.',
+            '2. Откройте Melodyne через ARA; без ARA поставьте его первым insert и выполните Transfer чистого dry-сигнала.',
+            '3. Проверьте Algorithm и Note Assignment: исправьте ошибки detection до музыкального редактирования.',
+            '4. Сначала вручную поправьте только явно неверные blobs; не выравнивайте всю фразу автоматически.',
+            '5. Correct Pitch и Quantize Time применяйте к выделенным нотам малыми значениями, сохраняя transitions и phrasing.',
+            '6. Прослушайте результат в контексте и solo: проверьте согласные, vibrato, окончания нот и отсутствие artifacts.',
+            '7. После Melodyne переходите к EQ, compression, de-essing и sends; при необходимости закрепите edit в audio.',
+        ]
     names = [c['name'] for c in controls]
     first = names[0] if names else 'Input'
     second = names[1] if len(names) > 1 else 'Amount'

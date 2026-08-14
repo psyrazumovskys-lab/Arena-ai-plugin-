@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.5.5'
+assert DB['version']=='2.5.6'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -53,17 +53,17 @@ assert 'function pluginBlurb' in script and 'Чем отличается' in scr
 assert '.check-lesson>p{margin:0 0 8px;color:#c6d3e4;font-size:15px' in style
 assert '.step-fact{' in style and 'font-size:13px' in style
 assert 'не сдвиг клипа' in script and '−12…−6' in html and '−18 dBFS RMS' in script
-assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==365-DB['coverage']['officialExactProductPages']
-assert DB['coverage']['sourceMappedPlugins']==365
+assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==366-DB['coverage']['officialExactProductPages']
+assert DB['coverage']['sourceMappedPlugins']==366
 
 # Every curated step carries full conditional guidance.
 steps=[s for c in DB['chains'] for s in c['steps']]
-assert len(steps)==351
+assert len(steps)==353
 fields=('necessity','necessityLabel','purpose','condition','skipWhen','listenFor','how')
 assert all(all(s.get(k) for k in fields) for s in steps)
 necessity=Counter(s['necessity'] for s in steps)
-assert necessity=={'start':197,'conditional':108,'creative':34,'monitor':12}
-assert DB['coverage']['conditionalStepGuides']==351
+assert necessity=={'start':197,'conditional':110,'creative':34,'monitor':12}
+assert DB['coverage']['conditionalStepGuides']==353
 assert all(c.get('preflight') for c in DB['chains'])
 
 # Readability: sufficient contrast for core text/muted text using WCAG formula.

@@ -1,11 +1,11 @@
-PLUGIN NAVIGATOR 2.5.5 — WINDOWS x64
+PLUGIN NAVIGATOR 2.5.6 — WINDOWS x64
 
 Этот каталог содержит конфигурацию и воспроизводимые инструменты упаковки автономного Plugin Navigator в оболочку Neutralinojs 6.9.0.
 
 ИСХОДНОЕ ПРИЛОЖЕНИЕ
 - resources/index.html
-- версия: 2.5.5
-- содержимое совпадает с Plugin_Navigator_Full_v2.5.5.html
+- версия: 2.5.6
+- содержимое совпадает с Plugin_Navigator_Full_v2.5.6.html
 
 ЦЕЛЕВАЯ СИСТЕМА
 - Windows 10/11 x64

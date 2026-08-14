@@ -1,7 +1,7 @@
 # Plugin Navigator — текущее состояние проекта
 
 **Дата:** 14 августа 2026
-**Актуальная версия:** **2.5.5**
+**Актуальная версия:** **2.5.6**
 **Язык приложения и общения:** русский
 
 ## Инструкция следующему агенту
@@ -14,13 +14,13 @@
 
 ## Текущее состояние
 
-- 365 плагинов;
+- 366 плагинов;
 - 68 смысловых семейств;
 - 33 типа источников;
-- 99 curated chains / 351 шаг;
-- 349 exact official product pages;
+- 99 curated chains / 353 шага;
+- 350 exact official product pages;
 - 16 vendor hubs без выдуманных dedicated URL;
-- 153 product-specific, 174 product-informed и 38 family-level Control maps;
+- 154 product-specific, 174 product-informed и 38 family-level Control maps;
 - простой и экспертный режимы;
 - быстрые и подробные карточки;
 - Controls, Settings, Routing и сравнение;
@@ -34,40 +34,45 @@
 
 Активной незавершённой задачи нет.
 
-## Изменения 2.5.5
+## Изменения 2.5.6
 
-- Добавлена безопасная нормализация старого или повреждённого локального состояния.
-- Формат экспортируемых данных получил `schemaVersion` и `appVersion`.
-- Источник и preset конструктора сохраняются между запусками.
-- Резервная копия доступна в простом режиме через «Ещё».
-- Опасные удаления, очистка и замена цепочки требуют подтверждения.
-- Поиск строится после обогащения карточек и видит Controls/Settings.
-- Добавлен фильтр производителей.
-- Улучшены ARIA-вкладки, подписи маленьких кнопок и мобильные overlay-элементы.
-- Добавлены воспроизводимые команды HTML- и Windows-сборки.
-- Windows FileVersion/ProductVersion теперь соответствует 2.5.5.0.
+- В каталог добавлен `Celemony Melodyne`: 366-й плагин.
+- Добавлены официальная product page и Help Center Celemony.
+- Подготовлена product-specific карта из 8 Controls с оговоркой о различиях Essential / Assistant / Editor / Studio.
+- Melodyne связан с Lead Vocal и Backing Vocals, а Waves Tune / Tune Real-Time указаны как аналоги.
+- В двух вокальных пресетах Melodyne добавлен условным первым этапом.
+- Проверено: Melodyne получает чистый dry-сигнал через ARA/Transfer и находится до EQ, compression, de-essing, delay и reverb.
+- 99 цепочек повторно прошли аудит; теперь в них 353 шага и 27 research sources.
+- Все улучшения 2.5.5 по резервным копиям, поиску и защите данных сохранены.
+- Windows FileVersion/ProductVersion соответствует 2.5.6.0.
 
 ## Финальные файлы
+
+### Общий архив
+
+- `Plugin_Navigator_v2.5.6_Download.zip`;
+- содержит HTML, Windows x64, README и checksums;
+- SHA-256: `4b89807cb587e328b1c158338450713664c8e56c94b17116b18759f95e9aad30`.
 
 ### HTML
 
 - `Plugin_Navigator_Full.html`
-- `Plugin_Navigator_Full_v2.5.5.html`
-- размер: 9 969 506 байта;
-- SHA-256: `cc4a7dec8c4cf8b63430d74f44d7ee2da994afb8de220d6208ded6bb809498cd`;
+- `Plugin_Navigator_Full_v2.5.6.html`
+- размер: 10 005 484 байта;
+- SHA-256: `a99cef170261e94dd6a495ae19df77ae48d61cf7d29e279e059e32bc3252a215`;
 - файлы и `Plugin_Navigator_Windows_Source/resources/index.html` побайтно совпадают.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.5.5_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.5.6_Windows_x64.zip`
 
-- ZIP SHA-256: `7f470c28032b589d16b423bb35c9b43a8d44edaf4ef22fd51efe3c318bafee98`;
-- EXE SHA-256: `53f573bd712566b251f05d5659e4fb5f5be48803ce34699d9d4a52daa9156a0c`;
+- ZIP SHA-256: `16a4a955e2ca4533f76b477915d52c9a9e494b8ddeb9e5c79815913cab07df6f`;
+- EXE SHA-256: `17d33edc6defc305b9253a5c16edb3a01d41f0190b0a654a7f391268fccdd568`;
 - Neutralinojs 6.9.0;
 - Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - цифровой подписи нет;
-- HTML внутри EXE побайтно совпадает с HTML 2.5.5.
+- HTML внутри EXE побайтно совпадает с HTML 2.5.6.
 
 ## Сборка и тесты
 

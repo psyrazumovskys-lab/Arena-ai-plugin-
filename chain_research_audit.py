@@ -20,6 +20,7 @@ RESEARCH_SOURCES = [
     {'id':'drum-phase','title':'2 Approaches to Mixing Live Drums','publisher':'iZotope','url':'https://izotope.com/en/learn/2-approaches-to-mixing-live-drums','principle':'Check polarity/phase relationships before detailed processing; judge spot mics, overheads and rooms as one kit.'},
     {'id':'parallel','title':'6 parallel compression mistakes in mixing','publisher':'iZotope','url':'https://www.izotope.com/en/learn/parallel-compression-mistakes','principle':'Parallel processing must be level-matched and checked for phase/timing, unwanted frequency reinforcement and groove changes.'},
     {'id':'vocal-chain','title':'Crafting a basic vocal chain','publisher':'iZotope','url':'https://www.izotope.com/en/learn/crafting-a-basic-vocal-chain','principle':'A conservative vocal path uses corrective EQ, compression, de-essing as needed, then delay/reverb; order remains source-dependent.'},
+    {'id':'melodyne-workflow','title':'Transferring audio and ARA workflow','publisher':'Celemony','url':'https://helpcenter.celemony.com/M5/doc/melodyneEssential5/en/M5tour_TransferARA?env=live','principle':'Melodyne should receive the cleanest dry signal possible through ARA or Transfer and normally precede EQ, compression, reverb and other insert effects.'},
     {'id':'vocal-reverb','title':'Essential tips for using reverb on vocals','publisher':'iZotope','url':'https://izotope.com/en/learn/essential-tips-for-using-reverb-on-vocals','principle':'Use a 100% wet aux, choose pre-delay/decay for clarity and tempo, and EQ frequencies that mask the dry vocal.'},
     {'id':'backing-vocals','title':'How to produce background vocals that complement a lead','publisher':'iZotope','url':'https://www.izotope.com/en/learn/background-vocals.html','principle':'De-ess stacked vocals, unmask the lead, use panning/depth effects, and compress the background group only as much as its role needs.'},
     {'id':'guitar','title':'Understanding guitar compression: a beginner’s guide','publisher':'iZotope','url':'https://www.izotope.com/en/learn/guitar-compression','principle':'A useful starting order is subtractive EQ, compression, then creative tone shaping; exceptions should be chosen by listening.'},
@@ -42,8 +43,9 @@ def _source_keys(source):
     if any(x in s for x in ['kick','bass','808','sub']): keys += ['kick-bass','sidechain']
     if '808' in s or 'sub bass' in s: keys += ['kick-808']
     if any(x in s for x in ['kick','snare','tom','drum','overhead','room microphone','hi-hat','cymbal','percussion']): keys += ['drum-phase','drum-compression']
-    if 'lead vocal' in s: keys += ['vocal-chain','vocal-reverb']
-    if 'backing' in s or 'vocal bus' in s: keys += ['backing-vocals','vocal-chain']
+    if 'lead vocal' in s: keys += ['melodyne-workflow','vocal-chain','vocal-reverb']
+    if 'backing' in s: keys += ['melodyne-workflow','backing-vocals','vocal-chain']
+    elif 'vocal bus' in s: keys += ['backing-vocals','vocal-chain']
     if any(x in s for x in ['speech','podcast','dialog']): keys += ['podcast']
     if 'guitar' in s: keys += ['guitar']
     if 'piano' in s: keys += ['piano','acoustic-eq']
@@ -88,6 +90,12 @@ def _step_meta(chain, step):
         audible=[x for x in chain['steps'] if x['lane']!='monitor']
         if audible and step is audible[-1]: necessity,label='start','ФИНАЛЬНАЯ LIMITER-STAGE'
         else: necessity,label='conditional','ЕСЛИ ТРЕБУЕТСЯ — PEAK SHAPING'
+    if step['name']=='Celemony Melodyne':
+        necessity,label='conditional','ЕСЛИ НУЖЕН TUNING'
+        purpose='Редактирует pitch и timing отдельных нот до основной обработки, сохраняя удачные части исполнения.'
+        condition='После comping слышны конкретные неточные ноты, timing-проблемы или неровные переходы.'
+        skip='Исполнение уже музыкально точное либо коррекция начинает стирать phrasing, vibrato и естественные transitions.'
+        listen='Интонация, timing, согласные, vibrato и окончания нот без robotic или phasey artifacts.'
     return {'necessity':necessity,'necessityLabel':label,'purpose':purpose,'condition':condition,'skipWhen':skip,'listenFor':listen,'how':step.get('settings','')}
 
 
@@ -97,6 +105,7 @@ def _preflight(chain):
         items.append('Если используются несколько microphones/layers, проверить polarity, time alignment и mono до Gate/EQ/Compression.')
     if any(x in s for x in ['bass','808','sub']): items.append('Проверить роль kick и bass, tuning/phase и headroom до sidechain или усиления sub.')
     if any(x in s for x in ['vocal','speech','podcast','dialog']): items.append('Сделать clip gain/editing и убрать явные clicks/noise до dynamics; оставить естественные breaths по задаче.')
+    if 'vocal' in s: items.append('Завершить comping; если нужен tuning, Melodyne/ARA получает чистый dry-сигнал и идёт до EQ, compression, de-essing и time effects.')
     if any(x in s for x in ['piano','acoustic','strings','brass','woodwind','orchestral']): items.append('Сначала оценить естественную динамику и перспективу; broad/subtle moves предпочтительнее обработки по analyzer.')
     if chain['source']=='Mix Bus / Stereo Bus': items.append('Собрать статический mix и headroom до bus processing; сохранить clean pre-master без peak trim.')
     if chain['source']=='Premaster / Mastering': items.append('Сначала прослушать весь mix, сделать notes и определить delivery; limiter оставить последней слышимой stage.')
@@ -198,6 +207,12 @@ def audit_chains(chains):
         assert all(s.get('settings','').strip() for s in chain['steps']), (chain['id'],'empty settings')
         assert chain.get('preflight')
         assert all(all(s.get(k) for k in ('necessity','necessityLabel','purpose','condition','skipWhen','listenFor','how')) for s in chain['steps']), chain['id']
+        melodyne_steps=[(i,s) for i,s in enumerate(chain['steps']) if s['name']=='Celemony Melodyne']
+        for index,melodyne in melodyne_steps:
+            first_insert=next(i for i,s in enumerate(chain['steps']) if s['lane']=='insert')
+            assert index==first_insert, (chain['id'],'Melodyne must precede processing')
+            assert 'ara' in melodyne['settings'].casefold() and 'dry' in melodyne['settings'].casefold(), (chain['id'],'Melodyne workflow')
+            assert melodyne['necessity']=='conditional', (chain['id'],'Melodyne must remain optional')
         for step in chain['steps']:
             if step['lane']=='send' and step['task'] in {'Delay / echo','Reverb / пространство'}:
                 assert '100% wet' in step['settings'], (chain['id'],step['name'])

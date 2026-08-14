@@ -99,10 +99,10 @@ def main() -> int:
 Цифровой подписи нет — SmartScreen может показать предупреждение.
 
 Новое в {version}:
-- надёжнее сохранение и восстановление цепочек;
-- резервная копия пользовательских данных;
-- расширенный поиск и фильтр производителей;
-- подтверждения перед удалением и очисткой.
+- добавлен Celemony Melodyne с официальной карточкой и Controls;
+- Melodyne включён как условный первый этап vocal-chain до EQ и dynamics;
+- цепочки и порядок обработки повторно проверены;
+- сохранены улучшения поиска, резервных копий и защиты данных.
 """
         inner_checks = f"{exe_hash}  {exe_name}\n{html_hash}  {html.name} (embedded)\n"
         files = {
@@ -126,8 +126,27 @@ def main() -> int:
         f"{sha256(output_zip)}  {output_zip.name}\n"
         f"# EXE inside ZIP SHA-256: {exe_hash}  {exe_name}\n"
     )
-    (ROOT / "CHECKSUMS_SHA256.txt").write_text(checksums, encoding="utf-8")
+    checks_path = ROOT / "CHECKSUMS_SHA256.txt"
+    checks_path.write_text(checksums, encoding="utf-8")
+
+    download_zip = ROOT / f"Plugin_Navigator_v{version}_Download.zip"
+    download_files = {
+        html.name: html.read_bytes(),
+        output_zip.name: output_zip.read_bytes(),
+        checks_path.name: checks_path.read_bytes(),
+        "README.md": (ROOT / "README.md").read_bytes(),
+    }
+    with zipfile.ZipFile(download_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for name, content in download_files.items():
+            info = zipfile.ZipInfo(name, date_time=(2026, 8, 14, 16, 30, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            archive.writestr(info, content, compresslevel=9)
+    checksums += f"{sha256(download_zip)}  {download_zip.name}\n"
+    checks_path.write_text(checksums, encoding="utf-8")
+
     print(f"Built {output_zip.name} ({output_zip.stat().st_size} bytes)")
+    print(f"Built {download_zip.name} ({download_zip.stat().st_size} bytes)")
     print(checksums)
     return 0
 
