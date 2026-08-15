@@ -5,7 +5,7 @@ from openpyxl.utils.cell import range_boundaries
 import json, re, html
 
 ROOT=Path(__file__).resolve().parent
-APP_VERSION='2.5.6'
+APP_VERSION='2.5.7'
 SOURCE=ROOT/'plugin_usage_semantic_hybrid_corrected.xlsx'
 OUTPUT=ROOT/'Plugin_Navigator_Full.html'
 DATA_OUT=ROOT/'plugin_navigator_database.json'
@@ -500,7 +500,7 @@ for p in plugins:
         tokens.extend(_search_token.findall(text.casefold()))
     p['search']=' '.join(dict.fromkeys(tokens))
 
-DATA={'version':APP_VERSION,'generated':'2026-08-14','plugins':plugins,'families':families,'profiles':profiles,'sources':source_records,'chains':chains,'routing':routing,'researchSources':RESEARCH_SOURCES,
+DATA={'version':APP_VERSION,'generated':'2026-08-15','plugins':plugins,'families':families,'profiles':profiles,'sources':source_records,'chains':chains,'routing':routing,'researchSources':RESEARCH_SOURCES,
       'coverage':{'plugins':len(plugins),'families':len(families),'sources':len(source_records),'chains':len(chains),'controlProfiles':len(profiles),'pluginGuides':len(plugins),'productSpecificControlMaps':len(PRODUCT_CONTROLS),'productInformedControlMaps':len(PRODUCT_INFORMED_NAMES),'officialExactProductPages':sum(bool(p['official']['productPage']) for p in plugins),'officialVendorManualHubs':sum(not bool(p['official']['productPage']) for p in plugins),'sourceMappedPlugins':sum(bool(p['uses']) for p in plugins),'webAuditedChains':len(chains),'researchSources':len(RESEARCH_SOURCES),'conditionalStepGuides':sum(len(c['steps']) for c in chains),'mode':f'Полная база v{APP_VERSION}: добавлен Celemony Melodyne; vocal-chain проверен от tuning до sends; сохранены резервные копии, расширенный поиск и фильтр производителей.'}}
 DATA_OUT.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
 

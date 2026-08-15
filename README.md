@@ -2,14 +2,14 @@
 
 Автономный русскоязычный справочник по аудиоплагинам и конструктор цепочек обработки.
 
-**Актуальная версия: 2.5.6** — 14 августа 2026.
+**Актуальная версия: 2.5.7** — 15 августа 2026.
 
 ## Готовые файлы
 
-- `Plugin_Navigator_v2.5.6_Download.zip` — общий архив: HTML + Windows x64 + инструкции;
+- `Plugin_Navigator_v2.5.7_Download.zip` — общий архив: HTML + Windows x64 + инструкции;
 - `Plugin_Navigator_Full.html` — актуальное автономное HTML-приложение;
-- `Plugin_Navigator_Full_v2.5.6.html` — версия с номером выпуска;
-- `Plugin_Navigator_Full_v2.5.6_Windows_x64.zip` — portable Windows 10/11 x64;
+- `Plugin_Navigator_Full_v2.5.7.html` — версия с номером выпуска;
+- `Plugin_Navigator_Full_v2.5.7_Windows_x64.zip` — portable Windows 10/11 x64;
 - `CHECKSUMS_SHA256.txt` — контрольные суммы.
 
 HTML работает без установки и без интернета. Windows-версия полная, без Trial и ключей. Для неё требуется Microsoft Edge WebView2 Runtime, обычно уже установленный в Windows 10/11. EXE не подписан коммерческим сертификатом, поэтому SmartScreen может показать предупреждение.

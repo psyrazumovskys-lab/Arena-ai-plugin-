@@ -1,6 +1,6 @@
 {
-  "version": "2.5.6",
-  "generated": "2026-08-14",
+  "version": "2.5.7",
+  "generated": "2026-08-15",
   "plugins": [
     {
       "id": "bus-ride",
@@ -167286,6 +167286,6 @@
     "webAuditedChains": 99,
     "researchSources": 27,
     "conditionalStepGuides": 353,
-    "mode": "Полная база v2.5.6: добавлен Celemony Melodyne; vocal-chain проверен от tuning до sends; сохранены резервные копии, расширенный поиск и фильтр производителей."
+    "mode": "Полная база v2.5.7: добавлен Celemony Melodyne; vocal-chain проверен от tuning до sends; сохранены резервные копии, расширенный поиск и фильтр производителей."
   }
 }

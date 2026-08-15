@@ -1,7 +1,7 @@
 # Plugin Navigator — текущее состояние проекта
 
-**Дата:** 14 августа 2026
-**Актуальная версия:** **2.5.6**
+**Дата:** 15 августа 2026
+**Актуальная версия:** **2.5.7**
 **Язык приложения и общения:** русский
 
 ## Инструкция следующему агенту
@@ -34,45 +34,42 @@
 
 Активной незавершённой задачи нет.
 
-## Изменения 2.5.6
+## Изменения 2.5.7
 
-- В каталог добавлен `Celemony Melodyne`: 366-й плагин.
-- Добавлены официальная product page и Help Center Celemony.
-- Подготовлена product-specific карта из 8 Controls с оговоркой о различиях Essential / Assistant / Editor / Studio.
-- Melodyne связан с Lead Vocal и Backing Vocals, а Waves Tune / Tune Real-Time указаны как аналоги.
-- В двух вокальных пресетах Melodyne добавлен условным первым этапом.
-- Проверено: Melodyne получает чистый dry-сигнал через ARA/Transfer и находится до EQ, compression, de-essing, delay и reverb.
-- 99 цепочек повторно прошли аудит; теперь в них 353 шага и 27 research sources.
-- Все улучшения 2.5.5 по резервным копиям, поиску и защите данных сохранены.
-- Windows FileVersion/ProductVersion соответствует 2.5.6.0.
+- Исправлена Windows-упаковка: предыдущий EXE открывал стандартную страницу Neutralinojs вместо приложения.
+- `resources.neu` теперь содержит обязательный `neutralino.config.json` в корне архива.
+- HTML упакован по правильному пути `/resources/index.html`, соответствующему `documentRoot: /resources/`.
+- Проверка Windows-сборки извлекает и валидирует и конфигурацию, и HTML до создания ZIP.
+- Сохранены Celemony Melodyne, 366 плагинов, 99 цепочек и все улучшения 2.5.6.
+- Windows FileVersion/ProductVersion соответствует 2.5.7.0.
 
 ## Финальные файлы
 
 ### Общий архив
 
-- `Plugin_Navigator_v2.5.6_Download.zip`;
+- `Plugin_Navigator_v2.5.7_Download.zip`;
 - содержит HTML, Windows x64, README и checksums;
-- SHA-256: `4b89807cb587e328b1c158338450713664c8e56c94b17116b18759f95e9aad30`.
+- SHA-256: `560844ad0fd09031f24b274ce931ce918d768ffcbdc6ecdb757cefc628c40e8b`.
 
 ### HTML
 
 - `Plugin_Navigator_Full.html`
-- `Plugin_Navigator_Full_v2.5.6.html`
+- `Plugin_Navigator_Full_v2.5.7.html`
 - размер: 10 005 484 байта;
-- SHA-256: `a99cef170261e94dd6a495ae19df77ae48d61cf7d29e279e059e32bc3252a215`;
+- SHA-256: `a8d0dde0f884eaa7dca18eece079ea5635ada14df846734387b67724b5bdb2b0`;
 - файлы и `Plugin_Navigator_Windows_Source/resources/index.html` побайтно совпадают.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.5.6_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.5.7_Windows_x64.zip`
 
-- ZIP SHA-256: `16a4a955e2ca4533f76b477915d52c9a9e494b8ddeb9e5c79815913cab07df6f`;
-- EXE SHA-256: `17d33edc6defc305b9253a5c16edb3a01d41f0190b0a654a7f391268fccdd568`;
+- ZIP SHA-256: `5a75441cfc0e8a49d1aeddf1954f8d9b47b108e75016e4f27de40265213288d0`;
+- EXE SHA-256: `a8bd28be923bc5b94f90bb29cd84ff9f0dfddd3001ec7968a8af4b63f9c61ebd`;
 - Neutralinojs 6.9.0;
 - Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - цифровой подписи нет;
-- HTML внутри EXE побайтно совпадает с HTML 2.5.6.
+- HTML внутри EXE побайтно совпадает с HTML 2.5.7.
 
 ## Сборка и тесты
 

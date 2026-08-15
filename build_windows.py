@@ -81,12 +81,17 @@ def main() -> int:
                     raise SystemExit(f"Expected one EXE in {base_zip.name}")
                 (temp / "base.exe").write_bytes(archive.read(exe_members[0]))
 
-        resources = temp / "resources"
-        resources.mkdir()
+        # Neutralino expects neutralino.config.json at the ASAR root and the
+        # document root below /resources/. Packing index.html alone makes the
+        # framework fall back to its default neutralinojs.org page.
+        bundle_root = temp / "bundle"
+        resources = bundle_root / "resources"
+        resources.mkdir(parents=True)
         shutil.copy2(html, resources / "index.html")
+        shutil.copy2(WIN / "neutralino.config.json", bundle_root / "neutralino.config.json")
         archive_neu = temp / "resources.neu"
         versioned_exe = temp / exe_name
-        run(asar, "pack", resources, archive_neu)
+        run(asar, "pack", bundle_root, archive_neu)
         run(node, WIN / "update-version.mjs", temp / "base.exe", versioned_exe, version)
         run(postject, versioned_exe, "NEUTRALINOJS_RESOURCES_NEU", archive_neu, "--overwrite")
         run(node, WIN / "verify-windows.mjs", versioned_exe, html, version)
@@ -99,10 +104,10 @@ def main() -> int:
 Цифровой подписи нет — SmartScreen может показать предупреждение.
 
 Новое в {version}:
-- добавлен Celemony Melodyne с официальной карточкой и Controls;
-- Melodyne включён как условный первый этап vocal-chain до EQ и dynamics;
-- цепочки и порядок обработки повторно проверены;
-- сохранены улучшения поиска, резервных копий и защиты данных.
+- исправлен запуск Windows EXE: открывается Plugin Navigator, а не стандартная страница Neutralinojs;
+- в resources.neu встроены neutralino.config.json и resources/index.html;
+- конфигурация и HTML проверяются перед созданием ZIP;
+- сохранены Melodyne, 366 плагинов и все 99 проверенных цепочек.
 """
         inner_checks = f"{exe_hash}  {exe_name}\n{html_hash}  {html.name} (embedded)\n"
         files = {
@@ -113,7 +118,7 @@ def main() -> int:
         }
         with zipfile.ZipFile(output_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
             for name, content in files.items():
-                info = zipfile.ZipInfo(name, date_time=(2026, 8, 14, 16, 15, 0))
+                info = zipfile.ZipInfo(name, date_time=(2026, 8, 15, 16, 15, 0))
                 info.compress_type = zipfile.ZIP_DEFLATED
                 info.external_attr = 0o644 << 16
                 archive.writestr(info, content, compresslevel=9)
@@ -138,7 +143,7 @@ def main() -> int:
     }
     with zipfile.ZipFile(download_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, content in download_files.items():
-            info = zipfile.ZipInfo(name, date_time=(2026, 8, 14, 16, 30, 0))
+            info = zipfile.ZipInfo(name, date_time=(2026, 8, 15, 16, 30, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             archive.writestr(info, content, compresslevel=9)

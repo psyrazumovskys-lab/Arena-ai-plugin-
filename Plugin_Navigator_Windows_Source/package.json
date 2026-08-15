@@ -1,7 +1,7 @@
 {
   "name": "plugin-navigator-windows-build",
   "private": true,
-  "version": "2.5.6",
+  "version": "2.5.7",
   "type": "module",
   "description": "Reproducible Windows packaging tools for Plugin Navigator",
   "devDependencies": {
