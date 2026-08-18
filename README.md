@@ -16,6 +16,14 @@
 
 HTML работает без установки и без интернета. Windows-версия полная, без Trial и ключей. Для неё требуется Microsoft Edge WebView2 Runtime, обычно уже установленный в Windows 10/11. EXE не подписан коммерческим сертификатом, поэтому SmartScreen может показать предупреждение.
 
+## Видеоинструкция
+
+- `Plugin_Navigator_2.5.7_Video_Instruction_RU_Clean.mp4` — чистое видео без вшитых субтитров;
+- `Plugin_Navigator_2.5.7_Video_Instruction_RU_Clean.srt` — отдельные отключаемые русские субтитры;
+- `Plugin_Navigator_2.5.7_Video_Instruction_RU_Compact_Subtitles.mp4` — версия с компактными субтитрами максимум в две строки.
+
+Длительность обеих версий — 8 минут 54 секунды, разрешение — Full HD 1920×1080.
+
 ## Что есть в программе
 
 - 366 плагинов, включая Celemony Melodyne;
