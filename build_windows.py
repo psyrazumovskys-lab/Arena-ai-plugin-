@@ -53,6 +53,10 @@ def main() -> int:
     html = ROOT / f"Plugin_Navigator_Full_v{version}.html"
     generic_html = ROOT / "Plugin_Navigator_Full.html"
     database = ROOT / "plugin_navigator_database.json"
+    guide_html = ROOT / "Plugin_Navigator_User_Guide_RU.html"
+    guide_source = ROOT / "Plugin_Navigator_User_Guide_RU.md"
+    if not guide_html.exists() or not guide_source.exists():
+        raise SystemExit("Сначала выполните: python3 build_user_guide.py")
     config = json.loads((WIN / "neutralino.config.json").read_text(encoding="utf-8"))
     if config["version"] != version:
         raise SystemExit(f"neutralino.config.json={config['version']}, database={version}")
@@ -128,6 +132,8 @@ def main() -> int:
         f"{sha256(html)}  {html.name}\n"
         f"{sha256(WIN / 'resources/index.html')}  Plugin_Navigator_Windows_Source/resources/index.html\n"
         f"{sha256(database)}  {database.name}\n"
+        f"{sha256(guide_html)}  {guide_html.name}\n"
+        f"{sha256(guide_source)}  {guide_source.name}\n"
         f"{sha256(output_zip)}  {output_zip.name}\n"
         f"# EXE inside ZIP SHA-256: {exe_hash}  {exe_name}\n"
     )
@@ -140,7 +146,8 @@ def main() -> int:
         output_zip.name: output_zip.read_bytes(),
         checks_path.name: checks_path.read_bytes(),
         "README.md": (ROOT / "README.md").read_bytes(),
-        "Plugin_Navigator_User_Guide_RU.md": (ROOT / "Plugin_Navigator_User_Guide_RU.md").read_bytes(),
+        guide_html.name: guide_html.read_bytes(),
+        guide_source.name: guide_source.read_bytes(),
     }
     with zipfile.ZipFile(download_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, content in download_files.items():

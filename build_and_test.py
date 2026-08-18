@@ -15,8 +15,10 @@ def run(*command: str, cwd: Path = ROOT) -> None:
 
 
 def main() -> int:
+    run(sys.executable, "build_user_guide.py")
     run(sys.executable, "build_plugin_navigator.py")
     for test in (
+        "test_user_guide.py",
         "test_design_audit.py",
         "test_chain_research_audit.py",
         "test_plugin_guides.py",

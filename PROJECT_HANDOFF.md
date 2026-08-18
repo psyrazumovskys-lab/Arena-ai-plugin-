@@ -48,8 +48,15 @@
 ### Общий архив
 
 - `Plugin_Navigator_v2.5.7_Download.zip`;
-- содержит HTML, Windows x64, README, подробную инструкцию и checksums;
-- SHA-256: `d4539ff7f9b89241a0eb6d292214055cf6696737b15e70a73e7207e8c0d9dfeb`.
+- содержит HTML, Windows x64, README, инструкцию в HTML/Markdown и checksums;
+- SHA-256: `1b6070cb7d082ef37ec97adcb28a21959742b8efec10e0dc75c201fd9abf66c1`.
+
+### Инструкция пользователя
+
+- `Plugin_Navigator_User_Guide_RU.html` — автономная HTML-инструкция с оглавлением;
+- SHA-256: `d6529a22ff895f2dbddf07af673630850715d476dd7b59e71db3d66992f55e8e`;
+- `Plugin_Navigator_User_Guide_RU.md` — исходный текст;
+- SHA-256: `66147eca63c276d92d22da8c4a767afc187427723bcbaf6c7bc7dedcb5deb269`.
 
 ### HTML
 
