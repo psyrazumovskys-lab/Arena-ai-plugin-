@@ -48,8 +48,8 @@
 ### Общий архив
 
 - `Plugin_Navigator_v2.5.7_Download.zip`;
-- содержит HTML, Windows x64, README и checksums;
-- SHA-256: `560844ad0fd09031f24b274ce931ce918d768ffcbdc6ecdb757cefc628c40e8b`.
+- содержит HTML, Windows x64, README, подробную инструкцию и checksums;
+- SHA-256: `d4539ff7f9b89241a0eb6d292214055cf6696737b15e70a73e7207e8c0d9dfeb`.
 
 ### HTML
 

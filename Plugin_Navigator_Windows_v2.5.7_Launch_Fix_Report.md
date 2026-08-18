@@ -46,6 +46,6 @@ EXE открывал стандартную страницу Neutralinojs вме
 - JSON: `9ae4936892bcd4e6569de7c99d33d6a0a6f0322cc16bc9284786a496fbdfea74`
 - EXE внутри ZIP: `a8bd28be923bc5b94f90bb29cd84ff9f0dfddd3001ec7968a8af4b63f9c61ebd`
 - Windows ZIP: `5a75441cfc0e8a49d1aeddf1954f8d9b47b108e75016e4f27de40265213288d0`
-- общий Download ZIP: `560844ad0fd09031f24b274ce931ce918d768ffcbdc6ecdb757cefc628c40e8b`
+- общий Download ZIP: `d4539ff7f9b89241a0eb6d292214055cf6696737b15e70a73e7207e8c0d9dfeb`
 
 Запуск EXE всё равно следует подтвердить на реальном Windows-компьютере, так как в Linux-среде Windows GUI не запускается.

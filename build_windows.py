@@ -140,6 +140,7 @@ def main() -> int:
         output_zip.name: output_zip.read_bytes(),
         checks_path.name: checks_path.read_bytes(),
         "README.md": (ROOT / "README.md").read_bytes(),
+        "Plugin_Navigator_User_Guide_RU.md": (ROOT / "Plugin_Navigator_User_Guide_RU.md").read_bytes(),
     }
     with zipfile.ZipFile(download_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, content in download_files.items():
