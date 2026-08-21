@@ -85,6 +85,14 @@
 - цифровой подписи нет;
 - HTML внутри EXE побайтно совпадает с HTML 2.6.1.
 
+### Видеоинструкция 2.6.1
+
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.mp4` — чистая версия без вшитых субтитров, SHA-256 `80daee8c52e68b8851adb060b2ba39fbe04c62ba15f75899d6d3576166065a69`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.srt` — отдельные субтитры, SHA-256 `cbb53cfd4fd731375d86d3d74cf64f868fa0774832752517bf65dd288ab6b417`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Compact_Subtitles.mp4` — компактные вшитые субтитры, SHA-256 `b106cda5178512c287c8debbadf705f413e4528a168df66783213a5dcf76c253`;
+- Full HD 1920×1080, 8 минут 34 секунды, 8 глав;
+- включает карточки RX/Session Inspector и Помощник порядка.
+
 ## Сборка и тесты
 
 Установка зависимостей:
