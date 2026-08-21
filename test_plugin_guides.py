@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.6.1'
+assert DB['version'] == '2.7.0'
 assert len(plugins) == 365
 assert DB['coverage']['pluginGuides'] == 365
 assert DB['coverage']['productSpecificControlMaps'] >= 80
@@ -49,7 +49,7 @@ assert all('роль записана' not in p['guide']['simple'] for p in plug
 assert 'сатурац' in by_name['Soundtoys Decapitator']['guide']['simple'].casefold() or 'характер' in by_name['Soundtoys Decapitator']['guide']['simple']
 assert 'FabFilter Pro-Q 4' in by_name
 assert 'Celemony Melodyne' in by_name
-# 2.6.1 confirmed description/control fixes.
+# 2.7.0 confirmed description/control fixes.
 assert 'Soundtoys Sandman Pro' not in by_name and 'Unfiltered Audio Sandman Pro' in by_name
 assert 'Ozone Spectral Denoiser' not in by_name and 'iZotope RX Spectral De-noise' in by_name
 rx=by_name['iZotope RX Spectral De-noise']

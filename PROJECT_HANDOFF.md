@@ -1,16 +1,17 @@
 # Plugin Navigator — текущее состояние проекта
 
 **Дата:** 21 августа 2026
-**Актуальная версия:** **2.6.1**
+**Актуальная версия:** **2.7.0**
 **Язык приложения и общения:** русский
 
 ## Инструкция следующему агенту
 
 1. Считать этот файл и актуальные исходники источником текущего состояния.
 2. Не менять интерфейс, базу, иконку или готовые цепочки без прямой команды пользователя.
-3. Сохранять автономную офлайн-работу HTML и Windows-версии.
-4. Объяснения писать по-русски, сохраняя оригинальные английские названия Controls.
-5. Не выдавать family-level данные за точные элементы конкретного GUI/manual.
+3. Сохранять автономную офлайн-работу основной HTML- и Windows-версии.
+4. Объяснения писать по-русски, сохраняя оригинальные English Control names.
+5. Не выдавать Family-level данные за точные элементы конкретного GUI/manual.
+6. Детерминированный Помощник порядка всегда авторитетнее предположений локального ИИ.
 
 ## Текущее состояние
 
@@ -19,141 +20,184 @@
 - 33 типа источников;
 - 99 curated chains / 353 шага;
 - 349 exact official product pages;
-- 16 vendor hubs без выдуманных dedicated URL;
-- 118 product-specific, 215 product-informed и 32 family-level Control maps;
+- 16 vendor hubs;
+- 118 Product-specific, 215 Product-informed и 32 Family-level Control maps;
 - простой и экспертный режимы;
-- быстрые и подробные карточки;
-- Controls, Settings, Routing и сравнение;
-- пользовательские цепочки, избранное и заметки;
-- чеклист подготовки сессии;
-- резервная копия и проверяемое восстановление пользовательских данных;
-- поиск по карточкам, Controls, настройкам и аналогам;
-- фильтр по производителю;
+- карточки, Controls, Settings, Routing и сравнение;
+- пользовательские цепочки, избранное, заметки и резервные копии;
 - Помощник порядка: auto-sort, explanations, warnings и creative exceptions;
 - 364 source-mapped plugins и 1 standalone utility;
-- полностью автономный HTML;
+- опциональный локальный ИИ Qwen3.5 2B Q4;
+- полностью автономный HTML-справочник;
 - portable Windows x64 без Trial и ограничений.
 
-Активной незавершённой задачи нет.
+## Изменения 2.7.0 — локальный ИИ
 
-## Изменения 2.6.1
+Добавлен отдельный раздел **«Локальный ИИ»**.
 
-- Удалён несуществующий дубль `Soundtoys Sandman Pro`; правильный Unfiltered Audio остаётся.
-- `Ozone Spectral Denoiser` исправлен на `iZotope RX Spectral De-noise` с RX 12 manual и точными Controls.
-- Исправлены FabFilter Micro URL/Controls и Waves dbx 160 без ложного OverEasy.
-- Исправлена 404-ссылка Waves H-Reverb.
-- Подготовлены точные stereo maps: bx_control V2, bx_solo, The Util, Center, MS Matrix, S1.
-- Исправлен Ozone Vintage Compressor: feedback modes и Detection Filter, без ложного Mix.
-- Добавлены точные карты Chakra, Ultimate Snare, Mixing Cheat Sheet и Portable Mono Speaker Check.
-- Session Inspector помечен standalone, исключён из plugin chains и не может быть добавлен в Builder.
-- 40 generic amp maps и 7 generic Brainworx console maps понижены до честного Product-informed.
-- Короткие описания ключевых AudioLoom products индивидуализированы.
-- Сохранены Улучшение 1, Melodyne, 99 цепочек и безопасная Windows packaging 2.6.x.
+Модель:
 
-## Финальные файлы
+```text
+Qwen3.5 2B Q4
+Qwen3.5-2B-q4f16_1-MLC
+```
+
+Архитектура:
+
+- WebLLM 0.2.84 встроен непосредственно в Windows EXE;
+- inference выполняется в отдельном Web Worker;
+- API-ключ, облачный сервер, Python, Ollama и CUDA не нужны;
+- веса модели около 1,1 ГБ загружаются один раз;
+- после загрузки модель хранится в WebView2 cache и работает офлайн;
+- модель можно удалить из интерфейса;
+- без WebGPU весь основной Plugin Navigator продолжает работать.
+
+ИИ умеет:
+
+- объяснять текущую цепочку;
+- проверять порядок и routing;
+- объяснять Controls;
+- предлагать безопасные Starting Settings;
+- подбирать варианты из локального каталога.
+
+Защита фактов:
+
+- в запрос передаются только текущая цепочка, строгая диагностика порядка и до пяти релевантных карточек;
+- системный prompt запрещает выдумывать Controls, URL и официальные функции;
+- Product-specific, Product-informed и Family-level должны различаться;
+- все этапы нельзя называть обязательными;
+- модель не должна утверждать, что слышит аудио или видит DAW;
+- ответ явно помечается как рекомендация локального ИИ.
+
+HTML, открытый через `file://`, сохраняет все обычные функции, но честно сообщает, что локальный ИИ предназначен для Windows-приложения.
+
+## Сохранённые исправления 2.6.1
+
+- удалён ложный `Soundtoys Sandman Pro`;
+- исправлен `iZotope RX Spectral De-noise`;
+- исправлены FabFilter Micro, Waves dbx 160, H-Reverb и stereo utilities;
+- добавлены точные карты Chakra, Ultimate Snare и diagnostic utilities;
+- Session Inspector остаётся standalone utility;
+- generic amp/console maps честно помечены Product-informed;
+- сохранены Melodyne, Улучшение 1 и 99 цепочек.
+
+## Финальные файлы 2.7.0
 
 ### Общий архив
 
-- `Plugin_Navigator_v2.6.1_Download.zip`;
-- содержит HTML, Windows x64, README, инструкцию в HTML/Markdown и checksums;
-- SHA-256: `82c46248d9a1d59e687f44c73d00915070d06db1037c0d574e07b73940dc6a5b`.
+`Plugin_Navigator_v2.7.0_Download.zip`
 
-### Инструкция пользователя
-
-- `Plugin_Navigator_User_Guide_RU.html` — автономная HTML-инструкция с оглавлением;
-- SHA-256: `033f4504a70aca825148e35b92ccd6962298f3bd21c5ed6ccc35ff8d35591ae0`;
-- `Plugin_Navigator_User_Guide_RU.md` — исходный текст;
-- SHA-256: `445d46e092bb00fed110b0aaa53ea39dc899022262aed59ca06ec98af1d97ed4`.
+- содержит HTML, Windows x64, README, HTML/Markdown-инструкцию и checksums;
+- включает `Plugin_Navigator_v2.7.0_Local_AI_Report.md`;
+- SHA-256: `dcf5229e002bfad37d3e8290dd3eb768c9b6a0a4e44df6e61abdb30fd8f0f0ee`.
 
 ### HTML
 
-- `Plugin_Navigator_Full.html`
-- `Plugin_Navigator_Full_v2.6.1.html`
-- размер: 9 975 301 байта;
-- SHA-256: `cfdb05c825765164d92d66dd55cd32bee2b9bad964580b67e574518905e1024f`;
-- файлы и `Plugin_Navigator_Windows_Source/resources/index.html` побайтно совпадают.
+- `Plugin_Navigator_Full.html`;
+- `Plugin_Navigator_Full_v2.7.0.html`;
+- `Plugin_Navigator_Windows_Source/resources/index.html`;
+- все три файла побайтно совпадают;
+- SHA-256: `75b762b837efc6562b1d54d5945b68614d3767f0eeb389c5393439e88eb5029a`.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.6.1_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.7.0_Windows_x64.zip`
 
-- ZIP SHA-256: `d8341ad5194b2defd3ef9006652b761eeb11fcf0cb95ea9b31875b89c0564d72`;
-- EXE SHA-256: `252a8c9d53e9746429e59443d0edd1a765c49bdb0e367bb7c1aedb26f175225b`;
+- ZIP SHA-256: `0f376b008d0c5157b781a8aa575abfe3dd115ff50c1b0b6568fc0ed2a95a35c0`;
+- EXE SHA-256: `72669a1860d3cc37e87b2db577c51e90f872c22ec10168d8ce3c01f1c478f4f5`;
 - Neutralinojs 6.9.0;
 - Windows 10/11 x64;
-- требуется Microsoft Edge WebView2 Runtime;
+- Microsoft Edge WebView2 Runtime с WebGPU;
 - цифровой подписи нет;
-- HTML внутри EXE побайтно совпадает с HTML 2.6.1.
+- embedded config, HTML, WebLLM и AI Worker извлечены и проверены.
 
-### Видеоинструкция 2.6.1
+### Инструкция пользователя
 
-- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.mp4` — чистая версия без вшитых субтитров, SHA-256 `80daee8c52e68b8851adb060b2ba39fbe04c62ba15f75899d6d3576166065a69`;
-- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.srt` — отдельные субтитры, SHA-256 `cbb53cfd4fd731375d86d3d74cf64f868fa0774832752517bf65dd288ab6b417`;
-- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Compact_Subtitles.mp4` — компактные вшитые субтитры, SHA-256 `b106cda5178512c287c8debbadf705f413e4528a168df66783213a5dcf76c253`;
-- Full HD 1920×1080, 8 минут 34 секунды, 8 глав;
-- включает карточки RX/Session Inspector и Помощник порядка.
+- `Plugin_Navigator_User_Guide_RU.html` — 23 раздела;
+- SHA-256: `7a0bcc758577bb9550ccdda10914d699d261d8842883e2c9df6f8b20d0e61dae`;
+- `Plugin_Navigator_User_Guide_RU.md`;
+- SHA-256: `296f57a9aaf6ecfeaacaa18326ec984b49165aec296d9e41a5773d35a26140a7`.
+
+### Видео
+
+Актуальная видеоинструкция пока относится к 2.6.1 и не показывает новый локальный ИИ:
+
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.mp4`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.srt`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Compact_Subtitles.mp4`.
 
 ## Сборка и тесты
 
-Установка зависимостей:
+Установка:
 
 ```bash
 python3 -m pip install -r requirements.txt
 cd test-runtime && npm ci && cd ..
+cd Plugin_Navigator_Windows_Source && npm ci && cd ..
 ```
 
-HTML и все основные тесты:
+Полная основная проверка:
 
 ```bash
 python3 build_and_test.py
 ```
 
-Опциональная проверка реальной вёрстки:
+Результат 2.7.0:
 
-```bash
-cd test-runtime
-npx playwright install chromium
-npm run test:browser
+```text
+BUILD + ALL TESTS PASS
+365 plugins
+99 chains
+353 steps
+local AI guardrails PASS
+JSDOM UI PASS
+Windows embedded config PASS
+embedded HTML PASS
+embedded WebLLM + AI Worker PASS
+ZIP integrity PASS
 ```
 
 Windows:
 
 ```bash
-cd Plugin_Navigator_Windows_Source && npm ci && cd ..
 python3 build_windows.py
 ```
 
-`build_windows.py` собирает ASAR, обновляет Windows VERSIONINFO, встраивает ресурс через postject, извлекает встроенный HTML для сравнения и формирует ZIP/checksums.
+Дополнительная Playwright-проверка не была выполнена в текущей Arena-сессии: Chromium CDN несколько раз оборвал TLS-загрузку. Это ограничение среды тестирования, не подтверждение ошибки приложения.
+
+Реальную первую загрузку и ответ модели необходимо дополнительно проверить на Windows-компьютере с WebGPU. В Linux-среде Arena нет подходящего Windows WebView2/WebGPU. Нельзя утверждать, что этот аппаратный тест уже пройден.
 
 ## Основные исходники
 
 | Файл | Назначение |
 |---|---|
-| `plugin_usage_semantic_hybrid_corrected.xlsx` | Главная исходная таблица |
-| `build_plugin_navigator.py` | Детерминированный генератор HTML и JSON |
+| `build_plugin_navigator.py` | Генератор HTML/JSON, UI локального ИИ, retrieval и guardrails |
+| `Plugin_Navigator_Windows_Source/resources/ai/worker.js` | Изолированный WebLLM Worker |
+| `build_windows.py` | Встраивает HTML, WebLLM и Worker в EXE |
+| `Plugin_Navigator_Windows_Source/verify-windows.mjs` | Проверяет embedded config, HTML и AI runtime |
+| `test_local_ai.py` | Статический аудит модели, packaging и guardrails |
+| `test-runtime/ui-test-v2.js` | DOM-тест UI и AI grounding context |
 | `plugin_guide_enrichment.py` | Карточки, Controls и настройки |
-| `official_plugin_references.py` | Официальные источники и provenance |
-| `official_product_pages.py` | Точные official product pages |
 | `product_control_maps.py` | Product-specific Control maps |
 | `curated_chain_presets.py` | 99 подготовленных цепочек |
-| `chain_research_audit.py` | Аудит и обогащение цепочек |
-| `build_and_test.py` | Единый запуск сборки и тестов |
-| `build_windows.py` | Воспроизводимая Windows-сборка |
-| `Plugin_Navigator_Windows_Source/` | Neutralino-конфигурация и Node-инструменты |
 
 ## Постоянные требования пользователя
 
-- Сохранять максимальное количество валидных плагинов.
-- Все AudioLoom-плагины должны оставаться включены, но не выделяться в отдельную экосистему.
-- Использовать семантическую группировку.
-- Для каждой карточки нужны простой и подробный режимы.
-- Приложение должно оставаться автономным и офлайн.
-- Конструктор должен быть понятным и предлагать готовые цепочки.
-- Этапы цепочки делятся на базовые, условные, творческие и monitoring.
-- Различать официальную информацию, практические рекомендации и family-level normalization.
-- Иконку Windows, favicon и app icon без команды не менять.
-- Windows-версия остаётся полной и без ограничений.
+- сохранять максимальное количество валидных плагинов;
+- не выделять AudioLoom в отдельную экосистему;
+- сохранять оригинальные English Control names;
+- не представлять все стадии цепи обязательными;
+- различать официальные сведения, практические рекомендации и provenance;
+- не менять иконки без прямой команды;
+- Windows-версия полная, без Trial, ключей и ограничений;
+- основная программа должна работать без ИИ и без интернета.
 
 ## Не реализовано
 
-Lite/Trial/Pro, лицензирование, ключи и платный доступ не реализованы. Коммерческой подписи Windows нет. Исторические HTML/ZIP пока остаются в репозитории; перенос старых выпусков в GitHub Releases можно выполнить отдельной задачей.
+- Cubase Plug-in Report import;
+- Installed/Not Found badges и My Collection;
+- VST3 scanner;
+- unknown plugin draft cards;
+- коммерческая цифровая подпись Windows;
+- аппаратный smoke-test Qwen на реальном Windows WebView2/WebGPU;
+- обновлённое видео с разделом ИИ 2.7.0.

@@ -55,8 +55,11 @@ def main() -> int:
     database = ROOT / "plugin_navigator_database.json"
     guide_html = ROOT / "Plugin_Navigator_User_Guide_RU.html"
     guide_source = ROOT / "Plugin_Navigator_User_Guide_RU.md"
+    ai_report = ROOT / f"Plugin_Navigator_v{version}_Local_AI_Report.md"
     if not guide_html.exists() or not guide_source.exists():
         raise SystemExit("Сначала выполните: python3 build_user_guide.py")
+    if not ai_report.exists():
+        raise SystemExit(f"Не найден отчёт локального ИИ: {ai_report.name}")
     config = json.loads((WIN / "neutralino.config.json").read_text(encoding="utf-8"))
     if config["version"] != version:
         raise SystemExit(f"neutralino.config.json={config['version']}, database={version}")
@@ -66,8 +69,13 @@ def main() -> int:
     node = shutil.which("node")
     asar = WIN / "node_modules/.bin/asar"
     postject = WIN / "node_modules/.bin/postject"
-    if not node or not asar.exists() or not postject.exists():
+    webllm_module = WIN / "node_modules/@mlc-ai/web-llm/lib/index.js"
+    webllm_license = WIN / "node_modules/@mlc-ai/web-llm/LICENSE"
+    ai_worker = WIN / "resources/ai/worker.js"
+    if not node or not asar.exists() or not postject.exists() or not webllm_module.exists():
         raise SystemExit("Сначала выполните: cd Plugin_Navigator_Windows_Source && npm ci")
+    if not webllm_license.exists() or not ai_worker.exists():
+        raise SystemExit("Не найдены локальные ресурсы или лицензия WebLLM")
 
     output_zip = ROOT / f"Plugin_Navigator_Full_v{version}_Windows_x64.zip"
     exe_name = f"Plugin_Navigator_Full_v{version}_Windows_x64.exe"
@@ -90,8 +98,12 @@ def main() -> int:
         # framework fall back to its default neutralinojs.org page.
         bundle_root = temp / "bundle"
         resources = bundle_root / "resources"
-        resources.mkdir(parents=True)
+        # Keep the UI and the WebLLM runtime inside the executable. The 1.1 GB
+        # Qwen model itself is downloaded once by the user and remains in the
+        # WebView2 cache, so normal application updates stay small.
+        shutil.copytree(WIN / "resources", resources)
         shutil.copy2(html, resources / "index.html")
+        shutil.copy2(webllm_module, resources / "ai/webllm.js")
         shutil.copy2(WIN / "neutralino.config.json", bundle_root / "neutralino.config.json")
         archive_neu = temp / "resources.neu"
         versioned_exe = temp / exe_name
@@ -108,20 +120,26 @@ def main() -> int:
 Цифровой подписи нет — SmartScreen может показать предупреждение.
 
 Новое в {version}:
-- удалён ложный дубль Soundtoys Sandman Pro;
-- Ozone Spectral Denoiser исправлен на iZotope RX Spectral De-noise;
-- исправлены Micro, dbx 160, H-Reverb и stereo utility maps;
-- добавлены точные карты Chakra, Ultimate Snare и diagnostic utilities;
-- Session Inspector отделён от plugin chains;
-- generic amp/console maps честно помечены Product-informed;
-- сохранены Помощник порядка, Melodyne и 99 проверенных цепочек.
+- добавлен локальный ИИ Qwen3.5 2B Q4 без API и облачного сервера;
+- WebLLM runtime встроен непосредственно в Windows EXE;
+- модель загружается один раз и затем работает из локального WebView2 cache;
+- ИИ объясняет текущую цепочку, Controls и Starting Settings по локальной базе;
+- строгий Помощник порядка остаётся авторитетнее предположений ИИ;
+- без WebGPU весь справочник, каталог и 99 проверенных цепочек работают как прежде;
+- сохранены все исправления карточек версии 2.6.1.
 """
         inner_checks = f"{exe_hash}  {exe_name}\n{html_hash}  {html.name} (embedded)\n"
+        third_party_licenses = (
+            "NEUTRALINOJS\n============\n".encode()
+            + (WIN / "LICENSE").read_bytes()
+            + "\n\nWEBLLM — APACHE LICENSE 2.0\n===========================\n".encode()
+            + webllm_license.read_bytes()
+        )
         files = {
             exe_name: versioned_exe.read_bytes(),
             "README_RU.txt": readme.encode(),
             "CHECKSUMS_SHA256.txt": inner_checks.encode(),
-            "THIRD_PARTY_LICENSES.txt": (WIN / "LICENSE").read_bytes(),
+            "THIRD_PARTY_LICENSES.txt": third_party_licenses,
         }
         with zipfile.ZipFile(output_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
             for name, content in files.items():
@@ -137,6 +155,7 @@ def main() -> int:
         f"{sha256(database)}  {database.name}\n"
         f"{sha256(guide_html)}  {guide_html.name}\n"
         f"{sha256(guide_source)}  {guide_source.name}\n"
+        f"{sha256(ai_report)}  {ai_report.name}\n"
         f"{sha256(output_zip)}  {output_zip.name}\n"
         f"# EXE inside ZIP SHA-256: {exe_hash}  {exe_name}\n"
     )
@@ -151,6 +170,7 @@ def main() -> int:
         "README.md": (ROOT / "README.md").read_bytes(),
         guide_html.name: guide_html.read_bytes(),
         guide_source.name: guide_source.read_bytes(),
+        ai_report.name: ai_report.read_bytes(),
     }
     with zipfile.ZipFile(download_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, content in download_files.items():

@@ -18,6 +18,14 @@ try {
   const embedded = asar.extractFile(temp, 'resources/index.html');
   const expected = fs.readFileSync(htmlPath);
   if (!Buffer.from(embedded).equals(expected)) throw new Error('Embedded HTML differs from release HTML');
+  const webllm = Buffer.from(asar.extractFile(temp, 'resources/ai/webllm.js'));
+  const worker = Buffer.from(asar.extractFile(temp, 'resources/ai/worker.js')).toString('utf8');
+  if (webllm.length < 1_000_000 || !webllm.toString('utf8', 0, 500).includes('MLC_DUMMY_REQUIRE_VAR')) {
+    throw new Error('Embedded WebLLM runtime is missing or incomplete');
+  }
+  if (!worker.includes('WebWorkerMLCEngineHandler') || !worker.includes("'./webllm.js'")) {
+    throw new Error('Embedded local AI worker is missing or points outside the application');
+  }
   const config = JSON.parse(Buffer.from(asar.extractFile(temp, 'neutralino.config.json')).toString('utf8'));
   if (config.version !== version) throw new Error(`Embedded config version is ${config.version}, expected ${version}`);
   if (config.applicationName !== 'Plugin Navigator' || config.defaultMode !== 'window') {
@@ -35,4 +43,4 @@ const strings = versions[0].getStringValues({ lang: 1033, codepage: 1200 });
 if (strings.ProductVersion !== `${version}.0` || strings.FileVersion !== `${version}.0`) {
   throw new Error(`Wrong Windows metadata: ${strings.FileVersion} / ${strings.ProductVersion}`);
 }
-console.log(JSON.stringify({ status: 'PASS', version, embeddedConfig: true, documentRoot: '/resources/', embeddedBytes: fs.statSync(htmlPath).size }));
+console.log(JSON.stringify({ status: 'PASS', version, embeddedConfig: true, embeddedWebLLM: true, model: 'Qwen3.5-2B-q4f16_1-MLC', documentRoot: '/resources/', embeddedBytes: fs.statSync(htmlPath).size }));

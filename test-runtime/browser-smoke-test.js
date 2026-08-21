@@ -12,7 +12,7 @@ async function check(browser, name, viewport, mobile) {
   await page.waitForSelector('#content .hero');
 
   const version = await page.locator('#db').evaluate(el => JSON.parse(el.textContent).version);
-  if (version !== '2.6.1') throw new Error(`${name}: wrong version ${version}`);
+  if (version !== '2.7.0') throw new Error(`${name}: wrong version ${version}`);
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   if (overflow > 2) throw new Error(`${name}: horizontal overflow ${overflow}px`);
@@ -25,6 +25,9 @@ async function check(browser, name, viewport, mobile) {
     await page.locator('#devFilter').selectOption('Waves');
   } else {
     if (!(await page.locator('#sidebar').isVisible())) throw new Error(`${name}: sidebar is hidden`);
+    await page.locator('#nav [data-view="ai"]').click();
+    await page.getByRole('heading', { name: 'Локальный ИИ-помощник' }).waitFor();
+    if (!(await page.locator('#content').getByText(/ИИ доступен в Windows-приложении/).isVisible())) throw new Error(`${name}: file fallback for local AI is missing`);
     await page.locator('#nav [data-view="plugins"]').click();
     await page.locator('#devFilter').selectOption('FabFilter');
   }
@@ -38,7 +41,7 @@ async function check(browser, name, viewport, mobile) {
   try {
     await check(browser, 'desktop', { width: 1440, height: 900 }, false);
     await check(browser, 'mobile', { width: 390, height: 844 }, true);
-    console.log(JSON.stringify({ status: 'PASS', version: '2.6.1', viewports: ['1440x900', '390x844'] }));
+    console.log(JSON.stringify({ status: 'PASS', version: '2.7.0', viewports: ['1440x900', '390x844'] }));
   } finally {
     await browser.close();
   }

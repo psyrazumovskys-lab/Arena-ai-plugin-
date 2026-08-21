@@ -22,6 +22,7 @@ def main() -> int:
         "test_design_audit.py",
         "test_chain_research_audit.py",
         "test_plugin_guides.py",
+        "test_local_ai.py",
         "test_deterministic_build.py",
     ):
         run(sys.executable, test)
