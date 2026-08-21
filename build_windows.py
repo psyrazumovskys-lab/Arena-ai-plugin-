@@ -108,11 +108,13 @@ def main() -> int:
 Цифровой подписи нет — SmartScreen может показать предупреждение.
 
 Новое в {version}:
-- добавлен Помощник порядка плагинов без ИИ и интернета;
-- автоматическая расстановка Inserts, Sends, Monitoring и Source;
-- объяснение роли каждого этапа;
-- technical warnings и допустимые creative exceptions;
-- сохранены 366 плагинов, Melodyne и 99 проверенных цепочек.
+- удалён ложный дубль Soundtoys Sandman Pro;
+- Ozone Spectral Denoiser исправлен на iZotope RX Spectral De-noise;
+- исправлены Micro, dbx 160, H-Reverb и stereo utility maps;
+- добавлены точные карты Chakra, Ultimate Snare и diagnostic utilities;
+- Session Inspector отделён от plugin chains;
+- generic amp/console maps честно помечены Product-informed;
+- сохранены Помощник порядка, Melodyne и 99 проверенных цепочек.
 """
         inner_checks = f"{exe_hash}  {exe_name}\n{html_hash}  {html.name} (embedded)\n"
         files = {

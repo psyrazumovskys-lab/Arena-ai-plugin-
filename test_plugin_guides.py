@@ -5,9 +5,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DB = json.loads((ROOT / 'plugin_navigator_database.json').read_text())
 plugins = DB['plugins']
-assert DB['version'] == '2.6.0'
-assert len(plugins) == 366
-assert DB['coverage']['pluginGuides'] == 366
+assert DB['version'] == '2.6.1'
+assert len(plugins) == 365
+assert DB['coverage']['pluginGuides'] == 365
 assert DB['coverage']['productSpecificControlMaps'] >= 80
 
 status = Counter()
@@ -49,6 +49,31 @@ assert all('роль записана' not in p['guide']['simple'] for p in plug
 assert 'сатурац' in by_name['Soundtoys Decapitator']['guide']['simple'].casefold() or 'характер' in by_name['Soundtoys Decapitator']['guide']['simple']
 assert 'FabFilter Pro-Q 4' in by_name
 assert 'Celemony Melodyne' in by_name
+# 2.6.1 confirmed description/control fixes.
+assert 'Soundtoys Sandman Pro' not in by_name and 'Unfiltered Audio Sandman Pro' in by_name
+assert 'Ozone Spectral Denoiser' not in by_name and 'iZotope RX Spectral De-noise' in by_name
+rx=by_name['iZotope RX Spectral De-noise']
+assert rx['official']['productPage'].endswith('/products/rx.html')
+assert rx['official']['manualHub']=='https://docs.izotope.com/rx12/en/spectral-de-noise.html'
+assert {'Learn','Threshold: Noisy / Tonal','Reduction: Noisy / Tonal','Artifact Control'} <= {c['name'] for c in rx['guide']['controls']}
+micro=by_name['FabFilter Micro']
+assert micro['official']['productPage'].endswith('/micro-mini-filter-plug-in')
+assert {'Filter Display / Cutoff','Envelope Follower','Input Gain','Output Gain'} <= {c['name'] for c in micro['guide']['controls']}
+assert not any('Ratio' in c['name'] for c in micro['guide']['controls'])
+dbx=by_name['dbx 160']
+assert {'Input','SC-HP','Mix','Noise','Stereo / Duo / MS'} <= {c['name'] for c in dbx['guide']['controls']}
+assert not any('Over Easy' in c['name'] for c in dbx['guide']['controls'])
+assert by_name['Waves H-Reverb']['official']['productPage'].endswith('/h-reverb-hybrid-reverb')
+for name in ['bx_control V2','bx_solo','The Util','Waves Center','Waves MS Matrix','Waves S1 Stereo Imager']:
+    assert by_name[name]['guide']['controlStatus']=='Product-specific curated map'
+    assert not {'Rate','Depth','Delay / Detune','Feedback'} & {c['name'] for c in by_name[name]['guide']['controls']}
+standalone=by_name['Session Inspector']
+assert standalone['standalone'] and not standalone['uses'] and 'не является vst' in standalone['guide']['routing'].casefold()
+assert {'Mode: Sharp / Balanced / Smooth','Detection Filter','Gain / Auto Gain'} <= {c['name'] for c in by_name['Ozone Vintage Compressor']['guide']['controls']}
+assert {'Chakra','Tone EQ','THD','Delta'} <= {c['name'] for c in by_name['Chakra']['guide']['controls']}
+assert {'Heat','Body','Crack','Air','Punch','Plate','Bomb'} == {c['name'] for c in by_name['Ultimate Snare']['guide']['controls']}
+assert by_name['Archetype: Gojira']['guide']['controlStatus']=='Product-informed curated map'
+assert by_name['bx_console AMEK 9099']['guide']['controlStatus']=='Product-informed curated map'
 melodyne=by_name['Celemony Melodyne']
 assert melodyne['developer']=='Celemony' and melodyne['family']=='Pitch correction'
 assert melodyne['guide']['controlStatus']=='Product-specific curated map'
@@ -70,7 +95,7 @@ assert by_name['Friedman Dirty Shirley']['official']['productPage'].endswith('/p
 assert by_name['Ampeg SVT-VR Classic']['official']['productPage'].endswith('/products/svt-vr-classic')
 assert not by_name['bx_pultec / bx_pultec Pro']['official']['productPage']
 assert not by_name['Shadow Hills Dual Vandergraph']['official']['productPage']
-assert DB['coverage']['officialExactProductPages'] == 350
+assert DB['coverage']['officialExactProductPages'] == 349
 assert DB['coverage']['officialVendorManualHubs'] == 16
 assert 'EQ Sketch' not in by_name['Ozone Spectral Shaper']['guide']['simple']
 assert 'EQ Sketch' not in by_name['ADPTR Sculpt']['guide']['simple']
@@ -89,7 +114,7 @@ assert status['Product-specific curated map'] >= 80
 assert all(p.get('official', {}).get('manualHub') and p['official'].get('verifiedOn') for p in plugins)
 assert sum(bool(p['official']['productPage']) for p in plugins) >= 250
 assert sum(bool(p['official']['productPage']) for p in plugins) == DB['coverage']['officialExactProductPages']
-assert all(p['uses'] for p in plugins)
+assert all(p['uses'] or p.get('standalone') for p in plugins)
 html_bytes = (ROOT / 'Plugin_Navigator_Full.html').read_bytes()
 assert html_bytes == (ROOT / 'Plugin_Navigator_Windows_Source' / 'resources' / 'index.html').read_bytes()
 assert html_bytes == (ROOT / f"Plugin_Navigator_Full_v{DB['version'].split('-',1)[0]}.html").read_bytes()

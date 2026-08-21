@@ -2,14 +2,14 @@
 
 Автономный русскоязычный справочник по аудиоплагинам и конструктор цепочек обработки.
 
-**Актуальная версия: 2.6.0** — 21 августа 2026.
+**Актуальная версия: 2.6.1** — 21 августа 2026.
 
 ## Готовые файлы
 
-- `Plugin_Navigator_v2.6.0_Download.zip` — общий архив: HTML + Windows x64 + инструкции;
+- `Plugin_Navigator_v2.6.1_Download.zip` — общий архив: HTML + Windows x64 + инструкции;
 - `Plugin_Navigator_Full.html` — актуальное автономное HTML-приложение;
-- `Plugin_Navigator_Full_v2.6.0.html` — версия с номером выпуска;
-- `Plugin_Navigator_Full_v2.6.0_Windows_x64.zip` — portable Windows 10/11 x64;
+- `Plugin_Navigator_Full_v2.6.1.html` — версия с номером выпуска;
+- `Plugin_Navigator_Full_v2.6.1_Windows_x64.zip` — portable Windows 10/11 x64;
 - `Plugin_Navigator_User_Guide_RU.html` — инструкция пользователя в формате HTML;
 - `Plugin_Navigator_User_Guide_RU.md` — исходный текст инструкции;
 - `CHECKSUMS_SHA256.txt` — контрольные суммы.
@@ -26,7 +26,7 @@ HTML работает без установки и без интернета. Wi
 
 ## Что есть в программе
 
-- 366 плагинов, включая Celemony Melodyne;
+- 365 валидных записей, включая Celemony Melodyne;
 - 68 смысловых семейств;
 - 33 типа источников;
 - 99 подготовленных цепочек;
@@ -34,6 +34,8 @@ HTML работает без установки и без интернета. Wi
 - подробные карточки, Controls и стартовые настройки;
 - конструктор и сохранение собственных цепочек;
 - Помощник порядка: автоматическая расстановка, объяснения и предупреждения;
+- исправленные карточки RX Spectral De-noise, Micro, dbx 160 и stereo utilities;
+- Session Inspector помечен как standalone utility и исключён из plugin chains;
 - избранное и личные заметки;
 - резервная копия пользовательских данных;
 - поиск по описаниям, Controls и настройкам;

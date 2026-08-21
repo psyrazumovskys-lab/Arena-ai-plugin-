@@ -47,6 +47,10 @@ VENDORS={
 
 from official_product_pages import PRODUCT_PAGES, SUITE_NOTES, CURRENT_LICENSE_NOTES, COMPONENT_NOTES
 
+PRODUCT_MANUALS={
+    'iZotope RX Spectral De-noise':'https://docs.izotope.com/rx12/en/spectral-de-noise.html',
+}
+
 
 def _product_note(name):
     if name in CURRENT_LICENSE_NOTES:
@@ -95,7 +99,7 @@ def apply_official_references(plugins):
                 'vendor':vendor,
                 'productPage':exact,
                 'vendorSite':site,
-                'manualHub':manual,
+                'manualHub':PRODUCT_MANUALS.get(p['name'],manual),
                 'referenceType':'Exact official product page',
                 'verifiedOn':'2026-08-13',
                 'note':_product_note(p['name']),

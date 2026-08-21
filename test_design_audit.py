@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.6.0'
+assert DB['version']=='2.6.1'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -57,8 +57,9 @@ assert 'function pluginBlurb' in script and 'Чем отличается' in scr
 assert '.check-lesson>p{margin:0 0 8px;color:#c6d3e4;font-size:15px' in style
 assert '.step-fact{' in style and 'font-size:13px' in style
 assert 'не сдвиг клипа' in script and '−12…−6' in html and '−18 dBFS RMS' in script
-assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==366-DB['coverage']['officialExactProductPages']
-assert DB['coverage']['sourceMappedPlugins']==366
+assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==365-DB['coverage']['officialExactProductPages']
+assert DB['coverage']['sourceMappedPlugins']==364
+assert DB['coverage']['standaloneUtilities']==1
 
 # Every curated step carries full conditional guidance.
 steps=[s for c in DB['chains'] for s in c['steps']]
