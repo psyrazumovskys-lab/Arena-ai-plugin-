@@ -108,10 +108,11 @@ def main() -> int:
 Цифровой подписи нет — SmartScreen может показать предупреждение.
 
 Новое в {version}:
-- исправлен запуск Windows EXE: открывается Plugin Navigator, а не стандартная страница Neutralinojs;
-- в resources.neu встроены neutralino.config.json и resources/index.html;
-- конфигурация и HTML проверяются перед созданием ZIP;
-- сохранены Melodyne, 366 плагинов и все 99 проверенных цепочек.
+- добавлен Помощник порядка плагинов без ИИ и интернета;
+- автоматическая расстановка Inserts, Sends, Monitoring и Source;
+- объяснение роли каждого этапа;
+- technical warnings и допустимые creative exceptions;
+- сохранены 366 плагинов, Melodyne и 99 проверенных цепочек.
 """
         inner_checks = f"{exe_hash}  {exe_name}\n{html_hash}  {html.name} (embedded)\n"
         files = {

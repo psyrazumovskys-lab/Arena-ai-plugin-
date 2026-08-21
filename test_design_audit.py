@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.5.7'
+assert DB['version']=='2.6.0'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -36,6 +36,10 @@ assert 'USER_DATA_SCHEMA=1' in script and 'normalizeBuilder' in script and 'buil
 assert 'moreExportData' in script and 'moreImportData' in script and 'confirmReplaceBuilder' in script
 assert 'devFilter' in script and "p.developer!==state.developer" in script
 assert 'role="tablist"' in script and 'aria-selected' in script
+# Improvement 1: deterministic order assistant remains available without AI.
+for token in ['function orderSpec','function orderDiagnostics','function autoOrderBuilder','function orderAssistantHTML','Расставить автоматически','Почему такой порядок','Pitch и timing корректируют','Sends являются параллельными ветками']:
+    assert token in script,token
+assert '.analysis-item.error{' in style and '.analysis-item.creative{' in style and '.order-flow{' in style
 
 # Honest language and progressive disclosure.
 assert 'ПРОВЕРЕННЫЙ PRESET' not in html

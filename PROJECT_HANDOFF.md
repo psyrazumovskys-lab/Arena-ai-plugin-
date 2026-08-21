@@ -1,7 +1,7 @@
 # Plugin Navigator — текущее состояние проекта
 
-**Дата:** 15 августа 2026
-**Актуальная версия:** **2.5.7**
+**Дата:** 21 августа 2026
+**Актуальная версия:** **2.6.0**
 **Язык приложения и общения:** русский
 
 ## Инструкция следующему агенту
@@ -29,54 +29,59 @@
 - резервная копия и проверяемое восстановление пользовательских данных;
 - поиск по карточкам, Controls, настройкам и аналогам;
 - фильтр по производителю;
+- Помощник порядка: auto-sort, explanations, warnings и creative exceptions;
 - полностью автономный HTML;
 - portable Windows x64 без Trial и ограничений.
 
 Активной незавершённой задачи нет.
 
-## Изменения 2.5.7
+## Изменения 2.6.0
 
-- Исправлена Windows-упаковка: предыдущий EXE открывал стандартную страницу Neutralinojs вместо приложения.
-- `resources.neu` теперь содержит обязательный `neutralino.config.json` в корне архива.
-- HTML упакован по правильному пути `/resources/index.html`, соответствующему `documentRoot: /resources/`.
-- Проверка Windows-сборки извлекает и валидирует и конфигурацию, и HTML до создания ZIP.
-- Сохранены Celemony Melodyne, 366 плагинов, 99 цепочек и все улучшения 2.5.6.
-- Windows FileVersion/ProductVersion соответствует 2.5.7.0.
+- Реализовано «Улучшение 1 — Помощник порядка плагинов» без ИИ и интернета.
+- Добавлены кнопки «Расставить автоматически» и «Почему такой порядок».
+- Pitch/timing correction ставится первой; cleanup/phase/gate — до основной dynamics.
+- Amp/Cab располагается до post-EQ и большинства compressor stages.
+- Delay/Reverb/типичная modulation направляются в Sends; meters/references — в Monitoring.
+- Clipper/Limiter располагаются ближе к концу audible chain.
+- Parallel compression/saturation сохраняются как отдельные Parallel returns.
+- Различаются recommended, flexible, creative, warning и technical error.
+- Автосортировка не удаляет плагины и не сбрасывает Starting settings.
+- Добавлен подробный раздел в HTML/Markdown инструкции и новые UI regression tests.
 
 ## Финальные файлы
 
 ### Общий архив
 
-- `Plugin_Navigator_v2.5.7_Download.zip`;
+- `Plugin_Navigator_v2.6.0_Download.zip`;
 - содержит HTML, Windows x64, README, инструкцию в HTML/Markdown и checksums;
-- SHA-256: `1b6070cb7d082ef37ec97adcb28a21959742b8efec10e0dc75c201fd9abf66c1`.
+- SHA-256: `1b9d402561d24edcdc22ab253a136c963a115e9db7284d215c86e8e8174d8042`.
 
 ### Инструкция пользователя
 
 - `Plugin_Navigator_User_Guide_RU.html` — автономная HTML-инструкция с оглавлением;
-- SHA-256: `d6529a22ff895f2dbddf07af673630850715d476dd7b59e71db3d66992f55e8e`;
+- SHA-256: `6bbfcb6886b7a06b1135453b8223a88df6a3308d89006c4b3fca805d8b190cd5`;
 - `Plugin_Navigator_User_Guide_RU.md` — исходный текст;
-- SHA-256: `66147eca63c276d92d22da8c4a767afc187427723bcbaf6c7bc7dedcb5deb269`.
+- SHA-256: `3aac37cb0cfafcf69b9f09b3ae17943f4b21e2020a1f40d23120ad57070a51f4`.
 
 ### HTML
 
 - `Plugin_Navigator_Full.html`
-- `Plugin_Navigator_Full_v2.5.7.html`
-- размер: 10 005 484 байта;
-- SHA-256: `a8d0dde0f884eaa7dca18eece079ea5635ada14df846734387b67724b5bdb2b0`;
+- `Plugin_Navigator_Full_v2.6.0.html`
+- размер: 10 019 182 байта;
+- SHA-256: `7e820f9edc988f23cc1aae5f67ef041e6301ee4a234769eaec8ed5a455fdeba1`;
 - файлы и `Plugin_Navigator_Windows_Source/resources/index.html` побайтно совпадают.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.5.7_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.6.0_Windows_x64.zip`
 
-- ZIP SHA-256: `5a75441cfc0e8a49d1aeddf1954f8d9b47b108e75016e4f27de40265213288d0`;
-- EXE SHA-256: `a8bd28be923bc5b94f90bb29cd84ff9f0dfddd3001ec7968a8af4b63f9c61ebd`;
+- ZIP SHA-256: `c25611e9b17bd4af4c8e988b6ab72631a994f79bac7ab628578b45c335b8136d`;
+- EXE SHA-256: `5038ab0021b367ad39bde90aa9cc15f28d8fc86d9e856b6d2f10acc5966d0ed0`;
 - Neutralinojs 6.9.0;
 - Windows 10/11 x64;
 - требуется Microsoft Edge WebView2 Runtime;
 - цифровой подписи нет;
-- HTML внутри EXE побайтно совпадает с HTML 2.5.7.
+- HTML внутри EXE побайтно совпадает с HTML 2.6.0.
 
 ## Сборка и тесты
 
