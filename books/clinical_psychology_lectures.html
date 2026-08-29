@@ -96,6 +96,21 @@ mark{background:var(--mark)}
   section#front{page-break-before:avoid}
   .core,.flags,.codes,table.t,dl.df{background:#fff!important}
 }
+/* тесты */
+.quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
+.quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
+.qscore{font-size:.8rem;color:var(--mut);font-weight:400}
+.qz{margin:.55rem 0;padding:.55rem 0 .35rem;border-top:1px dashed var(--line)}
+.qt{margin:.05rem 0 .45rem;font-size:.95rem}
+.qo{display:block;width:100%;text-align:left;margin:.22rem 0;padding:.42rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--acc)}
+.qo.ok{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600;cursor:default}
+.qo.bad{background:var(--flag-soft);border-color:var(--flag);color:var(--flag);opacity:.8;cursor:default}
+.qz.done .qo{cursor:default}
+.qb{margin:.35rem 0 0;font-size:.85rem;color:var(--mut);min-height:1em}
+.qb.good{color:var(--acc)}
+.qreset{margin-top:.6rem;border:0;background:none;color:var(--mut);cursor:pointer;font-size:.8rem;text-decoration:underline;padding:0}
+@media print{.quiz{display:none!important}}
 </style>
 </head>
 <body>
@@ -148,6 +163,7 @@ mark{background:var(--mark)}
     <li>Навигация: оглавление слева, переходы <b>«←/→»</b> под текстом, клавиши <kbd>←</kbd> <kbd>→</kbd> на клавиатуре, <kbd>M</kbd> — меню. Фильтр в оглавлении ищет по названиям лекций.</li>
     <li>Печать (<kbd>Ctrl</kbd>+<kbd>P</kbd>) разворачивает все лекции подряд — получается полноценный конспект.</li>
     <li>«Шпаргалка» в конце — все блоки «Ядро» и «Запомнить» одной страницей для быстрого повторения.</li>
+    <li>В конце каждой лекции — <b>мини-тест</b> из 4 вопросов: ответ проверяется сразу, считается результат «с первой попытки».</li>
   </ul>
 
   <h3>Логика курса</h3>
@@ -218,6 +234,37 @@ mark{background:var(--mark)}
 </ul>
 
 <p class="codes"><b>Запомнить:</b> симптом → синдром → болезнь; психолог — синдромальный уровень; качественный анализ &gt; баллы; биопсихосоциальная рамка.</p>
+<div class="quiz" id="quiz-lec-1">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1" data-w="Симптом неспецифичен, нозология — задача врача; рабочая единица психолога — синдром.">
+<p class="qt">1. Психолог в клинике формулирует выводы преимущественно на уровне…</p>
+<button type="button" class="qo">симптома</button>
+<button type="button" class="qo">синдрома</button>
+<button type="button" class="qo">нозологической единицы</button>
+<button type="button" class="qo">«диагноза по МКБ»</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Основной принцип патопсихологического исследования по Зейгарник —…</p>
+<button type="button" class="qo">количественный балл важнее способа выполнения</button>
+<button type="button" class="qo">качественный анализ способа выполнения деятельности</button>
+<button type="button" class="qo">сравнение со средненормативными таблицами</button>
+<button type="button" class="qo">проективная интерпретация</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Биопсихосоциальная модель (Engel) утверждает, что болезнь — это…</p>
+<button type="button" class="qo">результат одного причинного фактора</button>
+<button type="button" class="qo">результат взаимодействия биологических, психологических и социальных факторов</button>
+<button type="button" class="qo">всегда следствие психологического конфликта</button>
+<button type="button" class="qo">событие, независимое от психики</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">4. Правильная последовательность уровней клинического анализа:</p>
+<button type="button" class="qo">болезнь → синдром → симптом</button>
+<button type="button" class="qo">симптом → болезнь → синдром</button>
+<button type="button" class="qo">симптом → синдром → болезнь</button>
+<button type="button" class="qo">синдром → симптом → дефект</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 2 ═══════════ -->
@@ -273,6 +320,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Диагноз «по коду» без клинического интервью. 2) Игнорирование веществ и соматики как причины симптомов (правило: психоз/изменение состояния впервые в жизни → сначала исключать органику и ПАВ). 3) Диагностика расстройства личности в разгар депрессии или психоза.</div>
 <p class="codes"><b>Запомнить:</b> МКБ-11 — глава 06, 6A00–6E60; описательность; коморбидность — правило; квалификаторы вместо подтипов шизофрении; единая категория РЛ + тяжесть и домены черт.</p>
+<div class="quiz" id="quiz-lec-2">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="2">
+<p class="qt">1. МКБ-11 вступила в силу с…</p>
+<button type="button" class="qo">1994 г.</button>
+<button type="button" class="qo">2010 г.</button>
+<button type="button" class="qo">1 января 2022 г.</button>
+<button type="button" class="qo">2025 г.</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">2. Что МКБ-11 сделала с подтипами шизофрении?</p>
+<button type="button" class="qo">сохранила без изменений</button>
+<button type="button" class="qo">добавила новые подтипы</button>
+<button type="button" class="qo">заменила их квалификаторами симптомных доменов</button>
+<button type="button" class="qo">перенесла в отдельную главу</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Расстройства личности в МКБ-11 — это…</p>
+<button type="button" class="qo">10 отдельных типов</button>
+<button type="button" class="qo">единая категория + тяжесть + домены черт + пограничный паттерн</button>
+<button type="button" class="qo">только тяжёлые состояния</button>
+<button type="button" class="qo">категория внутри психозов</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Правило первенства при коморбидности означает, в частности:</p>
+<button type="button" class="qo">всегда кодируются все расстройства</button>
+<button type="button" class="qo">депрессия, обусловленная веществом, не кодируется как самостоятельный эпизод</button>
+<button type="button" class="qo">шизофрения кодируется последней</button>
+<button type="button" class="qo">тревога не кодируется при депрессии</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 
@@ -323,6 +401,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Впервые возникшие галлюцинации — исключить делирий, деменцию, вещества, лекарственные эффекты, эпилепсию. 2) Императивные «голоса» — оценка суицидального/агрессивного риска, консультация психиатра. 3) Зрительные сложные галлюцинации у пожилого при смене освещения — возмож дементный/делириозный фон. 4) Галлюцинации при засыпании/пробуждении — не патология, не «шизофрения».</div>
 <p class="codes"><b>Запомнить:</b> иллюзия = реальный объект, галлюцинация = без объекта; псевдогаллюцинации «внутри» + чувство сделанности → шизофрения; комментирующие и императивные голоса — маркеры психоза; зрительные → думать об органике.</p>
+<div class="quiz" id="quiz-lec-3">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Восприятие «без объекта» — это…</p>
+<button type="button" class="qo">иллюзия</button>
+<button type="button" class="qo">галлюцинация</button>
+<button type="button" class="qo">парейдолия</button>
+<button type="button" class="qo">деперсонализация</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Голос «внутри головы», навязанный, без проекции вовне — типично для…</p>
+<button type="button" class="qo">истинной галлюцинации</button>
+<button type="button" class="qo">псевдогаллюцинации</button>
+<button type="button" class="qo">функциональной галлюцинации</button>
+<button type="button" class="qo">образов представления</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Сложные зрительные галлюцинации у пожилого с ухудшением к вечеру — думать о…</p>
+<button type="button" class="qo">шизофрении</button>
+<button type="button" class="qo">делирии</button>
+<button type="button" class="qo">неврозе</button>
+<button type="button" class="qo">мигрени</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">4. Комментирующие и императивные голоса — маркер…</p>
+<button type="button" class="qo">психотического уровня расстройства</button>
+<button type="button" class="qo">тревожного расстройства</button>
+<button type="button" class="qo">расстройства личности</button>
+<button type="button" class="qo">нормы при переутомлении</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 4 ═══════════ -->
@@ -381,6 +490,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Острое появление бреда у человека старше 40 без психиатрического анамнеза — исключать органику/субстанции. 2) Бред ревности и преследования с идеями «отравления» — риск насилия, нужна оценка безопасности близких. 3) Резонёрство + разноплановость без критики — не «странность характера», а повод для углублённой диагностики. 4) Никогда не спорить с бредом и не подыгрывать: работать с аффектом и функционированием.</div>
 <p class="codes"><b>Запомнить:</b> три уровня суждений — обсессия (критика+) / сверхценная (частично) / бред (критики нет); снижение vs искажение обобщения; синдромы Кандинского—Клерамбо; умственная отсталость ≠ деменция (анамнез решает).</p>
+<div class="quiz" id="quiz-lec-4">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="2">
+<p class="qt">1. Мысль эго-дистонна, критика сохранена, есть сопротивление — это…</p>
+<button type="button" class="qo">бред</button>
+<button type="button" class="qo">сверхценная идея</button>
+<button type="button" class="qo">обсессия</button>
+<button type="button" class="qo">резонёрство</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Объединение предметов по вычурным латентным признакам при сохранной способности обобщать —…</p>
+<button type="button" class="qo">снижение уровня обобщения</button>
+<button type="button" class="qo">искажение процесса обобщения</button>
+<button type="button" class="qo">обстоятельность</button>
+<button type="button" class="qo">разорванность</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. «Сделанные» мысли, открытость мышления, моторные автоматизмы — это…</p>
+<button type="button" class="qo">синдром Кандинского—Клерамбо</button>
+<button type="button" class="qo">парафрения</button>
+<button type="button" class="qo">вербальный галлюциноз</button>
+<button type="button" class="qo">аффективный синдром</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Остро возникший бред у пациента 47 лет без психиатрического анамнеза — первая тактика:</p>
+<button type="button" class="qo">психодинамическая терапия</button>
+<button type="button" class="qo">исключать органику и вещества</button>
+<button type="button" class="qo">ожидать спонтанной ремиссии</button>
+<button type="button" class="qo">гипнотерапия</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 5 ═══════════ -->
@@ -431,6 +571,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Подозрение на делирий (флюктуирующая дезориентировка, зрительные галлюцинации, вечернее ухудшение) — неотложное медицинское состояние, психотерапия не показана до купирования. 2) Внезапная амнезия у среднего возраста — исключить ЧМТ, эпилепсию, интоксикацию, диссоциацию. 3) Прогрессирующая амнезия по Рибо — обследование на деменцию (лекция 14). 4) Паратимия + нелепый аффект — не «стрессовая реакция», думать об органике/шизофрении.</div>
 <p class="codes"><b>Запомнить:</b> количественные vs качественные помрачнения; делирий флюктуирует и опасен; Корсаковский синдром = фиксационная амнезия + конфабуляции; закон Рибо; психоорганический синдром — «малый набор» органики.</p>
+<div class="quiz" id="quiz-lec-5">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Фиксационная амнезия + конфабуляции + дезориентировка во времени — это…</p>
+<button type="button" class="qo">закон Рибо</button>
+<button type="button" class="qo">Корсаковский синдром</button>
+<button type="button" class="qo">псевдодеменция</button>
+<button type="button" class="qo">аменция</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Закон Рибо описывает порядок распада памяти:</p>
+<button type="button" class="qo">от старого к новому</button>
+<button type="button" class="qo">от нового к старому</button>
+<button type="button" class="qo">симметрично</button>
+<button type="button" class="qo">только смысловой памяти</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Флюктуации, зрительные галлюцинации, ухудшение к вечеру —…</p>
+<button type="button" class="qo">оглушение</button>
+<button type="button" class="qo">делирий</button>
+<button type="button" class="qo">онейроид</button>
+<button type="button" class="qo">сумеречное состояние</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Слабодушие (слёзы от любой мелочи) типично для…</p>
+<button type="button" class="qo">истерии</button>
+<button type="button" class="qo">органических и астенических состояний</button>
+<button type="button" class="qo">мании</button>
+<button type="button" class="qo">возбудимой психопатии</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 6 ═══════════ -->
@@ -484,6 +655,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Первый психоз — срочное направление к психиатру (длительность нелеченого психоза коррелирует с прогнозом). 2) Императивные галлюцинации / бред преследования с «планом защиты» — оценка риска насилия. 3) Психоз + судороги/лихорадка/вегетативные кризы → анти-NMDA-энцефалит, неврология. 4) Резкое «выздоровление» с апатией — не выход из психоза, а постпсихотическая депрессия.</div>
 <p class="codes"><b>Запомнить:</b> позитивные/негативные/когнитивные; 4 «А» Блейлера; МКБ-11 убрала подтипы; шизоаффективное — одновременность; когнитивный дефицит — главный предиктор функционирования.</p>
+<div class="quiz" id="quiz-lec-6">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Четыре «А» Блейлера:</p>
+<button type="button" class="qo">алогия, абулия, апатия, асоциальность</button>
+<button type="button" class="qo">ассоциации, аффект, амбивалентность, аутизм</button>
+<button type="button" class="qo">ангедония, астения, агрессия, аутизм</button>
+<button type="button" class="qo">ажитация, амбивалентность, ангедония, акаузия</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Главный предиктор социального функционирования при шизофрении:</p>
+<button type="button" class="qo">острота первого эпизода</button>
+<button type="button" class="qo">стойкий когнитивный дефицит</button>
+<button type="button" class="qo">бред преследования</button>
+<button type="button" class="qo">длительность госпитализаций</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. Шизоаффективное расстройство отличается тем, что…</p>
+<button type="button" class="qo">психоз и аффективный эпизод совпадают по времени и оба развёрнуты</button>
+<button type="button" class="qo">аффект всегда предшествует психозу</button>
+<button type="button" class="qo">психоз есть, аффекта нет</button>
+<button type="button" class="qo">аффект есть, психоза нет</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">4. Фактор семьи, снижающий рецидивы:</p>
+<button type="button" class="qo">повышенная опека</button>
+<button type="button" class="qo">высокая критичность и враждебность (выраженные эмоции)</button>
+<button type="button" class="qo">психообразование и снижение выраженных эмоций</button>
+<button type="button" class="qo">укрытие информации о болезни</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 7 ═══════════ -->
@@ -531,6 +733,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Впервые депрессия у мужчины &gt;50 лет с когнитивным снижением — обследование (нейровизуализация, B12, тиреоид). 2) «Депрессия», не отвечающая на 2 адекватных курса, с ранним началом и семейной историей БАР — проверить биполярность. 3) Психотическая депрессия — неотложное состояние. 4) Прежде чем ставить «расстройство личности», вылечи депрессию — chronicity может быть аффективной.</div>
 <p class="codes"><b>Запомнить:</b> 2 недели/ангедония; витальный синдром; эпизод 6A70 (.0–.4), рекуррентная 6A71, дистимия 6A72; гипомания ≥4 дней (6A61); смешанные эпизоды = максимальный суицидальный риск; антидепрессант при БАР — только со «щитом»-нормотимиком.</p>
+<div class="quiz" id="quiz-lec-7">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Гипомания по длительности — не менее…</p>
+<button type="button" class="qo">1 дня</button>
+<button type="button" class="qo">4 дней</button>
+<button type="button" class="qo">1 недели</button>
+<button type="button" class="qo">2 недель</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0" data-w="Классика: ранняя бессонница, хуже утром, заторможенность, снижение веса/либидо — маркер эндогенности и фармакоответа.">
+<p class="qt">2. Витальный (сомативный) синдром включает и предсказывает…</p>
+<button type="button" class="qo">суточные колебания с ухудшением утром и ответ на фармакотерапию</button>
+<button type="button" class="qo">только раннюю бессонницу</button>
+<button type="button" class="qo">вечернюю бессонницу и прибавку веса</button>
+<button type="button" class="qo">гиперсомнию</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. «Псевдодеменция» у пожилого чаще всего обратима при лечении…</p>
+<button type="button" class="qo">депрессии</button>
+<button type="button" class="qo">гипотиреоза</button>
+<button type="button" class="qo">болезни Альцгеймера</button>
+<button type="button" class="qo">гидроцефалии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">4. Максимальный суицидальный риск связан с эпизодами…</p>
+<button type="button" class="qo">чистой депрессии</button>
+<button type="button" class="qo">чистой мании</button>
+<button type="button" class="qo">смешанными признаками</button>
+<button type="button" class="qo">ремиссии</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 8 ═══════════ -->
@@ -572,6 +805,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Паника впервые после 45 лет, с болью в груди/обмороком/неврологией — сначала соматика. 2) Внезапная «ОКРР» у ребёнка/подростка с тиками — PANDAS/PANS (аутоиммунная связь со стрептококком), осмотр педиатра. 3) Агорафобия, заперевшая дома — быстрое вмешательство, а не «поддерживающие беседы». 4) Скрываемые агрессивные обсессии у матери о ребёнке — эго-дистонные, риск низкий, но требуют грамотной оценки (отличать от психоза).</div>
 <p class="codes"><b>Запомнить:</b> избегание поддерживает всё; паника = страх страха; ГТР ≥6 мес + 3 симптома; ОКРР = обсессия + нейтрализация; ERP — первая линия; бензо коротко или никак.</p>
+<div class="quiz" id="quiz-lec-8">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Что поддерживает все тревожно-фобические расстройства?</p>
+<button type="button" class="qo">биологическая предиспозиция</button>
+<button type="button" class="qo">избегание</button>
+<button type="button" class="qo">недостаток информации</button>
+<button type="button" class="qo">слабая воля</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">2. Критерий длительности ГТР:</p>
+<button type="button" class="qo">1 месяц</button>
+<button type="button" class="qo">3 месяца</button>
+<button type="button" class="qo">6 месяцев</button>
+<button type="button" class="qo">2 года</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Отличие агрессивных обсессий от психотических идей:</p>
+<button type="button" class="qo">содержание</button>
+<button type="button" class="qo">сохранная критика и эго-дистонность</button>
+<button type="button" class="qo">наличие ритуалов</button>
+<button type="button" class="qo">выраженность тревоги</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Первая линия лечения ОКРР:</p>
+<button type="button" class="qo">поддерживающая терапия</button>
+<button type="button" class="qo">экспозиция с предотвращением реакции (ERP)</button>
+<button type="button" class="qo">психодинамическая терапия</button>
+<button type="button" class="qo">релаксация</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 9 ═══════════ -->
@@ -616,6 +880,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Диссоциация + быстрое начало неврологических симптомов — исключить органику (НМК, эпилепсия). 2) ПТСР + зависимости/самоповреждение — лечить параллельно, а не «сначала одно». 3) Психогенная фуга/амнезия у мужчины среднего возраста — исключить эпилепсию и ЧМТ. 4) Травматический материал в кабинете — следить за своим состоянием (vicarious trauma) и супервизией.</div>
 <p class="codes"><b>Запомнить:</b> 4 кластера ПТСР; кПТСР = ПТСР + дисрегуляция + Я-концепция + отношения; конверсия непреднамеренна; дебрифинг не работает как профилактика; TF-CBT/PE/CPT/EMDR — первая линия.</p>
+<div class="quiz" id="quiz-lec-9">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Четыре кластера ПТСР:</p>
+<button type="button" class="qo">вторжение, избегание, гипервозбуждение, негативные когниции/настроение</button>
+<button type="button" class="qo">тревога, паника, фобии, обсессии</button>
+<button type="button" class="qo">гнев, вина, стыд, страх</button>
+<button type="button" class="qo">бессонница, боли, раздражительность, усталость</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Комплексное ПТСР добавляет к ПТСР:</p>
+<button type="button" class="qo">психотические эпизоды</button>
+<button type="button" class="qo">аффективную дисрегуляцию, негативную Я-концепцию, нарушения отношений</button>
+<button type="button" class="qo">галлюцинации</button>
+<button type="button" class="qo">деменцию</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Что НЕ предотвращает ПТСР при однократном применении сразу после события?</p>
+<button type="button" class="qo">наблюдение и поддержка</button>
+<button type="button" class="qo">психологический дебрифинг</button>
+<button type="button" class="qo">оценка симптомов</button>
+<button type="button" class="qo">психообразование</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">4. Конверсионные симптомы отличаются от симуляции тем, что они…</p>
+<button type="button" class="qo">непреднамеренны</button>
+<button type="button" class="qo">менее интенсивны</button>
+<button type="button" class="qo">соответствуют анатомии</button>
+<button type="button" class="qo">проходят при внимании</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 10 ═══════════ -->
@@ -671,6 +966,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) ПРЛ + алкоголь/пищевые эпизоды → частые передозировки — координация с психиатром. 2) Антисоциальность с насилием — безопасность психолога и третьих лиц, границы конфиденциальности. 3) Внезапная «декомпенсация личности» в 40–50 лет — думать об органике (лобная доля), а не о «врождённом».</div>
 <p class="codes"><b>Запомнить:</b> паттерн + юность + дисфункция = РЛ; A/B/C; МКБ-11: 6D10 + тяжесть + 5 доменов + borderline pattern; DBT/схема/MBT; ПРЛ vs БАР — минуты/часы vs недели.</p>
+<div class="quiz" id="quiz-lec-10">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Кластер B DSM-5 включает…</p>
+<button type="button" class="qo">параноидное, шизоидное, шизотипическое</button>
+<button type="button" class="qo">пограничное, антисоциальное, гистрионическое, нарциссическое</button>
+<button type="button" class="qo">избегающее, зависимое, ОКРЛ</button>
+<button type="button" class="qo">только пограничное</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">2. Формула РЛ в МКБ-11:</p>
+<button type="button" class="qo">6D10 + тяжесть + 5 доменов черт + пограничный паттерн</button>
+<button type="button" class="qo">10 типов в 3 кластерах</button>
+<button type="button" class="qo">только степень тяжести</button>
+<button type="button" class="qo">личность не кодируется</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. ПРЛ отличается от БАР тем, что колебания настроения…</p>
+<button type="button" class="qo">длятся недели и без триггеров</button>
+<button type="button" class="qo">длятся минуты-часы и связаны с межличностными событиями</button>
+<button type="button" class="qo">отсутствуют</button>
+<button type="button" class="qo">сезонные</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Уровень организации по Кернбергу: расщепление, примитивные защиты, диффузная идентичность при сохранном тестировании реальности —…</p>
+<button type="button" class="qo">невротический</button>
+<button type="button" class="qo">пограничный</button>
+<button type="button" class="qo">психотический</button>
+<button type="button" class="qo">невроз навязчивых состояний</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 11 ═══════════ -->
@@ -712,6 +1038,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) «Психосоматический» диагноз ставится только после исключения органики — не наоборот. 2) Внезапное изменение ВКБ (анозогнозия у ранее тревожного) — возможен когнитивный сдвиг/деменция. 3) Множественные операции и «поиск болезни» годами — риск ятрогении; координация с врачом.</div>
 <p class="codes"><b>Запомнить:</b> алекситимия — сквозной механизм; BDD 8E81; ВКБ = 4 уровня; типы реагирования по Личко; круг «симптом → страх → щажение → декондиция»; сначала исключить органику.</p>
+<div class="quiz" id="quiz-lec-11">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Алекситимия — это…</p>
+<button type="button" class="qo">страх открытых пространств</button>
+<button type="button" class="qo">трудность идентификации и описания собственных чувств</button>
+<button type="button" class="qo">фиксация на телесных ощущениях</button>
+<button type="button" class="qo">отрицание болезни</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Четыре уровня внутренней картины болезни (Лурия):</p>
+<button type="button" class="qo">сенсорный, моторный, речевой, социальный</button>
+<button type="button" class="qo">чувственный, эмоциональный, интеллектуальный, мотивационный</button>
+<button type="button" class="qo">биологический, психологический, социальный, духовный</button>
+<button type="button" class="qo">оценочный, поведенческий, аффективный, когнитивный</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. Порочный круг соматизации:</p>
+<button type="button" class="qo">симптом → страх и щажение → декондиция → усиление симптома</button>
+<button type="button" class="qo">стресс → диагноз → лечение</button>
+<button type="button" class="qo">боль → врач → анализы</button>
+<button type="button" class="qo">тревога → спорт → здоровье</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">4. Диагноз «психосоматический» правомочен…</p>
+<button type="button" class="qo">при характерной личности</button>
+<button type="button" class="qo">при «странных» жалобах</button>
+<button type="button" class="qo">только после исключения органики</button>
+<button type="button" class="qo">по запросу пациента</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 12 ═══════════ -->
@@ -760,6 +1117,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Алкогольная/бензодиазепиновая отмена — медицинская опасность (судороги, делирий): детокс только под наблюдением врача. 2) Передозировка опиоидами — налоксон + скорая. 3) Скрытое употребление у «успешных» пациентов: рутинно спрашивать (количество/дни/утреннее употребление), нормализуя ответ. 4) Стимуляторный «краш» — окно суицидального риска.</div>
 <p class="codes"><b>Запомнить:</b> зависимость = контроль + приоритет + вред + толерантность + отмена; алкогольная отмена смертельно опасна; MI + релапс-профилактика + CM — психологическое ядро; двойной диагноз лечится параллельно.</p>
+<div class="quiz" id="quiz-lec-12">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Пик алкогольного делирия:</p>
+<button type="button" class="qo">6–12 часов трезвости</button>
+<button type="button" class="qo">48–72 часа абстиненции</button>
+<button type="button" class="qo">7–10 день</button>
+<button type="button" class="qo">в опьянении</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Синдром зависимости в МКБ-11 требует:</p>
+<button type="button" class="qo">1 критерий за месяц</button>
+<button type="button" class="qo">2+ критериев за 12 месяцев</button>
+<button type="button" class="qo">3 критерия за неделю</button>
+<button type="button" class="qo">все 6 критериев</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Двойной диагноз (зависимость + депрессия) лечится…</p>
+<button type="button" class="qo">сначала зависимость, потом депрессия</button>
+<button type="button" class="qo">параллельно и интегрированно</button>
+<button type="button" class="qo">только медикаментозно</button>
+<button type="button" class="qo">сначала депрессия</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Мотивационное интервьюирование работает с…</p>
+<button type="button" class="qo">конфронтацией отрицания</button>
+<button type="button" class="qo">амбивалентностью по стадиям изменения</button>
+<button type="button" class="qo">заменой мотивов</button>
+<button type="button" class="qo">наказанием за срыв</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 13 ═══════════ -->
@@ -794,6 +1182,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) ИМТ &lt;15, брадикардия &lt;40, K↓, гипогликемия — неотложная медицина. 2) Скрытые очистки (шрамы на кистях, гипокалиемия, колебания веса) — спрашивать прямо и спокойно. 3) РПП у спортсменов/танцовщиков — «спортивная норма» маскирует болезнь. 4) AN + депрессия + изоляция — суицидальный и соматический риск одновременно.</div>
 <p class="codes"><b>Запомнить:</b> AN = ограничение + страх + искажение образа (6B80); BN = переедание + компенсация (6B81); BED = без компенсации; ARFID — без образа тела; FBT у подростков, CBT-E у взрослых; refeeding-синдром.</p>
+<div class="quiz" id="quiz-lec-13">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Код AN в МКБ-11 и её триада:</p>
+<button type="button" class="qo">6B81: переедание + компенсация + страх</button>
+<button type="button" class="qo">6B80: ограничение + страх набора + искажение образа тела</button>
+<button type="button" class="qo">6B82: переедание без компенсации</button>
+<button type="button" class="qo">6B83: избирательность еды</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Опасность первых дней возобновления питания:</p>
+<button type="button" class="qo">гиперкалиемия</button>
+<button type="button" class="qo">гипофосфатемия и аритмии</button>
+<button type="button" class="qo">гипергликемия</button>
+<button type="button" class="qo">аллергия</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Первая линия терапии AN у подростков:</p>
+<button type="button" class="qo">индивидуальная КПТ</button>
+<button type="button" class="qo">семейная терапия (FBT)</button>
+<button type="button" class="qo">гештальт</button>
+<button type="button" class="qo">гипноз</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. ARFID отличается от AN отсутствием…</p>
+<button type="button" class="qo">страха еды</button>
+<button type="button" class="qo">нарушения образа тела и стремления к худобе</button>
+<button type="button" class="qo">дефицитов питания</button>
+<button type="button" class="qo">избирательности</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 14 ═══════════ -->
@@ -848,6 +1267,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Острое/подострое когнитивное снижение — делирий до тех пор, пока не доказано иное. 2) Психоз у пожилого с паркинсонизмом — тельца Леви: типичные нейролептики опасны. 3) «Изменился характер» в 55–60 — думать о ЛВД, а не о «климаксе характера». 4) Прогрессирующая афазия у женщины 50+ — первичная прогрессирующая афазия, не «невроз».</div>
 <p class="codes"><b>Запомнить:</b> 3 блока Лурии; синдромный анализ (первичный дефект → вторичный); MoCA &gt; MMSE; MCI vs деменция (IADL); диффдиагноз деменция/делирий/депрессия; ЛВД — поведение раньше памяти; тельца Леви — галлюцинации + флюктуации.</p>
+<div class="quiz" id="quiz-lec-14">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Три функциональных блока мозга по Лурии:</p>
+<button type="button" class="qo">приём → переработка → ответ</button>
+<button type="button" class="qo">активация/тонус; приём и переработка; программирование и контроль</button>
+<button type="button" class="qo">правое полушарие/левое/ствол</button>
+<button type="button" class="qo">чувственное/логическое/абстрактное</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. При лобно-височной деменции раньше всего страдают:</p>
+<button type="button" class="qo">эпизодическая память</button>
+<button type="button" class="qo">поведение и личность</button>
+<button type="button" class="qo">походка</button>
+<button type="button" class="qo">зрение</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Триада деменции с тельцами Леви:</p>
+<button type="button" class="qo">тремор покоя, ригидность, брадикинезия</button>
+<button type="button" class="qo">флюктуации, зрительные галлюцинации, паркинсонизм</button>
+<button type="button" class="qo">апраксия, агнозия, афазия</button>
+<button type="button" class="qo">миоклонус, атаксия, эпилепсия</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. MoCA предпочтительнее MMSE, потому что…</p>
+<button type="button" class="qo">короче</button>
+<button type="button" class="qo">чувствительнее к лёгким нарушениям и исполнительным функциям</button>
+<button type="button" class="qo">не требует материалов</button>
+<button type="button" class="qo">проще для пожилых</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 15 ═══════════ -->
@@ -895,6 +1345,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Выписка из психиатрического стационара в первые 1–2 недели — пик риска, максимум поддержки/контакта. 2) Внезапное «спокойствие» после тяжёлой депрессии — проверять, не решение ли это. 3) Раздача вещей, прощальные сообщения, наведение «порядка» — репетиция/подготовка. 4) Попытка в последние месяцы — каждый контакт оценивать заново.</div>
 <p class="codes"><b>Запомнить:</b> continuum мысли→план→попытка; попытка в анамнезе — главный предиктор; план безопасности &gt; контракта; доступ к средствам ограничивать; спрашивать прямо; НССИ ≠ суицид; супервизия обязательна.</p>
+<div class="quiz" id="quiz-lec-15">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Самый сильный индивидуальный предиктор завершённого суицида:</p>
+<button type="button" class="qo">депрессия в анамнезе</button>
+<button type="button" class="qo">предыдущая суицидальная попытка</button>
+<button type="button" class="qo">безработица</button>
+<button type="button" class="qo">одиночество</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Подтверждённая альтернатива «контрактам безопасности»:</p>
+<button type="button" class="qo">обещание не совершать попытку</button>
+<button type="button" class="qo">совместный письменный план безопасности</button>
+<button type="button" class="qo">регулярные СМС</button>
+<button type="button" class="qo">обязательная госпитализация</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Прямой вопрос о суицидальных мыслях:</p>
+<button type="button" class="qo">повышает риск</button>
+<button type="button" class="qo">не повышает риск и открывает разговор</button>
+<button type="button" class="qo">бесполезен</button>
+<button type="button" class="qo">запрещён</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Период максимального риска после выписки из стационара:</p>
+<button type="button" class="qo">первый год</button>
+<button type="button" class="qo">первые 1–2 недели</button>
+<button type="button" class="qo">6 месяцев</button>
+<button type="button" class="qo">второй год</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 16 ═══════════ -->
@@ -958,6 +1439,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Всегда фиксировать суицидальность и доступ к средствам в карте. 2) Любое острое изменение статуса (сознание, психоз, когниции) → органика/вещества прежде психогенного. 3) «Ничего не помню из детства» тотально — осторожно с интерпретациями (и диф. с диссоциацией/симуляцией). 4) Результаты СМИЛ/MMPI без клинического интервью — не диагноз.</div>
 <p class="codes"><b>Запомнить:</b> интервью + MSE + шкалы + эксперимент; качественный анализ &gt; баллов; синдром, а не симптом; гипотезу пытаешься опровергнуть; несколько источников данных.</p>
+<div class="quiz" id="quiz-lec-16">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="2">
+<p class="qt">1. MSE (психический статус) НЕ включает:</p>
+<button type="button" class="qo">внешний вид и психомоторику</button>
+<button type="button" class="qo">мышление и восприятие</button>
+<button type="button" class="qo">группу крови и диагноз по анализам</button>
+<button type="button" class="qo">ориентировку и инсайт</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Методика «10 слов» Лурии оценивает прежде всего…</p>
+<button type="button" class="qo">уровень обобщения</button>
+<button type="button" class="qo">динамику запоминания и тормозимость следов</button>
+<button type="button" class="qo">критичность</button>
+<button type="button" class="qo">темп сенсомоторики</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Стандартизированные шкалы (PHQ-9, Y-BOCS) предназначены для…</p>
+<button type="button" class="qo">постановки диагноза</button>
+<button type="button" class="qo">измерения тяжести и динамики</button>
+<button type="button" class="qo">замены клинического интервью</button>
+<button type="button" class="qo">экспертизы</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Пиктограмма уникальна тем, что исследует…</p>
+<button type="button" class="qo">только память</button>
+<button type="button" class="qo">память + мышление + личностные смыслы</button>
+<button type="button" class="qo">только внимание</button>
+<button type="button" class="qo">моторику</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 17 ═══════════ -->
@@ -1013,6 +1525,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги для самого психолога.</b> 1) Секретность про случаи, «свои» диагнозы без команды, работа без супервизии. 2) Взятие на себя врачебных решений (отмена/назначение препаратов, обещания вылечить). 3) Отношения с пациентом вне рамки. 4) Игнорирование собственного истощения — риск пациенту.</div>
 <p class="codes"><b>Запомнить:</b> фармакология — карта, не специальность; сроки эффекта СИОЗС 2–4 нед; литий — антисуицидальный; акатизия ≠ тревога; экспозиция при тревоге/ОКРР; альянс — общий фактор; этика — рамка всего.</p>
+<div class="quiz" id="quiz-lec-17">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Типичный срок эффекта СИОЗС:</p>
+<button type="button" class="qo">1–2 дня</button>
+<button type="button" class="qo">2–4 недели</button>
+<button type="button" class="qo">3 месяца</button>
+<button type="button" class="qo">полгода</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Акатизия — это…</p>
+<button type="button" class="qo">замедление движений</button>
+<button type="button" class="qo">«внутренняя неусидчивость», которую путают с тревогой</button>
+<button type="button" class="qo">слюнотечение</button>
+<button type="button" class="qo">судорожная готовность</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Литий уникален среди нормотимиков наличием…</p>
+<button type="button" class="qo">антидепрессивного эффекта</button>
+<button type="button" class="qo">антисуицидального эффекта</button>
+<button type="button" class="qo">стимулирующего эффекта</button>
+<button type="button" class="qo">антипсихотического эффекта</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Бензодиазепины при тревожных расстройствах:</p>
+<button type="button" class="qo">пожизненно</button>
+<button type="button" class="qo">короткими курсами: зависимость и помеха экспозиции</button>
+<button type="button" class="qo">только внутривенно</button>
+<button type="button" class="qo">безопасны при длительном приёме</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 
@@ -1057,6 +1600,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Регресс навыков у ребёнка (потеря слов, интереса к общению) — срочная оценка: аутистический регресс, эпилепсия (синдром Ландау—Клеффнера), генетика (реттовский синдром у девочек), метаболические причины. 2) «Гиперактивность» как маска депривации, тревоги привязанности, последствий жестокого обращения — сначала среда. 3) ФАС-подобная дисморфология + «СДВГ» — собрать алкогольный анамнез беременности. 4) Внезапное школьное «падение» успеваемости — депрессия, тревога, насилие/буллинг, апноэ; не «лень».</div>
 <p class="codes"><b>Запомнить:</b> диада РАС + ранние маркеры совместного внимания; СДВГ до 12 лет и в 2+ ситуациях; адаптивность &gt; IQ при УО; вмешательства — ранние + средовые; регресс навыков — всегда срочно; апноэ имитирует СДВГ.</p>
+<div class="quiz" id="quiz-lec-18">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Ранний маркер РАС во 2-м году жизни:</p>
+<button type="button" class="qo">заикание</button>
+<button type="button" class="qo">отсутствие указательного жеста и совместного внимания</button>
+<button type="button" class="qo">гиперактивность</button>
+<button type="button" class="qo">энурез</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Критерий начала СДВГ:</p>
+<button type="button" class="qo">до 7 лет в одной ситуации</button>
+<button type="button" class="qo">до 12 лет, минимум в двух ситуациях</button>
+<button type="button" class="qo">после 18 лет</button>
+<button type="button" class="qo">в любом возрасте</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Первая линия при СДВГ до 6 лет:</p>
+<button type="button" class="qo">стимуляторы</button>
+<button type="button" class="qo">поведенческие программы и обучение родителей</button>
+<button type="button" class="qo">ноотропы</button>
+<button type="button" class="qo">психоанализ</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Регресс речи и навыков у ребёнка требует…</p>
+<button type="button" class="qo">наблюдения до 5 лет</button>
+<button type="button" class="qo">срочной оценки: эпилепсия, генетика, метаболические причины</button>
+<button type="button" class="qo">только логопедии</button>
+<button type="button" class="qo">коррекционных занятий</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 19 ═══════════ -->
@@ -1101,6 +1675,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Суицидальный риск у горюющих повышен месяцами (особенно мужчины, первые полгода) — не «отмахиваться» от «мыслей присоединиться». 2) Внезапный отказ от лечения у тяжёлобольного — оценить депрессию/делирий/боль, часто обратимо. 3) Горе с психотическими симптомами, отличными от культуры (видения голоса умершего у славян — нормативно), — настороженность. 4) «Нереагирующий» родитель после смерти ребёнка — не патология сразу; наблюдать и поддерживать.</div>
 <p class="codes"><b>Запомнить:</b> Worden 4 задачи; двойной процесс; волны vs постоянство (горе/депрессия); 6B42 &gt;6 мес; SPIKES; тотальная боль; делирий ≠ депрессия у умирающего; приверженность — через убеждения и семью.</p>
+<div class="quiz" id="quiz-lec-19">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Отличие нормативного горя от депрессии:</p>
+<button type="button" class="qo">горе — «волны» с триггерами; при депрессии аффект постоянный</button>
+<button type="button" class="qo">при горе нет слёз</button>
+<button type="button" class="qo">депрессия всегда легче</button>
+<button type="button" class="qo">горе длится ровно год</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Пролонгированное горе (6B42) диагностируется не ранее…</p>
+<button type="button" class="qo">1 месяца</button>
+<button type="button" class="qo">6 месяцев (у детей — 12)</button>
+<button type="button" class="qo">2 лет</button>
+<button type="button" class="qo">сразу</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. SPIKES — это протокол…</p>
+<button type="button" class="qo">мышечной релаксации</button>
+<button type="button" class="qo">сообщения плохих новостей</button>
+<button type="button" class="qo">экспозиции</button>
+<button type="button" class="qo">семейной терапии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Терминальный делирий у умирающего — это…</p>
+<button type="button" class="qo">«ухудшение характера»</button>
+<button type="button" class="qo">медицинское состояние: коррекция и покой</button>
+<button type="button" class="qo">норма без реакции</button>
+<button type="button" class="qo">депрессия</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ЛЕКЦИЯ 20 ═══════════ -->
@@ -1136,6 +1741,37 @@ mark{background:var(--mark)}
 
 <div class="flags"><b>Красные флаги.</b> 1) Сонливость за рулём/микросны днём — остановить вождение, срочно к сомнологу (апноэ/нарколепсия). 2) RBD у 50+ (разыгрывает сны) — невролог, риск нейродегенерации. 3) Храпящий ребёнок с «СДВГ» и энурезом — аденоиды/апноэ, ЛОР + полисомнография. 4) Внезапная тяжёлая инсомния у пожилого — искать боль, делирий, депрессию, отмену алкоголя. 5) 3–4 часа сна с приподнятым настроением — гипомания, к психиатру, а не «лечим бессонницу».</div>
 <p class="codes"><b>Запомнить:</b> 7A00 = ≥3×/нед ≥3 мес + дисфункция; 3P и поддерживающее поведение; CBT-I первая линия (стимул-контроль + ограничение сна); апноэ имитирует депрессию/СДВГ; RBD — маркер синуклеинопатий; снижение потребности во сне = мания.</p>
+<div class="quiz" id="quiz-lec-20">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Критерии хронической инсомнии:</p>
+<button type="button" class="qo">≥1 ночь/нед</button>
+<button type="button" class="qo">≥3 ночей/нед ≥3 мес + дневная дисфункция</button>
+<button type="button" class="qo">каждую ночь полгода</button>
+<button type="button" class="qo">только жалоба</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Самые мощные компоненты CBT-I:</p>
+<button type="button" class="qo">гигиена сна</button>
+<button type="button" class="qo">стимул-контроль и ограничение сна</button>
+<button type="button" class="qo">мелатонин</button>
+<button type="button" class="qo">дневной сон</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. 3–4 часа сна с энергией и приподнятым настроением — думать о…</p>
+<button type="button" class="qo">инсомнии</button>
+<button type="button" class="qo">гипомании/мании</button>
+<button type="button" class="qo">апноэ</button>
+<button type="button" class="qo">депрессии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. REM-поведенческое расстройство у мужчины 50+ — маркер…</p>
+<button type="button" class="qo">невроза</button>
+<button type="button" class="qo">синуклеинопатий (Паркинсон, тельца Леви)</button>
+<button type="button" class="qo">алкоголизма</button>
+<button type="button" class="qo">шизофрении</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
 </section>
 
 <!-- ═══════════ ШПАРГАЛКА ═══════════ -->
@@ -1216,6 +1852,52 @@ mark{background:var(--mark)}
       li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);
     });
   });
+function initQuizzes(){
+  [].forEach.call(document.querySelectorAll('.quiz'),function(quiz){
+    var qs=[].slice.call(quiz.querySelectorAll('.qz'));
+    var score=quiz.querySelector('.qscore');
+    var firstTry=qs.map(function(){return null;});
+    function upd(){
+      var ok=firstTry.filter(function(v){return v===true;}).length;
+      var done=qs.filter(function(q){return q.classList.contains('done');}).length;
+      score.textContent='— решено '+done+' из '+qs.length+(done?', с первой попытки: '+ok:'');
+    }
+    qs.forEach(function(q,qi){
+      var a=parseInt(q.getAttribute('data-a'),10);
+      var btns=[].slice.call(q.querySelectorAll('.qo'));
+      btns.forEach(function(b,bi){
+        b.addEventListener('click',function(){
+          if(q.classList.contains('done'))return;
+          var fb=q.querySelector('.qb');
+          if(bi===a){
+            q.classList.add('done');b.classList.add('ok');
+            fb.textContent='✔ Верно.'+(q.getAttribute('data-w')?(' '+q.getAttribute('data-w')):'');
+            fb.classList.add('good');
+            if(firstTry[qi]!==false)firstTry[qi]=true;
+            upd();
+          }else{
+            b.classList.add('bad');b.disabled=true;
+            if(firstTry[qi]===null)firstTry[qi]=false;
+            fb.textContent='✘ Неверно — попробуйте ещё.';
+            fb.classList.remove('good');
+            upd();
+          }
+        });
+      });
+    });
+    var rst=quiz.querySelector('.qreset');
+    if(rst)rst.addEventListener('click',function(){
+      qs.forEach(function(q){
+        q.classList.remove('done');
+        var f=q.querySelector('.qb');f.textContent='';f.classList.remove('good');
+        [].forEach.call(q.querySelectorAll('.qo'),function(b){b.classList.remove('ok');b.classList.remove('bad');b.disabled=false;});
+      });
+      firstTry=qs.map(function(){return null;});upd();
+    });
+    upd();
+  });
+}
+  initQuizzes();
   buildCheat();
   buildNavs();
   show(location.hash.slice(1)||'front');
