@@ -104,6 +104,10 @@ mark{background:var(--mark)}
 .term:hover::after,.term.open::after{opacity:1;visibility:visible}
 .term{position:relative}
 @media print{.term{border-bottom:0}.term::after{display:none}}
+/* мобильная вёрстка */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw>table.t{margin:0}
+.term-r::after{left:auto;right:0}
 /* тесты */
 .quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
 .quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
@@ -970,7 +974,7 @@ mark{background:var(--mark)}
 <ul>
   <li><b>Кернберг</b>: уровни организации личности — невротический / пограничный / психотический (по интеграции идентичности, защитам, тестированию реальности). Пограничный уровень: расщепление, примитивная идеализация/обесценивание, проективная идентификация, диффузная идентичность — при сохранном тестировании реальности.</li>
   <li><b>Linehan</b>, биосоциальная модель: эмоциональная уязвимость × инвалидирующая среда; диалектика «принятие ↔ изменение»; <b>DBT</b> — первая линия при ПРЛ (снижает суицидальность; навыки: дистресс-<span class="term" data-tip="нужно всё больше вещества для прежнего эффекта">толерантность</span>, эмоциональная регуляция, межличностная эффективность, осознанность).</li>
-  <li>Другие подходы: схема-терапия (Янг: режимы, частичные потребности), ментализация (Fonagy & Bateman: MBT), TFP (Кернберг). Все — структурированные, длительные; «поддерживающих бесед» недостаточно.</li>
+  <li>Другие подходы: схема-терапия (Янг: режимы, частичные потребности), ментализация (Fonagy &amp; Bateman: MBT), TFP (Кернберг). Все — структурированные, длительные; «поддерживающих бесед» недостаточно.</li>
 </ul>
 
 <h3>Практические различения</h3>
@@ -1897,6 +1901,7 @@ mark{background:var(--mark)}
       li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);
     });
   });
+function layoutInit(){[].forEach.call(document.querySelectorAll('table.t'),function(t){if(t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains('tw'))return;var w=document.createElement('div');w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();if(r.left>window.innerWidth*0.55)t.classList.add('term-r');});window.addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();t.classList.toggle('term-r',r.left>window.innerWidth*0.55);});});}
 function termInit(){document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;var was=t&&t.classList.contains('open');[].forEach.call(document.querySelectorAll('.term.open'),function(x){x.classList.remove('open');});if(t&&!was)t.classList.add('open');});}
 function initQuizzes(){
   [].forEach.call(document.querySelectorAll('.quiz'),function(quiz){
@@ -1943,6 +1948,7 @@ function initQuizzes(){
     upd();
   });
 }
+  layoutInit();
   termInit();
   initQuizzes();
   buildCheat();

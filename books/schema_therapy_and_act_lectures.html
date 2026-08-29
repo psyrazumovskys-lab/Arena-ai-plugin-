@@ -106,6 +106,10 @@ mark{background:var(--mark)}
 .term:hover::after,.term.open::after{opacity:1;visibility:visible}
 .term{position:relative}
 @media print{.term{border-bottom:0}.term::after{display:none}}
+/* мобильная вёрстка */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw>table.t{margin:0}
+.term-r::after{left:auto;right:0}
 /* тесты */
 .quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
 .quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
@@ -878,7 +882,7 @@ mark{background:var(--mark)}
 <ul>
   <li><b>Язык наблюдения</b>: «Я имею мысль, что…» → «Я замечаю, что я имею мысль, что…» — два шага назад от слияния.</li>
   <li><b>Спасибо, ум</b>: «Спасибо, разум, за эту мысль» — вежливость к уму вместо спора.</li>
-  <li><b>Называние истории</b>: «А, это снова история "я всех подвожу"» — истории получают ярлыки, а не роли.</li>
+  <li><b>Называние истории</b>: «А, это снова история „я всех подвожу“» — истории получают ярлыки, а не роли.</li>
   <li><b>Молоко-молоко-молоко</b>: повторение слова до потери смысла — звук отделяется от значения.</li>
   <li><b>Листья на ручье / поезда метро</b>: мысли как объекты, проплывающие мимо; замечать, не запрыгивая.</li>
   <li><b>Песенка-думалка</b>: мысль пропеть на мотив «в лесу родилась ёлочка» — искусство против авторитета.</li>
@@ -1300,7 +1304,7 @@ mark{background:var(--mark)}
 <ol>
   <li><b>Скрининг остроты</b>: суицидальность, психоз, декомпенсация, зависимость в активе → медицина/стабилизация; потом методы курса.</li>
   <li><b>Слой проблемы</b>: эпизод (депрессия/тревога как состояние) → протокольная КПТ/ACT; паттерн (всю жизнь, отношения, «это я такой») → ST-карта; борьба с опытом при сохранном Я → ACT-карта.</li>
-  <li><b>Формулировка в двух языках</b>: попробуйте случай описать и режимами («Уязвимый + Карающий + Защитник»), и процессами («слияние с историей "я недостоин" питает избегание близости; ценность — доверие»). Совпадение укажет ядро.</li>
+  <li><b>Формулировка в двух языках</b>: попробуйте случай описать и режимами («Уязвимый + Карающий + Защитник»), и процессами («слияние с историей „я недостоин“ питает избегание близости; ценность — доверие»). Совпадение укажет ядро.</li>
   <li><b>Рычаг и тактика</b>: нужна защита внутренней детской части → <span class="term" data-tip="вернуться в воспоминание и «переписать» его финал с защитником">рескриптинг</span>/стулья; нужно вернуть поведение → ценности+действия; нужно пережить недожитое → экспериенциальная работа; нужно понять контекст → концептуализация.</li>
   <li><b>Цикл проверки</b> каждые 4–6 сессий: симптомы, функционирование, <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянс</span>; нет движения — пересмотр концептуализации, а не «усилие того же».</li>
 </ol>
@@ -1439,6 +1443,7 @@ mark{background:var(--mark)}
       li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);
     });
   });
+function layoutInit(){[].forEach.call(document.querySelectorAll('table.t'),function(t){if(t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains('tw'))return;var w=document.createElement('div');w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();if(r.left>window.innerWidth*0.55)t.classList.add('term-r');});window.addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();t.classList.toggle('term-r',r.left>window.innerWidth*0.55);});});}
 function termInit(){document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;var was=t&&t.classList.contains('open');[].forEach.call(document.querySelectorAll('.term.open'),function(x){x.classList.remove('open');});if(t&&!was)t.classList.add('open');});}
 function initQuizzes(){
   [].forEach.call(document.querySelectorAll('.quiz'),function(quiz){
@@ -1485,6 +1490,7 @@ function initQuizzes(){
     upd();
   });
 }
+  layoutInit();
   termInit();
   initQuizzes();
   buildCheat();
