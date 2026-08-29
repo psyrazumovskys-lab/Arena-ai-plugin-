@@ -147,7 +147,7 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
 .hp b{color:var(--acc)}
 .privacy{border-left:4px solid var(--mut);background:var(--bg);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:1rem 0;font-size:.9rem}
 .stepnum{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--acc);color:#fff;font-size:1.1rem;font-weight:700;margin-right:.6rem;transform:translateY(.3rem)}
-@media print{.btnrow{display:none}#btnExportTop{display:none}.qf{border:1px solid #999}}
+@media print{.btnrow{display:none}#btnExportTop{display:none}.nostore{display:none}.qf{border:1px solid #999}}
 </style>
 </head>
 <body>
@@ -893,6 +893,11 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
   var KEY='wda12-client-v1';
   var store={};
   try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){store={};}
+var okStore=true;try{localStorage.setItem('__wdatest','1');localStorage.removeItem('__wdatest');}catch(e){okStore=false;}
+if(!okStore){var b=document.createElement('div');b.className='nostore';
+b.style.cssText='background:#b3261e;color:#fff;padding:.6rem 1rem;font-size:.9rem;line-height:1.4';
+b.textContent='⚠ Автосохранение в этом окне браузера НЕ работает (режим инкогнито или запрет хранения данных). Ответы пропадут после закрытия страницы. Откройте тетрадь в обычном окне браузера — и проверьте, что это предупреждение исчезло.';
+document.body.insertBefore(b,document.body.firstChild);}
   function saveAll(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
   var fields=[].slice.call(document.querySelectorAll('.qf'));
   var checks=[].slice.call(document.querySelectorAll('.chk input[type=checkbox]'));
