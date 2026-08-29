@@ -912,6 +912,7 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
   function renderMap(){
     var host=document.getElementById('mapStats');if(!host)return;
     var html='';var totA=0,totF=0;
+    ['0'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});if(!fs.length)return;var a=fs.filter(function(f){return f.value.trim();}).length;totA+=a;totF+=fs.length;html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>Подготовка</b> — ответов: '+a+'/'+fs.length+'</div>';});
     for(var st=1;st<=12;st++){
       var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
       var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st);});
@@ -920,11 +921,12 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
       totA+=a;totF+=fs.length;
       html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>Шаг '+st+'</b> — ответов: '+a+'/'+fs.length+(cs.length?(' · чек: '+cc+'/'+cs.length):'')+'</div>';
     }
-    ['0','фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});if(!fs.length)return;var a=fs.filter(function(f){return f.value.trim();}).length;totA+=a;totF+=fs.length;html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>'+(st=='0'?'Подготовка':'После курса')+'</b> — ответов: '+a+'/'+fs.length+'</div>';});
+    ['фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});if(!fs.length)return;var a=fs.filter(function(f){return f.value.trim();}).length;totA+=a;totF+=fs.length;html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>После курса</b> — ответов: '+a+'/'+fs.length+'</div>';});
     host.innerHTML=html+'<p style="margin-top:.7rem">Всего заполнено: <b>'+totA+'</b> из '+totF+' полей.</p>';
   }
   document.getElementById('btnExport').addEventListener('click',function(){
     var lines=['ВДА · Рабочая тетрадь (12 шагов) — мои ответы','Экспорт: '+new Date().toLocaleString('ru-RU'),''];
+    ['0'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ ПОДГОТОВКА ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
     for(var st=1;st<=12;st++){
       var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
       var any=fs.some(function(f){return f.value.trim();});
@@ -934,7 +936,7 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
       var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st)&&c.checked;});
       if(cs.length){lines.push('Чек «шаг прожит»: '+cs.length+' из '+checks.filter(function(c){return c.getAttribute('data-step')==String(st);}).length);lines.push('');}
     }
-    ['0','фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ '+(st=='0'?'ПОДГОТОВКА':'ПОСЛЕ КУРСА')+' ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
+    ['фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ ПОСЛЕ КУРСА ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
     if(lines.length<4){alert('Пока нечего экспортировать — заполните хотя бы одно поле.');return;}
     var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/plain;charset=utf-8'});
     var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wda_12_shagov_moi_otvety.txt';a.click();URL.revokeObjectURL(a.href);
