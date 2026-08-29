@@ -933,7 +933,10 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
       lines.push('═══ ШАГ '+st+' ═══');
       fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});
       var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st)&&c.checked;});
-      if(cs.length){lines.push('Чек «шаг прожит»: '+cs.length+' из '+checks.filter(function(c){return c.getAttribute('data-step')==String(st);}).length);lines.push('');}
+      var all=checks.filter(function(c){return c.getAttribute('data-step')==String(st);});
+      if(all.length){lines.push('Чек «шаг прожит»: '+cs.length+' из '+all.length);
+        all.forEach(function(c){var lb=document.querySelector('label[for="'+c.id+'"]');lines.push((c.checked?'[✓] ':'[ ] ')+(lb?lb.textContent.replace(/\s+/g,' ').trim():c.id));});
+        lines.push('');}
     }
     ['фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ ПОСЛЕ КУРСА ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
     if(lines.length<4){alert('Пока нечего экспортировать — заполните хотя бы одно поле.');return;}
