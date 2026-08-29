@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ВДА · Рабочая тетрадь · Шаги 1–3</title>
+<meta name="description" content="Рабочая тетрадь для прохождения шагов 1–3 программы ВДА (взрослые дети алкоголиков и дисфункциональных семей): простые вопросы, поля для записей с автосохранением, экспорт и подготовка к встречам с психологом.">
+<style>
+
+:root{
+  --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1e21; --mut:#6b7075; --line:#e3e3de;
+  --acc:#3b4fd8; --acc-soft:#eef0fc; --flag:#b3261e; --flag-soft:#fdf0ef;
+  --code:#eef1ee; --mark:#ffe9a8;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#141517; --panel:#1c1e21; --ink:#e8e8e4; --mut:#9aa0a6; --line:#2e3134;
+    --acc:#8f9dff; --acc-soft:#23263a; --flag:#ff8a80; --flag-soft:#33201e; --code:#232527; --mark:#5c4d1e; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:.7rem;
+  background:var(--panel);border-bottom:1px solid var(--line);padding:.55rem 1rem}
+.bar strong{font-size:1rem}
+.bar-sub{color:var(--mut);font-size:.85rem}
+.counter{margin-left:auto;color:var(--mut);font-size:.8rem;white-space:nowrap}
+.burger{cursor:pointer;font-size:1.15rem;padding:.1rem .5rem;border:1px solid var(--line);border-radius:6px;user-select:none}
+#menu{display:none}
+
+.layout{display:flex;min-height:calc(100vh - 52px)}
+.toc{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
+  padding:1rem .9rem;position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto}
+.toc input{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;
+  background:var(--bg);color:var(--ink);margin-bottom:.7rem;font:inherit;font-size:.9rem}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:lec}
+.toc li{margin:.05rem 0}
+.toc li a{display:flex;gap:.55rem;padding:.32rem .5rem;border-radius:7px;color:var(--ink);font-size:.9rem;line-height:1.35}
+.toc li a em{font-style:normal;color:var(--mut);min-width:1.4rem;text-align:right;font-variant-numeric:tabular-nums}
+.toc li a:hover{background:var(--bg);text-decoration:none}
+.toc li.on a{background:var(--acc-soft);color:var(--acc);font-weight:600}
+.toc li.on a em{color:var(--acc)}
+.toc li.hide{display:none}
+
+main{flex:1;min-width:0;padding:2rem 1.4rem 5rem}
+.lec-wrap{max-width:780px;margin:0 auto}
+section.lec{display:none}
+section.lec.act{display:block;animation:fade .18s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+h2{display:flex;align-items:baseline;gap:.8rem;font-size:1.45rem;line-height:1.25;margin:.2rem 0 1.1rem}
+h2 .num{flex:0 0 auto;width:2.1rem;height:2.1rem;border-radius:8px;background:var(--acc);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem;transform:translateY(.25rem)}
+h3{font-size:1.06rem;margin:1.4rem 0 .45rem;color:var(--ink)}
+p{margin:.5rem 0}
+ul,ol{margin:.45rem 0 .7rem;padding-left:1.35rem}
+li{margin:.22rem 0}
+li::marker{color:var(--mut)}
+
+.core{background:var(--acc-soft);border-left:4px solid var(--acc);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:.9rem 0 1.2rem;font-size:.97rem}
+.flags{background:var(--flag-soft);border-left:4px solid var(--flag);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:1.2rem 0 .6rem;font-size:.95rem}
+.codes{background:var(--code);border-radius:8px;padding:.5rem .8rem;font-size:.88rem;margin:1rem 0}
+
+table.t{border-collapse:collapse;width:100%;margin:.7rem 0 1rem;font-size:.92rem}
+table.t th,table.t td{border:1px solid var(--line);padding:.42rem .6rem;text-align:left;vertical-align:top}
+table.t th{background:var(--bg);font-size:.86rem;letter-spacing:.02em}
+dl.df{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.6rem 0 1rem;font-size:.94rem}
+dl.df dt{font-weight:600}
+dl.df dd{margin:0}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .35rem;font-size:.82em;background:var(--bg)}
+.lecnav{display:flex;gap:.6rem;justify-content:space-between;margin-top:2.2rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.92rem;flex-wrap:wrap}
+.lecnav a{padding:.35rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.lecnav a:hover{text-decoration:none;border-color:var(--acc);color:var(--acc)}
+.lecnav .cnt{color:var(--mut);align-self:center}
+mark{background:var(--mark)}
+.titul h1{font-size:1.9rem;line-height:1.2;margin:.4rem 0 .3rem}
+.titul .sub{color:var(--mut);font-size:1.05rem;margin-bottom:1.4rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.4rem}
+.meta span{border:1px solid var(--line);border-radius:999px;padding:.18rem .75rem;font-size:.85rem;background:var(--panel);color:var(--mut)}
+
+#cheatList>div{border-bottom:1px dashed var(--line);padding:.55rem 0;margin:0}
+#cheatList h3{margin:.35rem 0 .3rem;color:var(--acc)}
+@media (max-width:920px){
+  .toc{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  #menu:checked ~ .layout .toc{transform:none}
+  main{padding:1.2rem .9rem 4rem}
+}
+@media print{
+  .bar,.toc,.lecnav,.counter{display:none!important}
+  body{background:#fff;color:#000}
+  .layout{display:block}
+  section.lec{display:block!important;page-break-before:always;border-bottom:1px solid #ccc;padding-top:1rem}
+  section#front{page-break-before:avoid}
+  .core,.flags,.codes,table.t,dl.df{background:#fff!important}
+}
+/* критерии, примеры, термины */
+.crit{border:1px solid var(--line);border-left:4px solid var(--mut);border-radius:0 10px 10px 0;background:var(--bg);padding:.6rem .85rem;margin:1.1rem 0 .4rem;font-size:.9rem}
+.ex{border-left:4px solid var(--acc);background:var(--acc-soft);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:.8rem 0;font-size:.92rem}
+.term{border-bottom:1px dashed var(--acc);cursor:help}
+.term::after{content:attr(data-tip);position:absolute;left:0;top:130%;z-index:50;width:min(340px,78vw);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font-size:.85rem;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18);opacity:0;visibility:hidden;transition:opacity .12s;text-align:left;font-weight:400;white-space:normal}
+.term:hover::after,.term.open::after{opacity:1;visibility:visible}
+.term{position:relative}
+@media print{.term{border-bottom:0}.term::after{display:none}}
+/* мобильная вёрстка */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw>table.t{margin:0}
+.term-r::after{left:auto;right:0}
+.termt{border-bottom:1px dashed var(--acc);cursor:help}
+/* тесты */
+.quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
+.quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
+.qscore{font-size:.8rem;color:var(--mut);font-weight:400}
+.qz{margin:.55rem 0;padding:.55rem 0 .35rem;border-top:1px dashed var(--line)}
+.qt{margin:.05rem 0 .45rem;font-size:.95rem}
+.qo{display:block;width:100%;text-align:left;margin:.22rem 0;padding:.42rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--acc)}
+.qo.ok{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600;cursor:default}
+.qo.bad{background:var(--flag-soft);border-color:var(--flag);color:var(--flag);opacity:.8;cursor:default}
+.qz.done .qo{cursor:default}
+.qb{margin:.35rem 0 0;font-size:.85rem;color:var(--mut);min-height:1em}
+.qb.good{color:var(--acc)}
+.qreset{margin-top:.6rem;border:0;background:none;color:var(--mut);cursor:pointer;font-size:.8rem;text-decoration:underline;padding:0}
+@media print{.quiz{display:none!important}}
+
+/* тетрадь */
+.qf{width:100%;min-height:74px;margin:.3rem 0 .7rem;padding:.5rem .65rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem;line-height:1.5;resize:vertical}
+.qf:focus{outline:2px solid var(--acc);outline-offset:1px}
+.qlbl{font-size:.94rem;margin:.75rem 0 .1rem;font-weight:600}
+.qlbl .no{color:var(--mut);font-weight:400}
+.facts{color:var(--mut);font-weight:400;font-size:.85em}
+.sav{font-size:.75rem;color:var(--mut);margin-left:.4rem;font-weight:400}
+details.deep{border:1px dashed var(--line);border-radius:10px;padding:.5rem .8rem;margin:.8rem 0;background:var(--bg)}
+details.deep summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--mut)}
+details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
+.chk{list-style:none;padding:0;margin:.4rem 0}
+.chk li{margin:.25rem 0;font-size:.93rem}
+.chk input{margin-right:.5rem;transform:translateY(1px)}
+.btnrow{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:.45rem .85rem;font:inherit;font-size:.88rem;cursor:pointer}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.hp{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .6rem}
+.hp span{border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.84rem;background:var(--panel)}
+.hp b{color:var(--acc)}
+.privacy{border-left:4px solid var(--mut);background:var(--bg);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:1rem 0;font-size:.9rem}
+.stepnum{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--acc);color:#fff;font-size:1.1rem;font-weight:700;margin-right:.6rem;transform:translateY(.3rem)}
+@media print{.btnrow{display:none}.qf{border:1px solid #999}}
+</style>
+</head>
+<body>
+<input type="checkbox" id="menu">
+<header class="bar">
+  <label class="burger" for="menu" title="Оглавление (M)">☰</label>
+  <strong>ВДА · шаги 1–3 · тетрадь</strong>
+  <span class="bar-sub">рабочая тетрадь</span>
+  <span class="counter" id="counter"></span>
+</header>
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Оглавление">
+  <input type="search" id="q" placeholder="Фильтр…" autocomplete="off">
+  <ol id="tocList">
+    <li data-t="front"><a href="#front">Как работать с тетрадью</a></li>
+    <li data-t="wda"><a href="#wda">Контекст: что такое ВДА</a></li>
+    <li data-t="s1"><a href="#s1"><em>1</em>Шаг 1 · Бессилие и неуправляемость</a></li>
+    <li data-t="s2"><a href="#s2"><em>2</em>Шаг 2 · Опора больше одиночества</a></li>
+    <li data-t="s3"><a href="#s3"><em>3</em>Шаг 3 · Решение и передача руля</a></li>
+    <li data-t="s4"><a href="#s4"><em>4</em>Шаг 4 · каркас</a></li>
+    <li data-t="s5"><a href="#s5"><em>5</em>Шаг 5 · каркас</a></li>
+    <li data-t="s6"><a href="#s6"><em>6</em>Шаг 6 · каркас</a></li>
+    <li data-t="s7"><a href="#s7"><em>7</em>Шаг 7 · каркас</a></li>
+    <li data-t="s8"><a href="#s8"><em>8</em>Шаг 8 · каркас</a></li>
+    <li data-t="s9"><a href="#s9"><em>9</em>Шаг 9 · каркас</a></li>
+    <li data-t="s10"><a href="#s10"><em>10</em>Шаг 10 · каркас</a></li>
+    <li data-t="s11"><a href="#s11"><em>11</em>Шаг 11 · каркас</a></li>
+    <li data-t="s12"><a href="#s12"><em>12</em>Шаг 12 · каркас</a></li>
+    <li data-t="map"><a href="#map">★ Моя карта + экспорт</a></li>
+  </ol>
+</nav>
+<main>
+<div class="lec-wrap">
+
+<section class="lec titul" id="front">
+  <h1>ВДА: шаги 1–3 · рабочая тетрадь</h1>
+  <p class="sub">Заполняете вы · проходите вместе с психологом · 15–25 минут на шаг</p>
+  <div class="meta"><span>простой язык · пояснения к каждому вопросу</span><span>без конфессионального языка</span><span>данные — только в вашем браузере</span></div>
+
+  <h3>Как устроена работа</h3>
+  <ul>
+    <li><b>Основные вопросы</b> (обязательные): 4 вопроса с полями для ответа — это и есть прохождение шага. Пишите коротко, тезисами, как в телеграмме; здесь не оценивают стиль.</li>
+    <li><b>«Глубже»</b> (опционально): раскрывающийся блок, если хочется копнуть — образные упражнения, письмо. Не обязателен для «зачёта» шага.</li>
+    <li><b>Поле «для встречи»</b> (по желанию): в каждом шаге — место, где можно записать, что вы хотите обсудить с психологом на следующей встрече: что заметили, что было трудным.</li>
+    <li><b>Пояснения и примеры</b>: под вопросами — подсказки, а внутри полей серым шрифтом «напр.: …». Если вопрос всё равно непонятен — отвечайте своими словами: ваш ответ важнее «правильных слов».</li>
+    <li><b>Чек «шаг прожит»</b>: 3–4 наблюдаемых признака, что шаг работает в жизни, а не только записан.</li>
+    <li><b>Микропрактика</b>: одно действие на неделю, 5–10 минут.</li>
+  </ul>
+
+  <h3>Приватность и данные</h3>
+  <div class="privacy">Всё, что вы пишете, сохраняется <b>только в этом браузере</b> (localStorage) и никуда не отправляется. Показывать ли записи психологу — решаете только вы. При желании можно сделать <b>экспорт в файл</b> и распечатать отдельные шаги для обсуждения. Кнопки — на странице «Моя карта»; там же <b>полная очистка</b>. Печатная версия — Ctrl+P.</div>
+
+  <h3>Рамка безопасности (прочитать до начала)</h3>
+  <ul>
+    <li>Шаги поднимают материал семьи происхождения. Если сильное напряжение или боль (8–9 из 10) держится дольше часа и не снижается — остановитесь: отложите тетрадь, используйте свои опоры (дыхание, движение, звонок живому человеку). Это нормальная динамика, не «провал».</li>
+    <li>Тетрадь дополняет встречи с вашим психологом и группу ВДА, но не заменяет их. Тяжёлое из тетради приносите на встречу — не нужно справляться в одиночку.</li>
+    <li>Правило темпа: лучше 20 минут трижды в неделю, чем три часа подряд. «Достаточно хорошо» — рабочий стандарт здесь.</li>
+  </ul>
+  <p class="codes">Формулировки шагов даны в двух версиях: классической (как в АА/ВДА) и рабочей (простыми словами). Вы имеете право на собственную формулировку — поле для неё есть в каждом шаге.</p>
+</section>
+
+<section class="lec" id="wda">
+<h2><span class="stepnum">?</span>Контекст: что такое ВДА — коротко</h2>
+<div class="core"><b>Ядро.</b> ВДА (ACA, «Взрослые Дети Алкоголиков», шире — взрослых из дисфункциональных семей) — программа 12 шагов для тех, кто вырос в семье с зависимостью/хаосом и вынес из детства выживательные стратегии: гиперконтроль, гиперответственность, страх конфликтов, «спасение» других, обесценивание своих нужд. Работа по шагам — не «лечение воспоминаний», а перестройка этих стратегий во взрослой жизни.</div>
+
+<h3>Типичные «наследства» семьи происхождения</h3>
+<ul>
+  <li><b>Гиперконтроль</b>: если я не прослежу — случится катастрофа (и в детстве это часто было правдой).</li>
+  <li><b>Гиперответственность</b>: я отвечаю за настроение и последствия других; свои нужды — потом.</li>
+  <li><b>Забота как валюта</b>: люблю = спасаю; попросить помощь — стыдно и страшно.</li>
+  <li><b>Слияние с чужими оценками</b>: трудно понять, чего хочу я; «удобный» вместо «живой».</li>
+  <li><b>Постоянная насторожённость</b>: тело всегда «на страже», будто опасность рядом; расслабиться и отдыхать не получается.</li>
+</ul>
+<p>Роли, которые часто узнают в себе: «семейный герой» (достижения вместо детства), «ответственный родитель» младших, «бунтарь/козёл отпущения», «невидимый ребёнок», «шут» (разряжающий напряжение). Роль — не приговор, а выжившая стратегия со своей ценой.</p>
+
+<h3>Тетрадь и ваш психолог</h3>
+<ul>
+  <li>Шаги вы проходите <b>самостоятельно между встречами</b>: читаете пояснение, отвечаете на вопросы, пробуете микропрактику недели.</li>
+  <li>На встрече обсуждаете то, что записали в поле «для встречи» — и всё, чем захотели поделиться.</li>
+  <li>Психолог не увидит ваши записи сам: что показать или рассказать — решаете вы.</li>
+</ul>
+<div class="ex"><b>Пример.</b> Мужчина, который с детства «держал всё на себе», замечает: звонит матери дважды в день «проверить», делает отчёт за коллегу, вечером падает без сил. Он не «плохой» и не «правильный» — он с детства выучил: если не я прослежу, случится беда. Это и есть материал шага 1.</div>
+<p class="codes">Дальше — шаги. Помните темп: 15–25 минут, телеграфный стиль, «достаточно хорошо».</p>
+</section>
+
+<section class="lec" id="s1">
+<h2><span class="stepnum">1</span>Шаг 1 · Бессилие и неуправляемость</h2>
+<p class="codes">Классически (АА): «Мы признали, что мы бессильны перед алкоголем — что наши жизни стали неуправляемыми». В ВДА-акцент: бессилие перед <i>чужой</i> болезнью и последствиями взросления, а не перед своим употреблением.</p>
+<div class="core"><b>Что этот шаг делает (рабочий перевод).</b> Это честный аудит контроля: перечислить, что я годами пытался(ась) контролировать, признать результат и разделить «моё / не моё». Простыми словами: я отвечаю за свою жизнь, но не могу управлять другими людьми и своим прошлым (об этом писал Ялом). И это проверка моих главных убеждений: «если не я — катастрофа» и «просить помощь — значит быть слабым» (такие убеждения изучал Бек).</div>
+
+<p class="qlbl"><span class="no">1.1</span> Что я пытался(ась) контролировать годами — и что из этого вышло? <span class="facts">(факты, не выводы: 3–4 строки, телеграфно)</span><span class="sav" data-for="f-s1-q1"></span></p>
+<textarea class="qf" id="f-s1-q1" data-step="1" data-q="1.1. Что я контролировал(а) годами и что вышло" placeholder="напр.: настроение матери → потом муж/партнёр → оценки детей; вышло: усталость 8/10, обиды, «никто не благодарит»…"></textarea>
+
+<p class="qlbl"><span class="no">1.2</span> Мой список «работаю за других» на этой неделе: где я делаю чужую работу или пытаюсь предотвратить чужие ошибки? <span class="sav" data-for="f-s1-q2"></span></p>
+<textarea class="qf" id="f-s1-q2" data-step="1" data-q="1.2. Где я делаю чужую работу (примеры недели)" placeholder="напр.: звоню в школу за младшего, переделываю отчёт коллеги, напоминаю взрослому мужу о его враче"></textarea>
+
+<p class="qlbl"><span class="no">1.3</span> Три колонки: на 100 % в моей власти / частично / вовсе нет. <span class="sav" data-for="f-s1-q3"></span></p>
+<textarea class="qf" id="f-s1-q3" data-step="1" data-q="1.3. Моё на 100% / частично / не моё" placeholder="моё: мои слова, мои решения, моё расписание · частично: отношения, работа · не моё: чувства других, их выбор, прошлое"></textarea>
+
+<p class="qlbl"><span class="no">1.4</span> Во что мне обходится роль «того, кто всегда справляется»? <span class="facts">(здоровье, отношения, деньги, радость)</span> <span class="sav" data-for="f-s1-q4"></span></p>
+<textarea class="qf" id="f-s1-q4" data-step="1" data-q="1.4. Цена роли «я справляюсь» (тело, отношения, радость)"></textarea>
+
+<p class="qlbl"><span class="no">1.★</span> Для встречи с психологом: что я заметил(а), проходя этот шаг? Что было самым трудным? <span class="sav" data-for="f-s1-c"></span></p>
+<textarea class="qf" id="f-s1-c" data-step="1" data-q="1.для встречи. Что заметил(а), что было трудным"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Когда я впервые стал(а) «взрослым» в семье? Сцена в 3–5 строк. <span class="sav" data-for="f-s1-d1"></span></p>
+<textarea class="qf" id="f-s1-d1" data-step="1" data-q="1.глубже. Когда я стал(а) взрослым в семье"></textarea>
+<p class="qlbl">Д.2 Письмо себе-ребёнку из той сцены: 5 строк. Не отправляется, никому не показывается. <span class="sav" data-for="f-s1-d2"></span></p>
+<textarea class="qf" id="f-s1-d2" data-step="1" data-q="1.глубже. Письмо себе-ребёнку"></textarea>
+<p class="qlbl">Д.3 Моя собственная формулировка шага 1. <span class="sav" data-for="f-s1-d3"></span></p>
+<textarea class="qf" id="f-s1-d3" data-step="1" data-q="1.глубже. Моя формулировка шага 1" placeholder="напр.: «Я не управляю чувствами и выбором других людей. Мой контроль стоил мне дороже, чем давал»"></textarea>
+</details>
+
+<h3>Чек «шаг прожит» (отметьте, когда станет правдой)</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s1-1" data-step="1"><label for="c-s1-1">Называю 3 вещи вне моего контроля без «да, но…»</label></li>
+<li><input type="checkbox" id="c-s1-2" data-step="1"><label for="c-s1-2">Вижу разницу: помочь человеку — или сделать всё вместо него (замечаю это в моменте)</label></li>
+<li><input type="checkbox" id="c-s1-3" data-step="1"><label for="c-s1-3">Заметил(а) импульс вмешаться и хотя бы раз выбрал(а) не вмешиваться</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> «Эксперимент невмешательства»: раз в день — ситуация, где обычно поправляю/опережаю/спасаю. Не вмешаться, записать одной строкой: что произошло. (Цель — данные, а не подвиг.)</div>
+</section>
+<section class="lec" id="s2">
+<h2><span class="stepnum">2</span>Шаг 2 · Опора больше одиночества</h2>
+<p class="codes">Классически: «Пришли к убеждению, что только Сила больше нашей собственной может вернуть нам здравомыслие». В ВДА-акцент: надежда, что опора возможна — я не обязан(а) вытаскивать себя один.</p>
+<div class="core"><b>Что этот шаг делает.</b> Возвращает надежду и находит ресурс больше одиночного «я». Для выросшего в хаосе «доверять» = «подставиться» — шаг проверяет это убеждение на опыте. Простыми словами: одиночество не лечится самодостаточностью — оно лечится встречей с людьми. А убеждение «просить помощь — значит быть обузой» проверяется на опыте: просишь — и мир не рушится.</div>
+
+<h3>Моё рабочее определение «Силы больше меня» (слот выбора)</h3>
+<div class="hp"><span>люди, которым я не безразличен(на)</span><span>группа ВДА / коллеги</span><span>мои ценности</span><span>природа</span><span>Бог, как я Его понимаю</span><span>процесс/время</span><span>«пока не знаю, но — не я один»</span></div>
+<p class="qlbl"><span class="no">2.1</span> Что уже однажды вытащило меня, когда я не справлялся(ась) в одиночку? (люди, практика, место, опыт) <span class="sav" data-for="f-s2-q1"></span></p>
+<textarea class="qf" id="f-s2-q1" data-step="2" data-q="2.1. Что уже вытащило меня, когда я не справлялся(ась) один"></textarea>
+
+<p class="qlbl"><span class="no">2.2</span> Выбираю рабочее определение опоры (из списка выше — или своё): <span class="sav" data-for="f-s2-q2"></span></p>
+<textarea class="qf" id="f-s2-q2" data-step="2" data-q="2.2. Моё определение «Силы больше меня»" placeholder="напр.: «люди + мой сон и тело: когда я выспавшийся, я не один на один с хаосом»"></textarea>
+
+<p class="qlbl"><span class="no">2.3</span> Здравомыслие — то есть трезвый взгляд на свою жизнь: 3 признака, по которым я пойму, что оно вернулось. <span class="sav" data-for="f-s2-q3"></span></p>
+<textarea class="qf" id="f-s2-q3" data-step="2" data-q="2.3. Три признака моего здравомыслия" placeholder="напр.: засыпаю без «дум о делах», говорю «нет» без вины, смеюсь вслух"></textarea>
+
+<p class="qlbl"><span class="no">2.4</span> Кому или чему я уже доверяю на 7 из 10 (по шкале доверия от 0 до 10) — и что мешает доверять на 8? <span class="sav" data-for="f-s2-q4"></span></p>
+<textarea class="qf" id="f-s2-q4" data-step="2" data-q="2.4. Кому доверяю на 7/10 и что мешает на 8"></textarea>
+
+<p class="qlbl"><span class="no">2.★</span> Для встречи с психологом: что я заметил(а)? Было ли трудно попросить о помощи — и как это прошло? <span class="sav" data-for="f-s2-c"></span></p>
+<textarea class="qf" id="f-s2-c" data-step="2" data-q="2.для встречи. Что заметил(а), как прошла просьба о помощи"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Мои опоры: люди / практики / места — минимум 5, по 1–2 слова. <span class="sav" data-for="f-s2-d1"></span></p>
+<textarea class="qf" id="f-s2-d1" data-step="2" data-q="2.глубже. Список опор"></textarea>
+<p class="qlbl">Д.2 Одно имя + одна просьба, с которой могу обратиться на этой неделе. <span class="sav" data-for="f-s2-d2"></span></p>
+<textarea class="qf" id="f-s2-d2" data-step="2" data-q="2.глубже. Имя и просьба на неделю"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s2-1" data-step="2"><label for="c-s2-1">Определение опоры записано своими словами</label></li>
+<li><input type="checkbox" id="c-s2-2" data-step="2"><label for="c-s2-2">Есть минимум один живой человек/практика в списке опор</label></li>
+<li><input type="checkbox" id="c-s2-3" data-step="2"><label for="c-s2-3">Один раз попросил(а) помощь или принял(а) её, не «отработав» тут же</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одна настоящая просьба о помощи (не «справлюсь сам», не бартер «я тебе — ты мне»). Записать одной строкой: что почувствовал(а) ДО и ПОСЛЕ.</div>
+</section>
+
+<section class="lec" id="s3">
+<h2><span class="stepnum">3</span>Шаг 3 · Решение и передача руля</h2>
+<p class="codes">Классически: «Приняли решение препоручить нашу волю и нашу жизнь Богу, как мы Его понимали». В ВДА-акцент: готовность действовать иначе — не «сдался», а «перестал лично управлять каждым событием своей и чужой жизни».</p>
+<div class="core"><b>Что этот шаг делает.</b> Превращает выводы шагов 1–2 в решение: с этого момента руль моей жизни — у меня, но «диспетчерская чужих жизней» закрывается. Компасом вместо контроля становятся ценности. Простыми словами: свобода — это выбор там, где я реально могу выбирать; за своё отвечаю, не-своё отпускаю. И решения теперь не из тревоги («скорее что-то делать!»), а по направлению («куда я вообще иду?»). Важно: передача воли — не пассивность и не попустительство; это отказ от сверхконтроля при сохранении моей части работы.</div>
+
+<p class="qlbl"><span class="no">3.1</span> Что изменится на неделе, если я перестану управлять всеми и вся («закрою свою диспетчерскую»)? Три конкретных сценария. <span class="sav" data-for="f-s3-q1"></span></p>
+<textarea class="qf" id="f-s3-q1" data-step="3" data-q="3.1. Что изменится, если я перестану управлять всеми" placeholder="напр.: не звоню маме дважды в день «проверить», не переделываю за коллегой, ложусь до полуночи"></textarea>
+
+<p class="qlbl"><span class="no">3.2</span> Что для меня по-настоящему важно — 2–3 ценности; они, как компас, подсказывают решения (напр.: честность, близость, забота о своём теле). <span class="sav" data-for="f-s3-q2"></span></p>
+<textarea class="qf" id="f-s3-q2" data-step="3" data-q="3.2. Две-три мои ценности-компаса"></textarea>
+
+<p class="qlbl"><span class="no">3.3</span> Как через месяц я и окружающие поймём, что решение работает? Признаки, которые видно глазами, а не «чувствуется внутри». <span class="sav" data-for="f-s3-q3"></span></p>
+<textarea class="qf" id="f-s3-q3" data-step="3" data-q="3.3. Наблюдаемые признаки через месяц"></textarea>
+
+<p class="qlbl"><span class="no">3.4</span> Границы ожиданий: чего я жду от «передачи» — и чего сознательно НЕ жду. <span class="sav" data-for="f-s3-q4"></span></p>
+<textarea class="qf" id="f-s3-q4" data-step="3" data-q="3.4. Чего жду и чего не жду от передачи воли" placeholder="жду: энергии, сна, меньшей тревоги · не жду: что другие изменятся, что тревога уйдёт навсегда, что всё решится само"></textarea>
+
+<p class="qlbl"><span class="no">3.★</span> Для встречи с психологом: как прошла неделя с решением? Что было легче, что — сложнее? <span class="sav" data-for="f-s3-c"></span></p>
+<textarea class="qf" id="f-s3-c" data-step="3" data-q="3.для встречи. Как прошла неделя с решением"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Образ: кто до сих пор держал руль моей жизни? 2–3 образа без цензуры. <span class="sav" data-for="f-s3-d1"></span></p>
+<textarea class="qf" id="f-s3-d1" data-step="3" data-q="3.глубже. Кто держал руль (образы)"></textarea>
+<p class="qlbl">Д.2 Что я чувствую, представив, что передаю руль? (телесно, 2–3 строки) <span class="sav" data-for="f-s3-d2"></span></p>
+<textarea class="qf" id="f-s3-d2" data-step="3" data-q="3.глубже. Чувство при передаче руля"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s3-1" data-step="3"><label for="c-s3-1">Сформулировал(а) 2 ценности-компаса</label></li>
+<li><input type="checkbox" id="c-s3-2" data-step="3"><label for="c-s3-2">Одно решение недели принято «по ценности», а не «по тревоге»</label></li>
+<li><input type="checkbox" id="c-s3-3" data-step="3"><label for="c-s3-3">Одно «не-моё» дело реально передано: делегировано/отменено/спрошен другой</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одно дело из «зоны не-моего» передать (делегировать, не сделать, спросить другого). Плюс ежедневный вечерний чек в одну строку: «сегодня руль был у…».</div>
+</section>
+
+<section class="lec" id="s4">
+<h2><span class="stepnum">4</span>Шаг 4 · каркас</h2>
+<p class="codes">«Глубоко и бесстрашно оценили свою нравственную природу» — по-рабочему: честный список — где был(а) неправ(а) я и где обидели меня; без самобичевания.</p>
+<p class="qlbl"><span class="no">4.1</span> О чём я знаю, но до сих пор не смотрю прямо? <span class="sav" data-for="f-s4-q1"></span></p>
+<textarea class="qf" id="f-s4-q1" data-step="4" data-q="4.1. О чём я знаю, но не смотрю"></textarea>
+<p class="codes">Полная версия шага (структурированная таблица: страх — защита — цена — альтернатива) — по запросу, добавим отдельной страницей.</p>
+</section>
+
+<section class="lec" id="s5">
+<h2><span class="stepnum">5</span>Шаг 5 · каркас</h2>
+<p class="codes">«Признали перед Богом, собой и другим человеком истинную природу своих заблуждений» — по-рабочему: сказанное вслух перестаёт быть тайной.</p>
+<p class="qlbl"><span class="no">5.1</span> Кому я мог(ла) бы рассказать одно из «этого» — и что мне мешает назвать имя прямо сейчас? <span class="sav" data-for="f-s5-q1"></span></p>
+<textarea class="qf" id="f-s5-q1" data-step="5" data-q="5.1. Кому мог(ла) бы рассказать и что мешает"></textarea>
+</section>
+
+<section class="lec" id="s6">
+<h2><span class="stepnum">6</span>Шаг 6 · каркас</h2>
+<p class="codes">«Полностью подготовили себя к тому, чтобы Бог избавил нас от наших недостатков» — по-рабочему: готовность отпустить старые привычки-защиты: раньше они спасали, а теперь мешают.</p>
+<p class="qlbl"><span class="no">6.1</span> Какую защиту я готов(а) отпустить первой — самую лёгкую, не самую страшную? <span class="sav" data-for="f-s6-q1"></span></p>
+<textarea class="qf" id="f-s6-q1" data-step="6" data-q="6.1. Какую защиту отпускаю первой"></textarea>
+</section>
+
+<section class="lec" id="s7">
+<h2><span class="stepnum">7</span>Шаг 7 · каркас</h2>
+<p class="codes">«Смиренно просили Его избавить нас от наших недостатков» — по-рабочему: просьба о помощи вместо нового плана самоулучшения.</p>
+<p class="qlbl"><span class="no">7.1</span> С какой одной чертой я прошу помощи — одной, не списком? <span class="sav" data-for="f-s7-q1"></span></p>
+<textarea class="qf" id="f-s7-q1" data-step="7" data-q="7.1. Одна черта, с которой прошу помощи"></textarea>
+</section>
+
+<section class="lec" id="s8">
+<h2><span class="stepnum">8</span>Шаг 8 · каркас</h2>
+<p class="codes">«Составили список всех, кому мы причинили вред, и стали готовы возместить ущерб» — по-рабочему: список людей, которым причинил(а) боль я — своим контролем, спасанием, безразличием.</p>
+<p class="qlbl"><span class="no">8.1</span> Кого мой контроль/спасание ранило — первые три имени (перед собой, не для показа)? <span class="sav" data-for="f-s8-q1"></span></p>
+<textarea class="qf" id="f-s8-q1" data-step="8" data-q="8.1. Три имени, кому я причинил(а) вред контролем"></textarea>
+</section>
+
+<section class="lec" id="s9">
+<h2><span class="stepnum">9</span>Шаг 9 · каркас</h2>
+<p class="codes">«Возмещали ущерб напрямую, где возможно» — по-рабочему: маленькое, безопасное, своевременное — вместо широкого жеста.</p>
+<p class="qlbl"><span class="no">9.1</span> Одно маленькое возмещение, которое не навредит ни мне, ни другому. Что, кому, когда? <span class="sav" data-for="f-s9-q1"></span></p>
+<textarea class="qf" id="f-s9-q1" data-step="9" data-q="9.1. Одно маленькое возмещение"></textarea>
+</section>
+
+<section class="lec" id="s10">
+<h2><span class="stepnum">10</span>Шаг 10 · каркас</h2>
+<p class="codes">«Продолжали брать личную инвентаризацию и своевременно признавать ошибки» — по-рабочему: ежедневная 3-минутная сверка «моё/не моё».</p>
+<p class="qlbl"><span class="no">10.1</span> Мой вечерний чек на 3 минуты: что сегодня шло «не по-моему» — и что я с этим сделал(а)? <span class="sav" data-for="f-s10-q1"></span></p>
+<textarea class="qf" id="f-s10-q1" data-step="10" data-q="10.1. Вечерний чек"></textarea>
+</section>
+
+<section class="lec" id="s11">
+<h2><span class="stepnum">11</span>Шаг 11 · каркас</h2>
+<p class="codes">«Стремились через молитву и медитацию улучшить сознательный контакт…» — по-рабочему: регулярная пауза тишины, чтобы слышать себя, а не тревогу.</p>
+<p class="qlbl"><span class="no">11.1</span> Моя минимальная ежедневная практика тишины: какая, где, сколько минут? <span class="sav" data-for="f-s11-q1"></span></p>
+<textarea class="qf" id="f-s11-q1" data-step="11" data-q="11.1. Моя практика тишины"></textarea>
+</section>
+
+<section class="lec" id="s12">
+<h2><span class="stepnum">12</span>Шаг 12 · каркас</h2>
+<p class="codes">«Духовное пробуждение — несли это весть другим» — по-рабочему: делюсь опытом, не спасая; живу так, что другим видно, что это работает.</p>
+<p class="qlbl"><span class="no">12.1</span> Кому и как я могу передать опыт — в форме истории о себе, а не совета? <span class="sav" data-for="f-s12-q1"></span></p>
+<textarea class="qf" id="f-s12-q1" data-step="12" data-q="12.1. Кому и как передаю опыт"></textarea>
+</section>
+
+<section class="lec" id="map">
+<h2><span class="stepnum">★</span>Моя карта + экспорт</h2>
+<div class="core">Сводка вашей работы: что заполнено, что осталось. Здесь же — экспорт ответов в текстовый файл и полная очистка.</div>
+<div id="mapStats"></div>
+<div class="btnrow">
+<button class="btn" id="btnExport">⬇ Экспорт моих ответов (.txt)</button>
+<button class="btn" id="btnPrint">🖨 Печать / PDF</button>
+<button class="btn" id="btnClear">🗑 Очистить все ответы</button>
+</div>
+<div class="privacy">Напоминание: ответы хранятся только в этом браузере. Сделайте экспорт, если планируете чистить данные браузера или переходить на другое устройство.</div>
+<p class="codes">Если шаги 1–3 прожиты (чеки отмечаются сами собой, а не «для галочки») — вместе с психологом решите, переходить ли к шагам 4–9 в полном формате.</p>
+</section>
+
+</div><!-- /lec-wrap -->
+</main>
+</div><!-- /layout -->
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section.lec'));
+  var items=[].slice.call(document.querySelectorAll('#tocList li'));
+  var counter=document.getElementById('counter');
+  var order=secs.map(function(s){return s.id;});
+  function title(id){var li=items.filter(function(x){return x.getAttribute('data-t')===id;})[0];return li?li.textContent.trim():id;}
+  function buildNavs(){
+    secs.forEach(function(s,idx){
+      if(s.querySelector('.lecnav'))return;
+      var d=document.createElement('div');d.className='lecnav';var h='';
+      var prev=order[idx-1],next=order[idx+1];
+      if(prev)h+='<a href="#'+prev+'" class="prev">← '+title(prev)+'</a>';
+      h+='<span class="cnt">'+(idx+1)+' / '+order.length+'</span>';
+      if(next)h+='<a href="#'+next+'" class="next">'+title(next)+' →</a>';
+      d.innerHTML=h;s.appendChild(d);
+    });
+  }
+  function answered(){return [].filter.call(document.querySelectorAll('.qf'),function(t){return t.value.trim();}).length;}
+  function show(id){
+    if(order.indexOf(id)<0)id='front';
+    secs.forEach(function(s){s.classList.toggle('act',s.id===id);});
+    items.forEach(function(li){li.classList.toggle('on',li.getAttribute('data-t')===id);});
+    counter.textContent='заполнено полей: '+answered();
+    window.scrollTo(0,0);
+    var cb=document.getElementById('menu');if(cb)cb.checked=false;
+    if(id==='map')renderMap();
+  }
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1)||'front');});
+  document.addEventListener('keydown',function(e){
+    if(e.target&&(e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT'))return;
+    var id=location.hash.slice(1)||'front';var i=order.indexOf(id);
+    if(e.key==='ArrowRight'&&order[i+1])location.hash=order[i+1];
+    else if(e.key==='ArrowLeft'&&order[i-1])location.hash=order[i-1];
+    else if(e.key==='m'||e.key==='M'||e.key==='ь'||e.key==='Ь'){var m=document.getElementById('menu');m.checked=!m.checked;}
+  });
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    items.forEach(function(li){li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);});
+  });
+
+  /* автосохранение */
+  var KEY='wda12-client-v1';
+  var store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){store={};}
+  function saveAll(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+  var fields=[].slice.call(document.querySelectorAll('.qf'));
+  var checks=[].slice.call(document.querySelectorAll('.chk input[type=checkbox]'));
+  fields.forEach(function(f){
+    if(store[f.id])f.value=store[f.id];
+    f.addEventListener('input',function(){
+      store[f.id]=f.value;saveAll();
+      counter.textContent='заполнено полей: '+answered();
+      var s=document.querySelector('.sav[data-for="'+f.id+'"]');if(s){s.textContent='— сохранено ✓';}
+    });
+  });
+  checks.forEach(function(c){
+    if(store[c.id])c.checked=true;
+    c.addEventListener('change',function(){store[c.id]=c.checked;saveAll();});
+  });
+
+  function renderMap(){
+    var host=document.getElementById('mapStats');if(!host)return;
+    var html='';var totA=0,totF=0;
+    for(var st=1;st<=12;st++){
+      var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
+      var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st);});
+      var a=fs.filter(function(f){return f.value.trim();}).length;
+      var cc=cs.filter(function(c){return c.checked;}).length;
+      totA+=a;totF+=fs.length;
+      html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>Шаг '+st+'</b> — ответов: '+a+'/'+fs.length+(cs.length?(' · чек: '+cc+'/'+cs.length):'')+'</div>';
+    }
+    host.innerHTML=html+'<p style="margin-top:.7rem">Всего заполнено: <b>'+totA+'</b> из '+totF+' полей.</p>';
+  }
+  document.getElementById('btnExport').addEventListener('click',function(){
+    var lines=['ВДА · Рабочая тетрадь (шаги 1–3) — мои ответы','Экспорт: '+new Date().toLocaleString('ru-RU'),''];
+    for(var st=1;st<=12;st++){
+      var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
+      var any=fs.some(function(f){return f.value.trim();});
+      if(!any)continue;
+      lines.push('═══ ШАГ '+st+' ═══');
+      fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});
+      var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st)&&c.checked;});
+      if(cs.length){lines.push('Чек «шаг прожит»: '+cs.length+' из '+checks.filter(function(c){return c.getAttribute('data-step')==String(st);}).length);lines.push('');}
+    }
+    if(lines.length<4){alert('Пока нечего экспортировать — заполните хотя бы одно поле.');return;}
+    var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/plain;charset=utf-8'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wda_shagi_1-3_moi_otvety.txt';a.click();URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
+  document.getElementById('btnClear').addEventListener('click',function(){
+    if(!confirm('Удалить ВСЕ ваши ответы из этого браузера? Действие необратимо.'))return;
+    store={};saveAll();
+    fields.forEach(function(f){f.value='';});
+    checks.forEach(function(c){c.checked=false;});
+    renderMap();counter.textContent='заполнено полей: 0';
+  });
+
+  buildNavs();
+  show(location.hash.slice(1)||'front');
+})();
+</script>
+</body>
+</html>
