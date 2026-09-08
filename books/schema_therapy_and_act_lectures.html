@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Схема-терапия и ACT · Конспект лекций</title>
+<meta name="description" content="Краткий профессиональный конспект лекций по современным доказательным методам психотерапии: схема-терапия Янга и терапия принятия и ответственности (ACT).">
+<style>
+
+:root{
+  --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1e21; --mut:#6b7075; --line:#e3e3de;
+  --acc:#3b4fd8; --acc-soft:#eef0fc; --flag:#b3261e; --flag-soft:#fdf0ef;
+  --code:#eef1ee; --mark:#ffe9a8;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#141517; --panel:#1c1e21; --ink:#e8e8e4; --mut:#9aa0a6; --line:#2e3134;
+    --acc:#8f9dff; --acc-soft:#23263a; --flag:#ff8a80; --flag-soft:#33201e; --code:#232527; --mark:#5c4d1e; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:.7rem;
+  background:var(--panel);border-bottom:1px solid var(--line);padding:.55rem 1rem}
+.bar strong{font-size:1rem}
+.bar-sub{color:var(--mut);font-size:.85rem}
+.counter{margin-left:auto;color:var(--mut);font-size:.8rem;white-space:nowrap}
+.burger{cursor:pointer;font-size:1.15rem;padding:.1rem .5rem;border:1px solid var(--line);border-radius:6px;user-select:none}
+#menu{display:none}
+
+.layout{display:flex;min-height:calc(100vh - 52px)}
+.toc{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
+  padding:1rem .9rem;position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto}
+.toc input{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;
+  background:var(--bg);color:var(--ink);margin-bottom:.7rem;font:inherit;font-size:.9rem}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:lec}
+.toc li{margin:.05rem 0}
+.toc li a{display:flex;gap:.55rem;padding:.32rem .5rem;border-radius:7px;color:var(--ink);font-size:.9rem;line-height:1.35}
+.toc li a em{font-style:normal;color:var(--mut);min-width:1.4rem;text-align:right;font-variant-numeric:tabular-nums}
+.toc li a:hover{background:var(--bg);text-decoration:none}
+.toc li.on a{background:var(--acc-soft);color:var(--acc);font-weight:600}
+.toc li.on a em{color:var(--acc)}
+.toc li.hide{display:none}
+
+main{flex:1;min-width:0;padding:2rem 1.4rem 5rem}
+.lec-wrap{max-width:780px;margin:0 auto}
+section.lec{display:none}
+section.lec.act{display:block;animation:fade .18s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+h2{display:flex;align-items:baseline;gap:.8rem;font-size:1.45rem;line-height:1.25;margin:.2rem 0 1.1rem}
+h2 .num{flex:0 0 auto;width:2.1rem;height:2.1rem;border-radius:8px;background:var(--acc);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem;transform:translateY(.25rem)}
+h3{font-size:1.06rem;margin:1.4rem 0 .45rem;color:var(--ink)}
+p{margin:.5rem 0}
+ul,ol{margin:.45rem 0 .7rem;padding-left:1.35rem}
+li{margin:.22rem 0}
+li::marker{color:var(--mut)}
+
+.core{background:var(--acc-soft);border-left:4px solid var(--acc);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:.9rem 0 1.2rem;font-size:.97rem}
+.flags{background:var(--flag-soft);border-left:4px solid var(--flag);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:1.2rem 0 .6rem;font-size:.95rem}
+.codes{background:var(--code);border-radius:8px;padding:.5rem .8rem;font-size:.88rem;margin:1rem 0}
+
+table.t{border-collapse:collapse;width:100%;margin:.7rem 0 1rem;font-size:.92rem}
+table.t th,table.t td{border:1px solid var(--line);padding:.42rem .6rem;text-align:left;vertical-align:top}
+table.t th{background:var(--bg);font-size:.86rem;letter-spacing:.02em}
+dl.df{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.6rem 0 1rem;font-size:.94rem}
+dl.df dt{font-weight:600}
+dl.df dd{margin:0}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .35rem;font-size:.82em;background:var(--bg)}
+.lecnav{display:flex;gap:.6rem;justify-content:space-between;margin-top:2.2rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.92rem;flex-wrap:wrap}
+.lecnav a{padding:.35rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.lecnav a:hover{text-decoration:none;border-color:var(--acc);color:var(--acc)}
+.lecnav .cnt{color:var(--mut);align-self:center}
+mark{background:var(--mark)}
+.titul h1{font-size:1.9rem;line-height:1.2;margin:.4rem 0 .3rem}
+.titul .sub{color:var(--mut);font-size:1.05rem;margin-bottom:1.4rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.4rem}
+.meta span{border:1px solid var(--line);border-radius:999px;padding:.18rem .75rem;font-size:.85rem;background:var(--panel);color:var(--mut)}
+
+#cheatList>div{border-bottom:1px dashed var(--line);padding:.55rem 0;margin:0}
+#cheatList h3{margin:.35rem 0 .3rem;color:var(--acc)}
+@media (max-width:920px){
+  .toc{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  #menu:checked ~ .layout .toc{transform:none}
+  main{padding:1.2rem .9rem 4rem}
+}
+@media print{
+  .bar,.toc,.lecnav,.counter{display:none!important}
+  body{background:#fff;color:#000}
+  .layout{display:block}
+  section.lec{display:block!important;page-break-before:always;border-bottom:1px solid #ccc;padding-top:1rem}
+  section#front{page-break-before:avoid}
+  .core,.flags,.codes,table.t,dl.df{background:#fff!important}
+}
+
+/* критерии, примеры, термины */
+.crit{border:1px solid var(--line);border-left:4px solid var(--mut);border-radius:0 10px 10px 0;background:var(--bg);padding:.6rem .85rem;margin:1.1rem 0 .4rem;font-size:.9rem}
+.ex{border-left:4px solid var(--acc);background:var(--acc-soft);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:.8rem 0;font-size:.92rem}
+.term{border-bottom:1px dashed var(--acc);cursor:help}
+.term::after{content:attr(data-tip);position:absolute;left:0;top:130%;z-index:50;width:min(340px,78vw);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font-size:.85rem;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18);opacity:0;visibility:hidden;transition:opacity .12s;text-align:left;font-weight:400;white-space:normal}
+.term:hover::after,.term.open::after{opacity:1;visibility:visible}
+.term{position:relative}
+@media print{.term{border-bottom:0}.term::after{display:none}}
+/* мобильная вёрстка */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw>table.t{margin:0}
+.term-r::after{left:auto;right:0}
+.termt{border-bottom:1px dashed var(--acc);cursor:help}
+/* тесты */
+.quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
+.quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
+.qscore{font-size:.8rem;color:var(--mut);font-weight:400}
+.qz{margin:.55rem 0;padding:.55rem 0 .35rem;border-top:1px dashed var(--line)}
+.qt{margin:.05rem 0 .45rem;font-size:.95rem}
+.qo{display:block;width:100%;text-align:left;margin:.22rem 0;padding:.42rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--acc)}
+.qo.ok{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600;cursor:default}
+.qo.bad{background:var(--flag-soft);border-color:var(--flag);color:var(--flag);opacity:.8;cursor:default}
+.qz.done .qo{cursor:default}
+.qb{margin:.35rem 0 0;font-size:.85rem;color:var(--mut);min-height:1em}
+.qb.good{color:var(--acc)}
+.qreset{margin-top:.6rem;border:0;background:none;color:var(--mut);cursor:pointer;font-size:.8rem;text-decoration:underline;padding:0}
+@media print{.quiz{display:none!important}}
+</style>
+</head>
+<body>
+<input type="checkbox" id="menu">
+<header class="bar">
+  <label class="burger" for="menu" title="Оглавление (клавиша M)">☰</label>
+  <strong>Схема-терапия и ACT</strong>
+  <span class="bar-sub">конспект лекций</span>
+  <span class="counter" id="counter"></span>
+</header>
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Оглавление">
+  <input type="search" id="q" placeholder="Фильтр лекций…" autocomplete="off">
+  <ol id="tocList">
+    <li data-t="front"><a href="#front">Титул · как читать</a></li>
+    <li data-t="lec-1"><a href="#lec-1"><em>1</em>После классической КПТ: волны и интеграция</a></li>
+    <li data-t="lec-2"><a href="#lec-2"><em>2</em>Схема-терапия: карта подхода</a></li>
+    <li data-t="lec-3"><a href="#lec-3"><em>3</em>18 схем: 5 доменов</a></li>
+    <li data-t="lec-4"><a href="#lec-4"><em>4</em>Режимы: динамика в сессии</a></li>
+    <li data-t="lec-5"><a href="#lec-5"><em>5</em>Оценка и концептуализация в ST</a></li>
+    <li data-t="lec-6"><a href="#lec-6"><em>6</em>Когнитивные и поведенческие техники ST</a></li>
+    <li data-t="lec-7"><a href="#lec-7"><em>7</em>Экспериенциальные техники ST</a></li>
+    <li data-t="lec-8"><a href="#lec-8"><em>8</em>ST при расстройствах личности</a></li>
+    <li data-t="lec-9"><a href="#lec-9"><em>9</em>ACT: карта подхода</a></li>
+    <li data-t="lec-10"><a href="#lec-10"><em>10</em>Принятие и дефузия</a></li>
+    <li data-t="lec-11"><a href="#lec-11"><em>11</em>Настоящее время и наблюдающая самость</a></li>
+    <li data-t="lec-12"><a href="#lec-12"><em>12</em>Ценности и ответственное действие</a></li>
+    <li data-t="lec-13"><a href="#lec-13"><em>13</em>ACT-процесс терапии: метафоры и практика</a></li>
+    <li data-t="lec-14"><a href="#lec-14"><em>14</em>Сравнение ST и ACT</a></li>
+    <li data-t="lec-15"><a href="#lec-15"><em>15</em>Доказательная база и границы</a></li>
+    <li data-t="lec-16"><a href="#lec-16"><em>16</em>Интеграция и собственный стиль</a></li>
+    <li data-t="cheat"><a href="#cheat">★ Шпаргалка (всё ядро курса)</a></li>
+  </ol>
+</nav>
+<main>
+<div class="lec-wrap">
+
+<section class="lec titul" id="front">
+  <h1>Схема-терапия и ACT</h1>
+  <p class="sub">Конспект лекций по современным доказательным методам · 16 лекций + шпаргалка</p>
+  <div class="meta"><span>уровень: для практикующих психологов</span><span>база: знакомство с КПТ (Дж. Бек) желательно</span><span>формат: тезисы, таблицы, ловушки</span></div>
+
+  <h3>Как читать</h3>
+  <ul>
+    <li>Каждая лекция — модуль 10–15 минут: блок <b>«Ядро»</b> (суть), тезисы, таблицы, <b>«Ловушки и ошибки»</b> (что ломает практику) и строка <b>«Запомнить»</b>.</li>
+    <li>Навигация: оглавление слева, переходы <b>«←/→»</b>, клавиши <kbd>←</kbd> <kbd>→</kbd>, <kbd>M</kbd> — меню. Печать (<kbd>Ctrl</kbd>+<kbd>P</kbd>) разворачивает весь курс.</li>
+    <li>«Шпаргалка» в конце — все «Ядро» и «Запомнить» одной страницей.</li>
+    <li>Сложные термины подчёркнуты <span class="term" data-tip="наведите курсор или коснитесь — появится объяснение простыми словами">пунктиром</span>: наведите курсор или коснитесь — появится объяснение простым языком; курсивные «Пример:» показывают методику на живом случае.</li>
+    <li>В конце каждой лекции — <b>мини-тест</b> из 4 вопросов с мгновенной проверкой и результатом «с первой попытки».</li>
+  </ul>
+
+  <h3>Логика курса</h3>
+  <ul>
+    <li><b>Лекция 1</b> — контекст: что случилось с «классической» КПТ и зачем интеграция.</li>
+    <li><b>Лекции 2–8</b> — схема-терапия: модель → схемы → режимы → оценка → техники → личность.</li>
+    <li><b>Лекции 9–13</b> — ACT: философия → 6 процессов гибкости → ход терапии.</li>
+    <li><b>Лекции 14–16</b> — синтез: сравнение, доказательность, интеграция в свой стиль.</li>
+  </ul>
+
+  <h3>Опорные источники</h3>
+  <ul>
+    <li>Young, Klosko, Weishaar. Schema Therapy: A Practitioner's Guide (2003).</li>
+    <li>Arntz, van Genderen. Schema Therapy for Borderline Personality Disorder (2009).</li>
+    <li>Hayes, Strosahl, Wilson. Acceptance and Commitment Therapy (1999; 2-е изд. 2011).</li>
+    <li>Harris. ACT в двух словах (ACT Made Simple, 2009).</li>
+    <li>Wampold, Imel. The Great Psychotherapy Debate (2015) — про общие факторы.</li>
+  </ul>
+  <p class="codes">Конспект — учебный справочник по методам; осваивать техники — под <span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизией</span>, по оригинальным руководствам и воркшопам.</p>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 1 ═══════════ -->
+<section class="lec" id="lec-1">
+<h2><span class="num">1</span>После классической КПТ: волны и интеграция</h2>
+<div class="core"><b>Ядро.</b> История психотерапии XX–XXI века — движение от конкуренции школ к работе с процессами: 1-я волна (поведенческая), 2-я (когнитивная), 3-я (схема, DBT, ACT, осознанность) — переосмысливают <i>отношение к внутреннему опыту</i>, а не только его содержание. Параллельно наука об общих факторах показала: метод важен меньше, чем думают школы, — а конкретные процессы работают через <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянс</span>, структуру и активность пациента.</div>
+
+<h3>Три волны</h3>
+<table class="t">
+  <tr><th>Волна</th><th>Годы</th><th>Что лечили и чем</th><th>Ключевая идея</th></tr>
+  <tr><td>1-я — поведенческая</td><td>1950–60-е</td><td>Фобии, ритуалы: экспозиция, обусловливание</td><td>Поведение = научение; лечит контекст, не «бессознательное»</td></tr>
+  <tr><td>2-я — когнитивная</td><td>1970–90-е</td><td>Депрессия, тревога: работа с автоматическими мыслями и искажениями</td><td>Не события, а их интерпретация; менять мысли → менять аффект</td></tr>
+  <tr><td>3-я — интегративная</td><td>1990-е — …</td><td>Личность, хронификация, тяжесть: схема-терапия, DBT, ACT, MBCT</td><td>Менять <i>отношение</i> к опыту (принятие, <span class="termt" title="увидеть мысль как мысль, а не как истину или приказ">дефузия</span>) + процессы + контекст</td></tr>
+</table>
+
+<h3>Почему «классической» КПТ стало недостаточно</h3>
+<ul>
+  <li><b>Хронические и личностные случаи</b>: депрессия с ранним началом, ПРЛ, «терапевтические резистентные» пациенты — рецидивы при протокольной КПТ; Янг видел: за симптомами стоят глубинные паттерны, а техники обходят их.</li>
+  <li><b>Механистичность</b>: работа «с мыслью» не трогает эмоциональное научение и отношения; пациент «понимает, но не чувствует».</li>
+  <li><b>Данные об общих факторах</b> (Wampold): различия между методами дают малую долю исхода; альянс, эмпатия, структура, ожидания — больше. Вывод не «методы не важны», а «метод работает через отношения и процессы».</li>
+  <li><b>Трансдиагностическая революция</b>: коморбидность — правило; терапия «по протоколу на диагноз» буксует; ответ — процессы (избегание опыта, дисрегуляция, схемы) поверх категорий (Unified Protocol Барлоу — из этого же контекста).</li>
+</ul>
+
+<h3>Два героя курса — два ответа на кризис</h3>
+<dl class="df">
+  <dt>Схема-терапия (Янг, 1990-е)</dt><dd>Ответ «в глубину»: соединить КПТ с психодинамическим и гештальт-наследием; мишень — ранние дезадаптивные схемы и режимы; ставка — на эмоциональное и relational изменение (<span class="term" data-tip="забота терапевта «додать недоданное» — в строгих профессиональных рамках">ограниченное материнство</span> терапевта).</dd>
+  <dt>ACT (Хайес, Строзал, Уилсон, 1980–90-е)</dt><dd>Ответ «в функцию»: радикально поведенческая (функциональный контекстуализм, RFT) философия; мишень — психологическая гибкость; ставка — на принятие опыта и поведение по ценностям «здесь и сейчас».</dd>
+</dl>
+<p>Парадокс: внешне противоположные языки (развитие и отношения vs. здесь-и-сейчас и функция), на практике — много общих ходов: экспериенциальность, работа с «частями» опыта, активный терапевт, антиизбегание.</p>
+
+<h3>Карта курса</h3>
+<ul>
+  <li>Сначала ST (лекции 2–8): она даёт структурную карту «почему пациент так устроен».</li>
+  <li>Затем ACT (лекции 9–13): она даёт процессуальную карту «что делать с опытом в моменте».</li>
+  <li>Синтез (лекции 14–16): когда какая карта полезнее и как их совмещать без эклектики вслепую.</li>
+</ul>
+
+<div class='ex'><b>Пример («понимает, но не чувствует»).</b> Пациентка безошибочно перечисляет свои когнитивные искажения по тетради КПТ — и в той же сессии с той же силой проваливается в «я ничтожна». Понимание не тронуло эмоциональное научение: это и есть водораздел третьей волны.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) «Волны» — не табель о рангах: 3-я волна не «лучше» 2-й; для паники чистая КПТ — первая линия. 2) Схема-терапия — не «углублённая КПТ для всех», у неё своя логика показаний. 3) ACT — не «техники-метафоры», а целостная функциональная модель; набор приёмов без неё вырождается. 4) Доказательность не бинарна: смотрите лекцию 15, а не рекламу школ.</div>
+<p class="codes"><b>Запомнить:</b> 3 волны = поведение → мысли → отношение к опыту; кризис ручной КПТ — хроника и личность; общий знаменатель ST и ACT — антиизбегание + эмоциональный/процессуальный уровень работы.</p>
+<div class="quiz" id="quiz-lec-1">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Третья волна КПТ переосмыслила прежде всего…</p>
+<button type="button" class="qo">содержание мыслей</button>
+<button type="button" class="qo">отношение к внутреннему опыту</button>
+<button type="button" class="qo">профессиональную этику</button>
+<button type="button" class="qo">длительность терапии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Данные Wampold об общих факторах говорят, что…</p>
+<button type="button" class="qo">метод — единственное, что важно</button>
+<button type="button" class="qo">альянс, эмпатия, структура и ожидания объясняют значимую долю исхода</button>
+<button type="button" class="qo">терапевт не важен</button>
+<button type="button" class="qo">все методы одинаково бесполезны</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. Общее у схема-терапии и ACT:</p>
+<button type="button" class="qo">отказ от «сначала убрать боль — потом жить» и ставка на опыт, а не убеждение</button>
+<button type="button" class="qo">работа только с диагнозами</button>
+<button type="button" class="qo">пассивная позиция терапевта</button>
+<button type="button" class="qo">запрет на домашние задания</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Трансдиагностический поворот означает:</p>
+<button type="button" class="qo">новые диагнозы вместо старых</button>
+<button type="button" class="qo">работу с процессами (избегание, дисрегуляция) поверх диагностических категорий</button>
+<button type="button" class="qo">отказ от диагностики</button>
+<button type="button" class="qo">лечение только по протоколам</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 2 ═══════════ -->
+<section class="lec" id="lec-2">
+<h2><span class="num">2</span>Схема-терапия: карта подхода</h2>
+<div class="core"><b>Ядро.</b> Схема-терапия (Джеффри Янг) — интегративный метод: КПТ-структура + психодинамическое понимание происхождения + гештальт- и экспериенциальные техники. Центральная единица — <b>ранняя дезадаптивная схема</b>: устойчивый паттерн восприятия себя, других и мира, сформированный в детстве неадекватными отношениями, «отфильтрующий» реальность и требующий жизнеспособной адаптации. Появление метода — ответ на неудачи классической КПТ при личностных и хронических расстройствах.</div>
+
+<h3>Что такое схема (определение по Янг)</h3>
+<ul>
+  <li>Схема — самоосуществляющаяся структура: человек «узнаёт» в жизни то, что в неё вписывается, и не видит (или искажает) то, что противоречит.</li>
+  <li>Три условия формирования: <i>токсичные отношения раннего детства</i> (в основе большинства), темперамент, культурный контекст.</li>
+  <li>Схема «не выключается» с возрастом — она остаётся активной и «притягивает» подтверждающие события (абандон-схема → выбор партнёров, которые уходят).</li>
+  <li>Здоровая сторона тоже есть: удовлетворение базовых нужд — безопасность, автономия, спонтанность, реалистичные границы, безусловная любовь.</li>
+</ul>
+
+<h3>Пять базовых эмоциональных нужд (по Янгу)</h3>
+<ol>
+  <li><b>Безопасная привязанность</b> — принятие, стабильность, защита.</li>
+  <li><b>Автономия и компетентность</b> — право пробовать, ошибаться, справляться.</li>
+  <li><b>Свобода выражать потребности и эмоции</b> — валидация чувств.</li>
+  <li><b>Спонтанность и игра</b> — жизнь не только «должна».</li>
+  <li><b>Реалистичные границы</b> — самоконтроль и уважение других.</li>
+</ol>
+<p>Фрустрация этих нужд → конкретные схемы (недополученное принятие → «дефектность»; гиперопека → «зависимость»; отсутствие границ → «грандиозность/недостаточный самоконтроль»).</p>
+
+<h3>Три стиля совладания со схемой (coping styles)</h3>
+<table class="t">
+  <tr><th>Стиль</th><th>Механизм</th><th>Пример</th><th>Цена</th></tr>
+  <tr><td><b>Сдача</b> (surrender)</td><td>Жить «по схеме», подтверждать её</td><td>Дефектность: «да, я хуже, выберу роль ведомого»</td><td>Схема питается ежедневно</td></tr>
+  <tr><td><b>Избегание</b> (avoidance)</td><td>Уход от ситуаций/эмоций, активирующих схему</td><td>Соц. изоляция: не инициировать контакт</td><td>Жизнь сужается; нет корректирующего опыта</td></tr>
+  <tr><td><b>Гиперкомпенсация</b> (overcompensation)</td><td>Жить «наоборот», вопреки схеме</td><td>Дефектность → перфекционизм, демонстративное превосходство</td><td>Хрупкость; близкие страдают; срыв возвращает схему</td></tr>
+</table>
+<p>Все три стиля держат схему «нетронутой»: ни один не даёт опыта, противоречащего ей. Задача терапии — <b>поведенческое разрушение паттернов</b>: намеренные опыты, где схема не подтверждается.</p>
+<div class='ex'><b>Пример (три копинга — одна схема покинутости).</b> Сдача — терпит холодность партнёра, «чтобы не ушёл»; избегание — не начинает отношений вообще; гиперкомпенсация — уходит первой, «пока не бросили».</div>
+
+<h3>Чем ST отличается от классической КПТ</h3>
+<ul>
+  <li><b>Мишень</b>: автоматические мысли → глубинные схемы и режимы; не «ошибка логики», а «раненая потребность».</li>
+  <li><b>Отношения</b> терапевта и пациента — сами по себе механизм изменения (<b><span class="term" data-tip="забота терапевта «додать недоданное» — в строгих профессиональных рамках">ограниченное материнство</span></b>, limited reparenting): частичное «додать» то, чего не было, в рамках профессиональных границ.</li>
+  <li><b>Техники</b>: больше экспериенциальных (<span class="term" data-tip="вернуться в воспоминание и «переписать» его финал с защитником">рескриптинг</span> образов, стулья, работа с режимами), меньше «диспут» — схему «переспорить» нельзя, её можно <i>перепрожить</i>.</li>
+  <li><b>Стиль</b>: <span class="term" data-tip="назвать проблему прямо, сохраняя тепло и союз с пациентом">эмпатическая конфронтация</span> — тепло И структура; терапевт активен, «живой», самореализуется в отношениях (limited self-disclosure).</li>
+</ul>
+
+<h3>Показания (грубая карта)</h3>
+<ul>
+  <li>Лучшие: расстройства личности (особенно ПРЛ), хроническая депрессия/тревога с ранним началом, «застревающие» случаи КПТ, проблемы отношений, eating disorders с личностным слоем.</li>
+  <li>Осторожно: острые состояния (психоз, активная зависимость, острый суицидальный риск) — сначала стабилизация; форензика — адаптированные протоколы.</li>
+</ul>
+
+<div class="flags"><b>Ловушки и ошибки.</b> 1) «Ограниченное материнство» ≠ дружба и «родительство» без границ: рамка строже обычного, а не слабее. 2) Нельзя «диагностировать схемы» только опросником — интервью, история отношений, наблюдение в сессии. 3) Не начинать рескриптинг травмы без стабилизации и <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянса</span>. 4) Схема — не «диагноз на всю жизнь»: формулировка рабочая, она уточняется в ходе терапии.</div>
+<p class="codes"><b>Запомнить:</b> схема = фильтр из детства, самоосуществляющаяся; 5 базовых нужд; 3 копинга (сдача/избегание/<span class="term" data-tip="жизнь «наоборот»: вопреки боли — через силу, контроль, напоказ">гиперкомпенсация</span>) все кормят схему; лечение = отношения + перепроживание + поведенческие опыты; «ограниченное материнство» — в строгих рамках.</p>
+<div class="quiz" id="quiz-lec-2">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Ранняя дезадаптивная схема по Янгу — это…</p>
+<button type="button" class="qo">временное состояние настроения</button>
+<button type="button" class="qo">устойчивый паттерн-фильтр из детства, самоосуществляющийся в жизни</button>
+<button type="button" class="qo">симптом по МКБ</button>
+<button type="button" class="qo">защитный механизм по Фрейду</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2" data-w="Пять нужд: привязанность, автономия, выражение потребностей, спонтанность/игра, границы. Статус — не базовая нужда в этой модели.">
+<p class="qt">2. Что НЕ входит в пять базовых эмоциональных нужд Янга?</p>
+<button type="button" class="qo">безопасная привязанность</button>
+<button type="button" class="qo">автономия и компетентность</button>
+<button type="button" class="qo">социальный статус и признание аудитории</button>
+<button type="button" class="qo">реалистичные границы</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. Три стиля совладания со схемой:</p>
+<button type="button" class="qo">сдача, избегание, гиперкомпенсация</button>
+<button type="button" class="qo">борьба, капитуляция, отрицание</button>
+<button type="button" class="qo">фиксация, регрессия, сублимация</button>
+<button type="button" class="qo">интеллектуализация, вытеснение, отрицание</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. «Ограниченное материнство» означает…</p>
+<button type="button" class="qo">дружбу с пациентом</button>
+<button type="button" class="qo">заботу в жёстких профессиональных рамках</button>
+<button type="button" class="qo">личную жизнь с пациентом</button>
+<button type="button" class="qo">минимум эмпатии</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 3 ═══════════ -->
+<section class="lec" id="lec-3">
+<h2><span class="num">3</span>Ранние дезадаптивные схемы: 5 доменов, 18 схем</h2>
+<div class="core"><b>Ядро.</b> 18 схем сгруппированы в 5 доменов по фрустрированным нуждам: (1) отвержение/отталкивание, (2) нарушенная автономия, (3) нарушенные границы, (4) направленность на других, (5) сверхбдительность/подавление. Учить не списком, а парами «домен ← нужда»: так схема «читается» у пациента по темам его жизни и речи.</div>
+
+<h3>Домен 1. Отчуждение и отвержение (нужда: принятие, безопасность)</h3>
+<dl class="df">
+  <dt>Покинутость/нестабильность</dt><dd>«Уйдут»; значимые другие непостоянны; страх одиночества → цепляние или опережающий разрыв.</dd>
+  <dt>Недоверие/ожидание вреда</dt><dd>«Используют, обманут, унизят»; гипербдительность к мотивам других; контроль, проверка, закрытость.</dd>
+  <dt>Эмоциональная депривация</dt><dd>«Никто не позаботится, не поймёт»; пустота, обида на «невидимость»; три грани: отсутствие эмпатии/защиты/направления.</dd>
+  <dt>Дефектность/стыд</dt><dd>«Я плохой, испорченный, неполноценный»; страх быть «разоблачённым»; избегание близости, компенсация достижениями.</dd>
+  <dt>Социальная изоляция</dt><dd>«Я не такой, как все; мне нет места»; отчуждение от группы; субкультуры как «остров».</dd>
+</dl>
+
+<h3>Домен 2. Нарушенная автономия и достижения (нужда: автономия, компетентность)</h3>
+<dl class="df">
+  <dt>Зависимость/несостоятельность</dt><dd>«Не справлюсь один»; повседневная беспомощность; поиск того, кто решит.</dd>
+  <dt>Уязвимость к вреду</dt><dd>Катастрофизация здоровья/денег/опасностей; «страх всего»; ограничительная жизнь.</dd>
+  <dt>Запутанность/неразвитое Я</dt><dd>Границы с родителем (партнёром) стёрты; нет своих желаний, «мы» вместо «я».</dd>
+  <dt>Неудача</dt><dd>«Я проиграю/недостаточен» в учёбе, работе; паралич начинаний, саботаж достижений.</dd>
+</dl>
+
+<h3>Домен 3. Нарушенные границы (нужда: реалистичные пределы)</h3>
+<dl class="df">
+  <dt>Грандиозность/привилегированность</dt><dd>«Мне можно больше других»; доминирование, эмпатический дефицит к чужим нуждам.</dd>
+  <dt>Недостаточный самоконтроль</dt><dd>Трудно терпеть дискомфорт ради цели; импульсивность, «не довожу».</dd>
+</dl>
+
+<h3>Домен 4. Направленность на других (нужда: признание своих чувств и потребностей)</h3>
+<dl class="df">
+  <dt>Подчинение</dt><dd>Сдача контроля из страха конфликта/наказания; подавленный гнев; «растворение» в другом.</dd>
+  <dt>Самопожертвование</dt><dd>Добровольная гиперответственность за других; вина при заботе о себе; выгорание, скрытая обида.</dd>
+  <dt>Поиск одобрения</dt><dd>Ценность = мнение других; достижения/внешность «для аудитории»; пустое Я при аплодисментах.</dd>
+</dl>
+
+<h3>Домен 5. Сверхбдительность и подавление (нужда: спонтанность, игра)</h3>
+<dl class="df">
+  <dt>Негативность/пессимизм</dt><dd>Фокус на том, что случится плохое; «подготовка к удару» вместо жизни.</dd>
+  <dt>Эмоциональная ингибиция</dt><dd>Запрет спонтанных чувств (гнева, радости, уязвимости); «человек-функция».</dd>
+  <dt>Неумолимые стандарты</dt><dd>Перфекционизм, правила, «должна» ценой здоровья, отношений, радости.</dd>
+  <dt>Карающая строгость</dt><dd>Ошибки надо наказывать (себя и других); жёсткость, нетерпимость к человеческой слабости.</dd>
+</dl>
+
+<h3>Как «слышать» схемы в кабинете</h3>
+<ul>
+  <li>Темы речи повторяются: «всегда/никогда», «все мужчины…», «я по сути…» — маркеры схем.</li>
+<li><i>Пример (дефектность):</i> оценка «хорошо» на работе читается как «готовят к увольнению»: схема превращает нейтральное в подтверждение «я недостаточен».</li>
+  <li>Жизненный паттерн: одинаковые развязки в отношениях/работе («три брака с алкоголиками»).</li>
+  <li>Реакция на терапевта: опоздания, «тестирование», обесценивание заботы — схема живёт «здесь».</li>
+  <li>Вопрос-ключ: «Что в этих ситуациях вы чувствуете ПОД мыслью — самую раннюю, детскую?» — схема живёт на уровне чувства, не аргумента.</li>
+</ul>
+
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Не навешивать 18 ярлыков за один вечер: обычно активны 3–5 схем, ищите ядро. 2) Схема ≠ черта: одна и та же схема у двух пациентов живёт в разных режимах. 3) Не лечить «стандарты» там, где культура/профессия требует их (хирург): смотреть на цену, а не на содержание. 4) Не путать копинговый стиль со схемой: <span class="term" data-tip="жизнь «наоборот»: вопреки боли — через силу, контроль, напоказ">гиперкомпенсация</span> выглядит «здорово», схема — под ней.</div>
+<div class='ex'><b>Пример (три копинга, одна схема покинутости):</b> сдача — терпит холодность партнёра, «чтобы не ушёл»; избегание — не начинает отношений вообще; гиперкомпенсация — уходит первой, «пока не бросили».</div>
+<p class="codes"><b>Запомнить:</b> 5 доменов ← 5 фрустрированных нужд; ядро чаще — из домена 1 (покинутость, дефектность, депривация); 3 копинга маскируют схему; слушайте «всегда/никогда» и повторяющиеся развязки.</p>
+<div class="quiz" id="quiz-lec-3">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Домен «отчуждение и отвержение» включает…</p>
+<button type="button" class="qo">покинутость, недоверие, депривацию, дефектность, изоляцию</button>
+<button type="button" class="qo">зависимость, уязвимость, неудачу</button>
+<button type="button" class="qo">подчинение, самопожертвование</button>
+<button type="button" class="qo">негативность, ингибицию, стандарты</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. «Я плохой, меня разоблачат» — это схема…</p>
+<button type="button" class="qo">покинутости</button>
+<button type="button" class="qo">дефектности/стыда</button>
+<button type="button" class="qo">неудачи</button>
+<button type="button" class="qo">эмоциональной ингибиции</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Перфекционизм с правилами «должна» и ценой здоровью — схема…</p>
+<button type="button" class="qo">грандиозности</button>
+<button type="button" class="qo">неумолимых стандартов</button>
+<button type="button" class="qo">поиска одобрения</button>
+<button type="button" class="qo">недоверия</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">4. Маркеры схем в речи пациента:</p>
+<button type="button" class="qo">слова «всегда/никогда» и повторяющиеся развязки жизненных сюжетов</button>
+<button type="button" class="qo">паузы и вздохи</button>
+<button type="button" class="qo">вопросы к терапевту</button>
+<button type="button" class="qo">юмор</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 4 ═══════════ -->
+<section class="lec" id="lec-4">
+<h2><span class="num">4</span>Схемные режимы: динамика в сессии</h2>
+<div class="core"><b>Ядро.</b> Режим — состояние «здесь-и-сейчас», в котором схема проявляется в данный момент; у одного пациента режимы переключаются (<span class="term" data-tip="резкое переключение из одного режима в другой прямо в сессии">флипы</span>) в течение сессии. 4 группы: <b>детские</b> (уязвимый, злой, импульсивный, счастливый), <b>родительские</b> (карающий, требующий), <b>копинговые</b> (покорная сдача, отчуждённый защитник, гиперкомпенсатор) и <b>Здоровый Взрослый</b>. Работа с режимами — операциональное ядро ST при личностной патологии.</div>
+
+<h3>Зачем понадобились режимы</h3>
+<ul>
+  <li>Схема — устойчивое «ядро», но пациент в кабинете — не «схема вообще», а состояния: плачет как ребёнок, через минуту цедит карающего родителя, потом отстраняется.</li>
+  <li>Режимная модель описывает «многоголосие» (флуктуации) — особенно у ПРЛ и нарциссической организации, где переключения резкие.</li>
+  <li>Терапевтическая задача: <b>постоянно</b> — усиливать Здорового Взрослого, защищать Уязвимого Ребёнка, «усмирять» карающего родителя и переводить копинговые режимы в осознанные.</li>
+</ul>
+
+<h3>Карта режимов</h3>
+<table class="t">
+  <tr><th>Группа</th><th>Режимы</th><th>Как выглядит в сессии</th></tr>
+  <tr><td><b>Детские</b></td><td>Уязвимый (травма, боль); Злой (фрустрация, протест); Импульсивный/недисциплинированный (хочу — делаю); Счастливый (сохранная часть)</td><td>Слёзы, «меня никто не любит»; взрыв «хватит меня давить!»; опоздания/импульсивные решения; улыбка, игра, живость</td></tr>
+  <tr><td><b>Родительские (интернализованные)</b></td><td>Карающий Родитель (ты плохой — накажем); Требующий Родитель (стандарты, «должна»)</td><td>Голос «я ничтожество, заслужил»; жёсткие правила, обесценивание достижений</td></tr>
+  <tr><td><b>Копинговые</b></td><td>Покорная Сдача; Отчуждённый Защитник; Отстранённый Самоутешитель; Гиперкомпенсаторы (Самовозвеличивание, Хулиган/Атака)</td><td>«Как скажете»; пустой взгляд, «не знаю, что чувствую»; вещество/еда/серфинг; демонстративность, нападение первым</td></tr>
+  <tr><td><b>Здоровый Взрослый</b></td><td>—</td><td>Заботится о своих нуждах, ставит границы, планирует, сочувствует себе и другим</td></tr>
+</table>
+
+<h3>Типичные режимные профили</h3>
+<dl class="df">
+  <dt>ПРЛ-профиль</dt><dd>Уязвимый ребёнок ↔ Злой ребёнок ↔ Карающий родитель ↔ Отчуждённый защитник (+ иногда Хулиган); Здоровый взрослый слаб; флипы — в течение сессии.</dd>
+  <dt>Нарциссический профиль</dt><dd>Уязвимый ребёнок (скрытая боль) под Самовозвеличиванием; при декомпенсации — Хулиган/Атака или обвал в депрессию.</dd>
+  <dt>Избегающий/депрессивный профиль</dt><dd>Уязвимый ребёнок + Требующий/Карающий родитель под толстым Отчуждённым защитником; в терапии «ничего не чувствует».</dd>
+  <dt>Зависимый профиль</dt><dd>Уязвимый ребёнок + Покорная сдача; активное требование заботы — тоже копинг (требующий заботы защитник).</dd>
+</dl>
+
+<h3>Правила работы с режимами</h3>
+<ol>
+  <li><b>Идентифицировать флип в моменте</b>: «Кто сейчас говорит? Чей это голос — ваш или, может, вашей мамы?»</li>
+  <li><b>Карающего родителя — не вести диалог, а выводить вовне</b> (стул, запись): цель — чтобы пациент увидел его со стороны и отказался служить ему.</li>
+  <li><b>Уязвимому ребёнку — защита и забота</b> (со стороны терапевта, затем Здорового Взрослого пациента).</li>
+  <li><b>Злому ребёнку — валидация энергии, перенаправление действия</b>: гнев — против несправедливости (в образе, в реальном утверждении границ), не против себя/терапевта.</li>
+  <li><b>Отчуждённому защитнику — уважение (он спасал жизнь), переговоры, ступенчатое снижение</b>; атаковать его = усиливать.</li>
+  <li>Схема-<span class="term" data-tip="карточка «что со мной и что делать», написанная словами пациента">флешкарты</span> и «режимная карта дня» — домашняя работа: ловить флипы между сессиями.</li>
+</ol>
+
+<div class='ex'><b>Пример (флип в сессии).</b> Пациентка плачет об одиночестве (уязвимый ребёнок) — резко и жёстко: «не буду тут раскисать» (карающий родитель) — через минуту шутит и меняет тему (отчуждённый защитник). Три состояния за пять минут: не «непоследовательность», а режимная карта — и точка интервенции.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Переспоривать Карающего родителя «рационально» — бесполезно: его надо показывать, а не опровергать. 2) Пойти в травму, когда силён Защитник, — ретравматизация; сначала контакт с защитной функцией. 3) Принять Самовозвеличивание за Здорового Взрослого (или Счастливого ребёнка) — эмоциональная интонация различает. 4) Терапевт сам «втягивается» в режим (спасатель/критик) — это данные о пациенте; <span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизия</span>, не актинг.</div>
+<p class="codes"><b>Запомнить:</b> режим = схема «в моменте»; 4 группы (детские/родительские/копинговые/Здоровый Взрослый); флип — момент интервенции; карающего родителя выводить вовне, защитника — уважать и договариваться, уязвимого — защищать.</p>
+<div class="quiz" id="quiz-lec-4">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Режим — это…</p>
+<button type="button" class="qo">устойчивая черта личности</button>
+<button type="button" class="qo">состояние «здесь-и-сейчас», в котором схема проявляется в данный момент</button>
+<button type="button" class="qo">диагноз по МКБ-11</button>
+<button type="button" class="qo">техника дыхания</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">2. Четыре группы режимов:</p>
+<button type="button" class="qo">детские, родительские, копинговые, Здоровый Взрослый</button>
+<button type="button" class="qo">эго, ид, суперэго, самость</button>
+<button type="button" class="qo">первые, вторые, третьи, четвёртые</button>
+<button type="button" class="qo">открытые, закрытые, смешанные, переходные</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Правильная тактика с Карающим родителем в сессии:</p>
+<button type="button" class="qo">спорить логически</button>
+<button type="button" class="qo">выводить вовне (стул, запись), показывать со стороны, отказываться ему служить</button>
+<button type="button" class="qo">игнорировать полностью</button>
+<button type="button" class="qo">соглашаться и утешать</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. С Отчуждённым защитником работают через…</p>
+<button type="button" class="qo">атаку и конфронтацию</button>
+<button type="button" class="qo">уважение его защитной функции и переговоры о ступенчатом снижении</button>
+<button type="button" class="qo">обесценивание</button>
+<button type="button" class="qo">немедленную экспозицию</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 5 ═══════════ -->
+<section class="lec" id="lec-5">
+<h2><span class="num">5</span>Оценка и концептуализация в ST</h2>
+<div class="core"><b>Ядро.</b> Диагностика в ST — это не тест, а расследование жизни: история отношений, повторяющиеся паттерны, темперамент + инструменты (YSQ, SMI, диаграмма режимов) + наблюдение «здесь-и-сейчас». Итог — <b>концептуализация случая</b>: какие схемы, какие копинги, какой режимный профиль, какие происхождения, план атаки. Живой документ, а не приговор.</div>
+
+<h3>Источники данных</h3>
+<ul>
+  <li><b>Биографическое интервью</b>: детство — атмосфера дома, «кто заботился, кто критиковал, чему радовались, что запрещали»; типовые вопросы интервью Янга («Расскажите о матери/отце как о родителях, не как о людях»).</li>
+  <li><b>Паттерны взрослой жизни</b>: отношения (выбор партнёров, развязки), работа (авторитеты, достижения), друзья, удовольствие/самозабота.</li>
+  <li><b>Опросники</b>: YSQ-3 (18 схем), SMI (режимы), YPI (родительские изобретения); Schemas Rating — субъективная сила схемы; полезны как карта гипотез, не как диагноз.</li>
+  <li><b>Наблюдение в сессии</b>: реакция на эмпатию, границы, <span class="term" data-tip="резкое переключение из одного режима в другой прямо в сессии">флипы</span> режимов, «тесты» — самый честный источник.</li>
+  <li><b>Темперамент</b>: эмоциональная реактивность, импульсивность, избегание новизны — фон, на котором росли схемы.</li>
+</ul>
+
+<h3>Ключевые приёмы интервью</h3>
+<ul>
+  <li>«Какое чувство под этим чувством?» — спуск к раннему слою.</li>
+  <li>«Когда вы впервые в жизни так чувствовали? Кто был рядом?» — датировка схемы.</li>
+  <li>«Если бы камера стояла у вас дома, когда вам было 6 — что бы она записала?» — конкретные сцены вместо обобщений.</li>
+  <li>«Что вы делаете, когда эта боль поднимается?» — картирование копингов (сдача/избегание/<span class="term" data-tip="жизнь «наоборот»: вопреки боли — через силу, контроль, напоказ">гиперкомпенсация</span>).</li>
+  <li>Мостик в сессию: «А здесь, со мной, эта часть включается?»</li>
+</ul>
+
+<h3>Диаграмма режимов (mode conceptualization)</h3>
+<ol>
+  <li>Выписать типичные проблемные ситуации (ссора с партнёром, дедлайн, критика).</li>
+  <li>Для каждой: какой режим включился → триггер → что чувствовал/делал → чем завершилось.</li>
+  <li>Свести повторяющиеся режимы в схему-диаграмму: триггер → Уязвимый ребёнок (боль) → Карающий родитель/Защитник → исход; указать, где входит Здоровый Взрослый.</li>
+  <li>Согласовать с пациентом: диаграмма — совместная карта, повешенная на стену терапии.</li>
+</ol>
+
+<h3>План терапии из концептуализации</h3>
+<ul>
+  <li>Приоритет мишеней: сначала режимы, блокирующие терапию (Отчуждённый защитник, Карающий родитель, Хулиган), потом ядро (Уязвимый ребёнок), потом поведенческое изменение паттернов вне сессии.</li>
+  <li>Выбор «точки входа» по силе <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянса</span>: сильный — раньше экспериенциальные техники; хрупкий — сначала когнитивно-поведенческие и отношения.</li>
+  <li>Прогноз и рамка: ST при ПРЛ — часто 1,5–3 года; при «простых» схемах депрессивного пациента — короче; обсуждать честно.</li>
+</ul>
+
+<div class='ex'><b>Пример (датировка схемы).</b> Вопрос «когда впервые так чувствовали?» — «отец ушёл, мне семь, я каждый вечер ждал у окна». Гипотеза: покинутость. Проверяем: партнёры, которые то появляются, то исчезают; паника при «прочитаю позже». Гипотеза становится картой после проверки жизнью.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Концептуализация «на бумаге» без проверки пациентом — интеллектуализация терапевта. 2) Начинать с самой болезненной схемы (обычно дефектность) — сначала рабочая и защитная карта. 3) Игнорировать защитника, потому что «скучно»: без договора с ним терапия не начнётся. 4) Путать актуальный стресс/расстройство (депрессивный эпизод) с хроническими схемами — лечить эпизод, потом схемы.</div>
+<p class="codes"><b>Запомнить:</b> интервью + YSQ/SMI + наблюдение; вопросы «под чувство» и «первый раз в жизни»; диаграмма режимов — совместная; порядок мишеней: блокирующие режимы → детская боль → поведенческие изменения.</p>
+<div class="quiz" id="quiz-lec-5">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Опросники (YSQ, SMI) в диагностике схем — это…</p>
+<button type="button" class="qo">инструмент постановки окончательного диагноза</button>
+<button type="button" class="qo">карта гипотез, проверяемых интервью и наблюдением</button>
+<button type="button" class="qo">обязательный критерий</button>
+<button type="button" class="qo">замена клинической беседы</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Ключевой вопрос для датировки схемы:</p>
+<button type="button" class="qo">«Что вы об этом думаете?»</button>
+<button type="button" class="qo">«Когда вы впервые в жизни так чувствовали? Кто был рядом?»</button>
+<button type="button" class="qo">«Какой у вас знак зодиака?»</button>
+<button type="button" class="qo">«Что скажет ваша мама?»</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">3. Правильный порядок мишеней терапии:</p>
+<button type="button" class="qo">сначала блокирующие режимы, потом детская боль, потом поведенческие изменения</button>
+<button type="button" class="qo">сразу в самую болезненную схему</button>
+<button type="button" class="qo">сначала поведение, всегда</button>
+<button type="button" class="qo">только отношения</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Диаграмма режимов — это…</p>
+<button type="button" class="qo">личные заметки терапевта</button>
+<button type="button" class="qo">совместная с пациентом карта, «повешенная на стену» терапии</button>
+<button type="button" class="qo">тест из учебника</button>
+<button type="button" class="qo">врачебный документ</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 6 ═══════════ -->
+<section class="lec" id="lec-6">
+<h2><span class="num">6</span>Когнитивно-поведенческие техники ST</h2>
+<div class="core"><b>Ядро.</b> Когнитивные техники в ST — не «спор с мыслью», а <b>накопление опыта против схемы</b>: дневники, флешкарты, анализ доказательств «в суде», работа с происхождением схемы («откуда вы это узнали — и кем это было сказано?»). Поведенческая часть — постепенное <b>разрушение паттернов</b> через иерархии опытов. Эмоциональное научение сильнее логического опровержения — отсюда приоритет экспериенциальных методов (лекция 7).</div>
+
+<h3>Когнитивный арсенал</h3>
+<ul>
+  <li><b>Психообразование о схеме</b>: назвать, датировать, показать механизм (самоосуществление) — «да, это объясняет 30 лет, но объяснить — не значит оправдать».</li>
+  <li><b>Схемный дневник (schema diary)</b>: ситуация → чувство/мысль → какая схема → чей голос → что сделала Здоровая Взрослая часть → итог; заполняется между сессиями, разбор — в сессии.</li>
+  <li><b>Флешкарты</b>: для каждой схемы/режима — карточка «что со мной происходит и что помогает» (авторский текст пациента + терапевт); читать в момент активации.</li>
+  <li><b>«Суд над схемой»</b>: две колонки доказательств «за» (почему я дефектный) и «против»; ключевое — перенести «за» из фактов в детские интерпретации («мама так говорила — это доказывает её состояние, не мою суть»).</li>
+  <li><b>Работа с происхождением</b>: схема — «чужое послание», а не истина: чьими глазами вы смотрели на себя? Датировка снимает «всегда был таким».</li>
+  <li><b>Данные жизни</b>: поведенческие эксперименты как «улики» — опыт, который схема предсказывала и не получила.</li>
+</ul>
+
+<h3>Поведенческое разрушение паттернов</h3>
+<ol>
+  <li>Составить список «схемных паттернов» в трёх сферах: отношения, работа/достижение, самозабота.</li>
+  <li>Для каждого — стиль копинга: где сдаёт, где избегает, где гиперкомпенсирует.</li>
+  <li>Иерархия «противосхемных» действий: от малого (сказать «нет» официанту) до крупного (попросить повышение, разорвать деструктивные отношения).</li>
+  <li>Домашние задания с анализом: что предсказывала схема → что произошло → что почувствовала детская часть → Здоровый Взрослый.</li>
+  <li>Успех закреплять на эмоциональном уровне (ради чего это было — ценность, нужда), иначе «списал на случай».</li>
+</ol>
+
+<h3>Эмпирическая суть</h3>
+<p>Схема держится не аргументами, а <b>эмоциональной памятью и отсутствием корректирующего опыта</b>. Поэтому иерархия силы техник в ST (сверху вниз): экспериенциальные (перепроживание) &gt; поведенческие (новый опыт) &gt; когнитивные (подготовка и осмысление). Когнитивные методы создают рамку доверия, в которую погружаются более мощные методы.</p>
+
+<div class='ex'><b>Пример (флешкарта пациента).</b> Текст карточки: «Сейчас включилась схема покинутости. Это схема из детства, а не факт. Что мне важно: спросить прямо, а не проверять и не исчезать первой. Дышу. Напишу позже». Карточка работает, потому что написана её словами.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Превратить ST в «долгую КПТ» — только дневники и споры, без эмоционального слоя: так схемы не меняются. 2) Флешкарты, написанные языком терапевта, — пациент их не читает. 3) Поведенческие задания «через силу», без работы с защитником, → саботаж и стыд. 4) Спорить с Карающим родителем на равных — терапевт становится следующим критиком.</div>
+<p class="codes"><b>Запомнить:</b> когнитивные техники = подготовка и интеграция; сила: перепроживание &gt; новый опыт &gt; аргументы; флешкарты и дневник — мост между сессиями; «суд над схемой» переносит факты в интерпретации детства.</p>
+<div class="quiz" id="quiz-lec-6">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Иерархия силы техник в ST (от сильной к слабой):</p>
+<button type="button" class="qo">экспериенциальные (перепроживание) > поведенческие (новый опыт) > когнитивные (аргументы)</button>
+<button type="button" class="qo">когнитивные > поведенческие > экспериенциальные</button>
+<button type="button" class="qo">все равны</button>
+<button type="button" class="qo">гипноз > всё</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Флешкарты эффективны, если…</p>
+<button type="button" class="qo">написаны языком терапевта</button>
+<button type="button" class="qo">написаны словами пациента и читаются в момент активации схемы</button>
+<button type="button" class="qo">висят дома на стене нечитанными</button>
+<button type="button" class="qo">содержат цитаты из учебника</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Суть «суда над схемой»:</p>
+<button type="button" class="qo">доказать пациенту, что он неправ</button>
+<button type="button" class="qo">перенести «доказательства» схемы из фактов в детские интерпретации</button>
+<button type="button" class="qo">вызвать свидетелей</button>
+<button type="button" class="qo">публичное разбирательство</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Поведенческое разрушение паттернов — это…</p>
+<button type="button" class="qo">случайные изменения</button>
+<button type="button" class="qo">иерархия намеренных противосхемных опытов</button>
+<button type="button" class="qo">наказание за старые паттерны</button>
+<button type="button" class="qo">визуализация</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 7 ═══════════ -->
+<section class="lec" id="lec-7">
+<h2><span class="num">7</span>Экспериенциальные техники ST: <span class="term" data-tip="вернуться в воспоминание и «переписать» его финал с защитником">рескриптинг</span>, стулья, <span class="term" data-tip="забота терапевта «додать недоданное» — в строгих профессиональных рамках">ограниченное материнство</span></h2>
+<div class="core"><b>Ядро.</b> Экспериенциальные техники меняют <b>эмоциональную память</b>, а не мнение: (1) <b>рескриптинг образов</b> — вернуться в детскую сцену и переписать её финал (вход Здорового Взрослого/«нового родителя»); (2) <b>работа со стульями</b> — режимы получают тела и голоса, диалог ведётся «вживую»; (3) <b>ограниченное материнство</b> — отношения с терапевтом как корректирующий эмоциональный опыт. Правило безопасности: сначала <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянс</span> и стабилизация, потом — в травму.</div>
+
+<h3>Рескриптинг образов (imagery rescripting)</h3>
+<ol>
+  <li><b>Подъём образа</b>: от актуальной ситуации/чувства — к раннему воспоминанию («когда впервые так чувствовали?»); сцена становится конкретной (возраст, комната, кто рядом).</li>
+  <li><b>Проживание</b>: пациент — в образе ребёнком; что видит, чувствует, чего хочет; терапевт — рядом, эмпатично.</li>
+  <li><b>Вход «нового родителя»</b>: сначала — сам терапевт входит в образ и вступается за ребёнка (останавливает обидчика, утешает);</li>
+  <li><b>Передача роли</b>: в следующих циклах в образ входит Здоровый Взрослый пациента — теперь он сам защищает ребёнка.</li>
+  <li><b>Новый финал</b> + выход, заземление, интеграция: чем это отличается от «просто воспоминания»?</li>
+<li><i>Мини-сценарий рескриптинга:</i> образ — кухня, пациенту 6 лет, отец кричит. Терапевт «входит» в образ, становится между отцом и ребёнком: «Стоп. Он маленький, на него кричать нельзя». Затем утешает ребёнка. В следующих циклах то же делает Здоровый Взрослый самого пациента.</li>
+</ol>
+<p>Варианты: для одиночных травм — «перезапись» с раннего возраста; для хронической депривации — серия коротких сцен заботы; рескриптинг будущего (имагинальная репетиция противосхемного поведения).</p>
+
+<h3>Работа со стульями (chair work)</h3>
+<ul>
+  <li>Режимы рассаживаются: стул Уязвимого ребёнка, стул Карающего родителя, стул Защитника, стул Здорового Взрослого; пациент пересаживается — «говорит с» каждого.</li>
+  <li>Эффекты: режим «вынесен наружу» (пациент видит его со стороны), эмоция получает тело, Здоровый Взрослый тренируется в реальном диалоге.</li>
+  <li>Типовые процедуры: «двойной стул» (ребёнок ↔ критикующая часть) и «пустой стул» (незавершённое с значимым другим).</li>
+  <li>Правило: диалог ведётся от первого лица, настоящее время; терапевт дирижирует, подсказывает слова Здорового Взрослого, не играя его за пациента.</li>
+</ul>
+
+<h3>Ограниченное материнство (limited reparenting)</h3>
+<ul>
+  <li>Суть: в рамках профессиональной роли терапевт даёт то, чего пациент не получил, — тепло, похвалу за спонтанность, защиту, структуру, границы.</li>
+  <li>«Ограниченное» = рамка жёстче, не мягче: расписание, договорённости, «часы доступности», что делаем в кризисе; самораскрытие — дозированное, на пользу пациенту.</li>
+  <li>Корректирующий эффект: пациент интернализует опыт «можно быть собой и о тебе позаботятся»; отношения — «плацдарм» для новых схем себя.</li>
+  <li>Эмпатическая конфронтация: <span class="term" data-tip="признать реальность чувства и право на него — не обязуясь соглашаться с содержанием">валидировать</span> боль И настаивать на изменении; последовательность, а не качели «добрый—злой».</li>
+</ul>
+
+<h3>Порядок погружения (безопасность)</h3>
+<table class="t">
+  <tr><th>Фаза</th><th>Что делаем</th></tr>
+  <tr><td>1. Стабилизация</td><td>Альянс, психообразование, флешкарты, навыки регуляции; договор с Защитником</td></tr>
+  <tr><td>2. Активация</td><td>Короткие образы с низкой интенсивностью, стулья «вне травмы» (критик ↔ ребёнок)</td></tr>
+  <tr><td>3. Переработка</td><td>Рескриптинг ключевых сцен, диалоги режимов, «пустой стул» с фигурами прошлого</td></tr>
+  <tr><td>4. Интеграция</td><td>Поведенческие опыты в жизни; Healthy Adult «выносит» уроки из кабинета в мир</td></tr>
+</table>
+
+<div class='ex'><b>Пример (мини-рескриптинг).</b> Образ: кухня, пациенту шесть, отец кричит. Терапевт «входит» в образ, становится между ними: «Стоп. Он маленький, на него кричать нельзя» — и утешает ребёнка. В следующих циклах то же делает Здоровый Взрослый самого пациента. Эмоциональная память получает новый опыт — спор не нужен.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Рескриптинг в первый контакт с травмой без стабилизации → ретравматизация и обвал доверия. 2) Терапевт «чинит» финал за пациента, не давая ему agency: счастье — не дар, а восстановление силы. 3) Стулья без заземления у диссоциирующего пациента. 4) Материнство без границ → зависимость, «любовная» динамика, разрушение рамки; <span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизия</span> обязательна.</div>
+<p class="codes"><b>Запомнить:</b> мишень — эмоциональная память; рескриптинг: сцена → защита (терапевт) → передача роли Здоровому Взрослому → новый финал; стулья делают режимы видимыми; материнство — тёплое И строго рамочное; фазы: стабилизация → активация → переработка → интеграция.</p>
+<div class="quiz" id="quiz-lec-7">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Правильная последовательность рескриптинга:</p>
+<button type="button" class="qo">сцена → вход терапевта-защитника → передача роли Здоровому Взрослому пациента → новый финал</button>
+<button type="button" class="qo">новый финал → сцена → анализ</button>
+<button type="button" class="qo">анализ → сцена → интерпретация</button>
+<button type="button" class="qo">сцена → совет → домашнее задание</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">2. Фазы безопасной экспериенциальной работы:</p>
+<button type="button" class="qo">стабилизация → активация → переработка → интеграция</button>
+<button type="button" class="qo">переработка → стабилизация</button>
+<button type="button" class="qo">только переработка</button>
+<button type="button" class="qo">интеграция → активация</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Работа со стульями даёт эффект, потому что…</p>
+<button type="button" class="qo">пациент устаёт и соглашается</button>
+<button type="button" class="qo">режим «выносится наружу» и становится видимым со стороны</button>
+<button type="button" class="qo">стулья дорогие</button>
+<button type="button" class="qo">терапевт играет все роли</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Типичная ошибка рескриптинга:</p>
+<button type="button" class="qo">заземление после образа</button>
+<button type="button" class="qo">«починить» финал за пациента, лишая его <span class="term" data-tip="ощущение «это делаю я: у меня есть выбор и сила действовать»">агентности</span></button>
+<button type="button" class="qo">передача роли Здоровому Взрослому</button>
+<button type="button" class="qo">слишком медленный темп</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 8 ═══════════ -->
+<section class="lec" id="lec-8">
+<h2><span class="num">8</span>Схема-терапия при расстройствах личности</h2>
+<div class="core"><b>Ядро.</b> ST исторически родилась для «не поддающихся КПТ» пациентов с личностной патологией и здесь сильнее всего: <b>ПРЛ</b> (режимная модель Арнтца — стандарт), <b>нарциссическое</b> (доступ к Уязвимому ребёнку под Самовозвеличиванием), <b>избегающее/зависимое/ОКРЛ</b> (кластер C — короткие протоколы). Логика: сначала режимы, блокирующие терапию, потом — детская боль, потом — жизнь.</div>
+
+<h3>ПРЛ: режимная модель (Арнтц и ван Гендерена)</h3>
+<ul>
+  <li>Ядро: <b>Уязвимый ребёнок</b> (покинутость, злоупотребление, депривация) + <b>Карающий родитель</b> (интернализованный абьюзер: «ты заслужила боль») + <b>Злой ребёнок</b> (гнев от несправедливости) + <b>Отчуждённый защитник</b> (+ <b>Хулиган</b> при агрессивных проявлениях).</li>
+  <li>Типичный <span class="term" data-tip="резкое переключение из одного режима в другой прямо в сессии">флип</span> сессии: жалоба (уязвимый) → обесценивание терапии (карающий/защитник) → требование особого отношения (злой/импульсивный) → стыд и отход в уязвимого.</li>
+  <li>Линия терапии: валидация боли → отстройка Карающего родителя (стул, вслух, «мы не позволим ему здесь говорить») → забота об Уязвимом (образы, материнство) → перенаправление Злого (границы, защита прав) → постепенное снижение Защитника.</li>
+  <li>Самоповреждение и суицидальность: читать как режимную коммуникацию (чаще — Карающий родитель наказывает Уязвимого или Защитник глушит); протокол безопасности + работа с режимом, а не только с поведением (лекция 15 курса клинической психологии).</li>
+  <li>Длительность: обычно 1,5–3 года; структурированная, с кризисным планом; доказательства — в лекции 15.</li>
+</ul>
+
+<h3>Нарциссическое расстройство</h3>
+<ul>
+  <li>Фасад — <b>Самовозвеличивание</b> (гиперкомпенсатор): грандиозность, обесценивание, поиск восхищения; под ним — Уязвимый ребёнок (дефектность, эмоциональная депривация) и часто Требующий родитель («ты — только если лучший»).</li>
+  <li>Вход: не ломать фасад конфронтацией; валидировать нарциссическую уязвимость, «снизу» подниматься к сценам, где «любили только за достижения».</li>
+  <li>Декомпенсация (крах, развод, потеря статуса) — окно терапии: обвал в Уязвимого ребёнка; поддержка, не триумф.</li>
+  <li>Схема-протоколы для НРЛ: Behary «Disarming the Narcissist» — стиль «спарринг-партнёра»: сила + эмпатия, без подчинения и без войны.</li>
+</ul>
+
+<h3>Кластер C: избегающее, зависимое, ОКРЛ</h3>
+<dl class="df">
+  <dt>Избегающее</dt><dd>Уязвимый ребёнок (дефектность, изоляция) + толстый Отчуждённый защитник + избегание; ставка: прогрессивная активация образов + иерархия социальных опытов; групповая ST эффективна — группа против схемы «я не подхожу».</dd>
+  <dt>Зависимое</dt><dd>Уязвимый (зависимость, покинутость) + Покорная сдача; «пассивный пациент» провоцирует терапевта решать за него; техника — постепенная передача agency, Здоровый Взрослый в сессии.</dd>
+  <dt>ОКРЛ</dt><dd>Требующий родитель + Неумолимые стандарты + Карающий (ошибки недопустимы); Счастливый ребёнок задавлен; работа: датировка «откуда правила», образы спонтанности, поведенческие эксперименты «достаточно хорошо».</dd>
+</dl>
+
+<h3>Групповая схема-терапия</h3>
+<ul>
+  <li>Группа — множественные «новые родители» и арену режимов в реальном времени; форматы Farrell &amp; Shaw для ПРЛ (группа + индивидуальная сессия) — снижение симптоматики и стоимости лечения.</li>
+  <li>Правила: работа по режимам всей группы, психообразование, «группа как Здоровый Взрослый».</li>
+</ul>
+
+<div class='ex'><b>Пример (сессия при ПРЛ).</b> «Вы мне не помогаете!» (злой ребёнок) → молчание, взгляд в пол (защитник). Вместо самозащиты терапевт: «Слышу, какая сильная злость. Под ней — страх, что я в итоге брошу?» Слёзы (уязвимый). Разговор наконец происходит с той частью, которая болела.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Диагностировать «личность» и забыть лечить депрессию/ПТСР — слои работают одновременно. 2) При ПРЛ реагировать на флип контрфлипом (жёсткость на Злого ребёнка, нежность на Защитника) — читать карту, отвечать адресно. 3) При НРЛ — соревноваться или поклоняться: обе позиции кормят фасад. 4) Держать «острого» пациента без психиатрической подстраховки.</div>
+<p class="codes"><b>Запомнить:</b> ПРЛ = уязвимый + карающий + злой + защитник; отстройка карающего родителя — сквозная задача; НРЛ: вход через валидацию уязвимости, не через фасад; кластер C — короткие протоколы; группа — множественные новые родители.</p>
+<div class="quiz" id="quiz-lec-8">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. Ядро режимной модели ПРЛ:</p>
+<button type="button" class="qo">Уязвимый ребёнок + Карающий родитель + Злой ребёнок + Отчуждённый защитник</button>
+<button type="button" class="qo">только Здоровый Взрослый</button>
+<button type="button" class="qo">только Защитник</button>
+<button type="button" class="qo">Грандиозность + Покорность</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Вход в нарциссическую организацию:</p>
+<button type="button" class="qo">конфронтация фасада</button>
+<button type="button" class="qo">валидация нарциссической уязвимости, осторожный спуск к Уязвимому ребёнку</button>
+<button type="button" class="qo">игнорирование фасада</button>
+<button type="button" class="qo">соревнование с пациентом</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Самоповреждение при ПРЛ читается как…</p>
+<button type="button" class="qo">просто «манипуляция»</button>
+<button type="button" class="qo">режимная коммуникация (часто Карающий родитель наказывает Уязвимого)</button>
+<button type="button" class="qo">наказание терапевта</button>
+<button type="button" class="qo">проявление здоровья</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Групповая схема-терапия сильна тем, что…</p>
+<button type="button" class="qo">дешевле только</button>
+<button type="button" class="qo">группа — множественные «новые родители» и арена режимов</button>
+<button type="button" class="qo">можно прятаться в группе</button>
+<button type="button" class="qo">меньше эмоций</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 9 ═══════════ -->
+<section class="lec" id="lec-9">
+<h2><span class="num">9</span>ACT: карта подхода</h2>
+<div class="core"><b>Ядро.</b> ACT (Хайес, Строзал, Уилсон) — «терапия принятия и ответственности» на базе функционального контекстуализма и теории реляционных фреймов (RFT). Центральная идея: проблема не в содержании мыслей/чувств, а в <b>эмпирическом избегании</b> и <b>когнитивной слиянии</b> — когда «я имею мысль» превращается в «мысль — это я и моя реальность», и жизнь сужается. Цель — не «хорошо чувствовать», а <b>психологическая гибкость</b>: быть в контакте с моментом и делать то, что важно, даже когда больно.</div>
+
+<h3>Философская база (без неё ACT — набор фокусов)</h3>
+<ul>
+  <li><b>Функциональный контекстуализм</b>: событие понимается по функции в контексте, а не по «истинности». Вопрос к мысли не «верна ли она?», а «куда она вас ведёт, если ей следовать?» (<span class="term" data-tip="критерий «работает ли это для моей жизни?» вместо «правильно ли?»">workability</span> — пригодность).</li>
+  <li><b>RFT (теория реляционных фреймов)</b>: язык строит отношения произвольно (слово «лимон» вызывает слюну без самого лимона) — отсюда сила и ловушки слова: страдание создаётся отношениями символов, а не только событиями.</li>
+  <li>Отсюда два ключевых понятия: <b>когнитивная слияние</b> (слияние с содержанием мысли) и <b><span class="term" data-tip="бегство от собственных чувств любой ценой — даже ценой жизни">экспериенциальное избегание</span></b> (нежелание иметь опыт и борьба с ним) — ядро психопатологии по ACT.</li>
+</ul>
+
+<h3>Гексафлекс: 6 процессов гибкости</h3>
+<table class="t">
+  <tr><th>Процесс</th><th>Что это</th><th>Противоположность (негибкость)</th></tr>
+  <tr><td>Принятие</td><td>Активное открытие месту для чувств, импульсов</td><td>Избегание опыта</td></tr>
+  <tr><td>Дефузия</td><td>Видеть мысли как мысли, не как приказы/истину</td><td>Слияние</td></tr>
+  <tr><td>Контакт с настоящим</td><td>Внимание здесь-и-сейчас, гибкое</td><td>Руминация/беспокойство (прошлое/будущее), автопилот</td></tr>
+  <tr><td>Самость-как-контекст</td><td>«Наблюдающее Я» — место, откуда виден опыт</td><td>Самость-как-концепция («я тревожный», «я слабак»)</td></tr>
+  <tr><td>Ценности</td><td>Выбранные направления жизни</td><td>Отсутствие направляющих, жизнь «по требованиям»</td></tr>
+  <tr><td>Ответственное действие</td><td>Конкретные шаги по ценностям</td><td>Импульсивность/бездействие, откладывание</td></tr>
+</table>
+<p>Три «парные» оси: принятие+<span class="term" data-tip="увидеть мысль как мысль, а не как истину или приказ">дефузия</span> (работа с внутренним), момент+самость (внимание и перспектива), ценности+действие (поведение). Зеркальная шестёрка — «<span class="term" data-tip="шестиугольник шести процессов психологической гибкости ACT">гексафлекс</span> негибкости»: избегание, слияние, руминация, концептуальное Я, отсутствие ценностей, импульсивность/стагнация.</p>
+
+<h3>Чем ACT отличается от классической КПТ</h3>
+<ul>
+  <li>Мишень: не содержание и «реалистичность» мысли, а <b>отношение к ней</b> и её функция; дефузия vs реструктуризация.</li>
+  <li>Цель: не снижение симптомов (побочный эффект), а расширение поведенческого репертуара по ценностям.</li>
+  <li>Позиция терапевта: «равный в той же человеческой лодке», много метафор, опытов, минимум дидактики; терапевт практикует то же, что проповедует.</li>
+  <li>Диагноз вторичен: протоколы ACT построены по процессам (гибкость), применимы трансдиагностически — от хронической боли до психоза.</li>
+</ul>
+
+<h3>Курс ACT грубой картой</h3>
+<ol>
+  <li><b>Творческая безнадёжность</b>: честный аудит «что вы уже пробовали, чтобы убрать боль — и куда это привело».</li>
+  <li><b>Контроль — проблема</b>: «если контроль работал, вы бы уже победили»; сдвиг рамки с «убрать» на «иметь и жить».</li>
+  <li>Дефузия и принятие (лекции 10) → внимание и самость (11) → ценности и действие (12).</li>
+  <li>Закрепление: готовность как навык, «психологический момент» в жизни, предотвращение возврата к борьбе.</li>
+</ol>
+
+<div class='ex'><b>Пример (вопрос функции).</b> Мысль «я неловкий». Вместо «верно ли это?» — «что происходит, когда вы ей следуете?» — «перестаю звонить, отказываюсь от встреч» — «и куда это ведёт вашу жизнь?» Один вопрос заменил весь спор.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Превращать ACT в «технику отвлечения» или «позитивное мышление» — это противоположно модели. 2) Дефузия как обесценивание («это всего лишь мысль») — валидировать боль, иначе терапевт звучит как invalidating среда. 3) Скакать в ценности, минуя безнадёжность контроля, — пациент вежливо соглашается и ничего не меняет. 4) Терапевт вне процессов: говорить о принятии, избегая своих тем; ACT-терапевт практикует сам.</div>
+<p class="codes"><b>Запомнить:</b> функциональный контекстуализм: вопрос «работает ли?» вместо «верно ли?»; слияние + избегание = ядро проблем; гексафлекс из 6 процессов; ценности — направления, а не цели; изменения симптомов — побочный эффект гибкости.</p>
+<div class="quiz" id="quiz-lec-9">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Функциональный контекстуализм заменяет вопрос «верна ли мысль?» на…</p>
+<button type="button" class="qo">«откуда она взялась?»</button>
+<button type="button" class="qo">«работает ли следование ей — куда она вас ведёт?»</button>
+<button type="button" class="qo">«кто ещё так думает?»</button>
+<button type="button" class="qo">«насколько она популярна?»</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Ядро психопатологии по ACT:</p>
+<button type="button" class="qo">низкая самооценка</button>
+<button type="button" class="qo">когнитивная слияние + экспериенциальное избегание</button>
+<button type="button" class="qo">химический дисбаланс</button>
+<button type="button" class="qo">плохое детство</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Гексафлекс — это…</p>
+<button type="button" class="qo">6 доказанных техник</button>
+<button type="button" class="qo">6 процессов психологической гибкости</button>
+<button type="button" class="qo">6 сессий терапии</button>
+<button type="button" class="qo">6 школ КПТ</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Цель ACT:</p>
+<button type="button" class="qo">снижение симптомов любой ценой</button>
+<button type="button" class="qo">психологическая гибкость: жить по ценностям в присутствии боли</button>
+<button type="button" class="qo">изменить содержание мыслей</button>
+<button type="button" class="qo">полное спокойствие</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 10 ═══════════ -->
+<section class="lec" id="lec-10">
+<h2><span class="num">10</span>Принятие и <span class="term" data-tip="увидеть мысль как мысль, а не как истину или приказ">дефузия</span></h2>
+<div class="core"><b>Ядро.</b> <b>Дефузия</b> — увидеть мысль как ментальное событие («я замечаю мысль, что я неудачник»), а не как истину и приказ; <b>принятие</b> — готовность иметь чувство, не воюя с ним и не подчиняясь ему. Оба процесса не про «полюбить боль», а про <b>высвобождение поведения</b>: пока идёт война с опытом, энергии на жизнь по ценностям не остаётся. Инструменты — метафоры, язык наблюдения, «противоположные» действия.</div>
+<div class='ex'><b>Пример (дефузия).</b> Мысль «я провалюсь». Шаг 1: «я замечаю мысль, что я провалюсь». Шаг 2: «ум снова показывает любимый ролик». Спорить не нужно — достаточно дистанции.</div>
+
+<h3>Дефузия: приёмы</h3>
+<ul>
+  <li><b>Язык наблюдения</b>: «Я имею мысль, что…» → «Я замечаю, что я имею мысль, что…» — два шага назад от слияния.</li>
+  <li><b>Спасибо, ум</b>: «Спасибо, разум, за эту мысль» — вежливость к уму вместо спора.</li>
+  <li><b>Называние истории</b>: «А, это снова история „я всех подвожу“» — истории получают ярлыки, а не роли.</li>
+  <li><b>Молоко-молоко-молоко</b>: повторение слова до потери смысла — звук отделяется от значения.</li>
+  <li><b>Листья на ручье / поезда метро</b>: мысли как объекты, проплывающие мимо; замечать, не запрыгивая.</li>
+  <li><b>Песенка-думалка</b>: мысль пропеть на мотив «в лесу родилась ёлочка» — искусство против авторитета.</li>
+  <li><b>Нечувствительные руки</b>: записать «автоматическую мысль» на карточке — физически носить с собой: мысль весит 5 граммов, а «везу» её годами.</li>
+</ul>
+<p>Правило: дефузия — не «уменьшить веру в мысль» (это бонус), а изменить отношения с ней; если дефузия используется как трюк «чтобы стало легче» — это снова избегание.</p>
+
+<h3>Принятие: как строится</h3>
+<ol>
+  <li><b>Креативная безнадёжность контроля</b>: список стратегий «как я боролся с тревогой/грустью» → честный итог: годы усилий, жизнь уже; контроль — часть проблемы.</li>
+  <li><b>Метафора «человеку в яме с лопатой»</b>: вы в яме; лопата (контроль эмоций) — единственный инструмент; что будет, если копать дальше? Решение — перестать копать, не «полюбить яму».</li>
+<li><i>Пример:</i> «Что вы пробовали от тревоги?» — алкоголь, сериалы до трёх ночи, избегание звонков. «Помогло?» — нет, стало хуже. Этот список — не поражение, а доказательство: контроль не работает, нужен другой путь.</li>
+  <li><b>Метафора «перетягивание каната с монстром»</b>: бросить канат — не победа монстра, а выход из игры.</li>
+  <li><b>Willingness как действие</b>: принятие — это делание («открыть дверь и впустить»), а не решение «быть спокойным»; экспозиция в ACT = практика готовности.</li>
+  <li><b>Шкала готовности</b>: от малого (заметить тревогу и не проверить телефон) до большого (трудный разговор).</li>
+</ol>
+
+<h3>Экспозиция по-ACT</h3>
+<ul>
+  <li>Классическая экспозиция нацеливается на угашение страха; ACT-экспозиция — на <b>поведенческую готовность</b> в присутствии страха: «идти туда, где важно, вместе с этим».</li>
+  <li>Разница в языке: не «привыкнуть к ужасу», а «практиковать открытость, делая то, что дорожу».</li>
+  <li>Результат по исследованиям: снижение дистресса часто происходит, но это не условие успеха — критерий «работает ли жизнь».</li>
+</ul>
+
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Дефузия-как-дискредитация («это просто мысль») — invalidation; сначала эмпатия. 2) Принятие как капитуляция или пассивность: принятие чувств + действие по ценностям; принять абьюз — не ACT-задача, а изменение ситуации — да. 3) Юмор не тому пациенту/не в тот момент: дефузия — не насмешка над страданием. 4) Гнаться за «правильной техникой»: приём вторичен, функциональный сдвиг первичен.</div>
+<p class="codes"><b>Запомнить:</b> дефузия = «замечаю мысль», а не «верю/спорю»; принятие = готовность-действие, не «полюбить боль»; контроль — часть проблемы (лопата в яме); критерий — жизнь, не эмоции; экспозиция в ACT тренирует готовность.</p>
+<div class="quiz" id="quiz-lec-10">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Дефузия — это…</p>
+<button type="button" class="qo">оспаривание мысли</button>
+<button type="button" class="qo">видеть мысль как ментальное событие («я замечаю мысль, что…»)</button>
+<button type="button" class="qo">отвлечение от мысли</button>
+<button type="button" class="qo">согласие с мыслью</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="2">
+<p class="qt">2. Принятие в ACT — это…</p>
+<button type="button" class="qo">полюбить боль</button>
+<button type="button" class="qo">капитуляция перед обстоятельствами</button>
+<button type="button" class="qo">готовность-действие: впустить опыт, не воюя и не подчиняясь</button>
+<button type="button" class="qo">терпение до конца жизни</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Метафора «человек в яме с лопатой» учит:</p>
+<button type="button" class="qo">копать быстрее</button>
+<button type="button" class="qo">бросить лопату: контроль — часть проблемы</button>
+<button type="button" class="qo">любить яму</button>
+<button type="button" class="qo">позвать соседа с лопатой</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Ошибка применения дефузии:</p>
+<button type="button" class="qo">дать пациенту заметить мысль</button>
+<button type="button" class="qo">подать её как обесценивание («это всего лишь мысль») без эмпатии</button>
+<button type="button" class="qo">использовать метафору</button>
+<button type="button" class="qo">спросить о функции</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 11 ═══════════ -->
+<section class="lec" id="lec-11">
+<h2><span class="num">11</span>Настоящее время и <span class="term" data-tip="«наблюдающее Я»: точка, откуда виден весь опыт, но которая сама — не опыт">самость-как-контекст</span></h2>
+<div class="core"><b>Ядро.</b> Два «внимательных» процесса <span class="term" data-tip="шестиугольник шести процессов психологической гибкости ACT">гексафлекса</span>: <b>контакт с настоящим моментом</b> (гибкое, произвольное внимание к «здесь-и-сейчас» — против автопилота, руминации и беспокойства) и <b>самость-как-контекст</b> — устойчивое «наблюдающее Я», пространство, в котором появляются мысли, чувства, роли. Смена перспективы: из «я = моя боль» в «я = то место, откуда боль видна». Это терапевтический аналог того, что в осознанности называется «децентрация».</div>
+
+<h3>Контакт с настоящим</h3>
+<ul>
+  <li>Проблема негибкости: жизнь в «историях» — переработка прошлого (руминация) и репетиция будущего (тревога); момент проходит мимо.</li>
+  <li>Практики: короткие якорения (дыхание, звук, стопа на полу — 60 секунд в сессии), «пять чувств», mindfulness-упражнения ACT-стиля (без религиозного контекста, с функциональной рамкой).</li>
+  <li>Принцип: внимание тренируется не «для спокойствия», а для <b>выбора</b> — заметить момент, в котором можно действовать по ценностям.</li>
+  <li>Интеграция в жизнь: ритуалы перехода (утро, дверь кабинета, перед сложным разговором), «mindful-пауза» перед реакцией.</li>
+</ul>
+
+<h3>Самость-как-контекст (наблюдающее Я)</h3>
+<ul>
+  <li>Два вида Я по ACT: <b>самость-как-концепция</b> (self-as-content) — сумма оценок и историй («я тревожный, слабый, недостойный») и <b>самость-как-процесс/контекст</b> (self-as-context) — точка сборки опыта, которая замечает, но не является содержанием.</li>
+  <li><b>Метафора шахматной доски</b>: мысли/чувства — фигуры, воюющие на доске; пациент пытается играть за белых (позитивные мысли) против чёрных; альтернатива — <b>быть доской</b>: держать игру, не сражаясь.</li>
+  <li><b>Метафора неба и погоды</b>: мысли-чувства — погода; наблюдатель — небо: шторм проходит, небо остаётся, не повреждённым.</li>
+  <li>Упражнение «Пассажиры в автобусе»: вы ведёте автобус по маршруту (ценности), пассажиры (страхи, «не смею», «не получится») кричат; проблема не в пассажирах, а в том, что вы отдаёте им руль.</li>
+  <li>Опытным путём: вопросы «кто сейчас замечает эту мысль?», последовательное внимание к разным модальностям — обнаруживается «то, что остаётся».</li>
+<li><i>Пример:</i> попросите назвать три эмоции за день, а затем спросите: «А кто заметил все три?» Это и есть наблюдатель: не содержание, а место, откуда видно.</li>
+</ul>
+
+<h3>Зачем это клинически</h3>
+<table class="t">
+  <tr><th>Проблема</th><th>Сдвиг через самость-как-контекст</th></tr>
+  <tr><td>«Я — моя депрессия/тревога» (fusion с диагнозом)</td><td>«У меня есть депрессия, и я больше её» — пространство для поведения</td></tr>
+  <tr><td>Хроническая травма: «я — грязная/плохая»</td><td>Наблюдающее Я не повреждено содержанием; бережная основа для экспозиции</td></tr>
+  <tr><td>Руминация о прошлом</td><td>Перспектива «откуда видно» + возвращение в момент</td></tr>
+  <tr><td>Страх «сойти с ума» от чувств</td><td>«Имею сильное чувство» ≠ «распадаюсь»: контекст вмещает</td></tr>
+</table>
+
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Превращать mindfulness в релаксацию («вы должны успокоиться») — противоположно смыслу; если пациент «проваливается» в травматический материал — укороченные практики, заземление. 2) Духовный/эзотерический налёт: язык ACT функционален и светский. 3) Философская лекция о «наблюдателе» вместо опыта: пациент должен заметить это, а не согласиться. 4) Использовать «наблюдателя», чтобы избегать содержания («я просто наблюдаю свою боль» без действий) — наблюдатель служит действию.</div>
+<p class="codes"><b>Запомнить:</b> самость-как-концепция vs самость-как-контекст; шахматная доска, небо/погода, пассажиры автобуса; внимание — для выбора момента действия; наблюдатель вмещает опыт, но не заменяет поведение.</p>
+<div class="quiz" id="quiz-lec-11">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Самость-как-контекст — это…</p>
+<button type="button" class="qo">сумма оценок и историй о себе</button>
+<button type="button" class="qo">наблюдающее Я — пространство, в котором появляется опыт</button>
+<button type="button" class="qo">роль в социуме</button>
+<button type="button" class="qo">чувство тела</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="3">
+<p class="qt">2. Метафора шахматной доски предлагает пациенту быть…</p>
+<button type="button" class="qo">белыми фигурами</button>
+<button type="button" class="qo">чёрными фигурами</button>
+<button type="button" class="qo">судьёй</button>
+<button type="button" class="qo">доской: удерживать игру, не сражаясь</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. «Пассажиры в автобусе» — про то, что…</p>
+<button type="button" class="qo">пассажиров нужно высадить</button>
+<button type="button" class="qo">проблема не в «пассажирах», а в том, кто держит руль</button>
+<button type="button" class="qo">автобус нужно остановить</button>
+<button type="button" class="qo">пассажиры всегда правы</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Внимание к настоящему тренируется ради…</p>
+<button type="button" class="qo">расслабления</button>
+<button type="button" class="qo">выбора: заметить момент, в котором можно действовать по ценностям</button>
+<button type="button" class="qo">эстетики</button>
+<button type="button" class="qo">дисциплины</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 12 ═══════════ -->
+<section class="lec" id="lec-12">
+<h2><span class="num">12</span>Ценности и ответственное действие</h2>
+<div class="core"><b>Ядро.</b> <b>Ценности</b> — свободно выбранные направления жизни («каким я хочу быть в отношениях/работе/с собой»), а не цели с галочкой; <b>ответственное действие</b> — конкретные шаги в этих направлениях. Терапевтическая логика: боль — цена значимого (горе = любовь, тревога оценки = забота о связи); выбрав ценности, пациент получает причину встречаться с болью, а не «сначала убрать симптомы — потом жить».</div>
+
+<h3>Ценности vs цели vs <span class="term" data-tip="жизнь по чужим правилам: «надо, иначе я плохой», вместо выбранного направления">долженствование</span></h3>
+<dl class="df">
+  <dt>Цель</dt><dd>Достижима и закрывается: «жениться, купить дом» — после галочки жизнь снова «про что?»</dd>
+  <dt>Ценность</dt><dd>Направление, как «идти на запад»: никогда не «выполнено»; «быть заботливым партнёром» — сегодня, завтра, в кризис.</dd>
+  <dt>Долженствование</dt><dd>Извне (правила, стыд, ожидания): «должен, иначе я плохой»; тест: чей голос и что будет, если не сделать?</dd>
+</dl>
+
+<h3>Приёмы выяснения ценностей</h3>
+<ul>
+  <li><b>«Волшебная палочка»</b>: если бы боль ушла — как бы вы жили? (потом: что из этого можно делать уже сейчас, с болью?).</li>
+  <li><b>Метафора «камни на столе»</b>: сферы жизни как камни на столе — какие из них вы берёте с собой, если не всё поместится?</li>
+  <li><b>Эпитафия / речь на 80-летии</b>: что хотите, чтобы сказали о вас близкие — по сферам.</li>
+  <li><b>«Пик-моменты»</b>: когда вы были «по-настоящему собой», живым? Что тогда выражалось?</li>
+  <li><b>Карточки ценностей / компас</b>: сферы (отношения, семья, родительство, работа, учёба, здоровье, отдых/игра, сообщество, духовность) — выбрать 3–4 приоритета и сформулировать глаголами.</li>
+  <li><b>Обратная проверка</b>: по какой ценности вы живёте фактически (по календарю и деньгам)? Расхождение = карта работы.</li>
+</ul>
+
+<h3>Ответственное действие (committed action)</h3>
+<ol>
+  <li>Перевести ценность в поведение: «быть присутствующим отцом» → 20 минут игры без телефона, сегодня.</li>
+  <li>Шаги масштабируются: от микрошага до «большого прыжка»; иерархия строится по готовности, не по «уровню страха».</li>
+  <li>Препятствия — двух типов: внешние (навыки, ресурсы — решаются обучением/планированием) и внутренние (страхи, мысли — решаются принятием/<span class="term" data-tip="увидеть мысль как мысль, а не как истину или приказ">дефузией</span>); различать на этапе планирования.</li>
+  <li>План «если — то», измеримость, связь с ценностью; разбор срывов без «трибунала», с любопытством.</li>
+  <li>Цикл: действие → опыт → уточнение ценностей → следующее действие; терапия строится как поведенческая активация по ценностям.</li>
+</ol>
+
+<div class='ex'><b>Пример (цель vs ценность).</b> «Должен ходить в зал» — чей голос? стыда и тренера; сорвался — виноват, бросил. «Хочу быть сильным и играть с детьми» — ценность: та же тренировка, но другой мотор; пропуск — не катастрофа, а повод вернуться.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) Ценности терапевта вместо пациента («семья важна»); проверять: чей голос звучит? 2) Цели под видом ценностей («быть счастливым» — не направление); 3) «Сначала вылечиться, потом жить» — скрытое избегание: маленькие шаги по ценностям возможны уже сейчас. 4) Перфекционизм действий: сорвался — не «ценность ложная», а данные; compassion + следующий шаг.</div>
+<p class="codes"><b>Запомнить:</b> ценность = направление (запад), не цель (галочка); боль — цена значимого; выявление: палочка, эпитафия, пик-моменты; действия масштабируются и связываются с ценностью; препятствия внешние решаются навыками, внутренние — принятием.</p>
+<div class="quiz" id="quiz-lec-12">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Отличие ценности от цели:</p>
+<button type="button" class="qo">ценность достижима и закрывается галочкой</button>
+<button type="button" class="qo">ценность — направление, которое никогда не «выполнено»</button>
+<button type="button" class="qo">разницы нет</button>
+<button type="button" class="qo">цена важнее ценности</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Приём выявления ценностей:</p>
+<button type="button" class="qo">тест Роршаха</button>
+<button type="button" class="qo">«речь на 80-летии»/эпитафия</button>
+<button type="button" class="qo">шкала депрессии</button>
+<button type="button" class="qo">темпераментный опросник</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Логика ACT о боли и значимости:</p>
+<button type="button" class="qo">боль — признак ошибки</button>
+<button type="button" class="qo">боль — цена значимого: горе = любовь, тревога = забота о связи</button>
+<button type="button" class="qo">боль нужно убрать</button>
+<button type="button" class="qo">значимое не вызывает боли</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Препятствия «внутренние» (страхи, мысли) лечатся…</p>
+<button type="button" class="qo">навыками и планированием</button>
+<button type="button" class="qo">принятием и дефузией</button>
+<button type="button" class="qo">избеганием</button>
+<button type="button" class="qo">волевым усилием</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 13 ═══════════ -->
+<section class="lec" id="lec-13">
+<h2><span class="num">13</span>ACT-процесс терапии: структура, метафоры, практика</h2>
+<div class="core"><b>Ядро.</b> ACT не «сессии по протоколу диагноза», а спираль процессов: безнадёжность контроля → <span class="term" data-tip="увидеть мысль как мысль, а не как истину или приказ">дефузия</span>/принятие → самость → ценности → действия → новый цикл глубже. Терапевт работает языком опыта: метафоры, упражнения, «игры разума»; каждый ход проверяется вопросом: <b>какой процесс негибкости сейчас на сцене и что усилит гибкость?</b> Функция важнее техники: одна метафора может лечить, та же — ранить, если подана как «правильный ответ».</div>
+
+<h3>Каркас курса ACT (типовая последовательность)</h3>
+<ol>
+  <li><b>Старт: надежда на контроль</b> — собрать историю «решений проблемы» (creative hopelessness): что пробовали, чего стоило, что вышло; не разоблачение, а совместное открытие «контроль не работает там, где речь о внутреннем опыте».</li>
+  <li><b>Смена рамки</b>: цель не «чувствовать лучше», а «жить лучше, чувствуя»; метафора «пассажиры в автобусе», «человек в яме».</li>
+  <li><b>Гибкость к опыту</b>: дефузия и принятие — в сессии, с актуальным материалом (не «о тревоге», а «вот она, сейчас»).</li>
+  <li><b>Перспектива</b>: <span class="term" data-tip="«наблюдающее Я»: точка, откуда виден весь опыт, но которая сама — не опыт">самость-как-контекст</span> — упражнения наблюдателя; с травматическим материалом — бережно и стабилизированно.</li>
+  <li><b>Направление</b>: ценности; разрыв «жизнь как есть vs как хочу» — источник мотивации, не вины.</li>
+  <li><b>Действие</b>: планы, «если-то», обучение навыкам; сессия превращается в «лабораторию» новых действий.</li>
+  <li><b>Циклы и завершение</b>: возвращение к процессам глубже; завершение — план поддержки гибкости без терапевта.</li>
+</ol>
+
+<h3>Язык и стиль ACT-терапевта</h3>
+<ul>
+  <li>Метафоры вместо лекций: опыт пациента сам делает вывод; метафора не «объясняется до смерти» — одна, точная, вовремя.</li>
+  <li>Равенство позиций: «я в той же лодке со своим обезьяньим умом»; избегать экспертного сверху вниз.</li>
+  <li>Работа «в моменте»: «что сейчас происходит внутри, когда вы это говорите?» — сессия как тренажёр гибкости.</li>
+  <li>Юмор и лёгкость к уму (не к боли пациента); парадокс и опыт вместо убеждения.</li>
+  <li>Ориентация: каждый фрагмент сессии связан с ценностями и жизнью вне кабинета — иначе «гибкость в кабинете» не вывозится в мир.</li>
+</ul>
+
+<h3>Прикладные протоколы (кратко)</h3>
+<ul>
+  <li><b>Депрессия</b> (Zettle): активация по ценностям, дефузия от «я ничтожество», принятие чувств без руминации.</li>
+  <li><b>Тревога</b>: готовность к телесным сигналам, отказ от safety behaviors, действие «вместе с тревогой».</li>
+  <li><b>Хроническая боль</b> (Dahl): дефузия от «боли-как-жизни», pacing, ценностная активация; изменение ответа на боль.</li>
+  <li><b>Психоз</b> (Gaudiano, Bach): принятие голосов/бреда как опыта (не согласие!), дефузия, снижение борьбы и госпитализаций.</li>
+  <li><b>Зависимости</b>: «сёрфинг тяги» (<span class="term" data-tip="«сёрфинг тяги»: прожить волну тяги, скатившись по ней, не действуя">urge surfing</span>), ценности против «жизни по тяге»; краткие групповые и онлайн-форматы — по данным лекционных обзоров, см. лекцию 15.</li>
+  <li><b>Стресс/выгорание специалистов</b>: ACT-тренинги гибкости (профилактика, самопомощь).</li>
+</ul>
+
+<div class='ex'><b>Пример (план «если–то»).</b> Ценность «присутствие в семье». Если после работы тянет лечь в телефон — то 20 минут с сыном на полу, телефон в прихожей. Препятствие «устал» — внутреннее: готовность иметь усталость и всё равно сесть. Маленький шаг, связанный с ценностью, сильнее большого намерения.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) «Креативная безнадёжность» как разгром надежд пациента — всегда из его опыта, с эмпатией, а не из теории. 2) Коллекционирование метафор без проверки функции: если пациент «согласился и отложил» — процесса не было. 3) ACT без поведенческого слоя — «философские беседы»: действия и домашние опыты обязательны. 4) Игнорировать «красные флаги» риска (суицидальность, тяжёлая декомпенсация) — ACT-рамка не отменяет клиническую оценку.</div>
+<p class="codes"><b>Запомнить:</b> спираль процессов, а не линейный протокол; вопрос терапевта: «какой процесс сейчас негибкости?»; функция &gt; техника; метафора — опыт, не лекция; каждая сессия приземляется в действия по ценностям.</p>
+<div class="quiz" id="quiz-lec-13">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. «Творческая безнадёжность» строится…</p>
+<button type="button" class="qo">из теории в лекции терапевта</button>
+<button type="button" class="qo">из честного аудита стратегий контроля в опыте пациента</button>
+<button type="button" class="qo">из запрета надеяться</button>
+<button type="button" class="qo">из отчаяния</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Навигационный вопрос ACT-терапевта в сессии:</p>
+<button type="button" class="qo">«какой диагноз точнее?»</button>
+<button type="button" class="qo">«какой процесс негибкости сейчас на сцене — и что усилит гибкость?»</button>
+<button type="button" class="qo">«кто виноват?»</button>
+<button type="button" class="qo">«какая школа лучше?»</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Принцип «функция важнее техники» означает:</p>
+<button type="button" class="qo">техники не нужны</button>
+<button type="button" class="qo">одна и та же метафора лечит или ранит в зависимости от функции и момента</button>
+<button type="button" class="qo">нужно больше техник</button>
+<button type="button" class="qo">метафоры запрещены</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Каждая сессия ACT должна приземляться в…</p>
+<button type="button" class="qo">интеллектуальное согласие</button>
+<button type="button" class="qo">действие по ценностям вне кабинета</button>
+<button type="button" class="qo">новую метафору</button>
+<button type="button" class="qo">анализ прошлого</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 14 ═══════════ -->
+<section class="lec" id="lec-14">
+<h2><span class="num">14</span>Сравнение ST и ACT: две карты одной территории</h2>
+<div class="core"><b>Ядро.</b> ST и ACT решают одну проблему (схемы/слияния держат негибкое страдание) разными языками: ST — <b>генетико-историческая карта</b> («откуда паттерн, какая нужда фрустрирована, как выживать научился»), ACT — <b>функционально-моментная карта</b> («что этот паттерн делает сейчас, куда ведёт, во что вам дорого»). Умение держать обе — критерий зрелого терапевта: история объясняет, функция направляет.</div>
+
+<h3>Сравнительная таблица</h3>
+<table class="t">
+  <tr><th></th><th>Схема-терапия</th><th>ACT</th></tr>
+  <tr><td>Родословная</td><td>КПТ + психодинамика + гештальт (Янг)</td><td>Поведенческий анализ + RFT (Хайес)</td></tr>
+  <tr><td>Единица анализа</td><td>Схема (ядерный паттерн) и режим (состояние)</td><td>Процесс (функция действия в контексте)</td></tr>
+  <tr><td>Взгляд на мысли</td><td>Дезадаптивное содержание с историей происхождения</td><td>Содержание вторично; важна слияние/функция</td></tr>
+  <tr><td>Роль прошлого</td><td>Центральная: сцены детства — материал для изменения</td><td>Инструментальная: прошлое интересно как поведение сейчас</td></tr>
+  <tr><td>Отношения терапевта</td><td>Ограниченное материнство — активное «додать» заботу</td><td>Равный партнёр, «в той же лодке»; материнство не задача</td></tr>
+  <tr><td>Основные техники</td><td>Рескриптинг, стулья, флешкарты, поведенческие опыты</td><td>Метафоры, <span class="termt" title="увидеть мысль как мысль, а не как истину или приказ">дефузия</span>, принятие, ценностные планы</td></tr>
+  <tr><td>Сильные показания</td><td>Личностные паттерны, хронификация, «застревание», отношения</td><td>Тревожно-депрессивный спектр, боль, стресс, широкая трансдиагностика</td></tr>
+  <tr><td>Критерий успеха</td><td>Схемы теряют силу, Здоровый Взрослый ведёт жизнь</td><td>Гибкость: жизнь по ценностям в присутствии боли</td></tr>
+</table>
+
+<h3>Где карты совпадаются</h3>
+<ul>
+  <li>Антиизбегание: оба метода отказываются «убрать боль прежде жизни».</li>
+  <li>Экспериенциальность: понимания мало — нужно перепроживание и новый опыт.</li>
+  <li>Отношения и подлинность терапевта — терапевтический инструмент.</li>
+  <li>Работа с «частями»: режимы ST и «пассажиры/субличности» ACT — родственные языки одного феномена; даже техники похожи (стулья ↔ диалог с «частью», <span class="term" data-tip="вернуться в воспоминание и «переписать» его финал с защитником">рескриптинг</span> ↔ работа с образами в ACT).</li>
+  <li>Ценности ≈ базовые нужды Янга, только без датировки детством: «что важно» и там и там — двигатель изменений.</li>
+</ul>
+
+<h3>Практическая интеграция (без эклектики вслепую)</h3>
+<ol>
+  <li><b>Оценка доминирующей проблемы</b>: хронический личностный паттерн с тяжёлой историей → вес к ST; острая/широкая проблема с борьбой с опытом → вес к ACT.</li>
+  <li><b>Слои одновременно</b>: концептуализация ST («какого ребёнка ранили») + интервенции ACT («что делает ваш Защитник сейчас с этим чувством — и по какой ценности вы хотели бы действовать?»).</li>
+  <li><b>Последовательность</b>: при нестабильности — навыки и стабилизация; при хрупкости — сначала режимная безопасность ST; ACT-процессы отлично встраиваются в «поведенческое разрушение паттернов» ST.</li>
+  <li><b>Язык пациента</b>: кому-то органична историческая рамка («откуда это во мне»), кому-то функциональная («что это мне даёт и стоит ли цена того») — выбор карты по пациенту, а не по школе терапевта.</li>
+  <li><b>Правило честности</b>: не смешивать в одну сессию всё; каждая интервенция привязана к концептуализации и проверяется эффектом.</li>
+</ol>
+
+<div class='ex'><b>Пример (две карты — один случай).</b> Хроническая обида в браке. ST: в детстве «не была увидена» — эмоциональная депривация; лечение — рескриптинг и опыт «быть услышанной» в отношениях. ACT: слияние с «меня всё равно не любят» → избегание просьб → рост дистанции; лечение — дефузия и просьбы по ценности «близость». Карты не спорят — дополняют.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) «Eclectic anything goes»: без концептуализации смешение школ — салат, а не интеграция. 2) Пренебрежение историей у травматического пациента (чистое ACT) — схема останется «неузнанной»; 3) Пренебрежение функцией при хроническом избегании (чистое ST) — бесконечный рескриптинг без изменений поведения. 4) Переходить между картами в сессии без метакомментария — пациент теряет нить: «сейчас смотрим откуда, потом — что делать».</div>
+<p class="codes"><b>Запомнить:</b> ST = карта происхождения, ACT = карта функции; общее: антиизбегание, экспериенциальность, части, ценности/нужды; выбор карты — по пациенту и проблеме; интеграция требует концептуализации и явной логики переходов.</p>
+<div class="quiz" id="quiz-lec-14">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="0">
+<p class="qt">1. ST и ACT — это карты…</p>
+<button type="button" class="qo">происхождения и функции соответственно</button>
+<button type="button" class="qo">две одинаковые карты</button>
+<button type="button" class="qo">только diagnoses</button>
+<button type="button" class="qo">конкурирующие религии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">2. Родственные понятия двух методов:</p>
+<button type="button" class="qo">режимы ST ≈ «пассажиры»/части ACT; нужды Янга ≈ ценности</button>
+<button type="button" class="qo">схемы ≈ нейроны</button>
+<button type="button" class="qo">рескриптинг ≈ гипноз</button>
+<button type="button" class="qo"><span class="term" data-tip="забота терапевта «додать недоданное» — в строгих профессиональных рамках">ограниченное материнство</span> ≈ коучинг</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Выбор «карты» определяется…</p>
+<button type="button" class="qo">школой терапевта</button>
+<button type="button" class="qo">проблемой и пациентом (историческая vs функциональная рамка)</button>
+<button type="button" class="qo">модой</button>
+<button type="button" class="qo">стоимостью</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. Интеграция методов без концептуализации — это…</p>
+<button type="button" class="qo">высший пилотаж</button>
+<button type="button" class="qo">эклектический салат</button>
+<button type="button" class="qo">протокол</button>
+<button type="button" class="qo"><span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизия</span></button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 15 ═══════════ -->
+<section class="lec" id="lec-15">
+<h2><span class="num">15</span>Доказательная база и границы</h2>
+<div class="core"><b>Ядро.</b> Оба метода — «первая лига» доказательности, но с разными профилями: ST — сильнейшие данные по расстройствам личности (в т.ч. ПРЛ) и хронической депрессии; ACT — широкая трансдиагностическая база (десятки РКИ) при тревоге, депрессии, боли, стрессе, психозе, зависимостях. Важно читать не лозунги школ, а профиль: для чего, у кого, в каком формате, против какого сравнения.</div>
+
+<h3>Схема-терапия: ключевые данные</h3>
+<ul>
+  <li>ПРЛ: РКИ Giesen-Bloo и соавт. (2006, Arch Gen Psychiatry; 3 года, 2 сессии/нед) — превосходство ST над трансфер-фокусированной терапией: критерий выздоровления 45,5% против 23,8%, лучше качество жизни (высокая доля выбывших в обеих группах); Farrell, Shaw &amp; Webber (2012) — групповая ST + обычное лечение значимо лучше обычного при ПРЛ; последующие исследования (в т.ч. голландские кластерные) подтверждают эффективность и снижение стоимости (меньше госпитализаций, медикаментов).</li>
+  <li>Личность кластера C, хроническая депрессия, расстройства питания с личностной патологией — РКИ и открытые серии в пользу добавления ST.</li>
+  <li>Форензика (Bernstein и соавт.): схема-терапия в исправительной системе — снижение агрессии и улучшение поведения.</li>
+  <li>Голландские рекомендации по ПРЛ: ST рекомендуется среди структурированных методов при ПРЛ наряду с DBT, MBT и TFP.</li>
+</ul>
+
+<h3>ACT: ключевые данные</h3>
+<ul>
+  <li>Мета-анализы (A-Tjak и соавт., 2015; позднейшие обновления) — десятки РКИ: ACT в среднем не уступает установленным методам (включая классическую КПТ) при тревожных, депрессивных, хронической боли, стрессе; эффект устойчив на follow-up.</li>
+  <li>Специфические ниши: хроническая боль (изменение ответа на боль), психоз (Gaudiano: меньше повторных госпитализаций), зависимости, stigma/self-stigma, выгорание специалистов (краткие онлайн-форматы).</li>
+  <li>Механизм-исследования: посредники эффекта — рост принятия, <span class="term" data-tip="увидеть мысль как мысль, а не как истину или приказ">дефузии</span>, гибкости (поддерживает модель, а не только «общие факторы»).</li>
+  <li>Ограничение: часть ранних работ малы по мощности; критики указывают на «переупаковку поведенческих техник» — ответ школы: важна именно функциональная рамка (дискуссия живая — честно сообщать пациенту).</li>
+</ul>
+
+<h3>Куда смотреть при выборе метода</h3>
+<table class="t">
+  <tr><th>Ситуация</th><th>Первый кандидат</th><th>Комментарий</th></tr>
+  <tr><td>ПРЛ, суицидальные паттерны, хаос отношений</td><td>ST или DBT</td><td>Структурированный долгий метод + психиатрическая подстраховка</td></tr>
+  <tr><td>Нарциссическая организация, «недоступный» фасад</td><td>ST</td><td>Режимный вход через валидацию уязвимости</td></tr>
+  <tr><td>ГТР/паника/соц. тревога без личностного слоя</td><td>КПТ (или ACT)</td><td>Классика — первая линия; ACT — достойная альтернатива</td></tr>
+  <tr><td>Хроническая боль, усталость, «не хватает жизни»</td><td>ACT</td><td>Мощная база при соматических состояниях</td></tr>
+  <tr><td>Хроническая депрессия с ранними схемами и «застреванием»</td><td>ST (можно + ACT-процессы)</td><td>Рандомизированные исследования: у этого контингента ST эффективнее обычной КПТ</td></tr>
+  <tr><td>Острый эпизод тяжёлой депрессии/психоз</td><td>Медицина + поддерживающая работа</td><td>Методы курса — после стабилизации</td></tr>
+</table>
+
+<h3>Границы и этика применения</h3>
+<ul>
+  <li>Компетентность: и ST, и ACT требуют обучения (воркшопы, <span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизия</span>, в идеале — сертификационные программы ISST / ACBS), а не «прочитал конспект».</li>
+  <li>Травма: экспозиционные и экспериенциальные техники — по правилам фазовой работы (лекция 9 курса клинической психологии).</li>
+  <li>Риск: суицидальность, насилие, декомпенсация — клиническая оценка поверх любой «школьной» рамки.</li>
+  <li>Личный опыт терапевта: оба метода «ловят» терапевта на его схемах и слияниях — супервизия и личная работа — гигиена, не роскошь.</li>
+</ul>
+
+<div class='ex'><b>Пример (выбор по профилю).</b> Панические атаки полгода, личность и отношения в порядке → протокольная экспозиция: короче и дешевле. «Всю жизнь исчезаю в отношениях, хроническая пустота, шторма» → вес к схема-терапии. Один и тот же симптом — разные машины.</div>
+<div class="flags"><b>Ловушки и ошибки.</b> 1) «У нас РКИ — значит, всем подходит»: усреднённый эффект ≠ индивидуальная пригодность. 2) Рекламные панчлайны школ вместо профилей данных. 3) Забывать сравнительные данные: при простой фобии/панике чистая экспозиционная КПТ часто экономнее. 4) Практика без супервизии «по книгам» — риск ятрогении, особенно в экспериенциальной работе.</div>
+<p class="codes"><b>Запомнить:</b> ST — сильнейший блок данных по ПРЛ/личности; ACT — широкая трансдиагностическая база; выбор по профилю проблемы и пациента; супервизия обязательна; клиническая оценка — поверх школьной рамки.</p>
+<div class="quiz" id="quiz-lec-15">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Сильнейший блок доказательств схема-терапии:</p>
+<button type="button" class="qo">простые фобии</button>
+<button type="button" class="qo">расстройства личности, особенно ПРЛ</button>
+<button type="button" class="qo">СДВГ</button>
+<button type="button" class="qo">инсомния</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. «Фирменные» ниши ACT:</p>
+<button type="button" class="qo">только паника</button>
+<button type="button" class="qo">хроническая боль, стресс, широкая трансдиагностика</button>
+<button type="button" class="qo">только психоз</button>
+<button type="button" class="qo">только зависимости</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Исследования посредников (медиаторов) в ACT показывают:</p>
+<button type="button" class="qo">эффект целиком за счёт плацебо</button>
+<button type="button" class="qo">рост принятия/дефузии опосредует исход — модель работает</button>
+<button type="button" class="qo">ничего не показывают</button>
+<button type="button" class="qo">техники вредны</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">4. При простой фобии насекомых экономнее всего:</p>
+<button type="button" class="qo">год схема-терапии</button>
+<button type="button" class="qo">протокольная экспозиционная КПТ</button>
+<button type="button" class="qo">бессрочная психодинамика</button>
+<button type="button" class="qo">только фармакология</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ЛЕКЦИЯ 16 ═══════════ -->
+<section class="lec" id="lec-16">
+<h2><span class="num">16</span>Интеграция и собственный стиль</h2>
+<div class="core"><b>Ядро.</b> Итог курса: методы — не религии, а инструменты под задачу. Зрелая практика = <b>концептуализация</b> (что происходит: схема/процесс/эпизод) + <b>выбор рычага</b> (отношения, переживание, поведение, функция) + <b>честная проверка</b> (меняется ли жизнь пациента) + <b>собственная устойчивость</b> (<span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизия</span>, своя терапия). Пациенту всё равно, чья школа ему помогла, — ему нужна жизнь.</div>
+
+<h3>Рабочий алгоритм выбора (свод курса)</h3>
+<ol>
+  <li><b>Скрининг остроты</b>: суицидальность, психоз, декомпенсация, зависимость в активе → медицина/стабилизация; потом методы курса.</li>
+  <li><b>Слой проблемы</b>: эпизод (депрессия/тревога как состояние) → протокольная КПТ/ACT; паттерн (всю жизнь, отношения, «это я такой») → ST-карта; борьба с опытом при сохранном Я → ACT-карта.</li>
+  <li><b>Формулировка в двух языках</b>: попробуйте случай описать и режимами («Уязвимый + Карающий + Защитник»), и процессами («слияние с историей „я недостоин“ питает избегание близости; ценность — доверие»). Совпадение укажет ядро.</li>
+  <li><b>Рычаг и тактика</b>: нужна защита внутренней детской части → <span class="term" data-tip="вернуться в воспоминание и «переписать» его финал с защитником">рескриптинг</span>/стулья; нужно вернуть поведение → ценности+действия; нужно пережить недожитое → экспериенциальная работа; нужно понять контекст → концептуализация.</li>
+  <li><b>Цикл проверки</b> каждые 4–6 сессий: симптомы, функционирование, <span class="term" data-tip="рабочий союз: доверие и согласие о целях между терапевтом и пациентом">альянс</span>; нет движения — пересмотр концептуализации, а не «усилие того же».</li>
+</ol>
+
+<h3>Как развивать собственный стиль</h3>
+<ul>
+  <li>Освоить один метод «до мышц» (супервизия, кейсы), второй — как вторая карта; интеграция вырастает из глубины, а не из смешения.</li>
+  <li>Вести «личную формулу»: какие пациенты/схемы задевают мои; мои копинги в сессии (спасатель? критик? уход?) — это мой режимный профиль, и он участвует в терапии всегда.</li>
+  <li>Читать исследования по профилю (не по лозунгам), посещать интервизии; один «трудный кейс» — одна супервизия, регулярность.</li>
+  <li>Помнить общие факторы: тепло, надежда, структура, активность пациента — фундамент, на котором методы работают (Wampold).</li>
+</ul>
+
+<h3>Итоговый чек-лист курса</h3>
+<ul>
+  <li>Схема = фильтр из детства; 5 нужд; 3 копинга; режимы — динамика в моменте.</li>
+  <li>ST-техники: материнство в рамках, рескриптинг (фазы!), стулья, поведенческое разрушение паттернов.</li>
+  <li>Гибкость = 6 процессов ACT; вопрос не «верно ли?», а «работает ли?».</li>
+  <li>Дефузия/принятие — не обесценивание и не капитуляция; ценности — направления; действия — масштабируются.</li>
+  <li>ST и ACT — карты происхождения и функции; держите обе, выбирайте по пациенту.</li>
+  <li>Доказательность читаем профилем (для чего/у кого), не лозунгом.</li>
+  <li>Супервизия, своя терапия, честная проверка результатов — профессиональная гигиена.</li>
+</ul>
+
+<div class='ex'><b>Пример (цикл проверки).</b> Шесть сессий — прогресса нет. Вместо «усиливать то же» — пересмотр концептуализации: под избеганием оказалась не покинутость, а дефектность («если увидят вблизи — сбегут»). Вход в работу сменён — движение началось.</div>
+<div class="flags"><b>Финальные «красные строки».</b> 1) Не работать с травмой без фазовой логики и стабилизации. 2) Не вести деструктивную динамику (суггестия любви, «особые отношения») — рамка выше обаяния метода. 3) Не держать пациента в «интересном процессе» годами без движения по жизни. 4) Заметил у себя выгорание/цинизм — пауза, супервизия, своя работа; пациент не должен платить за моё истощение.</div>
+<p class="codes"><b>Запомнить:</b> концептуализация → рычаг → проверка; стиль растёт из глубины одного метода + вторая карта; общие факторы — фундамент; границы и супервизия — всегда.</p>
+<div class="quiz" id="quiz-lec-16">
+<h3 class="qh">Проверь себя <span class="qscore"></span></h3>
+<div class="qz" data-a="1">
+<p class="qt">1. Первый шаг алгоритма выбора метода:</p>
+<button type="button" class="qo">выбор любимой школы</button>
+<button type="button" class="qo">скрининг остроты: суицидальность, психоз, декомпенсация, активная зависимость</button>
+<button type="button" class="qo">опросник схем</button>
+<button type="button" class="qo">гороскоп</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">2. Если за 4–6 сессий нет движения:</p>
+<button type="button" class="qo">усиливать то же самое</button>
+<button type="button" class="qo">пересматривать концептуализацию, а не «стараться сильнее»</button>
+<button type="button" class="qo">расторгать контракт</button>
+<button type="button" class="qo">менять диагноз по настроению</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="1">
+<p class="qt">3. Зрелый собственный стиль растёт из…</p>
+<button type="button" class="qo">смешения всего понемногу</button>
+<button type="button" class="qo">глубины одного метода + вторая карта</button>
+<button type="button" class="qo">чужих цитат</button>
+<button type="button" class="qo">отказа от супервизии</button>
+<p class="qb"></p></div>
+<div class="qz" data-a="0">
+<p class="qt">4. «Финальные красные линии» курса:</p>
+<button type="button" class="qo">рамка, фазовая логика травмы, супервизия, забота о своём ресурсе</button>
+<button type="button" class="qo">гибкость границ при симпатии</button>
+<button type="button" class="qo">работа с травмой в первый сеанс</button>
+<button type="button" class="qo">самостоятельность без проверки</button>
+<p class="qb"></p></div>
+<button type="button" class="qreset">↺ Сбросить ответы</button></div>
+</section>
+
+<!-- ═══════════ ШПАРГАЛКА ═══════════ -->
+<section class="lec" id="cheat">
+<h2><span class="num">★</span>Шпаргалка для повторения</h2>
+<div class="core">Все блоки «Ядро» и «Запомнить» лекций 1–16 на одной странице — быстрое восстановление картины курса перед сессией или <span class="term" data-tip="регулярный разбор своей работы с более опытным коллегой">супервизией</span>.</div>
+<div id="cheatList"></div>
+</section>
+
+</div><!-- /lec-wrap -->
+</main>
+</div><!-- /layout -->
+
+<script>
+
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section.lec'));
+  var items=[].slice.call(document.querySelectorAll('#tocList li'));
+  var counter=document.getElementById('counter');
+  var order=secs.map(function(s){return s.id;});
+  var N=order.filter(function(id){return /^lec-\d+$/.test(id);}).length;
+
+  function lecLabel(id){
+    if(id==='cheat')return 'Шпаргалка';
+    var m=/^lec-(\d+)$/.exec(id);
+    return m?('Лекция '+m[1]):'Титул';
+  }
+  function buildCheat(){
+    var host=document.getElementById('cheatList');
+    if(!host||host.dataset.done)return; host.dataset.done='1';
+    secs.forEach(function(sec){
+      if(!/^lec-\d+$/.test(sec.id))return;
+      var title=sec.querySelector('h2'),core=sec.querySelector('.core'),codes=sec.querySelector('p.codes');
+      if(!title||!core)return;
+      var block=document.createElement('div');
+      var h=document.createElement('h3');
+      h.textContent=(title.textContent||'').replace(/^\s*\d+\s*/,'').trim();
+      block.appendChild(h);
+      block.appendChild(core.cloneNode(true));
+      if(codes)block.appendChild(codes.cloneNode(true));
+      host.appendChild(block);
+    });
+  }
+  function buildNavs(){
+    secs.forEach(function(s,idx){
+      if(s.querySelector('.lecnav'))return;
+      var d=document.createElement('div');d.className='lecnav';var h='';
+      var prev=order[idx-1],next=order[idx+1];
+      if(prev)h+='<a href="#'+prev+'" class="prev">← '+lecLabel(prev)+'</a>';
+      h+='<span class="cnt">'+(idx===0?('всего лекций: '+N):(idx+' / '+N))+'</span>';
+      if(next)h+='<a href="#'+next+'" class="next">'+lecLabel(next)+' →</a>';
+      d.innerHTML=h;s.appendChild(d);
+    });
+  }
+  function show(id){
+    if(order.indexOf(id)<0)id='front';
+    secs.forEach(function(s){s.classList.toggle('act',s.id===id);});
+    items.forEach(function(li){li.classList.toggle('on',li.getAttribute('data-t')===id);});
+    var i=order.indexOf(id);
+    counter.textContent=(id==='cheat')?'Шпаргалка':((id==='front')?(N+' лекций · конспект'):('Лекция '+i+' из '+N));
+    window.scrollTo(0,0);
+    var cb=document.getElementById('menu');if(cb)cb.checked=false;
+  }
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1)||'front');});
+  document.addEventListener('keydown',function(e){
+    if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'))return;
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'||e.key==='ArrowUp'||e.key==='ArrowDown'){
+      if(e.target.closest&&e.target.closest('input'))return;
+    }
+    var id=location.hash.slice(1)||'front';var i=order.indexOf(id);
+    if(e.key==='ArrowRight'&&order[i+1]){location.hash=order[i+1];}
+    else if(e.key==='ArrowLeft'&&order[i-1]){location.hash=order[i-1];}
+    else if(e.key==='m'||e.key==='M'||e.key==='ь'||e.key==='Ь'){var m=document.getElementById('menu');m.checked=!m.checked;}
+  });
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    items.forEach(function(li){
+      li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);
+    });
+  });
+function layoutInit(){[].forEach.call(document.querySelectorAll('table.t'),function(t){if(t.parentNode&&t.parentNode.classList&&t.parentNode.classList.contains('tw'))return;var w=document.createElement('div');w.className='tw';t.parentNode.insertBefore(w,t);w.appendChild(t);});[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();if(r.left>window.innerWidth*0.55)t.classList.add('term-r');});window.addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.term'),function(t){var r=t.getBoundingClientRect();t.classList.toggle('term-r',r.left>window.innerWidth*0.55);});});}
+function termInit(){document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;var was=t&&t.classList.contains('open');[].forEach.call(document.querySelectorAll('.term.open'),function(x){x.classList.remove('open');});if(t&&!was)t.classList.add('open');});}
+function initQuizzes(){
+  [].forEach.call(document.querySelectorAll('.quiz'),function(quiz){
+    var qs=[].slice.call(quiz.querySelectorAll('.qz'));
+    var score=quiz.querySelector('.qscore');
+    var firstTry=qs.map(function(){return null;});
+    function upd(){
+      var ok=firstTry.filter(function(v){return v===true;}).length;
+      var done=qs.filter(function(q){return q.classList.contains('done');}).length;
+      score.textContent='— решено '+done+' из '+qs.length+(done?', с первой попытки: '+ok:'');
+    }
+    qs.forEach(function(q,qi){
+      var a=parseInt(q.getAttribute('data-a'),10);
+      var btns=[].slice.call(q.querySelectorAll('.qo'));
+      btns.forEach(function(b,bi){
+        b.addEventListener('click',function(){
+          if(q.classList.contains('done'))return;
+          var fb=q.querySelector('.qb');
+          if(bi===a){
+            q.classList.add('done');b.classList.add('ok');
+            fb.textContent='✔ Верно.'+(q.getAttribute('data-w')?(' '+q.getAttribute('data-w')):'');
+            fb.classList.add('good');
+            if(firstTry[qi]!==false)firstTry[qi]=true;
+            upd();
+          }else{
+            b.classList.add('bad');b.disabled=true;
+            if(firstTry[qi]===null)firstTry[qi]=false;
+            fb.textContent='✘ Неверно — попробуйте ещё.';
+            fb.classList.remove('good');
+            upd();
+          }
+        });
+      });
+    });
+    var rst=quiz.querySelector('.qreset');
+    if(rst)rst.addEventListener('click',function(){
+      qs.forEach(function(q){
+        q.classList.remove('done');
+        var f=q.querySelector('.qb');f.textContent='';f.classList.remove('good');
+        [].forEach.call(q.querySelectorAll('.qo'),function(b){b.classList.remove('ok');b.classList.remove('bad');b.disabled=false;});
+      });
+      firstTry=qs.map(function(){return null;});upd();
+    });
+    upd();
+  });
+}
+  layoutInit();
+  termInit();
+  initQuizzes();
+  buildCheat();
+  buildNavs();
+  show(location.hash.slice(1)||'front');
+})();
+
+</script>
+</body>
+</html>

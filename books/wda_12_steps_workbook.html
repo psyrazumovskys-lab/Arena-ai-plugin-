@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ВДА · Рабочая тетрадь психолога · 12 шагов</title>
+<meta name="description" content="Рабочая тетрадь для прохождения всех 12 шагов программы ВДА (взрослые дети алкоголиков/дисфункциональных семей) для психолога: вопросы с полями для записей, автосохранение и экспорт.">
+<style>
+
+:root{
+  --bg:#f7f7f5; --panel:#ffffff; --ink:#1c1e21; --mut:#6b7075; --line:#e3e3de;
+  --acc:#3b4fd8; --acc-soft:#eef0fc; --flag:#b3261e; --flag-soft:#fdf0ef;
+  --code:#eef1ee; --mark:#ffe9a8;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#141517; --panel:#1c1e21; --ink:#e8e8e4; --mut:#9aa0a6; --line:#2e3134;
+    --acc:#8f9dff; --acc-soft:#23263a; --flag:#ff8a80; --flag-soft:#33201e; --code:#232527; --mark:#5c4d1e; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:.7rem;
+  background:var(--panel);border-bottom:1px solid var(--line);padding:.55rem 1rem}
+.bar strong{font-size:1rem}
+.bar-sub{color:var(--mut);font-size:.85rem}
+.counter{margin-left:auto;color:var(--mut);font-size:.8rem;white-space:nowrap}
+.burger{cursor:pointer;font-size:1.15rem;padding:.1rem .5rem;border:1px solid var(--line);border-radius:6px;user-select:none}
+#menu{display:none}
+
+.layout{display:flex;min-height:calc(100vh - 52px)}
+.toc{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
+  padding:1rem .9rem;position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto}
+.toc input{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;
+  background:var(--bg);color:var(--ink);margin-bottom:.7rem;font:inherit;font-size:.9rem}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:lec}
+.toc li{margin:.05rem 0}
+.toc li a{display:flex;gap:.55rem;padding:.32rem .5rem;border-radius:7px;color:var(--ink);font-size:.9rem;line-height:1.35}
+.toc li a em{font-style:normal;color:var(--mut);min-width:1.4rem;text-align:right;font-variant-numeric:tabular-nums}
+.toc li a:hover{background:var(--bg);text-decoration:none}
+.toc li.on a{background:var(--acc-soft);color:var(--acc);font-weight:600}
+.toc li.on a em{color:var(--acc)}
+.toc li.hide{display:none}
+
+main{flex:1;min-width:0;padding:2rem 1.4rem 5rem}
+.lec-wrap{max-width:780px;margin:0 auto}
+section.lec{display:none}
+section.lec.act{display:block;animation:fade .18s ease-out}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+h2{display:flex;align-items:baseline;gap:.8rem;font-size:1.45rem;line-height:1.25;margin:.2rem 0 1.1rem}
+h2 .num{flex:0 0 auto;width:2.1rem;height:2.1rem;border-radius:8px;background:var(--acc);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem;transform:translateY(.25rem)}
+h3{font-size:1.06rem;margin:1.4rem 0 .45rem;color:var(--ink)}
+p{margin:.5rem 0}
+ul,ol{margin:.45rem 0 .7rem;padding-left:1.35rem}
+li{margin:.22rem 0}
+li::marker{color:var(--mut)}
+
+.core{background:var(--acc-soft);border-left:4px solid var(--acc);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:.9rem 0 1.2rem;font-size:.97rem}
+.flags{background:var(--flag-soft);border-left:4px solid var(--flag);border-radius:0 10px 10px 0;
+  padding:.7rem .95rem;margin:1.2rem 0 .6rem;font-size:.95rem}
+.codes{background:var(--code);border-radius:8px;padding:.5rem .8rem;font-size:.88rem;margin:1rem 0}
+
+table.t{border-collapse:collapse;width:100%;margin:.7rem 0 1rem;font-size:.92rem}
+table.t th,table.t td{border:1px solid var(--line);padding:.42rem .6rem;text-align:left;vertical-align:top}
+table.t th{background:var(--bg);font-size:.86rem;letter-spacing:.02em}
+dl.df{display:grid;grid-template-columns:auto 1fr;gap:.28rem .8rem;margin:.6rem 0 1rem;font-size:.94rem}
+dl.df dt{font-weight:600}
+dl.df dd{margin:0}
+kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .35rem;font-size:.82em;background:var(--bg)}
+.lecnav{display:flex;gap:.6rem;justify-content:space-between;margin-top:2.2rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.92rem;flex-wrap:wrap}
+.lecnav a{padding:.35rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.lecnav a:hover{text-decoration:none;border-color:var(--acc);color:var(--acc)}
+.lecnav .cnt{color:var(--mut);align-self:center}
+mark{background:var(--mark)}
+.titul h1{font-size:1.9rem;line-height:1.2;margin:.4rem 0 .3rem}
+.titul .sub{color:var(--mut);font-size:1.05rem;margin-bottom:1.4rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.4rem}
+.meta span{border:1px solid var(--line);border-radius:999px;padding:.18rem .75rem;font-size:.85rem;background:var(--panel);color:var(--mut)}
+
+#cheatList>div{border-bottom:1px dashed var(--line);padding:.55rem 0;margin:0}
+#cheatList h3{margin:.35rem 0 .3rem;color:var(--acc)}
+@media (max-width:920px){
+  .toc{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  #menu:checked ~ .layout .toc{transform:none}
+  main{padding:1.2rem .9rem 4rem}
+}
+@media print{
+  .bar,.toc,.lecnav,.counter{display:none!important}
+  body{background:#fff;color:#000}
+  .layout{display:block}
+  section.lec{display:block!important;page-break-before:always;border-bottom:1px solid #ccc;padding-top:1rem}
+  section#front{page-break-before:avoid}
+  .core,.flags,.codes,table.t,dl.df{background:#fff!important}
+}
+/* критерии, примеры, термины */
+.crit{border:1px solid var(--line);border-left:4px solid var(--mut);border-radius:0 10px 10px 0;background:var(--bg);padding:.6rem .85rem;margin:1.1rem 0 .4rem;font-size:.9rem}
+.ex{border-left:4px solid var(--acc);background:var(--acc-soft);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:.8rem 0;font-size:.92rem}
+.term{border-bottom:1px dashed var(--acc);cursor:help}
+.term::after{content:attr(data-tip);position:absolute;left:0;top:130%;z-index:50;width:min(340px,78vw);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font-size:.85rem;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18);opacity:0;visibility:hidden;transition:opacity .12s;text-align:left;font-weight:400;white-space:normal}
+.term:hover::after,.term.open::after{opacity:1;visibility:visible}
+.term{position:relative}
+@media print{.term{border-bottom:0}.term::after{display:none}}
+/* мобильная вёрстка */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw>table.t{margin:0}
+.term-r::after{left:auto;right:0}
+.termt{border-bottom:1px dashed var(--acc);cursor:help}
+/* тесты */
+.quiz{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:.85rem .95rem;background:var(--panel)}
+.quiz .qh{margin:.1rem 0 .5rem;font-size:1rem}
+.qscore{font-size:.8rem;color:var(--mut);font-weight:400}
+.qz{margin:.55rem 0;padding:.55rem 0 .35rem;border-top:1px dashed var(--line)}
+.qt{margin:.05rem 0 .45rem;font-size:.95rem}
+.qo{display:block;width:100%;text-align:left;margin:.22rem 0;padding:.42rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--acc)}
+.qo.ok{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600;cursor:default}
+.qo.bad{background:var(--flag-soft);border-color:var(--flag);color:var(--flag);opacity:.8;cursor:default}
+.qz.done .qo{cursor:default}
+.qb{margin:.35rem 0 0;font-size:.85rem;color:var(--mut);min-height:1em}
+.qb.good{color:var(--acc)}
+.qreset{margin-top:.6rem;border:0;background:none;color:var(--mut);cursor:pointer;font-size:.8rem;text-decoration:underline;padding:0}
+@media print{.quiz{display:none!important}}
+
+/* тетрадь */
+.qf{width:100%;min-height:74px;margin:.3rem 0 .7rem;padding:.5rem .65rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem;line-height:1.5;resize:vertical}
+.qf:focus{outline:2px solid var(--acc);outline-offset:1px}
+.qlbl{font-size:.94rem;margin:.75rem 0 .1rem;font-weight:600}
+.qlbl .no{color:var(--mut);font-weight:400}
+.facts{color:var(--mut);font-weight:400;font-size:.85em}
+.sav{font-size:.75rem;color:var(--mut);margin-left:.4rem;font-weight:400}
+details.deep{border:1px dashed var(--line);border-radius:10px;padding:.5rem .8rem;margin:.8rem 0;background:var(--bg)}
+details.deep summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--mut)}
+details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
+.chk{list-style:none;padding:0;margin:.4rem 0}
+.chk li{margin:.25rem 0;font-size:.93rem}
+.chk input{margin-right:.5rem;transform:translateY(1px)}
+.btnrow{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:.45rem .85rem;font:inherit;font-size:.88rem;cursor:pointer}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.hp{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .6rem}
+.hp span{border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.84rem;background:var(--panel)}
+.hp b{color:var(--acc)}
+.privacy{border-left:4px solid var(--mut);background:var(--bg);border-radius:0 10px 10px 0;padding:.55rem .85rem;margin:1rem 0;font-size:.9rem}
+.stepnum{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--acc);color:#fff;font-size:1.1rem;font-weight:700;margin-right:.6rem;transform:translateY(.3rem)}
+@media print{.btnrow{display:none}#btnExportTop{display:none}.nostore{display:none}.qf{border:1px solid #999}}
+</style>
+</head>
+<body>
+<input type="checkbox" id="menu">
+<header class="bar">
+  <label class="burger" for="menu" title="Оглавление (M)">☰</label>
+  <strong>ВДА · шаги глазами психолога</strong>
+  <span class="bar-sub">рабочая тетрадь</span>
+  <button class="btn" id="btnExportTop" title="Экспорт ответов в текстовый файл — делайте перед каждой встречей" style="padding:.25rem .6rem;font-size:.8rem">⬇ Экспорт</button>
+  <span class="counter" id="counter"></span>
+</header>
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Оглавление">
+  <input type="search" id="q" placeholder="Фильтр…" autocomplete="off">
+  <ol id="tocList">
+    <li data-t="front"><a href="#front">Как работать с тетрадью</a></li>
+    <li data-t="wda"><a href="#wda">Контекст: что такое ВДА</a></li>
+    <li data-t="s1"><a href="#s1"><em>1</em>Шаг 1 · Бессилие и неуправляемость</a></li>
+    <li data-t="s2"><a href="#s2"><em>2</em>Шаг 2 · Опора больше одиночества</a></li>
+    <li data-t="s3"><a href="#s3"><em>3</em>Шаг 3 · Решение и передача руля</a></li>
+    <li data-t="s4"><a href="#s4"><em>4</em>Шаг 4 · Честный список</a></li>
+    <li data-t="s5"><a href="#s5"><em>5</em>Шаг 5 · Сказанное вслух</a></li>
+    <li data-t="s6"><a href="#s6"><em>6</em>Шаг 6 · Отпустить защиту</a></li>
+    <li data-t="s7"><a href="#s7"><em>7</em>Шаг 7 · Просьба о помощи</a></li>
+    <li data-t="s8"><a href="#s8"><em>8</em>Шаг 8 · Список возмещения</a></li>
+    <li data-t="s9"><a href="#s9"><em>9</em>Шаг 9 · Возмещение</a></li>
+    <li data-t="s10"><a href="#s10"><em>10</em>Шаг 10 · Ежедневная сверка</a></li>
+    <li data-t="s11"><a href="#s11"><em>11</em>Шаг 11 · Пауза тишины</a></li>
+    <li data-t="s12"><a href="#s12"><em>12</em>Шаг 12 · Служение без спасения</a></li>
+    <li data-t="map"><a href="#map">★ Моя карта + экспорт</a></li>
+  </ol>
+</nav>
+<main>
+<div class="lec-wrap">
+
+<section class="lec titul" id="front">
+  <h1>ВДА: 12 шагов глазами психолога</h1>
+  <p class="sub">Рабочая тетрадь · заполняется вами · 15–25 минут на шаг</p>
+  <div class="meta"><span>простой язык · пояснения к каждому вопросу</span><span>без конфессионального языка</span><span>данные — только в вашем браузере</span></div>
+
+  <h3>Как устроена работа</h3>
+  <ul>
+    <li><b>Основные вопросы</b> (обязательные): 4 вопроса с полями для ответа — это и есть прохождение шага. Пишите коротко, тезисами, как в телеграмме; здесь не оценивают стиль.</li>
+    <li><b>«Глубже»</b> (опционально): раскрывающийся блок, если хочется копнуть — образные упражнения, письмо. Не обязателен для «зачёта» шага.</li>
+    <li><b>Вопрос для практики</b> (по желанию, один на шаг): если вы работаете с людьми — где то же самое проявляется в вашей работе. Не работаете с людьми — просто пропустите.</li>
+    <li><b>Пояснения и примеры</b>: под вопросами — подсказки, а внутри полей серым шрифтом «напр.: …». Если вопрос всё равно непонятен — отвечайте своими словами: ваш ответ важнее «правильных слов».</li>
+    <li><b>Чек «шаг прожит»</b>: 3–4 наблюдаемых признака, что шаг работает в жизни, а не только записан.</li>
+    <li><b>Микропрактика</b>: одно действие на неделю, 5–10 минут.</li>
+  </ul>
+
+  <h3>Приватность и данные</h3>
+  <div class="privacy">Всё, что вы пишете, сохраняется <b>только в этом браузере</b> (localStorage) и никуда не отправляется. Кнопки на странице «Моя карта»: <b>экспорт в файл</b> (текстовый файл с вашими ответами) и <b>полная очистка</b>. Печатная версия — Ctrl+P.</div>
+
+  <h3>Рамка безопасности (прочитать до начала)</h3>
+  <ul>
+    <li><b>Стоп-протокол — выучить до начала.</b> Шаги поднимают тяжёлые воспоминания детства. Если во время письма боль или напряжение достигает 8–9 из 10, действуйте по трём шагам: <b>1)</b> остановите письмо и отложите тетрадь — недописанное не теряется; <b>2)</b> заземление «5-4-3-2-1»: назовите 5 вещей, которые видите, 4 звука, 3 предмета, которых касаетесь, 2 запаха, 1 вкус — и медленный выдох длиннее вдоха; <b>3)</b> звонок живому человеку. Если 8–9 из 10 держится дольше часа и не снижается — на сегодня тетрадь закрыта, тяжёлое несём на встречу. Это нормальная динамика, не «провал».</li>
+    <li>Тетрадь не заменяет личную терапию и супервизию; группа ВДА — опциональное дополнение, если захочется. Тетрадь структурирует вашу самостоятельную работу по шагам.</li>
+    <li>Правило темпа: лучше 20 минут трижды в неделю, чем три часа подряд. «Достаточно хорошо» — рабочий стандарт здесь.</li>
+    <li><b>Три уровня глубины, курс на 12 недель.</b> Основные вопросы — быстрый уровень (15–25 минут на шаг); блоки «Полный формат» в шагах 4 и 8 — уровень классической «Жёлтой тетради» ВДА (структурные списки); блоки «Из детства» — глубокая работа с воспоминаниями детства, самое важное место тетради. Ритм: <b>одна встреча с психологом в неделю, один шаг в неделю — 12 недель (около 3 месяцев)</b>. Быстрый трек — 10 недель: шаг 4 и шаг 9 по одной неделе. Быстрее — глубина теряется.</li>
+    <li><b>Источники</b>: тетрадь составлена по мотивам официальной литературы ВДА — «Большой Красной Книги» (ACA Fellowship Text) и «Жёлтой рабочей тетради» (12 Step Workbook), — и не заменяет их.</li>
+  </ul>
+  <p class="qlbl">Мой вариант заземления — что возвращает меня в «здесь и сейчас» (нужен на весь курс): <span class="sav" data-for="f-s0-ground"></span></p>
+<textarea class="qf" id="f-s0-ground" data-step="0" data-q="Подготовка. Мой вариант заземления" placeholder="напр.: 5-4-3-2-1; холодная вода на кисти; быстрая ходьба; звонок Л."></textarea>
+
+<p class="codes">Формулировки шагов даны в двух версиях: классической (как в АА/ВДА) и рабочей (простыми словами). Вы имеете право на собственную формулировку — поле для неё есть в каждом шаге.</p>
+</section>
+
+<section class="lec" id="wda">
+<h2><span class="stepnum">?</span>Контекст: что такое ВДА — коротко</h2>
+<div class="core"><b>Ядро.</b> ВДА (ACA, «Взрослые Дети Алкоголиков», шире — взрослых из дисфункциональных семей) — программа 12 шагов для тех, кто вырос в семье с зависимостью/хаосом и вынес из детства выживательные стратегии: гиперконтроль, гиперответственность, страх конфликтов, «спасение» других, обесценивание своих нужд. Работа по шагам — не «лечение воспоминаний», а перестройка этих стратегий во взрослой жизни.</div>
+
+<h3>Типичные «наследства» родительского дома</h3>
+<ul>
+  <li><b>Гиперконтроль</b>: если я не прослежу — случится катастрофа (и в детстве это часто было правдой).</li>
+  <li><b>Гиперответственность</b>: я отвечаю за настроение и последствия других; свои нужды — потом.</li>
+  <li><b>Забота как валюта</b>: люблю = спасаю; попросить помощь — стыдно и страшно.</li>
+  <li><b>Слияние с чужими оценками</b>: трудно понять, чего хочу я; «удобный» вместо «живой».</li>
+  <li><b>Постоянная насторожённость</b>: тело всегда «на страже», будто опасность рядом; расслабиться и отдыхать не получается.</li>
+</ul>
+<p>Роли, которые часто узнают в себе: «семейный герой» (достижения вместо детства), «ответственный родитель» младших, «бунтарь/козёл отпущения», «невидимый ребёнок», «шут» (разряжающий напряжение). Роль — не приговор, а выжившая стратегия со своей ценой.</p>
+
+<h3>Из официальной литературы ВДА</h3>
+<ul>
+  <li><b>«Список характерных особенностей» — 14 черт взрослого ребёнка</b> (Тони А., 1978; БКК, стр. 587). Официальный текст — курсивом, после тире — короткое пояснение, как черта выглядит в жизни. Список лёг в основу «Проблемы», читаемой на собраниях; у него есть «Другой Список» (как те же черты оборачиваются к другим людям) и «обратные стороны» — какими черты становятся в выздоровлении.</li>
+<ol>
+<li><i>Мы оказались в изоляции и стали бояться людей и властных фигур.</i> <span style="color:var(--mut)">— ближе не подпускаем; с начальством и «старшими» робеем, как в детстве</span></li>
+<li><i>Мы постоянно ищем одобрения и потеряли себя в этом поиске.</i> <span style="color:var(--mut)">— без чужого «молодец» не знаем, чего хотим; «удобный(ая)» вместо настоящего</span></li>
+<li><i>Мы боимся разгневанных людей и любых критических замечаний в свой адрес.</i> <span style="color:var(--mut)">— критика ощущается как катастрофа; избегаем любых столкновений</span></li>
+<li><i>Мы стали алкоголиками либо вступили в брак с алкоголиками (либо всё вместе), либо нашли другую зависимую личность, например, трудоголика, чтобы удовлетворить свою болезненную потребность в покинутости.</i> <span style="color:var(--mut)">— знакомое напряжение рядом с чужим хаосом; спокойные люди кажутся «скучными»</span></li>
+<li><i>Мы занимаем позицию жертвы, и эта черта определяет наши любовные и дружеские отношения.</i> <span style="color:var(--mut)">— в близких отношениях чаще чувствуем себя пострадавшей стороной</span></li>
+<li><i>Мы слишком ответственны, нам проще заниматься проблемами других, чем решать свои; это позволяет не замечать собственные недостатки.</i> <span style="color:var(--mut)">— чужие проблемы решаем охотнее своих; «я сам(а) справлюсь» — не про нас</span></li>
+<li><i>Мы испытываем чувство вины, когда защищаем себя, а не уступаем другим.</i> <span style="color:var(--mut)">— сказали «нет» — весь день носим вину</span></li>
+<li><i>Мы стали зависимы от эмоционального возбуждения.</i> <span style="color:var(--mut)">— без драмы и напряжения жизнь кажется «не жизнью»</span></li>
+<li><i>Мы путаем любовь с жалостью и склонны «любить» людей, которых можем «жалеть» и «спасать».</i> <span style="color:var(--mut)">— забота о «трудном» кажется доказательством любви</span></li>
+<li><i>Мы запрятали вглубь себя чувства из травмирующего детства и утратили способность испытывать или выражать их, потому что это причиняет слишком сильную боль (отрицание).</i> <span style="color:var(--mut)">— чувствуем мало или ничего; о своих чувствах узнаём по телу</span></li>
+<li><i>Мы сурово осуждаем себя, у нас не развито чувство собственного достоинства.</i> <span style="color:var(--mut)">— суд над собой строже любого начальника</span></li>
+<li><i>Мы — зависимые личности, мы панически боимся быть брошенными и делаем всё, чтобы удержать отношения, лишь бы не испытывать болезненное чувство покинутости, доставшееся нам от жизни с нездоровыми людьми, которые никогда не были эмоционально с нами.</i> <span style="color:var(--mut)">— остаёмся в плохих отношениях, лишь бы нас не оставили</span></li>
+<li><i>Алкоголизм — семейная болезнь; мы стали пара-алкоголиками и переняли все признаки этой болезни, даже если не употребляли спиртное.</i> <span style="color:var(--mut)">— живём «как при болезни»: контроль, отрицание, жизнь на грани — даже без рюмки</span></li>
+<li><i>Пара-алкоголики скорее реагируют, чем действуют.</i> <span style="color:var(--mut)">— действуем импульсивно «в ответ», а не по собственному выбору</span></li>
+</ol>
+  <li><b>Три негласных правила дисфункциональной семьи</b>: «не говори, не доверяй, не чувствуй». Работа по шагам идёт ровно против этих трёх.</li>
+  <li><b>Решение ВДА</b>: «<b>стать себе Любящим Родителем</b>» — не найти наконец того, кто позаботится, а вырастить заботу о себе внутри себя. Из официального текста «Решения»: «Нашим настоящим родителем является Высшая Сила, которую некоторые из нас предпочитают называть Богом».</li>
+  <li><b>Внутренний Ребёнок</b> — спрятанная живая часть нас; программа возвращает её в жизнь.</li>
+  <li><b>Эмоциональная трезвость</b> — цель выздоровления, в противовес «пара-алкоголизму» — привычкам, впитанным рядом с дисфункцией.</li>
+  <li>Из «Решения» (БКК, стр. 590): «Работа по Шагам, посещение собраний, телефонные звонки членам Сообщества — вот что составляет процесс исцеления»; «Исцеление начнётся, когда мы отважимся выйти из изоляции»; свобода приходит, когда мы действуем самостоятельно, а не реагируем. А «Молитва о душевном покое» в версии ВДА завершается: «…и мудрость понять, что этот человек — я сам(а)». В нашей работе место собраний и телефонных звонков занимает встреча с психологом и собственная система опор; группа — опция, а не условие.</li>
+</ul>
+
+<h3>Зачем это психологу лично</h3>
+<ul>
+  <li>Те же стратегии, что помогали выживать, включаются на полном серьёзе и в работе: тянет спасать клиента, отвечать за результат вместо него, держать всё под контролем. (В психологии это называют контрпереносом — когда чужая история «нажимает» ваши собственные кнопки.)</li>
+  <li>Прохождение шагов — гигиена профессии: свои 3 шага обычно заметно облегчают различение «моё/не моё» в работе.</li>
+</ul>
+<div class="ex"><b>Пример.</b> Психолог, который в семье был «генеральным диспетчером», ловит себя: пишет клиенту между сессиями длинные письма «на всякий случай», проверяет, прочитал ли клиент рекомендации, тревожится об исходе сильнее клиента. Знакомо — это материал шага 1.</div>
+<h3>Карта курса: 12 недель — 12 встреч</h3>
+<table class="t">
+<tr><th>Неделя</th><th>Шаг</th><th>Что происходит на встрече</th></tr>
+<tr><td>1</td><td>Шаг 1 · Бессилие и неуправляемость</td><td>Читаете вслух ответы; отделяете «моё / не моё»</td></tr>
+<tr><td>2</td><td>Шаг 2 · Опора больше одиночества</td><td>Свои опоры; кому можно доверять</td></tr>
+<tr><td>3</td><td>Шаг 3 · Решение и передача руля</td><td>Что мешает препоручить руль</td></tr>
+<tr><td>4–5</td><td>Шаг 4 · Честный список (две недели)</td><td>Неделя 4 — обиды (А) и страхи (Б); неделя 5 — мой вред и сделанное мне (В–Г), отношения и достоинства (Д–Е), «Из детства»</td></tr>
+<tr><td>6</td><td>Шаг 5 · Сказанное вслух</td><td>Вся встреча — чтение тетради, 60–90 минут</td></tr>
+<tr><td>7</td><td>Шаги 6–7 · Защита и просьба о помощи</td><td>Одна встреча на оба шага</td></tr>
+<tr><td>8</td><td>Шаг 8 · Список возмещения</td><td>Список; кого не трогать</td></tr>
+<tr><td>9–10</td><td>Шаг 9 · Возмещение (две недели)</td><td>Возмещения — по одному; безопасность прежде всего</td></tr>
+<tr><td>11</td><td>Шаги 10–11 · Сверка и пауза</td><td>Ежедневные практики</td></tr>
+<tr><td>12</td><td>Шаг 12 · Служение без спасения</td><td>Завершение курса; итоги; что дальше</td></tr>
+</table>
+<p class="codes">Пропустили неделю — не навёрстывайте рывком: продолжайте по порядку, курс сдвинется ровно на столько недель, сколько пропущено. Между встречами работаете по 20–30 минут несколько раз в неделю.</p>
+<p class="codes">Дальше — шаги. Помните темп: 15–25 минут, короткие ответы, «достаточно хорошо».</p>
+</section>
+
+<section class="lec" id="s1">
+<h2><span class="stepnum">1</span>Шаг 1 · Бессилие и неуправляемость</h2>
+<p class="codes"><b>Неделя 1</b> · Встреча 1</p>
+<p class="codes">Формулировка ВДА: «Мы признали бессилие перед <b>последствиями алкоголизма или другой семейной дисфункции</b>, признали, что наша жизнь стала неуправляемой». Отличие от АА существенно: там бессилие перед алкоголем у самого человека; здесь — перед последствиями <i>чужой</i> болезни и семейного хаоса.</p>
+<div class="core"><b>Что этот шаг делает (рабочий перевод).</b> Это честный аудит контроля: перечислить, что я годами пытался(ась) контролировать, признать результат и разделить «моё / не моё». Простыми словами: я отвечаю за свою жизнь, но не могу управлять другими людьми и своим прошлым (об этом писал Ялом). И это проверка моих главных убеждений: «если не я — катастрофа» и «просить помощь — значит быть слабым» (такие убеждения изучал Бек).</div>
+
+<p class="qlbl"><span class="no">1.1</span> Что я пытался(ась) контролировать годами — и что из этого вышло? <span class="facts">(факты, не выводы: 3–4 строки, коротко)</span><span class="sav" data-for="f-s1-q1"></span></p>
+<textarea class="qf" id="f-s1-q1" data-step="1" data-q="1.1. Что я контролировал(а) годами и что вышло" placeholder="напр.: настроение матери → потом муж/партнёр → исходы у клиентов; вышло: усталость 8/10, обиды, «никто не благодарит»…"></textarea>
+
+<p class="qlbl"><span class="no">1.2</span> Мой список «работаю за других» на этой неделе: где я делаю чужую работу или пытаюсь предотвратить чужие ошибки? <span class="sav" data-for="f-s1-q2"></span></p>
+<textarea class="qf" id="f-s1-q2" data-step="1" data-q="1.2. Где я делаю чужую работу (примеры недели)" placeholder="напр.: звоню в школу за младшего, переделываю отчёт коллеги, напоминаю взрослому мужу о его враче"></textarea>
+
+<p class="qlbl"><span class="no">1.3</span> Три колонки: на 100 % в моей власти / частично / вовсе нет. <span class="sav" data-for="f-s1-q3"></span></p>
+<textarea class="qf" id="f-s1-q3" data-step="1" data-q="1.3. Моё на 100% / частично / не моё" placeholder="моё: мои слова, мои решения, моё расписание · частично: отношения, работа · не моё: чувства других, их выбор, прошлое"></textarea>
+
+<p class="qlbl"><span class="no">1.4</span> Во что мне обходится роль «того, кто всегда справляется»? <span class="facts">(здоровье, отношения, деньги, радость)</span> <span class="sav" data-for="f-s1-q4"></span></p>
+<textarea class="qf" id="f-s1-q4" data-step="1" data-q="1.4. Цена роли «я справляюсь» (тело, отношения, радость)" placeholder="напр.: сон по 5 часов, спина сжата; ссоры из-за «не ценишь»; давно не было «просто погулять»"></textarea>
+
+<p class="qlbl"><span class="no">1.м</span> Мета, для практики: какие люди вызывают у меня желание спасать и всё контролировать — и как это проявляется в моей работе? <span class="sav" data-for="f-s1-m"></span></p>
+<textarea class="qf" id="f-s1-m" data-step="1" data-q="1.мета. Клиенты, включающие мой контроль" placeholder="напр.: клиенты в кризисе — беру на себя больше, чем договаривались"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Когда я впервые стал(а) «взрослым» в семье? Сцена в 3–5 строк. <span class="sav" data-for="f-s1-d1"></span></p>
+<textarea class="qf" id="f-s1-d1" data-step="1" data-q="1.глубже. Когда я стал(а) взрослым в семье" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Письмо себе-ребёнку из той сцены: 5 строк. Не отправляется, никому не показывается. <span class="sav" data-for="f-s1-d2"></span></p>
+<textarea class="qf" id="f-s1-d2" data-step="1" data-q="1.глубже. Письмо себе-ребёнку" placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+<p class="qlbl">Д.3 Моя собственная формулировка шага 1. <span class="sav" data-for="f-s1-d3"></span></p>
+<textarea class="qf" id="f-s1-d3" data-step="1" data-q="1.глубже. Моя формулировка шага 1" placeholder="своими словами — как этот шаг звучит для вас"></textarea>
+</details>
+
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Вспомните 2–3 сцены детства, где вы были бессильны что-то изменить или уйти (крик, запой, холод, чужая тревога, «тишина, которая страшнее крика»). Опишите одну — глазами того ребёнка: что происходило, что вы чувствовали в теле, что сделали, чтобы переждать.. <span class="sav" data-for="h-s1-a"></span></p>
+<textarea class="qf" id="h-s1-a" data-step="1" data-q="1.из детства. Сцены бессилия" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> В каких ситуациях сейчас вы снова чувствуете «я ничего не могу сделать» — и реагируете как тот ребёнок (замираете, становитесь тихим, всё делаете правильно)? Запишите 1–2 примера из последнего месяца.. <span class="sav" data-for="h-s1-b"></span></p>
+<textarea class="qf" id="h-s1-b" data-step="1" data-q="1.из детства. Где это повторяется сегодня" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит» (отметьте, когда станет правдой)</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s1-1" data-step="1"><label for="c-s1-1">Называю 3 вещи вне моего контроля без «да, но…»</label></li>
+<li><input type="checkbox" id="c-s1-2" data-step="1"><label for="c-s1-2">Вижу разницу: помочь человеку — или сделать всё вместо него (замечаю это в моменте)</label></li>
+<li><input type="checkbox" id="c-s1-3" data-step="1"><label for="c-s1-3">Заметил(а) импульс вмешаться и хотя бы раз выбрал(а) не вмешиваться</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> «Эксперимент невмешательства»: раз в день — ситуация, где обычно поправляю/опережаю/спасаю. Не вмешаться, записать одной строкой: что произошло. (Цель — данные, а не подвиг.)</div>
+</section>
+<section class="lec" id="s2">
+<h2><span class="stepnum">2</span>Шаг 2 · Опора больше одиночества</h2>
+<p class="codes"><b>Неделя 2</b> · Встреча 2</p>
+<p class="codes">Формулировка ВДА: «Пришли к убеждению, что Сила, более могущественная, чем наша собственная, сможет вернуть нам здравомыслие». Акцент ВДА: надежда, что опора возможна — я не обязан(а) вытаскивать себя один.</p>
+<div class="core"><b>Что этот шаг делает.</b> Возвращает надежду и находит опору больше одиночного «я». Для выросшего в хаосе «доверять» = «подставиться» — шаг проверяет это убеждение на опыте. Простыми словами: одиночество не лечится самодостаточностью — оно лечится встречей с людьми. А убеждение «просить помощь — значит быть обузой» проверяется на опыте: просишь — и мир не рушится.</div>
+
+<h3>Моё рабочее определение «Силы больше меня» (слот выбора)</h3>
+<div class="hp"><span>люди, которым я не безразличен(на)</span><span>люди с похожим опытом</span><span>мои ценности</span><span>природа</span><span>Бог, как я Его понимаю</span><span>процесс/время</span><span>мой внутренний Любящий Родитель (решение ВДА)</span><span>«пока не знаю, но — не я один»</span></div>
+<p class="qlbl"><span class="no">2.своё</span> Мой собственный список «того, что больше меня» — впишите своими словами, хоть один пункт, хоть несколько: <span class="sav" data-for="f-s2-hp"></span></p>
+<textarea class="qf" id="f-s2-hp" data-step="2" data-q="2.своё. Мой список «Силы больше меня»" placeholder="напр.: сестра, которой можно позвонить ночью; мой психолог; утренняя ходьба; «что-то держит меня в жизни — не знаю, что»"></textarea>
+<p class="qlbl"><span class="no">2.1</span> Что уже однажды вытащило меня, когда я не справлялся(ась) в одиночку? (люди, практика, место, опыт) <span class="sav" data-for="f-s2-q1"></span></p>
+<textarea class="qf" id="f-s2-q1" data-step="2" data-q="2.1. Что уже вытащило меня, когда я не справлялся(ась) один" placeholder="напр.: подруга, с которой можно молчать; бассейн; близкий друг; своя терапия"></textarea>
+
+<p class="qlbl"><span class="no">2.2</span> Выбираю рабочее определение опоры (из списка выше — или своё): <span class="sav" data-for="f-s2-q2"></span></p>
+<textarea class="qf" id="f-s2-q2" data-step="2" data-q="2.2. Моё определение «Силы больше меня»" placeholder="напр.: «люди + мой сон и тело: когда я выспавшийся, я не один на один с хаосом»"></textarea>
+
+<p class="qlbl"><span class="no">2.3</span> Здравомыслие — то есть трезвый взгляд на свою жизнь: 3 признака, по которым я пойму, что оно вернулось. <span class="sav" data-for="f-s2-q3"></span></p>
+<textarea class="qf" id="f-s2-q3" data-step="2" data-q="2.3. Три признака моего здравомыслия" placeholder="напр.: засыпаю без «дум о делах», говорю «нет» без вины, смеюсь вслух"></textarea>
+
+<p class="qlbl"><span class="no">2.4</span> Кому или чему я уже доверяю на 7 из 10 (по шкале доверия от 0 до 10) — и что мешает доверять на 8? <span class="sav" data-for="f-s2-q4"></span></p>
+<textarea class="qf" id="f-s2-q4" data-step="2" data-q="2.4. Кому доверяю на 7/10 и что мешает на 8" placeholder="напр.: сестре — 7/10; до 8 мешает «боюсь стать обузой»"></textarea>
+
+<p class="qlbl"><span class="no">2.м</span> Мета: где я «тяну в одиночку» в профессии — супервизия откладывается, помощь не прошу? Как это выглядит конкретно? <span class="sav" data-for="f-s2-m"></span></p>
+<textarea class="qf" id="f-s2-m" data-step="2" data-q="2.мета. Где я тяну профессию в одиночку" placeholder="напр.: не беру супервизию по самым трудным случаям; методички собираю в одиночку"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Мои опоры: люди / практики / места — минимум 5, по 1–2 слова. <span class="sav" data-for="f-s2-d1"></span></p>
+<textarea class="qf" id="f-s2-d1" data-step="2" data-q="2.глубже. Список опор" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Одно имя + одна просьба, с которой могу обратиться на этой неделе. <span class="sav" data-for="f-s2-d2"></span></p>
+<textarea class="qf" id="f-s2-d2" data-step="2" data-q="2.глубже. Имя и просьба на неделю" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Кому в детстве вы могли рассказать, что вам плохо, — и что происходило, когда вы пробовали? Если никому: в какой момент вы решили «со своими чувствами справляюсь сам»?. <span class="sav" data-for="h-s2-a"></span></p>
+<textarea class="qf" id="h-s2-a" data-step="2" data-q="2.из детства. Кому вы могли принести боль" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> Какая забота была нужна вам тогда больше всего: защита? утешение? кто-то, кто скажет «ты не виноват»? Напишите своими словами — это подсказка, какую опору вы строите теперь.. <span class="sav" data-for="h-s2-b"></span></p>
+<textarea class="qf" id="h-s2-b" data-step="2" data-q="2.из детства. Забота, которой не хватило" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s2-1" data-step="2"><label for="c-s2-1">Определение опоры записано своими словами</label></li>
+<li><input type="checkbox" id="c-s2-2" data-step="2"><label for="c-s2-2">Есть минимум один живой человек/практика в списке опор</label></li>
+<li><input type="checkbox" id="c-s2-3" data-step="2"><label for="c-s2-3">Один раз попросил(а) помощь или принял(а) её, не «отработав» тут же</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одна настоящая просьба о помощи (не «справлюсь сам», не бартер «я тебе — ты мне»). Записать одной строкой: что почувствовал(а) ДО и ПОСЛЕ.</div>
+</section>
+
+<section class="lec" id="s3">
+<h2><span class="stepnum">3</span>Шаг 3 · Решение и передача руля</h2>
+<p class="codes"><b>Неделя 3</b> · Встреча 3</p>
+<p class="codes">Формулировка ВДА: «Приняли решение препоручить свою волю и жизнь <b>заботе</b> Бога, как мы Его понимаем». Слово «заботе» — ключевое: не «сдаться», а довериться заботе — как доверяют врачу или попутчику. Для светского прочтения: «передать на хранение тому, что больше меня» (см. шаг 2).</p>
+<div class="core"><b>Что этот шаг делает.</b> Превращает выводы шагов 1–2 в решение: с этого момента руль моей жизни — у меня, а управление чужими жизнями закрывается. Компасом вместо контроля становятся ценности. Простыми словами: свобода — это выбор там, где я реально могу выбирать; за своё отвечаю, не-своё отпускаю. И решения теперь не из тревоги («скорее что-то делать!»), а по направлению («куда я вообще иду?»). Важно: передача воли — не пассивность и не попустительство; это отказ от сверхконтроля при сохранении моей части работы.</div>
+
+<p class="qlbl"><span class="no">3.1</span> Что изменится на неделе, если я перестану управлять всеми и вся? Три конкретных сценария. <span class="sav" data-for="f-s3-q1"></span></p>
+<textarea class="qf" id="f-s3-q1" data-step="3" data-q="3.1. Что изменится, если я перестану управлять всеми" placeholder="напр.: не звоню маме дважды в день «проверить», не переделываю за коллегой, ложусь до полуночи"></textarea>
+
+<p class="qlbl"><span class="no">3.2</span> Что для меня по-настоящему важно — 2–3 ценности; они, как компас, подсказывают решения (напр.: честность, близость, забота о своём теле). <span class="sav" data-for="f-s3-q2"></span></p>
+<textarea class="qf" id="f-s3-q2" data-step="3" data-q="3.2. Две-три мои ценности-компаса" placeholder="напр.: честность; «рядом, но не вместо»; своё время"></textarea>
+
+<p class="qlbl"><span class="no">3.3</span> Как через месяц я и окружающие поймём, что решение работает? Признаки, которые видно глазами, а не «чувствуется внутри». <span class="sav" data-for="f-s3-q3"></span></p>
+<textarea class="qf" id="f-s3-q3" data-step="3" data-q="3.3. Наблюдаемые признаки через месяц" placeholder="напр.: реже проверяю телефон; прошу помощи раз в неделю без чувства вины"></textarea>
+
+<p class="qlbl"><span class="no">3.4</span> Границы ожиданий: чего я жду от «передачи» — и чего сознательно НЕ жду. <span class="sav" data-for="f-s3-q4"></span></p>
+<textarea class="qf" id="f-s3-q4" data-step="3" data-q="3.4. Чего жду и чего не жду от передачи воли" placeholder="жду: энергии, сна, меньшей тревоги · не жду: что другие изменятся, что тревога уйдёт навсегда, что всё решится само"></textarea>
+
+<p class="qlbl"><span class="no">3.м</span> Мета: где я контролирую и спасаю в своей работе (тороплю, отвечаю за другого, стараюсь уберечь от сильных чувств)? Одна конкретная замена. <span class="sav" data-for="f-s3-m"></span></p>
+<textarea class="qf" id="f-s3-m" data-step="3" data-q="3.мета. Мой контроль в кабинете и замена" placeholder="напр.: тороплю с выводами; замена — вопрос «что для вас сейчас важнее?»"></textarea>
+
+<div class="ex"><b>Молитва о душевном покое (вариант ВДА).</b> «Боже, дай мне разум и душевный покой принять людей, которых я не в силах изменить, мужество изменить того, кого могу, и мудрость понять, что этот человек — я сам(а)».</div>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Образ: кто до сих пор держал руль моей жизни? 2–3 образа без цензуры. <span class="sav" data-for="f-s3-d1"></span></p>
+<textarea class="qf" id="f-s3-d1" data-step="3" data-q="3.глубже. Кто держал руль (образы)" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Что я чувствую, представив, что передаю руль? (телесно, 2–3 строки) <span class="sav" data-for="f-s3-d2"></span></p>
+<textarea class="qf" id="f-s3-d2" data-step="3" data-q="3.глубже. Чувство при передаче руля" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Что происходило в вашем детстве, когда взрослые были «у руля» вашей жизни? В чём они подводили — и что вам тогда пришлось решить о «тех, кто главный»?. <span class="sav" data-for="h-s3-a"></span></p>
+<textarea class="qf" id="h-s3-a" data-step="3" data-q="3.из детства. Кто был у руля" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> Вернитесь к самой тяжёлой сцене из шага 1. Напишите — дословно, как в диалоге, — что сказал бы вам в ней взрослый, который любит вас безусловно. Это и есть забота, которой препоручают волю.. <span class="sav" data-for="h-s3-b"></span></p>
+<textarea class="qf" id="h-s3-b" data-step="3" data-q="3.из детства. Ответ Любящего Родителя" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3>
+<ul class="chk">
+<li><input type="checkbox" id="c-s3-1" data-step="3"><label for="c-s3-1">Сформулировал(а) 2 ценности-компаса</label></li>
+<li><input type="checkbox" id="c-s3-2" data-step="3"><label for="c-s3-2">Одно решение недели принято «по ценности», а не «по тревоге»</label></li>
+<li><input type="checkbox" id="c-s3-3" data-step="3"><label for="c-s3-3">Одно «не-моё» дело реально передано: делегировано/отменено/спрошен другой</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одно дело из «зоны не-моего» передать (делегировать, не сделать, спросить другого). Плюс ежедневный вечерний чек в одну строку: «сегодня руль был у…».</div>
+</section>
+
+<section class="lec" id="s4">
+<h2><span class="stepnum">4</span>Шаг 4 · Честный список</h2>
+<p class="codes"><b>Недели 4–5</b> · Встречи 4 и 5 — неделя 4: обиды (А) и страхи (Б); неделя 5: мой вред и сделанное мне (В–Г), отношения и достоинства (Д–Е), «Из детства»</p>
+<p class="codes">Формулировка ВДА: «Произвели тщательную и бесстрашную нравственную инвентаризацию». Акцент ВДА: в ВДА инвентаризация — в две стороны: мой вклад и то, что делали мне; без самобичевания и без обеления.</p>
+<div class="core"><b>Что этот шаг делает.</b> Это письменный честный учёт: свои повторяющиеся схемы, свои обиды, свой вклад в конфликты — и выгода, которую всё это мне давало. Не суд над собой, а опись: что есть. <b>Это шаг не одного вечера</b>: 10–15 минут в день несколько недель, пока список не начнёт повторяться. «Вынести на свет все подробности» (Жёлтая тетрадь) — вот масштаб.</div>
+
+<p class="qlbl"><span class="no">4.1</span> Мои застарелые обиды: на кого я злюсь или обижен(а) годами? Коротко: кто — и за что. <span class="sav" data-for="f-s4-q1"></span></p>
+<textarea class="qf" id="f-s4-q1" data-step="4" data-q="4.1. Мои застарелые обиды: на кого я злюсь или обижен(а) годами? Коротко: кто — и за что." placeholder="напр.: отец — за то, что «не было рядом»; бывший — за унижения; начальник — за несправедливость"></textarea>
+
+<p class="qlbl"><span class="no">4.2</span> Моя часть в этих историях: где она есть, а где её нет? (Не во всём виноват я — и не во всём правы другие.) <span class="sav" data-for="f-s4-q2"></span></p>
+<textarea class="qf" id="f-s4-q2" data-step="4" data-q="4.2. Моя часть в этих историях: где она есть, а где её нет? (Не во всём виноват я — и не во всё" placeholder="напр.: промолчал(а) годами вместо разговора; «спасал(а)», чтобы быть нужным(ой); в том, что меня брошали, — моей вины нет"></textarea>
+
+<p class="qlbl"><span class="no">4.3</span> Мои три повторяющиеся схемы в отношениях: что я делаю снова и снова? <span class="sav" data-for="f-s4-q3"></span></p>
+<textarea class="qf" id="f-s4-q3" data-step="4" data-q="4.3. Мои три повторяющиеся схемы в отношениях: что я делаю снова и снова?" placeholder="напр.: спасаю и обижаюсь; тяну всё на себе и взрываюсь; ухожу первым(ой), пока не бросили"></textarea>
+
+<p class="qlbl"><span class="no">4.4</span> Зачем я это делал(а)? Что каждая схема мне давала — защиту, чувство нужности, безопасность? <span class="sav" data-for="f-s4-q4"></span></p>
+<textarea class="qf" id="f-s4-q4" data-step="4" data-q="4.4. Зачем я это делал(а)? Что каждая схема мне давала — защиту, чувство нужности, безопасность" placeholder="напр.: спасение — «меня не оставят»; контроль — «не случится беды»; молчание — «не будет скандала»"></textarea>
+
+<p class="qlbl"><span class="no">4.м</span> Для практики: какие черты из «Списка» (14 черт взрослого ребёнка) я узнаю в себе как терапевт и как их слышно в сессиях? <span class="sav" data-for="f-s4-m"></span></p>
+<textarea class="qf" id="f-s4-m" data-step="4" data-q="4.м. какие черты из «Списка» (14 черт взрослого ребёнка) я узнаю в себе как терапевт и как их слышно в сессиях?" placeholder="напр.: спасатель с «трудными» клиентами; критик с «не выполняющими домашку»"></textarea>
+
+<details class="deep"><summary>Полный формат: инвентаризация (уровень «Жёлтой тетради»)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Это не исповедь и не список своих ужасов. По литературе АН: к концу этой работы мы обычно обнаруживаем, что «не были ни так ужасны, ни так прекрасны, как предполагали». Цель — увидеть, что сохранить, а что отпустить. Пишите свободно, не редактируя под будущего слушателя: всё это будет прочитано вслух на неделе 6.</p>
+<p class="qlbl">А. Обиды — по одной строке на человека: <b>кто → что случилось (причина) → на что повлияло: самооценка / безопасность и деньги / отношения / планы → моя часть: себялюбие, нечестность, страх — или честно «моей части нет»</b>. <span class="sav" data-for="f-s4-a1"></span></p>
+<textarea class="qf" id="f-s4-a1" data-step="4" data-q="4.полный А1. Обида" placeholder="напр.: отец → отсутствовал → «я не важен» → моей части нет → обида объясняла мои неудачи"></textarea>
+<p class="qlbl">А2. Ещё одна обида (тот же формат). <span class="sav" data-for="f-s4-a2"></span></p>
+<textarea class="qf" id="f-s4-a2" data-step="4" data-q="4.полный А2. Обида" placeholder="напр.: брат → высмеивал при всех → самооценка → моей части не было"></textarea>
+<p class="qlbl">А3. Ещё одна. <span class="sav" data-for="f-s4-a3"></span></p>
+<textarea class="qf" id="f-s4-a3" data-step="4" data-q="4.полный А3. Обида" placeholder="напр.: начальник → обесценил при команде → самооценка, планы → моя часть: молчал(а) и «заслуживал(а)» лояльность"></textarea>
+<p class="qlbl">Б. Страхи — по строке: <b>чего боюсь → как этот страх мной управляет → что случится, если он исполнится (честно)</b>. <span class="sav" data-for="f-s4-b1"></span></p>
+<textarea class="qf" id="f-s4-b1" data-step="4" data-q="4.полный Б1. Страх" placeholder="напр.: остаться без денег → работаю на пределе → посчитал(а) бы: сколько реально нужно в месяц"></textarea>
+<p class="qlbl">Б2. Ещё один страх. <span class="sav" data-for="f-s4-b2"></span></p>
+<textarea class="qf" id="f-s4-b2" data-step="4" data-q="4.полный Б2. Страх" placeholder="напр.: конфликт → соглашаюсь на невыносимое → а по-честному случится: ничего страшного"></textarea>
+<p class="qlbl">В. Вред, который причинил я — другим и себе. По строке: <b>кому (или «себе») → что сделал(а) → что это говорило мне обо мне</b>. <span class="sav" data-for="f-s4-v1"></span></p>
+<textarea class="qf" id="f-s4-v1" data-step="4" data-q="4.полный В1. Мой вред" placeholder="напр.: сыну — срывался(ась) на него после работы → «я плохой родитель»; себе — год без врача и сна"></textarea>
+<p class="qlbl">В2. Ещё строка (тот же формат). <span class="sav" data-for="f-s4-v2"></span></p>
+<textarea class="qf" id="f-s4-v2" data-step="4" data-q="4.полный В2. Мой вред" placeholder="напр.: себе — год отменял(а) врачей «некогда» → «мои нужды подождут»"></textarea>
+<p class="qlbl">Г. Что было сделано мне. По строке: <b>что сделали → или чего не дали (защита, забота, принятие) → чем это стало для меня тогда</b>. <span class="sav" data-for="f-s4-g1"></span></p>
+<textarea class="qf" id="f-s4-g1" data-step="4" data-q="4.полный Г1. Сделанное мне" placeholder="напр.: не защищали, когда дома было опасно → «терпи и не жалуйся»"></textarea>
+<p class="qlbl">Г2. Ещё строка (тот же формат). <span class="sav" data-for="f-s4-g2"></span></p>
+<textarea class="qf" id="f-s4-g2" data-step="4" data-q="4.полный Г2. Сделанное мне" placeholder="напр.: не дали одобрения и защиты → «добиваться всего придётся самому(ой)»"></textarea>
+<p class="qlbl">Д. Отношения — любые, не только близкие. По строке: <b>отношение → что я вносил(а) в него своим выбором и поступками → что хочу сохранить или изменить</b>. <span class="sav" data-for="f-s4-o1"></span></p>
+<textarea class="qf" id="f-s4-o1" data-step="4" data-q="4.полный Д1. Отношения" placeholder="напр.: с коллегой — брал(а) её смены, чтобы быть нужным(ой) → изменить: «нет» без лишних объяснений"></textarea>
+<p class="qlbl">Д2. Ещё отношения (тот же формат). <span class="sav" data-for="f-s4-o2"></span></p>
+<textarea class="qf" id="f-s4-o2" data-step="4" data-q="4.полный Д2. Отношения" placeholder="напр.: с матерью — разговоры только о её делах → изменить: говорить и о себе"></textarea>
+<p class="qlbl">Е. Достоинства — что помогло выжить тогда и помогает сейчас; что я сохраняю в себе: <span class="sav" data-for="f-s4-s1"></span></p>
+<textarea class="qf" id="f-s4-s1" data-step="4" data-q="4.полный Е1. Мои достоинства" placeholder="напр.: надёжность; чувство юмора; умею учиться; верность — сохраняю"></textarea>
+
+<p style="font-size:.85rem;color:var(--mut)">Строк добавляйте сколько нужно: дописывайте через «;» или продолжайте на бумаге/в экспорте.</p>
+</details>
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Письмо обиды: одному человеку из списка — что случилось, что я почувствовал(а), чем это мне обошлось. Не отправляется. <span class="sav" data-for="f-s4-d1"></span></p>
+<textarea class="qf" id="f-s4-d1" data-step="4" data-q="4.глубже. Письмо обиды: одному человеку из списка — что случилось, что я почувствовал(а), " placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+<p class="qlbl">Д.2 Какие свои стороны мне неприятны настолько, что я не хочу их видеть? (У каждого есть такие — назвать хотя бы одну.) <span class="sav" data-for="f-s4-d2"></span></p>
+<textarea class="qf" id="f-s4-d2" data-step="4" data-q="4.глубже. Какие свои стороны мне неприятны настолько, что я не хочу их видеть? (У каждого " placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.3 Моя собственная формулировка шага 4. <span class="sav" data-for="f-s4-d3"></span></p>
+<textarea class="qf" id="f-s4-d3" data-step="4" data-q="4.глубже. Моя собственная формулировка шага 4." placeholder="своими словами — как этот шаг звучит для вас"></textarea>
+</details>
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Возьмите самую раннюю обиду вашего списка. Что вы тогда решили о себе и о мире — детскими словами: «я не важен», «любовь надо заслужить», «свои нужды — обуза», «плакать опасно»? Запишите формулу дословно.. <span class="sav" data-for="h-s4-a"></span></p>
+<textarea class="qf" id="h-s4-a" data-step="4" data-q="4.из детства. Решения о себе" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> Где в вашей взрослой жизни эта формула до сих пор принимает решения за вас — работа, отношения, деньги, тело? Один-два примера: «из-за неё я…». <span class="sav" data-for="h-s4-b"></span></p>
+<textarea class="qf" id="h-s4-b" data-step="4" data-q="4.из детства. Как решение живёт сейчас" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s4-1" data-step="4"><label for="c-s4-1">Написал(а) о самых сильных обидах, не смягчая</label></li>
+<li><input type="checkbox" id="c-s4-2" data-step="4"><label for="c-s4-2">Увидел(а) свою часть хотя бы в одной истории — без вины, просто как факт</label></li>
+<li><input type="checkbox" id="c-s4-3" data-step="4"><label for="c-s4-3">Назвал(а) повторяющуюся схему, которая работала на этой неделе</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> 10 минут в день — и только руками (бумага или клавиатура, не «в голове»). Начал(а) — и достаточно.</div>
+</section>
+
+<section class="lec" id="s5">
+<h2><span class="stepnum">5</span>Шаг 5 · Сказанное вслух</h2>
+<p class="codes"><b>Неделя 6</b> · Встреча 6 — вся встреча: чтение вслух, 60–90 минут</p>
+<p class="codes">Формулировка ВДА: «Признали перед Богом, собой и другим человеком истинную природу наших заблуждений». Акцент ВДА: прочитанное вслух живому человеку перестаёт быть тайной и теряет силу.</p>
+<div class="core"><b>Что этот шаг делает.</b> Всё, что вы написали в шаге 4, читается вслух — <b>целиком, от начала до конца</b> (обычно 60–90 минут), живому человеку. Не потому, что надо страдать, а потому, что тайна питает стыд, а сказанное вслух — обезвреживает. Слушатель не осуждает и не советует: он слушает.</div>
+
+<p class="qlbl"><span class="no">5.1</span> Что мне труднее всего будет прочитать вслух — и почему именно это? <span class="sav" data-for="f-s5-q1"></span></p>
+<textarea class="qf" id="f-s5-q1" data-step="5" data-q="5.1. Что мне труднее всего будет прочитать вслух — и почему именно это?" placeholder="напр.: про обиду на мать; про зависть; что сам(а) делал(а) больно"></textarea>
+
+<p class="qlbl"><span class="no">5.2</span> Кого я выбираю слушателем? (В этой работе — ваш психолог; позже — любой человек, которому вы доверите это.) <span class="sav" data-for="f-s5-q2"></span></p>
+<textarea class="qf" id="f-s5-q2" data-step="5" data-q="5.2. Кого я выбираю слушателем? (В этой работе — ваш психолог; позже — любой человек, которому вы доверите это.)" placeholder="напр.: в этой работе — психолог; друзьям и семье это пока не рассказываю"></textarea>
+
+<p class="qlbl"><span class="no">5.3</span> Чего я боюсь в этой читке: осуждения? жалости? что «увидят настоящего меня»? Назвать страх словом. <span class="sav" data-for="f-s5-q3"></span></p>
+<textarea class="qf" id="f-s5-q3" data-step="5" data-q="5.3. Чего я боюсь в этой читке: осуждения? жалости? что «увидят настоящего меня»? Назвать страх" placeholder="напр.: что он(а) изменит мнение обо мне; что будет неловко; что расплачусь"></textarea>
+
+<p class="qlbl"><span class="no">5.4</span> Что изменится для меня, когда это будет сказано? Откуда я знаю, что сейчас держать это в себе — дороже? <span class="sav" data-for="f-s5-q4"></span></p>
+<textarea class="qf" id="f-s5-q4" data-step="5" data-q="5.4. Что изменится для меня, когда это будет сказано? Откуда я знаю, что сейчас держать это в с" placeholder="напр.: перестану тратить силы на сокрытие; стыд перестанет расти"></textarea>
+
+<p class="qlbl"><span class="no">5.м</span> Для практики: готов(а) ли я сам(а) к роли слушателя без осуждения и советов — что мне в этом трудно? <span class="sav" data-for="f-s5-m"></span></p>
+<textarea class="qf" id="f-s5-m" data-step="5" data-q="5.м. готов(а) ли я сам(а) к роли слушателя без осуждения и советов — что мне в этом т" placeholder="напр.: где тянет утешить вместо того, чтобы дать договорить"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Чего я никогда и никому не рассказывал(а)? Один-два факта, только для себя. (Делать с этим что-то — не обязательно.) <span class="sav" data-for="f-s5-d1"></span></p>
+<textarea class="qf" id="f-s5-d1" data-step="5" data-q="5.глубже. Чего я никогда и никому не рассказывал(а)? Один-два факта, только для себя. (Дел" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Письмо тому, кому этого не скажу (живому или ушедшему). Не отправляется — и это тоже работает. <span class="sav" data-for="f-s5-d2"></span></p>
+<textarea class="qf" id="f-s5-d2" data-step="5" data-q="5.глубже. Письмо тому, кому этого не скажу (живому или ушедшему). Не отправляется — и это " placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+</details>
+<p class="qlbl"><span class="no">5.дата</span> Дата полной читки вслух и слушатель (заполняется после): <span class="sav" data-for="f-s5-d"></span></p>
+<textarea class="qf" id="f-s5-d" data-step="5" data-q="5.дата. Полная читка: когда и с кем" placeholder="напр.: 14 марта, с психологом; читал(а) шаг 4 целиком, 60 минут"></textarea>
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Какую фразу из тетради вы больше всего не хотите произносить вслух? Что, по-вашему, произойдёт, если вы её прочтёте? Запишите прогноз — и проверьте его на встрече.. <span class="sav" data-for="h-s5-a"></span></p>
+<textarea class="qf" id="h-s5-a" data-step="5" data-q="5.из детства. Фраза, которую не хочется читать" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s5-1" data-step="5"><label for="c-s5-1">Выбрал(а) слушателя и время</label></li>
+<li><input type="checkbox" id="c-s5-2" data-step="5"><label for="c-s5-2">Понял(а), чего именно боюсь — страх назван словом</label></li>
+<li><input type="checkbox" id="c-s5-3" data-step="5"><label for="c-s5-3">Прочитал(а) вслух хотя бы одну «стыдную» строку — психологу или наедине комнате</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Репетиция: прочитать шаг 4 вслух наедине, от начала до конца, не останавливаясь.</div>
+</section>
+
+<section class="lec" id="s6">
+<h2><span class="stepnum">6</span>Шаг 6 · Отпустить защиту</h2>
+<p class="codes"><b>Неделя 7</b> · Встреча 7 — шаги 6 и 7 на одной встрече</p>
+<p class="codes">Формулировка ВДА: «Полностью подготовили себя к тому, чтобы Бог устранил все дефекты нашего характера». Акцент ВДА: не «бороться с недостатками», а стать готовым(ой) отпустить защиты, которые больше не нужны.</p>
+<div class="core"><b>Что этот шаг делает.</b> Ваши схемы когда-то спасали жизнь — благодарность им, а не война с ними. Шаг 6 — про готовность: заметить защиту и позволить себе повести себя иначе. Отпускаем не «самое страшное», а самое лёгкое — для начала.</div>
+
+<p class="qlbl"><span class="no">6.1</span> Мои главные «спасатели детства»: три привычки, которые тогда защищали, а теперь мешают. <span class="sav" data-for="f-s6-q1"></span></p>
+<textarea class="qf" id="f-s6-q1" data-step="6" data-q="6.1. Мои главные «спасатели детства»: три привычки, которые тогда защищали, а теперь мешают." placeholder="напр.: всё контролировать; не просить; угождать; первым(ой) нападать"></textarea>
+
+<p class="qlbl"><span class="no">6.2</span> Во что мне сегодня обходится каждая из них — усталость, отношения, здоровье? <span class="sav" data-for="f-s6-q2"></span></p>
+<textarea class="qf" id="f-s6-q2" data-step="6" data-q="6.2. Во что мне сегодня обходится каждая из них — усталость, отношения, здоровье?" placeholder="напр.: спасаю коллег — вечера в дыму, своя работа по ночам"></textarea>
+
+<p class="qlbl"><span class="no">6.3</span> Какую я отпускаю первой — самую лёгкую, не самую тяжёлую? <span class="sav" data-for="f-s6-q3"></span></p>
+<textarea class="qf" id="f-s6-q3" data-step="6" data-q="6.3. Какую я отпускаю первой — самую лёгкую, не самую тяжёлую?" placeholder="напр.: первой — «сразу всех мирить»: один день не лезу в чужой конфликт"></textarea>
+
+<p class="qlbl"><span class="no">6.4</span> Чем я заполню освободившееся место: пауза? вопрос вместо совета? «мне нужно подумать»? <span class="sav" data-for="f-s6-q4"></span></p>
+<textarea class="qf" id="f-s6-q4" data-step="6" data-q="6.4. Чем я заполню освободившееся место: пауза? вопрос вместо совета? «мне нужно подумать»?" placeholder="напр.: вместо спасения — спросить: «тебе помочь или выслушать?»"></textarea>
+
+<p class="qlbl"><span class="no">6.м</span> Для практики: какие мои защитные привычки видны в профессии — и какую отпускаю первой в работе? <span class="sav" data-for="f-s6-m"></span></p>
+<textarea class="qf" id="f-s6-m" data-step="6" data-q="6.м. какие мои защитные привычки видны в профессии — и какую отпускаю первой в работе" placeholder="напр.: «всегда доступен(на)» для клиентов — какую отпускаю первой"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Разговор с привычкой: напишите ей пару строк — «спасибо, что берегла; теперь я справлюсь иначе». <span class="sav" data-for="f-s6-d1"></span></p>
+<textarea class="qf" id="f-s6-d1" data-step="6" data-q="6.глубже. Разговор с привычкой: напишите ей пару строк — «спасибо, что берегла; теперь я с" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Моя собственная формулировка шага 6. <span class="sav" data-for="f-s6-d2"></span></p>
+<textarea class="qf" id="f-s6-d2" data-step="6" data-q="6.глубже. Моя собственная формулировка шага 6." placeholder="своими словами — как этот шаг звучит для вас"></textarea>
+</details>
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Контроль, угодничество, незаметность, онемение, «всегда весёлый» — что из этого вы считаете своим характером, хотя на самом деле это выживание? В каких двух сценах детства оно вас спасло?. <span class="sav" data-for="h-s6-a"></span></p>
+<textarea class="qf" id="h-s6-a" data-step="6" data-q="6.из детства. Выживательное качество" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> Что страшного произойдёт, если этого качества не станет, — дословно: «без него я…»? Не оценивайте ответ: этот страх прослужил вам честно.. <span class="sav" data-for="h-s6-b"></span></p>
+<textarea class="qf" id="h-s6-b" data-step="6" data-q="6.из детства. Страх без брони" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s6-1" data-step="6"><label for="c-s6-1">Назвал(а) защиты своими словами</label></li>
+<li><input type="checkbox" id="c-s6-2" data-step="6"><label for="c-s6-2">Поймал(а) защиту в моменте хотя бы один раз</label></li>
+<li><input type="checkbox" id="c-s6-3" data-step="6"><label for="c-s6-3">Хотя бы один раз выбрал(а) новое поведение вместо старого</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> «Три вдоха перед рефлексом»: перед тем как включиться (поправить, спасти, промолчать) — три медленных вдоха.</div>
+</section>
+
+<section class="lec" id="s7">
+<h2><span class="stepnum">7</span>Шаг 7 · Просьба о помощи</h2>
+<p class="codes"><b>Неделя 7</b> · Встреча 7 — вместе с шагом 6</p>
+<p class="codes">Формулировка ВДА: «Смиренно просили Бога исправить наши изъяны». Акцент ВДА: смирение — не уничижение, а трезвое знание своих пределов; просьба вместо нового плана самоулучшения.</p>
+<div class="core"><b>Что этот шаг делает.</b> Здесь не нужно становиться другим человеком. Нужна одна честная просьба о помощи — с одной конкретной чертой, не со списком. И готовность заметить помощь, когда она придёт: обычно она приходит через людей и обстоятельства.</div>
+
+<p class="qlbl"><span class="no">7.1</span> С какой одной чертой я прошу помочь? Одну, не список. <span class="sav" data-for="f-s7-q1"></span></p>
+<textarea class="qf" id="f-s7-q1" data-step="7" data-q="7.1. С какой одной чертой я прошу помочь? Одну, не список." placeholder="напр.: привычка все тянуть в одиночку"></textarea>
+
+<p class="qlbl"><span class="no">7.2</span> Как для меня звучит слово «смирение»? Чем оно отличается от «унижения» — моими словами. <span class="sav" data-for="f-s7-q2"></span></p>
+<textarea class="qf" id="f-s7-q2" data-step="7" data-q="7.2. Как для меня звучит слово «смирение»? Чем оно отличается от «унижения» — моими словами." placeholder="напр.: «я не всесилен(а), и это не позор» — а не «я ничтожество»"></textarea>
+
+<p class="qlbl"><span class="no">7.3</span> Кому или чему я адресую просьбу — из моей опоры шага 2 (люди, ценности, Бог, «не я один»). <span class="sav" data-for="f-s7-q3"></span></p>
+<textarea class="qf" id="f-s7-q3" data-step="7" data-q="7.3. Кому или чему я адресую просьбу — из моей опоры шага 2 (люди, ценности, Бог, «не я один»)." placeholder="напр.: своей опоре из шага 2 — «дай мне терпения сегодня»"></textarea>
+
+<p class="qlbl"><span class="no">7.4</span> Как я пойму, что помощь приходит? Тише внутренний критик? Кто-то появился рядом? Стало видно выход? <span class="sav" data-for="f-s7-q4"></span></p>
+<textarea class="qf" id="f-s7-q4" data-step="7" data-q="7.4. Как я пойму, что помощь приходит? Тише внутренний критик? Кто-то появился рядом? Стало вид" placeholder="напр.: реже звучит «надо было лучше»; утром легче вставать"></textarea>
+
+<p class="qlbl"><span class="no">7.м</span> Для практики: готов(а) ли я просить о помощи в профессии — супервизия, коллеги? Что мне мешает? <span class="sav" data-for="f-s7-m"></span></p>
+<textarea class="qf" id="f-s7-m" data-step="7" data-q="7.м. готов(а) ли я просить о помощи в профессии — супервизия, коллеги? Что мне мешает" placeholder="напр.: супервизия — по графику, а не «когда совсем плохо»"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Письмо-просьба: два-три предложения — кому, о чём, зачем мне это. <span class="sav" data-for="f-s7-d1"></span></p>
+<textarea class="qf" id="f-s7-d1" data-step="7" data-q="7.глубже. Письмо-просьба: два-три предложения — кому, о чём, зачем мне это." placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+<p class="qlbl">Д.2 Мой внутренний критик: чей это голос — по звучанию, по фразам? Когда он поселился? <span class="sav" data-for="f-s7-d2"></span></p>
+<textarea class="qf" id="f-s7-d2" data-step="7" data-q="7.глубже. Мой внутренний критик: чей это голос — по звучанию, по фразам? Когда он поселилс" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Где в детстве вас унижали, называя это воспитанием? Вспомните 1–2 сцены и запишите, что вы тогда почувствовали. Смирение — правда о своих пределах; унижение — когда вас меньше.. <span class="sav" data-for="h-s7-a"></span></p>
+<textarea class="qf" id="h-s7-a" data-step="7" data-q="7.из детства. Смирение — не унижение" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s7-1" data-step="7"><label for="c-s7-1">Просьба сформулирована одной фразой</label></li>
+<li><input type="checkbox" id="c-s7-2" data-step="7"><label for="c-s7-2">Произнёс(ла) её вслух или написал(а)</label></li>
+<li><input type="checkbox" id="c-s7-3" data-step="7"><label for="c-s7-3">Замечен(а) хотя бы один момент, когда помощь приняли</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Утром — 30 секунд: произнести свою просьбу вслух или про себя, до телефона и новостей.</div>
+</section>
+
+<section class="lec" id="s8">
+<h2><span class="stepnum">8</span>Шаг 8 · Список возмещения</h2>
+<p class="codes"><b>Неделя 8</b> · Встреча 8</p>
+<p class="codes">Формулировка ВДА: «Составили список людей, которым мы причинили вред, и преисполнились желанием возместить нанесённый им ущерб». Акцент ВДА: учёт боли, которую причинил(а) я — контролем, спасением, молчанием, вспышками; и право на «не сейчас».</p>
+<div class="core"><b>Что этот шаг делает.</b> Это список не для самобичевания, а для честности: кому и чем я делал(а) больно — словами, делами и бездействием. Здесь же — право отложить или не делать: если возмещение вернёт в опасную динамику или навредит, его не делают.</div>
+
+<p class="qlbl"><span class="no">8.1</span> Кому я причинил(а) боль? Первые имена — партнёры, дети, родители, друзья, коллеги. <span class="sav" data-for="f-s8-q1"></span></p>
+<textarea class="qf" id="f-s8-q1" data-step="8" data-q="8.1. Кому я причинил(а) боль? Первые имена — партнёры, дети, родители, друзья, коллеги." placeholder="напр.: муж — контроль и раздражение; сын — срывы на него; подруга — исчез(ла) в её трудный год"></textarea>
+
+<p class="qlbl"><span class="no">8.2</span> В чём именно был вред — их словами, не моими («я плохой»), а конкретно: что они почувствовали, что потеряли. <span class="sav" data-for="f-s8-q2"></span></p>
+<textarea class="qf" id="f-s8-q2" data-step="8" data-q="8.2. В чём именно был вред — их словами, не моими («я плохой»), а конкретно: что они почувствов" placeholder="напр.: муж — что я контролировала каждый его шаг; сын — что рос при вечно уставшей матери"></textarea>
+
+<p class="qlbl"><span class="no">8.3</span> Кому возмещать не буду или не сейчас — и почему (небезопасно, вернёт в старое, навредит им или мне). <span class="sav" data-for="f-s8-q3"></span></p>
+<textarea class="qf" id="f-s8-q3" data-step="8" data-q="8.3. Кому возмещать не буду или не сейчас — и почему (небезопасно, вернёт в старое, навредит им" placeholder="правило шага: возмещение не должно создавать новый вред"></textarea>
+
+<p class="qlbl"><span class="no">8.4</span> Готовность: какое первое маленькое возмещение я готов(а) сделать — не подвиг, а шаг. <span class="sav" data-for="f-s8-q4"></span></p>
+<textarea class="qf" id="f-s8-q4" data-step="8" data-q="8.4. Готовность: какое первое маленькое возмещение я готов(а) сделать — не подвиг, а шаг." placeholder="напр.: сыну — «я был(а) тогда неправ(а)», без «но», в воскресенье"></textarea>
+
+<p class="qlbl"><span class="no">8.м</span> Для практики: кому в моей практике «должен(на)» я — и где я, наоборот, годами «возмещаю» не своё (вина за чужой процесс)? <span class="sav" data-for="f-s8-m"></span></p>
+<textarea class="qf" id="f-s8-m" data-step="8" data-q="8.м. кому в моей практике «должен(на)» я — и где я, наоборот, годами «возмещаю» не св" placeholder="напр.: клиентам — где был(а) не рядом; а мне «должны» — за переработку"></textarea>
+
+<details class="deep"><summary>Полный формат: список возмещения (уровень «Жёлтой тетради»)</summary>
+<p class="qlbl">По строке на человека: <b>кому → в чём вред (его/её словами) → что я чувствую к этому → возможное возмещение и срок → безопасно ли (да / нет / обсудить с психологом)</b>. <span class="sav" data-for="f-s8-f1"></span></p>
+<textarea class="qf" id="f-s8-f1" data-step="8" data-q="8.полный 1. Возмещение" placeholder="напр.: муж → я контролировал(а) каждый его шаг → стыд и вина → разговор без оправданий, через месяц → обсудить на встрече"></textarea>
+<p class="qlbl">Строка 2 (тот же формат). <span class="sav" data-for="f-s8-f2"></span></p>
+<textarea class="qf" id="f-s8-f2" data-step="8" data-q="8.полный 2. Возмещение" placeholder="напр.: сын → срывался(ась) на него → стыд → спокойный разговор в выходные → безопасно"></textarea>
+<p class="qlbl">Строка 3. <span class="sav" data-for="f-s8-f3"></span></p>
+<textarea class="qf" id="f-s8-f3" data-step="8" data-q="8.полный 3. Возмещение" placeholder="напр.: подруга → бросил(а) в её трудный год → вина → письмо с признанием, без оправданий → да"></textarea>
+</details>
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Две колонки: «кому должен(на) я» и «кто должен мне». Посмотреть на пересечения без прикрас. <span class="sav" data-for="f-s8-d1"></span></p>
+<textarea class="qf" id="f-s8-d1" data-step="8" data-q="8.глубже. Две колонки: «кому должен(на) я» и «кто должен мне». Посмотреть на пересечения б" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Сравнить с обидами шага 4: где я — одновременно пострадавший(ая) и причинивший(ая)? Это частая правда семей. <span class="sav" data-for="f-s8-d2"></span></p>
+<textarea class="qf" id="f-s8-d2" data-step="8" data-q="8.глубже. Сравнить с обидами шага 4: где я — одновременно пострадавший(ая) и причинивший(а" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+<details class="deep"><summary>Из детства — глубокая работа (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Самое глубокое место тетради: детский материал — то, ради чего курс. Не спешите; тяжёлое разбирается на встрече, по кусочкам.</p>
+<p class="qlbl"><span class="no">И.1</span> Что в детстве вы несли по-взрослому: утешали родителя, следили за настроением в доме, растили младших, мирили взрослых, были удобным? Перечислите свои роли.. <span class="sav" data-for="h-s8-a"></span></p>
+<textarea class="qf" id="h-s8-a" data-step="8" data-q="8.из детства. Не ваша работа" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> Напишите фразу: «Это была не моя работа. Мне было … лет». Что вы чувствуете, читая её? Это тоже пункт списка возмещения — перед самим собой.. <span class="sav" data-for="h-s8-b"></span></p>
+<textarea class="qf" id="h-s8-b" data-step="8" data-q="8.из детства. Верните это обратно" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s8-1" data-step="8"><label for="c-s8-1">Список написан — не в голове, а на бумаге/в тетради</label></li>
+<li><input type="checkbox" id="c-s8-2" data-step="8"><label for="c-s8-2">Вред назван конкретно, словами пострадавшего</label></li>
+<li><input type="checkbox" id="c-s8-3" data-step="8"><label for="c-s8-3">Отмечено хотя бы одно честное «не сейчас»</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одно живое «возмещение» вне списка: поблагодарить человека, который помог вам, — сегодня.</div>
+</section>
+
+<section class="lec" id="s9">
+<h2><span class="stepnum">9</span>Шаг 9 · Возмещение</h2>
+<p class="codes"><b>Недели 9–10</b> · Встречи 9 и 10 — возмещения по одному, безопасность прежде всего</p>
+<p class="codes">Формулировка ВДА: «Лично возмещали ущерб этим людям, кроме случаев, когда это могло принести вред им или кому-то другому». Акцент ВДА: маленькое, своевременное, безопасное; признание — тоже возмещение.</p>
+<div class="core"><b>Что этот шаг делает.</b> Возмещение — не для того, чтобы «стать хорошим», а чтобы вернуть долг и жить дальше. Формула: маленькое, своевременное, безопасное. Слова готовятся заранее и обсуждаются с психологом. Другой не обязан прощать — и это тоже часть шага.</div>
+
+<p class="qlbl"><span class="no">9.1</span> Моё первое возмещение: что, кому, когда. Одно, маленькое. <span class="sav" data-for="f-s9-q1"></span></p>
+<textarea class="qf" id="f-s9-q1" data-step="9" data-q="9.1. Моё первое возмещение: что, кому, когда. Одно, маленькое." placeholder="напр.: сыну, в воскресенье: «я был(а) к тебе несправедлив(а) в пятницу»"></textarea>
+
+<p class="qlbl"><span class="no">9.2</span> Что я скажу — дословно, два-три предложения. Без длинных объяснений и без «но». <span class="sav" data-for="f-s9-q2"></span></p>
+<textarea class="qf" id="f-s9-q2" data-step="9" data-q="9.2. Что я скажу — дословно, два-три предложения. Без длинных объяснений и без «но»." placeholder="напр.: «Я понимаю, что мой контроль тогда лишил тебя самостоятельности. Мне жаль. Я хочу по-другому»"></textarea>
+
+<p class="qlbl"><span class="no">9.3</span> Какой результат для меня приемлем — включая «никакого»? (Прощение — не условие.) <span class="sav" data-for="f-s9-q3"></span></p>
+<textarea class="qf" id="f-s9-q3" data-step="9" data-q="9.3. Какой результат для меня приемлем — включая «никакого»? (Прощение — не условие.)" placeholder="напр.: «он промолчит» — и это нормально: возмещение не за отклик"></textarea>
+
+<p class="qlbl"><span class="no">9.4</span> Чего я делать не буду: не буду оправдываться, не буду требовать ответной теплоты, не буду делать «слишком». <span class="sav" data-for="f-s9-q4"></span></p>
+<textarea class="qf" id="f-s9-q4" data-step="9" data-q="9.4. Чего я делать не буду: не буду оправдываться, не буду требовать ответной теплоты, не буду " placeholder="напр.: не оправдываюсь, не говорю «но ты тоже», не жду благодарности"></textarea>
+
+<p class="qlbl"><span class="no">9.м</span> Для практики: как я отличаю в работе терапевтическое признание ошибки от самоуничижения перед клиентом? <span class="sav" data-for="f-s9-m"></span></p>
+<textarea class="qf" id="f-s9-m" data-step="9" data-q="9.м. как я отличаю в работе терапевтическое признание ошибки от самоуничижения перед " placeholder="напр.: «я был(а) резковат(а) на той сессии» — признание; «я ужасный терапевт» — самоедство"></textarea>
+
+<div class="flags"><p class="qlbl" style="margin:.1rem 0"><span class="no">9.5</span> <b>Экран безопасности — заполнить до любого возмещения.</b> Кому из списка говорить нельзя и не нужно: опасные люди, живые обидчики, те, с кем контакт разрушителен? Для них возмещение — не диалог, а письмо, которое не отправляется, или работа на встрече. <span class="sav" data-for="h-s9-a"></span></p></div>
+<textarea class="qf" id="h-s9-a" data-step="9" data-q="9.5. Экран безопасности: кого не трогать" placeholder="напр.: отец — контакт опасен, только неотправляемое письмо; бывший партнёр — обсудить на встрече; сестра — пока рано"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Репетиция: написать черновик слов и прочитать вслух наедине. Отшлифовать до трёх предложений. <span class="sav" data-for="f-s9-d1"></span></p>
+<textarea class="qf" id="f-s9-d1" data-step="9" data-q="9.глубже. Репетиция: написать черновик слов и прочитать вслух наедине. Отшлифовать до трёх" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Возмещение себе: что я возвращаю себе — сон? врача? отдых? право на «нет»? Один пункт, одна дата. <span class="sav" data-for="f-s9-d2"></span></p>
+<textarea class="qf" id="f-s9-d2" data-step="9" data-q="9.глубже. Возмещение себе: что я возвращаю себе — сон? врача? отдых? право на «нет»? Один " placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s9-1" data-step="9"><label for="c-s9-1">Одно возмещение сделано (или назначено конкретно)</label></li>
+<li><input type="checkbox" id="c-s9-2" data-step="9"><label for="c-s9-2">Не ждал(а) благодарности и прощения</label></li>
+<li><input type="checkbox" id="c-s9-3" data-step="9"><label for="c-s9-3">Записал(а), что почувствовал(а) до и после</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> «Отложенное признание»: извиниться за одну конкретную мелочь этой недели — сегодня, не откладывая.</div>
+</section>
+
+<section class="lec" id="s10">
+<h2><span class="stepnum">10</span>Шаг 10 · Ежедневная сверка</h2>
+<p class="codes"><b>Неделя 11</b> · Встреча 11 — шаги 10 и 11 на одной встрече</p>
+<p class="codes">Формулировка ВДА: «Продолжали личную инвентаризацию и, когда оказывались неправы, немедленно признавали это». Акцент ВДА: ежедневные три минуты вместо большого «генерального разбора» раз в год.</p>
+<div class="core"><b>Что этот шаг делает.</b> Шаги 1–9 были большим ремонтом; шаг 10 — ежедневная уборка. Три минуты вечером: где я был(а) в старой схеме, где признал(а) ошибку сразу, что — не моё. Ошибку признаём в тот же день, пока она не выросла в обиду или вину.</div>
+
+<p class="qlbl"><span class="no">10.1</span> Мой вечерний чек на три минуты: что сегодня было «моё», что — «не моё»? Одна строка. <span class="sav" data-for="f-s10-q1"></span></p>
+<textarea class="qf" id="f-s10-q1" data-step="10" data-q="10.1. Мой вечерний чек на три минуты: что сегодня было «моё», что — «не моё»? Одна строка." placeholder="напр.: моё — «сказал(а) нет»; не моё — «настроение шефа»"></textarea>
+
+<p class="qlbl"><span class="no">10.2</span> Мои «сигнальные огни»: первые телесные признаки, что я вхожу в старую схему — плечи? ком в горле? ускорение речи? <span class="sav" data-for="f-s10-q2"></span></p>
+<textarea class="qf" id="f-s10-q2" data-step="10" data-q="10.2. Мои «сигнальные огни»: первые телесные признаки, что я вхожу в старую схему — плечи? ком в" placeholder="напр.: зуд «позвонить и проверить»; сжатые челюсти; желание всех «починить»"></textarea>
+
+<p class="qlbl"><span class="no">10.3</span> Где я сегодня признал(а) ошибку сразу — не «на следующий год»? <span class="sav" data-for="f-s10-q3"></span></p>
+<textarea class="qf" id="f-s10-q3" data-step="10" data-q="10.3. Где я сегодня признал(а) ошибку сразу — не «на следующий год»?" placeholder="напр.: перепутал(а) дату — извинился(ась) в тот же чат через минуту"></textarea>
+
+<p class="qlbl"><span class="no">10.4</span> Форма чека: тетрадь, заметка в телефоне, голосовое — выбираю одну и держусь её. <span class="sav" data-for="f-s10-q4"></span></p>
+<textarea class="qf" id="f-s10-q4" data-step="10" data-q="10.4. Форма чека: тетрадь, заметка в телефоне, голосовое — выбираю одну и держусь её." placeholder="напр.: заметка в телефоне в 22:30, три строки"></textarea>
+
+<p class="qlbl"><span class="no">10.м</span> Для практики: что из ежедневной сверки я готов(а) выносить на супервизию регулярно? <span class="sav" data-for="f-s10-m"></span></p>
+<textarea class="qf" id="f-s10-m" data-step="10" data-q="10.м. что из ежедневной сверки я готов(а) выносить на супервизию регулярно?" placeholder="напр.: «застрял(а) с клиентом N — и что это моё»"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Шаблон страницы дня: благодарность (1) — ошибка (1) — «не моё» (1). Попробовать неделю. <span class="sav" data-for="f-s10-d1"></span></p>
+<textarea class="qf" id="f-s10-d1" data-step="10" data-q="10.глубже. Шаблон страницы дня: благодарность (1) — ошибка (1) — «не моё» (1). Попробовать " placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Протокол срыва: три шага — заметил(а), назвал(а) схему, вернулся (возвратился) к практике без самобичевания. <span class="sav" data-for="f-s10-d2"></span></p>
+<textarea class="qf" id="f-s10-d2" data-step="10" data-q="10.глубже. Протокол срыва: три шага — заметил(а), назвал(а) схему, вернулся (возвратился) к" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+<details class="deep"><summary>Из детства — в настоящем (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Не новая копка, а детская линия в настоящем: как старое звучит сегодня. Заметили — принесите на встречу.</p>
+<p class="qlbl"><span class="no">И.1</span> Один пример за неделю: повод мелкий, а реакция сильная. Какое детское чувство прорвалось — тот самый страх, та беспомощность, тот стыд? Проведите линию: «сегодня … — тогда …». <span class="sav" data-for="h-s10-a"></span></p>
+<textarea class="qf" id="h-s10-a" data-step="10" data-q="10.из детства. Старые чувства под новыми поводами" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s10-1" data-step="10"><label for="c-s10-1">Чек сделан 5+ дней подряд</label></li>
+<li><input type="checkbox" id="c-s10-2" data-step="10"><label for="c-s10-2">Хотя бы одна ошибка признана в тот же день</label></li>
+<li><input type="checkbox" id="c-s10-3" data-step="10"><label for="c-s10-3">Напоминание в телефоне стоит и работает</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Поставить ежедневное напоминание на одно и то же время — и вечером ответить на него одной строкой.</div>
+</section>
+
+<section class="lec" id="s11">
+<h2><span class="stepnum">11</span>Шаг 11 · Пауза тишины</h2>
+<p class="codes"><b>Неделя 11</b> · Встреча 11 — вместе с шагом 10</p>
+<p class="codes">Формулировка ВДА: «Стремились путём молитвы и медитации улучшить свой сознательный контакт с Богом, как мы Его понимаем, молясь лишь о знании Его воли и силе для её исполнения». Акцент ВДА: регулярная пауза тишины, чтобы слышать себя, а не тревогу; форма — любая, ваша.</p>
+<div class="core"><b>Что этот шаг делает.</b> Цель практики — не «достичь спокойствия», а каждый день на несколько минут останавливаться и слушать: что со мной, что мне нужно. Кому-то ближе молитва, кому-то ходьба, дыхание, письмо. Работает та практика, которая бывает каждый день.</div>
+
+<p class="qlbl"><span class="no">11.1</span> Моя минимальная практика тишины: что, где, сколько минут? (Начать с трёх.) <span class="sav" data-for="f-s11-q1"></span></p>
+<textarea class="qf" id="f-s11-q1" data-step="11" data-q="11.1. Моя минимальная практика тишины: что, где, сколько минут? (Начать с трёх.)" placeholder="напр.: три минуты дыхания утром на кухне до телефона"></textarea>
+
+<p class="qlbl"><span class="no">11.2</span> Что помогает мне услышать себя: ходьба, вода, письмо, церковь, природа? <span class="sav" data-for="f-s11-q2"></span></p>
+<textarea class="qf" id="f-s11-q2" data-step="11" data-q="11.2. Что помогает мне услышать себя: ходьба, вода, письмо, церковь, природа?" placeholder="напр.: быстрая ходьба без наушников; душ; письмо от руки"></textarea>
+
+<p class="qlbl"><span class="no">11.3</span> Мой «приёмник»: как ко мне обычно приходит понимание — через тело, сон, случайную фразу, людей? <span class="sav" data-for="f-s11-q3"></span></p>
+<textarea class="qf" id="f-s11-q3" data-step="11" data-q="11.3. Мой «приёмник»: как ко мне обычно приходит понимание — через тело, сон, случайную фразу, л" placeholder="без мистики: замечаю ответы в обычных вещах"></textarea>
+
+<p class="qlbl"><span class="no">11.4</span> Когда практика вписана в день — время и место? Без этого её не будет. <span class="sav" data-for="f-s11-q4"></span></p>
+<textarea class="qf" id="f-s11-q4" data-step="11" data-q="11.4. Когда практика вписана в день — время и место? Без этого её не будет." placeholder="напр.: 7:40, кухня, до телефона — десять минут"></textarea>
+
+<p class="qlbl"><span class="no">11.м</span> Для практики: какая практика поддерживает меня как специалиста — и что я на неё «не успеваю» на самом деле? <span class="sav" data-for="f-s11-m"></span></p>
+<textarea class="qf" id="f-s11-m" data-step="11" data-q="11.м. какая практика поддерживает меня как специалиста — и что я на неё «не успеваю» н" placeholder="напр.: десять минут тишины до первой сессии"></textarea>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Утреннее письмо на три строки: что я чувствую / что мне нужно / за что благодарен(на). <span class="sav" data-for="f-s11-d1"></span></p>
+<textarea class="qf" id="f-s11-d1" data-step="11" data-q="11.глубже. Утреннее письмо на три строки: что я чувствую / что мне нужно / за что благодаре" placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+<p class="qlbl">Д.2 Обращение по-моему: молитва или просто просьба вслух — своими словами, без чужих формул. <span class="sav" data-for="f-s11-d2"></span></p>
+<textarea class="qf" id="f-s11-d2" data-step="11" data-q="11.глубже. Обращение по-моему: молитва или просто просьба вслух — своими словами, без чужих" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+<details class="deep"><summary>Из детства — в настоящем (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Не новая копка, а детская линия в настоящем: как старое звучит сегодня. Заметили — принесите на встречу.</p>
+<p class="qlbl"><span class="no">И.1</span> Чем была тишина в вашем доме — опасной? обвиняющей? пустой? Что вы чувствуете в тишине теперь, когда ничего не происходит? Одна-две фразы.. <span class="sav" data-for="h-s11-a"></span></p>
+<textarea class="qf" id="h-s11-a" data-step="11" data-q="11.из детства. Тишина" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s11-1" data-step="11"><label for="c-s11-1">Практика была 5+ дней за неделю</label></li>
+<li><input type="checkbox" id="c-s11-2" data-step="11"><label for="c-s11-2">Нашёл(нашла) для неё время и место</label></li>
+<li><input type="checkbox" id="c-s11-3" data-step="11"><label for="c-s11-3">Заметил(а) хотя бы одно решение, пришедшее из тишины, а не из тревоги</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Три минуты тишины сразу после пробуждения — телефон остаётся в другой комнате.</div>
+</section>
+
+<section class="lec" id="s12">
+<h2><span class="stepnum">12</span>Шаг 12 · Служение без спасения</h2>
+<p class="codes"><b>Неделя 12</b> · Встреча 12 — завершение курса и итоги</p>
+<p class="codes">Формулировка ВДА: «Достигнув духовного пробуждения, к которому привели эти Шаги, мы стремились нести весть о выздоровлении <b>другим взрослым детям, которые всё ещё страдают</b>, и применять эти принципы во всех наших делах». Акцент ВДА: делиться опытом — историей о себе, а не советом; и сначала — своя устойчивость.</p>
+<div class="core"><b>Что этот шаг делает.</b> Пока вы держите свои шаги 10–11, вам есть чем делиться — силой примера, а не проповедью. Служение здесь — не спасание: помогать без желания «переделать» другого, делиться только тем, что прожил(а) сам(а), и уметь сказать «я не могу это за тебя».</div>
+
+<p class="qlbl"><span class="no">12.1</span> Кому и как я могу передать опыт — историей о себе, без «ты должен»? Один человек, одна ситуация. <span class="sav" data-for="f-s12-q1"></span></p>
+<textarea class="qf" id="f-s12-q1" data-step="12" data-q="12.1. Кому и как я могу передать опыт — историей о себе, без «ты должен»? Один человек, одна сит" placeholder="напр.: поделиться с другом, выросшим в такой же семье, — как мне давался шаг 1"></textarea>
+
+<p class="qlbl"><span class="no">12.2</span> Где моя помощь уместна, а где — спасание? Моя граница: до чего я иду вместе, а дальше — нет. <span class="sav" data-for="f-s12-q2"></span></p>
+<textarea class="qf" id="f-s12-q2" data-step="12" data-q="12.2. Где моя помощь уместна, а где — спасание? Моя граница: до чего я иду вместе, а дальше — не" placeholder="напр.: слушаю и подвожу к его(её) решению — но не решаю и не делаю за него"></textarea>
+
+<p class="qlbl"><span class="no">12.3</span> Что в моей жизни уже «видно другим» — что изменилось за эти шаги? Три факта. <span class="sav" data-for="f-s12-q3"></span></p>
+<textarea class="qf" id="f-s12-q3" data-step="12" data-q="12.3. Что в моей жизни уже «видно другим» — что изменилось за эти шаги? Три факта." placeholder="напр.: «говорю нет без лекций»; подруга заметила: «ты как будто спокойнее»"></textarea>
+
+<p class="qlbl"><span class="no">12.4</span> Мой следующий виток: что я продолжаю поддерживать — чеки, практики, встречи с психологом? <span class="sav" data-for="f-s12-q4"></span></p>
+<textarea class="qf" id="f-s12-q4" data-step="12" data-q="12.4. Мой следующий виток: что я продолжаю поддерживать — чеки, практики, встречи с психологом?" placeholder="напр.: вечерний чек; пауза тишины утром; раз в месяц — встреча с психологом"></textarea>
+
+<p class="qlbl"><span class="no">12.м</span> Для практики: как я теперь провожу границу между профессиональной помощью и спасанием — что изменилось в кабинете? <span class="sav" data-for="f-s12-m"></span></p>
+<textarea class="qf" id="f-s12-m" data-step="12" data-q="12.м. как я теперь провожу границу между профессиональной помощью и спасанием — что из" placeholder="напр.: помощь — в рабочие часы; вне их — направление к коллеге"></textarea>
+
+<h3>Обещания ВДА — к чему приводит работа по Шагам (БКК, стр. 587)</h3>
+<ul>
+<li>Мы откроем свою истинную личность, любя и принимая себя.</li>
+<li>Наше самоуважение будет расти по мере того, как мы станем ежедневно одобрять себя.</li>
+<li>Нас покинут потребность угодничать и страх перед людьми, имеющими власть.</li>
+<li>В нас окрепнет способность строить и развивать близкие отношения.</li>
+<li>Преодолев чувство покинутости, мы станем терпимее к человеческим слабостям.</li>
+<li>Мы обретём чувства стабильности, покоя и финансовой защищённости.</li>
+<li>Мы научимся играть, веселиться и радоваться жизни.</li>
+<li>Мы научимся любить людей, способных к любви и ответственности за себя.</li>
+<li>Нам станет легче устанавливать здоровые границы.</li>
+<li>Мы интуитивно будем принимать более здравые решения и перестанем бояться успехов и неудач.</li>
+<li>Наша группа ВДА поможет нам шаг за шагом освободиться от дисфункционального поведения.</li>
+<li>С помощью своей Высшей Силы мы постепенно научимся ожидать самого лучшего и получать его.</li>
+</ul>
+<p style="font-size:.85rem;color:var(--mut)">Обещания — не список гарантий к дате, а направление движения: они сбываются постепенно, по мере работы по Шагам.</p>
+
+<details class="deep"><summary>Глубже (опционально)</summary>
+<p class="qlbl">Д.1 Моё послание в трёх предложениях: что мне дали шаги — так, чтобы мог(ла) сказать вслух другому. <span class="sav" data-for="f-s12-d1"></span></p>
+<textarea class="qf" id="f-s12-d1" data-step="12" data-q="12.глубже. Моё послание в трёх предложениях: что мне дали шаги — так, чтобы мог(ла) сказать" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl">Д.2 Письмо человеку, который был бы рад видеть меня таким(ой), как сейчас. Живому или ушедшему. <span class="sav" data-for="f-s12-d2"></span></p>
+<textarea class="qf" id="f-s12-d2" data-step="12" data-q="12.глубже. Письмо человеку, который был бы рад видеть меня таким(ой), как сейчас. Живому ил" placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+</details>
+<details class="deep"><summary>Из детства — в настоящем (ключевой материал для встречи)</summary>
+<p style="font-size:.85rem;color:var(--mut)">Не новая копка, а детская линия в настоящем: как старое звучит сегодня. Заметили — принесите на встречу.</p>
+<p class="qlbl"><span class="no">И.1</span> Какой сценой детства вы хотели бы попрощаться — последний раз рассмотреть её и закрыть? Опишите её коротко и напишите, что вы забираете с собой вместо неё.. <span class="sav" data-for="h-s12-a"></span></p>
+<textarea class="qf" id="h-s12-a" data-step="12" data-q="12.из детства. Прощание со сценой" placeholder="своими словами, как есть; достаточно 2–3 строк"></textarea>
+<p class="qlbl"><span class="no">И.2</span> В шаге 1 вы уже писали ему письмо. Перечитайте его и напишите 2–3 строки сегодня: что изменилось с тех пор, что вы знаете теперь, чего он не знал.. <span class="sav" data-for="h-s12-b"></span></p>
+<textarea class="qf" id="h-s12-b" data-step="12" data-q="12.из детства. Письмо себе-ребёнку — второе" placeholder="это письмо никому не отправляется; пишите как есть, своими словами"></textarea>
+</details>
+
+<h3>Чек «шаг прожит»</h3><ul class="chk">
+<li><input type="checkbox" id="c-s12-1" data-step="12"><label for="c-s12-1">Поделился(лась) историей о себе (не советом) хотя бы один раз</label></li>
+<li><input type="checkbox" id="c-s12-2" data-step="12"><label for="c-s12-2">Хотя бы один раз сказал(а) «не могу это за тебя сделать»</label></li>
+<li><input type="checkbox" id="c-s12-3" data-step="12"><label for="c-s12-3">Выбрал(а) формат поддержки на следующий месяц</label></li>
+</ul>
+<div class="ex"><b>Микропрактика недели.</b> Одна история о себе — в ответ на чей-то вопрос. Без «ты должен», только «мне помогло так».</div>
+</section>
+
+<section class="lec" id="map">
+<h2><span class="stepnum">★</span>Моя карта + экспорт</h2>
+<div class="core">Сводка вашей работы: что заполнено, что осталось. Здесь же — экспорт ответов в текстовый файл и полная очистка.</div>
+<div id="mapStats"></div>
+<div class="btnrow">
+<button class="btn" id="btnExport">⬇ Экспорт моих ответов (.txt)</button>
+<button class="btn" id="btnPrint">🖨 Печать / PDF</button>
+<button class="btn" id="btnClear">🗑 Очистить все ответы</button>
+</div>
+<div class="privacy">Напоминание: ответы хранятся только в этом браузере. Сделайте экспорт, если планируете чистить данные браузера или переходить на другое устройство.</div>
+<h3>После курса — итог и опоры</h3>
+<p class="qlbl">1. Что изменилось за 12 недель — своими словами и словами близких: <span class="sav" data-for="f-fin-1"></span></p>
+<textarea class="qf" id="f-fin-1" data-step="фин" data-q="После курса. Что изменилось" placeholder="напр.: прошу помощь без ненависти к себе; сплю семь часов; говорю «мне это не подходит»"></textarea>
+<p class="qlbl">2. Что остаётся в ежедневном режиме (практики шагов 10–11): <span class="sav" data-for="f-fin-2"></span></p>
+<textarea class="qf" id="f-fin-2" data-step="фин" data-q="После курса. Что остаётся ежедневно" placeholder="напр.: вечерний чек на три строки; утреннее письмо; прогулка без телефона"></textarea>
+<p class="qlbl">3. План на первые три месяца: встреча-поддержка с психологом, свои люди и практики, сигнал «старая схема вернулась» — и что я тогда делаю: <span class="sav" data-for="f-fin-3"></span></p>
+<textarea class="qf" id="f-fin-3" data-step="фин" data-q="После курса. План на 3 месяца" placeholder="напр.: психолог — раз в месяц; звонок Л. по пятницам; сигнал «опять всех спасаю» → пауза, и об этом — на встречу"></textarea>
+
+<p class="codes">Все 12 шагов — в полной форме. Возможные витки дальше: повторное прохождение (второй обзор), чтение тетради вслух от начала до конца, вынос «застрявших» тем на супервизию.</p>
+</section>
+
+</div><!-- /lec-wrap -->
+</main>
+</div><!-- /layout -->
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section.lec'));
+  var items=[].slice.call(document.querySelectorAll('#tocList li'));
+  var counter=document.getElementById('counter');
+  var order=secs.map(function(s){return s.id;});
+  function title(id){var li=items.filter(function(x){return x.getAttribute('data-t')===id;})[0];return li?li.textContent.trim():id;}
+  function buildNavs(){
+    secs.forEach(function(s,idx){
+      if(s.querySelector('.lecnav'))return;
+      var d=document.createElement('div');d.className='lecnav';var h='';
+      var prev=order[idx-1],next=order[idx+1];
+      if(prev)h+='<a href="#'+prev+'" class="prev">← '+title(prev)+'</a>';
+      h+='<span class="cnt">'+(idx+1)+' / '+order.length+'</span>';
+      if(next)h+='<a href="#'+next+'" class="next">'+title(next)+' →</a>';
+      d.innerHTML=h;s.appendChild(d);
+    });
+  }
+  function answered(){return [].filter.call(document.querySelectorAll('.qf'),function(t){return t.value.trim();}).length;}
+  function show(id){
+    if(order.indexOf(id)<0)id='front';
+    secs.forEach(function(s){s.classList.toggle('act',s.id===id);});
+    items.forEach(function(li){li.classList.toggle('on',li.getAttribute('data-t')===id);});
+    counter.textContent='заполнено полей: '+answered();
+    window.scrollTo(0,0);
+    var cb=document.getElementById('menu');if(cb)cb.checked=false;
+    if(id==='map')renderMap();
+  }
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1)||'front');});
+  document.addEventListener('keydown',function(e){
+    if(e.target&&(e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT'))return;
+    var id=location.hash.slice(1)||'front';var i=order.indexOf(id);
+    if(e.key==='ArrowRight'&&order[i+1])location.hash=order[i+1];
+    else if(e.key==='ArrowLeft'&&order[i-1])location.hash=order[i-1];
+    else if(e.key==='m'||e.key==='M'||e.key==='ь'||e.key==='Ь'){var m=document.getElementById('menu');m.checked=!m.checked;}
+  });
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    items.forEach(function(li){li.classList.toggle('hide',!!v&&li.textContent.toLowerCase().indexOf(v)<0);});
+  });
+
+  /* автосохранение */
+  var KEY='wda12-workbook-v1';
+  var store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){store={};}
+var okStore=true;try{localStorage.setItem('__wdatest','1');localStorage.removeItem('__wdatest');}catch(e){okStore=false;}
+if(!okStore){var b=document.createElement('div');b.className='nostore';
+b.style.cssText='background:#b3261e;color:#fff;padding:.6rem 1rem;font-size:.9rem;line-height:1.4';
+b.textContent='⚠ Автосохранение в этом окне браузера НЕ работает (режим инкогнито или запрет хранения данных). Ответы пропадут после закрытия страницы. Откройте тетрадь в обычном окне браузера — и проверьте, что это предупреждение исчезло.';
+document.body.insertBefore(b,document.body.firstChild);}
+  function saveAll(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+  var fields=[].slice.call(document.querySelectorAll('.qf'));
+  var checks=[].slice.call(document.querySelectorAll('.chk input[type=checkbox]'));
+  fields.forEach(function(f){
+    if(store[f.id])f.value=store[f.id];
+    f.addEventListener('input',function(){
+      store[f.id]=f.value;saveAll();
+      counter.textContent='заполнено полей: '+answered();
+      var s=document.querySelector('.sav[data-for="'+f.id+'"]');if(s){s.textContent='— сохранено ✓';}
+    });
+  });
+  checks.forEach(function(c){
+    if(store[c.id])c.checked=true;
+    c.addEventListener('change',function(){store[c.id]=c.checked;saveAll();});
+  });
+
+  function renderMap(){
+    var host=document.getElementById('mapStats');if(!host)return;
+    var html='';var totA=0,totF=0;
+    ['0'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});if(!fs.length)return;var a=fs.filter(function(f){return f.value.trim();}).length;totA+=a;totF+=fs.length;html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>Подготовка</b> — ответов: '+a+'/'+fs.length+'</div>';});
+    for(var st=1;st<=12;st++){
+      var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
+      var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st);});
+      var a=fs.filter(function(f){return f.value.trim();}).length;
+      var cc=cs.filter(function(c){return c.checked;}).length;
+      totA+=a;totF+=fs.length;
+      html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>Шаг '+st+'</b> — ответов: '+a+'/'+fs.length+(cs.length?(' · чек: '+cc+'/'+cs.length):'')+'</div>';
+    }
+    ['фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});if(!fs.length)return;var a=fs.filter(function(f){return f.value.trim();}).length;totA+=a;totF+=fs.length;html+='<div style="border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.92rem"><b>После курса</b> — ответов: '+a+'/'+fs.length+'</div>';});
+    host.innerHTML=html+'<p style="margin-top:.7rem">Всего заполнено: <b>'+totA+'</b> из '+totF+' полей.</p>';
+  }
+  document.getElementById('btnExport').addEventListener('click',function(){
+    var lines=['ВДА · Рабочая тетрадь психолога — мои ответы','Экспорт: '+new Date().toLocaleString('ru-RU'),''];
+    ['0'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ ПОДГОТОВКА ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
+    for(var st=1;st<=12;st++){
+      var fs=fields.filter(function(f){return f.getAttribute('data-step')==String(st);});
+      var any=fs.some(function(f){return f.value.trim();});
+      if(!any)continue;
+      lines.push('═══ ШАГ '+st+' ═══');
+      fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});
+      var cs=checks.filter(function(c){return c.getAttribute('data-step')==String(st)&&c.checked;});
+      var all=checks.filter(function(c){return c.getAttribute('data-step')==String(st);});
+      if(all.length){lines.push('Чек «шаг прожит»: '+cs.length+' из '+all.length);
+        all.forEach(function(c){var lb=document.querySelector('label[for="'+c.id+'"]');lines.push((c.checked?'[✓] ':'[ ] ')+(lb?lb.textContent.replace(/\s+/g,' ').trim():c.id));});
+        lines.push('');}
+    }
+    ['фин'].forEach(function(st){var fs=fields.filter(function(f){return f.getAttribute('data-step')==st;});var any=fs.some(function(f){return f.value.trim();});if(!any)return;lines.push('═══ ПОСЛЕ КУРСА ═══');fs.forEach(function(f){lines.push(f.getAttribute('data-q')+':');lines.push(f.value.trim()||'—');lines.push('');});});
+    if(lines.length<4){alert('Пока нечего экспортировать — заполните хотя бы одно поле.');return;}
+    var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/plain;charset=utf-8'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wda_12_steps_moi_otvety.txt';a.click();URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('btnExportTop').addEventListener('click',function(){document.getElementById('btnExport').click();});
+  document.getElementById('btnPrint').addEventListener('click',function(){window.print();});
+  document.getElementById('btnClear').addEventListener('click',function(){
+    if(!confirm('Удалить ВСЕ ваши ответы из этого браузера? Действие необратимо.'))return;
+    store={};saveAll();
+    fields.forEach(function(f){f.value='';});
+    checks.forEach(function(c){c.checked=false;});
+    renderMap();counter.textContent='заполнено полей: 0';
+  });
+
+  buildNavs();
+  show(location.hash.slice(1)||'front');
+})();
+</script>
+</body>
+</html>
