@@ -1,326 +1,537 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="auto">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Точка опоры · Рабочая тетрадь первичной стабилизации</title>
-<meta name="description" content="Интерактивная рабочая тетрадь для первичной стабилизации состояния при алкогольной зависимости, отслеживания тяги, мыслей-разрешений и восстановления при ненормированном графике.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Точка опоры · Трезвость и Ресурс</title>
+<meta name="description" content="Интерактивная рабочая тетрадь первичной стабилизации, управления тягой и восстановления при ненормированном графике (версия 1.0).">
 <style>
+/* =========================================================
+   1. ПЕРЕМЕННЫЕ И ТЕМЫ ОФОРМЛЕНИЯ (LIGHT / DARK / AUTO)
+   ========================================================= */
 :root {
-  --bg: #f8f9fa;
+  --bg: #f8fafc;
   --panel: #ffffff;
-  --ink: #1f2328;
-  --mut: #656d76;
-  --line: #d0d7de;
-  --acc: #0969da;
-  --acc-soft: #ddf4ff;
-  --flag: #cf222e;
-  --flag-soft: #ffebe9;
-  --warn: #9a6700;
-  --warn-soft: #fff8c5;
-  --succ: #1a7f37;
-  --succ-soft: #dafbe1;
-  --code: #f6f8fa;
-  --mark: #fff8c5;
+  --panel-elevated: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --ink: #0f172a;
+  --ink-secondary: #334155;
+  --mut: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  
+  --acc: #2563eb;
+  --acc-hover: #1d4ed8;
+  --acc-soft: #eff6ff;
+  --acc-border: #bfdbfe;
+  
+  --sos: #e11d48;
+  --sos-hover: #be123c;
+  --sos-soft: #fff1f2;
+  --sos-border: #fecdd3;
+  
+  --succ: #059669;
+  --succ-hover: #047857;
+  --succ-soft: #ecfdf5;
+  --succ-border: #a7f3d0;
+  
+  --warn: #d97706;
+  --warn-soft: #fffbeb;
+  --warn-border: #fde68a;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d1117;
-    --panel: #161b22;
-    --ink: #e6edf3;
-    --mut: #8b949e;
-    --line: #30363d;
-    --acc: #58a6ff;
-    --acc-soft: #0d2d6c;
-    --flag: #f85149;
-    --flag-soft: #3c1618;
-    --warn: #d29922;
-    --warn-soft: #342805;
-    --succ: #3fb950;
-    --succ-soft: #11351b;
-    --code: #21262d;
-    --mark: #5c4d1e;
+[data-theme="dark"], @media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"], [data-theme="dark"] {
+    --bg: #0b0f19;
+    --panel: #131b2e;
+    --panel-elevated: #1a243b;
+    --surface-subtle: #182238;
+    --ink: #f8fafc;
+    --ink-secondary: #cbd5e1;
+    --mut: #94a3b8;
+    --line: #243049;
+    --line-strong: #334155;
+    
+    --acc: #3b82f6;
+    --acc-hover: #60a5fa;
+    --acc-soft: #172554;
+    --acc-border: #1e3a8a;
+    
+    --sos: #f43f5e;
+    --sos-hover: #fb7185;
+    --sos-soft: #3b111d;
+    --sos-border: #4c1d29;
+    
+    --succ: #10b981;
+    --succ-hover: #34d399;
+    --succ-soft: #062d1f;
+    --succ-border: #064e3b;
+    
+    --warn: #f59e0b;
+    --warn-soft: #332005;
+    --warn-border: #452b07;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   }
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--ink);
-  background: var(--bg);
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel-elevated: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --ink: #0f172a;
+  --ink-secondary: #334155;
+  --mut: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --acc: #2563eb;
+  --acc-hover: #1d4ed8;
+  --acc-soft: #eff6ff;
+  --acc-border: #bfdbfe;
+  --sos: #e11d48;
+  --sos-hover: #be123c;
+  --sos-soft: #fff1f2;
+  --sos-border: #fecdd3;
+  --succ: #059669;
+  --succ-hover: #047857;
+  --succ-soft: #ecfdf5;
+  --succ-border: #a7f3d0;
+  --warn: #d97706;
+  --warn-soft: #fffbeb;
+  --warn-border: #fde68a;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
 }
 
-a { color: var(--acc); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* =========================================================
+   2. БАЗОВАЯ ТИПОГРАФИКА И СБРОС СТИЛЕЙ
+   ========================================================= */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Шапка */
+a { color: var(--acc); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--acc-hover); }
+
+/* =========================================================
+   3. ВЕРХНЯЯ ШАПКА (APP BAR)
+   ========================================================= */
 .bar {
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 50;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
-  padding: 0.6rem 1.2rem;
+  padding: 0.65rem 1.25rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.bar strong { font-size: 1.05rem; }
-.bar-sub { color: var(--mut); font-size: 0.85rem; }
-.bar-actions { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
-.counter { color: var(--mut); font-size: 0.85rem; white-space: nowrap; }
-#menu { display: none; }
 
 .burger {
   cursor: pointer;
-  font-size: 1.25rem;
-  padding: 0.2rem 0.55rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  user-select: none;
-  background: var(--bg);
+  background: var(--surface-subtle);
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  font-size: 1.25rem;
+  user-select: none;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
 }
-.burger:hover {
-  border-color: var(--acc);
-  color: var(--acc);
+.burger:hover { border-color: var(--acc); color: var(--acc); }
+
+.bar-brand {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+.bar-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bar-sub {
+  font-size: 0.8rem;
+  color: var(--mut);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Затемнение при открытом меню на мобильных */
-.menu-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 30;
-}
-#menu:checked ~ .menu-backdrop {
-  display: block;
+.bar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
-.layout { display: flex; min-height: calc(100vh - 54px); transition: margin-left 0.2s ease; }
-.toc {
-  width: 320px;
-  flex: 0 0 320px;
-  background: var(--panel);
-  border-right: 1px solid var(--line);
-  padding: 1.2rem 1rem;
-  position: sticky;
-  top: 54px;
-  height: calc(100vh - 54px);
-  overflow-y: auto;
-  transition: transform 0.2s ease, margin-left 0.2s ease;
-}
-
-/* Сворачивание меню на десктопе при нажатии на бургер */
-#menu:checked ~ .layout .toc {
-  margin-left: -320px;
-}
+/* Кнопки */
+.btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 6px;
+  padding: 0.48rem 0.9rem;
+  min-height: 38px;
+  border-radius: var(--radius-sm);
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   border: 1px solid var(--line);
   background: var(--panel);
   color: var(--ink);
   transition: all 0.15s ease;
+  white-space: nowrap;
+  text-decoration: none;
 }
 .btn:hover { border-color: var(--acc); color: var(--acc); }
-.btn-primary { background: var(--acc); color: #fff; border-color: var(--acc); }
-.btn-primary:hover { background: #085cc0; color: #fff; }
-.btn-sos { background: var(--flag); color: #fff; border-color: var(--flag); font-weight: 600; }
-.btn-sos:hover { background: #b61c27; color: #fff; }
+.btn:active { transform: scale(0.98); }
 
-/* Раскладка */
-.layout { display: flex; min-height: calc(100vh - 54px); }
+.btn-primary { background: var(--acc); color: #ffffff; border-color: var(--acc); }
+.btn-primary:hover { background: var(--acc-hover); color: #ffffff; border-color: var(--acc-hover); }
+
+.btn-sos {
+  background: var(--sos);
+  color: #ffffff;
+  border-color: var(--sos);
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.35);
+  animation: pulse-sos 2.5s infinite;
+}
+.btn-sos:hover { background: var(--sos-hover); color: #ffffff; border-color: var(--sos-hover); }
+
+@keyframes pulse-sos {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(225, 29, 72, 0); }
+}
+
+.theme-toggle-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  font-size: 1rem;
+}
+
+/* =========================================================
+   4. БОКОВОЕ МЕНЮ И НАВИГАЦИЯ (DRAWER / TOC)
+   ========================================================= */
+#menu { display: none; }
+
+.menu-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 45;
+  transition: opacity 0.2s ease;
+}
+#menu:checked ~ .menu-backdrop { display: block; }
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - 55px);
+  position: relative;
+}
+
 .toc {
   width: 320px;
   flex: 0 0 320px;
   background: var(--panel);
   border-right: 1px solid var(--line);
-  padding: 1.2rem 1rem;
+  padding: 1.25rem 1rem;
   position: sticky;
-  top: 54px;
-  height: calc(100vh - 54px);
+  top: 55px;
+  height: calc(100vh - 55px);
   overflow-y: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.25s ease;
+  z-index: 46;
 }
+
+/* Сворачивание на десктопе */
+#menu:checked ~ .layout .toc {
+  margin-left: -320px;
+}
+
 .toc input {
   width: 100%;
-  padding: 0.5rem 0.7rem;
+  padding: 0.6rem 0.85rem;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg);
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
   color: var(--ink);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
   font: inherit;
   font-size: 0.9rem;
 }
+.toc input:focus {
+  outline: none;
+  border-color: var(--acc);
+  background: var(--panel);
+}
+
 .toc ol { list-style: none; margin: 0; padding: 0; }
-.toc li { margin: 0.15rem 0; }
+.toc li { margin: 0.25rem 0; }
 .toc li a {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 7px;
-  color: var(--ink);
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--ink-secondary);
   font-size: 0.92rem;
+  font-weight: 500;
   line-height: 1.35;
+  transition: all 0.12s ease;
 }
 .toc li a em {
   font-style: normal;
   color: var(--mut);
-  min-width: 1.5rem;
+  min-width: 1.6rem;
   font-size: 0.85rem;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
+  text-align: center;
+  font-weight: 600;
 }
-.toc li a:hover { background: var(--bg); text-decoration: none; }
-.toc li.on a { background: var(--acc-soft); color: var(--acc); font-weight: 600; }
-.toc li.on a em { color: var(--acc); font-weight: 600; }
+.toc li a:hover {
+  background: var(--surface-subtle);
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc li.on a {
+  background: var(--acc-soft);
+  color: var(--acc);
+  font-weight: 600;
+}
+.toc li.on a em { color: var(--acc); }
 .toc li.hide { display: none; }
 
-main { flex: 1; min-width: 0; padding: 2.2rem 1.8rem 5rem; }
-.lec-wrap { max-width: 820px; margin: 0 auto; }
-section.lec { display: none; }
-section.lec.act { display: block; animation: fade 0.18s ease-out; }
-@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+/* =========================================================
+   5. ОСНОВНАЯ ОБЛАСТЬ И ТИПОГРАФИКА РАЗДЕЛОВ
+   ========================================================= */
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 2.2rem 2rem 5rem;
+}
+.lec-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
 
-/* Типографика и элементы */
-h1 { font-size: 1.95rem; line-height: 1.25; margin: 0.4rem 0 0.5rem; }
+section.lec { display: none; }
+section.lec.act {
+  display: block;
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0.4rem 0 0.6rem;
+  color: var(--ink);
+}
+
 h2 {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   font-size: 1.45rem;
-  line-height: 1.3;
-  margin: 0.4rem 0 1.2rem;
-  padding-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0.5rem 0 1.25rem;
+  padding-bottom: 0.65rem;
   border-bottom: 1px solid var(--line);
+  color: var(--ink);
 }
 h2 .num {
   flex: 0 0 auto;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 8px;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: var(--radius-sm);
   background: var(--acc);
-  color: #fff;
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
-h3 { font-size: 1.15rem; margin: 1.6rem 0 0.6rem; color: var(--ink); }
-p { margin: 0.6rem 0; line-height: 1.6; }
-ul, ol { margin: 0.6rem 0 0.9rem; padding-left: 1.4rem; }
-li { margin: 0.3rem 0; }
+
+h3 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 1.6rem 0 0.65rem;
+  color: var(--ink);
+}
+
+p { margin: 0.65rem 0; line-height: 1.65; color: var(--ink-secondary); }
+ul, ol { margin: 0.65rem 0 1rem; padding-left: 1.5rem; color: var(--ink-secondary); }
+li { margin: 0.35rem 0; }
 
 .badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   background: var(--acc-soft);
   color: var(--acc);
+  border: 1px solid var(--acc-border);
   margin-bottom: 0.6rem;
 }
-.badge-sos { background: var(--flag-soft); color: var(--flag); }
-.badge-succ { background: var(--succ-soft); color: var(--succ); }
-.badge-warn { background: var(--warn-soft); color: var(--warn); }
+.badge-sos { background: var(--sos-soft); color: var(--sos); border-color: var(--sos-border); }
+.badge-succ { background: var(--succ-soft); color: var(--succ); border-color: var(--succ-border); }
+.badge-warn { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border); }
 
-/* Блоки акцентов */
-.core {
-  background: var(--acc-soft);
-  border-left: 4px solid var(--acc);
-  border-radius: 0 10px 10px 0;
-  padding: 0.85rem 1.1rem;
-  margin: 1rem 0 1.4rem;
-  font-size: 0.97rem;
-}
-.flags {
-  background: var(--flag-soft);
-  border-left: 4px solid var(--flag);
-  border-radius: 0 10px 10px 0;
-  padding: 0.85rem 1.1rem;
-  margin: 1.1rem 0;
-  font-size: 0.95rem;
-}
-.warn-box {
-  background: var(--warn-soft);
-  border-left: 4px solid var(--warn);
-  border-radius: 0 10px 10px 0;
-  padding: 0.85rem 1.1rem;
-  margin: 1.1rem 0;
-  font-size: 0.95rem;
-}
+/* Карточки и акцентные блоки */
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1.1rem 1.3rem;
-  margin: 1rem 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem;
+  margin: 1.2rem 0;
+  box-shadow: var(--shadow-sm);
 }
 
-/* Поля ввода вопросов */
+.core {
+  background: var(--acc-soft);
+  border-left: 4px solid var(--acc);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.2rem 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.flags {
+  background: var(--sos-soft);
+  border-left: 4px solid var(--sos);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.warn-box {
+  background: var(--warn-soft);
+  border-left: 4px solid var(--warn);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* =========================================================
+   6. ИНТЕРАКТИВНЫЕ ФОРМЫ И ПОЛЯ ВВОДА
+   ========================================================= */
 .qblock {
-  margin: 1.4rem 0 1.8rem;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1.1rem 1.25rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  margin: 1.4rem 0 1.8rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease;
 }
+.qblock:focus-within {
+  border-color: var(--acc-border);
+  box-shadow: var(--shadow-md);
+}
+
 .qlabel {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1.02rem;
-  margin-bottom: 0.4rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
 }
 .qhint {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--mut);
-  margin-bottom: 0.65rem;
-  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
 }
+
 .sav {
   font-size: 0.8rem;
   color: var(--succ);
-  font-weight: normal;
-  transition: opacity 0.3s;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+.sav.visible { opacity: 1; }
+
 textarea.qf, input[type="text"].qf {
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
   color: var(--ink);
   font: inherit;
-  font-size: 0.95rem;
-  padding: 0.7rem 0.85rem;
-  line-height: 1.5;
-  transition: border-color 0.15s ease;
+  font-size: 1rem; /* Предотвращает масштабирование iOS на фокусе */
+  padding: 0.75rem 0.95rem;
+  line-height: 1.55;
+  transition: all 0.15s ease;
   resize: vertical;
 }
 textarea.qf:focus, input[type="text"].qf:focus {
   outline: none;
   border-color: var(--acc);
   background: var(--panel);
+  box-shadow: 0 0 0 3px var(--acc-soft);
 }
 
 /* Сетка квадрантов 2x2 */
@@ -328,164 +539,279 @@ textarea.qf:focus, input[type="text"].qf:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin: 1rem 0 1.4rem;
-}
-@media (max-width: 680px) {
-  .grid-2x2 { grid-template-columns: 1fr; }
+  margin: 1.2rem 0 1.6rem;
 }
 .qcard {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.9rem 1rem;
-}
-.qcard-header {
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
 }
 
-/* Виджет таймера СТОП-15 */
+/* =========================================================
+   7. ВИДЖЕТ ТАЙМЕРА СТОП-15 И ДЫХАНИЯ
+   ========================================================= */
 .timer-widget {
   background: var(--panel);
-  border: 2px solid var(--flag);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 1.2rem 0 1.8rem;
+  border: 2px solid var(--sos);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  margin: 1.4rem 0 2rem;
   text-align: center;
+  box-shadow: var(--shadow-md);
 }
 .timer-display {
-  font-size: 3.2rem;
-  font-weight: 700;
+  font-size: 3.8rem;
+  font-weight: 800;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  letter-spacing: 0.05em;
-  color: var(--flag);
-  margin: 0.4rem 0;
+  letter-spacing: 0.04em;
+  color: var(--sos);
+  margin: 0.5rem 0 0.8rem;
+  line-height: 1;
 }
+
 .timer-controls {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
+
 .breather-container {
-  max-width: 320px;
-  margin: 1rem auto 0.4rem;
-  padding: 1rem;
-  background: var(--bg);
-  border-radius: 10px;
+  max-width: 360px;
+  margin: 1.2rem auto 0.4rem;
+  padding: 1.25rem;
+  background: var(--surface-subtle);
+  border-radius: var(--radius-md);
   border: 1px dashed var(--line);
 }
 .breather-circle {
-  width: 90px;
-  height: 90px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   background: var(--acc);
-  margin: 0 auto 0.8rem;
-  opacity: 0.7;
+  margin: 0 auto 1rem;
+  opacity: 0.75;
   transform: scale(0.85);
-  transition: transform 4s ease-in-out, opacity 4s ease-in-out;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.25);
+  transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s ease, opacity 4s ease;
 }
-.breather-circle.inhale { transform: scale(1.2); opacity: 1; background: var(--acc); }
-.breather-circle.hold { transform: scale(1.2); opacity: 0.9; background: var(--warn); }
-.breather-circle.exhale { transform: scale(0.85); opacity: 0.6; background: var(--succ); }
-.breather-text { font-size: 0.95rem; font-weight: 600; color: var(--ink); min-height: 1.5rem; }
+.breather-circle.inhale {
+  transform: scale(1.25);
+  opacity: 1;
+  background: var(--acc);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.45);
+}
+.breather-circle.hold {
+  transform: scale(1.25);
+  opacity: 0.9;
+  background: var(--warn);
+  box-shadow: 0 0 30px rgba(217, 119, 6, 0.45);
+}
+.breather-circle.exhale {
+  transform: scale(0.8);
+  opacity: 0.6;
+  background: var(--succ);
+  box-shadow: 0 0 15px rgba(5, 150, 105, 0.3);
+}
+.breather-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-height: 1.6rem;
+}
 
-/* Интерактивный дневник тяги */
-.diary-table-wrap {
-  overflow-x: auto;
-  margin: 1.2rem 0;
+/* =========================================================
+   8. ИНТЕРАКТИВНЫЙ ДНЕВНИК ТЯГИ И ЧИПЫ
+   ========================================================= */
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.5rem 0 1rem;
+}
+.chip {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface-subtle);
   border: 1px solid var(--line);
-  border-radius: 8px;
-}
-table.diary-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  background: var(--panel);
-}
-table.diary-table th, table.diary-table td {
-  padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  vertical-align: top;
-}
-table.diary-table th { background: var(--bg); font-weight: 600; white-space: nowrap; }
-table.diary-table tr:last-child td { border-bottom: none; }
-
-.btn-del {
-  background: none;
-  border: none;
-  color: var(--flag);
+  color: var(--ink-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 1.1rem;
-  padding: 0 0.3rem;
+  user-select: none;
+  transition: all 0.15s ease;
 }
-.btn-del:hover { opacity: 0.7; }
+.chip:hover {
+  border-color: var(--acc);
+  color: var(--acc);
+  background: var(--acc-soft);
+}
+.chip:active { transform: scale(0.96); }
 
-/* Чекбоксы и списки */
-.chk-list { margin: 0.8rem 0; }
-.chk-item {
+.diary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.diary-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+.diary-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--mut);
+}
+.diary-item-trigger {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+.diary-item-thought {
+  font-style: italic;
+  color: var(--mut);
+  font-size: 0.92rem;
+}
+.diary-item-action {
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+}
+.diary-badge-intensity {
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  background: var(--sos-soft);
+  color: var(--sos);
+}
+
+/* =========================================================
+   9. ЧЕКБОКСЫ HALT И СТАБИЛЬНОСТИ
+   ========================================================= */
+.chk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin: 0.8rem 0;
+}
+.chk-card {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.5rem 0.6rem;
-  border-radius: 6px;
-  transition: background 0.15s;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  transition: all 0.15s ease;
 }
-.chk-item:hover { background: var(--bg); }
-.chk-item input[type="checkbox"] {
-  margin-top: 0.25rem;
-  width: 1.15rem;
-  height: 1.15rem;
+.chk-card:hover {
+  background: var(--panel);
+  border-color: var(--acc-border);
+}
+.chk-card input[type="checkbox"] {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.15rem;
   cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--acc);
 }
-.chk-item label { cursor: pointer; font-size: 0.95rem; line-height: 1.45; }
+.chk-card label {
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
 
 /* Навигация внизу страниц */
 .lecnav {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.85rem;
   justify-content: space-between;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   border-top: 1px solid var(--line);
-  padding-top: 1.2rem;
+  padding-top: 1.4rem;
   font-size: 0.92rem;
   flex-wrap: wrap;
 }
 .lecnav a {
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 1rem;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: var(--panel);
   color: var(--ink);
+  font-weight: 600;
 }
 .lecnav a:hover { border-color: var(--acc); color: var(--acc); text-decoration: none; }
-.lecnav .cnt { color: var(--mut); align-self: center; }
+.lecnav .cnt { color: var(--mut); align-self: center; font-weight: 500; }
 
+/* =========================================================
+   10. АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА (MOBILE RESPONSIVE)
+   ========================================================= */
 @media (max-width: 920px) {
+  .bar { padding: 0.55rem 0.85rem; }
+  .bar-title { font-size: 0.98rem; }
+  .bar-sub { display: none; }
+  .bar-actions .counter { display: none; }
+  
   .toc {
     position: fixed;
     left: 0;
-    top: 54px;
-    z-index: 35;
+    top: 55px;
+    z-index: 46;
     transform: translateX(-102%);
-    transition: transform 0.2s ease;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     margin-left: 0 !important;
+    width: min(320px, 85vw);
   }
-  #menu:checked ~ .layout .toc { transform: translateX(0); }
-  main { padding: 1.4rem 1rem 4rem; }
+  #menu:checked ~ .layout .toc {
+    transform: translateX(0);
+  }
+  
+  main {
+    padding: 1.25rem 0.95rem 4.5rem;
+  }
+  
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.28rem; }
+  
+  .grid-2x2 {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  
+  .timer-display { font-size: 3rem; }
+  
+  .card, .qblock, .timer-widget {
+    padding: 1.1rem 1rem;
+    border-radius: var(--radius-md);
+  }
 }
 
+/* Печатная версия */
 @media print {
-  .bar, .toc, .lecnav, .timer-controls, .btn, #menu, .burger, .counter, .menu-backdrop { display: none !important; }
-  body { background: #fff; color: #000; }
-  .layout { display: block; }
+  .bar, .toc, .lecnav, .timer-controls, .btn, #menu, .burger, .menu-backdrop, .chip-container, #addDiaryBox { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .layout { display: block !important; }
   section.lec { display: block !important; page-break-before: always; border-bottom: 2px solid #ccc; padding-top: 1rem; }
   section#front { page-break-before: avoid; }
   .card, .qblock, .qcard { background: #fff !important; border: 1px solid #ccc !important; box-shadow: none !important; }
@@ -498,124 +824,128 @@ table.diary-table tr:last-child td { border-bottom: none; }
 <input type="checkbox" id="menu">
 <label for="menu" class="menu-backdrop" title="Закрыть меню"></label>
 
-<div class="bar">
-  <label for="menu" class="burger" title="Меню оглавления (☰)">☰</label>
-  <div>
-    <strong>ТОЧКА ОПОРЫ · Трезвость и Ресурс</strong>
-    <span class="bar-sub"> · Первичная стабилизация и работа с тягой (v1.0)</span>
+<!-- ШАПКА -->
+<header class="bar">
+  <label for="menu" class="burger" title="Меню оглавления (M)">☰</label>
+  <div class="bar-brand">
+    <div class="bar-title">ТОЧКА ОПОРЫ</div>
+    <div class="bar-sub">Трезвость и Ресурс · v1.0</div>
   </div>
   <div class="bar-actions">
-    <a href="#mod2" class="btn btn-sos" title="Срочная скорая помощь при наплыве тяги">⚡ SOS (СТОП-15)</a>
-    <button class="btn btn-primary" id="btnExportTop" title="Скачать все ответы в текстовый файл для психолога">⬇ Экспорт</button>
-    <div class="counter" id="counter">заполнено: 0 / 0</div>
+    <a href="#mod2" class="btn btn-sos" title="Срочная скорая помощь при наплыве тяги">⚡ СТОП-15</a>
+    <button class="btn theme-toggle-btn" id="themeToggle" title="Сменить тему оформления">🌓</button>
+    <button class="btn btn-primary" id="btnExportTop" title="Скачать все ответы для психолога">⬇ Экспорт</button>
+    <div class="counter" id="counter">0 / 0</div>
   </div>
-</div>
+</header>
 
 <div class="layout">
-  <nav class="toc">
-    <input type="text" id="q" placeholder="Поиск по разделам..." autocomplete="off">
+  <!-- БОКОВОЕ МЕНЮ -->
+  <nav class="toc" id="toc" aria-label="Оглавление тетради">
+    <input type="search" id="q" placeholder="Поиск по разделам..." autocomplete="off">
     <ol id="tocList">
       <li data-t="front" class="on"><a href="#front"><em>★</em> <span>О программе и безопасность</span></a></li>
-      <li data-t="mod1"><a href="#mod1"><em>1</em> <span>Честный баланс и функция алкоголя</span></a></li>
-      <li data-t="mod2"><a href="#mod2"><em>2</em> <span>SOS: Протокол «СТОП-15» и Таймер</span></a></li>
-      <li data-t="mod3"><a href="#mod3"><em>3</em> <span>Дневник тяги и мыслей-разрешений</span></a></li>
-      <li data-t="mod4"><a href="#mod4"><em>4</em> <span>Восстановление при ненормированном графике</span></a></li>
-      <li data-t="mod5"><a href="#mod5"><em>5</em> <span>Итоги 1 недели и сессия с психологом</span></a></li>
-      <li data-t="map"><a href="#map"><em>📊</em> <span>Сводка, экспорт и управление</span></a></li>
+      <li data-t="mod1"><a href="#mod1"><em>1</em> <span>Честный баланс и функция</span></a></li>
+      <li data-t="mod2"><a href="#mod2"><em>2</em> <span>SOS: Протокол «СТОП-15»</span></a></li>
+      <li data-t="mod3"><a href="#mod3"><em>3</em> <span>Дневник тяги и мыслей</span></a></li>
+      <li data-t="mod4"><a href="#mod4"><em>4</em> <span>Ненормированный график</span></a></li>
+      <li data-t="mod5"><a href="#mod5"><em>5</em> <span>Итоги недели и сессия</span></a></li>
+      <li data-t="map"><a href="#map"><em>📊</em> <span>Сводка и Экспорт отчёта</span></a></li>
     </ol>
   </nav>
 
+  <!-- КОНТЕНТ -->
   <main>
     <div class="lec-wrap">
 
-      <!-- РАЗДЕЛ 0: ТИТУЛ И БЕЗОПАСНОСТЬ -->
+      <!-- РАЗДЕЛ 0: ВВЕДЕНИЕ И БЕЗОПАСНОСТЬ -->
       <section class="lec act" id="front">
-        <span class="badge badge-succ">Протокол 1 недели · Версия 1.0</span>
+        <span class="badge badge-succ">Протокол 1-й недели · Версия 1.0</span>
         <h1>Точка опоры: Трезвость и Ресурс</h1>
-        <p style="font-size:1.1rem; color:var(--mut);">Рабочая тетрадь первичной стабилизации, управления тягой и регуляции отдыха при высокой рабочей нагрузке.</p>
+        <p style="font-size:1.1rem; color:var(--mut);">Первичная стабилизация состояния, управление тягой и регуляция восстановления при высокой рабочей нагрузке.</p>
 
         <div class="core">
-          <b>Главный терапевтический принцип:</b> Алкоголь в вашей жизни — это не «слабость характера» и не повод для стыда. Это <b>аварийный рубильник</b>, которым истощённая нервная система пытается выключить бесконечный поток рабочих задач и тревоги. Чтобы безопасно отказаться от рубильника, нужно дать мозгу альтернативные, физиологически понятные способы сброса перегрузки.
+          <b>Главный терапевтический принцип:</b> Алкоголь в вашей жизни — это не «слабость характера» и не повод для вины. Это <b>аварийный рубильник</b>, которым перегруженная нервная система пытается выключить бесконечный поток задач и тревоги. Чтобы безопасно отказаться от него, нужно дать мозгу альтернативные соматические способы сброса перегрузки.
         </div>
 
         <div class="card">
-          <h3>Как устроена эта тетрадь:</h3>
+          <h3 style="margin-top:0;">Как устроена эта тетрадь:</h3>
           <ul>
-            <li><b>Никакой «второй работы» и чувства вины:</b> задания разбиты так, чтобы требовать не более 2–5 минут в день.</li>
-            <li><b>Инструмент в кармане:</b> кнопка <code>⚡ SOS (СТОП-15)</code> доступна в любой момент, когда накатывает импульс выпить.</li>
-            <li><b>Полная конфиденциальность:</b> всё, что вы здесь вводите, сохраняется <b>только в памяти вашего браузера</b> на этом устройстве. Никакие данные не уходят в интернет.</li>
-            <li><b>Связь с терапией:</b> в конце недели вы нажимаете кнопку <code>Экспорт</code> и отправляете текстовый отчёт своему психологу перед встречей.</li>
+            <li><b>Без перегруза:</b> задания требуют не более 2–5 минут в день и не создают ощущения «второй работы».</li>
+            <li><b>Инструмент в кармане:</b> кнопка <code>⚡ СТОП-15</code> доступна сверху в любой момент наплыва тяги.</li>
+            <li><b>Полная приватность:</b> все записи сохраняются <b>только в памяти вашего браузера</b> на этом устройстве.</li>
+            <li><b>Связь с психологом:</b> в конце недели нажмите кнопку <code>Экспорт</code> и отправьте отчёт специалисту.</li>
           </ul>
         </div>
 
         <div class="flags">
-          <b>Экран соматической безопасности:</b> Если вы чувствуете сильный тремор рук, галлюцинации, спутанность сознания или критический скачок давления при резкой отмене алкоголя — это синдром отмены, требующий <b>срочной медицинской наркологической помощи</b>. Психотерапевтическая тетрадь дополняет, но не заменяет медикаментозную детоксикацию в острых состояниях.
+          <b>Экран соматической безопасности:</b> Если при резком отказе от алкоголя вы ощущаете сильный тремор рук, галлюцинации, спутанность сознания или резкий скачок давления — это симптомы острого синдрома отмены, требующие <b>немедленной медицинской помощи врача-нарколога</b>.
         </div>
       </section>
 
-      <!-- МОДУЛЬ 1: ЧЕСТНЫЙ БАЛАНС И МОТИВАЦИЯ -->
+      <!-- МОДУЛЬ 1: ЧЕСТНЫЙ БАЛАНС -->
       <section class="lec" id="mod1">
         <span class="badge">Модуль 1 · Заполняется 1 раз дома (~10 мин)</span>
         <h2><span class="num">1</span> Честный баланс и функция алкоголя</h2>
-        <p>Большинство срывов происходит потому, что человек пытается «запретить» себе алкоголь на чистой силе воли, не понимая, какую конкретно потребность он закрывает. Давайте признаем правду без самобичевания.</p>
+        <p>Большинство срывов происходит потому, что человек пытается «запретить» себе алкоголь на чистой силе воли. Давайте честно признаем, какую работу он за вас выполняет.</p>
 
         <div class="grid-2x2">
-          <div class="qcard" style="border-top:3px solid var(--acc);">
-            <div class="qcard-header">1. Что алкоголь мне реально даёт?</div>
-            <p class="qhint">Какую тяжелую работу за меня выполняет бокал? (вырубает мысли о звонках, снимает мышечный зажим, даёт право упасть и не отвечать).</p>
-            <textarea class="qf" id="q_bal_pros_use" data-step="1" data-q="1. Что дает алкоголь (функция)" rows="4" placeholder="Например: Помогает резко оборвать мысли о работе, когда голова гудит; дает легальный повод лечь и сказать всем 'я не могу'..."></textarea>
-            <div class="sav" data-for="q_bal_pros_use"></div>
+          <div class="qcard" style="border-top:4px solid var(--acc);">
+            <div style="font-weight:700; font-size:1rem; margin-bottom:0.35rem; color:var(--ink);">1. Что алкоголь мне реально даёт?</div>
+            <p class="qhint">Какую тяжелую работу он выполняет? (вырубает мысли о звонках, снимает мышечный спазм, даёт право упасть и не отвечать).</p>
+            <textarea class="qf" id="q_bal_pros_use" data-step="1" data-q="1. Что дает алкоголь (функция)" rows="4" placeholder="Например: Помогает резко оборвать мысли о работе; дает легальный повод упасть на диван и сказать всем 'я не могу'..."></textarea>
+            <div class="sav" data-for="q_bal_pros_use">— сохранено ✓</div>
           </div>
 
-          <div class="qcard" style="border-top:3px solid var(--flag);">
-            <div class="qcard-header">2. Какова реальная цена этой услуги?</div>
-            <p class="qhint">Что алкоголь забирает взамен на следующее утро и в перспективе? (разбитость, туман в голове, стыд перед собой, рост тревоги).</p>
-            <textarea class="qf" id="q_bal_cons_use" data-step="1" data-q="2. Реальная цена алкоголя" rows="4" placeholder="Например: Утренний туман, тяжелый подъем в 8 утра, необходимость тащить сложные звонки на износе, усиливающаяся фоновая тревога..."></textarea>
-            <div class="sav" data-for="q_bal_cons_use"></div>
+          <div class="qcard" style="border-top:4px solid var(--sos);">
+            <div style="font-weight:700; font-size:1rem; margin-bottom:0.35rem; color:var(--ink);">2. Какова реальная цена этой услуги?</div>
+            <p class="qhint">Что алкоголь забирает взамен утром и в перспективе? (разбитость, туман в голове, стыд, рост фоновой тревоги).</p>
+            <textarea class="qf" id="q_bal_cons_use" data-step="1" data-q="2. Реальная цена алкоголя" rows="4" placeholder="Например: Утренний туман, тяжелый подъем, необходимость тащить сложные переговоры на износе, усиливающаяся тревога к вечеру..."></textarea>
+            <div class="sav" data-for="q_bal_cons_use">— сохранено ✓</div>
           </div>
 
-          <div class="qcard" style="border-top:3px solid var(--warn);">
-            <div class="qcard-header">3. С чем трудно столкнуться трезвым?</div>
-            <p class="qhint">Чего больше всего боится психика, если вечером не выпить? (пустота, невозможность уснуть, необходимость выдерживать усталость).</p>
-            <textarea class="qf" id="q_bal_cons_sob" data-step="1" data-q="3. Сложности трезвого вечера" rows="4" placeholder="Например: Страх, что голова не перестанет крутить рабочие сценарии; страх бессонницы; ощущение, что вечер скучен и нет награды..."></textarea>
-            <div class="sav" data-for="q_bal_cons_sob"></div>
+          <div class="qcard" style="border-top:4px solid var(--warn);">
+            <div style="font-weight:700; font-size:1rem; margin-bottom:0.35rem; color:var(--ink);">3. С чем трудно столкнуться трезвым?</div>
+            <p class="qhint">Чего боится психика, если не выпить? (пустота, невозможность уснуть, необходимость выдерживать усталость).</p>
+            <textarea class="qf" id="q_bal_cons_sob" data-step="1" data-q="3. Сложности трезвого вечера" rows="4" placeholder="Например: Страх, что голова не перестанет крутить рабочие сценарии; страх бессонницы; ощущение, что нет награды..."></textarea>
+            <div class="sav" data-for="q_bal_cons_sob">— сохранено ✓</div>
           </div>
 
-          <div class="qcard" style="border-top:3px solid var(--succ);">
-            <div class="qcard-header">4. Что я выигрываю и защищаю?</div>
-            <p class="qhint">Что станет доступно, если научиться разгружаться без химического наркоза? (ясный ум, самоуважение, глубокий сон, энергия).</p>
-            <textarea class="qf" id="q_bal_pros_sob" data-step="1" data-q="4. Плюсы трезвости и восстановления" rows="4" placeholder="Например: Чистая голова утром на ключевых переговорах, восстановление нервной системы, контроль над своей жизнью, гордость за себя..."></textarea>
-            <div class="sav" data-for="q_bal_pros_sob"></div>
+          <div class="qcard" style="border-top:4px solid var(--succ);">
+            <div style="font-weight:700; font-size:1rem; margin-bottom:0.35rem; color:var(--ink);">4. Что я выигрываю и защищаю?</div>
+            <p class="qhint">Что станет доступно при восстановлении без наркоза? (ясный ум, самоуважение, глубокий сон, запас энергии).</p>
+            <textarea class="qf" id="q_bal_pros_sob" data-step="1" data-q="4. Плюсы трезвости" rows="4" placeholder="Например: Чистая голова утром на ключевых задачах, восстановление ресурса, контроль над своей жизнью, гордость за себя..."></textarea>
+            <div class="sav" data-for="q_bal_pros_sob">— сохранено ✓</div>
           </div>
         </div>
 
         <div class="qblock">
           <div class="qlabel">
             <span>Мои 3 личных якоря трезвости</span>
-            <span class="sav" data-for="q_anchors"></span>
+            <span class="sav" data-for="q_anchors">— сохранено ✓</span>
           </div>
-          <div class="qhint">Запишите 3 короткие, максимально значимые для вас причины сохранять трезвость на этой неделе (это ваш маяк при наплыве тяги):</div>
+          <div class="qhint">3 короткие, максимально ценные для вас причины сохранять трезвость на этой неделе:</div>
           <textarea class="qf" id="q_anchors" data-step="1" data-q="3 личных якоря трезвости" rows="3" placeholder="1. Ясная и быстрая голова на сложных задачах&#10;2. Качественный сон и отсутствие утренней разбитости&#10;3. Возвращение чувства контроля над собой"></textarea>
         </div>
 
         <div class="qblock">
           <div class="qlabel">
-            <span>Шкала готовности к изменениям (от 1 до 10)</span>
-            <span class="sav" data-for="q_readiness"></span>
+            <span>Шкала готовности (от 1 до 10)</span>
+            <span class="sav" data-for="q_readiness">— сохранено ✓</span>
           </div>
-          <div class="qhint">Оцените вашу готовность прожить ближайшие 7 дней трезво по шкале от 1 до 10 и ответьте на терапевтический вопрос: <b>«Почему эта цифра не ниже (например, почему не 1 или не 2)?»</b></div>
-          <input type="text" class="qf" id="q_readiness" data-step="1" data-q="Шкала готовности и почему не ниже" placeholder="Например: Моя оценка 6/10. Она не 2, потому что я реально устал от постоянного похмельного тумана и хочу нормального ресурса...">
+          <div class="qhint">Оцените вашу готовность к трезвой неделе (1–10) и ответьте: <b>«Почему эта цифра не ниже (например, почему не 1 или не 2)?»</b></div>
+          <input type="text" class="qf" id="q_readiness" data-step="1" data-q="Шкала готовности и почему не ниже" placeholder="Например: Моя оценка 6/10. Она не 2, потому что я реально устал от похмельного тумана и хочу нормального ресурса...">
         </div>
       </section>
 
-      <!-- МОДУЛЬ 2: SOS СТОП-15 И ТАЙМЕР -->
+      <!-- МОДУЛЬ 2: SOS СТОП-15 -->
       <section class="lec" id="mod2">
         <span class="badge badge-sos">Экстренная скорая помощь при тяге</span>
         <h2><span class="num">2</span> SOS: Протокол «СТОП-15»</h2>
-        <p><b>Тяга — это нейрохимическая волна.</b> В пике она длится всего <b>12–18 минут</b>. Если не бороться с ней («запрещаю себе думать»), а создать физиологический буфер, импульс спадает сам на 60–80%.</p>
+        <p><b>Тяга — это нейрохимическая волна.</b> В пике она длится всего <b>12–18 минут</b>. Если создать физиологический буфер, импульс спадает сам на 60–80%.</p>
 
         <div class="timer-widget">
-          <div style="font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--mut); font-size:0.85rem;">Буферная пауза до любого решения</div>
+          <div style="font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--mut); font-size:0.85rem;">Буферная пауза до любого решения</div>
           <div class="timer-display" id="timerDisplay">15:00</div>
           
           <div class="timer-controls">
@@ -631,15 +961,15 @@ table.diary-table tr:last-child td { border-bottom: none; }
         </div>
 
         <div class="card">
-          <h3>Алгоритм действий на эти 15 минут (С · Т · О · П):</h3>
-          <ol style="line-height:1.7;">
-            <li><b>С — Стоп-пауза:</b> Поставить таймер на 15 минут. <i>Правило: в эти 15 минут решение не принимается.</i></li>
-            <li><b>Т — Тело и глюкоза:</b> Медленно выпить большой стакан воды или минералки и съесть что-то плотное/углеводное. При усталости мозг путает жажду и падение глюкозы с тягой к алкоголю.</li>
-            <li><b>О — Отключение от экранов (10 минут):</b> Лечь горизонтально или откинуться в кресле, закрыть глаза, убрать телефон. Сделать соматический сброс мышечного спазма.</li>
-            <li><b>П — Прокрутка плёнки до 08:00 утра:</b> Мысленно промотать фильм до завтрашнего утра.
+          <h3 style="margin-top:0;">Алгоритм действий на эти 15 минут (С · Т · О · П):</h3>
+          <ol style="line-height:1.75;">
+            <li><b>С — Стоп-пауза:</b> Поставить таймер на 15 минут. <i>В эти 15 минут решение не принимается.</i></li>
+            <li><b>Т — Тело и глюкоза:</b> Выпить большой стакан воды/минералки и съесть что-то углеводное (мозг путает жажду и голод с тягой).</li>
+            <li><b>О — Отключение от экранов (10 минут):</b> Лечь горизонтально, закрыть глаза, убрать телефон. Соматический сброс мышечного зажима.</li>
+            <li><b>П — Прокрутка плёнки до 08:00 утра:</b>
               <ul>
-                <li><i>Сценарий А (выпил):</i> тяжелая голова, перегар, необходимость тащить звонки в разбитом теле, вина.</li>
-                <li><i>Сценарий Б (выдержал паузу):</i> свежесть, ясный ум, уважение к себе, победа над импульсом.</li>
+                <li><i>Сценарий А (выпил):</i> тяжелая голова, перегар, вина, работа на нуле ресурса.</li>
+                <li><i>Сценарий Б (выдержал):</i> свежесть, ясный ум, уважение к себе, победа над импульсом.</li>
               </ul>
             </li>
           </ol>
@@ -648,23 +978,23 @@ table.diary-table tr:last-child td { border-bottom: none; }
         <div class="qblock">
           <div class="qlabel">
             <span>Чек-лист физиологических детонаторов (HALT-T)</span>
-            <span class="sav" data-for="chk_halt"></span>
+            <span class="sav" data-for="chk_halt">— сохранено ✓</span>
           </div>
-          <div class="qhint">Отметьте, какие физиологические потребности кричат в теле прямо сейчас:</div>
-          <div class="chk-list">
-            <div class="chk-item">
+          <div class="qhint">Отметьте, какие сигналы кричат в теле прямо сейчас:</div>
+          <div class="chk-grid">
+            <div class="chk-card">
               <input type="checkbox" id="halt_h" data-step="2">
               <label for="halt_h"><b>H (Hungry — Голоден / Жажда):</b> давно не ел нормальной горячей еды или не пил чистой воды</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="halt_a" data-step="2">
-              <label for="halt_a"><b>A (Angry — Зол / Раздражен):</b> накопилась злость на коллег, клиентов, перегруз или ситуацию</label>
+              <label for="halt_a"><b>A (Angry — Зол / Раздражен):</b> накопилась злость на людей, задачи или ситуацию</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="halt_l" data-step="2">
               <label for="halt_l"><b>L (Lonely — Одинок / Изолирован):</b> варюсь в проблемах один, кажется, что никто не понимает</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="halt_t" data-step="2">
               <label for="halt_t"><b>T (Tired — Истощен / Перегружен):</b> мозг перегрет, глаза болят от экранов, нет сил думать</label>
             </div>
@@ -672,101 +1002,108 @@ table.diary-table tr:last-child td { border-bottom: none; }
         </div>
       </section>
 
-      <!-- МОДУЛЬ 3: ДНЕВНИК ТЯГИ И МЫСЛЕЙ -->
+      <!-- МОДУЛЬ 3: ДНЕВНИК ТЯГИ -->
       <section class="lec" id="mod3">
         <span class="badge">Модуль 3 · 1–2 минуты по факту возникновения тяги</span>
         <h2><span class="num">3</span> Дневник тяги и мыслей-разрешений</h2>
-        <p>Когда вы записываете эпизод тяги, вы переводите его из слепого животного импульса в объективный факт для анализа. Это возвращает контроль коре головного мозга.</p>
+        <p>Запись переводит слепой импульс в объективный факт для анализа. Это возвращает контроль коре головного мозга.</p>
 
-        <div class="card" style="background:var(--code);">
-          <h3 style="margin-top:0;">+ Быстро добавить запись в дневник</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-            <div>
-              <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.2rem;">Контекст и триггер:</label>
-              <input type="text" id="d_trigger" placeholder="Напр.: 21:30, закрыл сложную задачу, гудит голова" style="width:100%; padding:0.45rem 0.65rem; border:1px solid var(--line); border-radius:6px; font:inherit; font-size:0.9rem; background:var(--panel); color:var(--ink);">
+        <!-- БЛОК ДОБАВЛЕНИЯ ЗАПИСИ -->
+        <div class="card" id="addDiaryBox" style="background:var(--surface-subtle); border-color:var(--acc-border);">
+          <h3 style="margin-top:0; display:flex; align-items:center; gap:0.5rem;">
+            <span>✍️ Зафиксировать наплыв тяги</span>
+          </h3>
+
+          <div style="margin-bottom:0.75rem;">
+            <label style="font-size:0.88rem; font-weight:700; display:block; margin-bottom:0.35rem;">1. Контекст и триггер (что произошло?):</label>
+            <div class="chip-container">
+              <span class="chip" onclick="setTrigger('Закрыл сложный рабочий звонок')">+ Сложный звонок</span>
+              <span class="chip" onclick="setTrigger('Конец рабочего дня, перегруз')">+ Конец дня / перегруз</span>
+              <span class="chip" onclick="setTrigger('Спор / конфликт по проекту')">+ Конфликт</span>
+              <span class="chip" onclick="setTrigger('Остался один вечером, скука')">+ Скука вечером</span>
             </div>
-            <div>
-              <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.2rem;">Мысль-разрешение («ловушка мозга»):</label>
-              <input type="text" id="d_thought" placeholder="Напр.: 'Я заслужил награду, без этого не усну'" style="width:100%; padding:0.45rem 0.65rem; border:1px solid var(--line); border-radius:6px; font:inherit; font-size:0.9rem; background:var(--panel); color:var(--ink);">
-            </div>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr 120px; gap:0.8rem; margin-bottom:1rem;">
-            <div>
-              <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.2rem;">Что сделал вместо выпивки:</label>
-              <input type="text" id="d_action" placeholder="Напр.: Протокол СТОП-15, душ, минералка" style="width:100%; padding:0.45rem 0.65rem; border:1px solid var(--line); border-radius:6px; font:inherit; font-size:0.9rem; background:var(--panel); color:var(--ink);">
-            </div>
-            <div>
-              <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.2rem;">Тяга До → После (0-10):</label>
-              <input type="text" id="d_intensity" placeholder="Напр.: 8 → 3" style="width:100%; padding:0.45rem 0.65rem; border:1px solid var(--line); border-radius:6px; font:inherit; font-size:0.9rem; background:var(--panel); color:var(--ink);">
-            </div>
-            <div style="display:flex; align-items:flex-end;">
-              <button class="btn btn-primary" id="btnAddDiary" style="width:100%; justify-content:center; padding:0.5rem 0.7rem;">+ Записать</button>
-            </div>
+            <input type="text" id="d_trigger" placeholder="Напр.: 21:30, закрыл сложную задачу, гудит голова" class="qf" style="margin-top:0.2rem;">
           </div>
 
-          <div class="diary-table-wrap">
-            <table class="diary-table" id="diaryTable">
-              <thead>
-                <tr>
-                  <th>Время</th>
-                  <th>Ситуация / Триггер</th>
-                  <th>Мысль-ловушка</th>
-                  <th>Действие</th>
-                  <th>Тяга</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="diaryBody">
-                <!-- Строки формируются JS -->
-              </tbody>
-            </table>
+          <div style="margin-bottom:0.75rem;">
+            <label style="font-size:0.88rem; font-weight:700; display:block; margin-bottom:0.35rem;">2. Мысль-разрешение («ловушка мозга»):</label>
+            <div class="chip-container">
+              <span class="chip" onclick="setThought('Я заслужил награду и отдых')">+ Заслужил награду</span>
+              <span class="chip" onclick="setThought('Только один бокал, чтобы сбить тонус')">+ Только один бокал</span>
+              <span class="chip" onclick="setThought('Иначе я сегодня не усну')">+ Чтобы уснуть</span>
+              <span class="chip" onclick="setThought('Да пошло оно всё к чёрту')">+ Всё достало</span>
+            </div>
+            <input type="text" id="d_thought" placeholder="Напр.: 'Я заслужил награду, без этого не усну'" class="qf" style="margin-top:0.2rem;">
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin-bottom:1rem;">
+            <div>
+              <label style="font-size:0.88rem; font-weight:700; display:block; margin-bottom:0.35rem;">3. Что сделал вместо выпивки:</label>
+              <input type="text" id="d_action" placeholder="Напр.: СТОП-15, душ, минералка" class="qf">
+            </div>
+            <div>
+              <label style="font-size:0.88rem; font-weight:700; display:block; margin-bottom:0.35rem;">4. Тяга До → После (0–10):</label>
+              <input type="text" id="d_intensity" placeholder="Напр.: 8 → 3" class="qf">
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btnAddDiary" style="width:100%; padding:0.65rem 1rem; font-size:0.95rem;">+ Добавить запись в дневник</button>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <h3 style="display:flex; align-items:center; justify-content:space-between;">
+            <span>История записей тяги:</span>
+            <span id="diaryCount" style="font-size:0.85rem; font-weight:normal; color:var(--mut);">0 записей</span>
+          </h3>
+          <div class="diary-list" id="diaryList">
+            <!-- Записи формируются динамически JS -->
           </div>
         </div>
 
-        <div class="card">
-          <h3>Каталог типичных мыслей-разрешений и ответы на них:</h3>
-          <ul style="line-height:1.65;">
-            <li><b>Ловушка:</b> <i>«Я так тяжело вкалывал, я имею право расслабиться и получить награду».</i><br>
-                <b>Ответ:</b> <i>«Я заслужил настоящий глубокий отдых и восстановление, а не отравление этанолом и головную боль утром».</i></li>
-            <li><b>Ловушка:</b> <i>«Только один бокал / одну банку, чтобы сбить напряжение».</i><br>
-                <b>Ответ:</b> <i>«Первая доза отключает лобный контроль, после неё остановиться в 10 раз сложнее. Ноль бокалов выдержать проще, чем один».</i></li>
-            <li><b>Ловушка:</b> <i>«Иначе я не усну и прокручу всю ночь мысли о проекте».</i><br>
-                <b>Ответ:</b> <i>«Алкогольный сон блокирует быструю фазу (REM). С утра сил не будет. Голове нужна темнота и разгрузка, а не наркоз».</i></li>
+        <div class="card" style="margin-top:2rem;">
+          <h3 style="margin-top:0;">Каталог ответов на мысли-ловушки:</h3>
+          <ul style="line-height:1.7;">
+            <li><b>Ловушка:</b> <i>«Я тяжело вкалывал, я заслужил награду».</i><br>
+                <b>Ответ:</b> <i>«Я заслужил настоящий глубокий отдых и здоровье, а не этаноловое отравление и тревогу утром».</i></li>
+            <li><b>Ловушка:</b> <i>«Только один бокал / банку, чтобы сбить напряжение».</i><br>
+                <b>Ответ:</b> <i>«Первая доза отключает лобный контроль, после неё остановиться труднее. Ноль бокалов удержать проще, чем один».</i></li>
+            <li><b>Ловушка:</b> <i>«Иначе я не усну и прокручу всю ночь мысли о работе».</i><br>
+                <b>Ответ:</b> <i>«Алкогольный сон поверхностный и блокирует фазу REM. Голове нужна темнота и разгрузка, а не наркоз».</i></li>
           </ul>
         </div>
       </section>
 
-      <!-- МОДУЛЬ 4: ВОССТАНОВЛЕНИЕ ПРИ НЕНОРМИРОВАННОМ ГРАФИКЕ -->
+      <!-- МОДУЛЬ 4: НЕНОРМИРОВАННЫЙ ГРАФИК -->
       <section class="lec" id="mod4">
         <span class="badge">Модуль 4 · Инструменты для ненормированного дня</span>
         <h2><span class="num">4</span> Восстановление при ненормированном графике</h2>
-        <p>Когда нет фиксированного конца рабочего дня, алкоголь часто становится <b>единственным алиби</b>: <i>«Пока я трезв — я обязан быть на связи. Выпивка — единственный способ заставить мир отстать»</i>. Мы убираем эту ловушку.</p>
+        <p>Когда нет фиксированного конца рабочего дня, алкоголь часто становится <b>единственным алиби</b>: <i>«Пока я трезв — я обязан быть на связи. Выпивка — единственный способ заставить мир отстать»</i>.</p>
 
         <div class="qblock">
           <div class="qlabel">
             <span>4.1. Преодоление ловушки «Алкоголь как алиби»</span>
-            <span class="sav" data-for="q_alibi"></span>
+            <span class="sav" data-for="q_alibi">— сохранено ✓</span>
           </div>
-          <div class="qhint">Как вы можете разрешить себе паузу или отложить несрочный звонок, оставаясь абсолютно трезвым? Запишите свою спасительную фразу:</div>
-          <textarea class="qf" id="q_alibi" data-step="4" data-q="Право на паузу без алкоголя" rows="3" placeholder="Например: 'Моя работоспособность — это ценный ресурс. Если я на нуле, я сделаю ошибку. Я имею право сказать: смогу ответить через час / завтра утром, и мне для этого не нужен бокал в руке'"></textarea>
+          <div class="qhint">Как вы можете разрешить себе паузу, оставаясь трезвым? Запишите свою спасительную фразу:</div>
+          <textarea class="qf" id="q_alibi" data-step="4" data-q="Право на паузу без алкоголя" rows="3" placeholder="Например: 'Моя работоспособность — это ценный ресурс. Я имею право сказать: смогу ответить через час / завтра утром, оставаясь абсолютно трезвым'"></textarea>
         </div>
 
         <div class="card" style="border-left:4px solid var(--succ);">
-          <h3>4.2. Практика: Соматический пит-стоп (3–5 минут)</h3>
-          <p>Привязывается не к времени на часах, а к <b>окончанию стрессовой задачи или тяжелого звонка</b>:</p>
+          <h3 style="margin-top:0;">4.2. Практика: Соматический пит-стоп (3–5 минут)</h3>
+          <p>Привязывается не к часам, а к <b>окончанию стрессовой задачи или звонка</b>:</p>
           <ol>
-            <li><b>Встать со стула:</b> физически выйти из рабочей позы, размять шею и плечи (зону накопления мышечного панциря).</li>
-            <li><b>Умыть лицо холодной водой:</b> включает древний «нырятельный рефлекс», снижающий пульс на 10–15 ударов.</li>
-            <li><b>5 длинных выдохов:</b> вдох на 4 счёта через нос, выдох на 7 счетов через рот (тормозит симпатическую систему стресса).</li>
+            <li><b>Встать со стула:</b> выйти из рабочей позы, размять шею и плечи (зону мышечного панциря).</li>
+            <li><b>Умыть лицо холодной водой:</b> запускает «нырятельный рефлекс», сбивающий пульс на 10–15 ударов.</li>
+            <li><b>5 длинных выдохов:</b> вдох на 4 счёта носом, выдох на 7 счетов ртом (тормозит стресс).</li>
           </ol>
         </div>
 
         <div class="card" style="border-left:4px solid var(--warn);">
-          <h3>4.3. Триаж входящих задач: «Светофор срочности»</h3>
-          <p>Снимает режим постоянной тревожной боеготовности 24/7:</p>
+          <h3 style="margin-top:0;">4.3. Триаж входящих задач: «Светофор срочности»</h3>
+          <p>Снимает режим тревожной боеготовности 24/7:</p>
           <ul>
             <li>🔴 <b>Красный (Реальное ЧП):</b> Угроза здоровью, критический сбой. <i>Реакция 5–10 мин (бывает 1–2 раза в месяц).</i></li>
-            <li>🟡 <b>Жёлтый (Важные задачи):</b> Требуют решения сегодня, но <b>буфер ответа — 45–90 минут</b>. Мир не рухнет.</li>
+            <li>🟡 <b>Жёлтый (Важные задачи):</b> Требуют решения сегодня, но <b>буфер ответа — 45–90 минут</b>. Ничего не рухнет.</li>
             <li>🟢 <b>Зелёный (Текучка / инфо):</b> Обрабатывается в следующее выделенное рабочее окно.</li>
           </ul>
         </div>
@@ -774,70 +1111,70 @@ table.diary-table tr:last-child td { border-bottom: none; }
         <div class="qblock">
           <div class="qlabel">
             <span>4.4. Мой план при критическом истощении (&le; 2/10)</span>
-            <span class="sav" data-for="q_exhaust"></span>
+            <span class="sav" data-for="q_exhaust">— сохранено ✓</span>
           </div>
-          <div class="qhint">Когда заряд батареи падает в красную зону (&le; 2 баллов из 10), мозг требует этанол как обезболивающее. Что конкретно вы сделаете для физического тела в этот момент?</div>
-          <textarea class="qf" id="q_exhaust" data-step="4" data-q="План при истощении батареи" rows="3" placeholder="Например: Обязательно лечь горизонтально на 15 минут в тишине с закрытыми глазами, выпить теплый чай с медом или минералку, не брать телефон в руки..."></textarea>
+          <div class="qhint">Когда заряд батареи падает в красную зону (&le; 2 баллов), что конкретно вы сделаете для физического тела?</div>
+          <textarea class="qf" id="q_exhaust" data-step="4" data-q="План при истощении батареи" rows="3" placeholder="Например: Обязательно лечь горизонтально на 15 минут в тишине с закрытыми глазами, выпить теплый чай, не брать телефон..."></textarea>
         </div>
       </section>
 
-      <!-- МОДУЛЬ 5: ПОДГОТОВКА К СЕССИИ -->
+      <!-- МОДУЛЬ 5: ИТОГИ И СЕССИЯ -->
       <section class="lec" id="mod5">
-        <span class="badge">Модуль 5 · Подведение итогов 1 недели</span>
+        <span class="badge">Модуль 5 · Подведение итогов 1-й недели</span>
         <h2><span class="num">5</span> Итоги недели и сессия с психологом</h2>
-        <p>Эти вопросы подготовят фактуру для вашей встречи с психологом. Здесь нет «правильных» или «неправильных» ответов — важна только честная картина того, как прошла неделя.</p>
+        <p>Эти вопросы подготовят фактуру для вашей встречи со специалистом. Важна честная картина того, как прошла неделя.</p>
 
         <div class="qblock">
           <div class="qlabel">
             <span>★ Главное открытие недели о моей тяге</span>
-            <span class="sav" data-for="q_week_disc"></span>
+            <span class="sav" data-for="q_week_disc">— сохранено ✓</span>
           </div>
           <div class="qhint">В какие моменты тяга накрывала сильнее всего? Какая потребность тела стояла за ней?</div>
-          <textarea class="qf" id="q_week_disc" data-step="5" data-q="★ Главное открытие недели" rows="3" placeholder="Например: Понял, что сильнее всего тянет не от горя или проблем, а в момент резкого завершения сложной задачи в районе 21:00 от физического перегруза..."></textarea>
+          <textarea class="qf" id="q_week_disc" data-step="5" data-q="★ Главное открытие недели" rows="3" placeholder="Например: Понял, что сильнее всего тянет в момент резкого завершения сложной задачи в районе 21:00 от физического перегруза..."></textarea>
         </div>
 
         <div class="qblock">
           <div class="qlabel">
             <span>★ Что помогло удержать паузу лучше всего?</span>
-            <span class="sav" data-for="q_week_best"></span>
+            <span class="sav" data-for="q_week_best">— сохранено ✓</span>
           </div>
-          <div class="qhint">Какой инструмент сработал эффективнее всего (вода, 15 минут горизонтально, прокрутка утра, пит-стоп)?</div>
-          <textarea class="qf" id="q_week_best" data-step="5" data-q="★ Что помогло лучше всего" rows="3" placeholder="Например: Лучше всего сработал таймер СТОП-15 и стакан минералки — пока лежал 15 минут, острый импульс в груди действительно растворился..."></textarea>
+          <div class="qhint">Какой инструмент сработал эффективнее всего (вода, 15 мин горизонтально, прокрутка утра, пит-стоп)?</div>
+          <textarea class="qf" id="q_week_best" data-step="5" data-q="★ Что помогло лучше всего" rows="3" placeholder="Например: Лучше всего сработал таймер СТОП-15 и стакан минералки — пока лежал 15 минут, острый импульс растворился..."></textarea>
         </div>
 
         <div class="qblock">
           <div class="qlabel">
             <span>★ Где было сложнее всего (ситуации риска)?</span>
-            <span class="sav" data-for="q_week_risk"></span>
+            <span class="sav" data-for="q_week_risk">— сохранено ✓</span>
           </div>
           <div class="qhint">В какие моменты контроль почти потерялся? С чем именно это было связано?</div>
-          <textarea class="qf" id="q_week_risk" data-step="5" data-q="★ Ситуации повышенного риска" rows="3" placeholder="Например: В четверг, когда сорвался дедлайн и одновременно навалились три заказчика. Захотелось всё бросить и вырубиться..."></textarea>
+          <textarea class="qf" id="q_week_risk" data-step="5" data-q="★ Ситуации повышенного риска" rows="3" placeholder="Например: В четверг, когда сорвался дедлайн и одновременно навалились три заказчика..."></textarea>
         </div>
 
         <div class="qblock">
           <div class="qlabel">
             <span>Чек-лист стабильности 1-й недели</span>
-            <span class="sav" data-for="chk_week"></span>
+            <span class="sav" data-for="chk_week">— сохранено ✓</span>
           </div>
-          <div class="qhint">Отметьте практики, к которым удалось прикоснуться на этой неделе:</div>
-          <div class="chk-list">
-            <div class="chk-item">
+          <div class="qhint">Отметьте практики, к которым удалось прикоснуться:</div>
+          <div class="chk-grid">
+            <div class="chk-card">
               <input type="checkbox" id="cw_stop" data-step="5">
               <label for="cw_stop">Использовал паузу СТОП-15 хотя бы один раз при накате тяги</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="cw_water" data-step="5">
               <label for="cw_water">Пил воду / минералку и закрывал голод перед принятием решений</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="cw_pit" data-step="5">
               <label for="cw_pit">Сделал хотя бы 2–3 соматических пит-стопа после тяжелых задач</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="cw_log" data-step="5">
               <label for="cw_log">Зафиксировал хотя бы 1–2 записи в дневнике тяги</label>
             </div>
-            <div class="chk-item">
+            <div class="chk-card">
               <input type="checkbox" id="cw_tape" data-step="5">
               <label for="cw_tape">Применил технику «Прокрутка плёнки до 08:00 утра»</label>
             </div>
@@ -849,16 +1186,16 @@ table.diary-table tr:last-child td { border-bottom: none; }
       <section class="lec" id="map">
         <span class="badge badge-succ">Сводка и Экспорт</span>
         <h2><span class="num">📊</span> Сводка и отправка психологу</h2>
-        <p>Здесь вы можете увидеть прогресс заполнения и в один клик выгрузить все свои записи и дневник в файл, чтобы отправить его психологу перед консультацией.</p>
+        <p>Выгрузите все свои записи и дневник в один клик в текстовый файл, чтобы отправить его психологу перед консультацией.</p>
 
         <div class="card" id="mapStats">
           <!-- Статистика генерируется JS -->
         </div>
 
-        <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin:1.5rem 0;">
-          <button class="btn btn-primary" id="btnExport" style="padding:0.6rem 1.2rem; font-size:1rem;">⬇ Скачать файл отчёта (.txt)</button>
-          <button class="btn" id="btnPrint" style="padding:0.6rem 1.2rem;">🖨 Версия для печати</button>
-          <button class="btn" id="btnClear" style="color:var(--flag); border-color:var(--flag-soft);">Очистить все данные</button>
+        <div style="display:flex; gap:0.85rem; flex-wrap:wrap; margin:1.5rem 0;">
+          <button class="btn btn-primary" id="btnExport" style="padding:0.65rem 1.3rem; font-size:1rem;">⬇ Скачать файл отчёта (.txt)</button>
+          <button class="btn" id="btnPrint" style="padding:0.65rem 1.3rem;">🖨 Печатная версия</button>
+          <button class="btn" id="btnClear" style="color:var(--sos); border-color:var(--sos-border);">Очистить все данные</button>
         </div>
       </section>
 
@@ -868,6 +1205,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
 
 <script>
 (function(){
+  /* 1. Навигация по разделам */
   var secs = [].slice.call(document.querySelectorAll('section.lec'));
   var items = [].slice.call(document.querySelectorAll('#tocList li'));
   var counter = document.getElementById('counter');
@@ -903,7 +1241,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
     secs.forEach(function(s){ s.classList.toggle('act', s.id === id); });
     items.forEach(function(li){ li.classList.toggle('on', li.getAttribute('data-t') === id); });
     var tot = document.querySelectorAll('.qf').length;
-    counter.textContent = 'заполнено полей: ' + answeredCount() + ' / ' + tot;
+    if(counter) counter.textContent = 'заполнено: ' + answeredCount() + ' / ' + tot;
     window.scrollTo(0, 0);
     var cb = document.getElementById('menu');
     if(cb) cb.checked = false;
@@ -914,7 +1252,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
     show(location.hash.slice(1) || 'front');
   });
 
-  // Быстрый поиск в оглавлении
+  // Поиск по меню
   var q = document.getElementById('q');
   q.addEventListener('input', function(){
     var v = q.value.trim().toLowerCase();
@@ -923,7 +1261,28 @@ table.diary-table tr:last-child td { border-bottom: none; }
     });
   });
 
-  /* Автосохранение LocalStorage */
+  // Горячая клавиша M для меню
+  document.addEventListener('keydown', function(e){
+    if(e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT')) return;
+    if(e.key === 'm' || e.key === 'M' || e.key === 'ь' || e.key === 'Ь'){
+      var m = document.getElementById('menu');
+      if(m) m.checked = !m.checked;
+    }
+  });
+
+  /* 2. Переключатель тем (Light / Dark) */
+  var themeToggle = document.getElementById('themeToggle');
+  var currentTheme = localStorage.getItem('app-theme') || 'auto';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  themeToggle.addEventListener('click', function(){
+    var theme = document.documentElement.getAttribute('data-theme');
+    var nextTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('app-theme', nextTheme);
+  });
+
+  /* 3. Автосохранение данных */
   var KEY = 'alcohol-recovery-v1';
   var DIARY_KEY = 'alcohol-diary-v1';
   var store = {};
@@ -932,28 +1291,11 @@ table.diary-table tr:last-child td { border-bottom: none; }
   try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ store = {}; }
   try { diary = JSON.parse(localStorage.getItem(DIARY_KEY) || '[]'); } catch(e){ diary = []; }
 
-  var okStore = true;
-  try {
-    localStorage.setItem('__arctest', '1');
-    localStorage.removeItem('__arctest');
-  } catch(e) { okStore = false; }
-
-  if(!okStore){
-    var b = document.createElement('div');
-    b.style.cssText = 'background:#b3261e;color:#fff;padding:.6rem 1rem;font-size:.9rem;line-height:1.4;text-align:center;';
-    b.textContent = '⚠ Автосохранение в браузере отключено (режим инкогнито). Ваши ответы не сохранятся после закрытия вкладки.';
-    document.body.insertBefore(b, document.body.firstChild);
-  }
-
-  function saveAll(){
-    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){}
-  }
-  function saveDiary(){
-    try { localStorage.setItem(DIARY_KEY, JSON.stringify(diary)); } catch(e){}
-  }
+  function saveAll(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} }
+  function saveDiary(){ try { localStorage.setItem(DIARY_KEY, JSON.stringify(diary)); } catch(e){} }
 
   var fields = [].slice.call(document.querySelectorAll('.qf'));
-  var checks = [].slice.call(document.querySelectorAll('.chk-item input[type=checkbox]'));
+  var checks = [].slice.call(document.querySelectorAll('.chk-card input[type=checkbox]'));
 
   fields.forEach(function(f){
     if(store[f.id]) f.value = store[f.id];
@@ -961,12 +1303,11 @@ table.diary-table tr:last-child td { border-bottom: none; }
       store[f.id] = f.value;
       saveAll();
       var tot = fields.length;
-      counter.textContent = 'заполнено полей: ' + answeredCount() + ' / ' + tot;
+      if(counter) counter.textContent = 'заполнено: ' + answeredCount() + ' / ' + tot;
       var s = document.querySelector('.sav[data-for="' + f.id + '"]');
       if(s){
-        s.textContent = '— сохранено ✓';
-        s.style.opacity = '1';
-        setTimeout(function(){ s.style.opacity = '0.7'; }, 1500);
+        s.classList.add('visible');
+        setTimeout(function(){ s.classList.remove('visible'); }, 2000);
       }
     });
   });
@@ -979,28 +1320,47 @@ table.diary-table tr:last-child td { border-bottom: none; }
     });
   });
 
-  /* Рендер дневника тяги */
+  /* 4. Интерактивный дневник тяги */
+  window.setTrigger = function(val){
+    var el = document.getElementById('d_trigger');
+    el.value = val;
+    el.focus();
+  };
+  window.setThought = function(val){
+    var el = document.getElementById('d_thought');
+    el.value = val;
+    el.focus();
+  };
+
   function renderDiary(){
-    var tbody = document.getElementById('diaryBody');
-    if(!tbody) return;
+    var list = document.getElementById('diaryList');
+    var countEl = document.getElementById('diaryCount');
+    if(!list) return;
+    if(countEl) countEl.textContent = diary.length + ' ' + (diary.length === 1 ? 'запись' : (diary.length >= 2 && diary.length <= 4 ? 'записи' : 'записей'));
+
     if(diary.length === 0){
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--mut); padding:1rem;">Пока нет записей. Добавьте запись через форму выше при появлении тяги.</td></tr>';
+      list.innerHTML = '<div style="text-align:center; color:var(--mut); padding:1.5rem; background:var(--panel); border:1px dashed var(--line); border-radius:var(--radius-md);">Пока нет записей. Используйте форму выше при возникновении тяги.</div>';
       return;
     }
+
     var html = '';
     diary.forEach(function(item, idx){
-      html += '<tr>' +
-        '<td style="white-space:nowrap; font-size:0.85rem; color:var(--mut);">' + (item.time || '—') + '</td>' +
-        '<td><b>' + (item.trigger || '—') + '</b></td>' +
-        '<td style="font-style:italic;">' + (item.thought || '—') + '</td>' +
-        '<td>' + (item.action || '—') + '</td>' +
-        '<td style="font-weight:600; color:var(--flag);">' + (item.intensity || '—') + '</td>' +
-        '<td><button class="btn-del" data-idx="' + idx + '" title="Удалить запись">×</button></td>' +
-      '</tr>';
+      html += '<div class="diary-item">' +
+        '<div class="diary-item-header">' +
+          '<span>🕒 ' + (item.time || '—') + '</span>' +
+          '<div style="display:flex; align-items:center; gap:0.5rem;">' +
+            '<span class="diary-badge-intensity">Тяга: ' + (item.intensity || '—') + '</span>' +
+            '<button class="btn-del" style="background:none; border:none; color:var(--sos); cursor:pointer; font-size:1.1rem; padding:0 0.3rem;" data-idx="' + idx + '" title="Удалить">✕</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="diary-item-trigger">📍 ' + (item.trigger || '—') + '</div>' +
+        (item.thought ? ('<div class="diary-item-thought">💭 «' + item.thought + '»</div>') : '') +
+        '<div class="diary-item-action">🛡️ <b>Действие:</b> ' + (item.action || '—') + '</div>' +
+      '</div>';
     });
-    tbody.innerHTML = html;
+    list.innerHTML = html;
 
-    [].slice.call(tbody.querySelectorAll('.btn-del')).forEach(function(btn){
+    [].slice.call(list.querySelectorAll('.btn-del')).forEach(function(btn){
       btn.addEventListener('click', function(){
         var i = parseInt(btn.getAttribute('data-idx'), 10);
         diary.splice(i, 1);
@@ -1017,7 +1377,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
     var intn = document.getElementById('d_intensity').value.trim();
 
     if(!trig && !th && !act){
-      alert('Заполните хотя бы одно поле для добавления записи.');
+      alert('Заполните хотя бы одно поле.');
       return;
     }
 
@@ -1042,9 +1402,9 @@ table.diary-table tr:last-child td { border-bottom: none; }
     document.getElementById('d_intensity').value = '';
   });
 
-  /* Таймер СТОП-15 и визуализатор дыхания */
+  /* 5. Таймер СТОП-15 и визуализатор дыхания */
   var timerInterval = null;
-  var timeLeft = 15 * 60; // 15 минут
+  var timeLeft = 15 * 60;
   var timerDisplay = document.getElementById('timerDisplay');
   var startBtn = document.getElementById('timerStartBtn');
   var pauseBtn = document.getElementById('timerPauseBtn');
@@ -1100,7 +1460,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
         clearInterval(timerInterval);
         timerInterval = null;
         stopBreathingGuide();
-        breathText.textContent = '🎉 15 минут выдержаны! Острая волна спала. Проверьте тело.';
+        breathText.textContent = '🎉 15 минут выдержаны! Острая волна спала.';
         startBtn.style.display = 'inline-flex';
         pauseBtn.style.display = 'none';
         alert('15 минут буферной паузы завершены! Оцените силу тяги сейчас.');
@@ -1131,12 +1491,12 @@ table.diary-table tr:last-child td { border-bottom: none; }
     breathText.textContent = 'Нажмите «Запустить», чтобы начать декомпрессию';
   });
 
-  /* Рендер сводки на вкладке карты */
+  /* 6. Рендер сводки */
   function renderMap(){
     var host = document.getElementById('mapStats');
     if(!host) return;
     var totA = 0, totF = 0;
-    var html = '<h3 style="margin-top:0;">Прогресс заполнения разделов:</h3>';
+    var html = '<h3 style="margin-top:0;">Прогресс заполнения тетради:</h3>';
 
     for(var st = 1; st <= 5; st++){
       var fs = fields.filter(function(f){ return f.getAttribute('data-step') == String(st); });
@@ -1145,21 +1505,21 @@ table.diary-table tr:last-child td { border-bottom: none; }
       var cc = cs.filter(function(c){ return c.checked; }).length;
       totA += a; totF += fs.length;
 
-      var stepNames = ['', 'Честный баланс и мотивация', 'Протокол СТОП-15 (HALT)', 'Дневник тяги и мыслей', 'Восстановление при ненормированном дне', 'Итоги недели и сессия'];
-      html += '<div style="border-bottom:1px dashed var(--line); padding:.45rem 0; font-size:.92rem; display:flex; justify-content:space-between;">' +
+      var stepNames = ['', 'Честный баланс и мотивация', 'Протокол СТОП-15 (HALT)', 'Дневник тяги и мыслей', 'Ненормированный график', 'Итоги недели и сессия'];
+      html += '<div style="border-bottom:1px dashed var(--line); padding:0.5rem 0; font-size:0.92rem; display:flex; justify-content:space-between;">' +
         '<span><b>Модуль ' + st + ':</b> ' + stepNames[st] + '</span>' +
         '<span>полей: ' + a + '/' + fs.length + (cs.length ? (' · чеков: ' + cc + '/' + cs.length) : '') + '</span>' +
       '</div>';
     }
 
-    html += '<div style="margin-top:1rem; font-size:0.95rem;">Всего заполнено полей: <b>' + totA + '</b> из ' + totF + ' · Записей в дневнике тяги: <b>' + diary.length + '</b></div>';
+    html += '<div style="margin-top:1rem; font-size:0.98rem;">Всего заполнено полей: <b>' + totA + '</b> из ' + totF + ' · Записей в дневнике тяги: <b>' + diary.length + '</b></div>';
     host.innerHTML = html;
   }
 
-  /* Экспорт отчета в текстовый файл */
+  /* 7. Экспорт отчета */
   function doExport(){
     var lines = [
-      'ТОЧКА ОПОРЫ: ТРЕЗВОСТЬ И РЕСУРС — ОТЧЕТ ПО РАБОЧЕЙ ТЕТРАДИ (v1.0)',
+      'ТОЧКА ОПОРЫ: ТРЕЗВОСТЬ И РЕСУРС — ОТЧЕТ ПО ТЕТРАДИ (v1.0)',
       'Дата экспорта: ' + new Date().toLocaleString('ru-RU'),
       '====================================================================',
       ''
@@ -1168,8 +1528,6 @@ table.diary-table tr:last-child td { border-bottom: none; }
     for(var st = 1; st <= 5; st++){
       var fs = fields.filter(function(f){ return f.getAttribute('data-step') == String(st); });
       var cs = checks.filter(function(c){ return c.getAttribute('data-step') == String(st); });
-      var anyF = fs.some(function(f){ return f.value.trim(); });
-      var anyC = cs.some(function(c){ return c.checked; });
 
       var stepNames = ['', 'МОДУЛЬ 1: ЧЕСТНЫЙ БАЛАНС И МОТИВАЦИЯ', 'МОДУЛЬ 2: ПРОТОКОЛ СТОП-15 И ФИЗИОЛОГИЯ (HALT)', 'МОДУЛЬ 3: ДНЕВНИК ТЯГИ И МЫСЛЕЙ-РАЗРЕШЕНИЙ', 'МОДУЛЬ 4: ВОССТАНОВЛЕНИЕ ПРИ НЕНОРМИРОВАННОМ ГРАФИКЕ', 'МОДУЛЬ 5: ИТОГИ НЕДЕЛИ ДЛЯ ВСТРЕЧИ С ПСИХОЛОГОМ'];
       
@@ -1192,7 +1550,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
     }
 
     if(diary.length > 0){
-      lines.push('─── ДНЕВНИК ТЯГИ И ТРИГГЕРОВ (ВСЕГО ЗАПИСЕЙ: ' + diary.length + ') ───');
+      lines.push('─── ДНЕВНИК ТЯГИ И ТРИГГЕРОВ (ЗАПИСЕЙ: ' + diary.length + ') ───');
       diary.forEach(function(d, i){
         lines.push((i + 1) + '. [' + d.time + '] Триггер: ' + d.trigger);
         lines.push('   Мысль-ловушка: ' + d.thought);
@@ -1221,7 +1579,7 @@ table.diary-table tr:last-child td { border-bottom: none; }
     checks.forEach(function(c){ c.checked = false; });
     renderDiary();
     renderMap();
-    counter.textContent = 'заполнено полей: 0 / ' + fields.length;
+    if(counter) counter.textContent = 'заполнено: 0 / ' + fields.length;
   });
 
   buildNavs();
