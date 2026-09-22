@@ -8,8 +8,9 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "Plugin_Navigator_User_Guide_RU.md"
-OUTPUT = ROOT / "Plugin_Navigator_User_Guide_RU.html"
+DIST = ROOT.parent / "current"  # готовые файлы: plugin-navigator/current
+SOURCE = DIST / "Plugin_Navigator_User_Guide_RU.md"
+OUTPUT = DIST / "Plugin_Navigator_User_Guide_RU.html"
 GUIDE_VERSION = "2.7.0"
 
 

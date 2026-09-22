@@ -5,8 +5,8 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "Plugin_Navigator_User_Guide_RU.md"
-OUTPUT = ROOT / "Plugin_Navigator_User_Guide_RU.html"
+SOURCE = ROOT.parent / "current" / "Plugin_Navigator_User_Guide_RU.md"
+OUTPUT = ROOT.parent / "current" / "Plugin_Navigator_User_Guide_RU.html"
 
 subprocess.run(["python3", str(ROOT / "build_user_guide.py")], check=True, capture_output=True, text=True)
 first = OUTPUT.read_bytes()

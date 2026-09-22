@@ -14,6 +14,9 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
+DIST = ROOT.parent / "current"      # готовые файлы: plugin-navigator/current
+VERSIONS = ROOT.parent / "versions"  # архивные версии: plugin-navigator/versions
+REPORTS = ROOT.parent / "reports"    # отчёты: plugin-navigator/reports
 WIN = ROOT / "Plugin_Navigator_Windows_Source"
 
 
@@ -34,7 +37,7 @@ def version_tuple(value: str) -> tuple[int, int, int]:
 def find_base_zip(current: str) -> Path:
     choices: list[tuple[tuple[int, int, int], Path]] = []
     pattern = re.compile(r"Plugin_Navigator_Full_v(\d+\.\d+\.\d+)_Windows_x64\.zip$")
-    for path in ROOT.glob("Plugin_Navigator_Full_v*_Windows_x64.zip"):
+    for path in [*DIST.glob("Plugin_Navigator_Full_v*_Windows_x64.zip"), *VERSIONS.glob("Plugin_Navigator_Full_v*_Windows_x64.zip")]:
         match = pattern.match(path.name)
         if match and version_tuple(match.group(1)) < version_tuple(current):
             choices.append((version_tuple(match.group(1)), path))
@@ -50,12 +53,12 @@ def main() -> int:
 
     data = json.loads((ROOT / "plugin_navigator_database.json").read_text(encoding="utf-8"))
     version = data["version"]
-    html = ROOT / f"Plugin_Navigator_Full_v{version}.html"
-    generic_html = ROOT / "Plugin_Navigator_Full.html"
+    html = DIST / f"Plugin_Navigator_Full_v{version}.html"
+    generic_html = DIST / "Plugin_Navigator_Full.html"
     database = ROOT / "plugin_navigator_database.json"
-    guide_html = ROOT / "Plugin_Navigator_User_Guide_RU.html"
-    guide_source = ROOT / "Plugin_Navigator_User_Guide_RU.md"
-    ai_report = ROOT / f"Plugin_Navigator_v{version}_Local_AI_Report.md"
+    guide_html = DIST / "Plugin_Navigator_User_Guide_RU.html"
+    guide_source = DIST / "Plugin_Navigator_User_Guide_RU.md"
+    ai_report = REPORTS / f"Plugin_Navigator_v{version}_Local_AI_Report.md"
     if not guide_html.exists() or not guide_source.exists():
         raise SystemExit("Сначала выполните: python3 build_user_guide.py")
     if not ai_report.exists():
@@ -77,7 +80,7 @@ def main() -> int:
     if not webllm_license.exists() or not ai_worker.exists():
         raise SystemExit("Не найдены локальные ресурсы или лицензия WebLLM")
 
-    output_zip = ROOT / f"Plugin_Navigator_Full_v{version}_Windows_x64.zip"
+    output_zip = DIST / f"Plugin_Navigator_Full_v{version}_Windows_x64.zip"
     exe_name = f"Plugin_Navigator_Full_v{version}_Windows_x64.exe"
     with tempfile.TemporaryDirectory(prefix="plugin-navigator-win-") as temp_raw:
         temp = Path(temp_raw)
@@ -159,15 +162,15 @@ def main() -> int:
         f"{sha256(output_zip)}  {output_zip.name}\n"
         f"# EXE inside ZIP SHA-256: {exe_hash}  {exe_name}\n"
     )
-    checks_path = ROOT / "CHECKSUMS_SHA256.txt"
+    checks_path = DIST / "CHECKSUMS_SHA256.txt"
     checks_path.write_text(checksums, encoding="utf-8")
 
-    download_zip = ROOT / f"Plugin_Navigator_v{version}_Download.zip"
+    download_zip = DIST / f"Plugin_Navigator_v{version}_Download.zip"
     download_files = {
         html.name: html.read_bytes(),
         output_zip.name: output_zip.read_bytes(),
         checks_path.name: checks_path.read_bytes(),
-        "README.md": (ROOT / "README.md").read_bytes(),
+        "README.md": (ROOT.parent / "README.md").read_bytes(),
         guide_html.name: guide_html.read_bytes(),
         guide_source.name: guide_source.read_bytes(),
         ai_report.name: ai_report.read_bytes(),

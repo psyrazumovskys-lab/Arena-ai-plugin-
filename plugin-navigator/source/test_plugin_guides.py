@@ -115,9 +115,9 @@ assert all(p.get('official', {}).get('manualHub') and p['official'].get('verifie
 assert sum(bool(p['official']['productPage']) for p in plugins) >= 250
 assert sum(bool(p['official']['productPage']) for p in plugins) == DB['coverage']['officialExactProductPages']
 assert all(p['uses'] or p.get('standalone') for p in plugins)
-html_bytes = (ROOT / 'Plugin_Navigator_Full.html').read_bytes()
+html_bytes = (ROOT.parent / 'current' / 'Plugin_Navigator_Full.html').read_bytes()
 assert html_bytes == (ROOT / 'Plugin_Navigator_Windows_Source' / 'resources' / 'index.html').read_bytes()
-assert html_bytes == (ROOT / f"Plugin_Navigator_Full_v{DB['version'].split('-',1)[0]}.html").read_bytes()
+assert html_bytes == (ROOT.parent / 'current' / f"Plugin_Navigator_Full_v{DB['version'].split('-',1)[0]}.html").read_bytes()
 print({
     'status': 'PASS',
     'version': DB['version'],

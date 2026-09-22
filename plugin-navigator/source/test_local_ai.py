@@ -3,12 +3,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = (ROOT / "build_plugin_navigator.py").read_text(encoding="utf-8")
-HTML = (ROOT / "Plugin_Navigator_Full.html").read_text(encoding="utf-8")
+HTML = (ROOT.parent / "current" / "Plugin_Navigator_Full.html").read_text(encoding="utf-8")
 PACKAGE = json.loads((ROOT / "Plugin_Navigator_Windows_Source/package.json").read_text(encoding="utf-8"))
 WORKER = (ROOT / "Plugin_Navigator_Windows_Source/resources/ai/worker.js").read_text(encoding="utf-8")
 WINDOWS_BUILD = (ROOT / "build_windows.py").read_text(encoding="utf-8")
 WINDOWS_VERIFY = (ROOT / "Plugin_Navigator_Windows_Source/verify-windows.mjs").read_text(encoding="utf-8")
-REPORT = (ROOT / "Plugin_Navigator_v2.7.0_Local_AI_Report.md").read_text(encoding="utf-8")
+REPORT = (ROOT.parent / "reports" / "Plugin_Navigator_v2.7.0_Local_AI_Report.md").read_text(encoding="utf-8")
 
 MODEL_ID = "Qwen3.5-2B-q4f16_1-MLC"
 

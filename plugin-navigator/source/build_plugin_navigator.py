@@ -7,7 +7,8 @@ import json, re, html
 ROOT=Path(__file__).resolve().parent
 APP_VERSION='2.7.0'
 SOURCE=ROOT/'plugin_usage_semantic_hybrid_corrected.xlsx'
-OUTPUT=ROOT/'Plugin_Navigator_Full.html'
+DIST=ROOT.parent/'current'  # готовые файлы собираются в plugin-navigator/current
+OUTPUT=DIST/'Plugin_Navigator_Full.html'
 DATA_OUT=ROOT/'plugin_navigator_database.json'
 WIN_HTML=ROOT/'Plugin_Navigator_Windows_Source'/'resources'/'index.html'
 wb=load_workbook(SOURCE,data_only=True,read_only=False)
@@ -770,7 +771,7 @@ OUTPUT.write_text(TEMPLATE.replace('__DATA__',payload),encoding='utf-8')
 WIN_HTML.parent.mkdir(parents=True, exist_ok=True)
 html_bytes=OUTPUT.read_bytes()
 WIN_HTML.write_bytes(html_bytes)
-versioned=ROOT/f"Plugin_Navigator_Full_v{DATA['version'].split('-',1)[0]}.html"
+versioned=DIST/f"Plugin_Navigator_Full_v{DATA['version'].split('-',1)[0]}.html"
 versioned.write_bytes(html_bytes)
 print(f'Built {OUTPUT} ({OUTPUT.stat().st_size} bytes)')
 print(f'Versioned {versioned.name} ({versioned.stat().st_size} bytes)')

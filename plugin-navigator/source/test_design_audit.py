@@ -3,7 +3,7 @@ from collections import Counter
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
+html=Path(__file__).resolve().parent.parent.joinpath('current','Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
 assert DB['version']=='2.7.0'
