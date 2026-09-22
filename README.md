@@ -122,3 +122,9 @@ python3 build_windows.py
 - `curated_chain_presets.py` — подготовленные цепочки;
 - `official_plugin_references.py` и `official_product_pages.py` — официальные ссылки;
 - `Plugin_Navigator_Windows_Source/` — конфигурация и инструменты Windows-сборки.
+
+## Прочие разделы
+
+- `books/` — психологические книги и тетради: лекции по клинической психологии, конспекты по СТ/ACT, тетради 12 шагов ВДА/ACA, тетрадь восстановления при алкоголизме; `books/index.html` — центр скачиваний;
+- `therapy-workbooks/` — терапевтические тетради (границы, дневник 12 шагов);
+- `AI_Photos_Catalog/` — каталог фото, обработанных с помощью ИИ (готовые — в `processed/`, исходники — в `originals/`).
