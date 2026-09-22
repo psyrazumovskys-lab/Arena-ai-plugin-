@@ -4,19 +4,19 @@ from pathlib import Path
 
 DB=json.loads(Path(__file__).resolve().parent.joinpath('plugin_navigator_database.json').read_text())
 chains=DB['chains'];sources=DB['researchSources']
-assert DB['version']=='2.5.4'
+assert DB['version']=='2.7.0'
 assert len(chains)==99 and len(sources)>=20
 assert len({s['id'] for s in sources})==len(sources)
-assert {'iZotope','FabFilter','Waves','Sound On Sound'} <= {s['publisher'] for s in sources}
+assert {'iZotope','FabFilter','Waves','Sound On Sound','Celemony'} <= {s['publisher'] for s in sources}
 
 steps=[s for c in chains for s in c['steps']]
-assert len(steps)==351
+assert len(steps)==353
 assert all(s.get('settings','').strip() and len(s['settings'])>=70 for s in steps)
 from collections import defaultdict
 signatures=defaultdict(list)
 for c in chains: signatures[tuple((s['name'],s['task'],s['lane']) for s in c['steps'])].append(c['id'])
 assert not [v for v in signatures.values() if len(v)>1]
-assert len({s['name'] for s in steps})>=113
+assert len({s['name'] for s in steps})>=114
 assert all(c.get('webAudit',{}).get('status','').startswith('WEB-RESEARCH') for c in chains)
 assert all(c['webAudit']['sourceKeys'] and c['webAudit']['checks'] for c in chains)
 assert all(c.get('preflight') for c in chains)
@@ -24,13 +24,23 @@ for c in chains:
     for s in c['steps']:
         assert all(s.get(k) for k in ('necessity','necessityLabel','purpose','condition','skipWhen','listenFor','how')), (c['id'],s['name'])
 necessity=Counter(s['necessity'] for s in steps)
-assert necessity=={'start':197,'conditional':108,'creative':34,'monitor':12}
+assert necessity=={'start':197,'conditional':110,'creative':34,'monitor':12}
 kick_rock=next(c for c in chains if c['id']=='curated-kick-rock')
 pro_g=next(s for s in kick_rock['steps'] if s['name']=='FabFilter Pro-G')
 assert pro_g['necessity']=='conditional' and 'bleed' in pro_g['condition'] and 'Чистый sample' in pro_g['skipWhen']
 assert any('polarity' in x for x in kick_rock['preflight'])
 known={s['id'] for s in sources}
 assert all(set(c['webAudit']['sourceKeys'])<=known for c in chains)
+
+# Melodyne is optional, receives dry audio and precedes EQ/dynamics/time FX.
+melodyne_occurrences=[(c,i,s) for c in chains for i,s in enumerate(c['steps']) if s['name']=='Celemony Melodyne']
+assert len(melodyne_occurrences)==2
+assert {c['source'] for c,_,_ in melodyne_occurrences}=={'Lead Vocal','Backing Vocals'}
+for chain,index,step in melodyne_occurrences:
+    assert index==next(i for i,s in enumerate(chain['steps']) if s['lane']=='insert')
+    assert step['necessity']=='conditional' and 'TUNING' in step['necessityLabel']
+    assert 'ara' in step['settings'].casefold() and 'dry' in step['settings'].casefold()
+    assert 'melodyne-workflow' in chain['webAudit']['sourceKeys']
 
 # Time effects are explicit send returns.
 time_sends=[s for s in steps if s['lane']=='send' and s['task'] in {'Delay / echo','Reverb / пространство'}]

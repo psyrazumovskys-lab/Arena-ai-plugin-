@@ -16,6 +16,7 @@ VENDORS={
 'Neural DSP':('Neural DSP','https://neuraldsp.com/plugins','https://neuraldsp.com/downloads'),
 'iZotope':('iZotope','https://www.izotope.com/en/products.html','https://docs.izotope.com/'),
 'FabFilter':('FabFilter','https://www.fabfilter.com/products','https://www.fabfilter.com/help/'),
+'Celemony':('Celemony','https://www.celemony.com/en/melodyne/what-is-melodyne','https://helpcenter.celemony.com/M5/'),
 'Overloud':('Overloud','https://www.overloud.com/products','https://www.overloud.com/downloads'),
 'Unfiltered Audio':('Unfiltered Audio / Plugin Alliance',PA_COL+'unfiltered-audio',PA_SUPPORT),
 'SPL':('SPL / Plugin Alliance',PA_COL+'spl',PA_SUPPORT),
@@ -45,6 +46,10 @@ VENDORS={
 
 
 from official_product_pages import PRODUCT_PAGES, SUITE_NOTES, CURRENT_LICENSE_NOTES, COMPONENT_NOTES
+
+PRODUCT_MANUALS={
+    'iZotope RX Spectral De-noise':'https://docs.izotope.com/rx12/en/spectral-de-noise.html',
+}
 
 
 def _product_note(name):
@@ -94,7 +99,7 @@ def apply_official_references(plugins):
                 'vendor':vendor,
                 'productPage':exact,
                 'vendorSite':site,
-                'manualHub':manual,
+                'manualHub':PRODUCT_MANUALS.get(p['name'],manual),
                 'referenceType':'Exact official product page',
                 'verifiedOn':'2026-08-13',
                 'note':_product_note(p['name']),

@@ -152,7 +152,7 @@ PRODUCT_PAGES = {
     'Waves S1 Stereo Imager': w('s1-stereo-imager'),
     'Waves InPhase': w('inphase'),
     'Manny Marroquin Reverb': w('manny-marroquin-reverb'),
-    'Waves H-Reverb': w('h-reverb'),
+    'Waves H-Reverb': w('h-reverb-hybrid-reverb'),
     'Waves OneKnob Wetter': w('oneknob-wetter'),
     'Waves Renaissance Reverb': w('renaissance-reverb'),
     'Waves IR-1': w('ir1-convolution-reverb'),
@@ -176,7 +176,7 @@ PRODUCT_PAGES = {
     'FabFilter Pro-G': ff('pro-g-gateexpander-plug-in'),
     'FabFilter Pro-MB': ff('pro-mb-multiband-compressor-plug-in'),
     'FabFilter Pro-C 2': ff('pro-c-2-compressor-plug-in'),
-    'FabFilter Micro': ff('micro-compressor-plug-in'),
+    'FabFilter Micro': ff('micro-mini-filter-plug-in'),
     'FabFilter Simplon': ff('simplon-filter-plug-in'),
     'FabFilter Volcano 3': ff('volcano-3-filter-plug-in'),
     'FabFilter Pro-Q 3': ff('pro-q-3-equalizer-plug-in'),
@@ -186,13 +186,15 @@ PRODUCT_PAGES = {
     'FabFilter Pro-R': ff('pro-r-reverb-plug-in'),
     'FabFilter Saturn 2': ff('saturn-2-multiband-distortion-saturation-plug-in'),
 
+    # Celemony
+    'Celemony Melodyne': 'https://www.celemony.com/en/melodyne/what-is-melodyne',
+
     # Soundtoys
     'Soundtoys Effect Rack': st('effect-rack'),
     'Soundtoys Little AlterBoy': st('little-alterboy'),
     'Soundtoys Crystallizer': st('crystallizer'),
     'Soundtoys Little PrimalTap': st('little-primaltap'),
     'Soundtoys PrimalTap': st('primaltap'),
-    'Soundtoys Sandman Pro': st('sandman-pro'),
     'EchoBoy Jr': st('echoboy-jr'),
     'Soundtoys EchoBoy': st('echoboy'),
     'Soundtoys Devil-Loc': st('devil-loc'),
@@ -232,7 +234,7 @@ PRODUCT_PAGES = {
     # iZotope — suite page is the official product page for Ozone modules
     'Ozone 12 suite': IZ + 'ozone.html',
     'Ozone Spectral Shaper': IZ + 'ozone.html',
-    'Ozone Spectral Denoiser': IZ + 'ozone.html',
+    'iZotope RX Spectral De-noise': IZ + 'rx.html',
     'Ozone Maximizer': IZ + 'ozone.html',
     'Ozone Vintage Limiter': IZ + 'ozone.html',
     'Ozone Vintage Compressor': IZ + 'ozone.html',
@@ -355,7 +357,7 @@ PRODUCT_PAGES = {
 }
 
 SUITE_NOTES = {
-    'Ozone Spectral Shaper', 'Ozone Spectral Denoiser', 'Ozone Maximizer',
+    'Ozone Spectral Shaper', 'iZotope RX Spectral De-noise', 'Ozone Maximizer',
     'Ozone Vintage Limiter', 'Ozone Vintage Compressor', 'Ozone Dynamics',
     'Ozone Match EQ', 'Ozone Vintage EQ', 'Ozone Equalizer', 'Ozone Stabilizer',
     'Ozone Low End Focus', 'Ozone Imager', 'Ozone Exciter',

@@ -1,176 +1,203 @@
-# Plugin Navigator — передача проекта в новый чат Arena.ai
+# Plugin Navigator — текущее состояние проекта
 
-**Дата состояния:** 14 августа 2026 (актуально: **2.5.4**)  
-**Язык проекта и общения:** русский  
-**Предпочтение пользователя:** отвечать кратко и по делу.
+**Дата:** 21 августа 2026
+**Актуальная версия:** **2.7.0**
+**Язык приложения и общения:** русский
 
-## Инструкция новому агенту
+## Инструкция следующему агенту
 
-1. Считать этот файл и приложенные исходники источником текущего состояния проекта.
-2. Не менять готовое приложение, базу, интерфейс или иконки без прямой команды пользователя.
-3. Перед изменениями уточнить новую задачу.
-4. Сохранить автономную офлайн-работу и русские объяснения с оригинальными английскими названиями элементов управления.
+1. Считать этот файл и актуальные исходники источником текущего состояния.
+2. Не менять интерфейс, базу, иконку или готовые цепочки без прямой команды пользователя.
+3. Сохранять автономную офлайн-работу основной HTML- и Windows-версии.
+4. Объяснения писать по-русски, сохраняя оригинальные English Control names.
+5. Не выдавать Family-level данные за точные элементы конкретного GUI/manual.
+6. Детерминированный Помощник порядка всегда авторитетнее предположений локального ИИ.
 
 ## Текущее состояние
 
-Plugin Navigator проверен как версия `2.5.0` (поверх 2.4.11 / 2.4.10).
+- 365 валидных записей;
+- 68 смысловых семейств;
+- 33 типа источников;
+- 99 curated chains / 353 шага;
+- 349 exact official product pages;
+- 16 vendor hubs;
+- 118 Product-specific, 215 Product-informed и 32 Family-level Control maps;
+- простой и экспертный режимы;
+- карточки, Controls, Settings, Routing и сравнение;
+- пользовательские цепочки, избранное, заметки и резервные копии;
+- Помощник порядка: auto-sort, explanations, warnings и creative exceptions;
+- 364 source-mapped plugins и 1 standalone utility;
+- опциональный локальный ИИ Qwen3.5 2B Q4;
+- полностью автономный HTML-справочник;
+- portable Windows x64 без Trial и ограничений.
 
-- 364 плагина;
-- 360 exact official product pages (4 vendor hub);
-- 152 product-specific и 174 product-informed Control maps; 38 family-level;
-- 99 вручную подготовленных curated chains;
-- 26 источников исследования;
-- Simple mode и Expert mode;
-- быстрые и полные карточки;
-- Controls, Settings, Routing;
-- пользовательские цепочки и локальное сохранение;
-- учебный чеклист сессии: сначала собрать стол и Clip Gain исходников, потом слушать;
-- левое меню сгруппировано (Подготовка / Каталог / Цепи / Ещё), без списка источников в сайдбаре;
-- описания плагинов для новичка: `guide.simple` на карточке, свой `sound` у каждого плагина;
-- полностью автономный HTML;
-- полная portable-версия для Windows x64 без Trial и ограничений.
+## Изменения 2.7.0 — локальный ИИ
 
-Активной незавершённой задачи сейчас нет. Обсуждались будущие Lite/Trial/Pro-версии, но лицензирование и платный доступ **не реализовывались**.
+Добавлен отдельный раздел **«Локальный ИИ»**.
 
-## Финальные файлы
+Модель:
 
-### Автономное HTML-приложение
+```text
+Qwen3.5 2B Q4
+Qwen3.5-2B-q4f16_1-MLC
+```
 
-`Plugin_Navigator_Full.html` и копия с версией `Plugin_Navigator_Full_v2.4.11.html`
+Архитектура:
 
-- размер: 9 516 567 байт;
-- SHA-256: `0912df533d8cd6c3221a22aeca37db74e8b5a4c78b6471a1f166ed22f9b352ff`;
-- файлы побайтно совпадают.
+- WebLLM 0.2.84 встроен непосредственно в Windows EXE;
+- inference выполняется в отдельном Web Worker;
+- API-ключ, облачный сервер, Python, Ollama и CUDA не нужны;
+- веса модели около 1,1 ГБ загружаются один раз;
+- после загрузки модель хранится в WebView2 cache и работает офлайн;
+- модель можно удалить из интерфейса;
+- без WebGPU весь основной Plugin Navigator продолжает работать.
+
+ИИ умеет:
+
+- объяснять текущую цепочку;
+- проверять порядок и routing;
+- объяснять Controls;
+- предлагать безопасные Starting Settings;
+- подбирать варианты из локального каталога.
+
+Защита фактов:
+
+- в запрос передаются только текущая цепочка, строгая диагностика порядка и до пяти релевантных карточек;
+- системный prompt запрещает выдумывать Controls, URL и официальные функции;
+- Product-specific, Product-informed и Family-level должны различаться;
+- все этапы нельзя называть обязательными;
+- модель не должна утверждать, что слышит аудио или видит DAW;
+- ответ явно помечается как рекомендация локального ИИ.
+
+HTML, открытый через `file://`, сохраняет все обычные функции, но честно сообщает, что локальный ИИ предназначен для Windows-приложения.
+
+## Сохранённые исправления 2.6.1
+
+- удалён ложный `Soundtoys Sandman Pro`;
+- исправлен `iZotope RX Spectral De-noise`;
+- исправлены FabFilter Micro, Waves dbx 160, H-Reverb и stereo utilities;
+- добавлены точные карты Chakra, Ultimate Snare и diagnostic utilities;
+- Session Inspector остаётся standalone utility;
+- generic amp/console maps честно помечены Product-informed;
+- сохранены Melodyne, Улучшение 1 и 99 цепочек.
+
+## Финальные файлы 2.7.0
+
+### Общий архив
+
+`Plugin_Navigator_v2.7.0_Download.zip`
+
+- содержит HTML, Windows x64, README, HTML/Markdown-инструкцию и checksums;
+- включает `Plugin_Navigator_v2.7.0_Local_AI_Report.md`;
+- SHA-256: `dcf5229e002bfad37d3e8290dd3eb768c9b6a0a4e44df6e61abdb30fd8f0f0ee`.
+
+### HTML
+
+- `Plugin_Navigator_Full.html`;
+- `Plugin_Navigator_Full_v2.7.0.html`;
+- `Plugin_Navigator_Windows_Source/resources/index.html`;
+- все три файла побайтно совпадают;
+- SHA-256: `75b762b837efc6562b1d54d5945b68614d3767f0eeb389c5393439e88eb5029a`.
 
 ### Windows x64
 
-`Plugin_Navigator_Full_v2.4.11_Windows_x64.zip`
+`Plugin_Navigator_Full_v2.7.0_Windows_x64.zip`
 
-- SHA-256: `a313834cb7fd981a22e24027b64ff35405cbfefe5ef03cb06d2b64bf0ac4feec`;
-- содержит автономный portable EXE;
-- оболочка Neutralinojs 6.9.0;
-- целевая система: Windows 10/11 x64;
-- требуется Microsoft Edge WebView2 Runtime;
-- коммерческая цифровая подпись отсутствует, поэтому возможна реакция SmartScreen;
-- встроенный HTML побайтно совпадает с `Plugin_Navigator_Full.html` 2.4.11;
-- Trial, ключи и функциональные ограничения отсутствуют.
+- ZIP SHA-256: `0f376b008d0c5157b781a8aa575abfe3dd115ff50c1b0b6568fc0ed2a95a35c0`;
+- EXE SHA-256: `72669a1860d3cc37e87b2db577c51e90f872c22ec10168d8ce3c01f1c478f4f5`;
+- Neutralinojs 6.9.0;
+- Windows 10/11 x64;
+- Microsoft Edge WebView2 Runtime с WebGPU;
+- цифровой подписи нет;
+- embedded config, HTML, WebLLM и AI Worker извлечены и проверены.
 
-EXE внутри ZIP имеет SHA-256:  
-`8aea0017911a936a5125c8e86ca2a61046485e1e42dfb0fdf89adbde1668f5d5`.
+### Инструкция пользователя
+
+- `Plugin_Navigator_User_Guide_RU.html` — 23 раздела;
+- SHA-256: `7a0bcc758577bb9550ccdda10914d699d261d8842883e2c9df6f8b20d0e61dae`;
+- `Plugin_Navigator_User_Guide_RU.md`;
+- SHA-256: `296f57a9aaf6ecfeaacaa18326ec984b49165aec296d9e41a5773d35a26140a7`.
+
+### Видео
+
+Актуальная видеоинструкция пока относится к 2.6.1 и не показывает новый локальный ИИ:
+
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.mp4`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Clean.srt`;
+- `Plugin_Navigator_2.6.1_Video_Instruction_RU_Compact_Subtitles.mp4`.
+
+## Сборка и тесты
+
+Установка:
+
+```bash
+python3 -m pip install -r requirements.txt
+cd test-runtime && npm ci && cd ..
+cd Plugin_Navigator_Windows_Source && npm ci && cd ..
+```
+
+Полная основная проверка:
+
+```bash
+python3 build_and_test.py
+```
+
+Результат 2.7.0:
+
+```text
+BUILD + ALL TESTS PASS
+365 plugins
+99 chains
+353 steps
+local AI guardrails PASS
+JSDOM UI PASS
+Windows embedded config PASS
+embedded HTML PASS
+embedded WebLLM + AI Worker PASS
+ZIP integrity PASS
+```
+
+Windows:
+
+```bash
+python3 build_windows.py
+```
+
+Дополнительная Playwright-проверка не была выполнена в текущей Arena-сессии: Chromium CDN несколько раз оборвал TLS-загрузку. Это ограничение среды тестирования, не подтверждение ошибки приложения.
+
+Реальную первую загрузку и ответ модели необходимо дополнительно проверить на Windows-компьютере с WebGPU. В Linux-среде Arena нет подходящего Windows WebView2/WebGPU. Нельзя утверждать, что этот аппаратный тест уже пройден.
 
 ## Основные исходники
 
 | Файл | Назначение |
 |---|---|
-| `plugin_usage_semantic_hybrid_corrected.xlsx` | Главная исправленная исходная таблица |
-| `build_plugin_navigator.py` | Детерминированный генератор HTML и JSON |
-| `plugin_guide_enrichment.py` | Обогащение карточек и карт Controls |
-| `official_plugin_references.py` | Официальные источники и provenance |
-| `official_product_pages.py` | Точные official product pages |
-| `product_control_maps.py` | Дополнительные product-specific Control maps |
-| `curated_chain_presets.py` | 99 вручную подготовленных цепочек |
-| `chain_research_audit.py` | Аудит цепочек и расширение рекомендаций |
-| `Plugin_Navigator_Windows_Source/` | Исходники Windows-оболочки |
-
-Контрольная сумма исходной таблицы:  
-`ba6c2bafbedc541abecab8ba6c404758897120e4c585edc74e8938024fe0bf13`.
-
-## Сборка HTML
-
-Из каталога репозитория:
-
-```bash
-python3 build_plugin_navigator.py
-```
-
-Генератор создаёт:
-
-- `Plugin_Navigator_Full.html`;
-- `plugin_navigator_database.json`;
-- копию HTML в `Plugin_Navigator_Windows_Source/resources/index.html`.
-
-Ожидаемый SHA-256 финального HTML после детерминированной сборки:  
-`0912df533d8cd6c3221a22aeca37db74e8b5a4c78b6471a1f166ed22f9b352ff`.
-
-## Сборка Windows
-
-`neu update` с GitHub Releases в этой среде часто недоступен (SSL к `release-assets.githubusercontent.com`). Рабочий путь: собрать `resources.neu` через `@electron/asar` и встроить в существующий Neutralino 6.9.0 EXE через `postject` (`overwrite: true`). Иконку не трогать.
-
-Перед сборкой HTML уже копируется генератором. Затем:
-
-```bash
-# asar + postject в существующий win_x64 EXE, не в каталог dist
-```
-
-Windows EXE: `Plugin_Navigator_Full_v2.4.11_Windows_x64.exe`.
-
-Windows-оболочка не меняет содержимое HTML. Native API отключён. Официальные внешние ссылки открываются в системном браузере.
-
-## Проверки
-
-Сохранены тесты:
-
-- `test_design_audit.py`;
-- `test_chain_research_audit.py`;
-- `test_plugin_guides.py`;
-- `test_deterministic_build.py`;
-- `test-runtime/ui-test-v2.js`.
-
-Последние результаты:
-
-- плагины: 364;
-- curated chains: 99;
-- source groups: 33;
-- exact official product pages: 360;
-- vendor hubs: 4;
-- аудит дизайна: PASS;
-- аудит цепочек: PASS;
-- аудит карточек и Controls: PASS;
-- UI-тест: PASS;
-- побайтовое сравнение HTML внутри Windows EXE: PASS;
-- формат Windows-файла: PE32+ GUI x86-64.
-
-Для UI-теста:
-
-```bash
-cd test-runtime
-npm install
-node ui-test-v2.js
-```
+| `build_plugin_navigator.py` | Генератор HTML/JSON, UI локального ИИ, retrieval и guardrails |
+| `Plugin_Navigator_Windows_Source/resources/ai/worker.js` | Изолированный WebLLM Worker |
+| `build_windows.py` | Встраивает HTML, WebLLM и Worker в EXE |
+| `Plugin_Navigator_Windows_Source/verify-windows.mjs` | Проверяет embedded config, HTML и AI runtime |
+| `test_local_ai.py` | Статический аудит модели, packaging и guardrails |
+| `test-runtime/ui-test-v2.js` | DOM-тест UI и AI grounding context |
+| `plugin_guide_enrichment.py` | Карточки, Controls и настройки |
+| `product_control_maps.py` | Product-specific Control maps |
+| `curated_chain_presets.py` | 99 подготовленных цепочек |
 
 ## Постоянные требования пользователя
 
-- Максимальное количество валидных плагинов из исходных материалов.
-- Все AudioLoom-плагины должны быть включены и описаны.
-- AudioLoom нельзя выделять в отдельную экосистему или отдельный раздел сравнения; плагины смешиваются с другими разработчиками по функции и характеру.
-- Использовать семантическую группировку.
-- Полные описания нужны для всех плагинов.
-- Гибридная работа с группами: функционально разные продукты разделять, близкие варианты объединять с внутренними различиями.
-- Для каждой карточки нужны быстрый и подробный режимы.
-- Объяснения писать по-русски, сохраняя оригинальные английские названия Controls.
-- Приложение должно оставаться автономным и офлайн.
-- Конструктор цепочек должен быть простым, с выпадающим выбором, описаниями и рекомендациями.
-- Нужны готовые цепочки для быстрого старта.
-- Не представлять все этапы цепочки обязательными: различать базовые, условные, творческие и monitoring-этапы.
-- Сохранять различие между официальной информацией, практическими рекомендациями и family-level normalization.
-- Не выдавать family-level Controls за точные элементы конкретного GUI или manual.
-- Иконку Windows, favicon и app icon пока не менять.
-- Текущая Windows-версия должна оставаться полной и без ограничений, пока пользователь не даст другую команду.
+- сохранять максимальное количество валидных плагинов;
+- не выделять AudioLoom в отдельную экосистему;
+- сохранять оригинальные English Control names;
+- не представлять все стадии цепи обязательными;
+- различать официальные сведения, практические рекомендации и provenance;
+- не менять иконки без прямой команды;
+- Windows-версия полная, без Trial, ключей и ограничений;
+- основная программа должна работать без ИИ и без интернета.
 
-## Сессия 2.4.4
+## Не реализовано
 
-- View id: `session`.
-- localStorage: `pn-session-checks`.
-- 7 пунктов: song, edit, phase, faders, headroom, reference, mono.
-- База: song, edit, faders, headroom — только `done` открывает «Можно переходить».
-- Условные: phase, reference, mono — можно пропустить.
-- У каждого пункта урок: зачем / что сделать / что слушать / типичная ошибка / когда пропустить.
-- Это чеклист подготовки, не рецепт микса.
-
-## Что было удалено при очистке
-
-Удалены старые HTML-версии, резервные Python-файлы, промежуточные таблицы, старые JSON-базы, временные скриншоты, кэши и воспроизводимые зависимости. Всё необходимое для дальнейшего развития приложения сохранено в пакете.
-
-## Видео
-
-Видео и его исходники намеренно не включены в пакет переноса по прямой просьбе пользователя.
+- Cubase Plug-in Report import;
+- Installed/Not Found badges и My Collection;
+- VST3 scanner;
+- unknown plugin draft cards;
+- коммерческая цифровая подпись Windows;
+- аппаратный smoke-test Qwen на реальном Windows WebView2/WebGPU;
+- обновлённое видео с разделом ИИ 2.7.0.

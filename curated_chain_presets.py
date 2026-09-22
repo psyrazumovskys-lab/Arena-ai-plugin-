@@ -245,11 +245,12 @@ P('808-kick',SRC,'Sidechain от kick',[
 # 09 Lead vocal
 SRC='Lead vocal / основной вокал'
 P('vocal-min',SRC,'Базовый vocal',[
+ S('Очистка / repair','Celemony Melodyne',settings='Только если tuning нужен: ARA или первый insert/Transfer на чистом dry-сигнале; проверить Algorithm/Note Assignment и исправлять лишь слышимые ошибки.'),
  S('EQ / тон','FabFilter Pro-Q 3',settings='Corrective EQ, убрать rumble/resonances.'),
  S('Компрессия / уровень','FabFilter Pro-C 2',settings='Ratio 2:1–3:1, GR 2–4 dB.'),
  S('Очистка / repair','FabFilter Pro-DS',settings='После brightening/compression, 2–4 dB reduction.'),
  S('Reverb / пространство','FabFilter Pro-R','send',settings='100% wet, pre-delay 30–80 ms, HPF return.')],
- 'Минимальная профессиональная vocal chain.','F6, Sibilance, Room Service','Clip gain и tuning выполнить до processing.')
+ 'Минимальная профессиональная vocal chain.','Waves Tune, Waves Tune Real-Time, F6, Sibilance, Room Service','Сначала comping и Clip Gain; Melodyne нужен только при слышимых pitch/timing ошибках и всегда идёт до EQ/dynamics.')
 P('vocal-modern',SRC,'Modern pop',[
  S('EQ / тон','FabFilter Pro-Q 3'),
  S('Компрессия / уровень','Purple Audio MC77',settings='Peak catcher, GR 1–3 dB.'),
@@ -275,9 +276,10 @@ P('bvox-min',SRC,'Плотный stack',[
  S('Reverb / пространство','FabFilter Pro-R','send',settings='Общий shared space.')],
  'Широкие, но контролируемые backing vocals.','Doubler, Double Dare, S1','Lead vocal должен оставаться впереди и в центре.')
 P('bvox-clean',SRC,'Clean pop',[
+ S('Очистка / repair','Celemony Melodyne',settings='Опционально до обработки: через ARA/первый insert на чистом dry-сигнале поправить только явно неточные ноты и timing; не выравнивать все backing layers одинаково.'),
  S('EQ / тон','Waves F6 Dynamic EQ'),S('Компрессия / уровень','FabFilter Pro-C 2',settings='GR 3–6 dB для ровного stack.'),
  S('Очистка / repair','Waves Sibilance'),S('Модуляция / ширина','Double Dare','send'),S('Reverb / пространство','Room Service','send')],
- 'Быстрый clean stack с отдельными width/room sends.','MicroShift, Pro-DS, SuperPlate','Низ backing-группы держать уже и тише lead.')
+ 'Быстрый clean stack с отдельными width/room sends.','Waves Tune, MicroShift, Pro-DS, SuperPlate','Melodyne применять только к нужным дублям до групповой обработки; низ backing-группы держать уже и тише lead.')
 P('bvox-fast',SRC,'Быстрый macro',[
  S('Channel strip / macro','GilderVox',settings='Input по уровню, умеренный tone.'),
  S('Очистка / repair','FabFilter Pro-DS'),S('Модуляция / ширина','Double Dare','send'),S('Reverb / пространство','Room Service','send')],

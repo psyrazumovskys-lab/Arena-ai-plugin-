@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.joinpath('Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.5.4'
+assert DB['version']=='2.7.0'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
@@ -26,12 +26,20 @@ style='\n'.join(x.get_text() for x in soup.select('style'))
 for token in ['@media(max-width:900px)','@media(max-width:560px)','@media(max-width:600px)','@media(prefers-reduced-motion:reduce)','focus-visible','.topbar #modeToggle{display:block']:
     assert token in style,token
 script=soup.find_all('script')[-1].string
-assert "['more','⋯','More']" in script
-assert "const bottom=[['dashboard','⌂','Главная'],['wizard','◎','Подбор'],['builder','＋','Цепочка'],['plugins','◫','Каталог'],['more','⋯','More']]" in script
+assert "['more','⋯','Ещё']" in script
+assert "const bottom=[['dashboard','⌂','Главная'],['wizard','◎','Подбор'],['builder','＋','Цепочка'],['plugins','◫','Каталог'],['more','⋯','Ещё']]" in script
 assert 'function navGroups' in script and 'Подготовка' in script and 'nav-group' in script
 assert 'id="sideSources"' not in html
 assert "['Enter',' ']" in script and 'function activate(' in script
 assert 'tabindex="0"' in script
+assert 'USER_DATA_SCHEMA=1' in script and 'normalizeBuilder' in script and 'builder-context' in script
+assert 'moreExportData' in script and 'moreImportData' in script and 'confirmReplaceBuilder' in script
+assert 'devFilter' in script and "p.developer!==state.developer" in script
+assert 'role="tablist"' in script and 'aria-selected' in script
+# Improvement 1: deterministic order assistant remains available without AI.
+for token in ['function orderSpec','function orderDiagnostics','function autoOrderBuilder','function orderAssistantHTML','Расставить автоматически','Почему такой порядок','Pitch и timing корректируют','Sends являются параллельными ветками']:
+    assert token in script,token
+assert '.analysis-item.error{' in style and '.analysis-item.creative{' in style and '.order-flow{' in style
 
 # Honest language and progressive disclosure.
 assert 'ПРОВЕРЕННЫЙ PRESET' not in html
@@ -50,16 +58,17 @@ assert '.check-lesson>p{margin:0 0 8px;color:#c6d3e4;font-size:15px' in style
 assert '.step-fact{' in style and 'font-size:13px' in style
 assert 'не сдвиг клипа' in script and '−12…−6' in html and '−18 dBFS RMS' in script
 assert DB['coverage']['officialExactProductPages']>=250 and DB['coverage']['officialVendorManualHubs']==365-DB['coverage']['officialExactProductPages']
-assert DB['coverage']['sourceMappedPlugins']==365
+assert DB['coverage']['sourceMappedPlugins']==364
+assert DB['coverage']['standaloneUtilities']==1
 
 # Every curated step carries full conditional guidance.
 steps=[s for c in DB['chains'] for s in c['steps']]
-assert len(steps)==351
+assert len(steps)==353
 fields=('necessity','necessityLabel','purpose','condition','skipWhen','listenFor','how')
 assert all(all(s.get(k) for k in fields) for s in steps)
 necessity=Counter(s['necessity'] for s in steps)
-assert necessity=={'start':197,'conditional':108,'creative':34,'monitor':12}
-assert DB['coverage']['conditionalStepGuides']==351
+assert necessity=={'start':197,'conditional':110,'creative':34,'monitor':12}
+assert DB['coverage']['conditionalStepGuides']==353
 assert all(c.get('preflight') for c in DB['chains'])
 
 # Readability: sufficient contrast for core text/muted text using WCAG formula.

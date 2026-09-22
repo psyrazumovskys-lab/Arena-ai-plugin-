@@ -275,10 +275,14 @@ EXTRA_PRODUCT_CONTROLS = {
         ctl('Output', 'Компенсация.', 'Level-match.', 'Обязательно.'),
     ],
     'dbx 160': [
-        ctl('Threshold', 'Порог hard-knee VCA.', 'Ниже — больше GR и punch.', '2–6 dB GR.'),
-        ctl('Compression', 'Сила сжатия (ratio-style).', 'Выше — плотнее и жёстче.', 'Умеренно на bass/drums.'),
-        ctl('Output Gain', 'Makeup.', 'Честный A/B.', 'Level-match.'),
-        ctl('Over Easy / Hard', 'Плавность входа, если доступна в версии.', 'Soft естественнее.', 'Сравнить на transient.'),
+        ctl('Input', 'Калибрует уровень в modeled VCA path.', 'Выше — сильнее analog path и раньше compression.', 'Начать 0 dB, затем выставить рабочий уровень.'),
+        ctl('Threshold', 'Порог hard-knee VCA compressor.', 'Ниже — больше GR и характерного punch.', 'Настроить на 2–6 dB GR.'),
+        ctl('Compression', 'Задаёт ratio от 1:1 до infinity:1.', 'Выше — плотнее и жёстче envelope.', 'Умеренно на bass/drums; выше для effect.'),
+        ctl('Output', 'Компенсирует уровень после compression.', 'Позволяет честно оценить punch.', 'Level-match с bypass.'),
+        ctl('SC-HP', 'Включает около 90 Hz high-pass в detector.', 'Low end меньше запускает compression.', 'Включить при pumping от kick/bass.'),
+        ctl('Mix', 'Смешивает compressed и dry signal.', 'Возвращает исходный transient.', '30–70% для parallel compression.'),
+        ctl('Noise', 'Добавляет modeled noise/hum hardware path.', 'Повышает noise floor.', 'Off, если аутентичный шум не нужен.'),
+        ctl('Stereo / Duo / MS', 'Выбирает linked stereo, dual mono или Mid/Side processing.', 'Меняет стабильность center и sides.', 'Stereo как старт; MS только по задаче.'),
     ],
     'Waves InPhase': [
         ctl('Polarity', 'Инверсия выбранного канала.', 'Может вернуть низ при суммировании.', 'Проверить первым.'),
@@ -346,9 +350,12 @@ EXTRA_PRODUCT_CONTROLS = {
         ctl('Feedback / Mix', 'Длина и dry/wet.', 'На send 100% wet.', 'Feedback 10–30%.'),
     ],
     'FabFilter Micro': [
-        ctl('Threshold / Ratio-style gain reduction', 'Очень простой compressor.', 'Быстрый vocal/track control.', '2–5 dB GR.'),
-        ctl('Release', 'Восстановление.', 'По фразе.', 'Auto-ощущение вручную.'),
-        ctl('Output', 'Makeup.', 'Level-match.', 'Обязательно.'),
+        ctl('Filter Display / Cutoff', 'Задаёт cutoff единственного filter.', 'Открывает или закрывает спектр.', 'Сначала выбрать нужную границу на слух.'),
+        ctl('Low-pass / High-pass', 'Выбирает направление фильтрации.', 'Low-pass затемняет, High-pass убирает низ.', 'Выбирать по задаче, не включать автоматически.'),
+        ctl('Peak', 'Добавляет resonance около cutoff.', 'Подчёркивает sweep и может перейти в self-oscillation.', 'Начать низко и оставить headroom.'),
+        ctl('Envelope Follower', 'Модулирует cutoff огибающей входа.', 'Создаёт auto-filter движение.', 'Малая глубина, затем подстроить response.'),
+        ctl('Input Gain', 'Уровень в analog-style filter.', 'Больше — сильнее saturation/distortion.', 'Начать 0 dB и повышать при необходимости color.'),
+        ctl('Output Gain', 'Компенсирует уровень после filter/saturation.', 'Убирает loudness bias.', 'Level-match с bypass.'),
     ],
     'FabFilter Simplon': [
         ctl('Cutoff / Peak', 'Частота и резонанс фильтра.', 'Движение тембра.', 'Peak низкий, пока не нужен свист.'),
@@ -400,11 +407,16 @@ EXTRA_PRODUCT_CONTROLS = {
         ctl('Detection / Knee', 'Как считается уровень.', 'Влияет на незаметность.', 'Soft knee на master.'),
         ctl('Mix', 'Parallel dynamics.', 'Сохраняет microdynamics.', '70–100%.'),
     ]),
-    'Ozone Vintage Compressor': ozone_module([
-        ctl('Threshold / Ratio', 'Винтажная bus compression.', 'Плотность и glue.', '0.5–2 dB.'),
-        ctl('Attack / Release', 'Характерный envelope.', 'Punch vs glue.', 'По материалу.'),
-        ctl('Mode / Mix', 'Характер схемы и parallel.', 'Меняет color.', 'Сравнить режимы.'),
-    ]),
+    'Ozone Vintage Compressor': [
+        ctl('Mode: Sharp / Balanced / Smooth', 'Выбирает signal-dependent character feedback compressor.', 'Sharp подчёркивает transients, Smooth делает результат толще.', 'Balanced как старт, затем сравнить режимы.'),
+        ctl('Detection Filter', 'Фильтрует сигнал внутри feedback detector.', 'Уменьшает pumping или меняет spectral emphasis compression.', 'Сначала HPF при лишней реакции на low end.'),
+        ctl('Threshold', 'Задаёт начало compression.', 'Ниже — больше и чаще GR.', 'Обычно 0.5–2 dB GR на bus/master.'),
+        ctl('Ratio', 'Задаёт глубину сжатия выше threshold.', 'Выше — плотнее dynamics.', '1.5:1–2:1 как мягкий старт.'),
+        ctl('Attack', 'Скорость реакции feedback compressor.', 'Медленнее сохраняет transient.', 'По punch исходника.'),
+        ctl('Release', 'Скорость возврата после transient; sustained release дольше.', 'Определяет движение и pumping.', 'Возврат по музыкальной фразе.'),
+        ctl('Gain / Auto Gain', 'Компенсирует потерю уровня вручную или автоматически.', 'Громкость не должна маскировать изменение envelope.', 'Проверить Auto Gain вручную.'),
+        ctl('Bypass / Compare', 'Сравнивает модуль с исходником.', 'Показывает реальную пользу без loudness bias.', 'Level-matched A/B.'),
+    ],
     'Ozone Vintage Limiter': ozone_module([
         ctl('Mode', 'Характер vintage limiting.', 'От прозрачного к плотному.', 'Сравнить на cymbals.'),
         ctl('Threshold / Ceiling', 'Громкость и потолок.', 'Легко убить transients.', '1–3 dB.'),
@@ -440,16 +452,103 @@ EXTRA_PRODUCT_CONTROLS = {
         ctl('Frequency focus', 'Где искать sharpness.', '2–8 kHz типично.', 'По жалобе слуха.'),
         ctl('Listen', 'Слышит удаляемое.', 'Не вырезать air целиком.', 'При настройке.'),
     ]),
-    'Ozone Spectral Denoiser': ozone_module([
-        ctl('Threshold / Reduction', 'Насколько глушится шум.', 'Сильно — watery artifacts.', 'Только слышный шум.'),
-        ctl('Learn / Profile', 'Профиль шума.', 'Нужен кусок без полезного сигнала.', 'Обучить на паузе.'),
-        ctl('Tone / Artifact control', 'Баланс чистоты и артефактов.', 'Слушать хвосты и S.', 'Остановить при metallic.'),
-    ]),
+    'iZotope RX Spectral De-noise': [
+        ctl('Learn', 'Захватывает noise profile из выбранного участка.', 'Точнее отделяет постоянный шум от полезного сигнала.', 'Выбрать несколько секунд только с шумом.'),
+        ctl('Threshold: Noisy / Tonal', 'Задаёт границу шума отдельно для broadband и tonal components.', 'Выше удаляет больше, но может подавить тихие детали.', 'Начать около 0 dB offset и корректировать осторожно.'),
+        ctl('Reduction: Noisy / Tonal', 'Задаёт глубину подавления broadband hiss и tonal buzz.', 'Сильное подавление даёт chirpy/watery artifacts.', 'Начать 3–8 dB и увеличивать только по необходимости.'),
+        ctl('Quality / Algorithm', 'Выбирает баланс CPU, latency и musical-noise suppression.', 'Высокие режимы лучше сохраняют детали, но работают медленнее.', 'A для real-time; C/D для offline при необходимости.'),
+        ctl('Artifact Control', 'Балансирует spectral subtraction и wider-band gating.', 'Меняет watery artifacts на более слышимое gating behavior.', 'Настраивать по хвостам и тихим фрагментам.'),
+        ctl('Smoothing / Multi-Res', 'Сглаживает time-frequency ripples и выбирает разрешение анализа.', 'Меньше musical noise, но возможна потеря transient detail.', 'Включать Multi-Res на сложном материале.'),
+        ctl('Reduction Curve', 'Задаёт частотно-зависимую глубину noise reduction.', 'Позволяет сохранить полезные highs или сильнее убрать low buzz.', 'Добавлять точки только по слышимой проблеме.'),
+        ctl('Advanced Noise Floor / Dynamics', 'Управляет whitening, enhancement, release и поведением около threshold.', 'Влияет на естественность остаточного noise floor.', 'Оставить defaults, пока основная настройка не решена.'),
+    ],
     'Ozone 12 suite': [
         ctl('Module chain / Bypass', 'Набор Ozone modules.', 'Порядок и лишние modules портят master.', 'Только нужные modules.'),
         ctl('Assistant / Targets', 'Стартовая цель громкости/тона.', 'Не финальный пресет.', 'После Assistant всё проверить ушами.'),
         ctl('I/O / Gain match', 'Вход/выход suite.', 'Честный A/B всего Ozone.', 'Всегда gain match.'),
         ctl('Dither / Codec preview', 'Финализация и preview доставки.', 'Только в конце.', 'Не на всех шинах.'),
+    ],
+    'bx_control V2': [
+        ctl('Input Gain / Output Gain', 'Калибрует уровень до и после M/S processing.', 'Позволяет честно оценить width и Mono Maker.', 'Level-match с bypass.'),
+        ctl('Mono Maker', 'Сводит частоты ниже выбранной границы в mono.', 'Делает low end устойчивее.', 'Начать 60–100 Hz и проверить correlation.'),
+        ctl('Stereo Width', 'Меняет отношение Mid и Side.', 'Сужает или расширяет stereo field.', 'Малые движения, обязательный mono-check.'),
+        ctl('Solo L / R / M / S', 'Солирует Left, Right, Mid или Side.', 'Помогает диагностировать center и edges.', 'Использовать только для проверки.'),
+        ctl('M/S Matrix', 'Кодирует или декодирует L/R и M/S signals.', 'Позволяет external M/S processing.', 'Проверить корректное decode после цепочки.'),
+        ctl('Balance / Pan', 'Корректирует balance stereo image.', 'Сдвигает perceived center.', 'Сначала исправить исходный баланс.'),
+        ctl('Metering / Correlation', 'Показывает уровни и mono compatibility.', 'Отрицательная correlation предупреждает о cancellation.', 'Подтвердить прослушиванием в mono.'),
+    ],
+    'bx_solo': [
+        ctl('Solo L / R', 'Солирует левый или правый канал.', 'Показывает различия stereo channels.', 'Использовать для диагностики.'),
+        ctl('Solo M / S', 'Солирует Mid или Side.', 'Показывает содержимое center и edges.', 'Side без важных low-frequency elements как ориентир.'),
+        ctl('Stereo Width', 'Меняет M/S balance.', 'Сужает или расширяет image.', 'Малые значения и mono-check.'),
+        ctl('M/S Encode / Decode', 'Преобразует L/R и M/S для внешней обработки.', 'Неверная пара matrix нарушает stereo image.', 'Всегда проверить decode и bypass.'),
+    ],
+    'The Util': [
+        ctl('Gain', 'Регулирует уровень отдельно от DAW fader.', 'Позволяет автоматизировать gain без изменения основного fader.', 'Начать 0 dB.'),
+        ctl('Pan', 'Управляет положением сигнала в stereo field.', 'Сдвигает источник влево или вправо.', 'По роли в аранжировке.'),
+        ctl('Stereo Width', 'Сужает или расширяет stereo signal.', 'Меняет ширину и mono compatibility.', 'Небольшие движения, затем mono-check.'),
+        ctl('Phase Invert L / R', 'Инвертирует polarity выбранного канала.', 'Может изменить сложение multi-mic/layer signals.', 'Сравнить оба положения, не включать случайно.'),
+        ctl('Bass Control / Mono Bass', 'Переводит sub-frequency content в mono.', 'Делает фундамент более устойчивым.', 'Выбрать только необходимый low range.'),
+        ctl('Gain Compensation / Output', 'Компенсирует изменение уровня после utility operations.', 'Убирает loudness bias.', 'Level-match с bypass.'),
+    ],
+    'Waves Center': [
+        ctl('Center', 'Поднимает или опускает phantom center.', 'Меняет vocal/kick/snare относительно sides.', 'Малые движения; separation не идеальна.'),
+        ctl('Sides', 'Регулирует боковую stereo information.', 'Сужает или расширяет perceived image.', 'Проверять mono и ambience.'),
+        ctl('Low', 'Сохраняет или перераспределяет low-frequency center content.', 'Помогает не потерять kick/bass при изменении Center.', 'Настраивать после Center.'),
+        ctl('High', 'Управляет high-frequency emphasis center/sides processing.', 'Меняет air и ширину верха.', 'Осторожно с cymbals/sibilance.'),
+        ctl('Punch', 'Меняет transient emphasis при перераспределении.', 'Влияет на attack drums и loop.', 'Начать нейтрально.'),
+    ],
+    'Waves MS Matrix': [
+        ctl('M/S Encode', 'Преобразует Left/Right в Mid/Side.', 'Подготавливает сигнал для внешней M/S chain.', 'Использовать перед M/S processors.'),
+        ctl('M/S Decode', 'Возвращает Mid/Side в Left/Right.', 'Восстанавливает обычный stereo output.', 'Обязательно после external M/S chain.'),
+        ctl('Matrix Routing', 'Определяет правильное направление matrix component.', 'Неверная пара меняет level и stereo image.', 'Проверить тип component и порядок.'),
+        ctl('Output / Correlation Check', 'Контролирует результат преобразования.', 'Выявляет ошибки decode и mono cancellation.', 'Level-match и mono-check.'),
+    ],
+    'Waves S1 Stereo Imager': [
+        ctl('Width', 'Меняет stereo width через matrix processing.', 'От mono до wider-than-stereo image.', 'Начать около 1.0 и двигать мало.'),
+        ctl('Rotation', 'Поворачивает stereo image влево/вправо.', 'Исправляет skewed balance.', 'Настраивать по center reference.'),
+        ctl('Asymmetry', 'Меняет форму и симметрию stereo field.', 'Перераспределяет image без обычного pan.', 'Осторожно, с mono-check.'),
+        ctl('Input Mode / Shuffler', 'Выбирает обычную imaging или bass-shuffling логику suite.', 'Может расширять low-frequency stereo с mono compatibility.', 'Использовать только нужный component.'),
+        ctl('Output Gain / Metering', 'Компенсирует уровень и контролирует output.', 'Убирает loudness bias.', 'Level-match с bypass.'),
+    ],
+    'Session Inspector': [
+        ctl('Open / Drop Session', 'Открывает поддерживаемый DAW project или session folder в HTML app.', 'Показывает данные без запуска DAW.', 'Использовать отдельно в Safari на macOS.'),
+        ctl('Session Metadata', 'Показывает tempo, key, time signature, sample rate и DAW version, если доступны.', 'Помогает проверить техническое состояние проекта.', 'Сверить перед открытием session.'),
+        ctl('Track List', 'Показывает количество и названия tracks.', 'Даёт быстрый обзор структуры.', 'Использовать для подготовки/передачи проекта.'),
+        ctl('Plugin List / Links', 'Показывает плагины с manufacturer links.', 'Помогает найти отсутствующие зависимости.', 'Не считать список установленными plugins текущего компьютера.'),
+        ctl('Audio Pool / Preview', 'Показывает и воспроизводит доступные audio files в поддерживаемых sessions.', 'Позволяет проверить содержимое до открытия DAW.', 'Работает read-only; не является VST insert.'),
+    ],
+    'Chakra': [
+        ctl('Chakra', 'Главный macro harmonic richness и broad tone shaping.', 'Добавляет density, weight, openness и analog-style color.', 'Начать с малого Amount.'),
+        ctl('Tone EQ', 'Сдвигает результат от warm/smooth к bright/open.', 'Формирует общий tonal direction.', 'Настроить после основного Chakra amount.'),
+        ctl('THD', 'Добавляет harmonic color без большого tone shift.', 'Повышает richness и perceived density.', 'Малые значения, особенно на master.'),
+        ctl('Input', 'Уровень в tuned saturation chain.', 'Выше — больше character.', 'Поднять до нужного color, не до громкости.'),
+        ctl('Mix', 'Смешивает processed и dry signal.', 'Сохраняет исходный punch.', 'Parallel 10–50% для сильной настройки.'),
+        ctl('Output Link', 'Компенсирует уровень при изменении Input.', 'Упрощает честный A/B.', 'Включить и проверить вручную.'),
+        ctl('Delta', 'Слушает только добавленную обработку.', 'Показывает harmonics и tone change.', 'Использовать для настройки, не для export.'),
+        ctl('ECO / Bass-Width logic', 'Управляет quality/внутренним multiband M/S behavior и защитой center/low end.', 'Сохраняет solid center при расширении sides.', 'Проверять mono и CPU.'),
+    ],
+    'Ultimate Snare': [
+        ctl('Heat', 'Добавляет saturation, density и aggression.', 'От subtle energy до destruction.', 'Начать мало и контролировать peak level.'),
+        ctl('Body', 'Усиливает fundamental и уменьшает boxiness.', 'Добавляет weight без лишней мути.', 'Настроить вместе с kick/bass.'),
+        ctl('Crack', 'Подчёркивает stick attack и upper-mid bite.', 'Snare лучше проходит guitars и dense mix.', 'Остановиться до harshness.'),
+        ctl('Air', 'Добавляет clean high-frequency detail.', 'Открывает dull snare.', 'Проверить overheads и cymbals.'),
+        ctl('Punch', 'Добавляет controlled compression и consistency.', 'Выдвигает удар вперёд, сохраняя transient.', 'До устойчивого, но не плоского удара.'),
+        ctl('Plate', 'Добавляет mix-ready plate space.', 'Даёт depth без сильной потери impact.', 'Малый Amount или отдельный send по задаче.'),
+        ctl('Bomb', 'Создаёт длинный dramatic effect tail.', 'Snare bombs и transitions.', 'Автоматизировать отдельные акценты.'),
+    ],
+    'Mixing Cheat Sheet': [
+        ctl('Frequency Map', 'Показывает основные frequency regions и их названия.', 'Связывает mud/body/bite/air с реальным звуком.', 'Выбрать область, которую нужно научиться слышать.'),
+        ctl('Frequency Solo', 'Солирует выбранный диапазон.', 'Позволяет услышать вклад полосы.', 'После обучения вернуться к full mix.'),
+        ctl('Instrument Pages', 'Открывает guidance для конкретных источников.', 'Показывает типичные зоны и задачи.', 'Использовать как подсказку, не правило.'),
+        ctl('EQ Guidance', 'Объясняет возможные EQ decisions.', 'Помогает сформулировать проблему.', 'Решение подтверждать в контексте.'),
+        ctl('Compression Ideas / Mix Tips', 'Показывает educational dynamics и workflow hints.', 'Учит, что слушать.', 'Не копировать настройки без прослушивания.'),
+    ],
+    'Portable Mono Speaker Check': [
+        ctl('Bluetooth Speaker Mode', 'Имитирует small portable mono speaker.', 'Показывает translation vocal/kick/bass/snare/hook.', 'Последний monitoring insert, не export.'),
+        ctl('Pink Noise', 'Добавляет controlled masking reference.', 'Показывает, какие элементы исчезают или выпрыгивают.', 'Выровнять mix/reference и не менять noise level при A/B.'),
+        ctl('Reference Workflow', 'Сравнивает mix с level-matched reference перед checker.', 'Отделяет balance problem от tonal preference.', 'Поставить Metric AB/Reference перед checker.'),
+        ctl('Bypass / Monitoring Only', 'Возвращает обычное прослушивание.', 'Проверяет, не начали ли вы миксовать под simulation.', 'Обязательно исключить из render.'),
     ],
     'bx_console SSL 4000 E': bx_console(),
     'bx_console SSL 4000 G': bx_console(),
@@ -583,6 +682,7 @@ for _name, _ctrls in list(EXTRA_PRODUCT_CONTROLS.items()):
     if len(_ctrls) < 4:
         EXTRA_PRODUCT_CONTROLS[_name] = _ctrls + _PAD[:4 - len(_ctrls)]
 
+GENERIC_AMP_NAMES=set()
 for name in [
     'Archetype: Gojira', 'Archetype: Nolly', 'Archetype: Plini', 'Archetype: Petrucci',
     'Archetype: Abasi', 'Archetype: Rabea', 'Archetype: Tim Henson', 'Archetype: Cory Wong',
@@ -597,8 +697,20 @@ for name in [
     'ENGL E646 VS', 'ENGL E765 Retro Tube', 'Suhr PT100', 'Suhr Badger 30',
     'bx_rockrack V3',
 ]:
+    GENERIC_AMP_NAMES.add(name)
     if name not in EXTRA_PRODUCT_CONTROLS:
         EXTRA_PRODUCT_CONTROLS[name] = neural_amp()
+
+# Generic amp and console templates are useful starting points, but they are not
+# exact GUI transcriptions. Use the family profile and label it Product-informed.
+GENERIC_CONSOLE_NAMES={
+    'bx_console SSL 4000 E','bx_console SSL 4000 G','bx_console SSL 9000 J',
+    'bx_console N','bx_console Focusrite SC','bx_console AMEK 9099',
+    'bx_console British Class A',
+}
+GENERIC_PRODUCT_INFORMED_NAMES=GENERIC_AMP_NAMES|GENERIC_CONSOLE_NAMES
+for _name in GENERIC_PRODUCT_INFORMED_NAMES:
+    EXTRA_PRODUCT_CONTROLS.pop(_name,None)
 
 # Remaining well-known products get product-informed status via adapted family
 # controls (not a full GUI transcription).
@@ -627,7 +739,7 @@ EXTRA_INFORMED_NAMES = {
     'Waves PuigChild 660', 'Waves C1 Gate/Expander', 'C1 Compressor/Gate',
     'Waves V-Comp', 'Renaissance Axx', 'Waves H-Reverb',
     'Soundtoys Effect Rack', 'Soundtoys Little PrimalTap', 'Soundtoys PrimalTap',
-    'Soundtoys Sandman Pro', 'Soundtoys FilterFreak 1',
+    'Soundtoys FilterFreak 1',
     'bx_masterdesk / Classic', 'bx_refinement / V3', 'bx_limiter', 'bx_2098',
     'bx_pultec / bx_pultec Pro', 'bx_greenscreamer', 'bx_boom / bx_boom V3',
     'bx_subfilter', 'bx_control V2', 'bx_solo', 'bx_saturator V2',
@@ -645,3 +757,4 @@ EXTRA_INFORMED_NAMES = {
     'Overloud Breverb 2', 'Overloud Gem Tapedesk', 'Newfangled Audio Generate',
     'Bettermaker Stereo Limiter', 'Bettermaker Mastering EQ', 'Bettermaker EQ232',
 }
+EXTRA_INFORMED_NAMES |= GENERIC_PRODUCT_INFORMED_NAMES

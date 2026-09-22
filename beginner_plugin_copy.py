@@ -103,7 +103,7 @@ FAMILY_HINT = {
     'De-essers': 'Специально ловит сибилянты — резкие «с», «ш», «ц».',
     'De-harsh и spectral repair': 'Сглаживает колкую середину и резкие призвуки, когда обычный EQ уже груб.',
     'Noise, breath и de-reverb': 'Убирает шум, лишние вдохи или хвост комнаты.',
-    'Pitch correction': 'Подтягивает неточные ноты. Скорость Retune решает, будет ли натурально или как эффект.',
+    'Pitch correction': 'Исправляет pitch и timing отдельных нот. Ручная graphical correction обычно естественнее полной автоматической обработки.',
     'FET-компрессоры': 'Быстрые и напористые, часто в духе 1176: вокал, барабаны, бас.',
     'Opto-компрессоры': 'Плавные, как LA-2A: выравнивают фразу, не откусывая атаку сразу.',
     'VCA и bus-компрессоры': 'Точный glue на группах и mix bus: небольшая работа, общая склейка.',
@@ -263,7 +263,18 @@ def _family_hint_for(plugin):
     return FAMILY_HINT.get(family, '')
 
 
+PRODUCT_SIMPLE={
+    'Chakra':'Одним главным macro смешивает три harmonic colors, затем Tone EQ, THD и Mix формируют weight, density, openness и analog-style color',
+    'Ultimate Snare':'Специализированно формирует snare через Heat, Body, Crack, Air, Punch, Plate и Bomb — от тонкого усиления до dramatic destruction',
+    'Session Inspector':'Отдельно открывает DAW session в Safari на macOS и показывает metadata, tracks, plugin list и audio previews без запуска DAW; это не VST insert',
+    'Mixing Cheat Sheet':'Обучает слышать frequency regions через Frequency Map, solo диапазонов, instrument pages и подсказки по EQ/compression',
+    'Portable Mono Speaker Check':'Проверяет balance и translation через virtual Bluetooth speaker, Pink Noise и level-matched reference workflow',
+}
+
+
 def _this_one_does(plugin):
+    if plugin.get('name') in PRODUCT_SIMPLE:
+        return PRODUCT_SIMPLE[plugin['name']]
     desc = (plugin.get('description') or '').strip()
     kind = (plugin.get('kind') or '').strip()
     hint = _keyword_hint(plugin)
@@ -301,7 +312,23 @@ def beginner_copy(plugin, profile, sources):
         'when': 'Когда задача уже слышна без стойки.',
         'start': 'Начните с малого Amount и сравните Bypass.',
     })
-    family_hint = _family_hint_for(plugin)
+    if plugin.get('name') == 'Session Inspector':
+        cat = {
+            'tool': 'отдельное HTML-приложение для просмотра DAW-сессии',
+            'what': 'Оно открывает поддерживаемый project/session file в Safari на macOS и показывает metadata, tracks, plugins и доступные audio previews без запуска DAW.',
+            'hear': 'Session Inspector не обрабатывает и не меняет звук: это read-only просмотр проекта.',
+            'when': 'Перед открытием или передачей session, чтобы проверить структуру и зависимости.',
+            'start': 'Запустить отдельно в Safari на Mac. Не добавлять в Inserts, Sends или Monitoring chain.',
+        }
+    if plugin.get('family') == 'Pitch correction':
+        cat = {
+            'tool': 'редактор высоты и времени нот',
+            'what': 'Он анализирует музыкальные ноты и позволяет исправлять pitch и timing отдельных мест, не обрабатывая всю дорожку одинаково.',
+            'hear': 'Исполнение становится точнее, но должно сохранять естественные переходы, vibrato, согласные и фразировку. Если голос звучит механически — коррекции слишком много.',
+            'when': 'После comping и clip editing, когда слышны конкретные неточные ноты или timing-проблемы.',
+            'start': 'Работайте на чистом dry-сигнале до EQ, compression и пространственных эффектов. Сначала исправляйте только явные ошибки.',
+        }
+    family_hint = '' if plugin.get('name') in PRODUCT_SIMPLE else _family_hint_for(plugin)
     does = _this_one_does(plugin)
     src = _source_phrase(sources)
     name = plugin['name']
@@ -310,6 +337,8 @@ def beginner_copy(plugin, profile, sources):
 
     many_sources = len(sources or []) >= 6
     catalog_line = (
+        'Это отдельная standalone utility, а не плагин внутри DAW.'
+        if plugin.get('standalone') else
         'В каталоге он встречается на разных источниках — это карта базы, не официальное «типичное применение».'
         if many_sources else
         f'В каталоге он встречается в том числе на {src}. Это карта этой базы, не официальный список типичных задач.'
@@ -342,7 +371,7 @@ def beginner_copy(plugin, profile, sources):
         _sentence(cat['what']),
         _sentence(f'Чем этот экземпляр отличается в каталоге: {does}'),
         _sentence(family_hint),
-        _sentence(f'В картах этой базы он встречается в том числе на {src}. Это порядок каталога, не официальное типичное применение'),
+        _sentence('В Plugin Navigator это standalone utility: она не участвует в plugin chains и не загружается как insert') if plugin.get('standalone') else _sentence(f'В картах этой базы он встречается в том числе на {src}. Это порядок каталога, не официальное типичное применение'),
         _sentence(cat['hear']),
         _sentence(cat['start']),
         _sentence(f'Пометка: {note.rstrip(".")}') if note else '',
