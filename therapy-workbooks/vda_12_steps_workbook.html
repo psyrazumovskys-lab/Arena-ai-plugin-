@@ -385,14 +385,101 @@
       .actions-buttons { flex-direction: row; }
     }
 
+    /* PRINT STYLES */
     @media print {
-      body { background: #fff; padding: 0; color: #000; font-size: 12pt; }
-      header { background: #fff !important; color: #000 !important; border: 1px solid #ccc; box-shadow: none; padding: 14px; }
-      .badge-top { border: 1px solid #999; color: #000; }
-      .nav-tabs-wrapper, .actions-bar, .btn, .btn-danger { display: none !important; }
-      .step-panel { display: block !important; page-break-after: always; }
-      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-      textarea, input[type="text"], select { border: 1px solid #999 !important; background: #fff !important; }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #1e293b !important;
+        font-size: 11pt !important;
+        line-height: 1.5 !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      header {
+        background: #f8fafc !important;
+        color: #0f172a !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 16px !important;
+        margin-bottom: 20px !important;
+        page-break-after: avoid !important;
+      }
+
+      .badge-top {
+        border: 1px solid #94a3b8 !important;
+        color: #334155 !important;
+        background: transparent !important;
+      }
+
+      .header-desc {
+        color: #475569 !important;
+      }
+
+      .header-meta {
+        border-top: 1px solid #cbd5e1 !important;
+        color: #64748b !important;
+      }
+
+      .nav-tabs-wrapper,
+      .actions-bar,
+      .btn,
+      .btn-danger,
+      .entries-feed {
+        display: none !important;
+      }
+
+      .step-panel {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+
+      .step-panel:last-of-type {
+        page-break-after: auto !important;
+      }
+
+      .card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 18px !important;
+        margin-bottom: 0 !important;
+        page-break-inside: avoid !important;
+      }
+
+      .block-theory,
+      .block-reparent,
+      .block-therapy {
+        border-width: 2px !important;
+        page-break-inside: avoid !important;
+      }
+
+      input[type="text"],
+      select {
+        border: 1px solid #94a3b8 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        min-height: 38px !important;
+      }
+
+      textarea {
+        border: 1px solid #94a3b8 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        min-height: 90px !important;
+      }
+
+      @page {
+        margin: 1.5cm 1.2cm;
+        size: A4 portrait;
+      }
     }
   </style>
 </head>
@@ -614,7 +701,6 @@
       💾 Записи Шагов ВДА сохраняются локально на этом устройстве
     </div>
     <div class="actions-buttons">
-      <button class="btn btn-secondary" onclick="exportVdaData()">📥 Скачать данные (JSON)</button>
       <button class="btn btn-secondary" onclick="window.print()">🖨 Распечатать / В PDF</button>
     </div>
   </div>
