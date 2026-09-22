@@ -211,7 +211,7 @@
       margin-bottom: 6px;
     }
 
-    /* ENHANCED THERAPY BLOCK */
+    /* THERAPY BLOCK */
     .block-therapy {
       background: var(--therapy-block);
       border: 1px solid #e9d5ff;
@@ -440,22 +440,18 @@
        PRINT ARCHITECTURE: 1 STEP = EXACTLY 1 A4 SHEET
        Lined handwritten notebook look & zero wasted white space
        ========================================================= */
-    .print-only-lines {
-      display: none;
-    }
-
     @media print {
       @page {
         size: A4 portrait;
-        margin: 10mm 10mm 10mm 10mm;
+        margin: 8mm 10mm 8mm 10mm;
       }
 
       body {
         background: #ffffff !important;
         padding: 0 !important;
         color: #0f172a !important;
-        font-size: 9pt !important;
-        line-height: 1.35 !important;
+        font-size: 8.5pt !important;
+        line-height: 1.3 !important;
       }
 
       .container {
@@ -464,19 +460,18 @@
         padding: 0 !important;
       }
 
-      /* Compact Cover / Header on first page only */
       header {
         background: #ffffff !important;
         color: #0f172a !important;
         border: 1.5px solid #0f766e !important;
         box-shadow: none !important;
-        padding: 8px 12px !important;
-        margin-bottom: 10px !important;
+        padding: 6px 10px !important;
+        margin-bottom: 8px !important;
         page-break-after: avoid !important;
       }
 
       header h1 {
-        font-size: 1.15rem !important;
+        font-size: 1.05rem !important;
         margin-bottom: 2px !important;
       }
 
@@ -486,21 +481,21 @@
         background: transparent !important;
         padding: 1px 6px !important;
         font-size: 0.65rem !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 2px !important;
       }
 
       .header-desc {
         color: #334155 !important;
-        font-size: 0.8rem !important;
-        line-height: 1.25 !important;
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
       }
 
       .header-meta {
         border-top: 1px solid #e2e8f0 !important;
         color: #475569 !important;
-        margin-top: 4px !important;
-        padding-top: 4px !important;
-        font-size: 0.72rem !important;
+        margin-top: 3px !important;
+        padding-top: 3px !important;
+        font-size: 0.68rem !important;
         gap: 10px !important;
       }
 
@@ -519,8 +514,8 @@
         visibility: visible !important;
         page-break-after: always !important;
         page-break-inside: avoid !important;
-        height: 272mm !important;
-        max-height: 272mm !important;
+        height: 278mm !important;
+        max-height: 278mm !important;
         overflow: hidden !important;
       }
 
@@ -531,7 +526,7 @@
       .card {
         box-shadow: none !important;
         border: 1.5px solid #94a3b8 !important;
-        padding: 10px 12px !important;
+        padding: 8px 10px !important;
         margin: 0 !important;
         height: 100% !important;
         display: flex !important;
@@ -540,32 +535,31 @@
       }
 
       .card h2 {
-        font-size: 1.05rem !important;
+        font-size: 0.98rem !important;
         margin-bottom: 2px !important;
         color: #0f172a !important;
       }
 
       .card-intro {
-        font-size: 0.78rem !important;
-        margin-bottom: 6px !important;
-        padding-bottom: 4px !important;
+        font-size: 0.74rem !important;
+        margin-bottom: 4px !important;
+        padding-bottom: 3px !important;
         color: #475569 !important;
       }
 
-      /* 2-COLUMN GRID FOR THEORY & EXPERIMENT TO SAVE VERTICAL SPACE */
       .print-grid-2 {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
-        margin-bottom: 8px !important;
+        gap: 6px !important;
+        margin-bottom: 6px !important;
       }
 
       .block-theory,
       .block-experiment {
-        padding: 6px 8px !important;
+        padding: 5px 7px !important;
         margin-bottom: 0 !important;
-        font-size: 0.76rem !important;
-        line-height: 1.25 !important;
+        font-size: 0.72rem !important;
+        line-height: 1.2 !important;
         background: #f8fafc !important;
       }
 
@@ -573,24 +567,24 @@
       .block-experiment { border-left: 3px solid #d97706 !important; }
 
       .block-experiment h4 {
-        font-size: 0.78rem !important;
+        font-size: 0.74rem !important;
         margin-bottom: 2px !important;
       }
 
       .form-group {
-        margin-bottom: 6px !important;
+        margin-bottom: 5px !important;
       }
 
       label {
-        font-size: 0.78rem !important;
+        font-size: 0.75rem !important;
         font-weight: 700 !important;
-        margin-bottom: 2px !important;
+        margin-bottom: 1px !important;
         color: #1e293b !important;
       }
 
       .hint { display: none !important; }
 
-      /* ELEGANT NOTEBOOK LINED EFFECT FOR HANDWRITTEN COMPLETION */
+      /* ELEGANT NOTEBOOK LINED EFFECT */
       textarea,
       input[type="text"],
       select {
@@ -599,14 +593,14 @@
         background: repeating-linear-gradient(
           to bottom,
           transparent,
-          transparent 19px,
-          #e2e8f0 20px
+          transparent 17px,
+          #e2e8f0 18px
         ) !important;
         border-radius: 0 !important;
         color: #0f172a !important;
         padding: 0 4px !important;
-        font-size: 8.5pt !important;
-        line-height: 20px !important;
+        font-size: 8pt !important;
+        line-height: 18px !important;
       }
 
       select {
@@ -615,58 +609,58 @@
       }
 
       input[type="text"] {
-        height: 20px !important;
-        min-height: 20px !important;
+        height: 18px !important;
+        min-height: 18px !important;
       }
 
       textarea {
-        height: 40px !important;
-        min-height: 40px !important;
+        height: 36px !important;
+        min-height: 36px !important;
         resize: none !important;
       }
 
-      /* THERAPY SECTION ON PRINTED PAGE */
+      /* THERAPY SECTION */
       .block-therapy {
         border: 1.5px solid #a855f7 !important;
         border-left: 4px solid #7e22ce !important;
-        padding: 8px 10px !important;
-        margin-top: 6px !important;
+        padding: 6px 8px !important;
+        margin-top: 5px !important;
         margin-bottom: 0 !important;
         background: #faf5ff !important;
       }
 
       .block-therapy h4 {
-        font-size: 0.85rem !important;
-        margin-bottom: 4px !important;
+        font-size: 0.8rem !important;
+        margin-bottom: 2px !important;
         color: #581c87 !important;
       }
 
       .therapy-subheading {
-        font-size: 0.72rem !important;
-        margin-top: 4px !important;
-        margin-bottom: 3px !important;
+        font-size: 0.68rem !important;
+        margin-top: 3px !important;
+        margin-bottom: 2px !important;
       }
 
       .therapy-checklist {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 4px 8px !important;
-        margin-bottom: 6px !important;
+        gap: 2px 6px !important;
+        margin-bottom: 4px !important;
       }
 
       .therapy-check-item {
-        font-size: 0.75rem !important;
+        font-size: 0.7rem !important;
       }
 
       .therapy-check-item input[type="checkbox"] {
-        width: 12px !important;
-        height: 12px !important;
+        width: 10px !important;
+        height: 10px !important;
         border: 1px solid #7e22ce !important;
       }
 
       .block-therapy textarea {
-        height: 40px !important;
-        min-height: 40px !important;
+        height: 32px !important;
+        min-height: 32px !important;
       }
     }
   </style>
@@ -680,7 +674,7 @@
     <h1>Право быть собой</h1>
     <p class="header-desc">Практический рабочий журнал бережного выстраивания личных границ, преодоления привычки угождать и возвращения устойчивой автономии.</p>
     <div class="header-meta">
-      <span>👤 Для индивидуальной практики в удобном темпе</span>
+      <span>👤 Углубленная самостоятельная практика</span>
       <span>🤝 Готовые мостики для сессий со специалистом</span>
       <span>📱 Оптимизировано для всех устройств</span>
       <span>📄 Стандарт печати: ровно 1 шаг на лист А4</span>
@@ -717,7 +711,7 @@
 
         <form id="formMod1" onsubmit="saveMod1(event)">
           <div class="form-group">
-            <label for="m1_context">Сфера жизни или круг общения:</label>
+            <label for="m1_context">1. Сфера жизни или круг общения:</label>
             <select id="m1_context">
               <option value="Работа и коллеги">Работа (руководитель, коллеги, заказчики)</option>
               <option value="Родительская семья">Семья и родственники</option>
@@ -728,17 +722,22 @@
           </div>
 
           <div class="form-group">
-            <label for="m1_situation">Ситуация недавней уступки:</label>
+            <label for="m1_situation">2. Ситуация недавней уступки (факты без самокритики):</label>
             <textarea id="m1_situation" placeholder="Опишите факт: о чем вас попросили, на что вы согласились вопреки сомнениям?"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m1_fear">Какое опасение или дискомфорт стояли за этим согласием?</label>
+            <label for="m1_fear">3. Какое опасение или дискомфорт стояли за этим согласием?</label>
             <textarea id="m1_fear" placeholder="Что вызывало тревогу? (Не хотелось расстраивать, побоялся показаться грубым, страх критики)..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m1_price">Какую личную цену пришлось за это заплатить?</label>
+            <label for="m1_healthyBoundary">4. Что в этой ситуации было бы здоровым балансом (вместо полной уступки)?</label>
+            <textarea id="m1_healthyBoundary" placeholder="Например: согласиться помочь, но только на 1 час; перенести на удобный для меня день; вежливо отказать..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="m1_price">5. Какую личную цену пришлось за это заплатить?</label>
             <input type="text" id="m1_price" placeholder="Смещение планов, физическая усталость, отложенный отдых, раздражение...">
           </div>
 
@@ -797,18 +796,23 @@
 
         <form id="formMod2" onsubmit="saveMod2(event)">
           <div class="form-group">
-            <label for="m2_bodySignal">Как тело подает сигнал о внутреннем несогласии?</label>
+            <label for="m2_bodySignal">1. Как тело подает сигнал о внутреннем несогласии?</label>
             <input type="text" id="m2_bodySignal" placeholder="Напряжение в плечах, ком в горле, зажатые челюсти, скованность дыхания...">
           </div>
 
           <div class="form-group">
-            <label for="m2_angerTrigger">Ситуация, вызвавшая досаду или скрытое недовольство:</label>
+            <label for="m2_angerTrigger">2. Ситуация, вызвавшая досаду или скрытое недовольство:</label>
             <textarea id="m2_angerTrigger" placeholder="Опишите момент, когда возник укол раздражения (изменение планов без спроса, непрошеный совет)..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m2_angerMessage">Какую важную потребность подсвечивало это чувство?</label>
+            <label for="m2_angerMessage">3. Какую важную потребность подсвечивало это чувство?</label>
             <textarea id="m2_angerMessage" placeholder="Потребность в отдыхе, в ясности договоренностей, в признании моего вклада, в тишине..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="m2_safeExpression">4. Как я могу выразить эту потребность экологично (словами через рот)?</label>
+            <textarea id="m2_safeExpression" placeholder="Например: «Мне сейчас важно отдохнуть, давай вернемся к этому завтра»; «Мне неудобно менять планы в последний момент»..."></textarea>
           </div>
 
           <!-- ENHANCED THERAPY SECTION -->
@@ -866,18 +870,23 @@
 
         <form id="formMod3" onsubmit="saveMod3(event)">
           <div class="form-group">
-            <label for="m3_request">Просьба или предложение, на которое хочется ответить отказом:</label>
+            <label for="m3_request">1. Просьба или предложение, на которое хочется ответить отказом:</label>
             <input type="text" id="m3_request" placeholder="О чем просят (взять внеплановую работу, поехать на встречу, дать в долг)?">
           </div>
 
           <div class="form-group">
-            <label for="m3_oldWay">Как выглядел привычный уклончивый ответ раньше:</label>
+            <label for="m3_oldWay">2. Как выглядел привычный уклончивый ответ раньше (самооправдания):</label>
             <textarea id="m3_oldWay" placeholder="«Ой, ну даже не знаю... может быть... если только очень постараюсь... извините, пожалуйста...»"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m3_cleanNo">Новая ясная, спокойная и доброжелательная формулировка:</label>
+            <label for="m3_cleanNo">3. Новая ясная, спокойная и доброжелательная формулировка:</label>
             <textarea id="m3_cleanNo" placeholder="«Спасибо за доверие, но сейчас у меня нет возможности за это взяться» / «Мне это сейчас не подходит»"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="m3_counterPressure">4. Мой ответ на возможное настойчивое продавливание («Ну пожалуйста, выручи!»):</label>
+            <input type="text" id="m3_counterPressure" placeholder="«Я понимаю, что ситуация срочная, но мое решение остается в силе».">
           </div>
 
           <!-- ENHANCED THERAPY SECTION -->
@@ -935,18 +944,23 @@
 
         <form id="formMod4" onsubmit="saveMod4(event)">
           <div class="form-group">
-            <label for="m4_event">Ситуация, после которой возникло беспокойство или неловкость:</label>
+            <label for="m4_event">1. Ситуация, после которой возникло беспокойство или неловкость:</label>
             <input type="text" id="m4_event" placeholder="Например: Выбрал остаться дома, отказал коллеге в переработке...">
           </div>
 
           <div class="form-group">
-            <label for="m4_selfCritic">Какая тревожная мысль или голос критика появились?</label>
+            <label for="m4_selfCritic">2. Какая тревожная мысль или голос критика появились?</label>
             <textarea id="m4_selfCritic" placeholder="«Я поступил эгоистично», «Отношения испортятся», «Обо мне подумают плохо»..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m4_compassion">Поддерживающий факт-чек (Ответ самосострадания):</label>
+            <label for="m4_compassion">3. Поддерживающий факт-чек (Ответ самосострадания):</label>
             <textarea id="m4_compassion" placeholder="1) Нарушил ли я чужие границы или защитил свои? 2) Другой взрослый человек способен справиться с досадой? (Да)"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="m4_friendPerspective">4. Что бы я сказал в этой ситуации близкому другу, который испытывает такое же чувство вины?</label>
+            <textarea id="m4_friendPerspective" placeholder="«Ты имел полное право позаботиться о себе. Твой отказ никого не разрушил, ты не виноват»..."></textarea>
           </div>
 
           <!-- ENHANCED THERAPY SECTION -->
@@ -1004,17 +1018,22 @@
 
         <form id="formMod5" onsubmit="saveMod5(event)">
           <div class="form-group">
-            <label for="m5_iWant">Мои искренние «МНЕ ХОЧЕТСЯ / МНЕ ВАЖНО»:</label>
+            <label for="m5_iWant">1. Мои искренние «МНЕ ХОЧЕТСЯ / МНЕ ВАЖНО»:</label>
             <textarea id="m5_iWant" placeholder="Что приносит мне радость, ощущение тепла, покоя или вдохновения (в отдыхе, творчестве, быту)?"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m5_iDoNotWant">То, что я выбираю бережно ограничивать в своей жизни:</label>
+            <label for="m5_iDoNotWant">2. То, что я выбираю бережно ограничивать в своей жизни:</label>
             <textarea id="m5_iDoNotWant" placeholder="Какие форматы общения, обязательства или нагрузки я больше не хочу впускать в личное пространство?"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m5_rule">Моя личная опора — теплое напоминание себе на каждый день:</label>
+            <label for="m5_dailyPermission">3. Мое ежедневное разрешение себе (легализация отдыха и радости):</label>
+            <input type="text" id="m5_dailyPermission" placeholder="«Я имею полное право просто отдыхать, даже если список дел не закончен»">
+          </div>
+
+          <div class="form-group">
+            <label for="m5_rule">4. Моя личная опора — теплое напоминание себе на каждый день:</label>
             <input type="text" id="m5_rule" placeholder="Например: Мое самочувствие ценно; Я могу быть доброжелательным и при этом иметь свои границы.">
           </div>
 
@@ -1095,6 +1114,7 @@
       context: document.getElementById('m1_context').value,
       situation: document.getElementById('m1_situation').value,
       fear: document.getElementById('m1_fear').value,
+      healthyBoundary: document.getElementById('m1_healthyBoundary').value,
       price: document.getElementById('m1_price').value,
       therapyNotes: document.getElementById('m1_therapyNotes').value,
       reqs: [
@@ -1136,6 +1156,7 @@
         <div class="entry-body">
           <p><strong>Ситуация:</strong> ${escapeHtml(i.situation)}</p>
           <p><strong>Опасение / тревога:</strong> ${escapeHtml(i.fear)}</p>
+          ${i.healthyBoundary ? `<p><strong>Здоровый баланс:</strong> ${escapeHtml(i.healthyBoundary)}</p>` : ''}
           <p><strong>Личная цена:</strong> ${escapeHtml(i.price)}</p>
           ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
           ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
@@ -1154,6 +1175,7 @@
       bodySignal: document.getElementById('m2_bodySignal').value,
       trigger: document.getElementById('m2_angerTrigger').value,
       message: document.getElementById('m2_angerMessage').value,
+      safeExpression: document.getElementById('m2_safeExpression').value,
       therapyNotes: document.getElementById('m2_therapyNotes').value,
       reqs: [
         document.getElementById('m2_req1').checked ? 'Телесный зажим' : null,
@@ -1195,6 +1217,7 @@
           <p><strong>Телесный маркер:</strong> ${escapeHtml(i.bodySignal)}</p>
           <p><strong>Ситуация / триггер:</strong> ${escapeHtml(i.trigger)}</p>
           <p><strong>Важная потребность:</strong> ${escapeHtml(i.message)}</p>
+          ${i.safeExpression ? `<p><strong>Экологичное выражение:</strong> ${escapeHtml(i.safeExpression)}</p>` : ''}
           ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
           ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
@@ -1212,6 +1235,7 @@
       request: document.getElementById('m3_request').value,
       oldWay: document.getElementById('m3_oldWay').value,
       cleanNo: document.getElementById('m3_cleanNo').value,
+      counterPressure: document.getElementById('m3_counterPressure').value,
       therapyNotes: document.getElementById('m3_therapyNotes').value,
       reqs: [
         document.getElementById('m3_req1').checked ? 'Репетиция отказа' : null,
@@ -1253,6 +1277,7 @@
           <p><strong>Запрос/предложение:</strong> ${escapeHtml(i.request)}</p>
           <p><strong>Привычный ответ:</strong> <span style="color:#64748b;">«${escapeHtml(i.oldWay)}»</span></p>
           <p><strong>Новый ясный ответ:</strong> <b style="color:#0f172a;">«${escapeHtml(i.cleanNo)}»</b></p>
+          ${i.counterPressure ? `<p><strong>Ответ на продавливание:</strong> ${escapeHtml(i.counterPressure)}</p>` : ''}
           ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
           ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
@@ -1270,6 +1295,7 @@
       event: document.getElementById('m4_event').value,
       critic: document.getElementById('m4_selfCritic').value,
       compassion: document.getElementById('m4_compassion').value,
+      friendPerspective: document.getElementById('m4_friendPerspective').value,
       therapyNotes: document.getElementById('m4_therapyNotes').value,
       reqs: [
         document.getElementById('m4_req1').checked ? 'Работа с критиком' : null,
@@ -1311,6 +1337,7 @@
           <p><strong>Ситуация:</strong> ${escapeHtml(i.event)}</p>
           <p><strong>Мысль/сомнение:</strong> «${escapeHtml(i.critic)}»</p>
           <p><strong>Поддерживающий ответ:</strong> ${escapeHtml(i.compassion)}</p>
+          ${i.friendPerspective ? `<p><strong>Слова другу (взгляд со стороны):</strong> ${escapeHtml(i.friendPerspective)}</p>` : ''}
           ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
           ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
@@ -1327,6 +1354,7 @@
       date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
       want: document.getElementById('m5_iWant').value,
       doNotWant: document.getElementById('m5_iDoNotWant').value,
+      dailyPermission: document.getElementById('m5_dailyPermission').value,
       rule: document.getElementById('m5_rule').value,
       therapyNotes: document.getElementById('m5_therapyNotes').value,
       reqs: [
@@ -1368,6 +1396,7 @@
         <div class="entry-body">
           <p><strong>Мне важно и хочется:</strong> ${escapeHtml(i.want)}</p>
           <p><strong>Ограничиваю в жизни:</strong> ${escapeHtml(i.doNotWant)}</p>
+          ${i.dailyPermission ? `<p><strong>Ежедневное разрешение:</strong> ${escapeHtml(i.dailyPermission)}</p>` : ''}
           <p><strong>Личная опора:</strong> <b>«${escapeHtml(i.rule)}»</b></p>
           ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
           ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
