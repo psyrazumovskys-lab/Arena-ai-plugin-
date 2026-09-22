@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Право быть собой: Терапевтический рабочий журнал бережного выстраивания личных границ</title>
+  <title>Право быть собой: Практический журнал личных границ и уверенности в себе</title>
   <style>
     :root {
       --primary: #1e3a8a;
@@ -584,7 +584,6 @@
 
       .hint { display: none !important; }
 
-      /* ELEGANT NOTEBOOK LINED EFFECT */
       textarea,
       input[type="text"],
       select {
@@ -619,7 +618,6 @@
         resize: none !important;
       }
 
-      /* THERAPY SECTION */
       .block-therapy {
         border: 1.5px solid #a855f7 !important;
         border-left: 4px solid #7e22ce !important;
@@ -670,24 +668,24 @@
 <div class="container">
 
   <header>
-    <span class="badge-top">Терапевтический воркбук</span>
+    <span class="badge-top">Рабочая тетрадь</span>
     <h1>Право быть собой</h1>
-    <p class="header-desc">Практический рабочий журнал бережного выстраивания личных границ, преодоления привычки угождать и возвращения устойчивой автономии.</p>
+    <p class="header-desc">Практический журнал для тех, кто устал со всеми соглашаться, хочет научиться спокойно говорить «нет» и вернуть себе право на отдых и личные желания.</p>
     <div class="header-meta">
-      <span>👤 Углубленная самостоятельная практика</span>
-      <span>🤝 Готовые мостики для сессий со специалистом</span>
-      <span>📱 Оптимизировано для всех устройств</span>
-      <span>📄 Стандарт печати: ровно 1 шаг на лист А4</span>
+      <span>👤 Для спокойной работы в удобном темпе</span>
+      <span>🤝 Помощь в подготовке к разговору с психологом</span>
+      <span>📱 Удобно на телефоне, планшете и компьютере</span>
+      <span>📄 Печать: ровно 1 страница на каждое задание</span>
     </div>
   </header>
 
   <div class="nav-tabs-wrapper">
     <nav class="nav-tabs" role="tablist">
-      <button class="tab-btn active" onclick="switchModule('mod1', this)">1. Карта уступок</button>
-      <button class="tab-btn" onclick="switchModule('mod2', this)">2. Сигналы тела</button>
-      <button class="tab-btn" onclick="switchModule('mod3', this)">3. Ясное «Нет»</button>
-      <button class="tab-btn" onclick="switchModule('mod4', this)">4. Самосострадание</button>
-      <button class="tab-btn" onclick="switchModule('mod5', this)">5. Ориентиры</button>
+      <button class="tab-btn active" onclick="switchModule('mod1', this)">1. Где я уступаю</button>
+      <button class="tab-btn" onclick="switchModule('mod2', this)">2. Что чувствует тело</button>
+      <button class="tab-btn" onclick="switchModule('mod3', this)">3. Как сказать «Нет»</button>
+      <button class="tab-btn" onclick="switchModule('mod4', this)">4. Если гложет вина</button>
+      <button class="tab-btn" onclick="switchModule('mod5', this)">5. Чего хочу я сам</button>
     </nav>
   </div>
 
@@ -695,80 +693,80 @@
   <div id="panel-mod1" class="module-panel active">
     <div class="card">
       <div>
-        <h2>Шаг 1. Исследование привычки уступать и поиск баланса</h2>
-        <p class="card-intro">Бережное наблюдение за тем, в каких сферах и отношениях вы соглашаетесь вопреки своим истинным возможностям или желаниям.</p>
+        <h2>Шаг 1. Где и почему я соглашаюсь во вред себе</h2>
+        <p class="card-intro">Спокойно и без самокритики замечаем ситуации, в которых мы говорим «да», хотя внутри всё просит отказаться.</p>
 
         <div class="print-grid-2">
           <div class="block-theory">
-            <strong>Как формируется эта привычка:</strong> Стремление быть удобным — это не дефект характера, а выработанный защитный механизм. Когда-то он помогал сохранять контакт и избегать конфликтов. Мы с уважением исследуем: где этот способ поведения продолжает помогать, а где он уже отнимает слишком много сил.
+            <strong>Откуда берется привычка всем угождать:</strong> Желание быть для всех хорошим — это не слабость. Чаще всего в детстве это был единственный способ избежать ссор, получить похвалу или почувствовать себя нужным. Мы не ругаем себя за это, а смотрим трезво: где эта привычка до сих пор полезна, а где она уже просто выматывает.
           </div>
 
           <div class="block-experiment">
-            <h4>🌱 Эксперимент недели: «Право на паузу»</h4>
-            <p>Перед тем как ответить «Да» на любую несрочную просьбу, используйте фразу-буфер: <em>«Мне нужно свериться с планами, я отвечу чуть позже»</em>. Отслеживайте, как пауза возвращает чувство контроля.</p>
+            <h4>🌱 Простое упражнение недели: «Пауза перед ответом»</h4>
+            <p>Когда вас о чем-то внезапно просят, не отвечайте сразу «да». Возьмите паузу: <em>«Мне нужно свериться со своими планами, я отвечу чуть позже»</em>. Почувствуйте, как даже 15 минут паузы возвращают спокойствие.</p>
           </div>
         </div>
 
         <form id="formMod1" onsubmit="saveMod1(event)">
           <div class="form-group">
-            <label for="m1_context">1. Сфера жизни или круг общения:</label>
+            <label for="m1_context">1. С кем произошла ситуация?</label>
             <select id="m1_context">
-              <option value="Работа и коллеги">Работа (руководитель, коллеги, заказчики)</option>
-              <option value="Родительская семья">Семья и родственники</option>
-              <option value="Романтические отношения">Партнер / близкие отношения</option>
-              <option value="Друзья и знакомые">Друзья и приятели</option>
-              <option value="Повседневные контакты">Повседневные контакты (сфера услуг, незнакомые люди)</option>
+              <option value="Работа и коллеги">На работе (начальник, коллеги, клиенты)</option>
+              <option value="Родительская семья">В семье (родители, родственники)</option>
+              <option value="Романтические отношения">С любимым человеком / партнером</option>
+              <option value="Друзья и знакомые">С друзьями или приятелями</option>
+              <option value="Повседневные контакты">В быту (такси, магазин, незнакомые люди)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="m1_situation">2. Ситуация недавней уступки (факты без самокритики):</label>
-            <textarea id="m1_situation" placeholder="Опишите факт: о чем вас попросили, на что вы согласились вопреки сомнениям?"></textarea>
+            <label for="m1_situation">2. Что произошло? (Опишите только факты, без осуждения себя):</label>
+            <textarea id="m1_situation" placeholder="О чем вас попросили и на что вы согласились, хотя на самом деле не хотели?"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m1_fear">3. Какое опасение или дискомфорт стояли за этим согласием?</label>
-            <textarea id="m1_fear" placeholder="Что вызывало тревогу? (Не хотелось расстраивать, побоялся показаться грубым, страх критики)..."></textarea>
+            <label for="m1_fear">3. Что пугало в отказе? Какая мысль заставила согласиться?</label>
+            <textarea id="m1_fear" placeholder="Чего вы испугались? Например: «человек обидится», «обо мне подумают плохо», «посчитают эгоистом», «будет ссора»..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m1_healthyBoundary">4. Что в этой ситуации было бы здоровым балансом (вместо полной уступки)?</label>
-            <textarea id="m1_healthyBoundary" placeholder="Например: согласиться помочь, но только на 1 час; перенести на удобный для меня день; вежливо отказать..."></textarea>
+            <label for="m1_healthyBoundary">4. Какое решение здесь было бы честным и удобным для вас?</label>
+            <textarea id="m1_healthyBoundary" placeholder="Например: согласиться помочь, но только на один час; предложить другой день; или сразу спокойно отказаться..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m1_price">5. Какую личную цену пришлось за это заплатить?</label>
-            <input type="text" id="m1_price" placeholder="Смещение планов, физическая усталость, отложенный отдых, раздражение...">
+            <label for="m1_price">5. Что вам стоила эта уступка?</label>
+            <input type="text" id="m1_price" placeholder="Потраченное время, сильная усталость, сорванные личные планы, испорченное настроение...">
           </div>
 
-          <!-- ENHANCED THERAPY SECTION -->
+          <!-- THERAPY SECTION -->
           <div class="block-therapy">
-            <h4>🛋 В фокус сессии с психологом: Исследование корней и запрос</h4>
+            <h4>🛋 О чем полезно поговорить с психологом</h4>
             
-            <div class="therapy-subheading">1. Аналитический вопрос для размышления:</div>
-            <p style="margin-bottom:6px;">«Чье недовольство или холод из моего детства мне мерещится за отказом этому человеку?»</p>
+            <div class="therapy-subheading">1. Вопрос для размышления:</div>
+            <p style="margin-bottom:6px;">«Чье недовольство или обиду из моего прошлого я больше всего боюсь увидеть, когда хочу отказать этому человеку?»</p>
 
-            <div class="therapy-subheading">2. С чем я хочу поработать на ближайшей встрече (запрос):</div>
+            <div class="therapy-subheading">2. Что из этого я хочу разобрать на консультации:</div>
             <div class="therapy-checklist">
               <label class="therapy-check-item">
-                <input type="checkbox" id="m1_req1"> Разобрать застрявшую ситуацию недели
+                <input type="checkbox" id="m1_req1"> Разобрать эту ситуацию и понять, как поступить в следующий раз
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m1_req2"> Исследовать страх разочаровать важную фигуру
+                <input type="checkbox" id="m1_req2"> Разобраться со страхом кого-то разочаровать или расстроить
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m1_req3"> Отрепетировать безопасную паузу перед ответом
+                <input type="checkbox" id="m1_req3"> Потренироваться брать паузу перед ответом без неловкости
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m1_req4"> Снять тревожный фон перед разговором
+                <input type="checkbox" id="m1_req4"> Снять тревогу и беспокойство перед сложным разговором
               </label>
             </div>
 
-            <div class="therapy-subheading">3. Мои личные заметки и наблюдения к сессии:</div>
-            <textarea id="m1_therapyNotes" placeholder="Что важно обсудить со специалистом..."></textarea>
+            <div class="therapy-subheading">3. Мои заметки к встрече (вопросы, мысли, переживания):</div>
+            <textarea id="m1_therapyNotes" placeholder="Запишите сюда то, что хочется не забыть сказать специалисту..."></textarea>
           </div>
 
-          <button type="submit" class="btn">Сохранить запись в журнал</button>
+          <button type="submit" class="btn">Сохранить запись в тетрадь</button>
         </form>
       </div>
 
@@ -780,69 +778,69 @@
   <div id="panel-mod2" class="module-panel">
     <div class="card">
       <div>
-        <h2>Шаг 2. Телесный радар и признание эмоциональных сигналов</h2>
-        <p class="card-intro">Восстановление доверия к сигналам тела и бережное отношение к раздражению как к маркеру усталости или исчерпания ресурса.</p>
+        <h2>Шаг 2. Как тело подсказывает, что силы на исходе</h2>
+        <p class="card-intro">Учимся слышать сигналы усталости и раздражения до того, как они перерастут в бессилие или срыв.</p>
 
         <div class="print-grid-2">
           <div class="block-theory">
-            <strong>О чем сообщает раздражение:</strong> Злость и досада — это не «плохие» эмоции, а биологические сторожа вашей батарейки. Они сигнализируют: <em>«Мой ресурс исчерпан»</em> или <em>«Здесь нарушена договоренность»</em>. Признать этот сигнал — значит вернуть себе уважение.
+            <strong>О чем нам говорит раздражение:</strong> Злость и недовольство — это не признак дурного характера. Это сигнал внутренней «батарейки», которая предупреждает: <em>«Мои силы закончились»</em> или <em>«Кто-то нарушает наши договоренности»</em>. Заметить это раздражение — первый шаг к тому, чтобы защитить себя.
           </div>
 
           <div class="block-experiment">
-            <h4>🌱 Эксперимент недели: «Слушать первый отклик тела»</h4>
-            <p>В момент любого выбора сделайте вдох и спросите тело: ощущает ли оно легкость и расширение или сжатие в груди? Примите этот телесный сигнал как важный советника.</p>
+            <h4>🌱 Простое упражнение недели: «Слушать первый вздох»</h4>
+            <p>Когда вам предлагают что-то сделать, прислушайтесь к телу: почувствовало ли оно облегчение или, наоборот, внутри всё сжалось? Этот первый физический отклик почти никогда не врет.</p>
           </div>
         </div>
 
         <form id="formMod2" onsubmit="saveMod2(event)">
           <div class="form-group">
-            <label for="m2_bodySignal">1. Как тело подает сигнал о внутреннем несогласии?</label>
-            <input type="text" id="m2_bodySignal" placeholder="Напряжение в плечах, ком в горле, зажатые челюсти, скованность дыхания...">
+            <label for="m2_bodySignal">1. Где в теле возник зажим, когда вы согласились через силу?</label>
+            <input type="text" id="m2_bodySignal" placeholder="Сжались челюсти, появился ком в горле, напряглись плечи, стало трудно дышать...">
           </div>
 
           <div class="form-group">
-            <label for="m2_angerTrigger">2. Ситуация, вызвавшая досаду или скрытое недовольство:</label>
-            <textarea id="m2_angerTrigger" placeholder="Опишите момент, когда возник укол раздражения (изменение планов без спроса, непрошеный совет)..."></textarea>
+            <label for="m2_angerTrigger">2. Что именно вызвало досаду или тихое раздражение?</label>
+            <textarea id="m2_angerTrigger" placeholder="Какое действие другого человека задело? (Позвонили поздно вечером, нагрузили чужой работой, дали совет без спроса)..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m2_angerMessage">3. Какую важную потребность подсвечивало это чувство?</label>
-            <textarea id="m2_angerMessage" placeholder="Потребность в отдыхе, в ясности договоренностей, в признании моего вклада, в тишине..."></textarea>
+            <label for="m2_angerMessage">3. О чем просило ваше тело в этот момент? Какая была потребность?</label>
+            <textarea id="m2_angerMessage" placeholder="Потребность отдохнуть, побыть в тишине, чтобы уважили мое время, чтобы со мной посоветовались..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m2_safeExpression">4. Как я могу выразить эту потребность экологично (словами через рот)?</label>
-            <textarea id="m2_safeExpression" placeholder="Например: «Мне сейчас важно отдохнуть, давай вернемся к этому завтра»; «Мне неудобно менять планы в последний момент»..."></textarea>
+            <label for="m2_safeExpression">4. Как сказать об этой потребности спокойно и прямо?</label>
+            <textarea id="m2_safeExpression" placeholder="Например: «Я сейчас очень устал, давай обсудим это завтра»; «Мне неудобно, когда планы меняются в последний момент»..."></textarea>
           </div>
 
-          <!-- ENHANCED THERAPY SECTION -->
+          <!-- THERAPY SECTION -->
           <div class="block-therapy">
-            <h4>🛋 В фокус сессии с психологом: Легализация чувств и запрос</h4>
+            <h4>🛋 О чем полезно поговорить с психологом</h4>
             
-            <div class="therapy-subheading">1. Аналитический вопрос для размышления:</div>
-            <p style="margin-bottom:6px;">«Как в моей семье реагировали на несогласие и злость? Разрешалось ли мне злиться, не боясь отвержения?»</p>
+            <div class="therapy-subheading">1. Вопрос для размышления:</div>
+            <p style="margin-bottom:6px;">«Как в моей семье относились к злости и несогласию? Можно ли было сказать "мне это не нравится", не боясь наказания или бойкота?»</p>
 
-            <div class="therapy-subheading">2. С чем я хочу поработать на встрече со специалистом:</div>
+            <div class="therapy-subheading">2. Что из этого я хочу разобрать на консультации:</div>
             <div class="therapy-checklist">
               <label class="therapy-check-item">
-                <input type="checkbox" id="m2_req1"> Распознать свой хронический телесный зажим
+                <input type="checkbox" id="m2_req1"> Понять, почему тело так сильно зажимается при спорах
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m2_req2"> Научиться выражать несогласие спокойно и экологично
+                <input type="checkbox" id="m2_req2"> Научиться говорить «мне это не подходит» без крика и без страха
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m2_req3"> Проработать страх разрушить отношения своей злостью
+                <input type="checkbox" id="m2_req3"> Перестать бояться, что любое несогласие разрушит отношения
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m2_req4"> Разрешить себе право на отдых без оправданий
+                <input type="checkbox" id="m2_req4"> Разрешить себе отдыхать и не чувствовать себя за это виноватым
               </label>
             </div>
 
-            <div class="therapy-subheading">3. Мои личные заметки и наблюдения к сессии:</div>
-            <textarea id="m2_therapyNotes" placeholder="Что важно обсудить со специалистом..."></textarea>
+            <div class="therapy-subheading">3. Мои заметки к встрече:</div>
+            <textarea id="m2_therapyNotes" placeholder="Что хочется обсудить со специалистом..."></textarea>
           </div>
 
-          <button type="submit" class="btn">Сохранить запись в журнал</button>
+          <button type="submit" class="btn">Сохранить запись в тетрадь</button>
         </form>
       </div>
 
@@ -854,69 +852,69 @@
   <div id="panel-mod3" class="module-panel">
     <div class="card">
       <div>
-        <h2>Шаг 3. Искусство ясного и спокойного «Нет»</h2>
-        <p class="card-intro">Освоение понятных, уважительных и твердых формулировок отказа без чувства вины и многоэтажных самооправданий.</p>
+        <h2>Шаг 3. Как сказать «Нет» спокойно и без длинных оправданий</h2>
+        <p class="card-intro">Учимся отказывать вежливо, понятно и твердо, не унижаясь лишними извинениями.</p>
 
         <div class="print-grid-2">
           <div class="block-theory">
-            <strong>Почему краткость бережет контакт:</strong> Долгие и виноватые оправдания провоцируют собеседника искать аргументы для продолжения давления. Спокойное <em>«Спасибо за предложение, но в этот раз я не смогу»</em> не ранит, а вносит уважение и определенность.
+            <strong>Почему длинные оправдания только вредят:</strong> Чем дольше и жалобнее мы объясняем причину отказа (*«я бы рад, но у меня кошка, пробки, голова...»*), тем больше поводов даем собеседнику спорить и давить дальше. Простое и вежливое <em>«Спасибо за предложение, но сейчас я не смогу»</em> звучит достойно и понятно.
           </div>
 
           <div class="block-experiment">
-            <h4>🌱 Эксперимент: «Лестница безопасных микро-отказов»</h4>
-            <p>Потренируйтесь говорить вежливое «Нет» там, где нет цены отношений: откажитесь от чека на кассе, рекламной листовки или дополнительного предложения в кафе.</p>
+            <h4>🌱 Простое упражнение: «Тренировка на мелочах»</h4>
+            <p>Попробуйте сказать спокойное «нет» там, где это совершенно ничем не грозит: откажитесь от чека на кассе, рекламной листовки на улице или навязчивого звонка с опросом. Почувствуйте: мир от этого не рухнул.</p>
           </div>
         </div>
 
         <form id="formMod3" onsubmit="saveMod3(event)">
           <div class="form-group">
-            <label for="m3_request">1. Просьба или предложение, на которое хочется ответить отказом:</label>
-            <input type="text" id="m3_request" placeholder="О чем просят (взять внеплановую работу, поехать на встречу, дать в долг)?">
+            <label for="m3_request">1. О чем вас попросили (или что предложили), на что хочется ответить отказом?</label>
+            <input type="text" id="m3_request" placeholder="Взять работу на выходные, поехать на неинтересную встречу, одолжить денег...">
           </div>
 
           <div class="form-group">
-            <label for="m3_oldWay">2. Как выглядел привычный уклончивый ответ раньше (самооправдания):</label>
+            <label for="m3_oldWay">2. Как вы обычно отмазывались раньше (с кучей извинений):</label>
             <textarea id="m3_oldWay" placeholder="«Ой, ну даже не знаю... может быть... если только очень постараюсь... извините, пожалуйста...»"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m3_cleanNo">3. Новая ясная, спокойная и доброжелательная формулировка:</label>
-            <textarea id="m3_cleanNo" placeholder="«Спасибо за доверие, но сейчас у меня нет возможности за это взяться» / «Мне это сейчас не подходит»"></textarea>
+            <label for="m3_cleanNo">3. Простая, вежливая и твердая фраза отказа:</label>
+            <textarea id="m3_cleanNo" placeholder="«Спасибо за предложение, но сейчас я не смогу за это взяться» / «Мне это сейчас не подходит» / «В эти выходные я занят»"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m3_counterPressure">4. Мой ответ на возможное настойчивое продавливание («Ну пожалуйста, выручи!»):</label>
-            <input type="text" id="m3_counterPressure" placeholder="«Я понимаю, что ситуация срочная, но мое решение остается в силе».">
+            <label for="m3_counterPressure">4. Что ответить, если человек продолжит уговаривать («Ну пожалуйста, выручи!»)?</label>
+            <input type="text" id="m3_counterPressure" placeholder="«Я понимаю, что тебе это важно, но мое решение не меняется».">
           </div>
 
-          <!-- ENHANCED THERAPY SECTION -->
+          <!-- THERAPY SECTION -->
           <div class="block-therapy">
-            <h4>🛋 В фокус сессии с психологом: Тренировка уверенности и запрос</h4>
+            <h4>🛋 О чем полезно поговорить с психологом</h4>
             
-            <div class="therapy-subheading">1. Аналитический вопрос для размышления:</div>
-            <p style="margin-bottom:6px;">«Почему мне кажется, что отказать взрослому человеку в его просьбе — это то же самое, что нанести ему жестокую обиду?»</p>
+            <div class="therapy-subheading">1. Вопрос для размышления:</div>
+            <p style="margin-bottom:6px;">«Почему мне кажется, что отказать взрослому человеку в его просьбе — это то же самое, что смертельно его обидеть?»</p>
 
-            <div class="therapy-subheading">2. С чем я хочу поработать на встрече со специалистом:</div>
+            <div class="therapy-subheading">2. Что из этого я хочу разобрать на консультации:</div>
             <div class="therapy-checklist">
               <label class="therapy-check-item">
-                <input type="checkbox" id="m3_req1"> Отрепетировать сложный диалог отказа в безопасной роли
+                <input type="checkbox" id="m3_req1"> Отрепетировать сложный разговор с психологом по ролям
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m3_req2"> Сформулировать экологичные границы с родителями / руководством
+                <input type="checkbox" id="m3_req2"> Найти правильные слова для разговора с родителями или начальством
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m3_req3"> Избавиться от привычки извиняться перед тем, как сказать о себе
+                <input type="checkbox" id="m3_req3"> Избавиться от привычки извиняться перед каждой своей просьбой
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m3_req4"> Научиться выдерживать паузу и чужую настойчивость
+                <input type="checkbox" id="m3_req4"> Научиться спокойно выдерживать чужую настойчивость и уговоры
               </label>
             </div>
 
-            <div class="therapy-subheading">3. Мои личные заметки и наблюдения к сессии:</div>
-            <textarea id="m3_therapyNotes" placeholder="Что важно обсудить со специалистом..."></textarea>
+            <div class="therapy-subheading">3. Мои заметки к встрече:</div>
+            <textarea id="m3_therapyNotes" placeholder="Что хочется обсудить со специалистом..."></textarea>
           </div>
 
-          <button type="submit" class="btn">Сохранить формулировку отказа</button>
+          <button type="submit" class="btn">Сохранить запись в тетрадь</button>
         </form>
       </div>
 
@@ -928,69 +926,69 @@
   <div id="panel-mod4" class="module-panel">
     <div class="card">
       <div>
-        <h2>Шаг 4. Бережное проживание сомнений и самосострадание</h2>
-        <p class="card-intro">Как поддержать себя, когда после отстаивания своих границ накатывает естественная неловкость или тревога перед реакцией других.</p>
+        <h2>Шаг 4. Что делать, если после отказа накрывает чувство вины</h2>
+        <p class="card-intro">Как поддержать себя, когда вы поступили правильно, но внутри всё равно неприятно и свербит мысль: «я поступил плохо».</p>
 
         <div class="print-grid-2">
           <div class="block-theory">
-            <strong>Период адаптации нервной системы:</strong> Чувство вины или неловкости после отказа — это не доказательство ошибки. Психике требуется время, чтобы привыкнуть к тому, что заботиться о себе — законно и безопасно.
+            <strong>Почему возникает эта вина:</strong> Когда человек всю жизнь привык уступать, первый же отказ кажется катастрофой. Это не значит, что вы совершили ошибку. Это обычная привычка мозга: ему тревожно от любого нового поведения. Чувство вины пройдет, если не бросаться сразу всё исправлять.
           </div>
 
           <div class="block-experiment">
-            <h4>🌱 Эксперимент: «Пауза при наплыве вины»</h4>
-            <p>Если после отказа возникает импульс все вернуть назад и согласиться — сделайте глубокий вдох, положите ладонь на грудь и скажите себе: <em>«Я имею право беречь свои силы. Со мной всё в порядке»</em>.</p>
+            <h4>🌱 Простое упражнение: «Переждать приступ вины»</h4>
+            <p>Если после отказа хочется немедленно перезвонить и сказать «ладно, я всё сделаю!» — положите руку на грудь, сделайте медленный выдох и скажите себе: <em>«Я взрослый человек. Я имею право беречь свои силы. Со мной всё в порядке»</em>.</p>
           </div>
         </div>
 
         <form id="formMod4" onsubmit="saveMod4(event)">
           <div class="form-group">
-            <label for="m4_event">1. Ситуация, после которой возникло беспокойство или неловкость:</label>
-            <input type="text" id="m4_event" placeholder="Например: Выбрал остаться дома, отказал коллеге в переработке...">
+            <label for="m4_event">1. В какой ситуации вас накрыло чувство вины или неловкости?</label>
+            <input type="text" id="m4_event" placeholder="Например: отказался выйти на работу в выходной, не поехал к родственникам...">
           </div>
 
           <div class="form-group">
-            <label for="m4_selfCritic">2. Какая тревожная мысль или голос критика появились?</label>
-            <textarea id="m4_selfCritic" placeholder="«Я поступил эгоистично», «Отношения испортятся», «Обо мне подумают плохо»..."></textarea>
+            <label for="m4_selfCritic">2. В чем вы начали себя обвинять? Какая мысль крутится в голове?</label>
+            <textarea id="m4_selfCritic" placeholder="«Я эгоист», «Я подвел человека», «Обо мне подумают, что я зазнался», «Меня теперь будут ненавидеть»..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m4_compassion">3. Поддерживающий факт-чек (Ответ самосострадания):</label>
-            <textarea id="m4_compassion" placeholder="1) Нарушил ли я чужие границы или защитил свои? 2) Другой взрослый человек способен справиться с досадой? (Да)"></textarea>
+            <label for="m4_compassion">3. Трезвый взгляд на ситуацию (Факты вместо страхов):</label>
+            <textarea id="m4_compassion" placeholder="1) Нарушил ли я закон или обещание? (Нет) 2) Другой взрослый человек в состоянии пережить отказ? (Да, он справится)"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m4_friendPerspective">4. Что бы я сказал в этой ситуации близкому другу, который испытывает такое же чувство вины?</label>
-            <textarea id="m4_friendPerspective" placeholder="«Ты имел полное право позаботиться о себе. Твой отказ никого не разрушил, ты не виноват»..."></textarea>
+            <label for="m4_friendPerspective">4. Что бы вы сказали в этой же ситуации лучшему другу, если бы он так мучился виной?</label>
+            <textarea id="m4_friendPerspective" placeholder="«Ты имел полное право отдохнуть. Ты никому не сделал зла. Перестань себя корить»..."></textarea>
           </div>
 
-          <!-- ENHANCED THERAPY SECTION -->
+          <!-- THERAPY SECTION -->
           <div class="block-therapy">
-            <h4>🛋 В фокус сессии с психологом: Разделение ответственности и запрос</h4>
+            <h4>🛋 О чем полезно поговорить с психологом</h4>
             
-            <div class="therapy-subheading">1. Аналитический вопрос для размышления:</div>
-            <p style="margin-bottom:6px;">«Чьим голосом говорит моя вина? Кто в детстве перекладывал на меня ответственность за свое настроение?»</p>
+            <div class="therapy-subheading">1. Вопрос для размышления:</div>
+            <p style="margin-bottom:6px;">«Чьим голосом говорит моя вина? Кто в детстве внушал мне, что я отвечаю за настроение и радость взрослых?»</p>
 
-            <div class="therapy-subheading">2. С чем я хочу поработать на встрече со специалистом:</div>
+            <div class="therapy-subheading">2. Что из этого я хочу разобрать на консультации:</div>
             <div class="therapy-checklist">
               <label class="therapy-check-item">
-                <input type="checkbox" id="m4_req1"> Разоблачить токсичные уловки внутреннего критика
+                <input type="checkbox" id="m4_req1"> Разобраться с постоянным внутренним голосом критика и самоедством
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m4_req2"> Научиться не спасать чужое настроение ценой своего истощения
+                <input type="checkbox" id="m4_req2"> Перестать быть спасателем и тащить на себе чужие эмоции
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m4_req3"> Укрепить фигуру Любящего/Поддерживающего Внутреннего Взрослого
+                <input type="checkbox" id="m4_req3"> Научиться относиться к себе тепло и с поддержкой
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m4_req4"> Прожить страх отвержения при отстаивании автономии
+                <input type="checkbox" id="m4_req4"> Проработать детский страх остаться одному или быть отвергнутым
               </label>
             </div>
 
-            <div class="therapy-subheading">3. Мои личные заметки и наблюдения к сессии:</div>
-            <textarea id="m4_therapyNotes" placeholder="Что важно обсудить со специалистом..."></textarea>
+            <div class="therapy-subheading">3. Мои заметки к встрече:</div>
+            <textarea id="m4_therapyNotes" placeholder="Что хочется обсудить со специалистом..."></textarea>
           </div>
 
-          <button type="submit" class="btn">Сохранить проработку самоподдержки</button>
+          <button type="submit" class="btn">Сохранить запись в тетрадь</button>
         </form>
       </div>
 
@@ -1002,69 +1000,69 @@
   <div id="panel-mod5" class="module-panel">
     <div class="card">
       <div>
-        <h2>Шаг 5. Личные ориентиры: контакт со своими желаниями</h2>
-        <p class="card-intro">Наполнение освободившегося ресурса тем, что по-настоящему важно, приятно и ценно именно для вас.</p>
+        <h2>Шаг 5. Чего на самом деле хочу я сам</h2>
+        <p class="card-intro">Когда мы перестаем тратить все силы на чужие ожидания, появляется время для своей настоящей жизни.</p>
 
         <div class="print-grid-2">
           <div class="block-theory">
-            <strong>Освобождение места для жизни:</strong> Перестав обслуживать чужие ожидания, мы обнаруживаем внутреннее пространство. Это благодатный этап возвращения к своим вкусам, ценностям, ритму жизни и творческим импульсам.
+            <strong>Место для собственных желаний:</strong> Перестав угождать другим, многие люди сначала теряются: <em>«А чего вообще хочу я сам? Чем мне нравится заниматься?»</em>. Это радостный и важный момент: вы начинаете узнавать себя настоящего, свои вкусы и свои цели.
           </div>
 
           <div class="block-experiment">
-            <h4>🌱 Эксперимент: «Свидание с собой»</h4>
-            <p>Подарите себе 45 минут времени исключительно для собственного удовольствия без цели быть полезным или продуктивным (прогулка в тишине, чашка чая, любимое занятие).</p>
+            <h4>🌱 Простое упражнение: «Час только для себя»</h4>
+            <p>Выделите на этой неделе 45 минут на то, что приносит удовольствие именно вам, без оглядки на пользу или чужое одобрение (прогулка в тишине, вкусный чай, любимая книга или фильм).</p>
           </div>
         </div>
 
         <form id="formMod5" onsubmit="saveMod5(event)">
           <div class="form-group">
-            <label for="m5_iWant">1. Мои искренние «МНЕ ХОЧЕТСЯ / МНЕ ВАЖНО»:</label>
-            <textarea id="m5_iWant" placeholder="Что приносит мне радость, ощущение тепла, покоя или вдохновения (в отдыхе, творчестве, быту)?"></textarea>
+            <label for="m5_iWant">1. Мои искренние «Я ХОЧУ» (то, что приносит мне радость и тепло):</label>
+            <textarea id="m5_iWant" placeholder="Чего мне хочется в отдыхе, в увлечениях, в общении, в покупках, в обустройстве дома?"></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m5_iDoNotWant">2. То, что я выбираю бережно ограничивать в своей жизни:</label>
-            <textarea id="m5_iDoNotWant" placeholder="Какие форматы общения, обязательства или нагрузки я больше не хочу впускать в личное пространство?"></textarea>
+            <label for="m5_iDoNotWant">2. Мои категорические «Я БОЛЬШЕ НЕ ХОЧУ ЭТО ТЕРПЕТЬ»:</label>
+            <textarea id="m5_iDoNotWant" placeholder="Что вы больше не согласны терпеть в свой адрес? (Нравоучения, звонки во время отдыха, насмешки, пренебрежение)..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="m5_dailyPermission">3. Мое ежедневное разрешение себе (легализация отдыха и радости):</label>
-            <input type="text" id="m5_dailyPermission" placeholder="«Я имею полное право просто отдыхать, даже если список дел не закончен»">
+            <label for="m5_dailyPermission">3. Мое разрешение себе на каждый день:</label>
+            <input type="text" id="m5_dailyPermission" placeholder="«Я имею право просто отдыхать, даже если сделаны не все дела»">
           </div>
 
           <div class="form-group">
-            <label for="m5_rule">4. Моя личная опора — теплое напоминание себе на каждый день:</label>
-            <input type="text" id="m5_rule" placeholder="Например: Мое самочувствие ценно; Я могу быть доброжелательным и при этом иметь свои границы.">
+            <label for="m5_rule">4. Главное напоминание себе о самоуважении:</label>
+            <input type="text" id="m5_rule" placeholder="«Мое самочувствие и спокойствие важны не меньше, чем дела других людей»">
           </div>
 
-          <!-- ENHANCED THERAPY SECTION -->
+          <!-- THERAPY SECTION -->
           <div class="block-therapy">
-            <h4>🛋 В фокус сессии с психологом: Укрепление идентичности и запрос</h4>
+            <h4>🛋 О чем полезно поговорить с психологом</h4>
             
-            <div class="therapy-subheading">1. Аналитический вопрос для размышления:</div>
-            <p style="margin-bottom:6px;">«Каким человеком я становлюсь, когда опираюсь на свои ценности? Что в этой новой устойчивости меня вдохновляет?»</p>
+            <div class="therapy-subheading">1. Вопрос для размышления:</div>
+            <p style="margin-bottom:6px;">«Каким человеком я становлюсь, когда перестаю под всех подстраиваться? Что в этом новом состоянии меня радует, а что пока пугает?»</p>
 
-            <div class="therapy-subheading">2. С чем я хочу поработать на встрече со специалистом:</div>
+            <div class="therapy-subheading">2. Что из этого я хочу разобрать на консультации:</div>
             <div class="therapy-checklist">
               <label class="therapy-check-item">
-                <input type="checkbox" id="m5_req1"> Сформировать долгосрочный кодекс личных границ
+                <input type="checkbox" id="m5_req1"> Составить свои постоянные правила общения с близкими и коллегами
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m5_req2"> Найти баланс между здоровой близостью и автономией
+                <input type="checkbox" id="m5_req2"> Научиться быть близким с людьми, не теряя при этом себя
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m5_req3"> Укрепить веру в право на собственные желания без оправданий
+                <input type="checkbox" id="m5_req3"> Поверить в то, что мои желания ценны сами по себе
               </label>
               <label class="therapy-check-item">
-                <input type="checkbox" id="m5_req4"> Подвести итоги позитивных изменений за курс работы
+                <input type="checkbox" id="m5_req4"> Подвести итоги работы и порадоваться своим успехам
               </label>
             </div>
 
-            <div class="therapy-subheading">3. Мои личные заметки и наблюдения к сессии:</div>
-            <textarea id="m5_therapyNotes" placeholder="Что важно обсудить со специалистом..."></textarea>
+            <div class="therapy-subheading">3. Мои заметки к встрече:</div>
+            <textarea id="m5_therapyNotes" placeholder="Что хочется обсудить со специалистом..."></textarea>
           </div>
 
-          <button type="submit" class="btn">Сохранить личные ориентиры</button>
+          <button type="submit" class="btn">Сохранить запись в тетрадь</button>
         </form>
       </div>
 
@@ -1118,9 +1116,9 @@
       price: document.getElementById('m1_price').value,
       therapyNotes: document.getElementById('m1_therapyNotes').value,
       reqs: [
-        document.getElementById('m1_req1').checked ? 'Разобрать ситуацию недели' : null,
-        document.getElementById('m1_req2').checked ? 'Страх разочаровать' : null,
-        document.getElementById('m1_req3').checked ? 'Отрепетировать паузу' : null,
+        document.getElementById('m1_req1').checked ? 'Разобрать ситуацию' : null,
+        document.getElementById('m1_req2').checked ? 'Страх расстроить кого-то' : null,
+        document.getElementById('m1_req3').checked ? 'Потренировать паузу' : null,
         document.getElementById('m1_req4').checked ? 'Снять тревогу перед разговором' : null
       ].filter(Boolean)
     };
@@ -1154,12 +1152,12 @@
           </div>
         </div>
         <div class="entry-body">
-          <p><strong>Ситуация:</strong> ${escapeHtml(i.situation)}</p>
-          <p><strong>Опасение / тревога:</strong> ${escapeHtml(i.fear)}</p>
-          ${i.healthyBoundary ? `<p><strong>Здоровый баланс:</strong> ${escapeHtml(i.healthyBoundary)}</p>` : ''}
-          <p><strong>Личная цена:</strong> ${escapeHtml(i.price)}</p>
-          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
-          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
+          <p><strong>Что произошло:</strong> ${escapeHtml(i.situation)}</p>
+          <p><strong>Что пугало:</strong> ${escapeHtml(i.fear)}</p>
+          ${i.healthyBoundary ? `<p><strong>Честное решение:</strong> ${escapeHtml(i.healthyBoundary)}</p>` : ''}
+          <p><strong>Цена уступки:</strong> ${escapeHtml(i.price)}</p>
+          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Тема для консультации:</strong> ${i.reqs.join(', ')}</p>` : ''}
+          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки к встрече:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
       </div>
     `).join('');
@@ -1178,10 +1176,10 @@
       safeExpression: document.getElementById('m2_safeExpression').value,
       therapyNotes: document.getElementById('m2_therapyNotes').value,
       reqs: [
-        document.getElementById('m2_req1').checked ? 'Телесный зажим' : null,
-        document.getElementById('m2_req2').checked ? 'Экологичное несогласие' : null,
-        document.getElementById('m2_req3').checked ? 'Страх разрушить контакт' : null,
-        document.getElementById('m2_req4').checked ? 'Право на отдых' : null
+        document.getElementById('m2_req1').checked ? 'Зажимы тела при спорах' : null,
+        document.getElementById('m2_req2').checked ? 'Сказать «не подходит» без страха' : null,
+        document.getElementById('m2_req3').checked ? 'Страх разрушить отношения' : null,
+        document.getElementById('m2_req4').checked ? 'Право на отдых без вины' : null
       ].filter(Boolean)
     };
     list.unshift(item);
@@ -1214,12 +1212,12 @@
           </div>
         </div>
         <div class="entry-body">
-          <p><strong>Телесный маркер:</strong> ${escapeHtml(i.bodySignal)}</p>
-          <p><strong>Ситуация / триггер:</strong> ${escapeHtml(i.trigger)}</p>
-          <p><strong>Важная потребность:</strong> ${escapeHtml(i.message)}</p>
-          ${i.safeExpression ? `<p><strong>Экологичное выражение:</strong> ${escapeHtml(i.safeExpression)}</p>` : ''}
-          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
-          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
+          <p><strong>Зажим в теле:</strong> ${escapeHtml(i.bodySignal)}</p>
+          <p><strong>Что задело:</strong> ${escapeHtml(i.trigger)}</p>
+          <p><strong>Потребность тела:</strong> ${escapeHtml(i.message)}</p>
+          ${i.safeExpression ? `<p><strong>Как сказать спокойно:</strong> ${escapeHtml(i.safeExpression)}</p>` : ''}
+          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Тема для консультации:</strong> ${i.reqs.join(', ')}</p>` : ''}
+          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки к встрече:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
       </div>
     `).join('');
@@ -1238,10 +1236,10 @@
       counterPressure: document.getElementById('m3_counterPressure').value,
       therapyNotes: document.getElementById('m3_therapyNotes').value,
       reqs: [
-        document.getElementById('m3_req1').checked ? 'Репетиция отказа' : null,
-        document.getElementById('m3_req2').checked ? 'Границы с близкими/начальством' : null,
-        document.getElementById('m3_req3').checked ? 'Убрать самооправдания' : null,
-        document.getElementById('m3_req4').checked ? 'Выдерживание паузы' : null
+        document.getElementById('m3_req1').checked ? 'Репетиция разговора' : null,
+        document.getElementById('m3_req2').checked ? 'Слова для родителей/начальства' : null,
+        document.getElementById('m3_req3').checked ? 'Перестать извиняться за просьбы' : null,
+        document.getElementById('m3_req4').checked ? 'Выдерживать настойчивость' : null
       ].filter(Boolean)
     };
     list.unshift(item);
@@ -1267,19 +1265,19 @@
     box.innerHTML = list.map(i => `
       <div class="entry-card">
         <div class="entry-head">
-          <span class="entry-pill" style="background:#fee2e2;color:#991b1b;">Формулировка ответа</span>
+          <span class="entry-pill" style="background:#fee2e2;color:#991b1b;">Формулировка отказа</span>
           <div style="display:flex;align-items:center;gap:6px;">
             <span>📅 ${i.date}</span>
             <button class="btn-danger" onclick="deleteMod3(${i.id})">✕</button>
           </div>
         </div>
         <div class="entry-body">
-          <p><strong>Запрос/предложение:</strong> ${escapeHtml(i.request)}</p>
-          <p><strong>Привычный ответ:</strong> <span style="color:#64748b;">«${escapeHtml(i.oldWay)}»</span></p>
-          <p><strong>Новый ясный ответ:</strong> <b style="color:#0f172a;">«${escapeHtml(i.cleanNo)}»</b></p>
-          ${i.counterPressure ? `<p><strong>Ответ на продавливание:</strong> ${escapeHtml(i.counterPressure)}</p>` : ''}
-          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
-          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
+          <p><strong>О чем попросили:</strong> ${escapeHtml(i.request)}</p>
+          <p><strong>Как оправдывался раньше:</strong> <span style="color:#64748b;">«${escapeHtml(i.oldWay)}»</span></p>
+          <p><strong>Новый спокойный ответ:</strong> <b style="color:#0f172a;">«${escapeHtml(i.cleanNo)}»</b></p>
+          ${i.counterPressure ? `<p><strong>Если продолжат давить:</strong> ${escapeHtml(i.counterPressure)}</p>` : ''}
+          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Тема для консультации:</strong> ${i.reqs.join(', ')}</p>` : ''}
+          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки к встрече:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
       </div>
     `).join('');
@@ -1298,9 +1296,9 @@
       friendPerspective: document.getElementById('m4_friendPerspective').value,
       therapyNotes: document.getElementById('m4_therapyNotes').value,
       reqs: [
-        document.getElementById('m4_req1').checked ? 'Работа с критиком' : null,
-        document.getElementById('m4_req2').checked ? 'Не спасать чужое настроение' : null,
-        document.getElementById('m4_req3').checked ? 'Поддерживающий Взрослый' : null,
+        document.getElementById('m4_req1').checked ? 'Самоедство и критика' : null,
+        document.getElementById('m4_req2').checked ? 'Перестать быть спасателем' : null,
+        document.getElementById('m4_req3').checked ? 'Поддержка себя' : null,
         document.getElementById('m4_req4').checked ? 'Страх отвержения' : null
       ].filter(Boolean)
     };
@@ -1327,7 +1325,7 @@
     box.innerHTML = list.map(i => `
       <div class="entry-card">
         <div class="entry-head">
-          <span class="entry-pill" style="background:#fef3c7;color:#92400e;">Самосострадание</span>
+          <span class="entry-pill" style="background:#fef3c7;color:#92400e;">Работа с виной</span>
           <div style="display:flex;align-items:center;gap:6px;">
             <span>📅 ${i.date}</span>
             <button class="btn-danger" onclick="deleteMod4(${i.id})">✕</button>
@@ -1335,11 +1333,11 @@
         </div>
         <div class="entry-body">
           <p><strong>Ситуация:</strong> ${escapeHtml(i.event)}</p>
-          <p><strong>Мысль/сомнение:</strong> «${escapeHtml(i.critic)}»</p>
-          <p><strong>Поддерживающий ответ:</strong> ${escapeHtml(i.compassion)}</p>
-          ${i.friendPerspective ? `<p><strong>Слова другу (взгляд со стороны):</strong> ${escapeHtml(i.friendPerspective)}</p>` : ''}
-          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
-          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
+          <p><strong>В чем себя винил:</strong> «${escapeHtml(i.critic)}»</p>
+          <p><strong>Трезвые факты:</strong> ${escapeHtml(i.compassion)}</p>
+          ${i.friendPerspective ? `<p><strong>Слова другу:</strong> ${escapeHtml(i.friendPerspective)}</p>` : ''}
+          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Тема для консультации:</strong> ${i.reqs.join(', ')}</p>` : ''}
+          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки к встрече:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
       </div>
     `).join('');
@@ -1358,10 +1356,10 @@
       rule: document.getElementById('m5_rule').value,
       therapyNotes: document.getElementById('m5_therapyNotes').value,
       reqs: [
-        document.getElementById('m5_req1').checked ? 'Кодекс личных границ' : null,
-        document.getElementById('m5_req2').checked ? 'Баланс близости и автономии' : null,
-        document.getElementById('m5_req3').checked ? 'Право на свои желания' : null,
-        document.getElementById('m5_req4').checked ? 'Итоги изменений' : null
+        document.getElementById('m5_req1').checked ? 'Правила общения с близкими' : null,
+        document.getElementById('m5_req2').checked ? 'Близость без потери себя' : null,
+        document.getElementById('m5_req3').checked ? 'Ценность своих желаний' : null,
+        document.getElementById('m5_req4').checked ? 'Итоги и успехи' : null
       ].filter(Boolean)
     };
     list.unshift(item);
@@ -1387,19 +1385,19 @@
     box.innerHTML = list.map(i => `
       <div class="entry-card">
         <div class="entry-head">
-          <span class="entry-pill" style="background:#e0f2fe;color:#0284c7;">Личные ориентиры</span>
+          <span class="entry-pill" style="background:#e0f2fe;color:#0284c7;">Мои желания</span>
           <div style="display:flex;align-items:center;gap:6px;">
             <span>📅 ${i.date}</span>
             <button class="btn-danger" onclick="deleteMod5(${i.id})">✕</button>
           </div>
         </div>
         <div class="entry-body">
-          <p><strong>Мне важно и хочется:</strong> ${escapeHtml(i.want)}</p>
-          <p><strong>Ограничиваю в жизни:</strong> ${escapeHtml(i.doNotWant)}</p>
-          ${i.dailyPermission ? `<p><strong>Ежедневное разрешение:</strong> ${escapeHtml(i.dailyPermission)}</p>` : ''}
-          <p><strong>Личная опора:</strong> <b>«${escapeHtml(i.rule)}»</b></p>
-          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Запрос на сессию:</strong> ${i.reqs.join(', ')}</p>` : ''}
-          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки для специалиста:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
+          <p><strong>Чего я хочу:</strong> ${escapeHtml(i.want)}</p>
+          <p><strong>Не буду терпеть:</strong> ${escapeHtml(i.doNotWant)}</p>
+          ${i.dailyPermission ? `<p><strong>Разрешение себе:</strong> ${escapeHtml(i.dailyPermission)}</p>` : ''}
+          <p><strong>Главное напоминание:</strong> <b>«${escapeHtml(i.rule)}»</b></p>
+          ${i.reqs && i.reqs.length ? `<p style="margin-top:6px;font-size:0.82rem;color:#6b21a8;"><strong>Тема для консультации:</strong> ${i.reqs.join(', ')}</p>` : ''}
+          ${i.therapyNotes ? `<p style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Заметки к встрече:</strong> ${escapeHtml(i.therapyNotes)}</p>` : ''}
         </div>
       </div>
     `).join('');
