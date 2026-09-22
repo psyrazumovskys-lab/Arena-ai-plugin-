@@ -390,9 +390,9 @@
       body {
         background: #ffffff !important;
         padding: 0 !important;
-        color: #1e293b !important;
-        font-size: 11pt !important;
-        line-height: 1.5 !important;
+        color: #0f172a !important;
+        font-size: 10pt !important;
+        line-height: 1.4 !important;
       }
 
       .container {
@@ -402,28 +402,43 @@
       }
 
       header {
-        background: #f8fafc !important;
+        background: #ffffff !important;
         color: #0f172a !important;
-        border: 1px solid #cbd5e1 !important;
+        border: 1.5px solid #64748b !important;
         box-shadow: none !important;
-        padding: 16px !important;
-        margin-bottom: 20px !important;
+        padding: 12px 14px !important;
+        margin-bottom: 14px !important;
         page-break-after: avoid !important;
       }
 
+      header h1 {
+        font-size: 1.35rem !important;
+        margin-bottom: 4px !important;
+        color: #0f172a !important;
+      }
+
       .badge-top {
-        border: 1px solid #94a3b8 !important;
+        border: 1px solid #64748b !important;
         color: #334155 !important;
         background: transparent !important;
+        padding: 2px 8px !important;
+        font-size: 0.7rem !important;
+        margin-bottom: 6px !important;
       }
 
       .header-desc {
-        color: #475569 !important;
+        color: #334155 !important;
+        font-size: 0.88rem !important;
+        line-height: 1.35 !important;
       }
 
       .header-meta {
         border-top: 1px solid #cbd5e1 !important;
-        color: #64748b !important;
+        color: #475569 !important;
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+        font-size: 0.78rem !important;
+        gap: 12px !important;
       }
 
       .nav-tabs-wrapper,
@@ -438,27 +453,76 @@
         display: block !important;
         opacity: 1 !important;
         visibility: visible !important;
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-      }
-
-      .step-panel:last-of-type {
         page-break-after: auto !important;
+        page-break-inside: auto !important;
+        margin-bottom: 14px !important;
       }
 
       .card {
         box-shadow: none !important;
         border: 1px solid #cbd5e1 !important;
-        padding: 18px !important;
-        margin-bottom: 0 !important;
+        padding: 14px 16px !important;
+        margin-bottom: 14px !important;
         page-break-inside: avoid !important;
+      }
+
+      .card h2 {
+        font-size: 1.15rem !important;
+        margin-bottom: 4px !important;
+        color: #0f172a !important;
+      }
+
+      .card-intro {
+        font-size: 0.85rem !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+        color: #475569 !important;
       }
 
       .block-theory,
       .block-reparent,
       .block-therapy {
-        border-width: 2px !important;
+        padding: 8px 12px !important;
+        margin-bottom: 10px !important;
+        font-size: 0.84rem !important;
+        line-height: 1.35 !important;
         page-break-inside: avoid !important;
+        background: #f8fafc !important;
+      }
+
+      .block-theory {
+        border-left: 3px solid #4f46e5 !important;
+      }
+
+      .block-reparent {
+        border-left: 3px solid #db2777 !important;
+      }
+
+      .block-therapy {
+        border-left: 3px solid #7e22ce !important;
+      }
+
+      .block-reparent h4,
+      .block-therapy h4 {
+        font-size: 0.88rem !important;
+        margin-bottom: 3px !important;
+      }
+
+      .form-group {
+        margin-bottom: 10px !important;
+        page-break-inside: avoid !important;
+      }
+
+      label {
+        font-size: 0.84rem !important;
+        margin-bottom: 3px !important;
+        color: #1e293b !important;
+      }
+
+      .hint {
+        font-size: 0.75rem !important;
+        margin-top: 2px !important;
+        color: #64748b !important;
       }
 
       input[type="text"],
@@ -466,18 +530,23 @@
         border: 1px solid #94a3b8 !important;
         background: #ffffff !important;
         color: #0f172a !important;
-        min-height: 38px !important;
+        padding: 6px 8px !important;
+        font-size: 9pt !important;
+        min-height: 28px !important;
       }
 
       textarea {
         border: 1px solid #94a3b8 !important;
         background: #ffffff !important;
         color: #0f172a !important;
-        min-height: 90px !important;
+        padding: 6px 8px !important;
+        font-size: 9pt !important;
+        min-height: 52px !important;
+        height: 52px !important;
       }
 
       @page {
-        margin: 1.5cm 1.2cm;
+        margin: 1.2cm 1cm;
         size: A4 portrait;
       }
     }
