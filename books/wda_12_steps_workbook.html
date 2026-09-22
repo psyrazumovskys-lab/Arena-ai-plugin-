@@ -27,12 +27,17 @@ a:hover{text-decoration:underline}
 .bar strong{font-size:1rem}
 .bar-sub{color:var(--mut);font-size:.85rem}
 .counter{margin-left:auto;color:var(--mut);font-size:.8rem;white-space:nowrap}
-.burger{cursor:pointer;font-size:1.15rem;padding:.1rem .5rem;border:1px solid var(--line);border-radius:6px;user-select:none}
+.burger{cursor:pointer;font-size:1.15rem;padding:.1rem .5rem;border:1px solid var(--line);border-radius:6px;user-select:none;display:inline-flex;align-items:center;justify-content:center}
+.burger:hover{border-color:var(--acc);color:var(--acc)}
 #menu{display:none}
+
+.menu-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:24}
+#menu:checked ~ .menu-backdrop{display:block}
 
 .layout{display:flex;min-height:calc(100vh - 52px)}
 .toc{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
-  padding:1rem .9rem;position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto}
+  padding:1rem .9rem;position:sticky;top:52px;height:calc(100vh - 52px);overflow:auto;transition:transform .2s ease,margin-left .2s ease}
+#menu:checked ~ .layout .toc{margin-left:-300px}
 .toc input{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;
   background:var(--bg);color:var(--ink);margin-bottom:.7rem;font:inherit;font-size:.9rem}
 .toc ol{list-style:none;margin:0;padding:0;counter-reset:lec}
@@ -85,12 +90,12 @@ mark{background:var(--mark)}
 #cheatList>div{border-bottom:1px dashed var(--line);padding:.55rem 0;margin:0}
 #cheatList h3{margin:.35rem 0 .3rem;color:var(--acc)}
 @media (max-width:920px){
-  .toc{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .toc{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s ease;box-shadow:0 8px 24px rgba(0,0,0,.18);margin-left:0!important}
   #menu:checked ~ .layout .toc{transform:none}
   main{padding:1.2rem .9rem 4rem}
 }
 @media print{
-  .bar,.toc,.lecnav,.counter{display:none!important}
+  .bar,.toc,.lecnav,.counter,.menu-backdrop{display:none!important}
   body{background:#fff;color:#000}
   .layout{display:block}
   section.lec{display:block!important;page-break-before:always;border-bottom:1px solid #ccc;padding-top:1rem}
@@ -152,6 +157,7 @@ details.deep[open] summary{color:var(--acc);margin-bottom:.4rem}
 </head>
 <body>
 <input type="checkbox" id="menu">
+<label for="menu" class="menu-backdrop" title="Закрыть меню"></label>
 <header class="bar">
   <label class="burger" for="menu" title="Оглавление (M)">☰</label>
   <strong>ВДА · шаги глазами психолога</strong>
