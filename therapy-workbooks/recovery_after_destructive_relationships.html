@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141519" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>После · Рабочая тетрадь: возвращение к себе после тяжёлых отношений</title>
+<meta name="description" content="Рабочая тетрадь для тех, кто выходит из отношений, в которых было много контроля, обесценивания и боли: возвращение доверия к себе, опора и безопасность, работа с тягой к контакту, тело, сон и новая норма. Автосохранение, печать, экспорт ответов.">
+<style>
+
+:root{
+  --bg:#f6f3ee; --panel:#fffefc; --panel-2:#fbf9f5;
+  --ink:#241f1b; --ink-soft:#4a423c; --mut:#7a7168;
+  --line:#e7e1d8; --line-soft:#f0ebe3;
+  --acc:#2f6f60; --acc-2:#3d8a78; --acc-soft:#eaf2ef;
+  --flag:#a83a2d; --flag-soft:#faece9;
+  --warm:#9a7638; --warm-soft:#f8f2e3;
+  --radius:14px; --radius-s:10px;
+  --shadow:0 1px 2px rgba(40,32,24,.04), 0 8px 22px rgba(40,32,24,.045);
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --ui-zoom:1; --top:58px;
+  --s-front:#8a7455; --s-now:#5f7a72; --s-m1:#a2664a; --s-m2:#a83a2d;
+  --s-m3:#44659b; --s-m4:#77589b; --s-m5:#2f6f60; --s-m6:#9a7638; --s-map:#7a7168;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#141519; --panel:#1c1e22; --panel-2:#20232a;
+    --ink:#eae7e1; --ink-soft:#cfcac2; --mut:#9b968e;
+    --line:#2f3238; --line-soft:#26292f;
+    --acc:#79c2b0; --acc-2:#8fd0c0; --acc-soft:#1e2b28;
+    --flag:#ff9d90; --flag-soft:#33211e;
+    --warm:#d9bd82; --warm-soft:#2c2719;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25);
+    --s-front:#c2ab86; --s-now:#9dc0b7; --s-m1:#d9a184; --s-m2:#ff9d90;
+    --s-m3:#9db4e0; --s-m4:#b8a3dd; --s-m5:#79c2b0; --s-m6:#d9bd82; --s-map:#a09a92;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;line-height:1.25;margin:.2rem 0 .6rem}
+h1{font-size:1.75rem}
+h2{font-size:1.45rem}
+h3{font-size:1.06rem;font-weight:700;margin:2rem 0 .5rem;letter-spacing:.005em}
+h4{font-size:.78rem;font-weight:700;margin:1.5rem 0 .4rem;color:var(--mut);
+  text-transform:uppercase;letter-spacing:.09em}
+p{margin:.65rem 0}
+ul,ol{margin:.55rem 0 1rem;padding-left:1.3rem}
+li{margin:.3rem 0}
+small,.small{font-size:.85rem;color:var(--mut);line-height:1.5}
+code{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:5px;padding:.05rem .28rem;font-size:.88em}
+::selection{background:var(--acc-soft);color:var(--ink)}
+
+/* ── верхняя панель ───────────────────────────── */
+.topbar{position:sticky;top:0;z-index:30;background:var(--panel);background:color-mix(in srgb,var(--panel) 92%,transparent);
+  backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:.55rem;max-width:1500px;margin:0 auto;
+  padding:.5rem max(.85rem,env(safe-area-inset-right)) .5rem max(.85rem,env(safe-area-inset-left))}
+.bar-title{display:flex;align-items:baseline;gap:.45rem;min-width:0}
+.bar strong{font-family:var(--serif);font-size:1.05rem;font-weight:600;white-space:nowrap}
+.bar-sub{color:var(--mut);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.burger{cursor:pointer;font-size:1.1rem;line-height:1;padding:.25rem .5rem;border:1px solid var(--line);
+  border-radius:8px;user-select:none;display:inline-flex;align-items:center;background:var(--panel-2)}
+.burger:hover{border-color:var(--acc);color:var(--acc)}
+#menu{display:none}
+.menu-backdrop{display:none;position:fixed;inset:0;background:rgba(24,20,16,.42);z-index:24;backdrop-filter:blur(1px)}
+#menu:checked ~ .menu-backdrop{display:block}
+.save{margin-left:auto;font-size:.78rem;color:var(--mut);white-space:nowrap;transition:color .2s}
+.save.ok{color:var(--acc)}
+.save.busy{color:var(--warm)}
+.save.warn{color:var(--flag)}
+.counter{font-size:.78rem;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums;
+  padding:.15rem .5rem;border:1px solid var(--line);border-radius:999px;background:var(--panel-2)}
+.barline{height:3px;background:var(--line-soft)}
+.barline i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc-2));
+  transition:width .35s ease}
+
+/* ── раскладка ────────────────────────────────── */
+.layout{display:flex;min-height:calc(100vh - var(--top));min-height:calc(100dvh - var(--top))}
+.toc{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
+  padding:1rem .8rem 2rem;position:sticky;top:var(--top);height:calc(100vh - var(--top));
+  height:calc(100dvh - var(--top));overflow:auto;-webkit-overflow-scrolling:touch;
+  transition:margin-left .2s ease,visibility 0s}
+#menu:checked ~ .layout .toc{margin-left:-300px}
+.toc input#q{width:100%;padding:.5rem .6rem;border:1px solid var(--line);border-radius:var(--radius-s);
+  background:var(--panel-2);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:.7rem}
+.toc input#q:focus{outline:2px solid var(--acc-soft);border-color:var(--acc)}
+.toc p.toc-h{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin:1rem 0 .35rem;font-weight:700}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:.08rem 0}
+.toc li a{display:flex;align-items:center;gap:.45rem;padding:.42rem .5rem;border-radius:var(--radius-s);
+  font-size:.92rem;color:var(--ink);line-height:1.35;transition:background .15s}
+.toc li a:hover{background:var(--acc-soft);text-decoration:none}
+.toc li.on a{background:var(--acc);color:#fff;font-weight:600}
+.toc li.on a .tprog{color:rgba(255,255,255,.8)}
+.toc li a::before{content:"";flex:0 0 auto;width:.52rem;height:.52rem;border-radius:50%;
+  background:var(--sec,var(--line))}
+.toc li.on a::before{background:#fff;box-shadow:none}
+.toc .tprog{margin-left:auto;font-size:.72rem;color:var(--mut);font-variant-numeric:tabular-nums;
+  padding-left:.4rem;visibility:hidden}
+.toc li[data-mod="1"] .tprog{visibility:visible}
+.toc li.hide{display:none}
+.toc-foot{margin-top:1.1rem;padding-top:.8rem;border-top:1px solid var(--line-soft)}
+
+main{flex:1;min-width:0;padding:1.6rem clamp(.9rem,3.4vw,3rem) 5rem;zoom:var(--ui-zoom);
+  padding-bottom:calc(5rem + env(safe-area-inset-bottom))}
+.wrap{max-width:840px}
+section.lec{display:none}
+section.lec.act{display:block;animation:rise .22s ease}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ── заголовок раздела ────────────────────────── */
+.modhead{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem}
+.modhead .eyebrow{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--sec,var(--mut))}
+.modhead .chip{display:inline-flex;align-items:center;justify-content:center;width:1.65rem;height:1.65rem;
+  border-radius:50%;background:var(--sec,var(--acc));color:#fff;font-size:.85rem;font-weight:700;flex:0 0 auto}
+section.lec>h2{position:relative;padding-left:.9rem}
+section.lec>h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:4px;border-radius:3px;background:var(--sec,var(--acc))}
+#front{--sec:var(--s-front)} #now{--sec:var(--s-now)} #m1{--sec:var(--s-m1)} #m2{--sec:var(--s-m2)}
+#m3{--sec:var(--s-m3)} #m4{--sec:var(--s-m4)} #m5{--sec:var(--s-m5)} #m6{--sec:var(--s-m6)} #map{--sec:var(--s-map)}
+section.lec>h2+.lead{margin-top:.2rem}
+.lead{font-size:1.02rem;color:var(--ink-soft);font-family:var(--serif)}
+
+/* ── карточки ─────────────────────────────────── */
+.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--sec,var(--line));
+  border-radius:var(--radius);padding:.9rem 1.1rem;margin:1.1rem 0;box-shadow:var(--shadow)}
+.card.tight p{margin:.4rem 0}
+.card h3,.card h4{margin-top:.15rem}
+.card.crit{border-left-color:var(--acc);background:linear-gradient(180deg,var(--acc-soft),var(--panel) 65%)}
+.card.warn{border-left-color:var(--flag);background:linear-gradient(180deg,var(--flag-soft),var(--panel) 65%)}
+.card.warm{border-left-color:var(--warm);background:linear-gradient(180deg,var(--warm-soft),var(--panel) 65%)}
+.card.soft{border-left-color:var(--line);background:var(--panel-2);box-shadow:none}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.22rem .6rem;border-radius:999px;background:var(--acc-soft);color:var(--acc);margin:0 .35rem .35rem 0}
+.tag.w{background:var(--warm-soft);color:var(--warm)}
+.tag.f{background:var(--flag-soft);color:var(--flag)}
+.grid2{display:grid;gap:1rem}
+@media(min-width:780px){.grid2{grid-template-columns:1fr 1fr}}
+
+/* ── поля ─────────────────────────────────────── */
+.qf{width:100%;min-height:92px;padding:.6rem .7rem;border:1px solid var(--line);border-radius:var(--radius-s);
+  background:var(--panel);color:var(--ink);font:inherit;font-size:.96rem;line-height:1.6;resize:vertical;
+  transition:border-color .15s,box-shadow .15s}
+.qf::placeholder{color:var(--mut);opacity:.75;font-style:italic}
+.qf:hover{border-color:var(--acc)}
+.qf:hover{border-color:color-mix(in srgb,var(--acc) 45%,var(--line))}
+.qf:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.qf.tall{min-height:170px}
+.qlabel{font-size:.95rem;font-weight:650;margin:1.1rem 0 .3rem;display:block;color:var(--ink)}
+.qhint{font-size:.85rem;color:var(--mut);margin:0 0 .4rem;line-height:1.5}
+.sav{font-size:.74rem;color:var(--acc);white-space:nowrap;font-weight:600}
+
+/* ── чек-листы ────────────────────────────────── */
+.chkgrid{display:grid;gap:.4rem;margin:.5rem 0 1rem}
+@media(min-width:760px){.chkgrid.two{grid-template-columns:1fr 1fr}}
+label.chk{display:flex;gap:.6rem;align-items:flex-start;font-size:.94rem;line-height:1.5;
+  padding:.5rem .65rem;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--panel);
+  cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+label.chk:hover{border-color:var(--acc)}
+label.chk:hover{border-color:color-mix(in srgb,var(--acc) 55%,var(--line))}
+label.chk:active{transform:scale(.995)}
+label.chk input{margin:.3rem 0 0;flex:0 0 auto;accent-color:var(--acc);width:1.05rem;height:1.05rem}
+label.chk.on{background:var(--acc-soft);border-color:var(--acc)}
+label.chk.on{border-color:color-mix(in srgb,var(--acc) 45%,var(--line))}
+
+/* ── шкалы ────────────────────────────────────── */
+.scales{margin:.7rem 0 1.2rem}
+.scale{margin:.8rem 0;padding:.7rem .8rem;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--panel);box-shadow:var(--shadow)}
+.scale .sname{font-size:.95rem;font-weight:650;display:block;margin-bottom:.4rem}
+.scale .srow{display:flex;align-items:center;gap:.7rem}
+.scale .val{font-weight:700;font-variant-numeric:tabular-nums;min-width:2.9rem;text-align:center;color:#fff;
+  background:var(--acc);border-radius:999px;padding:.12rem .5rem;font-size:.9rem}
+.scale .anch{display:flex;justify-content:space-between;gap:.6rem;font-size:.78rem;color:var(--mut);margin-top:.3rem}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;min-width:0;height:1.6rem;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:.45rem;border-radius:999px;
+  background:linear-gradient(90deg,var(--acc) 0,var(--acc) var(--p,50%),var(--line) var(--p,50%),var(--line) 100%)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:1.2rem;height:1.2rem;margin-top:-.38rem;
+  border-radius:50%;background:#fff;border:2.5px solid var(--acc);box-shadow:0 1px 5px rgba(0,0,0,.22)}
+input[type=range]::-moz-range-track{height:.45rem;border-radius:999px;background:var(--line)}
+input[type=range]::-moz-range-progress{height:.45rem;border-radius:999px;background:var(--acc)}
+input[type=range]::-moz-range-thumb{width:1.1rem;height:1.1rem;border-radius:50%;background:#fff;border:2.5px solid var(--acc)}
+input[type=range]:focus{outline:none}
+input[type=range]:focus::-webkit-slider-thumb{box-shadow:0 0 0 4px var(--acc-soft)}
+
+/* ── таблицы ──────────────────────────────────── */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.7rem 0 1rem;border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow)}
+table.t{border-collapse:collapse;width:100%;font-size:.92rem;min-width:580px}
+table.t th,table.t td{border-bottom:1px solid var(--line-soft);border-right:1px solid var(--line-soft);
+  padding:.5rem .6rem;text-align:left;vertical-align:top}
+table.t th{background:var(--panel-2);font-weight:700;font-size:.82rem;color:var(--ink-soft);
+  text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--line)}
+table.t tr:last-child td{border-bottom:0}
+table.t th:last-child,table.t td:last-child{border-right:0}
+table.t input[type=text],table.t textarea{width:100%;border:1px solid var(--line);border-radius:8px;
+  background:var(--panel);color:var(--ink);font:inherit;font-size:.9rem;padding:.38rem .45rem;resize:vertical}
+table.t textarea{min-height:62px;line-height:1.5}
+table.t input[type=text]:focus,table.t textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+table.t td.numcell{padding:.3rem;text-align:center}
+table.t input.num{width:3.4rem;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── цикл ─────────────────────────────────────── */
+.cycle{display:grid;gap:.6rem;margin:.9rem 0}
+@media(min-width:760px){.cycle{grid-template-columns:repeat(4,1fr)}}
+.phase{border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:var(--radius);
+  padding:.7rem .8rem;background:var(--panel);font-size:.9rem;box-shadow:var(--shadow)}
+.phase b{display:block;color:var(--acc);margin-bottom:.25rem;font-size:.92rem}
+.phase.w{border-top-color:var(--flag)}
+.phase.w b{color:var(--flag)}
+
+/* ── дневник тяги ─────────────────────────────── */
+.log{margin:.6rem 0}
+.logrow{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:var(--radius-s);
+  background:var(--panel);padding:.6rem .75rem;margin:.55rem 0;font-size:.92rem;box-shadow:var(--shadow)}
+.logrow .lh{display:flex;gap:.5rem;align-items:baseline;flex-wrap:wrap}
+.logrow .lh b{color:var(--acc);font-variant-numeric:tabular-nums}
+.logrow .lx{margin-left:auto;border:0;background:none;color:var(--mut);cursor:pointer;font-size:.85rem;padding:0}
+.logrow .lx:hover{color:var(--flag);text-decoration:underline}
+.logform{border:1px dashed var(--line);border-color:color-mix(in srgb,var(--acc) 35%,var(--line));border-radius:var(--radius);
+  padding:.85rem;background:var(--panel-2);margin:.7rem 0}
+.logform .f{display:grid;gap:.5rem;margin-bottom:.6rem}
+@media(min-width:760px){.logform .f.two{grid-template-columns:1fr 1fr}}
+.logform label{font-size:.8rem;color:var(--mut);display:block;margin-bottom:.2rem;
+  text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.logform input[type=text],.logform input[type=number],.logform textarea{width:100%;padding:.5rem .55rem;
+  border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.94rem}
+.logform input:focus,.logform textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.logform textarea{min-height:58px;resize:vertical}
+
+/* ── дыхание ──────────────────────────────────── */
+.pacer{text-align:center;padding:1rem .8rem;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--acc-soft),var(--panel) 70%);margin:1rem 0;box-shadow:var(--shadow)}
+.pacer .circ{width:150px;height:150px;border-radius:50%;margin:.5rem auto .8rem;
+  border:2px solid var(--acc);background:radial-gradient(circle,var(--acc-soft),transparent 70%);
+  transform:scale(.62);transition:transform 4s ease-in-out,box-shadow .5s}
+.pacer.in .circ{transform:scale(1);transition-duration:4s}
+.pacer.hold .circ{transform:scale(1);box-shadow:0 0 0 10px var(--acc-soft)}
+.pacer.out .circ{transform:scale(.62);transition-duration:6s}
+.pacer .ptxt{font-size:1.02rem;font-weight:650;min-height:1.6rem;color:var(--acc)}
+.pacer .pcyc{font-size:.82rem;color:var(--mut);min-height:1.2rem}
+
+/* ── кнопки ───────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem .85rem;border-radius:var(--radius-s);
+  border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;font-size:.88rem;
+  cursor:pointer;transition:border-color .15s,background .15s,color .15s,transform .1s}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.primary:hover{background:var(--acc-2);border-color:var(--acc-2);color:#fff}
+.btn.danger{color:var(--flag);border-color:var(--line)}
+.btn.danger{border-color:color-mix(in srgb,var(--flag) 40%,var(--line))}
+.btn.danger:hover{background:var(--flag-soft);border-color:var(--flag);color:var(--flag)}
+.btn.icon{padding:.5rem .6rem;font-weight:700}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--mut)}
+.btnrow{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}
+.only-wide{}
+
+/* ── навигация по разделам ────────────────────── */
+.lecnav{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;border-top:1px solid var(--line);
+  margin-top:2.6rem;padding-top:.9rem;font-size:.88rem}
+.lecnav a{max-width:38%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lecnav .cnt{color:var(--mut);margin:0 auto;font-variant-numeric:tabular-nums}
+.nostore{background:var(--flag);color:#fff;padding:.65rem 1rem;font-size:.9rem;line-height:1.45}
+.nostore button{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:6px;
+  padding:.15rem .5rem;margin-left:.4rem;cursor:pointer;font:inherit;font-size:.82rem}
+
+/* ── служебное ────────────────────────────────── */
+.print-only{display:none}
+@media(max-width:860px){
+  .toc{position:fixed;left:0;top:var(--top);z-index:25;height:calc(100vh - var(--top));box-shadow:0 0 30px rgba(24,20,16,.25)}
+  #menu:not(:checked) ~ .layout .toc{margin-left:-320px;visibility:hidden;transition:margin-left .2s ease,visibility 0s .2s}
+  #menu:checked ~ .layout .toc{margin-left:0;visibility:visible;transition:margin-left .2s ease,visibility 0s}
+  .counter,.only-wide{display:none}
+  .save{margin-left:auto}
+  main{padding:1.2rem 1rem 4rem}
+  h1{font-size:1.5rem} h2{font-size:1.28rem}
+  .bar-sub{display:none}
+}
+
+/* ── печать ───────────────────────────────────── */
+@media print{
+  @page{margin:16mm 14mm 18mm}
+  .topbar,.toc,.lecnav,.menu-backdrop,.btnrow,.noprint,.barline,.nostore{display:none!important}
+  html,body{background:#fff!important;color:#000!important;font-size:11.4pt;line-height:1.5}
+  .layout{display:block}
+  main{padding:0;max-width:none}
+  .wrap{max-width:none}
+  section.lec{display:block!important;page-break-before:always;break-before:page}
+  section#front{page-break-before:avoid;break-before:avoid}
+  body.one section.lec{display:none!important}
+  body.one section.lec.act{display:block!important;page-break-before:avoid}
+  body.one .print-cover{display:none!important}
+  a{color:#000;text-decoration:none}
+
+  .print-only{display:block}
+  .print-cover{page-break-after:always;break-after:page;text-align:center;padding-top:22mm}
+  .print-cover h1{font-family:var(--serif);font-size:26pt;margin:0 0 .2cm}
+  .print-cover .cv-sub{font-size:12pt;color:#444;margin-bottom:14mm}
+  .print-cover .cv-fields{display:block;text-align:left;max-width:120mm;margin:0 auto 10mm;font-size:11pt}
+  .print-cover .cv-fields div{margin:.6cm 0;white-space:nowrap}
+  .print-cover .cv-line{display:inline-block;border-bottom:.5pt solid #999;min-width:60mm;height:1.1em}
+  .print-cover .cv-note{font-size:10pt;color:#555;max-width:130mm;margin:0 auto 8mm;text-align:left}
+  .print-cover .cv-sos{font-size:10pt;text-align:left;max-width:130mm;margin:0 auto;border:.5pt solid #999;padding:3mm 4mm;border-radius:2mm}
+  .phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:.5pt solid #bbb;
+    padding-bottom:1.5mm;margin-bottom:4mm;font-size:9.5pt;color:#555}
+  .phead .pn{font-weight:700;color:#000}
+  .modhead{display:none}
+  section.lec>h2{padding-left:0}
+  section.lec>h2::before{display:none}
+
+  .card,.phase,.logrow,.scale,.tw{background:#fff!important;border-color:#ccc!important;box-shadow:none!important;
+    break-inside:avoid;page-break-inside:avoid}
+  .card.crit,.card.warn,.card.warm,.card.soft{background:#fff!important}
+  .tw{border:0;border-radius:0}
+  table.t{min-width:0;font-size:10pt}
+  table.t th{background:#f2f2f2!important;border-color:#bbb;text-transform:none;letter-spacing:0;font-size:10pt}
+  table.t th,table.t td{border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:1.6mm 2mm}
+
+  .qf{border:.5pt solid #b8b8b8!important;border-radius:2mm;background:repeating-linear-gradient(
+      #fff 0 1.55rem,#e3e3e3 1.55rem calc(1.55rem + .5pt))!important;
+    line-height:1.55rem!important;min-height:5.5rem;padding:0 2mm!important;color:#000!important;
+    break-inside:avoid;font-size:11pt;resize:none}
+  .qf.tall{min-height:11rem}
+  table.t input[type=text],table.t textarea{border:.5pt solid #c9c9c9!important;background:#fff!important;
+    color:#000!important;border-radius:1.5mm;font-size:10pt}
+  table.t textarea{min-height:1.6cm;background:repeating-linear-gradient(
+      #fff 0 1.4rem,#e6e6e6 1.4rem calc(1.4rem + .5pt))!important;line-height:1.4rem!important;padding:0 1.5mm!important}
+  .logform{display:none!important}
+  .logrow{break-inside:avoid}
+  .sav{display:none}
+  .scale input[type=range]{display:none}
+  .scale .val{background:none!important;color:#000!important;font-weight:700;border:.5pt solid #999;border-radius:3mm}
+  .scale .anch{font-size:9pt;color:#555}
+  .pacer{background:#fff!important;border-color:#ccc;text-align:left}
+  .pacer .circ{display:none}
+  .pacer .btn{display:none}
+  .pacer .ptxt{color:#000}
+  label.chk{border:0;padding:.5mm 0;background:none!important;font-size:11pt;break-inside:avoid}
+  label.chk input{display:none}
+  label.chk span::before{content:"☐\00a0\00a0";font-size:12pt;line-height:1}
+  label.chk input:checked ~ span::before{content:"☑\00a0\00a0"}
+  label.chk.on{background:none!important}
+  .tag{border:.5pt solid #999;background:none!important;color:#000!important}
+  h1,h2,h3,h4{break-after:avoid;page-break-after:avoid}
+  h3{margin-top:6mm}
+}
+
+/* ── доступность, ввод и мобильные устройства ── */
+.only-narrow{display:none}
+.scrollhint{display:none;font-size:.78rem;color:var(--mut);margin:.3rem 0 -.1rem;padding-left:.15rem}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn:focus-visible,.toc li a:focus-visible,.burger:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.qf:focus-visible,table.t input:focus-visible,table.t textarea:focus-visible,.logform input:focus-visible{
+  outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+label.chk:focus-within{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+
+/* палец, а не мышь: крупные цели и поля на 16px, чтобы iOS не зумил страницу */
+@media (pointer:coarse){
+  .qf,.logform input[type=text],.logform input[type=number],.logform textarea,
+  table.t input[type=text],table.t textarea,.toc input#q,input[type=text],input[type=number]{font-size:16px}
+  .btn{min-height:44px}
+  .btn.icon{min-width:44px;justify-content:center}
+  .burger{padding:.65rem .75rem;font-size:1.15rem}
+  .toc li a{padding:.6rem .55rem}
+  label.chk{padding:.65rem .75rem}
+  .logrow .lx{padding:.45rem .1rem}
+  input[type=range]{height:2.6rem}
+  input[type=range]::-webkit-slider-thumb{width:1.5rem;height:1.5rem;margin-top:-.53rem}
+  input[type=range]::-moz-range-thumb{width:1.4rem;height:1.4rem}
+}
+@media (max-width:860px){
+  .only-narrow{display:inline-flex}
+  .layout{min-height:calc(100dvh - var(--top))}
+  .toc{height:calc(100dvh - var(--top))}
+}
+@media (max-width:640px){
+  .scrollhint{display:block}
+  h1{font-size:1.42rem}
+  .card{padding:.8rem .85rem}
+  .lecnav{gap:.4rem}
+  .lecnav a{max-width:46%}
+}
+
+/* системные настройки доступности */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  section.lec.act{animation:none}
+  .barline i{transition:none}
+  .pacer .circ,.pacer.in .circ,.pacer.out .circ{transition:none;transform:scale(.85)}
+  .btn,.qf,label.chk{transition:none}
+}
+@media (forced-colors: active){
+  .card,.scale,.tw,table.t th,table.t td,label.chk,label.chk.on,.toc li.on a,.btn,.logrow,.logform{
+    border:1px solid CanvasText}
+  .toc li.on a{background:Highlight;color:HighlightText}
+  .scale .val{background:CanvasText;color:Canvas}
+  .toc li a::before{background:CanvasText}
+  .barline i{background:Highlight}
+  .card.crit,.card.warn,.card.warm,.card.soft{background:Canvas}
+  :focus-visible{outline:3px solid Highlight}
+}
+@media print{
+  .scrollhint,.only-narrow{display:none!important}
+  main{zoom:1!important}
+}
+</style>
+</head>
+<body>
+
+<noscript>
+  <style>
+    .topbar,.toc,.lecnav,.menu-backdrop{display:none!important}
+    section.lec{display:block!important;padding:1rem}
+    main{padding:1rem;max-width:860px;margin:0 auto}
+  </style>
+  <div class="nostore" style="background:#9a7638">
+    В этом окне JavaScript выключен. Тетрадь читается целиком, все разделы открыты, но <b>автосохранение,
+    экспорт ответов и дыхательный тренажёр не работают</b>. Чтобы заполнять ответы с сохранением, откройте файл
+    в обычном браузере (Chrome, Safari, Firefox, Edge, «Яндекс Браузер»).
+  </div>
+</noscript>
+
+<input type="checkbox" id="menu">
+<div class="menu-backdrop" onclick="document.getElementById('menu').checked=false"></div>
+
+<div class="topbar">
+  <div class="bar">
+    <label class="burger" for="menu" title="Меню" aria-label="Открыть меню разделов" role="button" tabindex="0">☰</label>
+    <div class="bar-title"><strong>После</strong><span class="bar-sub">возвращение к себе</span></div>
+    <span class="save" id="saveStat" aria-live="polite">автосохранение включено</span>
+    <span class="counter" id="counter">0 из 0</span>
+    <button class="btn only-wide" id="btnExportTop">Экспорт</button>
+    <button class="btn icon only-narrow" id="btnExportMob" title="Экспорт ответов в файл" aria-label="Экспорт ответов в файл">⬇</button>
+    <button class="btn only-wide" id="btnPrint">Печать</button>
+    <button class="btn icon" id="btnScale" title="Размер текста">Aa</button>
+  </div>
+  <div class="barline"><i id="barFill"></i></div>
+</div>
+
+<div class="layout">
+  <nav class="toc">
+    <input id="q" type="text" placeholder="Поиск по разделам…" autocomplete="off">
+    <p class="toc-h">Начало</p>
+    <ol id="tocList">
+      <li data-t="front"><a href="#front">Как пользоваться и рамка безопасности</a></li>
+      <li data-t="now"><a href="#now">Где я сейчас</a></li>
+    </ol>
+    <p class="toc-h">Модули</p>
+    <ol id="tocModules">
+      <li data-t="m1"><a href="#m1">1. Что со мной было — без ярлыков</a></li>
+      <li data-t="m2"><a href="#m2">2. Опора и безопасность сейчас</a></li>
+      <li data-t="m3"><a href="#m3">3. Возвращение себе реальности</a></li>
+      <li data-t="m4"><a href="#m4">4. Тянет обратно: не писать, не проверять</a></li>
+      <li data-t="m5"><a href="#m5">5. Тело, сон и накрывающие воспоминания</a></li>
+      <li data-t="m6"><a href="#m6">6. Моя новая норма</a></li>
+    </ol>
+    <p class="toc-h">Итоги</p>
+    <ol>
+      <li data-t="map"><a href="#map">Моя карта</a></li>
+    </ol>
+    <p class="small toc-foot" style="line-height:1.45">Записи хранятся только в этом браузере: автосохранение при каждом вводе и при закрытии страницы. Стрелки ← → переключают разделы, M открывает меню, Aa увеличивает текст.</p>
+  </nav>
+
+  <main>
+<div class="print-only print-cover">
+  <h1>После. Возвращение к себе</h1>
+  <p class="cv-sub">Рабочая тетрадь для тех, кто выходит из отношений, в которых было больно</p>
+  <div class="cv-fields">
+    <div>Имя: <span class="cv-line"></span></div>
+    <div>Дата начала: <span class="cv-line"></span></div>
+    <div>Специалист: <span class="cv-line"></span></div>
+  </div>
+  <p class="cv-note">Печатать можно пустой — как бланк для заполнения от руки. Если заполняете на экране, имеет смысл печатать по одному модулю: кнопка «Печать этого раздела» внизу каждой страницы. Стрелки ← → переключают разделы, клавиша M открывает меню.</p>
+  <div class="cv-sos">
+    <b>Если опасно прямо сейчас.</b> Австрия: 133 / 112 · Frauenhelpline 0800 222 555 (круглосуточно, бесплатно) · Россия: 112 · 8-800-7000-600 · Дети: РФ 8-800-2000-122, Австрия 147.<br>
+    <b>Стоп-протокол.</b> Остановите письмо → заземление «5-4-3-2-1» (5 предметов, 4 звука, 3 касания, 2 запаха, 1 вкус) → медленный выдох длиннее вдоха → позвоните человеку, которому доверяете.
+  </div>
+</div>
+
+<section class="lec" id="front">
+<div class="wrap">
+  <p style="margin:.2rem 0 .4rem"><span class="tag">Для клиентов</span><span class="tag">6 модулей</span><span class="tag w">Можно проходить по частям</span></p>
+  <h1>После. Возвращение к себе</h1>
+  <p class="lead">Рабочая тетрадь для тех, кто выходит или уже вышел(-ла) из отношений, где было много контроля, обесценивания (когда важное для вас объявляли неважным) и боли.</p>
+
+  <div class="card soft tight">
+    <p><b>О словах.</b> В тетради партнёр везде назван «он» — так текст короче и понятнее. Если ваша история про женщину, читайте «она». Если это были родители, взрослые дети или другой близкий человек — читайте в своём смысле: всё, что здесь написано про отношения, работает и с близкими людьми. О вас мы пишем «вы» и стараемся выбирать слова, которые подходят всем.</p>
+  </div>
+
+  <div class="card crit tight">
+    <p><b>Эта тетрадь не решает за вас главный вопрос.</b> Уходить или остаться, отвечать на сообщение или нет, разводиться или ждать — это ваше решение, и здесь никто не будет вас подталкивать. Тетрадь про другое: вернуть себе опору, свою картину мира и силы. Такая работа возможна в любом состоянии — и когда вы ещё внутри, и когда уже ушли, и когда прошло время.</p>
+  </div>
+
+  <h3>Как этой тетрадью пользоваться</h3>
+  <ul>
+    <li><b>Начните с этого раздела и «Где я сейчас»</b> — они нужны, чтобы дальше было безопасно.</li>
+    <li><b>Дальше — с любого модуля.</b> Порядок 1–6 логичный, но не обязательный: если сейчас сильнее всего тянет написать ему — идите сразу в модуль 4.</li>
+    <li><b>15 минут лучше, чем два часа один раз.</b> Возвращаться можно сколько угодно, ответы сохраняются в браузере.</li>
+    <li><b>Любой вопрос можно оставить пустым.</b> Это не тест, не экзамен и не диагноз. Право не отвечать — часть работы.</li>
+    <li><b>Если стало тяжело — есть стоп-протокол ниже.</b> Остановиться вовремя — это не провал, это навык.</li>
+  </ul>
+
+  <div class="card warn">
+    <h3 style="margin-top:0">Рамка безопасности — прочитать до начала</h3>
+    <p><b>Стоп-протокол (выучить заранее).</b> Если во время письма напряжение или боль достигает 8–9 из 10:</p>
+    <ol>
+      <li><b>Остановите письмо</b> и закройте тетрадь. Недописанное не теряется — всё сохранилось.</li>
+      <li><b>Заземление «5-4-3-2-1»:</b> назовите 5 вещей, которые видите; 4 звука, которые слышите; 3 предмета, которых касаетесь; 2 запаха; 1 вкус. Затем медленный выдох длиннее вдоха — 3–4 раза.</li>
+      <li><b>Позвоните человеку, которому доверяете.</b> Не пишите — говорите голосом.</li>
+    </ol>
+    <p>Если 8–9 из 10 держится дольше часа и не снижается — на сегодня достаточно. Это тяжёлое лучше принести на встречу со специалистом: это не провал и не слабость.</p>
+  </div>
+
+  <div class="card warn">
+    <p><b>Если в вашей истории были угрозы, побои, принуждение или преследование</b> — модули 2 и 4 проходите не в одиночку и не тогда, когда он рядом. Скажите об этом психологу, врачу или юристу: с этой частью нельзя работать так же, как с обычным разрывом, и это не про вашу слабость, а про реальный риск.</p>
+    <p><b>Если опасно прямо сейчас</b> — сначала звонок, потом всё остальное. Звонить можно не «когда всё станет серьёзно», а когда страшно.</p>
+  </div>
+
+  <h3>Куда звонить</h3>
+  <div class="tw">
+    <table class="t">
+      <tr><th>Страна</th><th>Кому</th><th>Номер</th><th>Режим</th></tr>
+      <tr><td rowspan="3">Австрия</td><td>Полиция / экстренная помощь</td><td><b>133</b> · <b>112</b></td><td>круглосуточно</td></tr>
+      <tr><td>Frauenhelpline — насилие в близких отношениях</td><td><b>0800 222 555</b></td><td>круглосуточно, бесплатно, есть переводчики</td></tr>
+      <tr><td>Männernotruf — для мужчин, пострадавших от насилия</td><td><b>0800 246 247</b></td><td>круглосуточно, бесплатно</td></tr>
+      <tr><td rowspan="3">Россия</td><td>Единый номер экстренных служб</td><td><b>112</b></td><td>круглосуточно</td></tr>
+      <tr><td>Всероссийский телефон доверия для женщин, пострадавших от домашнего насилия</td><td><b>8-800-7000-600</b></td><td>бесплатно, круглосуточно</td></tr>
+      <tr><td>Экстренная психологическая помощь (Москва)</td><td><b>051</b> · <b>8-495-051</b></td><td>круглосуточно</td></tr>
+      <tr><td>Обе страны</td><td>Детский телефон доверия, если страдают дети</td><td><b>РФ 8-800-2000-122</b> · <b>Австрия 147</b></td><td>круглосуточно, бесплатно</td></tr>
+    </table>
+  </div>
+  <p class="small">Номера проверены 23.09.2026. Если что-то изменилось — впишите актуальное от руки или сохраните в телефон: <b>во время острой ситуации искать номер будет некогда.</b> Если вы в другой стране — найдите местную линию помощи: почти в каждой стране есть круглосуточная линия для тех, кто переживает насилие в близких отношениях.</p>
+
+  <div class="card soft">
+    <h4 style="margin-top:0">Две честные вещи про технику</h4>
+    <p><b>Записи хранятся только в этом браузере</b> и никуда не отправляются. Но если компьютер или телефон общий, кто-то может открыть файл и увидеть историю браузера. Проходите тетрадь на своём устройстве или распечатайте и держите у себя.</p>
+    <p><b>Автосохранение не работает в приватном окне.</b> Если открыли «инкогнито» — ответы исчезнут после закрытия. Откройте тетрадь в обычном окне.</p>
+  </div>
+
+  <label class="qlabel" for="f-s0-ground">Мой вариант заземления — то, что возвращает меня в «здесь и сейчас» (понадобится во всех модулях) <span class="sav" data-for="f-s0-ground"></span></label>
+  <p class="qhint">Например: холодная вода на кисти и виски; 20 быстрых шагов по улице; считать предметы одного цвета; позвонить сестре и говорить о чём-нибудь простом; тёплый душ; плед на плечи.</p>
+  <textarea class="qf" id="f-s0-ground" data-step="front" data-q="Рамка безопасности. Мой вариант заземления" placeholder="что помогает мне вернуться в реальность…"></textarea>
+
+  <label class="qlabel" for="f-s0-call">Человек, которому я могу позвонить в трудный момент — имя и как связаться <span class="sav" data-for="f-s0-call"></span></label>
+  <p class="qhint">Не «если понадобится», а конкретно: имя и номер. В момент, когда накрывает, искать контакт будет трудно.</p>
+  <textarea class="qf" id="f-s0-call" data-step="front" data-q="Рамка безопасности. Кому я звоню в трудный момент" placeholder="имя, номер, что я могу попросить: «просто поговори со мной 10 минут»"></textarea>
+</div>
+</section>
+
+<section class="lec" id="now">
+<div class="wrap">
+  <h2>Где я сейчас</h2>
+  <p class="lead">Это не диагностика, а навигация: от состояния зависит, что сейчас важнее делать, а что подождёт.</p>
+
+  <div class="grid2">
+    <div class="card tight">
+      <p><span class="tag">1</span><b>Я ещё в этих отношениях</b></p>
+      <p>Сначала важнее всего безопасность и опора (модуль 2), потом — возвращение себе своей картины мира (модуль 3). Модуль 4 работает как подготовка: он про то, что делать, когда тянет обратно, пока вы внутри. Модуль 1 не торопите — смотреть на всё сразу, пока рядом он, бывает слишком тяжело.</p>
+      <p class="small">Тетрадь не подталкивает вас к разговору об уходе раньше, чем у вас появятся силы и план.</p>
+    </div>
+    <div class="card tight">
+      <p><span class="tag">2</span><b>Я только что ушёл(ла) — недели или месяцы</b></p>
+      <p>Сейчас главное — держаться, а не разбираться в прошлом. Модуль 4 (тяга написать, проверить, вернуться), модуль 5 (тело, сон, накрывающие воспоминания), модуль 2 (опора и правила контакта). Модули 1, 3 и 6 — позже, когда появится воздух.</p>
+      <p class="small">Возвращение к нему после ухода — частое явление, а не доказательство, что вы не способны. Это не обнуляет путь.</p>
+    </div>
+    <div class="card tight">
+      <p><span class="tag">3</span><b>Прошло время, но осталось внутри</b></p>
+      <p>Прошли месяцы, возможно годы, а внутри всё ещё: недоверие к людям, страх близости, вспышки воспоминаний, ощущение «со мной что-то не так». Тогда по порядку: модуль 1 (понять, что это было), модуль 3 (вернуть себе реальность), модуль 6 (новая норма), а модуль 5 — по необходимости.</p>
+    </div>
+    <div class="card tight">
+      <p><span class="tag">4</span><b>Контакт всё равно неизбежен</b></p>
+      <p>Общие дети, работа, имущество, юридические дела: встречаться или писать придётся. Тогда ядро — модуль 2 (правила и фразы для делового контакта), модуль 4 (что делать после каждого контакта, чтобы не унести это на всю неделю), модуль 6 (когда и как ставить границы словами).</p>
+    </div>
+  </div>
+
+  <h3>Что мне нужнее всего на этой неделе</h3>
+  <p class="qhint">Отметьте столько, сколько откликается. Первое отмеченное — ваш стартовый модуль.</p>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-now-1" data-step="now"><span>чувствовать себя в безопасности</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-2" data-step="now"><span>понять и назвать, что это было</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-3" data-step="now"><span>перестать хотеть написать / проверить</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-4" data-step="now"><span>вернуть сон и спокойное тело</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-5" data-step="now"><span>вернуть себе вкус к жизни и своих людей</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-6" data-step="now"><span>не потерять себя в контакте, который неизбежен</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-7" data-step="now"><span>перестать всё время чувствовать себя виноватым(-ой)</span></label>
+    <label class="chk"><input type="checkbox" id="c-now-8" data-step="now"><span>понять, как выбирать иначе в следующий раз</span></label>
+  </div>
+
+  <label class="qlabel" for="f-now-1">Моя главная задача на эту неделю — одним предложением <span class="sav" data-for="f-now-1"></span></label>
+  <textarea class="qf" id="f-now-1" data-step="now" data-q="Где я сейчас. Главная задача на эту неделю" placeholder="напр.: не отвечать на его сообщения в течение суток" style="min-height:60px"></textarea>
+</div>
+</section>
+
+<section class="lec" id="m1">
+<div class="wrap">
+  <h2>Модуль 1. Что со мной было — без ярлыков</h2>
+  <p class="lead">Здесь не будет диагнозов человеку, с которым вы жили. Мы не решаем, «кто он на самом деле» — мы описываем, <b>что происходило с вами</b>. Любое название, которое мы даём другому человеку, успокаивает на неделю. Понимание того, как всё было устроено, помогает надолго.</p>
+
+  <div class="card soft tight">
+    <p>Разрушает не «плохой характер», а то, как всё было устроено: контроль, обесценивание, резкие перепады тепла и холода, отдаление от людей. Отдельные эпизоды можно пережить. Систему — трудно. Ниже — то, как эта система выглядит в быту.</p>
+  </div>
+
+  <h3>1.1. Карта того, что происходило</h3>
+  <p class="qhint">Отметьте то, что было у вас. Не для подсчёта баллов: посмотрите, где внутри сжалось, когда вы читали.</p>
+
+  <h4>Контроль</h4>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m1-a1" data-step="m1"><span>проверял телефон, переписки, соцсети</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a2" data-step="m1"><span>требовал отчёта: где я, с кем, во сколько вернусь</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a3" data-step="m1"><span>решал, как мне одеваться, с кем дружить, что говорить</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a4" data-step="m1"><span>контролировал деньги: «я дам, сколько нужно»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a5" data-step="m1"><span>следил: звонки «где ты», геолокация, приезжал без предупреждения</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a6" data-step="m1"><span>ставил условия: «если ты меня любишь, то…»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-a7" data-step="m1"><span>решал за меня, что я чувствую и чего хочу</span></label>
+  </div>
+
+  <h4>Обесценивание: важное для вас объявляли неважным</h4>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m1-b1" data-step="m1"><span>мои чувства назывались «истерикой», «проблемами», «капризами»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b2" data-step="m1"><span>мне говорили, что я всё придумал(а), и я перестал(а) верить своей памяти</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b3" data-step="m1"><span>мои успехи и важное для меня обесценивались</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b4" data-step="m1"><span>надо мной шутили при других, а потом «это же шутка»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b5" data-step="m1"><span>мне говорили, что без него я не справлюсь</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b6" data-step="m1"><span>я начал(а) оправдываться и объяснять свои поступки по любому поводу</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-b7" data-step="m1"><span>я стал(а) проверять свою версию событий у других людей: «это правда было?»</span></label>
+  </div>
+
+  <h4>То тепло, то холод</h4>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m1-c1" data-step="m1"><span>после ссоры — внезапное тепло: подарки, слова, обещания, планы</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-c2" data-step="m1"><span>наказание молчанием: мог не разговаривать со мной днями</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-c3" data-step="m1"><span>тепло появлялось, когда ему что-то было нужно от меня</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-c4" data-step="m1"><span>я всё время ждал(а) «прежнего его» — того, каким он был в начале</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-c5" data-step="m1"><span>я жил(а) по правилам, которые менялись и которые нельзя было узнать заранее</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-c6" data-step="m1"><span>хорошие дни были такими хорошими, что я снова верил(а): всё наладилось</span></label>
+  </div>
+
+  <h4>Отдаление от людей и от себя</h4>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m1-d1" data-step="m1"><span>я перестал(а) видеться с друзьями и родными</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d2" data-step="m1"><span>мне стыдно рассказывать близким правду о нас</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d3" data-step="m1"><span>я придумывал(а) «нормальную» версию для других</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d4" data-step="m1"><span>я перестал(а) заниматься тем, что любил(а)</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d5" data-step="m1"><span>я постоянно был(а) настороже: следил(а) за голосом, настроением, шагами</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d6" data-step="m1"><span>я привыкл(а) извиняться первым(-ой), даже когда не понимал(а), за что</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-d7" data-step="m1"><span>я перестал(а) понимать, чего хочу я сам(а)</span></label>
+  </div>
+
+  <h4>Вина и стыд</h4>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m1-e1" data-step="m1"><span>мне кажется, что виноват(а) во всём только я</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-e2" data-step="m1"><span>мне кажется, что мне никто не поверит</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-e3" data-step="m1"><span>я думаю: «как я это допустил(а)», «со мной что-то не так»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-e4" data-step="m1"><span>мне стыдно перед собой за эти годы</span></label>
+  </div>
+
+  <div class="card crit tight">
+    <p><b>Читайте это правильно.</b> Если вы отметили многое — это описание условий, в которых вы жили, а не ваша характеристика. Никакой характер не выдерживает долгий контроль и обесценивание без последствий. И наоборот: если вы отметили мало — это не значит, что «ничего не было». Иногда самое болезненное не оставляет синяков.</p>
+  </div>
+
+  <h3>1.2. Пять шкал: где я сейчас</h3>
+  <p class="qhint">Двигайте ползунки — от 0 (совсем нет) до 10 (предельно сильно). Отвечайте про последние две недели. Через месяц вернитесь и пройдите заново: цифры показывают движение лучше слов.</p>
+
+  <div class="scales">
+    <div class="scale">
+      <span class="sname">Страх — я живу с ощущением, что что-то может случиться</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m1-fear" data-step="m1" data-scale="Страх"><span class="val" id="v-m1-fear">5</span></div>
+      <div class="anch"><span>0 — спокойно</span><span>10 — страх не отпускает</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Вина — «во всём виноват(а) я»</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m1-guilt" data-step="m1" data-scale="Вина"><span class="val" id="v-m1-guilt">5</span></div>
+      <div class="anch"><span>0 — вины нет</span><span>10 — вина по любому поводу</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Надежда — «ещё можно, чтобы стало как в начале»</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m1-hope" data-step="m1" data-scale="Надежда"><span class="val" id="v-m1-hope">5</span></div>
+      <div class="anch"><span>0 — надежды нет</span><span>10 — верю, что он изменится</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Усталость — сколько во мне сил на обычный день</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m1-tired" data-step="m1" data-scale="Усталость"><span class="val" id="v-m1-tired">5</span></div>
+      <div class="anch"><span>0 — сил нет совсем</span><span>10 — сил достаточно</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Свобода быть собой — я могу быть собой, чувствовать и решать по-своему</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m1-free" data-step="m1" data-scale="Свобода быть собой"><span class="val" id="v-m1-free">5</span></div>
+      <div class="anch"><span>0 — я всё время в напряжении и подстраиваюсь</span><span>10 — я могу дышать и выбирать</span></div>
+    </div>
+  </div>
+
+  <label class="qlabel" for="f-m1-scale">Что стоит за моими цифрами — коротко, без объяснений для других <span class="sav" data-for="f-m1-scale"></span></label>
+  <textarea class="qf" id="f-m1-scale" data-step="m1" data-q="1.2 Шкалы. Что стоит за моими цифрами" placeholder="напр.: страха на 8 — я всегда жду, что вечером будет плохо" ></textarea>
+
+  <h3>1.3. Своими словами</h3>
+  <label class="qlabel" for="f-m1-words">Если бы мне нужно было объяснить это одному человеку, который точно не осудит — что это было? <span class="sav" data-for="f-m1-words"></span></label>
+  <p class="qhint">Два-три предложения. Не «правильно», а как есть: путано, со злостью, со слезами — можно.</p>
+  <textarea class="qf" id="f-m1-words" data-step="m1" data-q="1.3 Своими словами, что это было" placeholder="что я сейчас назвал(а) бы этим словом…"></textarea>
+
+  <h3>1.4. Почему я оставался(-ась): понять, а не осудить себя</h3>
+  <div class="card soft tight">
+    <p>Вопрос «почему я это терпел(а)» обычно задают себе не из любопытства, а чтобы доказать собственную вину. Здесь у него другой смысл: <b>понять, что держало</b>. Всё, что удерживало вас рядом, когда-то казалось важным и нужным — иначе бы не работало. Разбираться в причинах — не то же самое, что себя судить.</p>
+  </div>
+
+  <div class="chkgrid">
+    <label class="chk"><input type="checkbox" id="c-m1-w1" data-step="m1"><span>надежда: «он изменится, он же не всегда такой»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w2" data-step="m1"><span>страх остаться одной / одному</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w3" data-step="m1"><span>стыд: «что скажут родители, друзья, коллеги»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w4" data-step="m1"><span>деньги, жильё, работа: было некуда уйти</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w5" data-step="m1"><span>дети: боялся(-ась) травмировать их или «оставить без отца»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w6" data-step="m1"><span>вера в то, что вина на мне и что всё можно исправить, если постараться</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w7" data-step="m1"><span>любовь к «прежнему ему» — тому, кем он был в начале</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w8" data-step="m1"><span>я держался(-ась) не за него, а за те короткие тёплые минуты</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w9" data-step="m1"><span>страх перемен и привычка: «как я буду жить иначе»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w10" data-step="m1"><span>боязнь, что он что-то сделает с собой или со мной, если я уйду</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w11" data-step="m1"><span>вера: «если я постараюсь сильнее, всё станет хорошо»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m1-w12" data-step="m1"><span>свой вариант — впишу ниже</span></label>
+  </div>
+
+  <p class="qhint">Теперь посмотрите честно на три главные причины своими словами: что каждая из них вам давала — и чего вам стоила.</p>
+  <div class="tw">
+    <table class="t">
+      <tr><th style="width:34%">Что держало меня рядом</th><th style="width:33%">Что это мне давало</th><th style="width:33%">Чего это мне стоило</th></tr>
+      <tr>
+        <td><input type="text" id="f-m1-wh1" data-step="m1" data-q="1.4 Причины. 1. Что держало"></td>
+        <td><input type="text" id="f-m1-wd1" data-step="m1" data-q="1.4 Причины. 1. Что давало"></td>
+        <td><input type="text" id="f-m1-wc1" data-step="m1" data-q="1.4 Причины. 1. Чего стоило"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m1-wh2" data-step="m1" data-q="1.4 Причины. 2. Что держало"></td>
+        <td><input type="text" id="f-m1-wd2" data-step="m1" data-q="1.4 Причины. 2. Что давало"></td>
+        <td><input type="text" id="f-m1-wc2" data-step="m1" data-q="1.4 Причины. 2. Чего стоило"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m1-wh3" data-step="m1" data-q="1.4 Причины. 3. Что держало"></td>
+        <td><input type="text" id="f-m1-wd3" data-step="m1" data-q="1.4 Причины. 3. Что давало"></td>
+        <td><input type="text" id="f-m1-wc3" data-step="m1" data-q="1.4 Причины. 3. Чего стоило"></td>
+      </tr>
+    </table>
+  </div>
+  <label class="qlabel" for="f-m1-why">Что я понял(а) про эти причины — главное, что хочу запомнить <span class="sav" data-for="f-m1-why"></span></label>
+  <textarea class="qf" id="f-m1-why" data-step="m1" data-q="1.4 Причины. Главное, что понял(а)"></textarea>
+
+  <h3>1.5. Как это начиналось</h3>
+  <p class="qhint">В начале почти всегда есть то, что притянуло: сила, забота, надёжность, «меня наконец увидели». Это пригодится в модуле 6, чтобы отличать настоящую заботу от показной.</p>
+  <label class="qlabel" for="f-m1-start">Что меня притянуло в первые недели — и когда я впервые почувствовал(а), что что-то не так <span class="sav" data-for="f-m1-start"></span></label>
+  <textarea class="qf" id="f-m1-start" data-step="m1" data-q="1.5 Как начиналось: что притянуло и когда стало не так"></textarea>
+</div>
+</section>
+<section class="lec" id="m2">
+<div class="wrap">
+  <h2>Модуль 2. Опора и безопасность сейчас</h2>
+  <p class="lead">Опора — это не «взять себя в руки». Это конкретные люди, места, правила и вещи, на которые можно опереться. В таких отношениях опора сужается до одного человека, и её собирают обратно по частям.</p>
+
+  <h3>2.1. Карта риска</h3>
+  <p class="qhint">Отметьте то, что было или происходит. Это не для того, чтобы напугать, а чтобы понять, какая помощь вам нужна: обычная психологическая, юридическая или план безопасности. Отвечайте про последний год.</p>
+  <div class="chkgrid">
+    <label class="chk"><input type="checkbox" id="c-m2-r1" data-step="m2"><span>он угрожал словами: «убью», «тебе мало не покажется», «я тебя найду»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r2" data-step="m2"><span>было физическое: толкал, держал, хватал, бил, душил, бросал предметы рядом со мной</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r3" data-step="m2"><span>преследует: следит, приходит без приглашения, караулит у работы, пишет с разных номеров</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r4" data-step="m2"><span>в доме есть оружие, и мне страшно от того, как он может им воспользоваться</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r5" data-step="m2"><span>он угрожал убить себя, если я уйду</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r6" data-step="m2"><span>он управляет деньгами: карты, доступ к счёту, «я даю, сколько нужно»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r7" data-step="m2"><span>документы, ключи, телефон, машина — не у меня или под его контролем</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r8" data-step="m2"><span>он мешает мне работать или учиться</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r9" data-step="m2"><span>он угрожает детям или домашним животным</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r10" data-step="m2"><span>контролирует моё здоровье: лекарства, врачей, доступ к ним</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r11" data-step="m2"><span>я не знаю, что он сделает, если я скажу «нет» или уйду</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-r12" data-step="m2"><span>мне страшно возвращаться домой</span></label>
+  </div>
+
+  <div class="card warn tight">
+    <p><b>Самые серьёзные пункты — про угрозы, физическое насилие, преследование, оружие и страх возвращаться домой.</b> Это не значит, что вы «должны немедленно уйти»: это значит, что решения нужно принимать со специалистом, а не в одиночку, и что в какой-то момент разговор становится не про отношения, а про безопасность.</p>
+  </div>
+
+  <h3>2.2. Если что-то отмечено — пять шагов, по порядку</h3>
+  <ol>
+    <li><b>Скажите вслух человеку, которому доверяете.</b> Не «всё нормально», а как есть. Тайна сильнее всего поддерживает страх.</li>
+    <li><b>Позвоните на линию</b> (номера — на первой странице). Можно анонимно и просто спросить: «что мне делать, если…». Это бесплатно и ни к чему вас не обязывает.</li>
+    <li><b>Поговорите с юристом или кризисным центром</b> о жилье, деньгах, детях. Что стоит фиксировать: побои — фото и справка от врача; переписку и звонки — скриншоты с датами; обращения к людям — свидетели. В Австрии полиция по вызову может вынести запрет на приближение и доступ в дом — об этом можно просто спросить по номеру <b>133</b> или в кризисном центре.</li>
+    <li><b>Документы и «сумка на выход».</b> Паспорт, документы детей, деньги, карта, лекарства, зарядка, ключи от другого места. Храните не дома — у человека, которому доверяете, или в другом месте. Даже если вы пока никуда не собираетесь: иметь сумку — это не решение уйти, это спокойствие.</li>
+    <li><b>План на случай, если станет страшно.</b> Куда я выхожу, если напряжение нарастает (круглосуточный магазин, аптека, подъезд соседа); какой условный знак я подаю своему человеку («напишу „ок“ — позвони мне»); где я не остаюсь в комнате, откуда нет выхода.</li>
+  </ol>
+  <p class="small">Уход и разговор об уходе — самый опасный период. Если есть ощущение угрозы, не начинайте этот разговор в момент ссоры и в одиночку: сначала консультация, потом решение.</p>
+
+  <h3>2.3. Три человека, которым можно позвонить</h3>
+  <p class="qhint">Не «друзья вообще», а три конкретных человека. И просьба должна быть конкретной: «звони мне в 22:00», «могу я приехать в два часа ночи?» — общие «обращайся, если что» в трудный момент не работают.</p>
+  <div class="tw">
+    <table class="t">
+      <tr><th style="width:26%">Кто</th><th style="width:30%">Как связаться</th><th style="width:44%">Что конкретно я могу у него попросить</th></tr>
+      <tr>
+        <td><input type="text" id="f-m2-p1" data-step="m2" data-q="2.3 Опора. Человек 1 — кто"></td>
+        <td><input type="text" id="f-m2-c1" data-step="m2" data-q="2.3 Опора. Человек 1 — как связаться"></td>
+        <td><input type="text" id="f-m2-a1" data-step="m2" data-q="2.3 Опора. Человек 1 — о чём могу попросить"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m2-p2" data-step="m2" data-q="2.3 Опора. Человек 2 — кто"></td>
+        <td><input type="text" id="f-m2-c2" data-step="m2" data-q="2.3 Опора. Человек 2 — как связаться"></td>
+        <td><input type="text" id="f-m2-a2" data-step="m2" data-q="2.3 Опора. Человек 2 — о чём могу попросить"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m2-p3" data-step="m2" data-q="2.3 Опора. Человек 3 — кто"></td>
+        <td><input type="text" id="f-m2-c3" data-step="m2" data-q="2.3 Опора. Человек 3 — как связаться"></td>
+        <td><input type="text" id="f-m2-a3" data-step="m2" data-q="2.3 Опора. Человек 3 — о чём могу попросить"></td>
+      </tr>
+    </table>
+  </div>
+  <p class="small">Если сейчас не набирается три человека — это тоже ответ, и он не про вас. В таких отношениях людей рядом становится мало. Достаточно одного: с него и начинайте. Дальше появятся группы поддержки, психолог, кто-то из прежних друзей.</p>
+
+  <h3>2.4. Мой безопасный час</h3>
+  <p class="qhint">Час в сутках, который принадлежит только вам и который нельзя отдать даже под давлением. Внутри этого часа не решаются вопросы про него — только про вас.</p>
+  <label class="qlabel" for="f-m2-hour">Когда это время и что я в нём делаю <span class="sav" data-for="f-m2-hour"></span></label>
+  <textarea class="qf" id="f-m2-hour" data-step="m2" data-q="2.4 Мой безопасный час" placeholder="напр.: 7:00–8:00, пока все спят: кофе, душ, 20 минут прогулки без телефона" style="min-height:64px"></textarea>
+
+  <h3>2.5. Контакт, которого не избежать</h3>
+  <p class="qhint">Общие дети, имущество, работа, развод — иногда приходится говорить. Цель — не победить в разговоре, а выйти из него с целыми нервами и без новых перепадов.</p>
+  <div class="card crit tight">
+    <p><b>Пять правил делового контакта</b></p>
+    <ul style="margin-bottom:0">
+      <li><b>Один канал.</b> Только сообщения или только почта — там, где остаётся след. Не звонки, не «заехал на минуту».</li>
+      <li><b>Только по делу:</b> дети, деньги, вещи, документы, сроки. Ничего про «нас», прошлое и чувства.</li>
+      <li><b>Коротко и без объяснений.</b> Факт, срок, точка. Объяснения — это приглашение к спору.</li>
+      <li><b>Без «мы».</b> Не «мы решим», а «я сообщу в четверг».</li>
+      <li><b>Пауза перед ответом.</b> Не отвечайте сразу. Даже 20 минут меняют тон — а про решения лучше сутки (модуль 4).</li>
+    </ul>
+  </div>
+  <p class="qhint">Шаблоны, которые можно взять и переписать под себя.</p>
+  <div class="tw">
+    <table class="t">
+      <tr><th style="width:38%">Ситуация</th><th>Как это звучит</th></tr>
+      <tr><td>Встреча по детям</td><td>«Да, в 18:00 у входа. Буду с детьми.»</td></tr>
+      <tr><td>Деньги</td><td>«Перевод получила. Следующий — 5 октября, как договорились.»</td></tr>
+      <tr><td>Правило канала</td><td>«По делам пиши сообщением. Отвечу, когда смогу.»</td></tr>
+      <tr><td>Когда лезут в личное</td><td>«Это я обсуждать не буду. По остальному — напиши списком.»</td></tr>
+      <tr><td>Давление «поговорим как люди»</td><td>«Сейчас не обсуждаю. Если нужно — письменно и по делу.»</td></tr>
+    </table>
+  </div>
+
+  <label class="qlabel" for="f-m2-phr">Мои фразы — три, которые точно мои <span class="sav" data-for="f-m2-phr"></span></label>
+  <textarea class="qf" id="f-m2-phr" data-step="m2" data-q="2.5 Мои фразы для делового контакта" placeholder="1) &quot;…&quot;  2) &quot;…&quot;  3) &quot;…&quot;"></textarea>
+
+  <label class="qlabel" for="f-m2-bomb">Если он напишет «я изменился / я скучаю / я всё понял» — что я себе отвечаю <span class="sav" data-for="f-m2-bomb"></span></label>
+  <p class="qhint">Заранее подготовленный ответ работает лучше, чем импровизация: в момент, когда приходит такое сообщение, вы не думаете, а надеетесь.</p>
+  <textarea class="qf" id="f-m2-bomb" data-step="m2" data-q="2.5 Ответ на &quot;я изменился&quot;"></textarea>
+
+  <h3>2.6. Как закрыть контакт</h3>
+  <p class="qhint">После каждого разговора с ним нужно 10 минут, чтобы закрыть тему и не унести это на всю неделю. Придумайте свой способ.</p>
+  <label class="qlabel" for="f-m2-after">Мой ритуал закрытия после контакта <span class="sav" data-for="f-m2-after"></span></label>
+  <textarea class="qf" id="f-m2-after" data-step="m2" data-q="2.6 Ритуал закрытия после контакта" placeholder="напр.: вымыть руки по локоть; 10 минут пешком; записать в 3 строках, что было; позвонить Л. и сказать «контакт закончился»" style="min-height:70px"></textarea>
+
+  <h3>2.7. Что меня поддерживает</h3>
+  <p class="qhint">Отметьте то, что у вас уже есть, — и допишите ниже одну строку: чего не хватает больше всего прямо сейчас.</p>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m2-s1" data-step="m2"><span>сон более-менее есть</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s2" data-step="m2"><span>я регулярно ем</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s3" data-step="m2"><span>есть движение: прогулки, спорт, дорога пешком</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s4" data-step="m2"><span>есть свои деньги или доступ к ним</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s5" data-step="m2"><span>есть работа, учёба, своё дело</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s6" data-step="m2"><span>есть врач, который меня знает</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s7" data-step="m2"><span>есть психолог или группа поддержки</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s8" data-step="m2"><span>есть юрист или понимание, что делать по документам</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s9" data-step="m2"><span>есть место, где я чувствую себя в безопасности</span></label>
+    <label class="chk"><input type="checkbox" id="c-m2-s10" data-step="m2"><span>есть вера, творчество, питомец, природа — что-то, что возвращает меня мне</span></label>
+  </div>
+  <label class="qlabel" for="f-m2-need">Чего мне не хватает больше всего — и один шаг к этому на этой неделе <span class="sav" data-for="f-m2-need"></span></label>
+  <textarea class="qf" id="f-m2-need" data-step="m2" data-q="2.7 Чего не хватает и один шаг"></textarea>
+
+  <div class="card soft tight">
+    <label class="qlabel" for="f-m2-sess" style="margin-top:0">★ Для встречи с психологом: что из этого модуля я хочу принести <span class="sav" data-for="f-m2-sess"></span></label>
+    <textarea class="qf" id="f-m2-sess" data-step="m2" data-q="★ Для встречи: модуль 2" placeholder="напр.: показать карту риска; обсудить, как отвечать на его сообщения; попросить помощи с планом" style="min-height:64px"></textarea>
+  </div>
+</div>
+</section>
+
+<section class="lec" id="m3">
+<div class="wrap">
+  <h2>Модуль 3. Возвращение себе реальности</h2>
+  <p class="lead">Если вам много раз говорили, что вы всё придумали, что вы «слишком остро реагируете» и что «нормально» — это когда вам больно, то ломается не память. Ломается право считать увиденное правдой. Оно возвращается медленно и скучно: фактами, по одному.</p>
+
+  <div class="card soft tight">
+    <p><b>Как это работает.</b> Человек, который отрицает очевидное, заставляет вас искать подтверждение своей картины у него же. Круг замыкается: вы спрашиваете у того, кто искажает ответы. Дневник реальности разрывает круг: сначала вы записываете то, что видели, <i>до</i> чужих объяснений.</p>
+  </div>
+
+  <h3>3.1. Дневник реальности</h3>
+  <p class="qhint">Возьмите три ситуации, которые до сих пор сидят в голове. В первой колонке — только то, что вы видели и слышали, как камера: дата, место, слова, действия. Без «он всегда», без выводов.</p>
+  <p class="qhint">Пример: «12 сентября, 21:40, кухня. Я говорю, что устал(а). Он отвечает: „Этого не было“. Я ухожу в спальню. Через день он говорит, что никакого разговора не было.»</p>
+  <div class="tw">
+    <table class="t" style="min-width:760px">
+      <tr><th style="width:25%">Что произошло (как камера)</th><th style="width:25%">Что мне об этом сказали</th><th style="width:25%">Что я помню и знаю сам(а)</th><th style="width:25%">Чему верю сейчас</th></tr>
+      <tr>
+        <td><textarea id="f-m3-f1" data-step="m3" data-q="3.1 Ситуация 1 — что произошло"></textarea></td>
+        <td><textarea id="f-m3-t1" data-step="m3" data-q="3.1 Ситуация 1 — что мне сказали"></textarea></td>
+        <td><textarea id="f-m3-m1" data-step="m3" data-q="3.1 Ситуация 1 — что я знаю сам(а)"></textarea></td>
+        <td><textarea id="f-m3-b1" data-step="m3" data-q="3.1 Ситуация 1 — чему верю сейчас"></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea id="f-m3-f2" data-step="m3" data-q="3.1 Ситуация 2 — что произошло"></textarea></td>
+        <td><textarea id="f-m3-t2" data-step="m3" data-q="3.1 Ситуация 2 — что мне сказали"></textarea></td>
+        <td><textarea id="f-m3-m2" data-step="m3" data-q="3.1 Ситуация 2 — что я знаю сам(а)"></textarea></td>
+        <td><textarea id="f-m3-b2" data-step="m3" data-q="3.1 Ситуация 2 — чему верю сейчас"></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea id="f-m3-f3" data-step="m3" data-q="3.1 Ситуация 3 — что произошло"></textarea></td>
+        <td><textarea id="f-m3-t3" data-step="m3" data-q="3.1 Ситуация 3 — что мне сказали"></textarea></td>
+        <td><textarea id="f-m3-m3" data-step="m3" data-q="3.1 Ситуация 3 — что я знаю сам(а)"></textarea></td>
+        <td><textarea id="f-m3-b3" data-step="m3" data-q="3.1 Ситуация 3 — чему верю сейчас"></textarea></td>
+      </tr>
+    </table>
+  </div>
+  <label class="qlabel" for="f-m3-check">Кого я могу спросить, если снова начну сомневаться, было ли это на самом деле <span class="sav" data-for="f-m3-check"></span></label>
+  <p class="qhint">Это должен быть человек, который знает вас давно и которому не выгодно вас переубеждать.</p>
+  <textarea class="qf" id="f-m3-check" data-step="m3" data-q="3.1 Кого я могу спросить, если сомневаюсь" style="min-height:60px" placeholder="имя — и что именно я у него спрашиваю"></textarea>
+
+  <h3>3.2. Фразы, которые звучат в голове не моим голосом</h3>
+  <p class="qhint">Внутренний критик — голос, который ругает и обесценивает, — после таких отношений часто говорит чужими словами. Задача — услышать это и переписать своим.</p>
+  <div class="card soft tight">
+    <p>Так это звучит у многих: «Это ты во всём виноват(а)», «Ты всё придумываешь», «Ты слишком остро реагируешь», «Тебе никто не поверит», «Без меня ты пропадёшь», «Ты ничего не добьёшься». Прочитайте и посмотрите, что отзывается.</p>
+  </div>
+  <div class="tw">
+    <table class="t" style="min-width:700px">
+      <tr><th style="width:34%">Как это звучит в голове</th><th style="width:22%">Чей это голос</th><th style="width:44%">Как это звучит по-моему</th></tr>
+      <tr>
+        <td><input type="text" id="f-m3-v1" data-step="m3" data-q="3.2 Фраза 1 — как звучит"></td>
+        <td><input type="text" id="f-m3-o1" data-step="m3" data-q="3.2 Фраза 1 — чей голос"></td>
+        <td><input type="text" id="f-m3-n1" data-step="m3" data-q="3.2 Фраза 1 — как по-моему"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m3-v2" data-step="m3" data-q="3.2 Фраза 2 — как звучит"></td>
+        <td><input type="text" id="f-m3-o2" data-step="m3" data-q="3.2 Фраза 2 — чей голос"></td>
+        <td><input type="text" id="f-m3-n2" data-step="m3" data-q="3.2 Фраза 2 — как по-моему"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m3-v3" data-step="m3" data-q="3.2 Фраза 3 — как звучит"></td>
+        <td><input type="text" id="f-m3-o3" data-step="m3" data-q="3.2 Фраза 3 — чей голос"></td>
+        <td><input type="text" id="f-m3-n3" data-step="m3" data-q="3.2 Фраза 3 — как по-моему"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m3-v4" data-step="m3" data-q="3.2 Фраза 4 — как звучит"></td>
+        <td><input type="text" id="f-m3-o4" data-step="m3" data-q="3.2 Фраза 4 — чей голос"></td>
+        <td><input type="text" id="f-m3-n4" data-step="m3" data-q="3.2 Фраза 4 — как по-моему"></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="f-m3-v5" data-step="m3" data-q="3.2 Фраза 5 — как звучит"></td>
+        <td><input type="text" id="f-m3-o5" data-step="m3" data-q="3.2 Фраза 5 — чей голос"></td>
+        <td><input type="text" id="f-m3-n5" data-step="m3" data-q="3.2 Фраза 5 — как по-моему"></td>
+      </tr>
+    </table>
+  </div>
+  <label class="qlabel" for="f-m3-card">Моя фраза-опора — короткая, которую я скажу себе в трудную минуту <span class="sav" data-for="f-m3-card"></span></label>
+  <p class="qhint">Не «я сильная» вообще, а то, во что вы правда верите: «Я не придумываю. Это было.» / «Я вижу это своими глазами, и этого достаточно.» / «Мне не нужно доказательство, чтобы мне было больно.»</p>
+  <textarea class="qf" id="f-m3-card" data-step="m3" data-q="3.2 Моя фраза-опора" style="min-height:60px" placeholder="мои слова на трудную минуту…"></textarea>
+
+  <h3>3.3. Что я перестал(а) любить и делать</h3>
+  <p class="qhint">Люди — не единственное, что исчезает. Исчезают занятия, вкусы, привычки, друзья, музыка, одежда, дороги. Это возвращается быстрее, чем кажется.</p>
+  <label class="qlabel" for="f-m3-lost">Что было моим до этих отношений и куда исчезло <span class="sav" data-for="f-m3-lost"></span></label>
+  <textarea class="qf tall" id="f-m3-lost" data-step="m3" data-q="3.3 Что было моим и исчезло" placeholder="списком, без порядка: люди, занятия, места, привычки, которые я бросила"></textarea>
+
+  <label class="qlabel" for="f-m3-one">Одно своё дело на этой неделе <span class="sav" data-for="f-m3-one"></span></label>
+  <p class="qhint">Маленькое и своё: не «начать бегать», а «пройти свой прежний маршрут и послушать свои песни». Отметьте его, как только сделаете.</p>
+  <div class="chkgrid">
+    <label class="chk"><input type="checkbox" id="c-m3-do" data-step="m3"><span>сделал(а) — и вот что это было</span></label>
+  </div>
+  <textarea class="qf" id="f-m3-one" data-step="m3" data-q="3.3 Одно своё дело на неделе" style="min-height:60px" placeholder="что именно и как это было"></textarea>
+
+  <h4>Что уже сделано</h4>
+  <p class="qhint">Когда сил мало, обычный список дел работает против нас: он показывает, сколько не сделано. Здесь наоборот — записывайте уже сделанное и оценивайте его по двум шкалам.</p>
+  <div class="tw">
+    <table class="t">
+      <tr><th style="width:58%">Что я сегодня сделал(а)</th><th style="width:21%">Удовольствие 0–10</th><th style="width:21%">Ощущение «получилось» 0–10</th></tr>
+      <tr><td><input type="text" id="f-m3-d1" data-step="m3" data-q="3.3 Что уже сделано 1 — ощущение, что получилось"></td><td class="numcell"><input class="num" type="text" id="f-m3-p1" data-step="m3" data-q="3.3 Что уже сделано 1 — удовольствие"></td><td class="numcell"><input class="num" type="text" id="f-m3-q1" data-step="m3" data-q="3.3 Что уже сделано 1 — ощущение, что получилось"></td></tr>
+      <tr><td><input type="text" id="f-m3-d2" data-step="m3" data-q="3.3 Что уже сделано 2 — ощущение, что получилось"></td><td class="numcell"><input class="num" type="text" id="f-m3-p2" data-step="m3" data-q="3.3 Что уже сделано 2 — удовольствие"></td><td class="numcell"><input class="num" type="text" id="f-m3-q2" data-step="m3" data-q="3.3 Что уже сделано 2 — ощущение, что получилось"></td></tr>
+      <tr><td><input type="text" id="f-m3-d3" data-step="m3" data-q="3.3 Что уже сделано 3 — ощущение, что получилось"></td><td class="numcell"><input class="num" type="text" id="f-m3-p3" data-step="m3" data-q="3.3 Что уже сделано 3 — удовольствие"></td><td class="numcell"><input class="num" type="text" id="f-m3-q3" data-step="m3" data-q="3.3 Что уже сделано 3 — ощущение, что получилось"></td></tr>
+    </table>
+  </div>
+  <p class="small">Если обе оценки нулевые — ничего страшного: пока это про «я всё равно сделал(а)». Удовольствие возвращается позже, чем способность действовать.</p>
+
+  <div class="card soft tight">
+    <label class="qlabel" for="f-m3-sess" style="margin-top:0">★ Для встречи с психологом: что из этого модуля я хочу принести <span class="sav" data-for="f-m3-sess"></span></label>
+    <textarea class="qf" id="f-m3-sess" data-step="m3" data-q="★ Для встречи: модуль 3" style="min-height:64px" placeholder="напр.: показать дневник реальности; обсудить голос критика, который говорит его словами"></textarea>
+  </div>
+</div>
+</section>
+<section class="lec" id="m4">
+<div class="wrap">
+  <h2>Модуль 4. Тянет обратно: не писать, не проверять, не возвращаться</h2>
+  <p class="lead">Если вас тянет обратно — это не слабость и не отсутствие ума. Так работает привязанность, когда тепло приходит непредсказуемо.</p>
+
+  <h3>4.1. Почему тянет именно туда, где было больно</h3>
+  <div class="cycle">
+    <div class="phase"><b>1. Тепло</b>Внимание, подарки, планы, «тот самый он». Здесь кажется, что всё хорошо и вас любят.</div>
+    <div class="phase w"><b>2. Напряжение</b>Мелочи становятся поводом. Вы начинаете следить за настроением, предугадывать, подстраиваться, чтобы не спровоцировать.</div>
+    <div class="phase w"><b>3. Взрыв и холод</b>Обесценивание, обвинение, тишина, иногда угрозы. Вы остаётесь один на один со своей «виной» и с вопросом «что я сделал(а) не так».</div>
+    <div class="phase"><b>4. Возвращение</b>Обещания, «я всё понял», тепло — и снова первая фаза. Каждый круг обычно короче и незаметнее.</div>
+  </div>
+  <div class="card crit tight">
+    <p><b>Главное про тягу.</b> Сильнее всего держит не постоянное хорошее, а <b>иногда</b> хорошее: непредсказуемое тепло привязывает крепче, чем ровное. Именно поэтому так трудно отпустить. Значит, тяга — не доказательство великой любви и не знак, что «это судьба»: это след того, как всё было устроено.</p>
+    <p><b>И тяга возвращается не к человеку, а к первой фазе.</b> Мы помним тепло и забываем третью фазу — просто потому, что память так устроена. Поэтому дальше — работа с памятью, а не с силой воли.</p>
+  </div>
+
+  <h3>4.2. Реальные сцены: как это было на самом деле</h3>
+  <p class="qhint">В момент тяги вы вспоминаете несколько тёплых моментов, а не отношения целиком. Здесь наоборот: шесть конкретных эпизодов, когда было плохо. Не «он был ужасным» — а факты: где, что произошло, что вы почувствовали. Этот список — опора для себя, а не список обид.</p>
+  <div class="tw">
+    <table class="t" style="min-width:640px">
+      <tr><th style="width:26%">Где и когда</th><th style="width:40%">Что произошло — в трёх словах, по факту</th><th style="width:34%">Что я чувствовал(а) — телом и душой</th></tr>
+      <tr><td><input type="text" id="f-m4-s1a" data-step="m4" data-q="4.2 Сцена 1 — где и когда"></td><td><input type="text" id="f-m4-s1b" data-step="m4" data-q="4.2 Сцена 1 — что произошло"></td><td><input type="text" id="f-m4-s1c" data-step="m4" data-q="4.2 Сцена 1 — что я чувствовал(а)"></td></tr>
+      <tr><td><input type="text" id="f-m4-s2a" data-step="m4" data-q="4.2 Сцена 2 — где и когда"></td><td><input type="text" id="f-m4-s2b" data-step="m4" data-q="4.2 Сцена 2 — что произошло"></td><td><input type="text" id="f-m4-s2c" data-step="m4" data-q="4.2 Сцена 2 — что я чувствовал(а)"></td></tr>
+      <tr><td><input type="text" id="f-m4-s3a" data-step="m4" data-q="4.2 Сцена 3 — где и когда"></td><td><input type="text" id="f-m4-s3b" data-step="m4" data-q="4.2 Сцена 3 — что произошло"></td><td><input type="text" id="f-m4-s3c" data-step="m4" data-q="4.2 Сцена 3 — что я чувствовал(а)"></td></tr>
+      <tr><td><input type="text" id="f-m4-s4a" data-step="m4" data-q="4.2 Сцена 4 — где и когда"></td><td><input type="text" id="f-m4-s4b" data-step="m4" data-q="4.2 Сцена 4 — что произошло"></td><td><input type="text" id="f-m4-s4c" data-step="m4" data-q="4.2 Сцена 4 — что я чувствовал(а)"></td></tr>
+      <tr><td><input type="text" id="f-m4-s5a" data-step="m4" data-q="4.2 Сцена 5 — где и когда"></td><td><input type="text" id="f-m4-s5b" data-step="m4" data-q="4.2 Сцена 5 — что произошло"></td><td><input type="text" id="f-m4-s5c" data-step="m4" data-q="4.2 Сцена 5 — что я чувствовал(а)"></td></tr>
+      <tr><td><input type="text" id="f-m4-s6a" data-step="m4" data-q="4.2 Сцена 6 — где и когда"></td><td><input type="text" id="f-m4-s6b" data-step="m4" data-q="4.2 Сцена 6 — что произошло"></td><td><input type="text" id="f-m4-s6c" data-step="m4" data-q="4.2 Сцена 6 — что я чувствовал(а)"></td></tr>
+    </table>
+  </div>
+  <label class="qlabel" for="f-m4-read">Прочитав эти строки сейчас, что я замечаю <span class="sav" data-for="f-m4-read"></span></label>
+  <textarea class="qf" id="f-m4-read" data-step="m4" data-q="4.2 Что я замечаю, прочитав сцены" style="min-height:64px" placeholder="напр.: я удивлён(а), как много я забыла; или: я снова начинаю оправдывать его"></textarea>
+
+  <h3>4.3. Правило 24 часов</h3>
+  <div class="card crit tight">
+    <p><b>Никаких решений и никаких сообщений ему в течение суток.</b> Исключение только одно — вопрос безопасности. Всё остальное может подождать: ответ на его сообщение, разговор, объяснения, «поставить точку», отдать вещи.</p>
+    <p>Это правило не про запрет. Оно про то, что <b>через сутки вы будете думать по-другому</b> — проверить это можно уже на первой неделе.</p>
+  </div>
+  <label class="qlabel" for="f-m4-24">Что, по моему опыту, я чувствую через сутки после сильного порыва написать <span class="sav" data-for="f-m4-24"></span></label>
+  <textarea class="qf" id="f-m4-24" data-step="m4" data-q="4.3 Правило 24 часов. Что я чувствую через сутки" style="min-height:64px" placeholder="напр.: обычно легче; или: злюсь на себя за то, что почти написал(а)"></textarea>
+
+  <h3>4.4. Экстренный план на 20 минут</h3>
+  <p class="qhint">Тяга приходит волной: поднимается, держится 10–30 минут, потом обязательно идёт на спад. Значит, задача не «убедить себя», а <b>пережить эти 20 минут</b>.</p>
+  <ol>
+    <li><b>Скажите себе не «нельзя», а:</b> «Я подожду 20 минут и решу потом». Подождать легче, чем запретить.</li>
+    <li><b>Дыхание 4-2-6</b> — пять циклов (ниже).</li>
+    <li><b>Глоток воды и 20 шагов</b> — по улице, двору или комнате.</li>
+    <li><b>Запишите волну</b> в дневник тяги (ниже) — что накрыло, на сколько из 10.</li>
+    <li><b>Если через 20 минут всё ещё 8–10 из 10</b> — позвоните человеку из вашего списка. Не пишите ему — говорите голосом.</li>
+  </ol>
+
+  <div class="pacer noprint" id="pacer">
+    <div class="circ" id="pacerCirc"></div>
+    <div class="ptxt" id="pacerTxt">Дыхание 4-2-6</div>
+    <div class="pcyc" id="pacerCyc">вдох 4 · задержка 2 · выдох 6 · пять циклов</div>
+    <div class="btnrow" style="justify-content:center;margin-bottom:0">
+      <button class="btn primary" id="pacerBtn">Начать</button>
+    </div>
+    <p class="small" style="margin:.5rem 0 0">Смотрите на круг или просто закройте глаза и ведите счёт. Выдох делайте длиннее вдоха — именно это снижает возбуждение.</p>
+  </div>
+
+  <h3>4.5. Дневник тяги</h3>
+  <p class="qhint">Заполняйте <b>после</b> волны, не внутри неё. Через две-три недели вы увидите, что чаще всего запускает волну: обычно это ночь, одиночество, усталость, алкоголь, праздники и случайный его пост в соцсети.</p>
+  <div class="logform noprint">
+    <div class="f two">
+      <div>
+        <label for="logTrig">Что накрыло — что было перед этим</label>
+        <input type="text" id="logTrig" placeholder="напр.: увидел(а) его фото в ленте">
+      </div>
+      <div>
+        <label for="logWish">Мысль, которая звала</label>
+        <input type="text" id="logWish" placeholder="напр.: «напишу и всё объясню»">
+      </div>
+    </div>
+    <div class="f two">
+      <div>
+        <label for="logForce">Сколько тянуло (0–10)</label>
+        <input type="number" id="logForce" min="0" max="10" step="1" placeholder="8">
+      </div>
+      <div>
+        <label for="logAfter">Стало после (0–10)</label>
+        <input type="number" id="logAfter" min="0" max="10" step="1" placeholder="4">
+      </div>
+    </div>
+    <div class="f">
+      <label for="logAct">Что я сделал(а) вместо</label>
+      <input type="text" id="logAct" placeholder="напр.: прошёл(ла) 20 минут, позвонила Л.">
+    </div>
+    <button class="btn primary" id="logAdd">Добавить запись</button>
+  </div>
+  <div class="log" id="logList"></div>
+
+  <h3>4.6. План на плохую ночь</h3>
+  <p class="qhint">Составьте его заранее, в спокойный день: ночью решения принимать трудно. Четыре пункта, по порядку, каждый — на 10–20 минут.</p>
+  <label class="qlabel" for="f-m4-night">Мой план на два часа <span class="sav" data-for="f-m4-night"></span></label>
+  <textarea class="qf tall" id="f-m4-night" data-step="m4" data-q="4.6 План на плохую ночь" placeholder="1) телефон в другую комнату  2) тёплый душ  3) 10 минут на улице  4) звонок Л. или сериал, который я выбрал(а) заранее"></textarea>
+
+  <h3>4.7. Если я всё-таки написал(а) или встретился(-ась)</h3>
+  <div class="card soft tight">
+    <p><b>Это не обнуляет путь.</b> Возврат к контакту — очень частое явление, и оно не значит, что с вами что-то не так. И ещё одно правило, которое стоит принять заранее: <b>старайтесь не ругать себя за это</b>. Стыд не помогает: он делает следующий возврат к контакту более вероятным. Один разговор, одно сообщение, одна встреча — это не «всё заново».</p>
+  </div>
+  <div class="tw">
+    <table class="t" style="min-width:600px">
+      <tr><th style="width:25%">Что было перед этим</th><th style="width:25%">Что я надеялся(-ась) получить</th><th style="width:25%">Что получила на самом деле</th><th style="width:25%">Что я теперь знаю</th></tr>
+      <tr>
+        <td><textarea id="f-m4-x1" data-step="m4" data-q="4.7 Разбор: что было перед этим"></textarea></td>
+        <td><textarea id="f-m4-x2" data-step="m4" data-q="4.7 Разбор: что надеялась получить"></textarea></td>
+        <td><textarea id="f-m4-x3" data-step="m4" data-q="4.7 Разбор: что получила"></textarea></td>
+        <td><textarea id="f-m4-x4" data-step="m4" data-q="4.7 Разбор: что я теперь знаю"></textarea></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card soft tight">
+    <label class="qlabel" for="f-m4-sess" style="margin-top:0">★ Для встречи с психологом: что из этого модуля я хочу принести <span class="sav" data-for="f-m4-sess"></span></label>
+    <textarea class="qf" id="f-m4-sess" data-step="m4" data-q="★ Для встречи: модуль 4" style="min-height:64px" placeholder="напр.: показать дневник тяги; помочь составить план на ночь"></textarea>
+  </div>
+</div>
+</section>
+
+<section class="lec" id="m5">
+<div class="wrap">
+  <h2>Модуль 5. Тело, сон и накрывающие воспоминания</h2>
+  <p class="lead">Тело держит то, что голова уже перестала вспоминать. Если вы вздрагиваете от резких звуков, не можете расслабиться, просыпаетесь в 4 утра или чувствуете себя «выключенной» — это не характер и не «плохие нервы». Это последствие долгой готовности к опасности, и оно возвращается.</p>
+
+  <h3>5.1. Карта тела</h3>
+  <p class="qhint">Отметьте зоны, где есть напряжение или непривычные ощущения. «Громче всего» — обычно там, где тело держит напряжение сейчас.</p>
+  <div class="chkgrid two">
+    <label class="chk"><input type="checkbox" id="c-m5-t1" data-step="m5"><span>горло и шея — ком, спазм, сдавленность</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t2" data-step="m5"><span>челюсть — сжатые зубы, скрип во сне</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t3" data-step="m5"><span>грудь — сжатие, тяжесть, «не хватает вдоха»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t4" data-step="m5"><span>живот — спазм, тошнота, пустота, «бабочки»</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t5" data-step="m5"><span>плечи и спина — каменные, ноющая боль</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t6" data-step="m5"><span>руки — сжатые кулаки, дрожь, онемение, холод</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t7" data-step="m5"><span>ноги — тяжесть, слабость, желание убежать</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t8" data-step="m5"><span>всё тело — онемение, «меня тут нет», пустота</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t9" data-step="m5"><span>сон — долго не засыпаю, просыпаюсь, кошмары</span></label>
+    <label class="chk"><input type="checkbox" id="c-m5-t10" data-step="m5"><span>еда — пропадает аппетит или наоборот «заедаю»</span></label>
+  </div>
+  <label class="qlabel" for="f-m5-map">Где громче всего — и что это место делает, когда мне спокойно <span class="sav" data-for="f-m5-map"></span></label>
+  <textarea class="qf" id="f-m5-map" data-step="m5" data-q="5.1 Карта тела. Где громче всего"></textarea>
+
+  <h3>5.2. Моё состояние: неделя наблюдений</h3>
+  <p class="qhint">Три оценки в день, от 0 до 10: насколько я <b>в себе</b>, то есть могу думать, чувствовать и заниматься обычными делами. 0 — либо накрывает, либо ничего не чувствуешь; 5–6 — я в себе; 10 — спокойно и устойчиво. Ничего не исправляйте, только отмечайте.</p>
+  <div class="tw">
+    <table class="t">
+      <tr><th style="width:12%">День</th><th style="width:16%">Утро</th><th style="width:16%">День</th><th style="width:16%">Вечер</th><th style="width:40%">Что было — одна строка</th></tr>
+      <tr><td>1</td><td class="numcell"><input class="num" type="text" id="f-m5-w1a" data-step="m5" data-q="5.2 День 1 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w1b" data-step="m5" data-q="5.2 День 1 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w1c" data-step="m5" data-q="5.2 День 1 — вечер"></td><td><input type="text" id="f-m5-w1d" data-step="m5" data-q="5.2 День 1 — что было"></td></tr>
+      <tr><td>2</td><td class="numcell"><input class="num" type="text" id="f-m5-w2a" data-step="m5" data-q="5.2 День 2 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w2b" data-step="m5" data-q="5.2 День 2 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w2c" data-step="m5" data-q="5.2 День 2 — вечер"></td><td><input type="text" id="f-m5-w2d" data-step="m5" data-q="5.2 День 2 — что было"></td></tr>
+      <tr><td>3</td><td class="numcell"><input class="num" type="text" id="f-m5-w3a" data-step="m5" data-q="5.2 День 3 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w3b" data-step="m5" data-q="5.2 День 3 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w3c" data-step="m5" data-q="5.2 День 3 — вечер"></td><td><input type="text" id="f-m5-w3d" data-step="m5" data-q="5.2 День 3 — что было"></td></tr>
+      <tr><td>4</td><td class="numcell"><input class="num" type="text" id="f-m5-w4a" data-step="m5" data-q="5.2 День 4 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w4b" data-step="m5" data-q="5.2 День 4 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w4c" data-step="m5" data-q="5.2 День 4 — вечер"></td><td><input type="text" id="f-m5-w4d" data-step="m5" data-q="5.2 День 4 — что было"></td></tr>
+      <tr><td>5</td><td class="numcell"><input class="num" type="text" id="f-m5-w5a" data-step="m5" data-q="5.2 День 5 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w5b" data-step="m5" data-q="5.2 День 5 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w5c" data-step="m5" data-q="5.2 День 5 — вечер"></td><td><input type="text" id="f-m5-w5d" data-step="m5" data-q="5.2 День 5 — что было"></td></tr>
+      <tr><td>6</td><td class="numcell"><input class="num" type="text" id="f-m5-w6a" data-step="m5" data-q="5.2 День 6 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w6b" data-step="m5" data-q="5.2 День 6 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w6c" data-step="m5" data-q="5.2 День 6 — вечер"></td><td><input type="text" id="f-m5-w6d" data-step="m5" data-q="5.2 День 6 — что было"></td></tr>
+      <tr><td>7</td><td class="numcell"><input class="num" type="text" id="f-m5-w7a" data-step="m5" data-q="5.2 День 7 — утро"></td><td class="numcell"><input class="num" type="text" id="f-m5-w7b" data-step="m5" data-q="5.2 День 7 — день"></td><td class="numcell"><input class="num" type="text" id="f-m5-w7c" data-step="m5" data-q="5.2 День 7 — вечер"></td><td><input type="text" id="f-m5-w7d" data-step="m5" data-q="5.2 День 7 — что было"></td></tr>
+    </table>
+  </div>
+  <p class="small">Через неделю посмотрите, в какие часы и дни становится тяжелее всего. Часто видно связь с недосыпом, голодом, контактом с ним, алкоголем, чужими ссорами.</p>
+
+  <h3>5.3. Когда накрывает воспоминание</h3>
+  <p class="qhint">Накрывающее воспоминание — это не признак того, что вы сходите с ума. Это память, которая выбрасывает прошлое в настоящий момент без пометки о времени. Её можно вернуть на место — телом и вниманием.</p>
+  <ol>
+    <li><b>Скажите вслух или про себя:</b> «Это воспоминание. Сейчас 20__ год, я в ______, я не там». Назовите дату, место, свою позу.</li>
+    <li><b>Верните себе комнату:</b> 5 предметов, которые видите; 3 звука; один предмет — на ощупь (температура, поверхность).</li>
+    <li><b>Опора телом:</b> ступни на полу целиком, спина опирается на спинку, медленный глоток воды.</li>
+    <li><b>Расширьте взгляд:</b> посмотрите не в одну точку, а по сторонам, отметьте, что находится справа и слева от вас. Это буквально снижает внутреннее напряжение.</li>
+    <li><b>Пять минут простого дела руками:</b> помыть посуду, полить цветы, сложить вещи, почистить что-нибудь. Руки возвращают в настоящий день.</li>
+  </ol>
+  <label class="qlabel" for="f-m5-3">Мой план коротко: три шага, которые я реально вспомню в тот момент <span class="sav" data-for="f-m5-3"></span></label>
+  <textarea class="qf" id="f-m5-3" data-step="m5" data-q="5.3 Мой короткий протокол при воспоминании" placeholder="1) назвать дату и место  2) 5 предметов вокруг  3) холодная вода на руки, 5 минут дела" style="min-height:78px"></textarea>
+  <label class="qlabel" for="f-m5-3b">Что помогало в последний раз <span class="sav" data-for="f-m5-3b"></span></label>
+  <textarea class="qf" id="f-m5-3b" data-step="m5" data-q="5.3 Что помогало в последний раз" style="min-height:60px"></textarea>
+
+  <h3>5.4. Ночной план</h3>
+  <p class="qhint">Ночь — самое частое время для тяги. Ночью мы не думаем, мы вспоминаем. Поэтому решение принимают заранее — днём.</p>
+  <ul>
+    <li><b>Телефон — в другую комнату, заряжаться вдали от постели.</b> Это не про силу воли: утром решение принять легче, чем в 2 часа ночи.</li>
+    <li><b>Тёплый душ, затем прохладная вода на кисти рук</b> — простой перепад, который сбивает «разгон» мыслей.</li>
+    <li><b>Правило 20 минут:</b> не спится — встать, уйти в другую комнату, заняться тихим делом без экрана. Не лежать и не бороться.</li>
+    <li><b>Разгрузить голову:</b> выписать списком дела на завтра и «мысли, которые крутятся». Пяти строк обычно достаточно.</li>
+    <li><b>Медленный выдох длиннее вдоха</b> — 10–15 раз. Для многих это единственное, что реально работает в постели.</li>
+    <li><b>Алкоголь «чтобы уснуть»</b> — усыпляет и одновременно ухудшает глубину сна, а ночная тяга на следующий день обычно сильнее.</li>
+  </ul>
+  <label class="qlabel" for="f-m5-n">Мой ночной план: три пункта <span class="sav" data-for="f-m5-n"></span></label>
+  <textarea class="qf" id="f-m5-n" data-step="m5" data-q="5.4 Мой ночной план" style="min-height:70px"></textarea>
+  <label class="qlabel" for="f-m5-nb">Что ещё мешает мне спать — по делу: боль, шум, дети, работа, мысли <span class="sav" data-for="f-m5-nb"></span></label>
+  <textarea class="qf" id="f-m5-nb" data-step="m5" data-q="5.4 Что мешает мне спать" style="min-height:64px"></textarea>
+
+  <h3>5.5. Моя копилка «здесь и сейчас»</h3>
+  <p class="qhint">Пять вещей, которые возвращают вас в сегодняшний день. Не «медитация вообще», а конкретно то, что у вас работает: запах, дорога, руки в тесте, музыка, холод, питомец.</p>
+  <textarea class="qf tall" id="f-m5-bank" data-step="m5" data-q="5.5 Копилка: что возвращает меня в настоящий момент" placeholder="1)… 2)… 3)… 4)… 5)…"></textarea>
+
+  <div class="card warn">
+    <h3 style="margin-top:0">Когда нужен специалист, а не тетрадь</h3>
+    <p>Тетрадь — не замена помощи. Обратитесь к психологу, психотерапевту или врачу, если:</p>
+    <ul>
+      <li>сон нарушен больше трёх недель, или вы почти не спите;</li>
+      <li>есть панические атаки, или тело всё время напряжено;</li>
+      <li>накрывающие воспоминания приходят днём и мешают жить;</li>
+      <li>вы пьёте или принимаете что-то, чтобы уснуть или не чувствовать;</li>
+      <li>нет сил на обычные дела больше двух недель;</li>
+      <li><b>появляются мысли о том, чтобы не жить, или о том, чтобы сделать больно себе или другому человеку.</b> Это не слабость и не ваша ошибка — это сигнал, с которым идут к специалисту сейчас, а не потом. Телефоны — на первой странице тетради.</li>
+    </ul>
+  </div>
+
+  <div class="card soft tight">
+    <label class="qlabel" for="f-m5-sess" style="margin-top:0">★ Для встречи с психологом: что из этого модуля я хочу принести <span class="sav" data-for="f-m5-sess"></span></label>
+    <textarea class="qf" id="f-m5-sess" data-step="m5" data-q="★ Для встречи: модуль 5" style="min-height:64px" placeholder="напр.: показать неделю наблюдений; обсудить, что делать с ночами"></textarea>
+  </div>
+</div>
+</section>
+<section class="lec" id="m6">
+<div class="wrap">
+  <h2>Модуль 6. Моя новая норма</h2>
+  <p class="lead">Этот модуль не про то, как «найти хорошего человека». Он про то, чтобы у вас появилась своя планка — и слова, которыми вы её защищаете.</p>
+
+  <h3>6.1. Что я больше не терплю</h3>
+  <p class="qhint">Формулируйте как действия, а не как чувства. Не «чтобы меня уважали», а «если мне запрещают видеться с подругой — я не остаюсь в этих отношениях». Такую формулировку можно проверить, а чувство — нет.</p>
+  <div style="display:grid;gap:.45rem;margin:.4rem 0 1rem">
+    <input type="text" id="f-m6-n1" data-step="m6" data-q="6.1 Не терплю 1" placeholder="1) если повышают голос и потом объясняют, что виноват(а) я — я это не обсуждаю" style="padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem">
+    <input type="text" id="f-m6-n2" data-step="m6" data-q="6.1 Не терплю 2" placeholder="2)…" style="padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem">
+    <input type="text" id="f-m6-n3" data-step="m6" data-q="6.1 Не терплю 3" placeholder="3)…" style="padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem">
+    <input type="text" id="f-m6-n4" data-step="m6" data-q="6.1 Не терплю 4" placeholder="4)…" style="padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem">
+    <input type="text" id="f-m6-n5" data-step="m6" data-q="6.1 Не терплю 5" placeholder="5)…" style="padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.93rem">
+  </div>
+  <label class="qlabel" for="f-m6-three">Три главных — те, за которые я держусь <span class="sav" data-for="f-m6-three"></span></label>
+  <textarea class="qf" id="f-m6-three" data-step="m6" data-q="6.1 Три главных «не терплю»" style="min-height:72px"></textarea>
+
+  <h3>6.2. Тревожные признаки: как это выглядело в начале</h3>
+  <div class="card soft tight">
+    <p>Опасное обычно начинается не с крика, а с большого тепла. Так это выглядит у многих:</p>
+    <ul style="margin-bottom:0">
+      <li>очень быстрое сближение: «ты — моя судьба» на второй неделе, планы на годы вперёд;</li>
+      <li>ревность как доказательство любви, «я просто волнуюсь»;</li>
+      <li>мягкое обесценивание моих друзей и родных, потом — прямая критика;</li>
+      <li>проверки и «случайные» звонки, требование отчёта;</li>
+      <li>контроль денег или «тебе не нужно работать, я решу»;</li>
+      <li>критика внешности «ради моего блага»;</li>
+      <li>мои чувства всегда неправильные, его — всегда объективные;</li>
+      <li>«с теми, кто был до тебя, всё было не так»;</li>
+      <li>извинения без изменения поведения;</li>
+      <li>виноват(а) в его состоянии всегда оказываюсь я.</li>
+    </ul>
+  </div>
+  <label class="qlabel" for="f-m6-flags">Мои личные пять — по чему я теперь узнаю это сразу <span class="sav" data-for="f-m6-flags"></span></label>
+  <textarea class="qf tall" id="f-m6-flags" data-step="m6" data-q="6.2 Мои красные флаги"></textarea>
+
+  <h3>6.3. Как выглядит заботливая связь</h3>
+  <p class="qhint">Отметьте то, что для вас обязательно. Это не «идеал», а минимальная планка.</p>
+  <div class="chkgrid">
+    <label class="chk"><input type="checkbox" id="c-m6-g1" data-step="m6"><span>можно не соглашаться — и за это не наказывают тишиной и обидой</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g2" data-step="m6"><span>можно устать и сказать об этом без обвинений в мой адрес</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g3" data-step="m6"><span>мои друзья и родные остаются в моей жизни</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g4" data-step="m6"><span>деньги и планы обсуждаются, а не решаются за меня</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g5" data-step="m6"><span>меня не читают без разрешения и не проверяют</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g6" data-step="m6"><span>слова совпадают с делами: обещал — сделал</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g7" data-step="m6"><span>я могу спросить «что происходит?» и получить ответ, а не обвинение в ответ</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g8" data-step="m6"><span>ссора заканчивается разговором, а не многодневным молчанием</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g9" data-step="m6"><span>мне не нужно заслуживать хорошее отношение</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g10" data-step="m6"><span>после встречи с этим человеком мне спокойнее, а не хуже</span></label>
+    <label class="chk"><input type="checkbox" id="c-m6-g11" data-step="m6"><span>мне можно быть неудобным(-ой) — меня всё равно любят</span></label>
+  </div>
+
+  <p class="qhint">И проверка на сегодня: где я в этом сейчас. Отметьте по шкалам, честно и без «надо».</p>
+  <div class="scales">
+    <div class="scale">
+      <span class="sname">Мне спокойно рядом с близкими мне людьми</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m6-calm" data-step="m6" data-scale="Спокойно рядом с близкими"><span class="val" id="v-m6-calm">5</span></div>
+      <div class="anch"><span>0 — всё время напряжён(а)</span><span>10 — спокойно и свободно</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Я могу сказать «нет» без паники и длинных оправданий</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m6-no" data-step="m6" data-scale="Могу сказать нет"><span class="val" id="v-m6-no">5</span></div>
+      <div class="anch"><span>0 — соглашаюсь против себя</span><span>10 — отказываю спокойно</span></div>
+    </div>
+    <div class="scale">
+      <span class="sname">Я могу попросить о помощи и принять её</span>
+      <div class="srow"><input type="range" min="0" max="10" step="1" value="5" id="r-m6-help" data-step="m6" data-scale="Могу попросить о помощи"><span class="val" id="v-m6-help">5</span></div>
+      <div class="anch"><span>0 — не прошу, справляюсь сам(а)</span><span>10 — прошу и беру помощь</span></div>
+    </div>
+  </div>
+
+  <h3>6.4. Мой круг</h3>
+  <p class="qhint">Четыре человека — не «на всякий случай», а с конкретной ролью. Проверьте честно: с кем можно не быть удобным(-ой)?</p>
+  <div class="tw">
+    <table class="t" style="min-width:640px">
+      <tr><th style="width:30%">Кто</th><th style="width:24%">Роль в моей жизни</th><th style="width:46%">О чём я могу его попросить</th></tr>
+      <tr><td><input type="text" id="f-m6-k1" data-step="m6" data-q="6.4 Круг. Кто 1"></td><td><input type="text" id="f-m6-r1" data-step="m6" data-q="6.4 Круг. Роль 1"></td><td><input type="text" id="f-m6-a1" data-step="m6" data-q="6.4 Круг. Просьба 1"></td></tr>
+      <tr><td><input type="text" id="f-m6-k2" data-step="m6" data-q="6.4 Круг. Кто 2"></td><td><input type="text" id="f-m6-r2" data-step="m6" data-q="6.4 Круг. Роль 2"></td><td><input type="text" id="f-m6-a2" data-step="m6" data-q="6.4 Круг. Просьба 2"></td></tr>
+      <tr><td><input type="text" id="f-m6-k3" data-step="m6" data-q="6.4 Круг. Кто 3"></td><td><input type="text" id="f-m6-r3" data-step="m6" data-q="6.4 Круг. Роль 3"></td><td><input type="text" id="f-m6-a3" data-step="m6" data-q="6.4 Круг. Просьба 3"></td></tr>
+      <tr><td><input type="text" id="f-m6-k4" data-step="m6" data-q="6.4 Круг. Кто 4"></td><td><input type="text" id="f-m6-r4" data-step="m6" data-q="6.4 Круг. Роль 4"></td><td><input type="text" id="f-m6-a4" data-step="m6" data-q="6.4 Круг. Просьба 4"></td></tr>
+    </table>
+  </div>
+
+  <h3>6.5. Конструктор фраз</h3>
+  <p class="qhint">Короткая фраза работает лучше длинного объяснения: чем больше вы объясняете, тем больше поводов спорить вы даёте.</p>
+  <div class="grid2">
+    <div class="card tight">
+      <h4 style="margin-top:0">Отказ</h4>
+      <p class="small">«Спасибо, но я не смогу». «Мне это не подходит». «Нет, я не буду это делать». Три предложения — максимум. Если давят — спокойно повторите ту же мысль ещё раз и закончите разговор, не оправдываясь.</p>
+      <label class="qlabel" for="f-m6-p1">Моя фраза отказа <span class="sav" data-for="f-m6-p1"></span></label>
+      <textarea class="qf" id="f-m6-p1" data-step="m6" data-q="6.5 Фраза отказа" style="min-height:56px"></textarea>
+      <label class="qlabel" for="f-m6-p1b">Что я отвечаю, если давят <span class="sav" data-for="f-m6-p1b"></span></label>
+      <textarea class="qf" id="f-m6-p1b" data-step="m6" data-q="6.5 Отказ — ответ на давление" style="min-height:56px"></textarea>
+    </div>
+    <div class="card tight">
+      <h4 style="margin-top:0">Просьба времени</h4>
+      <p class="small">«Мне нужно подумать до четверга, я отвечу сам(а)». «Я не могу решить сейчас». Право на паузу — это не грубость. Если вы привыкли решать сразу, пауза возвращает вам право решать самому(-ой).</p>
+      <label class="qlabel" for="f-m6-p2">Моя фраза паузы <span class="sav" data-for="f-m6-p2"></span></label>
+      <textarea class="qf" id="f-m6-p2" data-step="m6" data-q="6.5 Фраза паузы" style="min-height:56px"></textarea>
+      <label class="qlabel" for="f-m6-p2b">Что я делаю, если продолжают торопить <span class="sav" data-for="f-m6-p2b"></span></label>
+      <textarea class="qf" id="f-m6-p2b" data-step="m6" data-q="6.5 Пауза — что делаю, если торопят" style="min-height:56px"></textarea>
+    </div>
+  </div>
+  <div class="card tight">
+    <h4 style="margin-top:0">Ответ на обесценивание</h4>
+    <p class="small">«Это моё мнение, и я его оставлю». «Я услышал(а) тебя. Решение я принимаю сам(а)». «Не буду это обсуждать».</p>
+    <label class="qlabel" for="f-m6-p3">Моя фраза <span class="sav" data-for="f-m6-p3"></span></label>
+    <textarea class="qf" id="f-m6-p3" data-step="m6" data-q="6.5 Ответ на обесценивание" style="min-height:56px"></textarea>
+    <label class="qlabel" for="f-m6-p3b">Что я говорю себе, когда замечаю, что снова начал(а) оправдываться <span class="sav" data-for="f-m6-p3b"></span></label>
+    <textarea class="qf" id="f-m6-p3b" data-step="m6" data-q="6.5 Что говорю себе, когда оправдываюсь" style="min-height:56px"></textarea>
+  </div>
+
+  <h3>6.6. Письмо себе через три месяца</h3>
+  <p class="qhint">Три вопроса, к которым стоит вернуться в трудный день.</p>
+  <label class="qlabel" for="f-m6-letter">Что я хочу, чтобы было правдой через три месяца. Что я хочу напомнить себе в плохой день. Что уже сейчас — моё и никто не может это отнять <span class="sav" data-for="f-m6-letter"></span></label>
+  <textarea class="qf tall" id="f-m6-letter" data-step="m6" data-q="6.6 Письмо себе через три месяца"></textarea>
+
+  <h3>6.7. План после тетради</h3>
+  <div class="tw">
+    <table class="t" style="min-width:560px">
+      <tr><th style="width:34%">С кем я работаю</th><th style="width:33%">Что делаю для тела и сна</th><th style="width:33%">Чем наполняю неделю</th></tr>
+      <tr>
+        <td><textarea id="f-m6-plan1" data-step="m6" data-q="6.7 План: с кем работаю"></textarea></td>
+        <td><textarea id="f-m6-plan2" data-step="m6" data-q="6.7 План: тело и сон"></textarea></td>
+        <td><textarea id="f-m6-plan3" data-step="m6" data-q="6.7 План: чем наполняю неделю"></textarea></td>
+      </tr>
+    </table>
+  </div>
+  <p class="small">Через месяц вернитесь к пяти шкалам в модуле 1 и пройдите их заново. Это единственный «тест» в тетради, и он ваш собственный.</p>
+
+  <div class="card soft tight">
+    <label class="qlabel" for="f-m6-sess" style="margin-top:0">★ Для встречи с психологом: что из этого модуля я хочу принести <span class="sav" data-for="f-m6-sess"></span></label>
+    <textarea class="qf" id="f-m6-sess" data-step="m6" data-q="★ Для встречи: модуль 6" style="min-height:64px" placeholder="напр.: обсудить мои три «не терплю»; потренировать фразу отказа"></textarea>
+  </div>
+</div>
+</section>
+
+<section class="lec" id="map">
+<div class="wrap">
+  <h2>Моя карта</h2>
+  <p class="lead">Здесь собирается то, что вы записали. Это же можно распечатать или выгрузить файлом и взять на встречу.</p>
+
+  <div class="card" id="mapStats"></div>
+
+  <h3>Мои опоры — коротко</h3>
+  <div class="card" id="mapAnchors"></div>
+
+  <h3>Телефоны, которые стоит иметь под рукой</h3>
+  <div class="card soft tight">
+    <p><b>Австрия:</b> 133 / 112 — экстренно · 0800 222 555 — Frauenhelpline, круглосуточно, бесплатно<br>
+    <b>Россия:</b> 112 — экстренно · 8-800-7000-600 — телефон доверия для женщин, пострадавших от насилия · 051 — экстренная психологическая помощь (Москва)<br>
+    <b>Дети:</b> РФ 8-800-2000-122 · Австрия 147</p>
+  </div>
+
+  <h3>★ Для встречи с психологом</h3>
+  <label class="qlabel" for="f-map-sess">Что я хочу обсудить — главное, списком <span class="sav" data-for="f-map-sess"></span></label>
+  <textarea class="qf tall" id="f-map-sess" data-step="map" data-q="Моя карта. Что хочу обсудить на встрече" placeholder="напр.: 1) мой план на ночь не работает — нужен другой  2) как отвечать на его сообщения  3) боюсь, что вернусь"></textarea>
+
+  <div class="btnrow">
+    <button class="btn primary" id="btnExport">Экспорт ответов в текстовый файл</button>
+    <button class="btn" id="btnPrint2">Распечатать / сохранить в PDF</button>
+    <button class="btn" id="btnSaveNow">Сохранить сейчас</button>
+    <button class="btn danger" id="btnClear">Удалить все ответы</button>
+  </div>
+  <p class="small">Ответы хранятся только в вашем браузере. Экспорт создаёт текстовый файл со всем, что заполнено. Если тетрадь заполнялась на общем устройстве — подумайте, стоит ли оставлять файл на нём.</p>
+
+  <div class="card crit tight">
+    <p><b>И последнее.</b> То, что вы прошли эту тетрадь, — уже работа. Она не заменяет психотерапии и не отменяет плохих дней: восстановление идёт волнами, и тяжёлые дни — часть пути, а не откат назад. Если после заполнения стало тяжелее, чем было, — это не ошибка, а повод принести написанное на встречу со специалистом и не оставаться с этим в одиночку.</p>
+  </div>
+</div>
+</section>
+
+  </main>
+</div>
+
+<script>
+
+(function(){
+  'use strict';
+  var KEY='after_destructive_rel_v1';
+  var UIKEY='after_destructive_rel_ui_v1';
+  var d=document, w=window;
+
+  var LABELS={
+    front:'Начало работы', now:'Навигация по тетради',
+    m1:'Модуль 1 · Понимание', m2:'Модуль 2 · Безопасность', m3:'Модуль 3 · Реальность',
+    m4:'Модуль 4 · Тяга и качели', m5:'Модуль 5 · Тело и сон', m6:'Модуль 6 · Новая норма',
+    map:'Итоги · Моя карта'
+  };
+
+  var secs=[].slice.call(d.querySelectorAll('section.lec'));
+  var tocItems=[].slice.call(d.querySelectorAll('.toc ol li[data-t]'));
+  var order=secs.map(function(s){ return s.id; });
+  var counter=d.getElementById('counter');
+  var barFill=d.getElementById('barFill');
+  var saveStat=d.getElementById('saveStat');
+
+  var fields=[].slice.call(d.querySelectorAll('textarea.qf, table.t textarea, input[type=text], input[type=number], input[type=range]'))
+    .filter(function(f){ return f.id && f.id!=='q' && f.getAttribute('data-step') && !f.closest('.logform'); });
+  var checks=[].slice.call(d.querySelectorAll('input[type=checkbox][data-step]'));
+  var texts=fields.filter(function(f){ return f.type!=='range'; });
+  var ranges=fields.filter(function(f){ return f.type==='range'; });
+
+  function sectionFields(id){ return texts.filter(function(f){ return f.getAttribute('data-step')===id; }); }
+  function sectionChecks(id){ return checks.filter(function(c){ return c.getAttribute('data-step')===id; }); }
+  var FALLBACK={'front':'#8a7455','now':'#5f7a72','m1':'#a2664a','m2':'#a83a2d','m3':'#44659b',
+    'm4':'#77589b','m5':'#2f6f60','m6':'#9a7638','map':'#7a7168'};
+  function secColor(id){
+    var s=d.getElementById(id), v='';
+    if(s && w.getComputedStyle){ try{ v=w.getComputedStyle(s).getPropertyValue('--sec').trim(); }catch(e){} }
+    return v || FALLBACK[id] || '';
+  }
+  function title(id){
+    var li=tocItems.filter(function(x){ return x.getAttribute('data-t')===id; })[0];
+    return li? li.textContent.replace(/\s+/g,' ').trim() : (LABELS[id]||id);
+  }
+
+  /* ── хранилище ─────────────────────────────── */
+  var store={}, okStore=true, quotaWarned=false;
+  try{ store=JSON.parse(w.localStorage.getItem(KEY)||'{}'); }catch(e){ store={}; }
+  try{ w.localStorage.setItem('__t','1'); w.localStorage.removeItem('__t'); }catch(e){ okStore=false; }
+
+  if(!okStore) banner('⚠ Автосохранение в этом окне браузера не работает: режим инкогнито или запрет хранения данных. Ответы исчезнут после закрытия страницы. Откройте тетрадь в обычном окне — или сразу выгрузите ответы кнопкой «Экспорт».');
+  function banner(text){
+    var b=d.createElement('div'); b.className='nostore'; b.setAttribute('data-banner','1');
+    b.innerHTML=text+' <button type="button">Понятно</button>';
+    b.querySelector('button').addEventListener('click',function(){ b.parentNode.removeChild(b); });
+    d.body.insertBefore(b,d.body.firstChild);
+  }
+
+  function saveAll(){
+    if(!okStore) return;
+    store.__savedAt=Date.now();
+    try{ w.localStorage.setItem(KEY,JSON.stringify(store)); }
+    catch(e){
+      if(!quotaWarned){ quotaWarned=true; banner('⚠ Не удалось сохранить (хранилище браузера переполнено или закрыто). Выгрузите ответы кнопкой «Экспорт», чтобы не потерять написанное.'); }
+      setStatus('не сохранилось','warn');
+    }
+  }
+  var pending=false;
+  function scheduleSave(){
+    setStatus('сохраняю…','busy');
+    pending=true;
+    clearTimeout(w.__saveT);
+    w.__saveT=setTimeout(function(){ pending=false; saveAll(); setStatus('✓ сохранено '+clock(),'ok'); },400);
+  }
+  function flush(){
+    if(!okStore||!pending) return;
+    clearTimeout(w.__saveT); pending=false; saveAll();
+    setStatus('✓ сохранено '+clock(),'ok');
+  }
+  function clock(){ return new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}); }
+  function setStatus(text,kind){
+    if(!saveStat) return;
+    saveStat.textContent=text;
+    saveStat.className='save'+(kind?(' '+kind):'');
+  }
+  function markSaved(id){
+    var s=d.querySelector('.sav[data-for="'+id+'"]'); if(!s) return;
+    s.textContent='— сохранено ✓';
+    clearTimeout(s.__t); s.__t=setTimeout(function(){ if(s) s.textContent=''; },2200);
+  }
+
+  /* ── прогресс ──────────────────────────────── */
+  function answeredTexts(){ return texts.filter(function(f){ return String(f.value||'').trim(); }).length; }
+  function answeredChecks(){ return checks.filter(function(c){ return c.checked; }).length; }
+  function totalItems(){ return texts.length + checks.length; }
+  function answeredItems(){ return answeredTexts() + answeredChecks(); }
+
+  function updateProgress(){
+    var pct = totalItems()? Math.round(answeredItems()*100/totalItems()) : 0;
+    if(counter) counter.textContent=answeredItems()+' из '+totalItems()+' · '+pct+'%';
+    if(barFill) barFill.style.width=pct+'%';
+    tocItems.forEach(function(li){
+      var id=li.getAttribute('data-t');
+      var fs=sectionFields(id).length, cs=sectionChecks(id).length;
+      if(!fs && !cs) return;
+      var a=sectionFields(id).filter(function(f){ return String(f.value||'').trim(); }).length
+          + sectionChecks(id).filter(function(c){ return c.checked; }).length;
+      li.setAttribute('data-mod','1');
+      var p=li.querySelector('.tprog');
+      if(!p){ p=d.createElement('span'); p.className='tprog'; li.querySelector('a').appendChild(p); }
+      p.textContent=a+'/'+(fs+cs);
+    });
+  }
+
+  /* ── навигация ─────────────────────────────── */
+  function show(id){
+    if(order.indexOf(id)<0) id='front';
+    secs.forEach(function(s){ s.classList.toggle('act', s.id===id); });
+    tocItems.forEach(function(li){ li.classList.toggle('on', li.getAttribute('data-t')===id); });
+    var cb=d.getElementById('menu'); if(cb) cb.checked=false;
+    w.scrollTo(0,0);
+    updateProgress();
+    if(id==='map') renderMap();
+    if(typeof markScrollable==='function') markScrollable();
+  }
+  w.addEventListener('hashchange',function(){ show(location.hash.slice(1)||'front'); });
+  d.addEventListener('keydown',function(e){
+    if(e.target && (e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT')) return;
+    var id=location.hash.slice(1)||'front', i=order.indexOf(id);
+    if(e.key==='ArrowRight'&&order[i+1]) location.hash=order[i+1];
+    else if(e.key==='ArrowLeft'&&order[i-1]) location.hash=order[i-1];
+    else if(e.key==='m'||e.key==='M'||e.key==='ь'||e.key==='Ь'){ var m=d.getElementById('menu'); m.checked=!m.checked; }
+  });
+
+  /* ── украшения разделов ─────────────────────── */
+  secs.forEach(function(s,idx){
+    var color=secColor(s.id);
+    var li=tocItems.filter(function(x){ return x.getAttribute('data-t')===s.id; })[0];
+    if(li && color) li.style.setProperty('--sec',color);
+
+    var h2=s.querySelector('h2') || s.querySelector('h1');
+    if(h2 && !s.querySelector('.modhead')){
+      var head=d.createElement('div'); head.className='modhead';
+      var label=LABELS[s.id]||'';
+      var num=(s.id.charAt(0)==='m' && s.id.length===2)? s.id.charAt(1) : '';
+      var html='';
+      if(num) html+='<span class="chip">'+num+'</span>';
+      html+='<span class="eyebrow">'+label+'</span>';
+      head.innerHTML=html;
+      if(color) head.style.setProperty('--sec',color);
+      h2.parentNode.insertBefore(head,h2);
+    }
+    var ph=d.createElement('div'); ph.className='print-only phead';
+    var left=(s.id.charAt(0)==='m'&&s.id.length===2?('Модуль '+s.id.charAt(1)+' · '):'')+(LABELS[s.id]||'');
+    ph.innerHTML='<span class="pn">После · рабочая тетрадь</span><span>'+left+' · страница '+(idx+1)+' из '+secs.length+'</span>';
+    s.insertBefore(ph,s.firstChild);
+
+    if(!s.querySelector('.lecnav')){
+      var nav=d.createElement('div'); nav.className='lecnav noprint';
+      var prev=order[idx-1], next=order[idx+1], h='';
+      if(prev) h+='<a href="#'+prev+'">← '+title(prev)+'</a>';
+      h+='<span class="cnt">'+(idx+1)+' / '+order.length+'</span>';
+      h+='<button type="button" class="btn ghost" data-print="'+s.id+'">Печать этого раздела</button>';
+      if(next) h+='<a href="#'+next+'">'+title(next)+' →</a>';
+      nav.innerHTML=h; s.appendChild(nav);
+    }
+  });
+  var oneTimer=null;
+  function endOne(){ clearTimeout(oneTimer); d.body.classList.remove('one'); }
+  [].slice.call(d.querySelectorAll('.lecnav [data-print]')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var id=b.getAttribute('data-print');
+      d.body.classList.remove('one');
+      var go=function(){
+        d.body.classList.add('one');
+        setTimeout(function(){ try{ w.print(); }catch(e){} },90);
+        clearTimeout(oneTimer);
+        oneTimer=setTimeout(endOne,180000);   /* страховка, если afterprint не сработает */
+      };
+      if(!d.getElementById(id).classList.contains('act')){ location.hash=id; setTimeout(go,140); }
+      else go();
+    });
+  });
+  w.addEventListener('afterprint',endOne);
+  if(w.matchMedia){ try{ w.matchMedia('print').addEventListener('change',function(e){ if(!e.matches) endOne(); }); }catch(e){} }
+
+  /* ── поиск по разделам ─────────────────────── */
+  var q=d.getElementById('q');
+  if(q) q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    tocItems.forEach(function(li){ li.classList.toggle('hide', !!v && li.textContent.toLowerCase().indexOf(v)<0); });
+  });
+
+  /* ── поля: восстановление и сохранение ─────── */
+  function paintRange(f){
+    var out=d.getElementById('v-'+f.id.replace(/^r-/,''));
+    if(out) out.textContent=f.value;
+    var pct=(Number(f.value)/ (Number(f.max)||10))*100;
+    f.style.setProperty('--p',pct.toFixed(0)+'%');
+  }
+  /* доступные имена полей: у каждого поля должна быть подпись или aria-label */
+  fields.forEach(function(f){
+    if(!d.querySelector('label[for="'+f.id+'"]') && !f.getAttribute('aria-label')){
+      var q=f.getAttribute('data-q')||'';
+      if(q) f.setAttribute('aria-label', q);
+    }
+    if(f.type==='range'){
+      if(!f.getAttribute('aria-label')){
+        var sc=f.getAttribute('data-scale')||'Шкала';
+        f.setAttribute('aria-label','Шкала «'+sc+'», от 0 до 10');
+      }
+      f.setAttribute('aria-valuetext', f.value+' из 10');
+      f.setAttribute('role','slider');
+      f.setAttribute('aria-valuemin','0');
+      f.setAttribute('aria-valuemax','10');
+    }
+  });
+
+  fields.forEach(function(f){
+    var v=store[f.id];
+    if(f.type==='range'){
+      if(typeof v!=='undefined' && v!==null && v!=='') f.value=v;
+      paintRange(f);
+    } else if(typeof v==='string'){ f.value=v; }
+    f.addEventListener('input',function(){
+      if(f.type==='range'){ paintRange(f); f.setAttribute('aria-valuetext', f.value+' из 10'); }
+      else if(f.type!=='number'){ markSaved(f.id); }
+      store[f.id]=f.value; scheduleSave(); updateProgress();
+    });
+    f.addEventListener('change',function(){
+      store[f.id]=f.value; saveAll(); markSaved(f.id); updateProgress();
+      setStatus('✓ сохранено '+clock(),'ok');
+    });
+  });
+  checks.forEach(function(c){
+    if(store[c.id]) c.checked=true;
+    var lb=c.closest('label'); if(lb) lb.classList.toggle('on',c.checked);
+    c.addEventListener('change',function(){
+      store[c.id]=c.checked; saveAll(); markSaved(c.id); updateProgress();
+      setStatus('✓ сохранено '+clock(),'ok');
+      var l=c.closest('label'); if(l) l.classList.toggle('on',c.checked);
+    });
+  });
+
+  /* ── дневник тяги ──────────────────────────── */
+  var logList=d.getElementById('logList');
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+  function renderLog(){
+    var rows=store.log||[];
+    if(!rows.length){ logList.innerHTML='<p class="small">Пока пусто. Первая запись появится здесь после волны — запишите её, даже если справились легко.</p>'; return; }
+    logList.innerHTML=rows.map(function(r,i){
+      return '<div class="logrow"><div class="lh"><b>'+esc(r.d||'')+'</b>'+(r.trig?('<span>· '+esc(r.trig)+'</span>'):'')+
+        '<button class="lx" data-del="'+i+'" title="Удалить запись">удалить</button></div>'+
+        (r.wish?('<div>Мысль: '+esc(r.wish)+'</div>'):'')+
+        '<div class="small">Тянуло: '+esc(r.force||'—')+'/10 · стало: '+esc(r.after||'—')+'/10'+(r.act?(' · сделал(а): '+esc(r.act)):'')+'</div></div>';
+    }).join('');
+    [].slice.call(logList.querySelectorAll('.lx')).forEach(function(b){
+      b.addEventListener('click',function(){
+        store.log.splice(parseInt(b.getAttribute('data-del'),10),1); saveAll(); renderLog();
+        setStatus('✓ сохранено '+clock(),'ok');
+      });
+    });
+  }
+  var logAdd=d.getElementById('logAdd');
+  if(logAdd) logAdd.addEventListener('click',function(){
+    var g=function(id){ var el=d.getElementById(id); return el? el.value.trim():''; };
+    var entry={ d:new Date().toLocaleDateString('ru-RU'), trig:g('logTrig'), wish:g('logWish'),
+                force:g('logForce'), after:g('logAfter'), act:g('logAct') };
+    if(!entry.trig && !entry.wish && !entry.act){ w.alert('Заполните хотя бы одно поле: что накрыло, какая мысль звала или что вы сделали вместо.'); return; }
+    store.log=store.log||[]; store.log.push(entry); saveAll(); renderLog();
+    ['logTrig','logWish','logForce','logAfter','logAct'].forEach(function(id){ var el=d.getElementById(id); if(el) el.value=''; });
+    setStatus('✓ запись добавлена','ok');
+  });
+
+  /* ── дыхание 4-2-6 ─────────────────────────── */
+  var pacer=d.getElementById('pacer'), pBtn=d.getElementById('pacerBtn'),
+      pTxt=d.getElementById('pacerTxt'), pCyc=d.getElementById('pacerCyc');
+  var phases=[['in','Вдох — 4',4000],['hold','Задержка — 2',2000],['out','Выдох — 6, длиннее вдоха',6000]];
+  var pi=0, cycles=0, timer=null, running=false;
+  function setPhase(){
+    pacer.className='pacer noprint '+phases[pi][0];
+    pTxt.textContent=phases[pi][1];
+    timer=setTimeout(function(){
+      pi++;
+      if(pi>2){ pi=0; cycles++; pCyc.textContent='цикл '+cycles+' из 5'; }
+      if(cycles>=5){ stopPacer('Готово: пять циклов. Стало легче?'); return; }
+      setPhase();
+    }, phases[pi][2]);
+  }
+  function stopPacer(msg){
+    running=false; clearTimeout(timer); pacer.className='pacer noprint';
+    pBtn.textContent='Начать снова'; if(msg) pTxt.textContent=msg;
+  }
+  if(pBtn) pBtn.addEventListener('click',function(){
+    if(running){ stopPacer('Остановлено.'); return; }
+    running=true; pi=0; cycles=0; pCyc.textContent='цикл 1 из 5'; pBtn.textContent='Остановить'; setPhase();
+  });
+
+  /* ── подсказка, что широкую таблицу можно прокрутить вбок ── */
+  function markScrollable(){
+    [].slice.call(d.querySelectorAll('.tw')).forEach(function(box){
+      var next=box.nextElementSibling;
+      var hasHint=next && next.classList && next.classList.contains('scrollhint');
+      var overflows=(box.scrollWidth - box.clientWidth) > 12;
+      if(overflows && !hasHint){
+        var h=d.createElement('div'); h.className='scrollhint';
+        h.textContent='↔ таблицу можно прокрутить вбок';
+        box.parentNode.insertBefore(h, box.nextSibling);
+      } else if(!overflows && hasHint){
+        next.parentNode.removeChild(next);
+      }
+    });
+  }
+  markScrollable();
+  var hintTimer=null;
+  w.addEventListener('resize',function(){ clearTimeout(hintTimer); hintTimer=setTimeout(markScrollable,200); });
+  w.addEventListener('orientationchange',function(){ clearTimeout(hintTimer); hintTimer=setTimeout(markScrollable,300); });
+
+  /* ── карта ─────────────────────────────────── */
+  function val(id){ var el=d.getElementById(id); return el? String(el.value||'').trim() : ''; }
+  function renderMap(){
+    var host=d.getElementById('mapStats'); if(!host) return;
+    var html='', total=0, filled=0;
+    order.forEach(function(id){
+      if(id==='map') return;
+      var fs=sectionFields(id); if(!fs.length && !sectionChecks(id).length) return;
+      var a=fs.filter(function(f){ return String(f.value||'').trim(); }).length;
+      var cs=sectionChecks(id), cc=cs.filter(function(c){ return c.checked; }).length;
+      total+=fs.length+cs.length; filled+=a+cc;
+      var col=secColor(id);
+      html+='<div style="display:flex;align-items:baseline;gap:.6rem;border-bottom:1px dashed var(--line);padding:.45rem 0;font-size:.93rem">'+
+        '<span style="flex:0 0 auto;width:.5rem;height:.5rem;border-radius:50%;background:'+col+'"></span>'+
+        '<span style="flex:1">'+(LABELS[id]||title(id))+'</span>'+
+        '<span style="color:var(--mut);font-variant-numeric:tabular-nums">'+a+'/'+fs.length+(cs.length?(' · отметок '+cc+'/'+cs.length):'')+'</span></div>';
+    });
+    var scaleLine=ranges.map(function(f){ return (f.getAttribute('data-scale')||'')+': <b>'+f.value+'</b>'; }).join(' · ');
+    host.innerHTML=html+
+      '<p style="margin-top:.8rem">Заполнено <b>'+filled+'</b> из '+total+' ('+(total?Math.round(filled*100/total):0)+'%).</p>'+
+      (scaleLine?('<p class="small">Шкалы сейчас — '+scaleLine+'</p>'):'')+
+      '<p class="small">Последнее сохранение: '+(store.__savedAt? new Date(store.__savedAt).toLocaleString('ru-RU') : '—')+
+      ' · Последний экспорт: '+(store.__exportedAt? new Date(store.__exportedAt).toLocaleString('ru-RU') : 'ещё не делал(а)')+'</p>';
+
+    var anchors=[
+      ['Моё заземление', val('f-s0-ground')],
+      ['Кому я звоню в трудный момент', val('f-s0-call')],
+      ['Мой безопасный час', val('f-m2-hour')],
+      ['Мои фразы для делового контакта', val('f-m2-phr')],
+      ['Моя фраза-опора', val('f-m3-card')],
+      ['План на плохую ночь', val('f-m4-night')],
+      ['Ночной план', val('f-m5-n')],
+      ['Мои три «не терплю»', val('f-m6-three')]
+    ].filter(function(x){ return x[1]; });
+    d.getElementById('mapAnchors').innerHTML = anchors.length
+      ? anchors.map(function(x){ return '<p style="margin:.45rem 0"><b>'+x[0]+':</b> '+esc(x[1]).replace(/\n/g,'<br>')+'</p>'; }).join('')
+      : '<p class="small">Здесь появятся ваши главные опоры: заземление, человек для звонка, фразы, план на ночь.</p>';
+  }
+
+  /* ── экспорт ───────────────────────────────── */
+  function doExport(){
+    var lines=['После · Рабочая тетрадь восстановления после деструктивных отношений',
+               'Мои ответы. Экспорт: '+new Date().toLocaleString('ru-RU'),''];
+    var any=false;
+    order.forEach(function(id){
+      var fs=sectionFields(id), cs=sectionChecks(id), rs=ranges.filter(function(f){ return f.getAttribute('data-step')===id; });
+      var hasText=fs.some(function(f){ return String(f.value||'').trim(); });
+      var hasCheck=cs.some(function(c){ return c.checked; });
+      var hasLog=(id==='m4' && (store.log||[]).length>0);
+      if(!hasText && !hasCheck && !hasLog){ return; }
+      any=true;
+      lines.push('═══ '+((LABELS[id]||title(id)).toUpperCase())+' ═══'); lines.push('');
+      fs.forEach(function(f){
+        var v=String(f.value||'').trim(); if(!v) return;
+        lines.push(f.getAttribute('data-q')+':'); lines.push(v); lines.push('');
+      });
+      rs.forEach(function(f){ lines.push('Шкала «'+(f.getAttribute('data-scale')||'')+'» (0–10): '+f.value); });
+      if(rs.length) lines.push('');
+      if(cs.length && (hasCheck || hasText)){
+        cs.forEach(function(c){
+          var l=c.closest('label');
+          lines.push((c.checked?'[✓] ':'[ ] ')+(l? l.textContent.replace(/\s+/g,' ').trim() : c.id));
+        });
+        lines.push('');
+      }
+      if(hasLog){
+        lines.push('Дневник тяги:');
+        store.log.forEach(function(r,i){
+          lines.push(' '+(i+1)+') '+r.d+' | накрыло: '+(r.trig||'—')+' | мысль: '+(r.wish||'—')+
+            ' | тянуло: '+(r.force||'—')+'/10 → стало: '+(r.after||'—')+'/10 | сделал(а): '+(r.act||'—'));
+        });
+        lines.push('');
+      }
+    });
+    if(!any){ w.alert('Пока нечего выгружать — заполните хотя бы одно поле.'); return; }
+    store.__exportedAt=Date.now(); saveAll();
+    var blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/plain;charset=utf-8'});
+    var a=d.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='posle_moi_otvety.txt';
+    d.body.appendChild(a); a.click(); d.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },1500);
+    setStatus('✓ файл выгружен','ok');
+  }
+
+  /* ── кнопки ────────────────────────────────── */
+  function on(id, fn){ var el=d.getElementById(id); if(el) el.addEventListener('click',fn); }
+  on('btnExportTop',doExport); on('btnExportMob',doExport); on('btnExport',doExport);
+  on('btnPrint',function(){ w.print(); });
+  on('btnPrint2',function(){ w.print(); });
+  on('btnSaveNow',function(){
+    if(!okStore){ w.alert('В этом окне браузер не сохраняет данные. Нажмите «Экспорт», чтобы выгрузить ответы в файл.'); return; }
+    pending=false; clearTimeout(w.__saveT); saveAll();
+    setStatus('✓ сохранено '+clock(),'ok');
+    w.alert('Сохранено: '+answeredItems()+' из '+totalItems()+' пунктов. Последнее сохранение — '+clock()+'.');
+  });
+  on('btnClear',function(){
+    if(!w.confirm('Удалить ВСЕ ваши ответы из этого браузера? Данные не восстановятся. Если они нужны — сначала нажмите «Экспорт».')) return;
+    store={}; saveAll();
+    texts.forEach(function(f){ f.value=''; });
+    checks.forEach(function(c){ c.checked=false; var l=c.closest('label'); if(l) l.classList.remove('on'); });
+    ranges.forEach(function(f){ f.value=5; paintRange(f); });
+    renderLog(); renderMap(); updateProgress();
+    setStatus('ответы удалены','');
+  });
+
+  /* ── размер текста (для работы с клиентом за экраном) ── */
+  var ui={}; try{ ui=JSON.parse(w.localStorage.getItem(UIKEY)||'{}'); }catch(e){ ui={}; }
+  var steps=[1,1.1,1.2];
+  var scaleIdx=steps.indexOf(ui.zoom);
+  if(scaleIdx<0) scaleIdx=0;
+  var canZoom=!!(w.CSS && CSS.supports && CSS.supports('zoom','1.1'));
+  var scaleBtn=d.getElementById('btnScale');
+  function applyScale(){
+    var z=steps[scaleIdx];
+    d.documentElement.style.setProperty('--ui-zoom',String(z));
+    if(scaleBtn) scaleBtn.title='Размер текста: '+Math.round(z*100)+'%';
+    ui.zoom=z;
+    try{ w.localStorage.setItem(UIKEY,JSON.stringify(ui)); }catch(e){}
+  }
+  if(scaleBtn){
+    if(!canZoom){ scaleBtn.style.display='none'; }
+    else scaleBtn.addEventListener('click',function(){ scaleIdx=(scaleIdx+1)%steps.length; applyScale(); });
+  }
+  applyScale();
+
+  /* ── дозапись при уходе со страницы ────────── */
+  d.addEventListener('visibilitychange',function(){ if(d.visibilityState==='hidden') flush(); });
+  w.addEventListener('pagehide',flush);
+  w.addEventListener('beforeunload',flush);
+  setInterval(function(){ if(pending) flush(); }, 20000);
+
+  /* ── старт ─────────────────────────────────── */
+  renderLog();
+  show(location.hash.slice(1)||'front');
+  updateProgress();
+  if(okStore && store.__savedAt) setStatus('✓ восстановлено ('+new Date(store.__savedAt).toLocaleString('ru-RU')+')','ok');
+  else setStatus('автосохранение включено','');
+})();
+
+</script>
+
+</body>
+</html>

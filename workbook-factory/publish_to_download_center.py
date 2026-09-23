@@ -77,6 +77,33 @@ def base_dir(path: Path) -> Path:
     return path.parent
 
 
+def card_for_file(html_path: Path, title=None, desc=None, badge=None,
+                  comment=None, style="", highlight=False):
+    """Карточка для готового HTML-файла, собранного не фабрикой."""
+    if not html_path.exists():
+        raise SystemExit("Файл не найден: %s" % html_path)
+    payload = html_path.read_bytes()
+    doc = payload.decode("utf-8", "ignore")
+    if not title:
+        m = re.search(r"<title>(.*?)</title>", doc, re.S)
+        title = m.group(1).strip() if m else html_path.stem
+    if not desc:
+        m = re.search(r'<meta\s+name="description"\s+content="(.*?)"', doc, re.S)
+        desc = m.group(1).strip() if m else ""
+    desc = re.sub(r"\s+", " ", desc)
+    if len(desc) > 340:
+        desc = desc[:337].rstrip() + "…"
+    b64 = base64.b64encode(payload).decode("ascii")
+    if base64.b64decode(b64) != payload:
+        raise SystemExit("base64 не сошёлся при проверке: %s" % html_path)
+    return CARD.format(
+        comment=esc(comment or ("ТЕТРАДЬ: %s" % html_path.name.upper())), style=style,
+        title=esc(title), badge_class=" badge-new" if highlight else "",
+        badge=esc(badge or "Тетрадь"), desc=esc(desc),
+        b64=b64, filename=esc(html_path.name),
+    ), html_path.name
+
+
 def card_for(spec_path: Path):
     meta, out = load_spec(spec_path)
     if not out.exists():
@@ -148,7 +175,12 @@ def insert(doc: str, card: str) -> str:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Публикация тетрадей в корневой центр скачиваний")
-    ap.add_argument("specs", nargs="+", help="спеки тетрадей (.json)")
+    ap.add_argument("specs", nargs="+",
+                    help="спеки тетрадей (.json) или готовые HTML-файлы (.html)")
+    ap.add_argument("--title", help="заголовок карточки (для .html)")
+    ap.add_argument("--desc", help="описание карточки (для .html)")
+    ap.add_argument("--badge", help="бейдж карточки (для .html)")
+    ap.add_argument("--highlight", action="store_true", help="подсветить карточку как новую")
     ap.add_argument("--index", default=str(INDEX), help="путь к центру скачиваний")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--remove", action="store_true", help="убрать карточки этих файлов")
@@ -164,12 +196,17 @@ def main(argv=None) -> int:
         paths.extend(Path(m) for m in matched) if matched else paths.append(Path(p))
 
     for path in paths:
+        standalone = path.suffix.lower() == ".html"
         if args.remove:
-            _, out = load_spec(path)
-            doc, removed = remove_card(doc, out.name)
-            print("%s %s" % ("− удалена карточка" if removed else "= карточка не найдена", out.name))
+            out_name = path.name if standalone else load_spec(path)[1].name
+            doc, removed = remove_card(doc, out_name)
+            print("%s %s" % ("− удалена карточка" if removed else "= карточка не найдена", out_name))
             continue
-        card, name = card_for(path)
+        if standalone:
+            card, name = card_for_file(path, title=args.title, desc=args.desc,
+                                       badge=args.badge, highlight=args.highlight)
+        else:
+            card, name = card_for(path)
         doc, existed = remove_card(doc, name)
         doc = insert(doc, card)
         print("%s %s (%d КБ в base64)"
