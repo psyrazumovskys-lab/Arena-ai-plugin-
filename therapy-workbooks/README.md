@@ -75,6 +75,10 @@
 «клиент / психолог» наследуются из одной базы (`variant_of`), поэтому содержание
 не разъезжается между версиями.
 
+Язык и этика всех тетрадей проверяются аудитом `../workbook-factory/audit_language.py`
+(обязательные элементы безопасности, жаргон, сленг, приватность, ясность); разбор с
+вердиктами — в [`../workbook-factory/reports/Workbooks_Ethics_Language_Audit_Report.md`](../workbook-factory/reports/Workbooks_Ethics_Language_Audit_Report.md).
+
 Старые тетради (`people_pleasing_workbook.html`, `vda_12_steps_workbook.html`)
 сделаны до фабрики: в них нет тёмной темы, а в журнале границ — экспорта отчёта.
 При необходимости их можно перенести на движок, описав содержание спекой.

@@ -8,6 +8,7 @@
   2. Синтаксис встроенного JavaScript (node --check), если node доступен.
   3. Функциональные тесты готовых тетрадей в jsdom (node test_workbook_runtime.js).
   4. Сверка центра скачиваний: base64 в index.html совпадает с файлами на диске.
+  5. Аудит языка и этики собранных тетрадей (audit_language.py).
 
 Запуск:  python3 run_checks.py            (всё)
          python3 run_checks.py --quick    (только сборка и валидация)
@@ -46,7 +47,7 @@ def report(cond: bool, label: str, extra: str = ""):
 
 
 def step_build() -> list[Path]:
-    print("\n[1/4] Сборка спек")
+    print("\n[1/5] Сборка спек")
     specs = sorted((HERE / "specs").glob("*.json"))
     report(bool(specs), "найдены спеки: %d" % len(specs))
     outs = []
@@ -61,7 +62,7 @@ def step_build() -> list[Path]:
 
 
 def step_js_syntax(outs: list[Path]):
-    print("\n[2/4] Синтаксис встроенного JS")
+    print("\n[2/5] Синтаксис встроенного JS")
     node = shutil.which("node")
     if not node:
         print("  · node не найден — пропускаем")
@@ -79,7 +80,7 @@ def step_js_syntax(outs: list[Path]):
 
 
 def step_jsdom(outs: list[Path]):
-    print("\n[3/4] Функциональные тесты в jsdom")
+    print("\n[3/5] Функциональные тесты в jsdom")
     node = shutil.which("node")
     if not node:
         print("  · node не найден — пропускаем")
@@ -96,7 +97,7 @@ def step_jsdom(outs: list[Path]):
 
 
 def step_download_center():
-    print("\n[4/4] Центр скачиваний (index.html)")
+    print("\n[4/5] Центр скачиваний (index.html)")
     if not INDEX.exists():
         print("  · index.html не найден — пропускаем")
         return
@@ -115,6 +116,32 @@ def step_download_center():
            "%d против %d" % (doc.count("<div"), doc.count("</div>")))
 
 
+def step_audit(outs: list[Path]):
+    print("\n[5/5] Аудит языка и этики")
+    import audit_language
+    results = []
+    for out in outs:
+        audience = "pro" if ("therapist" in out.name or "specialist" in out.name) else "client"
+        results.append(audit_language.audit(out, audience))
+    for r in results:
+        hard = r["errors"] + len(r["missing"]) + len(r["missing_pro"]) + len(r["privacy"])
+        report(hard == 0,
+               "%s: этика %d error / %d warn, жаргон %d, сленг %d, приватность %d"
+               % (Path(r["file"]).name, r["errors"], r["warnings"], len(r["jargon"]),
+                  len(r["slang"]) + len(r["slang_pro"]), len(r["privacy"])),
+               "не хватает: " + ", ".join(n for n, _ in r["missing"] + r["missing_pro"]))
+        # необъяснённый жаргон в клиентском тексте — тоже ошибка
+        unexplained = [t for t in r["jargon"] if t in audit_language.EXPLAINED_OK
+                       and not r["explained"].get(t, True)]
+        report(not unexplained, "%s: термины пояснены" % Path(r["file"]).name,
+               "без пояснения: %s" % ", ".join(unexplained))
+    audit_language.REPORTS.mkdir(parents=True, exist_ok=True)
+    (audit_language.REPORTS / "language_ethics_audit_factory.md").write_text(
+        audit_language.md_report(results), encoding="utf-8")
+    print("    отчёт: reports/language_ethics_audit_factory.md (только тетради фабрики)")
+    print("    полный аудит библиотеки: python3 audit_language.py")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true", help="только сборка и валидация")
@@ -128,6 +155,7 @@ def main() -> int:
     if not args.quick:
         step_jsdom(outs)
         step_download_center()
+        step_audit(outs)
 
     print("\n" + "-" * 70)
     print("Пройдено проверок: %d" % ok)
