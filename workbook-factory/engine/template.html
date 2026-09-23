@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>@@TITLE@@</title>
+<meta name="description" content="@@DESCRIPTION@@">
+<meta name="generator" content="workbook-factory @@FACTORY_VERSION@@">
+<style>
+@@ENGINE_CSS@@
+@@SPEC_CSS@@
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu">
+<label for="menu" class="menu-backdrop" title="Закрыть меню"></label>
+
+<!-- ШАПКА -->
+<header class="bar">
+  <label for="menu" class="burger" title="Оглавление тетради (M)">☰</label>
+  <div class="bar-brand">
+    <div class="bar-title">@@BAR_TITLE@@</div>
+    <div class="bar-sub">@@BAR_SUB@@</div>
+  </div>
+  <div class="bar-actions">
+@@BAR_ACTIONS@@
+    <button class="btn btn-icon" id="themeToggle" title="Тема оформления">🌓</button>
+    <button class="btn btn-primary" id="btnExportTop" title="Скачать все ответы текстовым файлом">⬇ Экспорт</button>
+    <span class="counter" id="counter">заполнено: 0 / 0</span>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ОГЛАВЛЕНИЕ -->
+  <nav class="toc" id="toc" aria-label="Оглавление тетради">
+    <input type="search" id="q" class="toc-search" placeholder="Поиск по шагам…" autocomplete="off">
+    <ol id="tocList">
+@@TOC@@
+    </ol>
+@@TOC_NOTE@@
+  </nav>
+
+  <!-- СОДЕРЖИМОЕ -->
+  <main>
+    <div class="lec-wrap">
+@@SECTIONS@@
+    </div>
+  </main>
+</div>
+
+<script>
+window.WB_SPEC = @@SPEC_JSON@@;
+</script>
+<script>
+@@ENGINE_JS@@
+</script>
+</body>
+</html>

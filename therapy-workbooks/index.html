@@ -74,6 +74,24 @@
     }
     .tag-blue { background: #dbeafe; color: #1e40af; }
     .tag-purple { background: #ede9fe; color: #5b21b6; }
+    .tag-teal { background: #ccfbf1; color: #0f766e; }
+    .tag-pro { background: #ede9fe; color: #6d28d9; border: 1px dashed #a78bfa; }
+    .card-pro { border-color: #ddd6fe; background: #fdfcff; }
+    .footnote {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footnote code {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.05em 0.35em;
+      font-size: 0.92em;
+    }
     h2 {
       font-size: 1.3rem;
       margin-bottom: 10px;
@@ -125,7 +143,28 @@
   </header>
 
   <div class="grid">
-    <!-- КАРТОЧКА 1: ПРАВО БЫТЬ СОБОЙ -->
+    <!-- КАРТОЧКА 1: СВОЁ И МАМИНО (СЕПАРАЦИЯ) -->
+    <div class="product-card">
+      <div>
+        <span class="tag tag-teal">Сепарация · курс 7 шагов</span>
+        <h2>Своё и мамино</h2>
+        <p class="desc">Рабочая тетрадь бережной сепарации от родителей: как перестать нести чужие чувства, выдерживать вину и остаться в тепле там, где тепло возможно.</p>
+        <ul class="features">
+          <li>✓ 7 шагов = 7 недель: шаг и встреча с психологом</li>
+          <li>✓ Различение чувств, парентификация, блоки «Из детства»</li>
+          <li>✓ Телесная карта, круги близости, дневники решений</li>
+          <li>✓ Тренажёр трудных разговоров и стоп-фразы</li>
+          <li>✓ Работа с виной: письмо маме и себе-ребёнку</li>
+          <li>✓ Тёмная тема, офлайн, экспорт отчёта психологу, печать</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="separation_workbook.html" class="btn-open" style="background:#0f766e;flex:1;">Открыть тетрадь →</a>
+        <a href="separation_workbook.html" download="Своё_и_мамино_Тетрадь_сепарации.html" class="btn-open" style="background:#115e59;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
+
+    <!-- КАРТОЧКА 2: ПРАВО БЫТЬ СОБОЙ -->
     <div class="product-card">
       <div>
         <span class="tag tag-blue">Личные границы</span>
@@ -145,7 +184,7 @@
       </div>
     </div>
 
-    <!-- КАРТОЧКА 2: 12 ШАГОВ ВДА -->
+    <!-- КАРТОЧКА 3: 12 ШАГОВ ВДА -->
     <div class="product-card">
       <div>
         <span class="tag tag-purple">Программа 12 шагов</span>
@@ -161,7 +200,33 @@
       </div>
       <a href="vda_12_steps_workbook.html" class="btn-open" style="background:#4f46e5;">Открыть журнал 12 Шагов ВДА →</a>
     </div>
+
+    <!-- КАРТОЧКА 4: СВОЁ И МАМИНО · ВЕРСИЯ ДЛЯ ПСИХОЛОГА -->
+    <div class="product-card card-pro">
+      <div>
+        <span class="tag tag-pro">Для специалиста · не передаётся клиенту</span>
+        <h2>Своё и мамино · версия для психолога</h2>
+        <p class="desc">Тот же курс из 7 шагов плюс методический слой: что делать на каждой сессии, где риски и чем работать. Фиолетовые блоки видны только в этой версии файла.</p>
+        <ul class="features">
+          <li>✓ Цели, мишени и тайминг каждой из 7 сессий</li>
+          <li>✓ Красные флаги, противопоказания и план безопасности</li>
+          <li>✓ Интервенции: Боуэн, схема-терапия, IFS, ACT, КПТ, соматика</li>
+          <li>✓ Метрики курса: шкалы отдельности, вины, чек-лист слияния</li>
+          <li>✓ Вопросы для супервизии и работа с контрпереносом</li>
+          <li>⚠ Клиенту выдаётся клиентская версия тетради</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="separation_therapist_workbook.html" class="btn-open" style="background:#6d28d9;flex:1;">Открыть версию для психолога →</a>
+        <a href="separation_therapist_workbook.html" download="Своё_и_мамино_Версия_для_психолога.html" class="btn-open" style="background:#5b21b6;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
   </div>
+
+  <p class="footnote">
+    Все тетради — автономные HTML-файлы: работают офлайн на телефоне и компьютере, сохраняют ответы только в браузере пользователя, печатаются в PDF и выгружают отчёт текстовым файлом.
+    Новые тетради собираются фабрикой <code>workbook-factory/</code>: шаблон и движок лежат в <code>engine/</code>, содержание — в JSON-спеках <code>specs/</code>, сборка — <code>python3 build_workbook.py specs/*.json</code>, проверки — <code>python3 run_checks.py</code>.
+  </p>
 </div>
 
 </body>
