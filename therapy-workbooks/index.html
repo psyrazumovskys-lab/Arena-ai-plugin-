@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Терапевтические рабочие журналы для клиентов и самостоятельной практики</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-soft: #eff6ff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 30px 16px 80px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-purple { background: #ede9fe; color: #5b21b6; }
+    .tag-teal { background: #ccfbf1; color: #0f766e; }
+    .tag-pro { background: #ede9fe; color: #6d28d9; border: 1px dashed #a78bfa; }
+    .card-pro { border-color: #ddd6fe; background: #fdfcff; }
+    .footnote {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footnote code {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.05em 0.35em;
+      font-size: 0.92em;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+    .desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .features {
+      list-style: none;
+      margin-bottom: 22px;
+      font-size: 0.86rem;
+      color: #334155;
+    }
+    .features li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: background 0.15s ease;
+    }
+    .btn-open:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Библиотека рабочих журналов</h1>
+    <p class="lead">Терапевтические инструменты для клиентов и самостоятельной практики</p>
+  </header>
+
+  <div class="grid">
+    <!-- КАРТОЧКА 1: СВОЁ И МАМИНО (СЕПАРАЦИЯ) -->
+    <div class="product-card">
+      <div>
+        <span class="tag tag-teal">Сепарация · курс 7 шагов</span>
+        <h2>Своё и мамино</h2>
+        <p class="desc">Рабочая тетрадь бережной сепарации от родителей: как перестать нести чужие чувства, выдерживать вину и остаться в тепле там, где тепло возможно.</p>
+        <ul class="features">
+          <li>✓ 7 шагов = 7 недель: шаг и встреча с психологом</li>
+          <li>✓ Различение чувств, парентификация, блоки «Из детства»</li>
+          <li>✓ Телесная карта, круги близости, дневники решений</li>
+          <li>✓ Тренажёр трудных разговоров и стоп-фразы</li>
+          <li>✓ Работа с виной: письмо маме и себе-ребёнку</li>
+          <li>✓ Тёмная тема, офлайн, экспорт отчёта психологу, печать</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="separation_workbook.html" class="btn-open" style="background:#0f766e;flex:1;">Открыть тетрадь →</a>
+        <a href="separation_workbook.html" download="Своё_и_мамино_Тетрадь_сепарации.html" class="btn-open" style="background:#115e59;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
+
+    <!-- КАРТОЧКА 2: ПРАВО БЫТЬ СОБОЙ -->
+    <div class="product-card">
+      <div>
+        <span class="tag tag-blue">Личные границы</span>
+        <h2>Право быть собой</h2>
+        <p class="desc">Практический журнал бережного выстраивания личных границ, преодоления привычки угождать и возвращения устойчивой автономии.</p>
+        <ul class="features">
+          <li>✓ 5 терапевтических шагов (от паузы до манифеста)</li>
+          <li>✓ Бережный язык без стигматизации</li>
+          <li>✓ Поведенческие микро-эксперименты</li>
+          <li>✓ Мостики для сессий с психологом</li>
+          <li>✓ Адаптировано под смартфоны и ПК</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="people_pleasing_workbook.html" class="btn-open" style="flex:1;">Открыть журнал →</a>
+        <a href="people_pleasing_workbook.html" download="Право_быть_собой_Журнал_Границ.html" class="btn-open" style="background:#0f766e;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
+
+    <!-- КАРТОЧКА 3: 12 ШАГОВ ВДА -->
+    <div class="product-card">
+      <div>
+        <span class="tag tag-purple">Программа 12 шагов</span>
+        <h2>Журнал выздоровления по 12 Шагам ВДА</h2>
+        <p class="desc">Интеграция программы 12 Шагов ВДА с психологической практикой, развитием Любящего Родителя и исцелением Внутреннего Ребенка.</p>
+        <ul class="features">
+          <li>✓ 5 фаз по всем 12 Шагам программы</li>
+          <li>✓ Работа с чертами выживания и созависимостью</li>
+          <li>✓ Практики возмещения ущерба себе</li>
+          <li>✓ Вечерняя осознанность и Обещания ВДА</li>
+          <li>✓ Адаптировано под смартфоны и ПК</li>
+        </ul>
+      </div>
+      <a href="vda_12_steps_workbook.html" class="btn-open" style="background:#4f46e5;">Открыть журнал 12 Шагов ВДА →</a>
+    </div>
+
+    <!-- КАРТОЧКА 4: ПОСЛЕ. ВОССТАНОВЛЕНИЕ -->
+    <div class="product-card">
+      <div>
+        <span class="tag" style="background:#d1fae5;color:#065f46;">Восстановление после отношений</span>
+        <h2>После. Возвращение к себе</h2>
+        <p class="desc">Тетрадь для тех, кто выходит или уже вышел из отношений, где было много контроля, обесценивания и боли. Не решает за человека, уходить или остаться, — помогает вернуть опору, свою картину мира и силы.</p>
+        <ul class="features">
+          <li>✓ 6 модулей — можно по порядку, можно с любого</li>
+          <li>✓ Карта того, что происходило, и шкалы 0–10</li>
+          <li>✓ Безопасность: карта риска, фразы для делового контакта</li>
+          <li>✓ Тяга: экстренный план на 20 минут, дыхание 4-2-6, дневник тяги</li>
+          <li>✓ Тело, сон и накрывающие воспоминания</li>
+          <li>✓ Простой язык без жаргона, бережные формулировки</li>
+          <li>✓ Автосохранение с индикатором и прогрессом по модулям</li>
+          <li>✓ Печать: обложка-бланк и печать отдельного модуля</li>
+          <li>✓ Экспорт ответов .txt, крупный шрифт (Aa), тёмная тема</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="recovery_after_destructive_relationships.html" class="btn-open" style="flex:1;">Открыть тетрадь →</a>
+        <a href="recovery_after_destructive_relationships.html" download="После_Возвращение_к_себе.html" class="btn-open" style="background:#0f766e;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
+
+    <!-- КАРТОЧКА 5: СВОЁ И МАМИНО · ВЕРСИЯ ДЛЯ ПСИХОЛОГА -->
+    <div class="product-card card-pro">
+      <div>
+        <span class="tag tag-pro">Для специалиста · не передаётся клиенту</span>
+        <h2>Своё и мамино · версия для психолога</h2>
+        <p class="desc">Тот же курс из 7 шагов плюс методический слой: что делать на каждой сессии, где риски и чем работать. Фиолетовые блоки видны только в этой версии файла.</p>
+        <ul class="features">
+          <li>✓ Цели, мишени и тайминг каждой из 7 сессий</li>
+          <li>✓ Красные флаги, противопоказания и план безопасности</li>
+          <li>✓ Интервенции: Боуэн, схема-терапия, IFS, ACT, КПТ, соматика</li>
+          <li>✓ Метрики курса: шкалы отдельности, вины, чек-лист слияния</li>
+          <li>✓ Вопросы для супервизии и работа с контрпереносом</li>
+          <li>⚠ Клиенту выдаётся клиентская версия тетради</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="separation_therapist_workbook.html" class="btn-open" style="background:#6d28d9;flex:1;">Открыть версию для психолога →</a>
+        <a href="separation_therapist_workbook.html" download="Своё_и_мамино_Версия_для_психолога.html" class="btn-open" style="background:#5b21b6;flex:1;">💾 Скачать .html</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <h2 style="font-size:1.15rem;">Ещё тетради в библиотеке</h2>
+    <p class="desc">Три тетради лежат в папке <code>books</code> — они открываются так же: офлайн, с телефона, с автосохранением в браузере.</p>
+    <ul class="features" style="font-size:.93rem;">
+      <li>✓ <a href="../books/12_steps_vda.html">ВДА · 12 шагов — версия для клиента</a> — простым языком, курс на 12 недель, экспорт ответов</li>
+      <li>✓ <a href="../books/wda_12_steps_workbook.html">ВДА · 12 шагов — версия для психолога</a> — те же шаги с профессиональной рефлексией</li>
+      <li>✓ <a href="../books/alcohol_recovery_workbook.html">«Точка опоры» — трезвость и ресурс</a> — SOS-таймер 15:00, дыхание, дневник тяги</li>
+    </ul>
+  </div>
+
+  <p class="footnote">
+    Все тетради — автономные HTML-файлы: работают офлайн на телефоне и компьютере, сохраняют ответы только в браузере пользователя, печатаются в PDF и выгружают отчёт текстовым файлом.
+    Новые тетради собираются фабрикой <code>workbook-factory/</code>: шаблон и движок лежат в <code>engine/</code>, содержание — в JSON-спеках <code>specs/</code>, сборка — <code>python3 build_workbook.py specs/*.json</code>, проверки — <code>python3 run_checks.py</code>.
+  </p>
+</div>
+
+</body>
+</html>

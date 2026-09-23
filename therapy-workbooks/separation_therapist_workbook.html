@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Своё и мамино · Рабочая тетрадь сепарации (версия для психолога)</title>
+<meta name="description" content="Профессиональная версия рабочей тетради сепарации от родителей: те же 7 шагов курса, что и в клиентской версии, плюс методический слой — цели и мишени каждого шага, красные флаги, интервенции из разных модальностей, домашние задания, метрики и вопросы для супервизии.">
+<meta name="generator" content="workbook-factory 1.0.0">
+<style>
+/* ==========================================================================
+   WORKBOOK ENGINE · engine.css
+   Единый стиль терапевтических тетрадей (поколение A: books/*.html).
+   Подключается сборщиком build_workbook.py внутрь single-file HTML.
+   Разделы:
+     1. Токены и темы (light / dark / auto)
+     2. Типографика и сброс
+     3. Шапка (app bar) + кнопки
+     4. Боковое меню (drawer / TOC)
+     5. Разделы, бейджи, акцентные блоки
+     6. Формы: вопросы, поля, чек-листы, шкалы, линейки для письма
+     7. Механики: матрицы, когнитивные таблицы, дневники, круги близости,
+      диалоговые тренажёры, карточки-разрешения, рейтинги зон
+     8. Виджеты: дыхание и таймер паузы
+     9. Блоки «для встречи с психологом» и «комментарий специалиста»
+    10. Навигация по шагам, сводка «Моя карта»
+    11. Мобильная адаптация
+    12. Печать (@media print)
+   ========================================================================== */
+
+/* 1. ТОКЕНЫ И ТЕМЫ ------------------------------------------------------- */
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel-elevated: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --ink: #0f172a;
+  --ink-secondary: #334155;
+  --mut: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+
+  --acc: #2563eb;
+  --acc-hover: #1d4ed8;
+  --acc-soft: #eff6ff;
+  --acc-border: #bfdbfe;
+
+  --sos: #e11d48;
+  --sos-hover: #be123c;
+  --sos-soft: #fff1f2;
+  --sos-border: #fecdd3;
+
+  --succ: #059669;
+  --succ-hover: #047857;
+  --succ-soft: #ecfdf5;
+  --succ-border: #a7f3d0;
+
+  --warn: #d97706;
+  --warn-soft: #fffbeb;
+  --warn-border: #fde68a;
+
+  --pro: #7c3aed;
+  --pro-soft: #f5f3ff;
+  --pro-border: #ddd6fe;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+  --bar-h: 55px;
+}
+
+[data-theme="dark"],
+:root[data-theme="auto"] {
+  --bg: #0b0f19;
+  --panel: #131b2e;
+  --panel-elevated: #1a243b;
+  --surface-subtle: #182238;
+  --ink: #f8fafc;
+  --ink-secondary: #cbd5e1;
+  --mut: #94a3b8;
+  --line: #243049;
+  --line-strong: #334155;
+
+  --acc: #3b82f6;
+  --acc-hover: #60a5fa;
+  --acc-soft: #172554;
+  --acc-border: #1e3a8a;
+
+  --sos: #f43f5e;
+  --sos-hover: #fb7185;
+  --sos-soft: #3b111d;
+  --sos-border: #4c1d29;
+
+  --succ: #10b981;
+  --succ-hover: #34d399;
+  --succ-soft: #062d1f;
+  --succ-border: #064e3b;
+
+  --warn: #f59e0b;
+  --warn-soft: #332005;
+  --warn-border: #452b07;
+
+  --pro: #a78bfa;
+  --pro-soft: #241b47;
+  --pro-border: #4c1d95;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme="auto"] {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --panel-elevated: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --ink: #0f172a;
+    --ink-secondary: #334155;
+    --mut: #64748b;
+    --line: #e2e8f0;
+    --line-strong: #cbd5e1;
+    --acc: #2563eb;
+    --acc-hover: #1d4ed8;
+    --acc-soft: #eff6ff;
+    --acc-border: #bfdbfe;
+    --sos: #e11d48;
+    --sos-hover: #be123c;
+    --sos-soft: #fff1f2;
+    --sos-border: #fecdd3;
+    --succ: #059669;
+    --succ-hover: #047857;
+    --succ-soft: #ecfdf5;
+    --succ-border: #a7f3d0;
+    --warn: #d97706;
+    --warn-soft: #fffbeb;
+    --warn-border: #fde68a;
+    --pro: #7c3aed;
+    --pro-soft: #f5f3ff;
+    --pro-border: #ddd6fe;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* 2. ТИПОГРАФИКА И СБРОС ------------------------------------------------- */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--acc); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--acc-hover); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--surface-subtle);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+}
+
+/* 3. ШАПКА И КНОПКИ ------------------------------------------------------ */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 1.25rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.burger {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-subtle);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  user-select: none;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+.burger:hover { border-color: var(--acc); color: var(--acc); }
+.bar-brand { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+.bar-title {
+  font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bar-sub {
+  font-size: 0.8rem; color: var(--mut);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bar-actions { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.counter {
+  font-size: 0.78rem; color: var(--mut); font-weight: 600;
+  background: var(--surface-subtle); border: 1px solid var(--line);
+  padding: 0.3rem 0.6rem; border-radius: var(--radius-pill); white-space: nowrap;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.48rem 0.9rem; min-height: 38px;
+  border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink);
+  transition: all 0.15s ease; white-space: nowrap; text-decoration: none; font-family: inherit;
+}
+.btn:hover { border-color: var(--acc); color: var(--acc); }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--acc); color: #fff; border-color: var(--acc); }
+.btn-primary:hover { background: var(--acc-hover); color: #fff; border-color: var(--acc-hover); }
+.btn-succ { background: var(--succ); color: #fff; border-color: var(--succ); }
+.btn-succ:hover { background: var(--succ-hover); color: #fff; border-color: var(--succ-hover); }
+.btn-sos {
+  background: var(--sos); color: #fff; border-color: var(--sos);
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.35); animation: pulse-sos 2.5s infinite;
+}
+.btn-sos:hover { background: var(--sos-hover); color: #fff; border-color: var(--sos-hover); }
+@keyframes pulse-sos {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(225, 29, 72, 0); }
+}
+.btn-sm { min-height: 32px; padding: 0.3rem 0.65rem; font-size: 0.8rem; }
+.btn-ghost { background: transparent; }
+.btn-danger:hover { border-color: var(--sos); color: var(--sos); }
+.btn-icon { width: 38px; height: 38px; padding: 0; font-size: 1rem; }
+
+/* 4. БОКОВОЕ МЕНЮ -------------------------------------------------------- */
+#menu { display: none; }
+.menu-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  z-index: 45; transition: opacity 0.2s ease;
+}
+#menu:checked ~ .menu-backdrop { display: block; }
+.layout { display: flex; min-height: calc(100vh - var(--bar-h)); position: relative; }
+.toc {
+  width: 320px; flex: 0 0 320px;
+  background: var(--panel); border-right: 1px solid var(--line);
+  padding: 1.25rem 1rem;
+  position: sticky; top: var(--bar-h); height: calc(100vh - var(--bar-h));
+  overflow-y: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.25s ease;
+  z-index: 46;
+}
+#menu:checked ~ .layout .toc { margin-left: -320px; }
+.toc-search {
+  width: 100%; padding: 0.6rem 0.85rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface-subtle); color: var(--ink);
+  margin-bottom: 1rem; font: inherit; font-size: 0.9rem;
+}
+.toc-search:focus { outline: none; border-color: var(--acc); background: var(--panel); }
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 0.25rem 0; }
+.toc li a {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.55rem 0.75rem; border-radius: var(--radius-sm);
+  color: var(--ink-secondary); font-size: 0.92rem; font-weight: 500; line-height: 1.35;
+  transition: all 0.12s ease;
+}
+.toc li a em {
+  font-style: normal; color: var(--mut); min-width: 1.6rem;
+  font-size: 0.85rem; text-align: center; font-weight: 600;
+}
+.toc li a:hover { background: var(--surface-subtle); color: var(--ink); text-decoration: none; }
+.toc li.on a { background: var(--acc-soft); color: var(--acc); font-weight: 600; }
+.toc li.on a em { color: var(--acc); }
+.toc li.hide { display: none; }
+.toc-note {
+  margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed var(--line);
+  font-size: 0.8rem; color: var(--mut); line-height: 1.5;
+}
+
+/* 5. РАЗДЕЛЫ, БЕЙДЖИ, АКЦЕНТНЫЕ БЛОКИ ----------------------------------- */
+main { flex: 1; min-width: 0; padding: 2.2rem 2rem 5rem; }
+.lec-wrap { max-width: 840px; margin: 0 auto; }
+section.lec { display: none; }
+section.lec.act { display: block; animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; margin: 0.4rem 0 0.6rem; color: var(--ink); }
+h2 {
+  display: flex; align-items: center; gap: 0.85rem;
+  font-size: 1.45rem; font-weight: 700; letter-spacing: -0.015em;
+  margin: 0.5rem 0 1.25rem; padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--line); color: var(--ink);
+}
+h2 .num {
+  flex: 0 0 auto; width: 2.3rem; height: 2.3rem; border-radius: var(--radius-sm);
+  background: var(--acc); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 700;
+}
+h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -0.01em; margin: 1.6rem 0 0.65rem; color: var(--ink); }
+h4 { font-size: 1.02rem; font-weight: 700; margin: 1.1rem 0 0.4rem; color: var(--ink); }
+p { margin: 0.65rem 0; line-height: 1.65; color: var(--ink-secondary); }
+ul, ol { margin: 0.65rem 0 1rem; padding-left: 1.5rem; color: var(--ink-secondary); }
+li { margin: 0.35rem 0; }
+.lead { font-size: 1.1rem; color: var(--mut); }
+b, strong { color: var(--ink); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.25rem 0.75rem; border-radius: var(--radius-pill);
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase;
+  background: var(--acc-soft); color: var(--acc); border: 1px solid var(--acc-border);
+  margin-bottom: 0.6rem;
+}
+.badge-sos { background: var(--sos-soft); color: var(--sos); border-color: var(--sos-border); }
+.badge-succ { background: var(--succ-soft); color: var(--succ); border-color: var(--succ-border); }
+.badge-warn { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border); }
+.badge-pro { background: var(--pro-soft); color: var(--pro); border-color: var(--pro-border); }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem; margin: 1.2rem 0; box-shadow: var(--shadow-sm);
+}
+.core {
+  background: var(--acc-soft); border-left: 4px solid var(--acc);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem; margin: 1.2rem 0; font-size: 0.98rem; line-height: 1.6; color: var(--ink);
+}
+.flags {
+  background: var(--sos-soft); border-left: 4px solid var(--sos);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem; margin: 1.2rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--ink);
+}
+.warn-box {
+  background: var(--warn-soft); border-left: 4px solid var(--warn);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem; margin: 1.2rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--ink);
+}
+.succ-box {
+  background: var(--succ-soft); border-left: 4px solid var(--succ);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem; margin: 1.2rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--ink);
+}
+.note-box {
+  background: var(--surface-subtle); border-left: 4px solid var(--line-strong);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 0.9rem 1.15rem; margin: 1.1rem 0; font-size: 0.92rem; color: var(--ink-secondary);
+}
+
+/* Уровни глубины (сворачиваемые) */
+details.deeper {
+  border: 1px solid var(--line); border-radius: var(--radius-md);
+  background: var(--panel); margin: 1.2rem 0; overflow: hidden;
+}
+details.deeper > summary {
+  cursor: pointer; list-style: none; padding: 0.85rem 1.15rem;
+  font-weight: 700; font-size: 0.96rem; color: var(--ink);
+  background: var(--surface-subtle); display: flex; align-items: center; gap: 0.55rem;
+}
+details.deeper > summary::-webkit-details-marker { display: none; }
+details.deeper > summary::before { content: "▸"; color: var(--acc); font-size: 0.9rem; transition: transform 0.15s ease; }
+details.deeper[open] > summary::before { transform: rotate(90deg); }
+details.deeper > .deeper-body { padding: 0.4rem 1.15rem 1.1rem; }
+details.deeper[data-level="childhood"] > summary { background: var(--warn-soft); color: var(--warn); }
+details.deeper[data-level="full"] > summary { background: var(--acc-soft); color: var(--acc); }
+.depth-tag {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+  border: 1px solid currentColor; border-radius: var(--radius-pill); padding: 0.1rem 0.5rem; opacity: 0.85;
+}
+
+/* 6. ФОРМЫ --------------------------------------------------------------- */
+.qblock {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem; margin: 1.4rem 0 1.8rem; box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease;
+}
+.qblock:focus-within { border-color: var(--acc-border); box-shadow: var(--shadow-md); }
+.qlabel {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
+  font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.35rem;
+}
+.qhint { font-size: 0.9rem; color: var(--mut); margin-bottom: 0.75rem; line-height: 1.5; }
+.sav { font-size: 0.8rem; color: var(--succ); font-weight: 600; opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; }
+.sav.visible { opacity: 1; }
+
+textarea.qf, input[type="text"].qf, select.qf {
+  width: 100%; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--surface-subtle); color: var(--ink);
+  font: inherit; font-size: 1rem; /* 16px — iOS не зумит при фокусе */
+  padding: 0.75rem 0.95rem; line-height: 1.55; transition: all 0.15s ease; resize: vertical;
+}
+textarea.qf:focus, input[type="text"].qf:focus, select.qf:focus {
+  outline: none; border-color: var(--acc); background: var(--panel);
+  box-shadow: 0 0 0 3px var(--acc-soft);
+}
+textarea.qf::placeholder, input.qf::placeholder { color: var(--mut); opacity: 0.85; }
+
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 1.6rem; }
+.grid-2x2[data-cols="3"] { grid-template-columns: 1fr 1fr 1fr; }
+.qcard {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem; box-shadow: var(--shadow-sm);
+}
+.qcard[data-tone="acc"] { border-top: 4px solid var(--acc); }
+.qcard[data-tone="sos"] { border-top: 4px solid var(--sos); }
+.qcard[data-tone="succ"] { border-top: 4px solid var(--succ); }
+.qcard[data-tone="warn"] { border-top: 4px solid var(--warn); }
+.qcard[data-tone="pro"] { border-top: 4px solid var(--pro); }
+.qcard-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--ink); }
+
+/* Чек-листы */
+.chk-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin: 0.8rem 0; }
+.chk-grid[data-cols="2"] { grid-template-columns: 1fr 1fr; }
+.chk-card {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  padding: 0.85rem 1rem; background: var(--surface-subtle);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s ease;
+}
+.chk-card:hover { background: var(--panel); border-color: var(--acc-border); }
+.chk-card input[type="checkbox"] { width: 1.3rem; height: 1.3rem; margin: 0.15rem 0 0; cursor: pointer; flex-shrink: 0; accent-color: var(--acc); }
+.chk-card span { cursor: pointer; font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
+.chk-card .chk-hint { display: block; font-size: 0.82rem; color: var(--mut); font-weight: 400; }
+.chk-title { font-weight: 700; margin: 1.1rem 0 0.2rem; color: var(--ink); }
+
+/* Шкалы 0–10 */
+.scale-widget {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 1.15rem 1.3rem; margin: 1.2rem 0; box-shadow: var(--shadow-sm);
+}
+.scale-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+.scale-value {
+  font-size: 1.7rem; font-weight: 800; color: var(--acc); line-height: 1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  min-width: 3.2rem; text-align: right;
+}
+input[type="range"].rng {
+  width: 100%; margin: 0.9rem 0 0.35rem; accent-color: var(--acc); cursor: pointer; height: 28px;
+}
+.scale-anchors { display: flex; justify-content: space-between; gap: 0.6rem; font-size: 0.8rem; color: var(--mut); }
+.scale-anchors span { flex: 1; }
+.scale-anchors span:nth-child(2) { text-align: center; }
+.scale-anchors span:last-child { text-align: right; }
+
+/* Линейки для письма от руки */
+.wlines { margin: 0.9rem 0 1.4rem; }
+.wline {
+  border-bottom: 1px solid var(--line-strong); height: 2.1rem;
+}
+.wlines-label { font-size: 0.85rem; color: var(--mut); margin-bottom: 0.35rem; }
+
+/* 7. МЕХАНИКИ ------------------------------------------------------------ */
+/* Сортировочная матрица */
+.matrix { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; margin: 1.2rem 0; background: var(--panel); }
+.matrix-legend { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.8rem 1rem; background: var(--surface-subtle); border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+.matrix-legend b { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; }
+.matrix-legend i { width: 0.7rem; height: 0.7rem; border-radius: 3px; display: inline-block; }
+.matrix-row { padding: 0.85rem 1rem; border-bottom: 1px solid var(--line); }
+.matrix-row:last-child { border-bottom: none; }
+.matrix-item-label { font-weight: 600; color: var(--ink); font-size: 0.96rem; }
+.matrix-item-hint { font-size: 0.82rem; color: var(--mut); margin: 0.1rem 0 0.5rem; }
+.matrix-choices { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.matrix-btn {
+  border: 1px solid var(--line-strong); background: var(--surface-subtle); color: var(--ink-secondary);
+  border-radius: var(--radius-pill); padding: 0.32rem 0.8rem; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all 0.15s ease;
+}
+.matrix-btn:hover { border-color: var(--acc); color: var(--acc); }
+.matrix-btn.on { background: var(--acc); border-color: var(--acc); color: #fff; }
+.matrix-chosen { font-size: 0.8rem; color: var(--mut); margin-left: 0.3rem; }
+
+/* Когнитивная таблица */
+.ctable { margin: 1.2rem 0; }
+.ctable-row {
+  border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--panel);
+  padding: 0.9rem 1rem; margin-bottom: 0.85rem; box-shadow: var(--shadow-sm); position: relative;
+}
+.ctable-row-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--mut); font-weight: 700; }
+.ctable-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.ctable-col label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--ink-secondary); margin-bottom: 0.25rem; }
+.ctable-col textarea {
+  width: 100%; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--surface-subtle); color: var(--ink); font: inherit; font-size: 0.92rem;
+  padding: 0.55rem 0.7rem; resize: vertical; min-height: 62px;
+}
+.ctable-col textarea:focus { outline: none; border-color: var(--acc); background: var(--panel); }
+.btn-del { background: none; border: none; color: var(--sos); cursor: pointer; font-size: 1.05rem; padding: 0 0.3rem; font-family: inherit; }
+
+/* Дневник (повторяющиеся записи) */
+.chip-container { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.5rem 0 1rem; }
+.chip {
+  padding: 0.35rem 0.75rem; border-radius: var(--radius-pill);
+  background: var(--surface-subtle); border: 1px solid var(--line);
+  color: var(--ink-secondary); font-size: 0.82rem; font-weight: 500; cursor: pointer; user-select: none;
+  transition: all 0.15s ease; font-family: inherit;
+}
+.chip:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-soft); }
+.chip:active { transform: scale(0.96); }
+.diary-form { background: var(--surface-subtle); border: 1px dashed var(--line-strong); border-radius: var(--radius-md); padding: 1rem 1.1rem; margin: 1rem 0; }
+.diary-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.diary-form label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--ink-secondary); margin-bottom: 0.25rem; }
+.diary-form input, .diary-form select, .diary-form textarea {
+  width: 100%; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--panel); color: var(--ink); font: inherit; font-size: 0.92rem; padding: 0.55rem 0.7rem;
+}
+.diary-form input:focus, .diary-form select:focus, .diary-form textarea:focus { outline: none; border-color: var(--acc); }
+.diary-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem; }
+.diary-item {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 1rem 1.2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 0.4rem;
+}
+.diary-item-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--mut); }
+.diary-item-title { font-weight: 700; font-size: 0.98rem; color: var(--ink); }
+.diary-item-line { font-size: 0.92rem; color: var(--ink-secondary); }
+.diary-item-quote { font-style: italic; color: var(--mut); font-size: 0.92rem; }
+.diary-badge {
+  font-weight: 700; padding: 0.2rem 0.55rem; border-radius: var(--radius-pill); font-size: 0.8rem;
+  background: var(--sos-soft); color: var(--sos);
+}
+.diary-empty {
+  text-align: center; color: var(--mut); padding: 1.5rem; background: var(--panel);
+  border: 1px dashed var(--line); border-radius: var(--radius-md);
+}
+
+/* Круги близости */
+.rings { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin: 1.2rem 0; }
+.ring { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--panel); padding: 1rem 1.1rem; box-shadow: var(--shadow-sm); }
+.ring[data-tone="inner"] { border-left: 4px solid var(--succ); }
+.ring[data-tone="middle"] { border-left: 4px solid var(--acc); }
+.ring[data-tone="outer"] { border-left: 4px solid var(--mut); }
+.ring-head { font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+.ring-hint { font-size: 0.84rem; color: var(--mut); margin-bottom: 0.7rem; }
+.ring-input { display: flex; gap: 0.5rem; }
+.ring-input input {
+  flex: 1; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--surface-subtle); color: var(--ink); font: inherit; font-size: 0.92rem; padding: 0.5rem 0.7rem;
+}
+.ring-input input:focus { outline: none; border-color: var(--acc); background: var(--panel); }
+.ring-items { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+.ring-chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface-subtle); border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill); padding: 0.3rem 0.55rem 0.3rem 0.8rem; font-size: 0.85rem; color: var(--ink);
+}
+.ring-chip button { background: none; border: none; color: var(--mut); cursor: pointer; font-size: 0.95rem; line-height: 1; padding: 0; }
+.ring-chip button:hover { color: var(--sos); }
+.ring-empty { font-size: 0.84rem; color: var(--mut); font-style: italic; }
+
+/* Диалоговый тренажёр */
+.dlg { margin: 1.2rem 0; }
+.dlg-scenario {
+  background: var(--warn-soft); border-left: 4px solid var(--warn);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 0.85rem 1.1rem;
+  font-size: 0.95rem; color: var(--ink); margin-bottom: 1rem;
+}
+.dlg-turn { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--panel); padding: 1rem 1.15rem; margin-bottom: 0.9rem; }
+.dlg-turn-label { font-weight: 700; color: var(--ink); font-size: 0.98rem; margin-bottom: 0.55rem; }
+.dlg-opt {
+  display: block; width: 100%; text-align: left; margin-bottom: 0.45rem;
+  border: 1px solid var(--line); border-left: 3px solid var(--acc);
+  border-radius: var(--radius-sm); background: var(--surface-subtle);
+  padding: 0.6rem 0.8rem; font: inherit; font-size: 0.93rem; color: var(--ink); cursor: pointer;
+  transition: all 0.15s ease;
+}
+.dlg-opt:hover { background: var(--acc-soft); border-color: var(--acc-border); border-left-color: var(--acc); }
+.dlg-opt .dlg-note { display: block; font-size: 0.8rem; color: var(--mut); margin-top: 0.2rem; }
+.dlg-target { margin-top: 1rem; }
+
+/* Карточки-разрешения */
+.pcards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin: 1.2rem 0; }
+.pcard {
+  border: 1px dashed var(--acc-border); border-radius: var(--radius-md);
+  background: var(--acc-soft); padding: 1rem 1.1rem; font-size: 0.95rem; color: var(--ink);
+  display: flex; flex-direction: column; gap: 0.5rem; break-inside: avoid;
+}
+.pcard b { color: var(--acc); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.pcard-custom { background: var(--panel); border-style: solid; border-color: var(--line); }
+.pcard-custom .pcard-del { align-self: flex-end; }
+
+/* Рейтинги зон (телесная карта и подобные) */
+.rating-list { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--panel); overflow: hidden; margin: 1.2rem 0; }
+.rating-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.rating-row:last-child { border-bottom: none; }
+.rating-label { flex: 1 1 190px; font-size: 0.95rem; color: var(--ink); font-weight: 600; }
+.rating-btns { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.rating-btn {
+  min-width: 44px; border: 1px solid var(--line-strong); background: var(--surface-subtle);
+  color: var(--ink-secondary); border-radius: var(--radius-sm); padding: 0.35rem 0.5rem;
+  font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.15s ease;
+}
+.rating-btn:hover { border-color: var(--acc); color: var(--acc); }
+.rating-btn.on { background: var(--acc); border-color: var(--acc); color: #fff; }
+.rating-btn.on[data-tone="sos"] { background: var(--sos); border-color: var(--sos); }
+.rating-btn.on[data-tone="warn"] { background: var(--warn); border-color: var(--warn); }
+.rating-btn.on[data-tone="succ"] { background: var(--succ); border-color: var(--succ); }
+
+/* 8. ВИДЖЕТ ДЫХАНИЯ И ТАЙМЕРА ------------------------------------------- */
+.timer-widget {
+  background: var(--panel); border: 2px solid var(--acc); border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem; margin: 1.4rem 0 2rem; text-align: center; box-shadow: var(--shadow-md);
+}
+.timer-widget[data-tone="sos"] { border-color: var(--sos); }
+.timer-display {
+  font-size: 3.4rem; font-weight: 800;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.04em; color: var(--acc); margin: 0.5rem 0 0.8rem; line-height: 1;
+}
+.timer-widget[data-tone="sos"] .timer-display { color: var(--sos); }
+.timer-controls { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+.breather-container {
+  max-width: 360px; margin: 1.2rem auto 0.4rem; padding: 1.25rem;
+  background: var(--surface-subtle); border-radius: var(--radius-md); border: 1px dashed var(--line);
+}
+.breather-circle {
+  width: 96px; height: 96px; border-radius: 50%; background: var(--acc);
+  margin: 0 auto 1rem; opacity: 0.75; transform: scale(0.85);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.25);
+  transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s ease, opacity 4s ease;
+}
+.breather-circle.inhale { transform: scale(1.25); opacity: 1; background: var(--acc); box-shadow: 0 0 30px rgba(37, 99, 235, 0.45); }
+.breather-circle.hold { transform: scale(1.25); opacity: 0.9; background: var(--warn); box-shadow: 0 0 30px rgba(217, 119, 6, 0.45); }
+.breather-circle.exhale { transform: scale(0.8); opacity: 0.6; background: var(--succ); box-shadow: 0 0 15px rgba(5, 150, 105, 0.3); }
+.breather-text { font-size: 1rem; font-weight: 700; color: var(--ink); min-height: 1.6rem; }
+
+/* 9. СВЯЗКА С ПСИХОЛОГОМ / КОММЕНТАРИЙ СПЕЦИАЛИСТА ---------------------- */
+.session-block {
+  border: 1px solid var(--acc-border); border-left: 5px solid var(--acc);
+  background: var(--acc-soft); border-radius: var(--radius-md);
+  padding: 1.15rem 1.3rem; margin: 1.5rem 0;
+}
+.session-block > .sb-title { font-weight: 800; color: var(--acc); font-size: 1.02rem; margin-bottom: 0.5rem; display: flex; gap: 0.45rem; align-items: center; }
+.session-block .qblock, .session-block .card { background: var(--panel); }
+.pro-block {
+  border: 1px solid var(--pro-border); border-left: 5px solid var(--pro);
+  background: var(--pro-soft); border-radius: var(--radius-md);
+  padding: 1.15rem 1.3rem; margin: 1.5rem 0;
+}
+.pro-block > .sb-title { font-weight: 800; color: var(--pro); font-size: 1.02rem; margin-bottom: 0.5rem; display: flex; gap: 0.45rem; align-items: center; }
+.pro-block h4 { color: var(--pro); }
+.pro-block ul { margin: 0.4rem 0 0.9rem; }
+.pro-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  background: var(--pro); color: #fff; border-radius: var(--radius-pill); padding: 0.15rem 0.6rem; margin-bottom: 0.5rem;
+}
+
+/* 10. НАВИГАЦИЯ ПО ШАГАМ И СВОДКА --------------------------------------- */
+.lecnav {
+  display: flex; gap: 0.85rem; justify-content: space-between;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.4rem; font-size: 0.92rem; flex-wrap: wrap;
+}
+.lecnav a {
+  padding: 0.55rem 1rem; min-height: 42px; display: inline-flex; align-items: center;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--panel);
+  color: var(--ink); font-weight: 600;
+}
+.lecnav a:hover { border-color: var(--acc); color: var(--acc); text-decoration: none; }
+.lecnav .cnt { color: var(--mut); align-self: center; font-weight: 500; }
+.map-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.4rem 0; }
+.map-row {
+  display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;
+  border-bottom: 1px dashed var(--line); padding: 0.5rem 0; font-size: 0.92rem;
+}
+.map-bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin-top: 0.3rem; }
+.map-bar i { display: block; height: 100%; background: var(--acc); width: 0; transition: width 0.3s ease; }
+.course-map { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; margin: 1rem 0 1.4rem; }
+.course-week {
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--panel);
+  padding: 0.6rem 0.75rem; font-size: 0.85rem; color: var(--ink-secondary);
+}
+.course-week b { display: block; color: var(--ink); font-size: 0.9rem; }
+
+/* 11. МОБИЛЬНАЯ АДАПТАЦИЯ ------------------------------------------------ */
+@media (max-width: 920px) {
+  .bar { padding: 0.55rem 0.85rem; }
+  .bar-title { font-size: 0.98rem; }
+  .bar-sub { display: none; }
+  .bar-actions .counter { display: none; }
+  .toc {
+    position: fixed; left: 0; top: var(--bar-h); z-index: 46;
+    transform: translateX(-102%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); margin-left: 0 !important; width: min(320px, 85vw);
+  }
+  #menu:checked ~ .layout .toc { transform: translateX(0); }
+  main { padding: 1.25rem 0.95rem 4.5rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.28rem; }
+  .grid-2x2, .grid-2x2[data-cols="3"], .chk-grid[data-cols="2"], .pcards, .ctable-cols, .diary-form-grid { grid-template-columns: 1fr; }
+  .timer-display { font-size: 2.8rem; }
+  .card, .qblock, .timer-widget, .session-block, .pro-block { padding: 1.1rem 1rem; }
+}
+
+/* 12. ПЕЧАТЬ ------------------------------------------------------------- */
+@media print {
+  .bar, .toc, .lecnav, .timer-controls, .btn, #menu, .burger, .menu-backdrop,
+  .chip-container, .matrix-choices, .ring-input, .btn-del, .map-actions, .toc-note { display: none !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11.5pt; }
+  .layout { display: block !important; }
+  main { padding: 0 !important; }
+  .lec-wrap { max-width: none !important; }
+  section.lec { display: block !important; page-break-before: always; border-bottom: 2px solid #ccc; padding-top: 0.6rem; }
+  section#front { page-break-before: avoid; }
+  .card, .qblock, .qcard, .matrix, .ctable-row, .diary-item, .ring, .rating-list,
+  .session-block, .pro-block, .pcard, .dlg-turn {
+    background: #fff !important; border: 1px solid #bbb !important; box-shadow: none !important;
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  textarea.qf, input.qf, .ctable-col textarea, .diary-form input {
+    border: 1px solid #999 !important; background: #fff !important; color: #000 !important;
+  }
+  textarea.qf { min-height: 68px; }
+  .core, .flags, .warn-box, .succ-box, .note-box, .dlg-scenario { background: #fff !important; color: #000 !important; border-left-width: 3px !important; }
+  .matrix-btn.on { background: #000 !important; color: #fff !important; border-color: #000 !important; }
+  .rating-btn.on { background: #000 !important; color: #fff !important; border-color: #000 !important; }
+  .wline { border-bottom: 1px solid #666 !important; height: 24pt; }
+  details.deeper { border: 1px solid #bbb !important; }
+  details.deeper > summary { background: #f2f2f2 !important; color: #000 !important; }
+  a { color: #000 !important; }
+}
+
+:root { --acc: #0f766e; --acc-hover: #115e59; --acc-soft: #f0fdfa; --acc-border: #99f6e4; --pro: #6d28d9; }
+[data-theme="dark"], :root[data-theme="auto"] { --acc: #2dd4bf; --acc-hover: #5eead4; --acc-soft: #042f2e; --acc-border: #115e59; --pro: #a78bfa; }
+@media (prefers-color-scheme: light) {
+  :root[data-theme="auto"] { --acc: #0f766e; --acc-hover: #115e59; --acc-soft: #f0fdfa; --acc-border: #99f6e4; --pro: #6d28d9; }
+}
+[data-theme="light"] { --acc: #0f766e; --acc-hover: #115e59; --acc-soft: #f0fdfa; --acc-border: #99f6e4; --pro: #6d28d9; }
+.bar { border-bottom: 2px solid var(--pro); }
+.bar-title::after { content: " · специалисту"; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pro); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu">
+<label for="menu" class="menu-backdrop" title="Закрыть меню"></label>
+
+<!-- ШАПКА -->
+<header class="bar">
+  <label for="menu" class="burger" title="Оглавление тетради (M)">☰</label>
+  <div class="bar-brand">
+    <div class="bar-title">СВОЁ И МАМИНО · СПЕЦИАЛИСТУ</div>
+    <div class="bar-sub">Сепарация от родителей · версия для психолога · v1.0</div>
+  </div>
+  <div class="bar-actions">
+    <a href="#s5" class="btn btn-sos" title="Тренажёр фраз для трудного разговора">⚡ Трудный разговор</a>
+    <button class="btn btn-icon" id="themeToggle" title="Тема оформления">🌓</button>
+    <button class="btn btn-primary" id="btnExportTop" title="Скачать все ответы текстовым файлом">⬇ Экспорт</button>
+    <span class="counter" id="counter">заполнено: 0 / 0</span>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ОГЛАВЛЕНИЕ -->
+  <nav class="toc" id="toc" aria-label="Оглавление тетради">
+    <input type="search" id="q" class="toc-search" placeholder="Поиск по шагам…" autocomplete="off">
+    <ol id="tocList">
+      <li data-t="front" class="on"><a href="#front"><em>★</em> <span>О курсе и безопасность</span></a></li>
+      <li data-t="s1"><a href="#s1"><em>1</em> <span>Где я сейчас</span></a></li>
+      <li data-t="s2"><a href="#s2"><em>2</em> <span>Чьи это чувства</span></a></li>
+      <li data-t="s3"><a href="#s3"><em>3</em> <span>Тело говорит «нет»</span></a></li>
+      <li data-t="s4"><a href="#s4"><em>4</em> <span>Круги близости</span></a></li>
+      <li data-t="s5"><a href="#s5"><em>5</em> <span>Трудные разговоры</span></a></li>
+      <li data-t="s6"><a href="#s6"><em>6</em> <span>Вина и долг</span></a></li>
+      <li data-t="s7"><a href="#s7"><em>7</em> <span>Своя жизнь</span></a></li>
+      <li data-t="map"><a href="#map"><em>★</em> <span>Моя карта и итоги</span></a></li>
+    </ol>
+<div class="toc-note">Версия для специалиста: фиолетовые блоки — методические комментарии, их не передают клиенту. Клиент работает в клиентской версии файла.</div>
+  </nav>
+
+  <!-- СОДЕРЖИМОЕ -->
+  <main>
+    <div class="lec-wrap">
+<section class="lec act" id="front">
+<span class="badge badge-pro">Протокол курса 7 сессий · версия для специалиста · v1.0</span>
+<h1>Своё и мамино: курс сепарации от родителей</h1><p class="lead">Методическая версия для психолога: те же 7 шагов, что и у клиента, плюс цели, мишени, красные флаги, интервенции и метрики каждого шага.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Протокол курса: как работать с этой тетрадью</div><div class="warn-box"><h4 style="margin-top:0;">Этика версий</h4>Клиент работает в <b>клиентской версии</b> файла (<code>separation_workbook.html</code>). Этот файл с фиолетовыми методическими блоками клиенту не передаётся: формулировки «мишени», «сопротивление», «красные флаги» разрушают терапевтический альянс, если клиент читает их о себе. Если нужен совместный документ — используйте экспорт ответов клиента (.txt) и добавляйте свои заметки отдельно.</div>
+<h4>Показания</h4><ul><li>Слияние с матерью/отцом при формальной взрослости клиента (25+): решения принимаются из страха обидеть, настроение зависит от контакта.</li><li>Парентификация в анамнезе (ребёнок-утешитель, посредник, «заместитель партнёра»).</li><li>Хроническая вина и «неоплатный долг» перед родителями, самоуничижение при своих успехах.</li><li>Повторяющиеся конфликты и циклы «уступил(а) → взорвался(лась) → исчез(ла) → вернулся(ась) виноватым(ой)».</li><li>Запрос на границы при сохранении отношений (не на разрыв).</li></ul><h4>Противопоказания и ограничения (сначала другое, потом курс)</h4><ul><li>Острый кризис: суицидальный риск, психоз, активная фаза зависимости, недавняя утрата — сначала стабилизация.</li><li>Активное насилие или контроль со стороны родителя: задача — безопасность и, возможно, юридическая защита, а не «дифференциация».</li><li>Непроработанная тяжёлая травма насилия: блок «Из детства» в Шагах 2 и 6 открываем только при достаточной стабилизации и, как правило, в травматическом протоколе (EMDR/CPT/ST-рескриптинг).</li><li>Полная экономическая и жилищная зависимость (клиент живёт с матерью, она его содержит): цели реалистичные и поведенческие, не «отделиться окончательно».</li></ul>
+<h4>Структура и тайминг</h4><p>7 сессий по 50 минут, один шаг в неделю. Быстрый трек — 5 сессий (Шаги 3 и 4 объединяются, Шаг 6 остаётся обязательным: вина — точка максимального сопротивления).</p><ul><li><b>0–10 мин:</b> обзор заполненного шага (клиент приносит экспорт или показывает с телефона), замер шкал.</li><li><b>10–35 мин:</b> работа с материалом шага — одна мишень, одна интервенция, одна репетиция.</li><li><b>35–45 мин:</b> интеграция: что клиент забирает, формулировка правила/фразы своими словами.</li><li><b>45–50 мин:</b> домашнее задание, короткая опора перед завершением (что клиент делает сразу после сессии), договорённость о следующей встрече.</li></ul><p>Домашние задания маленькие и поведенческие: одна запись в дневнике, одна пауза перед звонком, одна стоп-фраза. Большие задания в этой теме проваливаются и усиливают вину («я снова не справился(лась)»).</p>
+<h4>Теоретическая рамка (что держит курс)</h4><ul><li><b>Боуэн:</b> дифференциация Я, треугольники, эмоциональный разрыв (cutoff) как псевдо-сепарация. Ключевой контроль курса: разрыв ≠ дифференциация, уход «в молчанку» на месяц — это не результат.</li><li><b>Теория привязанности / Малер:</b> сепарация-индивидуация во взрослом возрасте, «безопасная база» вне семьи происхождения.</li><li><b>Схема-терапия (Янг):</b> схемы Подчинления, Самопожертвования, Покинутости, Жёстких стандартов; режимы Покорного ребёнка и Карающего критика; ограниченное материнство в сессии.</li><li><b>IFS:</b> части — Спасатель/Угодник, Изгнанник (ребёнок, отвечавший за взрослых), Пожарный (исчезновение, алкоголь, еда).</li><li><b>ACT:</b> слияние с правилами «я должна», ценности против повинности, committed action как критерий результата.</li><li><b>КПТ:</b> долженствования, чтение мыслей, катастрофизация её реакции; поведенческие эксперименты в Шаге 5.</li><li><b>Соматический подход:</b> граница как телесный сигнал (Шаг 3), регуляция через дыхание и ориентацию.</li></ul>
+<h4>Метрики курса (замеряем и сравниваем)</h4><ul><li><b>Шкала отдельности 0–10</b> — титул → Шаг 7 → «Моя карта» (основной показатель результата).</li><li><b>Шкала ответственности за её настроение</b> — Шаг 2 (ожидаем снижение).</li><li><b>Шкала вины</b> — Шаг 6 → «Моя карта» (ожидаем снижение не ниже 4–5 баллов: полная «нулевая вина» часто защита).</li><li><b>Чек-лист слияния (12 пунктов)</b> — Шаг 1; пересчёт в Шаге 7 как объективная динамика.</li><li><b>Поведенческие маркеры:</b> число записей в дневнике согласий (Шаг 3), число проведённых трудных разговоров и стоп-фраз (Шаг 5), число собственных решений (Шаг 7).</li></ul><p>Метрики обсуждаем с клиентом открыто: в этой теме прогресс часто не ощущается субъективно, и цифры — полезная опора против обесценивания «у меня ничего не получилось».</p>
+<h4>Типичное сопротивление и контрперенос</h4><ul><li><b>Идеализация:</b> «у меня нормальная мама, я преувеличиваю» — работаем через факты и конкретные сцены, не через оценки матери.</li><li><b>Лояльный саботаж:</b> клиент заполняет тетрадь, но не делает поведенческий шаг; исследуем страх, а не настаиваем.</li><li><b>Обесценивание формы:</b> «это всё слишком просто» — обычно признак того, что затронута вина.</li><li><b>Кризис как защита курса:</b> каждую неделю «случается что-то срочное» у матери — разбираем функцию кризиса для системы.</li><li><b>Риск терапевта:</b> собственный незавершённый сепарационный опыт → подталкивание к разрыву, возмущение вместо исследования. Супервизионный вопрос: «Чью сторону я сейчас занимаю и зачем?»</li></ul></div>
+<div class="core"><b>Главный принцип этого курса:</b> сепарация — это не разрыв, не наказание и не «уход из семьи». Это <b>пересборка дистанции</b>: из состояния «мы слиты» в состояние «мы разные, но связаны». Взрослый человек может любить маму — и не жить её настроениями. Может заботиться — и не отвечать за её счастье. Может приезжать — и оставаться собой.</div>
+<div class="card"><h3 style="margin-top:0;">Как устроена эта тетрадь</h3><ul><li>7 шагов = 7 недель: один шаг в неделю, одна встреча с психологом в неделю.</li><li>15–25 минут на основной уровень. Дальше — по желанию: блоки «Полный формат» и «Из детства» раскрываются нажатием.</li><li>Поля со звёздочкой ★ — то, что стоит принести на встречу. Остальное — ваше и только ваше.</li><li>Все ответы сохраняются в этом браузере и никуда не отправляются сами. Кнопка «⬇ Экспорт» собирает их в текстовый файл — если вы решите показать его психологу.</li><li>Тетрадь можно распечатать: кнопка «🖨 Распечатать» раскроет все блоки и уберёт лишнее.</li></ul></div>
+<div class="flags"><h4 style="margin-top:0;">Экран безопасности — прочитайте до начала</h4><p>Эта тетрадь — про дистанцию и различение, а не про выживание в опасности.</p><p><b>Остановитесь и обратитесь за помощью, если:</b> в отношениях есть насилие или угрозы; вас шантажируют здоровьем либо деньгами; за вами следят, контролируют ваши документы и передвижения; родитель сейчас в остром состоянии — психоз, активная фаза зависимости, деменция с агрессией.</p><p>В этих случаях порядок другой: <b>сначала безопасность, потом сепарация</b>. Сократите контакт до необходимого минимума. Не оставайтесь с этим в одиночестве. Привлеките специалиста, а при угрозе жизни звоните в экстренные службы — 112.</p><p>При опыте физического или сексуализированного насилия эта тетрадь не заменяет терапию травмы: работайте только вместе со специалистом.</p></div>
+<div class="note-box"><h4 style="margin-top:0;">Как читать эту тетрадь</h4><p><b>Для кого.</b> Материал рассчитан на взрослых (18+). В тексте чаще звучит «мама» — подставьте того значимого взрослого, с которым связана ваша история: папу, бабушку, дедушку, опекуна. Механика от этого не меняется.</p><p><b>Что это.</b> Тетрадь — инструмент самопомощи и материал для работы с психологом. Она не медицинская услуга, не диагностика и не замена консультации врача или психотерапевта.</p><p><b>Ваша свобода.</b> Любое задание можно пропустить, любую страницу — закрыть. Никто не вправе требовать от вас показать заполненную тетрадь или отчёт — включая психолога: вы сами решаете, чем делиться.</p></div>
+<div class="warn-box"><h4 style="margin-top:0;">Если станет невыносимо: план «Стоп»</h4>Остановитесь. План «Стоп» — три движения: <b>(1)</b> закрыть тетрадь, поставить ноги на пол, назвать вслух, где вы сейчас; <b>(2)</b> заземление «5-4-3-2-1»: пять вещей, которые вижу, четыре — которые могу потрогать, три звука, два запаха, один вкус; <b>(3)</b> написать или позвонить живому человеку. Возвращайтесь к тексту, только когда пульс спокоен.<p><b>Куда звонить.</b> Единый номер экстренных служб — <b>112</b> (работает в странах ЕС, в России, Украине, Казахстане и ряде других стран). Если есть угроза жизни или здоровью — звоните сразу, не дожидаясь разговора с психологом.</p></div>
+<div class="qblock"><div class="qlabel"><span>Мой вариант заземления (что помогает именно мне)</span><span class="sav" data-for="f_grounding">— сохранено ✓</span></div><p class="qhint">Холодная вода на лицо, прогулка, конкретный человек, музыка, душ, дыхание 4-4-6. Напишите то, что реально срабатывало.</p><textarea class="qf" id="f_grounding" data-step="front" data-q="Мой вариант заземления (что помогает именно мне)" data-export="field" rows="3" placeholder="Например: умыться холодной водой, позвонить Ане, выйти на балкон и дышать минуту…"></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Моя местная линия психологической помощи: номер и в каких случаях звоню</span><span class="sav" data-for="f_crisis_line">— сохранено ✓</span></div><p class="qhint">Впишите номер службы вашей страны или города (телефон доверия, кризисный центр, служба психологической помощи). Пусть он будет перед глазами заранее, а не в момент, когда плохо.</p><input type="text" class="qf" id="f_crisis_line" data-step="front" data-q="Моя местная линия психологической помощи: номер и в каких случаях звоню" data-export="field" placeholder="Например: кризисная служба +43 1 …; телефон доверия 8 800 …; мой психолог …"></div>
+<h3>Карта курса</h3><div class="course-map"><div class="course-week"><b>Неделя 1</b>Где я сейчас: честная карта связи</div><div class="course-week"><b>Неделя 2</b>Чьи это чувства: различение и роль «ребёнка-родителя»</div><div class="course-week"><b>Неделя 3</b>Тело говорит «нет»: границы в ощущениях</div><div class="course-week"><b>Неделя 4</b>Круги близости: пересборка дистанции</div><div class="course-week"><b>Неделя 5</b>Трудные разговоры: тренажёр фраз</div><div class="course-week"><b>Неделя 6</b>Вина, долг и «плохая дочь / плохой сын»</div><div class="course-week"><b>Неделя 7</b>Своя жизнь: опора на себя и после курса</div></div>
+<div class="grid-2x2" data-cols="2"><div class="qcard" data-tone="acc"><div class="qcard-title">Что для меня значит «отделиться» — одним словом или фразой?</div><input type="text" class="qf" id="f_meaning" data-step="front" data-q="Что для меня значит «отделиться» — одним словом или фразой?" data-export="field" placeholder="Например: дышать; не оправдываться; жить свою жизнь…"><span class="sav" data-for="f_meaning">— сохранено ✓</span></div><div class="qcard" data-tone="warn"><div class="qcard-title">Чего я боюсь в этой работе больше всего?</div><input type="text" class="qf" id="f_fear" data-step="front" data-q="Чего я боюсь в этой работе больше всего?" data-export="field" placeholder="Например: что мама не переживёт; что останусь один(а); что я эгоист(ка)…"><span class="sav" data-for="f_fear">— сохранено ✓</span></div></div>
+<div class="session-block" data-export="section" data-q="★ Запрос на курс (встреча 1)" data-step="front"><div class="sb-title">★ Запрос на курс (встреча 1)</div><div class="qblock"><div class="qlabel"><span>С чем я прихожу: ситуация, которая привела меня сюда</span><span class="sav" data-for="f_request">— сохранено ✓</span></div><p class="qhint">Конкретно: что произошло, когда, кто что сказал. Без оценок — только факты и ваши чувства.</p><textarea class="qf" id="f_request" data-step="front" data-q="С чем я прихожу: ситуация, которая привела меня сюда" data-export="field" rows="5" placeholder="Например: после её звонка я два дня не могу работать и плачу по вечерам…"></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что должно измениться к 7-й неделе, чтобы я понял(а): работа получилась</span><span class="sav" data-for="f_goal">— сохранено ✓</span></div><p class="qhint">Формулируйте как наблюдение, а не как чувство: что вы будете делать иначе.</p><textarea class="qf" id="f_goal" data-step="front" data-q="Что должно измениться к 7-й неделе, чтобы я понял(а): работа получилась" data-export="field" rows="4" placeholder="Например: я отвечу «нет» на просьбу приехать в выходные и не буду потом неделю виноватым(ой)…"></textarea></div></div>
+</section>
+
+<section class="lec" id="s1">
+<span class="badge">Неделя 1 · Встреча 1</span>
+<h2><span class="num">1</span>Шаг 1 · Где я сейчас: честная карта связи</h2><p class="lead">Прежде чем менять дистанцию, стоит увидеть, как она устроена сегодня. Без оценок «плохо» и «хорошо» — только наблюдение.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 1 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Диагностика уровня дифференциации и составление карты контакта без оценок. Клиент переходит от «мама плохая / я плохая» к наблюдаемым фактам: кто звонит, как часто, что я делаю после.</p><h4>Терапевтические мишени</h4><ul><li>Слияние: речь «мы», отсутствие «я хочу», описание своих состояний через её состояния.</li><li>Эмоциональный разрыв как защита (пропадает на недели и возвращается виноватым).</li><li>Магическая ответственность: «от моего поведения зависит её здоровье/настроение».</li><li>Функциональная несепарированность: деньги, документы, быт, её врачи.</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>Контроль, слежка, угрозы, удержание документов или денег → выходим из курса в протокол безопасности.</li><li>Суицидальные угрозы родителя как инструмент контроля → отдельный план: кто оценивает риск, кто несёт ответственность, подключение кризисной службы.</li><li>Активная зависимость родителя с созависимым сценарием клиента → параллельно группа для созависимых / программа 12 шагов.</li><li>Полное отсутствие своих желаний, ангедония, снижение веса/сна → скрининг депрессии, при необходимости психиатр.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Соотношение «я»/«она» в тексте: у слитого клиента местоимение «я» появляется редко и почти всегда рядом с виной.</li><li>Конкретика против обобщений: «она всегда» — маркер слияния и подавленной злости.</li><li>Что клиент считает нормой (часто нормализована парентификация).</li><li>Какие пункты чек-листа он отметил и тут же попытался оправдать мать — это точка работы.</li></ul><h4>Интервенции</h4><ul><li><b>Генограмма на 3 поколения</b> (Боуэн): где в роду повторяется сценарий «дочь отвечает за мать». Сильно снижает обвинительный накал.</li><li><b>Циркулярные вопросы:</b> «Что делает отец, когда мама обижается на вас? Кто в семье знает об этом первым?»</li><li><b>Шкалирование + поиск исключения:</b> «Когда было на 6 вместо 2? Что тогда было иначе?»</li><li><b>Экстернализация (нарратив):</b> дать имени слиянию («Радар» — слежение за её настроением) и отделить от идентичности.</li></ul><h4>Домашнее задание</h4><p>Наблюдение недели контакта (без изменений!): записывать факты — кто, когда, сколько, что я делаю после. Плюс один микро-шаг из поля «★ Для встречи 1». Запрет на подвиги: на первой неделе задача — заметить, а не изменить.</p><h4>Метрики</h4><p>Чек-лист слияния (0–12) и шкала отдельности — зафиксировать как точку отсчёта.</p><h4>Супервизионный вопрос</h4><p>Не подталкиваю ли я клиента к разрыву под видом сепарации? Есть ли в его жизни кто-то, кроме матери, — и почему этот вопрос всплывает только на 7-м шаге?</p></div>
+<div class="card"><h3 style="margin-top:0;">Что такое сепарация на самом деле</h3><p>Сепарация — не переезд в другой город. Можно жить за три тысячи километров и оставаться слитым: решать из страха, чувствовать её настроение через телефон, отчитываться мысленно. И можно жить в одном доме — и быть отдельным.</p><p>Сепарация собирается по четырём осям:</p><ul><li><b>Эмоциональная:</b> я различаю, где моё чувство, а где чужое, и не отвечаю за чужое настроение.</li><li><b>Функциональная:</b> мои деньги, быт, документы, решения — на мне; её — на ней.</li><li><b>Ценностная:</b> у меня могут быть другие взгляды на работу, веру, партнёра, детей — и это не предательство.</li><li><b>Конфликтная:</b> я выдерживаю несогласие и её недовольство, не разрушаясь и не разрушая связь.</li></ul><p>Первые три оси обычно даются легче. Четвёртая — самая трудная и самая важная: именно она превращает «отдельность на бумаге» в настоящую.</p></div>
+<div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Насколько я чувствую себя отдельным человеком рядом с мамой сейчас?</span><span class="sav" data-for="s1_scale_sep">— сохранено ✓</span></div><p class="qhint">Отметьте первое, что приходит в голову. Это точка отсчёта — к ней вернёмся на 7-й неделе.</p></div><output class="scale-value" data-for="s1_scale_sep">0</output></div><input type="range" class="rng" id="s1_scale_sep" min="0" max="10" step="1" value="0" data-step="s1" data-q="Насколько я чувствую себя отдельным человеком рядом с мамой сейчас?" data-export="field"><div class="scale-anchors"><span>0 — полностью растворён(а): настроение и решения общие</span><span>5 — иногда получается, иногда захлёстывает</span><span>10 — спокойно остаюсь собой даже в конфликте</span></div></div>
+<div class="widget widget-sort_matrix" data-widget="sort_matrix" data-wid="w_sort_matrix_1" data-spec="{&quot;columns&quot;: [{&quot;key&quot;: &quot;mine&quot;, &quot;label&quot;: &quot;Моё&quot;}, {&quot;key&quot;: &quot;hers&quot;, &quot;label&quot;: &quot;Мамино&quot;}, {&quot;key&quot;: &quot;mixed&quot;, &quot;label&quot;: &quot;Переплетено&quot;}], &quot;items&quot;: [{&quot;id&quot;: &quot;mood&quot;, &quot;label&quot;: &quot;Моё настроение после нашего разговора&quot;, &quot;hint&quot;: &quot;Кто им управляет: я или её тон?&quot;}, {&quot;id&quot;: &quot;decisions&quot;, &quot;label&quot;: &quot;Решения о моей жизни (работа, переезд, отношения)&quot;}, {&quot;id&quot;: &quot;guilt&quot;, &quot;label&quot;: &quot;Чувство вины&quot;}, {&quot;id&quot;: &quot;weekend&quot;, &quot;label&quot;: &quot;Мои планы на выходные&quot;}, {&quot;id&quot;: &quot;money&quot;, &quot;label&quot;: &quot;Мои деньги&quot;}, {&quot;id&quot;: &quot;partner&quot;, &quot;label&quot;: &quot;Мнение о моём партнёре&quot;}, {&quot;id&quot;: &quot;health&quot;, &quot;label&quot;: &quot;Ответственность за её здоровье&quot;}, {&quot;id&quot;: &quot;goals&quot;, &quot;label&quot;: &quot;Мои цели на ближайшие годы&quot;}, {&quot;id&quot;: &quot;anxiety&quot;, &quot;label&quot;: &quot;Тревога за будущее&quot;}, {&quot;id&quot;: &quot;house&quot;, &quot;label&quot;: &quot;Мой дом и быт&quot;}]}" data-step="s1" data-export="widget" data-q="Моё / мамино / переплетено"><h3>Моё / мамино / переплетено</h3><p class="qhint">Нажимайте на вариант под каждым пунктом. Здесь нет правильных ответов — есть честные. Отвечайте не «как должно быть», а «как есть сегодня».</p><div class="matrix"><div class="matrix-legend"><b><i style="background:var(--acc)"></i>Моё</b><b><i style="background:var(--warn)"></i>Мамино</b><b><i style="background:var(--mut)"></i>Переплетено</b></div></div></div>
+<div class="chk-wrap" data-export="checklist" data-q="Признаки слияния: отметьте то, что узнаёте у себя" data-step="s1"><div class="chk-title">Признаки слияния: отметьте то, что узнаёте у себя</div><p class="qhint">Это не диагноз и не приговор. Это карта того, где дистанция пока держится на страхе и вине.</p><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="s1_c1" data-step="s1"><span>Я определяю её настроение по звуку сообщения или по тому, как долго она не отвечает</span></label><label class="chk-card"><input type="checkbox" id="s1_c2" data-step="s1"><span>Я отменяю свои планы, если она просит приехать или помочь</span></label><label class="chk-card"><input type="checkbox" id="s1_c3" data-step="s1"><span>После разговора с ней мне нужно «приходить в себя»</span></label><label class="chk-card"><input type="checkbox" id="s1_c4" data-step="s1"><span>Я не рассказываю ей важное, потому что боюсь оценки, советов или обиды</span></label><label class="chk-card"><input type="checkbox" id="s1_c5" data-step="s1"><span>Мне стыдно, когда у меня всё хорошо, а у неё тяжело</span></label><label class="chk-card"><input type="checkbox" id="s1_c6" data-step="s1"><span>Принимая решение, я мысленно спорю с ней или жду её одобрения</span></label><label class="chk-card"><input type="checkbox" id="s1_c7" data-step="s1"><span>Я отвечаю на её звонки сразу — даже ночью, на работе, за рулём</span></label><label class="chk-card"><input type="checkbox" id="s1_c8" data-step="s1"><span>Её мнение о моём партнёре влияет на наши отношения</span></label><label class="chk-card"><input type="checkbox" id="s1_c9" data-step="s1"><span>Я «спасаю» её: врачи, документы, долги, ремонты, её отношения</span></label><label class="chk-card"><input type="checkbox" id="s1_c10" data-step="s1"><span>Я злюсь на неё — и тут же стыжусь этой злости</span></label><label class="chk-card"><input type="checkbox" id="s1_c11" data-step="s1"><span>Мне трудно сказать «нет» без длинных объяснений и извинений</span></label><label class="chk-card"><input type="checkbox" id="s1_c12" data-step="s1"><span>Я чувствую ответственность за то, счастлива ли она в своей жизни</span></label></div></div>
+<div class="grid-2x2" data-cols="2"><div class="qcard" data-tone="acc"><div class="qcard-title">Как выглядит наша обычная неделя контакта?</div><p class="qhint">Кто звонит первым, как часто, о чём говорим, сколько длится, кто завершает.</p><textarea class="qf" id="s1_week" data-step="s1" data-q="Как выглядит наша обычная неделя контакта?" data-export="field" rows="5" placeholder="Например: она звонит каждый вечер около 21:00, говорит 40 минут про своё здоровье и про сестру…"></textarea><span class="sav" data-for="s1_week">— сохранено ✓</span></div><div class="qcard" data-tone="warn"><div class="qcard-title">Что происходит во мне сразу после нашего разговора?</div><p class="qhint">Тело, мысли, действия: «иду есть», «не могу уснуть», «злюсь на партнёра».</p><textarea class="qf" id="s1_after" data-step="s1" data-q="Что происходит во мне сразу после нашего разговора?" data-export="field" rows="5" placeholder="Например: сжимается челюсть, появляется раздражение, потом вина, потом звоню подруге…"></textarea><span class="sav" data-for="s1_after">— сохранено ✓</span></div></div>
+<details class="deeper" data-level="full" data-export="section" data-q="[полный формат] Полный формат: ревизия по четырём осям" data-step="s1"><summary><span>Полный формат: ревизия по четырём осям</span><span class="depth-tag">полный формат</span></summary><div class="deeper-body"><div class="qblock"><div class="qlabel"><span>Эмоциональная ось: чьи чувства я ношу?</span><span class="sav" data-for="s1_axis_emo">— сохранено ✓</span></div><p class="qhint">Какие её состояния я ловлю и считаю своими: тревогу, обиду, одиночество, разочарование.</p><textarea class="qf" id="s1_axis_emo" data-step="s1" data-q="Эмоциональная ось: чьи чувства я ношу?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Функциональная ось: что из её задач я делаю?</span><span class="sav" data-for="s1_axis_func">— сохранено ✓</span></div><p class="qhint">Деньги, врачи, документы, быт, её отношения с родственниками, её техника.</p><textarea class="qf" id="s1_axis_func" data-step="s1" data-q="Функциональная ось: что из её задач я делаю?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Ценностная ось: где мои взгляды не совпадают и я об этом молчу?</span><span class="sav" data-for="s1_axis_val">— сохранено ✓</span></div><p class="qhint">Работа, деньги, вера, политика, воспитание детей, тело, отдых.</p><textarea class="qf" id="s1_axis_val" data-step="s1" data-q="Ценностная ось: где мои взгляды не совпадают и я об этом молчу?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Конфликтная ось: что я делаю, когда она недовольна?</span><span class="sav" data-for="s1_axis_conf">— сохранено ✓</span></div><p class="qhint">Опишите свой автоматический сценарий: уступаю, исчезаю, взрываюсь, заболеваю.</p><textarea class="qf" id="s1_axis_conf" data-step="s1" data-q="Конфликтная ось: что я делаю, когда она недовольна?" data-export="field" rows="4" placeholder=""></textarea></div></div></details>
+<div class="session-block" data-export="section" data-q="★ Для встречи 1" data-step="s1"><div class="sb-title">★ Для встречи 1</div><div class="qblock"><div class="qlabel"><span>Что из отмеченного в чек-листе удивило или задело меня?</span><span class="sav" data-for="s1_s_surprise">— сохранено ✓</span></div><textarea class="qf" id="s1_s_surprise" data-step="s1" data-q="Что из отмеченного в чек-листе удивило или задело меня?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Один маленький шаг на эту неделю</span><span class="sav" data-for="s1_s_step">— сохранено ✓</span></div><p class="qhint">Не подвиг. Одно действие, которое я точно могу сделать: не отвечать сразу, не объяснять, не брать её задачу.</p><textarea class="qf" id="s1_s_step" data-step="s1" data-q="Один маленький шаг на эту неделю" data-export="field" rows="3" placeholder="Например: в среду не беру на себя запись её к врачу, а даю номер клиники…"></textarea></div></div>
+</section>
+
+<section class="lec" id="s2">
+<span class="badge">Неделя 2 · Встреча 2</span>
+<h2><span class="num">2</span>Шаг 2 · Чьи это чувства: различение</h2><p class="lead">Самый полезный навык сепарации — умение за три вопроса разобрать любую ситуацию: чьё чувство, чья задача, что в моей зоне контроля.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 2 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Навык различения: чьё чувство → чья задача → что в моей зоне контроля. Проработка парентификации: клиент видит, что его «любовь = ответственность» — выученная роль, а не природа.</p><h4>Терапевтические мишени</h4><ul><li>Парентифицированные роли: утешитель, посредник между родителями, «заместитель партнёра» (emotional spouse), родитель младшим.</li><li>Гиперответственность и невозможность просить.</li><li>Потерянное детство и гордость «я был(а) взрослее своих лет» — защита, которую важно уважить, прежде чем разбирать.</li><li>Интроект «если я перестану держать — всё рухнет».</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>При воспоминаниях — диссоциация, замирание, «выключение», деперсонализация: останавливаем экспозицию, возвращаем в ориентацию и заземление.</li><li>Выявленное сексуализированное или физическое насилие: переходим в травматический протокол, сепарационный курс ставим на паузу.</li><li>Сильная депрессивная симптоматика или суицидальные мысли → оценка риска, при необходимости психиатр.</li><li>Клиент защищает мать и обвиняет себя за «неблагодарность»: не спорим, исследуем функцию защиты (лояльность = выживание).</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Возраст начала парентификации и её конкретные формы — обычно клиент недооценивает масштаб («ну, я же просто помогала»).</li><li>Есть ли в детстве хоть один взрослый, к которому можно было пойти (ресурс для рескриптинга).</li><li>Как звучит «решение о себе»: «я не имею права», «мои потребности — помеха», «я должен быть удобным».</li><li>Гордость и горе рядом: «я была такой взрослой» + «у меня не было детства» — точка для горевания.</li></ul><h4>Интервенции</h4><ul><li><b>IFS-диалог с частью-Спасателем:</b> благодарность защите, вопрос «от чего ты меня защищаешь?», «сколько тебе лет?».</li><li><b>Рескриптинг в воображении (схема-терапия):</b> взрослый клиент входит в детскую сцену, забирает ребёнка, говорит матери то, что не было сказано.</li><li><b>Ограниченное материнство в сессии:</b> терапевт даёт то, чего не было: замечает усталость, разрешает не знать, не требует полезности.</li><li><b>Боуэновский вопрос «чьё это?»</b> как ежедневная практика различения.</li><li><b>Письмо себе-ребёнку</b> — закрепление нового внутреннего голоса.</li></ul><h4>Домашнее задание</h4><p>Одна строка в таблице различения в день (ситуация → чьё чувство → чья задача → моё действие). Блок «Из детства» клиент открывает только если сам готов и есть поддержка; иначе — переносим на сессию.</p><h4>Метрики</h4><p>Шкала «насколько я отвечаю за её настроение» (0–10). Число разобранных ситуаций за неделю.</p><h4>Супервизионный вопрос</h4><p>Не тороплю ли я клиента в детский материал ради «глубины»? Достаточно ли стабилизации перед экспозицией? Где моя собственная история с матерью включается сильнее, чем его?</p></div>
+<div class="card"><h3 style="margin-top:0;">Три вопроса различения</h3><ol><li><b>Чьё это чувство?</b> Я поймал(а) его или мне его передали? Обида, тревога, стыд, разочарование — часто не ваши, а принесённые в разговоре.</li><li><b>Чья это задача?</b> Кто может и должен её решить: её здоровье — её и врачей; её одиночество — её и её круга общения; моя жизнь — моя.</li><li><b>Что в моей зоне контроля?</b> Не «изменить её», а: как я отвечаю, сколько времени даю разговору, что делаю после, кого прошу о поддержке.</li></ol><p><b>Парентификация</b> — это когда ребёнок становится родителем своему родителю: утешает, решает, отвечает за атмосферу в доме. Вырастая, такой человек не знает другого способа быть в близости, кроме «я отвечаю за тебя». Это не вина мамы и не ваш дефект — это выживание, которое когда-то было необходимо. Теперь его можно аккуратно сложить и убрать на полку: оно больше не требуется каждый день.</p></div>
+<div class="widget widget-cog_table" data-widget="cog_table" data-wid="w_cog_table_2" data-spec="{&quot;columns&quot;: [{&quot;key&quot;: &quot;sit&quot;, &quot;label&quot;: &quot;Ситуация (факты)&quot;, &quot;placeholder&quot;: &quot;Что произошло: кто, когда, что сказано&quot;}, {&quot;key&quot;: &quot;feel&quot;, &quot;label&quot;: &quot;Что я почувствовал(а) — и чьё это чувство&quot;, &quot;placeholder&quot;: &quot;Тревога; похоже, это её страх, а не мой&quot;}, {&quot;key&quot;: &quot;task&quot;, &quot;label&quot;: &quot;Чья это задача на самом деле&quot;, &quot;placeholder&quot;: &quot;Её здоровье — её и врача&quot;}, {&quot;key&quot;: &quot;act&quot;, &quot;label&quot;: &quot;Что я сделаю (или сознательно не сделаю)&quot;, &quot;placeholder&quot;: &quot;Помогу найти врача, но не буду ночевать у неё&quot;}], &quot;rows&quot;: 2, &quot;max_rows&quot;: 10}" data-step="s2" data-export="widget" data-q="Разбор ситуаций недели"><h3>Разбор ситуаций недели</h3><p class="qhint">Берите реальные случаи: звонок, сообщение, визит, просьба. Добавляйте строку каждый раз, когда поймали себя на «я должен(на) это почувствовать / сделать».</p><div class="ctable"></div><button type="button" class="btn btn-sm" data-act="add-row">+ Добавить строку</button></div>
+<div class="chk-wrap" data-export="checklist" data-q="Я был(а) родителем своему родителю: отметьте, что было в вашем детстве" data-step="s2"><div class="chk-title">Я был(а) родителем своему родителю: отметьте, что было в вашем детстве</div><p class="qhint">Отмечайте без осуждения себя. Эти пункты — про то, как вы научились любить через ответственность.</p><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="s2_p1" data-step="s2"><span>Я утешал(а) маму, когда она плакала — из-за отца, денег, усталости</span></label><label class="chk-card"><input type="checkbox" id="s2_p2" data-step="s2"><span>Я знал(а), где деньги, что с долгами и кому мы должны</span></label><label class="chk-card"><input type="checkbox" id="s2_p3" data-step="s2"><span>Я следил(а), чтобы в доме было спокойно: не шуметь, не огорчать, не болеть</span></label><label class="chk-card"><input type="checkbox" id="s2_p4" data-step="s2"><span>Я выслушивал(а) её жалобы на взрослых, когда мне было 7–12 лет</span></label><label class="chk-card"><input type="checkbox" id="s2_p5" data-step="s2"><span>Я отвечал(а) за младших: уроки, еда, ключи, врач</span></label><label class="chk-card"><input type="checkbox" id="s2_p6" data-step="s2"><span>Я передавал(а) сообщения и объяснения между родителями</span></label><label class="chk-card"><input type="checkbox" id="s2_p7" data-step="s2"><span>Я следил(а) за её таблетками, настроением, алкоголем</span></label><label class="chk-card"><input type="checkbox" id="s2_p8" data-step="s2"><span>Я рано научился(лась) «не создавать проблем» и не просить</span></label><label class="chk-card"><input type="checkbox" id="s2_p9" data-step="s2"><span>Я гордился(лась), что я «взрослее своих лет» — и платил(а) за это детством</span></label></div></div>
+<div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Насколько я отвечаю за мамино настроение сейчас?</span><span class="sav" data-for="s2_scale_resp">— сохранено ✓</span></div></div><output class="scale-value" data-for="s2_scale_resp">0</output></div><input type="range" class="rng" id="s2_scale_resp" min="0" max="10" step="1" value="0" data-step="s2" data-q="Насколько я отвечаю за мамино настроение сейчас?" data-export="field"><div class="scale-anchors"><span>0 — совсем не отвечаю: её чувства — её</span><span>5 — частично: ловлю и пытаюсь исправить</span><span>10 — полностью: моё поведение подстроено под её состояние</span></div></div>
+<div class="qblock"><div class="qlabel"><span>Что было бы, если бы я перестал(а) отвечать за её чувства? Чего я боюсь больше всего?</span><span class="sav" data-for="s2_fear_let">— сохранено ✓</span></div><p class="qhint">Часто под этим страхом лежит детская установка: «если я перестану держать — всё рухнет» или «меня бросят». Напишите её своими словами.</p><textarea class="qf" id="s2_fear_let" data-step="s2" data-q="Что было бы, если бы я перестал(а) отвечать за её чувства? Чего я боюсь больше всего?" data-export="field" rows="5" placeholder=""></textarea></div>
+<details class="deeper" data-level="childhood" data-export="section" data-q="[из детства] Из детства: сцены, где я отвечал(а) за взрослых" data-step="s2"><summary><span>Из детства: сцены, где я отвечал(а) за взрослых</span><span class="depth-tag">из детства</span></summary><div class="deeper-body"><div class="warn-box">Этот блок идёт в глубину травматического материала. Не открывайте его, если вы сегодня без сил, один(а) вечером или в остром состоянии. Работайте здесь медленно — и, если возможно, вместе с психологом. План «Стоп» описан на титульной странице.</div>
+<div class="qblock"><div class="qlabel"><span>Сцена: сколько мне было лет, где я был(а), кто был рядом, что происходило</span><span class="sav" data-for="s2_ch_scene">— сохранено ✓</span></div><p class="qhint">Пишите как рассказ, а не как вывод: комната, звуки, кто что сказал.</p><textarea class="qf" id="s2_ch_scene" data-step="s2" data-q="Сцена: сколько мне было лет, где я был(а), кто был рядом, что происходило" data-export="field" rows="6" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Какое решение о себе я тогда принял(а)?</span><span class="sav" data-for="s2_ch_decision">— сохранено ✓</span></div><p class="qhint">Обычно оно звучит как «я должен(на)…», «мне нельзя…», «если я буду…, то меня полюбят».</p><textarea class="qf" id="s2_ch_decision" data-step="s2" data-q="Какое решение о себе я тогда принял(а)?" data-export="field" rows="4" placeholder="Например: я не имею права огорчать маму; я отвечаю за мир в доме; мои potrzeby — помеха."></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что тому ребёнку нужно было на самом деле?</span><span class="sav" data-for="s2_ch_need">— сохранено ✓</span></div><textarea class="qf" id="s2_ch_need" data-step="s2" data-q="Что тому ребёнку нужно было на самом деле?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Письмо себе-ребёнку: 3–5 фраз от меня сегодняшнего(ей)</span><span class="sav" data-for="s2_ch_letter">— сохранено ✓</span></div><p class="qhint">Пишите просто, как сказали бы вслух. Без пафоса и без оценок.</p><textarea class="qf" id="s2_ch_letter" data-step="s2" data-q="Письмо себе-ребёнку: 3–5 фраз от меня сегодняшнего(ей)" data-export="field" rows="6" placeholder="Тебе не нужно было никого спасать. Ты имел(а) право плакать и не знать ответа. Я теперь взрослый(ая) и я с тобой."></textarea></div>
+<div class="wlines"><div class="wlines-label">…или напишите от руки</div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div></div></div></details>
+<div class="session-block" data-export="section" data-q="★ Для встречи 2" data-step="s2"><div class="sb-title">★ Для встречи 2</div><div class="qblock"><div class="qlabel"><span>Что из детства я до сих пор делаю автоматически — в работе, в отношениях, с друзьями?</span><span class="sav" data-for="s2_s_auto">— сохранено ✓</span></div><textarea class="qf" id="s2_s_auto" data-step="s2" data-q="Что из детства я до сих пор делаю автоматически — в работе, в отношениях, с друзьями?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Какая строка из таблицы различения была самой трудной и почему?</span><span class="sav" data-for="s2_s_table">— сохранено ✓</span></div><textarea class="qf" id="s2_s_table" data-step="s2" data-q="Какая строка из таблицы различения была самой трудной и почему?" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="s3">
+<span class="badge">Неделя 3 · Встреча 3</span>
+<h2><span class="num">3</span>Шаг 3 · Тело говорит «нет» раньше слов</h2><p class="lead">Граница живёт не в аргументах, а в теле. Оно подаёт сигнал за секунды до того, как вы успеваете вежливо согласиться.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 3 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Перевести границу из аргументов в тело: клиент учится замечать сигнал «нет» до того, как произнесёт «да», и регулировать возбуждение, а не подавлять его.</p><h4>Терапевтические мишени</h4><ul><li>Замороженное «нет»: согласие на автомате (fawn-реакция).</li><li>Алекситимия: «я ничего не чувствую» — работать через ощущения и движение, не через слова о чувствах.</li><li>Аутоагрессия после уступки: злость на себя вместо злости на ситуацию.</li><li>Отсутствие восстановления: клиент не умеет возвращать себе ресурс.</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>Самоповреждение как способ регуляции → отдельный протокол (DBT-навыки, оценка риска).</li><li>Панические атаки, соматические симптомы без медицинского обследования → направляем к врачу параллельно с работой.</li><li>Полное «тело молчит»/диссоциация: не форсируем называние ощущений, работаем с ориентацией, движением, дыханием.</li><li>Алкоголь или еда как единственный способ снять напряжение после контакта → подключаем работу с зависимым поведением.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Где именно живёт сигнал: горло и челюсти — подавленная речь; живот — страх; грудь/плечи — груз ответственности.</li><li>Есть ли в дневнике хоть одна запись «я согласился(лась)»: если нет — либо слепая зона, либо идеализация («у меня всё нормально»).</li><li>Что клиент делает после: ест, пьёт, спит, листает ленту, срывается на партнёра/детей — это его текущая регуляция.</li></ul><h4>Интервенции</h4><ul><li><b>Соматическое отслеживание:</b> «стоп-кадр» момента согласия — замедляем сцену в сессии до секунд.</li><li><b>Дыхание 4-4-6</b> (виджет в тетради) как вагусная регуляция перед звонком и после.</li><li><b>ACT-расширение (expansion):</b> дать ощущению место, не борясь с ним.</li><li><b>Навыки DBT:</b> противоположное действие, «ПАУЗА», самосострадание после уступки.</li><li><b>Телесная практика:</b> 10 минут движения в день как восстановление опоры (не спорт ради формы).</li></ul><h4>Домашнее задание</h4><p>Дневник согласий: минимум три записи за неделю (даже короткие). Три телесные микро-паузы в день из блока «Практика недели».</p><h4>Метрики</h4><p>Число записей в дневнике; телесная карта (какие зоны отмечены 2–3); появление собственного сигнала «нет», названного словами.</p><h4>Супервизионный вопрос</h4><p>Не превращаю ли я телесную работу в ещё одно требование («ты должен чувствовать»)? Есть ли у клиента право ничего не чувствовать сегодня?</p></div>
+<div class="card"><h3 style="margin-top:0;">Как тело обозначает границу</h3><p>Типичные сигналы «мне сюда нельзя / с меня хватит»: ком в горле, сжатые челюсти, тяжесть или пустота в груди, поверхностное дыхание, «ватные» ноги, холодные руки, напряжение в плечах и шее, желание стать меньше, замирание, внезапная сонливость или тошнота.</p><p>Сигналы «мне здесь хорошо, это моё»: тепло в груди, ровное дыхание, опора в стопах, расслабленные плечи, интерес, лёгкость, желание приблизиться.</p><p>Практика этого шага проста: <b>не спорить с сигналом, а заметить его и назвать</b>. Названное ощущение перестаёт управлять вами из-под полы и становится информацией, с которой можно работать.</p></div>
+<div class="widget widget-rating_list" data-widget="rating_list" data-wid="w_rating_list_3" data-spec="{&quot;items&quot;: [{&quot;id&quot;: &quot;throat&quot;, &quot;label&quot;: &quot;Горло, голос (ком, осиплость, пропадает звук)&quot;}, {&quot;id&quot;: &quot;jaw&quot;, &quot;label&quot;: &quot;Челюсти, зубы, виски&quot;}, {&quot;id&quot;: &quot;shoulders&quot;, &quot;label&quot;: &quot;Плечи и шея&quot;}, {&quot;id&quot;: &quot;chest&quot;, &quot;label&quot;: &quot;Грудь и дыхание (тяжесть, сдавленность)&quot;}, {&quot;id&quot;: &quot;belly&quot;, &quot;label&quot;: &quot;Живот (сжатие, тошнота, «узел»)&quot;}, {&quot;id&quot;: &quot;back&quot;, &quot;label&quot;: &quot;Спина, поясница&quot;}, {&quot;id&quot;: &quot;hands&quot;, &quot;label&quot;: &quot;Руки (дрожь, холод, напряжение)&quot;}, {&quot;id&quot;: &quot;legs&quot;, &quot;label&quot;: &quot;Ноги и опора («ватность», подкашивание)&quot;}], &quot;levels&quot;: [{&quot;value&quot;: &quot;0&quot;, &quot;label&quot;: &quot;нет&quot;}, {&quot;value&quot;: &quot;1&quot;, &quot;label&quot;: &quot;слабо&quot;}, {&quot;value&quot;: &quot;2&quot;, &quot;label&quot;: &quot;заметно&quot;, &quot;tone&quot;: &quot;warn&quot;}, {&quot;value&quot;: &quot;3&quot;, &quot;label&quot;: &quot;сильно&quot;, &quot;tone&quot;: &quot;sos&quot;}]}" data-step="s3" data-export="widget" data-q="Телесная карта: где живёт моё «нет»"><h3>Телесная карта: где живёт моё «нет»</h3><p class="qhint">Вспомните последний тяжёлый разговор с мамой и отметьте, где и насколько сильно отозвалось тело.</p><div class="rating-list"></div></div>
+<div class="widget widget-diary" data-widget="diary" data-wid="w_diary_4" data-spec="{&quot;fields&quot;: [{&quot;key&quot;: &quot;sit&quot;, &quot;label&quot;: &quot;Ситуация: что попросили&quot;, &quot;placeholder&quot;: &quot;«Приехать в субботу помочь с огородом»&quot;}, {&quot;key&quot;: &quot;body&quot;, &quot;label&quot;: &quot;Что почувствовало тело&quot;, &quot;placeholder&quot;: &quot;Сжало челюсти, тяжело в груди&quot;}, {&quot;key&quot;: &quot;said&quot;, &quot;label&quot;: &quot;Что я сказал(а) вместо «нет»&quot;, &quot;placeholder&quot;: &quot;«Хорошо, приеду»&quot;}, {&quot;key&quot;: &quot;price&quot;, &quot;label&quot;: &quot;Цена для меня: что я отдал(а)&quot;, &quot;placeholder&quot;: &quot;Отдых, планы с детьми, силы&quot;}, {&quot;key&quot;: &quot;intensity&quot;, &quot;label&quot;: &quot;Насколько это дорого обошлось&quot;, &quot;options&quot;: [&quot;1–3 · терпимо&quot;, &quot;4–6 · заметно&quot;, &quot;7–10 · очень дорого&quot;]}], &quot;badge_field&quot;: &quot;intensity&quot;, &quot;badge_label&quot;: &quot;Цена:&quot;, &quot;quick&quot;: [{&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;время&quot;, &quot;label&quot;: &quot;время&quot;}, {&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;силы&quot;, &quot;label&quot;: &quot;силы&quot;}, {&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;деньги&quot;, &quot;label&quot;: &quot;деньги&quot;}, {&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;сон&quot;, &quot;label&quot;: &quot;сон&quot;}, {&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;мои планы&quot;, &quot;label&quot;: &quot;мои планы&quot;}, {&quot;field&quot;: &quot;price&quot;, &quot;value&quot;: &quot;самоуважение&quot;, &quot;label&quot;: &quot;самоуважение&quot;}], &quot;empty&quot;: &quot;Записей пока нет. Это хорошо — но если за неделю не появится ни одной, проверьте: замечаете ли вы моменты, когда соглашаетесь на автомате.&quot;}" data-step="s3" data-export="widget" data-q="Дневник моментов, когда я согласился(лась) во вред себе"><h3>Дневник моментов, когда я согласился(лась) во вред себе</h3><p class="qhint">Добавляйте запись сразу после случая — даже одной строкой. Через неделю вы увидите свой повторяющийся сценарий.</p><div class="chip-container"></div><div class="diary-form"><div class="diary-form-grid"></div><div style="margin-top:.85rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;"><button type="button" class="btn btn-primary btn-sm" data-act="add-entry">+ Добавить запись</button><span class="counter" data-role="count">0 записей</span></div></div><div class="diary-list"></div></div>
+<div class="widget widget-breather" data-widget="breather" data-wid="w_breather_5" data-spec="{&quot;inhale&quot;: 4, &quot;hold&quot;: 4, &quot;exhale&quot;: 6}" data-step="s3"><p class="qhint">Три-четыре цикла достаточно, чтобы голос перестал дрожать, а «да» не вылетело само. Дышите вместе с кругом: он растёт на вдохе и опускается на выдохе.</p><div class="timer-widget" data-tone="acc"><h3>Пауза перед звонком (и после)</h3><div class="timer-controls"><button type="button" class="btn btn-primary" data-act="start">▶ Дышать 4-4-6</button><button type="button" class="btn" data-act="pause" style="display:none">⏸ Пауза</button></div><div class="breather-container"><div class="breather-circle"></div><div class="breather-text">Нажмите «Дышать», когда почувствуете, что вас затягивает.</div></div></div></div>
+<div class="grid-2x2" data-cols="2"><div class="qcard" data-tone="acc"><div class="qcard-title">Мой личный сигнал «нет»</div><p class="qhint">Одно-два ощущения, по которым я узнаю, что сейчас соглашусь против воли.</p><textarea class="qf" id="s3_signal" data-step="s3" data-q="Мой личный сигнал «нет»" data-export="field" rows="4" placeholder=""></textarea><span class="sav" data-for="s3_signal">— сохранено ✓</span></div><div class="qcard" data-tone="succ"><div class="qcard-title">Как я восстанавливаюсь после тяжёлого разговора</div><p class="qhint">Что реально помогает за 15–30 минут: прогулка, душ, еда, тишина, человек, тело, музыка.</p><textarea class="qf" id="s3_restore" data-step="s3" data-q="Как я восстанавливаюсь после тяжёлого разговора" data-export="field" rows="4" placeholder=""></textarea><span class="sav" data-for="s3_restore">— сохранено ✓</span></div></div>
+<details class="deeper" data-level="practice" data-export="section" data-q="[практика] Практика недели: три телесные микро-паузы в день" data-step="s3"><summary><span>Практика недели: три телесные микро-паузы в день</span><span class="depth-tag">практика</span></summary><div class="deeper-body"><div class="chk-wrap" data-export="checklist" data-q="Отмечайте каждый день, когда сделали паузу" data-step="s3"><div class="chk-title">Отмечайте каждый день, когда сделали паузу</div><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="s3_pr1" data-step="s3"><span>Понедельник: заметил(а) тело и назвал(а) ощущение вслух или про себя</span></label><label class="chk-card"><input type="checkbox" id="s3_pr2" data-step="s3"><span>Вторник: перед ответом на сообщение сделал(а) три вдоха</span></label><label class="chk-card"><input type="checkbox" id="s3_pr3" data-step="s3"><span>Среда: не ответил(а) сразу на звонок — перезвонил(а), когда был(а) готов(а)</span></label><label class="chk-card"><input type="checkbox" id="s3_pr4" data-step="s3"><span>Четверг: 10 минут движения или прогулки без телефона</span></label><label class="chk-card"><input type="checkbox" id="s3_pr5" data-step="s3"><span>Пятница: сказал(а) себе вслух, чего я хочу на выходные</span></label><label class="chk-card"><input type="checkbox" id="s3_pr6" data-step="s3"><span>Суббота: сделал(а) что-то приятное телу (ванна, массаж, сон, вкусная еда)</span></label><label class="chk-card"><input type="checkbox" id="s3_pr7" data-step="s3"><span>Воскресенье: подвёл(а) итог недели по дневнику</span></label></div></div>
+<div class="qblock"><div class="qlabel"><span>Что я заметил(а), когда стал(а) делать паузы?</span><span class="sav" data-for="s3_pr_note">— сохранено ✓</span></div><textarea class="qf" id="s3_pr_note" data-step="s3" data-q="Что я заметил(а), когда стал(а) делать паузы?" data-export="field" rows="5" placeholder=""></textarea></div></div></details>
+<div class="session-block" data-export="section" data-q="★ Для встречи 3" data-step="s3"><div class="sb-title">★ Для встречи 3</div><div class="qblock"><div class="qlabel"><span>Что я заметил(а) в теле на этой неделе (и где было труднее всего)</span><span class="sav" data-for="s3_s_body">— сохранено ✓</span></div><textarea class="qf" id="s3_s_body" data-step="s3" data-q="Что я заметил(а) в теле на этой неделе (и где было труднее всего)" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="s4">
+<span class="badge">Неделя 4 · Встреча 4</span>
+<h2><span class="num">4</span>Шаг 4 · Круги близости: пересборка дистанции</h2><p class="lead">Дистанция — не «ближе или дальше вообще». Она собирается по темам: в одни я пускаю, в другие не пускаю никого. И это моё право, а не оскорбление.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 4 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Спроектировать дистанцию по темам (не «вообще») и легитимировать права клиента. Ключевая терапевтическая задача: дать разрешение — часто впервые в жизни.</p><h4>Терапевтические мишени</h4><ul><li>Схема Подчинения и Самопожертвования: «мои решения — не мои».</li><li>Отсутствие права на приватность: клиент отчитывается, делится всем, не имеет закрытых тем.</li><li>Страх отвержения как цена отдельности.</li><li>Смешение любви и доступности: «если люблю — значит всегда на связи».</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>Полный разрыв (cutoff) как решение: «я заблокирую её везде» — исследуем, это часто импульс после конфликта, а не дифференциация.</li><li>Проживание вместе и финансовая зависимость: цели должны быть реалистичными (правила внутри общего дома), иначе курс усиливает бессилие.</li><li>Насилие или преследование после установления границ → безопасность, юридические шаги, план ухода.</li><li>Клиент строит границы только в тетради, но не может назвать ни одного внедрённого правила → возвращаемся к поведенческому эксперименту.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Кого клиент пустил во внутренний круг: часто там никого, либо партнёр/терапевт — проверяем, не заменяет ли он маму (перенос).</li><li>Расхождение «как хочу» и «как есть» — основная рабочая зона курса.</li><li>Какие темы закрыты и почему: стыд, страх советов, страх обиды, страх контроля.</li><li>Реакция на карточки-разрешения: смех, слёзы, «это эгоизм» — последний вариант указывает на карающего критика.</li></ul><h4>Интервенции</h4><ul><li><b>Круги близости</b> (системная техника): перераспределение людей и тем, обсуждение «мама в разных кругах по разным темам».</li><li><b>Карточки-разрешения</b> — прямая работа со схемой Подчинения; читать вслух в сессии, клиент выбирает одну карточку недели.</li><li><b>Поведенческий контракт «правила контакта»:</b> частота, формат, закрытые темы, объём помощи — конкретика, которую можно проверить через неделю.</li><li><b>Работа с долженствованиями (КПТ):</b> замена «я обязана» на «я выбираю / я не хочу».</li></ul><h4>Домашнее задание</h4><p>Внедрить ровно одно правило контакта (например: звонки по субботам; тема денег закрыта). Остальное — не раньше следующей недели.</p><h4>Метрики</h4><p>Шкала «насколько дистанция моя» (0–10); число внедрённых правил; расхождение в матрице тем «хочу / есть».</p><h4>Супервизионный вопрос</h4><p>Чьи границы мы на самом деле строим — клиента или мои представления о «здоровой семье»? Учитываю ли я культурный контекст (семьи, где близость и включённость — норма, а не патология)?</p></div>
+<div class="card"><h3 style="margin-top:0;">Три круга</h3><p><b>Внутренний круг</b> — те, кто знает меня настоящего: мои сомнения, страхи, планы, ошибки. Сюда пускают не по родству, а по бережности.</p><p><b>Средний круг</b> — тёплые отношения, но не про меня: мы можем много общаться, помогать, любить — и при этом мои решения и переживания остаются за границей этого круга.</p><p><b>Внешний круг</b> — вежливая, спокойная, формальная дистанция: разговоры о погоде, здоровье, новостях, общих делах.</p><p>Ключевая идея шага: <b>один и тот же человек может быть в разных кругах по разным темам</b>. Мама может знать про вашу работу (средний круг) и не знать про ваши отношения (внутренний круг, куда её не пускают). Это не лицемерие, а устройство взрослой близости.</p></div>
+<div class="widget widget-circles" data-widget="circles" data-wid="w_circles_6" data-spec="{&quot;rings&quot;: [{&quot;key&quot;: &quot;inner&quot;, &quot;label&quot;: &quot;Внутренний круг · меня знают&quot;, &quot;tone&quot;: &quot;inner&quot;, &quot;hint&quot;: &quot;Знают мои сомнения, ошибки и планы — и остаются бережными.&quot;, &quot;placeholder&quot;: &quot;Имя или роль…&quot;}, {&quot;key&quot;: &quot;middle&quot;, &quot;label&quot;: &quot;Средний круг · тепло, но не про меня&quot;, &quot;tone&quot;: &quot;middle&quot;, &quot;hint&quot;: &quot;Общаемся и помогаем, но мои решения и переживания сюда не входят.&quot;, &quot;placeholder&quot;: &quot;Имя или роль…&quot;}, {&quot;key&quot;: &quot;outer&quot;, &quot;label&quot;: &quot;Внешний круг · вежливая дистанция&quot;, &quot;tone&quot;: &quot;outer&quot;, &quot;hint&quot;: &quot;Общие темы: погода, дела, новости, здоровье.&quot;, &quot;placeholder&quot;: &quot;Имя или роль…&quot;}]}" data-step="s4" data-export="widget" data-q="Кто где сейчас: моя карта близости"><h3>Кто где сейчас: моя карта близости</h3><p class="qhint">Вписывайте имена или роли («мама», «сестра», «коллега Лена», «терапевт»). Одного человека можно добавить в разные круги — но лучше уточните тему в следующем задании.</p><div class="rings"></div></div>
+<div class="widget widget-sort_matrix" data-widget="sort_matrix" data-wid="w_sort_matrix_7" data-spec="{&quot;columns&quot;: [{&quot;key&quot;: &quot;mine&quot;, &quot;label&quot;: &quot;Моё решение&quot;}, {&quot;key&quot;: &quot;shared&quot;, &quot;label&quot;: &quot;Совместно&quot;}, {&quot;key&quot;: &quot;hers&quot;, &quot;label&quot;: &quot;Её решение&quot;}], &quot;items&quot;: [{&quot;id&quot;: &quot;t_health&quot;, &quot;label&quot;: &quot;Моё здоровье&quot;}, {&quot;id&quot;: &quot;t_money&quot;, &quot;label&quot;: &quot;Мои деньги&quot;}, {&quot;id&quot;: &quot;t_partner&quot;, &quot;label&quot;: &quot;Мой партнёр и моя семья&quot;}, {&quot;id&quot;: &quot;t_work&quot;, &quot;label&quot;: &quot;Моя работа и карьера&quot;}, {&quot;id&quot;: &quot;t_kids&quot;, &quot;label&quot;: &quot;Воспитание моих детей&quot;}, {&quot;id&quot;: &quot;t_home&quot;, &quot;label&quot;: &quot;Мой дом и быт&quot;}, {&quot;id&quot;: &quot;t_free&quot;, &quot;label&quot;: &quot;Мои выходные и отпуск&quot;}, {&quot;id&quot;: &quot;t_values&quot;, &quot;label&quot;: &quot;Мои ценности, вера, взгляды&quot;}, {&quot;id&quot;: &quot;t_her_health&quot;, &quot;label&quot;: &quot;Её здоровье&quot;}, {&quot;id&quot;: &quot;t_her_money&quot;, &quot;label&quot;: &quot;Её деньги&quot;}, {&quot;id&quot;: &quot;t_her_rel&quot;, &quot;label&quot;: &quot;Её отношения с родственниками&quot;}]}" data-step="s4" data-export="widget" data-q="Темы: кто в них имеет право голоса"><h3>Темы: кто в них имеет право голоса</h3><p class="qhint">Распределите темы по колонкам так, как вы хотите, чтобы было. Если сегодня иначе — отметьте честно и запишите расхождение ниже.</p><div class="matrix"><div class="matrix-legend"><b><i style="background:var(--acc)"></i>Моё решение</b><b><i style="background:var(--warn)"></i>Совместно</b><b><i style="background:var(--mut)"></i>Её решение</b></div></div></div>
+<div class="qblock"><div class="qlabel"><span>Где «как хочу» и «как есть» разошлись сильнее всего?</span><span class="sav" data-for="s4_gap">— сохранено ✓</span></div><p class="qhint">Назовите одну-две темы и опишите, что происходит сейчас и что мешает изменить.</p><textarea class="qf" id="s4_gap" data-step="s4" data-q="Где «как хочу» и «как есть» разошлись сильнее всего?" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="widget widget-permission_cards" data-widget="permission_cards" data-wid="w_permission_cards_8" data-spec="{&quot;preset&quot;: [&quot;Я имею право не отвечать на звонок сразу.&quot;, &quot;Я имею право не объяснять каждый свой шаг.&quot;, &quot;Я имею право любить маму и не жить её настроениями.&quot;, &quot;Я имею право на темы, которые не обсуждаю ни с кем.&quot;, &quot;Я имею право изменить решение, которое принял(а) вчера.&quot;, &quot;Я имею право злиться — и не разрушать отношения этой злостью.&quot;, &quot;Я имею право заботиться о себе без чувства вины.&quot;, &quot;Я имею право сказать «мне это не подходит» без причины.&quot;, &quot;Я имею право просить о помощи и принимать её.&quot;, &quot;Её разочарование — её чувство. Моя задача — не предавать себя.&quot;]}" data-step="s4" data-export="widget" data-q="Карточки-разрешения"><h3>Карточки-разрешения</h3><p class="qhint">Нажмите на карточку, чтобы прочитать её вслух про себя. Свои формулировки добавьте ниже — они сохранятся и попадут в печать (карточки удобно вырезать и носить в телефоне).</p><div class="pcards"></div><div class="diary-form"><div class="ring-input"><input type="text" data-role="new-card" placeholder="Моя формулировка разрешения…"><button type="button" class="btn btn-sm" data-act="add-card">Добавить</button></div></div></div>
+<div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Насколько моя дистанция сейчас — моя собственная?</span><span class="sav" data-for="s4_scale_dist">— сохранено ✓</span></div></div><output class="scale-value" data-for="s4_scale_dist">0</output></div><input type="range" class="rng" id="s4_scale_dist" min="0" max="10" step="1" value="0" data-step="s4" data-q="Насколько моя дистанция сейчас — моя собственная?" data-export="field"><div class="scale-anchors"><span>0 — задана страхом и виной</span><span>5 — получается по-разному</span><span>10 — я выбираю её осознанно</span></div></div>
+<details class="deeper" data-level="full" data-export="section" data-q="[полный формат] Полный формат: правила моего контакта" data-step="s4"><summary><span>Полный формат: правила моего контакта</span><span class="depth-tag">полный формат</span></summary><div class="deeper-body"><div class="qblock"><div class="qlabel"><span>Как часто и в каком формате я хочу общаться (звонки, сообщения, визиты)?</span><span class="sav" data-for="s4_rules_freq">— сохранено ✓</span></div><textarea class="qf" id="s4_rules_freq" data-step="s4" data-q="Как часто и в каком формате я хочу общаться (звонки, сообщения, визиты)?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Какие темы я закрываю для обсуждения — и какой фразой?</span><span class="sav" data-for="s4_rules_topics">— сохранено ✓</span></div><textarea class="qf" id="s4_rules_topics" data-step="s4" data-q="Какие темы я закрываю для обсуждения — и какой фразой?" data-export="field" rows="4" placeholder="Например: «Про мои отношения я не готова говорить. Расскажи лучше про…»"></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Какую помощь я даю — и в каком объёме (время, деньги, задачи)?</span><span class="sav" data-for="s4_rules_help">— сохранено ✓</span></div><p class="qhint">Конкретно: «раз в месяц», «до 3000 в месяц», «не решаю её документы».</p><textarea class="qf" id="s4_rules_help" data-step="s4" data-q="Какую помощь я даю — и в каком объёме (время, деньги, задачи)?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Как я выхожу из разговора, если он идёт против меня?</span><span class="sav" data-for="s4_rules_exit">— сохранено ✓</span></div><textarea class="qf" id="s4_rules_exit" data-step="s4" data-q="Как я выхожу из разговора, если он идёт против меня?" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="wlines"><div class="wlines-label">Мои правила контакта — коротко, как памятка</div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div></div></div></details>
+<div class="session-block" data-export="section" data-q="★ Для встречи 4" data-step="s4"><div class="sb-title">★ Для встречи 4</div><div class="qblock"><div class="qlabel"><span>Кого и куда я поставил(а) — и что при этом почувствовал(а)?</span><span class="sav" data-for="s4_s_circle">— сохранено ✓</span></div><textarea class="qf" id="s4_s_circle" data-step="s4" data-q="Кого и куда я поставил(а) — и что при этом почувствовал(а)?" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="s5">
+<span class="badge">Неделя 5 · Встреча 5</span>
+<h2><span class="num">5</span>Шаг 5 · Трудные разговоры: тренажёр фраз</h2><p class="lead">Разговор нужен не для того, чтобы её переубедить. Он нужен, чтобы вы перестали исчезать из него. Готовимся заранее — и держим одну спокойную фразу.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 5 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Ассертивность в реальном разговоре: клиент уходит из сессии с конкретной фразой, стоп-фразой и планом действий после. Это поведенческий эксперимент курса.</p><h4>Терапевтические мишени</h4><ul><li>JADE-паттерн: justify, argue, defend, explain — длинные оправдания как попытка получить разрешение.</li><li>Автопилоты: уступить / исчезнуть / взорваться / заболеть.</li><li>Манипуляция виной и здоровьем: «ты меня в гроб загонишь».</li><li>Катастрофизация её реакции: «она не переживёт».</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>Родитель угрожает суицидом: не оставляем клиента «держать» этот риск. Чёткий план: кто звонит в скорую/кризисную службу, кто из родственников вовлечён, что делает клиент (не едет спасать ночью).</li><li>Эскалация агрессии или преследования после попытки границ → протокол безопасности.</li><li>Клиент планирует «высказать всё» в надежде, что мать поймёт: работаем с ожиданием — цель обозначить, а не быть услышанным.</li><li>Отказ от эксперимента при высокой тревоге → снижаем планку: сообщение вместо звонка, одна фраза вместо разговора.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Дословные реплики матери — лучший материал для репетиции; просите цитаты, а не пересказ.</li><li>Что клиент делает в первые 10 секунд (там живёт автопилот).</li><li>Кто ещё в системе: отец, братья и сёстры, родственники — кто «сливает» информацию, кто втягивает клиента в треугольник.</li><li>Позиция партнёра: поддерживает или усиливает чувство долга.</li></ul><h4>Интервенции</h4><ul><li><b>Ролевая репетиция в сессии:</b> терапевт играет мать, клиент произносит стоп-фразу вслух 3–5 раз до спокойного голоса. Обязательно вслух — про себя не работает.</li><li><b>«Заезженная пластинка»:</b> одна фраза, повтор без новых аргументов.</li><li><b>КПТ-проверка предсказания:</b> «что реально произойдёт, если ты скажешь нет?» — собираем доказательства из прошлого опыта.</li><li><b>Поведенческий эксперимент</b> с фиксацией: предсказание → действие → фактический результат → вывод.</li><li><b>Работа с телом перед репликой:</b> дыхание 4-4-6 (из Шага 3) как часть скрипта.</li></ul><h4>Домашнее задание</h4><p>Провести один разговор (или микро-эксперимент: сообщение с правилом) и записать: что сказал(а), что было в теле, какова её реакция, что я сделал(а) после. Не оценивать успех по её реакции — только по своему поведению.</p><h4>Метрики</h4><p>Число проведённых экспериментов; длина оправданий (сокращается); использование стоп-фразы; уровень тревоги до/после (0–10).</p><h4>Супервизионный вопрос</h4><p>Не превращаю ли я ассертивность в тренировку «холодного клиента»? Сохраняет ли он тепло там, где оно ему самому нужно?</p></div>
+<div class="card"><h3 style="margin-top:0;">Пять правил трудного разговора</h3><ol><li><b>Не оправдывайтесь длинно.</b> Объяснение на четыре абзаца звучит как просьба разрешить. Достаточно причины в одну фразу — или вообще без причины.</li><li><b>«Заезженная пластинка».</b> Одна и та же спокойная фраза, повторённая два-три раза, работает лучше десяти аргументов.</li><li><b>Называйте чувство, а не обвиняйте.</b> «Мне тяжело, когда разговор идёт на повышенных тонах» вместо «Ты всегда кричишь».</li><li><b>Заранее решите, где выход.</b> Стоп-фраза и действие: «Я завершаю разговор, позвоню в субботу» — и положить трубку.</li><li><b>Цель — обозначить, а не победить.</b> Если после разговора вы остались собой и не разрушились, разговор удался, даже если она недовольна.</li></ol></div>
+<div class="widget widget-dialog_trainer" data-widget="dialog_trainer" data-wid="w_dialog_trainer_9" data-spec="{&quot;scenario&quot;: &quot;Мама звонит вечером в понедельник. Голос обиженный, разговор начинается с упрёка.&quot;, &quot;turns&quot;: [{&quot;label&quot;: &quot;Ход 1 · «Ты совсем про меня забыл(а). Я тебе не нужна.»&quot;, &quot;options&quot;: [{&quot;text&quot;: &quot;Мне жаль, что тебе одиноко. Я люблю тебя и позвоню в субботу около двенадцати.&quot;, &quot;note&quot;: &quot;признание её чувства + конкретика → снижает эскалацию&quot;}, {&quot;text&quot;: &quot;Давай договоримся: по будням я не успеваю, мой день для звонков — суббота.&quot;, &quot;note&quot;: &quot;правило контакта вместо оправданий&quot;}, {&quot;text&quot;: &quot;Я не забывал(а), у меня просто была очень тяжёлая неделя.&quot;, &quot;note&quot;: &quot;объяснение — часто запускает спор; используйте, если готовы продолжать&quot;}]}, {&quot;label&quot;: &quot;Ход 2 · «Я столько для тебя сделала, а ты…»&quot;, &quot;options&quot;: [{&quot;text&quot;: &quot;Я правда благодарен(на) тебе за многое. И сейчас я не могу взять на себя то, о чём ты просишь.&quot;, &quot;note&quot;: &quot;благодарность + граница в одной фразе&quot;}, {&quot;text&quot;: &quot;Мне важно, чтобы между нами было не «долг», а тепло.&quot;, &quot;note&quot;: &quot;перевод разговора из бухгалтерии в отношения&quot;}, {&quot;text&quot;: &quot;Ты хочешь, чтобы я снова чувствовал(а) себя должником?&quot;, &quot;note&quot;: &quot;рискованно: обычно усиливает конфликт&quot;}]}, {&quot;label&quot;: &quot;Ход 3 · Шантаж здоровьем: «Ты меня в гроб загонишь»&quot;, &quot;options&quot;: [{&quot;text&quot;: &quot;Мне страшно это слышать. Если тебе физически плохо — давай вызовем врача. Моё решение при этом не меняется.&quot;, &quot;note&quot;: &quot;сочувствие + граница + реальное действие&quot;}, {&quot;text&quot;: &quot;Я люблю тебя. И я не могу отвечать за твоё здоровье своими решениями.&quot;, &quot;note&quot;: &quot;коротко, спокойно, повторяемо&quot;}, {&quot;text&quot;: &quot;Пожалуйста, не надо так говорить.&quot;, &quot;note&quot;: &quot;иногда работает, но чаще звучит как просьба и усиливает давление&quot;}]}, {&quot;label&quot;: &quot;Ход 4 · Моя стоп-фраза, если разговор идёт по кругу&quot;, &quot;options&quot;: [{&quot;text&quot;: &quot;Я сейчас завершаю разговор. Позвоню в субботу.&quot;, &quot;note&quot;: &quot;и действительно завершить&quot;}, {&quot;text&quot;: &quot;Мне нужно подумать. Отвечу завтра.&quot;, &quot;note&quot;: &quot;пауза вместо автоматического «да»&quot;}, {&quot;text&quot;: &quot;Давай вернёмся к этому, когда оба будем спокойнее.&quot;, &quot;note&quot;: &quot;сохраняет связь и переносит разговор&quot;}]}], &quot;target&quot;: {&quot;id&quot;: &quot;s5_script&quot;, &quot;label&quot;: &quot;Мой скрипт разговора&quot;, &quot;hint&quot;: &quot;Соберите из фраз выше и допишите своими словами: как я начинаю, что говорю на её упрёк, где завершаю.&quot;, &quot;rows&quot;: 8, &quot;placeholder&quot;: &quot;1. Начинаю так: …\n2. Если она говорит «…», я отвечаю: …\n3. Моя стоп-фраза: …\n4. После разговора я делаю: …&quot;}}" data-step="s5" data-export="widget" data-q="Тренажёр: четыре типичных хода"><h3>Тренажёр: четыре типичных хода</h3><p class="qhint">Нажимайте на фразу — она добавится в «Мой скрипт разговора» ниже. Соберите свой вариант и допишите своими словами.</p><div class="dlg-scenario">🎭 Мама звонит вечером в понедельник. Голос обиженный, разговор начинается с упрёка.</div><div class="dlg"><div class="dlg-turn"><div class="dlg-turn-label">Ход 1 · «Ты совсем про меня забыл(а). Я тебе не нужна.»</div><button type="button" class="dlg-opt" data-text="Мне жаль, что тебе одиноко. Я люблю тебя и позвоню в субботу около двенадцати.">Мне жаль, что тебе одиноко. Я люблю тебя и позвоню в субботу около двенадцати.<span class="dlg-note">признание её чувства + конкретика → снижает эскалацию</span></button><button type="button" class="dlg-opt" data-text="Давай договоримся: по будням я не успеваю, мой день для звонков — суббота.">Давай договоримся: по будням я не успеваю, мой день для звонков — суббота.<span class="dlg-note">правило контакта вместо оправданий</span></button><button type="button" class="dlg-opt" data-text="Я не забывал(а), у меня просто была очень тяжёлая неделя.">Я не забывал(а), у меня просто была очень тяжёлая неделя.<span class="dlg-note">объяснение — часто запускает спор; используйте, если готовы продолжать</span></button></div><div class="dlg-turn"><div class="dlg-turn-label">Ход 2 · «Я столько для тебя сделала, а ты…»</div><button type="button" class="dlg-opt" data-text="Я правда благодарен(на) тебе за многое. И сейчас я не могу взять на себя то, о чём ты просишь.">Я правда благодарен(на) тебе за многое. И сейчас я не могу взять на себя то, о чём ты просишь.<span class="dlg-note">благодарность + граница в одной фразе</span></button><button type="button" class="dlg-opt" data-text="Мне важно, чтобы между нами было не «долг», а тепло.">Мне важно, чтобы между нами было не «долг», а тепло.<span class="dlg-note">перевод разговора из бухгалтерии в отношения</span></button><button type="button" class="dlg-opt" data-text="Ты хочешь, чтобы я снова чувствовал(а) себя должником?">Ты хочешь, чтобы я снова чувствовал(а) себя должником?<span class="dlg-note">рискованно: обычно усиливает конфликт</span></button></div><div class="dlg-turn"><div class="dlg-turn-label">Ход 3 · Шантаж здоровьем: «Ты меня в гроб загонишь»</div><button type="button" class="dlg-opt" data-text="Мне страшно это слышать. Если тебе физически плохо — давай вызовем врача. Моё решение при этом не меняется.">Мне страшно это слышать. Если тебе физически плохо — давай вызовем врача. Моё решение при этом не меняется.<span class="dlg-note">сочувствие + граница + реальное действие</span></button><button type="button" class="dlg-opt" data-text="Я люблю тебя. И я не могу отвечать за твоё здоровье своими решениями.">Я люблю тебя. И я не могу отвечать за твоё здоровье своими решениями.<span class="dlg-note">коротко, спокойно, повторяемо</span></button><button type="button" class="dlg-opt" data-text="Пожалуйста, не надо так говорить.">Пожалуйста, не надо так говорить.<span class="dlg-note">иногда работает, но чаще звучит как просьба и усиливает давление</span></button></div><div class="dlg-turn"><div class="dlg-turn-label">Ход 4 · Моя стоп-фраза, если разговор идёт по кругу</div><button type="button" class="dlg-opt" data-text="Я сейчас завершаю разговор. Позвоню в субботу.">Я сейчас завершаю разговор. Позвоню в субботу.<span class="dlg-note">и действительно завершить</span></button><button type="button" class="dlg-opt" data-text="Мне нужно подумать. Отвечу завтра.">Мне нужно подумать. Отвечу завтра.<span class="dlg-note">пауза вместо автоматического «да»</span></button><button type="button" class="dlg-opt" data-text="Давай вернёмся к этому, когда оба будем спокойнее.">Давай вернёмся к этому, когда оба будем спокойнее.<span class="dlg-note">сохраняет связь и переносит разговор</span></button></div></div><div class="dlg-target"><div class="qblock"><div class="qlabel"><span>Мой скрипт разговора</span><span class="sav" data-for="s5_script">— сохранено ✓</span></div><p class="qhint">Соберите из фраз выше и допишите своими словами: как я начинаю, что говорю на её упрёк, где завершаю.</p><textarea data-role="target-field" class="qf" id="s5_script" data-step="s5" data-q="Мой скрипт разговора" data-export="field" rows="8" placeholder="1. Начинаю так: …
+2. Если она говорит «…», я отвечаю: …
+3. Моя стоп-фраза: …
+4. После разговора я делаю: …"></textarea></div></div></div>
+<div class="chk-wrap" data-export="checklist" data-q="Мои автопилоты: что я делаю, когда меня затягивает в вину" data-step="s5"><div class="chk-title">Мои автопилоты: что я делаю, когда меня затягивает в вину</div><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="s5_a1" data-step="s5"><span>Начинаю объяснять и оправдываться — по кругу</span></label><label class="chk-card"><input type="checkbox" id="s5_a2" data-step="s5"><span>Соглашаюсь, лишь бы разговор закончился</span></label><label class="chk-card"><input type="checkbox" id="s5_a3" data-step="s5"><span>Злюсь и говорю лишнее, о чём потом жалею</span></label><label class="chk-card"><input type="checkbox" id="s5_a4" data-step="s5"><span>Замолкаю и пропадаю на неделю-две</span></label><label class="chk-card"><input type="checkbox" id="s5_a5" data-step="s5"><span>Обещаю то, чего не хочу и не буду делать</span></label><label class="chk-card"><input type="checkbox" id="s5_a6" data-step="s5"><span>Плачу, потом злюсь на себя за эти слёзы</span></label><label class="chk-card"><input type="checkbox" id="s5_a7" data-step="s5"><span>Ищу, кто меня «сольёт»: партнёр, подруга, форум</span></label><label class="chk-card"><input type="checkbox" id="s5_a8" data-step="s5"><span>Заедаю / выпиваю / не сплю после разговора</span></label></div></div>
+<div class="grid-2x2" data-cols="2"><div class="qcard" data-tone="warn"><div class="qcard-title">Самый трудный разговор, который мне предстоит</div><p class="qhint">С кем, о чём, когда и в каком формате (лично, по телефону, сообщением).</p><textarea class="qf" id="s5_talk" data-step="s5" data-q="Самый трудный разговор, который мне предстоит" data-export="field" rows="5" placeholder=""></textarea><span class="sav" data-for="s5_talk">— сохранено ✓</span></div><div class="qcard" data-tone="succ"><div class="qcard-title">Как я поддержу себя после этого разговора</div><p class="qhint">Конкретно: кто будет рядом, что я сделаю в первый час, чего себе не скажу.</p><textarea class="qf" id="s5_after" data-step="s5" data-q="Как я поддержу себя после этого разговора" data-export="field" rows="5" placeholder=""></textarea><span class="sav" data-for="s5_after">— сохранено ✓</span></div></div>
+<details class="deeper" data-level="full" data-export="section" data-q="[полный формат] Полный формат: подготовка к разговору по шагам" data-step="s5"><summary><span>Полный формат: подготовка к разговору по шагам</span><span class="depth-tag">полный формат</span></summary><div class="deeper-body"><div class="qblock"><div class="qlabel"><span>Цель разговора (одна, реалистичная)</span><span class="sav" data-for="s5_f_goal">— сохранено ✓</span></div><textarea class="qf" id="s5_f_goal" data-step="s5" data-q="Цель разговора (одна, реалистичная)" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что я точно не отдам (моё решение, мои границы)</span><span class="sav" data-for="s5_f_keep">— сохранено ✓</span></div><textarea class="qf" id="s5_f_keep" data-step="s5" data-q="Что я точно не отдам (моё решение, мои границы)" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что я готов(а) предложить взамен (тепло, конкретика, регулярность)</span><span class="sav" data-for="s5_f_offer">— сохранено ✓</span></div><textarea class="qf" id="s5_f_offer" data-step="s5" data-q="Что я готов(а) предложить взамен (тепло, конкретика, регулярность)" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Моя стоп-фраза и действие после неё</span><span class="sav" data-for="s5_f_stop">— сохранено ✓</span></div><textarea class="qf" id="s5_f_stop" data-step="s5" data-q="Моя стоп-фраза и действие после неё" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>План Б: если разговор сорвётся</span><span class="sav" data-for="s5_f_planb">— сохранено ✓</span></div><textarea class="qf" id="s5_f_planb" data-step="s5" data-q="План Б: если разговор сорвётся" data-export="field" rows="3" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Худшее, что она может сказать, — и мой спокойный ответ</span><span class="sav" data-for="s5_f_worst">— сохранено ✓</span></div><textarea class="qf" id="s5_f_worst" data-step="s5" data-q="Худшее, что она может сказать, — и мой спокойный ответ" data-export="field" rows="4" placeholder=""></textarea></div></div></details>
+<div class="session-block" data-export="section" data-q="★ Для встречи 5" data-step="s5"><div class="sb-title">★ Для встречи 5</div><div class="qblock"><div class="qlabel"><span>Что я хочу отрепетировать вслух вместе с психологом</span><span class="sav" data-for="s5_s_rehearse">— сохранено ✓</span></div><p class="qhint">Например: произнести стоп-фразу без дрожи в голосе; выдержать её паузу и не заполнить её объяснениями.</p><textarea class="qf" id="s5_s_rehearse" data-step="s5" data-q="Что я хочу отрепетировать вслух вместе с психологом" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="s6">
+<span class="badge">Неделя 6 · Встреча 6</span>
+<h2><span class="num">6</span>Шаг 6 · Вина, долг и «плохая дочь / плохой сын»</h2><p class="lead">Вина — самый частый спутник сепарации. Она не означает, что вы сделали плохо. Чаще она означает, что вы сделали по-своему.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 6 · цели, мишени, интервенции (самый глубокий шаг)</div><h4>Цель шага</h4><p>Развести реальную вину (есть вред → исправление) и сепарационную (есть выбор → признание), и пройти горевание по «той матери, которой не было». Это точка максимального сопротивления курса: здесь чаще всего случаются пропуск сессии, обесценивание тетради или кризис у матери.</p><h4>Терапевтические мишени</h4><ul><li>Разрушительная вина и самонаказание (отказ от радости, саботаж успехов).</li><li>Интроект карающего критика: чьим голосом говорит вина.</li><li>«Неоплатный долг»: жизнь как выплата за то, что растили.</li><li>Незавершённое горевание: идеализированный образ матери и запрет злости.</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>Суицидальные мысли, самоповреждение, «лучше бы меня не было» → оценка риска по протоколу, план безопасности, при необходимости психиатр и более частые встречи.</li><li>Острая диссоциация при письме → прерываем, заземление, снижаем глубину, работаем в присутствии.</li><li>Решение «высказать всё» в форме разрушительного письма/звонка → обсуждаем последствия и альтернативный ритуал.</li><li>Резкое обесценивание матери («она монстр») как защита от вины — не поддерживаем расщепление, возвращаем к амбивалентности.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Чьим голосом говорит вина (мать, бабушка, отец, религиозная среда, школа) — прямой путь к интроекту.</li><li>Есть ли в письме злость: её отсутствие при сильной вине — признак подавления; злость в этой теме обычно лечебна.</li><li>Что клиент хотел бы услышать и не услышит — материал для горевания, а не для «наконец добиться».</li><li>Самоповреждающие формулировки: «я не заслуживаю», «мне нельзя радоваться».</li></ul><h4>Интервенции</h4><ul><li><b>Сократовский диалог</b> с обвинительной мыслью: где вред, а где выбор; какие доказательства; что бы я сказал(а) подруге в такой ситуации.</li><li><b>Неотправленное письмо</b> + ритуал (прочитать вслух в сессии, запечатать, сжечь символически) — завершение, а не коммуникация.</li><li><b>Горевание (Worden):</b> признать утрату «идеальной матери», позволить печаль и злость одновременно.</li><li><b>Самосострадание (Neff):</b> три компонента — доброта к себе, общая человечность, осознанность;отработка на письме себе-ребёнку.</li><li><b>IFS:</b> благодарность части, которая «выплачивает долг», и вопрос, от чего она защищает.</li><li><b>Работа с реальным долгом:</b> если вред действительно был — план возмещения (как в Шаге 9 программ 12 шагов), но только после различения.</li></ul><h4>Домашнее задание</h4><p>Письмо (не отправляется) + 2–3 строки таблицы вины. Предупредить: после письма может стать тяжело — стоп-протокол и контакт с кем-то живым в тот же день.</p><h4>Метрики</h4><p>Шкала вины 0–10 (сравним в «Моей карте»); появление злости в тексте; сокращение самонаказывающих формулировок; способность назвать свой выбор без оправданий.</p><h4>Супервизионный вопрос</h4><p>Достаточно ли я выдерживаю злость клиента на мать, не спеша «простить»? Не подменяю ли я горевание примирением — потому что мне так спокойнее?</p></div>
+<div class="card"><h3 style="margin-top:0;">Два вида вины и разница между долгом и любовью</h3><p><b>Реальная вина:</b> я причинил(а) вред конкретному человеку конкретным поступком. Она полезна — из неё рождается исправление: признать, извиниться, возместить, изменить поведение.</p><p><b>Сепарационная вина:</b> вреда нет, есть мой выбор в пользу себя. Она не требует исправления — она требует признания: «да, я выбрал(а) свою жизнь, и мне жаль, что тебе от этого больно».</p><p><b>Долг против любви.</b> «Я обязан(а)» превращает отношения в бухгалтерию, где каждая услуга учитывается и предъявляется. Забота из любви — добровольна, ограничена и не требует отчётности. Различить просто: если после сделанного вы чувствуете тепло и свободу — это любовь; если опустошение и скрытую злость — это долг.</p></div>
+<div class="widget widget-cog_table" data-widget="cog_table" data-wid="w_cog_table_10" data-spec="{&quot;columns&quot;: [{&quot;key&quot;: &quot;thought&quot;, &quot;label&quot;: &quot;Мысль: «я плохая дочь / плохой сын, потому что…»&quot;, &quot;placeholder&quot;: &quot;«…не звоню каждый день»&quot;}, {&quot;key&quot;: &quot;for_what&quot;, &quot;label&quot;: &quot;За что именно я себя виню (факт, а не оценка)&quot;, &quot;placeholder&quot;: &quot;За то, что не поехала в выходные&quot;}, {&quot;key&quot;: &quot;harm_choice&quot;, &quot;label&quot;: &quot;Это мой вред или мой выбор?&quot;, &quot;placeholder&quot;: &quot;Выбор: вреда ей я не причинил(а)&quot;}, {&quot;key&quot;: &quot;fair&quot;, &quot;label&quot;: &quot;Что было бы справедливо сделать&quot;, &quot;placeholder&quot;: &quot;Позвонить в среду, предложить встречу в субботу&quot;}], &quot;rows&quot;: 2, &quot;max_rows&quot;: 8}" data-step="s6" data-export="widget" data-q="Вина на скамье подсудимых"><h3>Вина на скамье подсудимых</h3><p class="qhint">Выпишите свою обвинительную мысль и разберите её по колонкам. Обычно после третьей-четвёртой строки формулировка смягчается сама.</p><div class="ctable"></div><button type="button" class="btn btn-sm" data-act="add-row">+ Добавить строку</button></div>
+<div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Насколько сильна вина сейчас?</span><span class="sav" data-for="s6_scale_guilt">— сохранено ✓</span></div><p class="qhint">Зафиксируйте цифру — сравним её на последней странице курса.</p></div><output class="scale-value" data-for="s6_scale_guilt">0</output></div><input type="range" class="rng" id="s6_scale_guilt" min="0" max="10" step="1" value="0" data-step="s6" data-q="Насколько сильна вина сейчас?" data-export="field"><div class="scale-anchors"><span>0 — не чувствую вины</span><span>5 — виноват(а) периодически</span><span>10 — захлёстывает полностью</span></div></div>
+<div class="chk-wrap" data-export="checklist" data-q="Что я до сих пор «выплачиваю»: долги, которых не было" data-step="s6"><div class="chk-title">Что я до сих пор «выплачиваю»: долги, которых не было</div><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="s6_d1" data-step="s6"><span>Своё детство без права на слабость и ошибки</span></label><label class="chk-card"><input type="checkbox" id="s6_d2" data-step="s6"><span>Её одиночество</span></label><label class="chk-card"><input type="checkbox" id="s6_d3" data-step="s6"><span>Её несложившуюся жизнь, карьеру, отношения</span></label><label class="chk-card"><input type="checkbox" id="s6_d4" data-step="s6"><span>Её здоровье</span></label><label class="chk-card"><input type="checkbox" id="s6_d5" data-step="s6"><span>Мир в семье и настроение всех вокруг</span></label><label class="chk-card"><input type="checkbox" id="s6_d6" data-step="s6"><span>Право иметь собственное мнение</span></label><label class="chk-card"><input type="checkbox" id="s6_d7" data-step="s6"><span>То, что меня растили, кормили и одевали</span></label></div></div>
+<div class="warn-box">Письмо — сильная практика. Если в процессе станет хуже (сердце колотится, накатывает отчаяние, появляется желание себя наказать) — остановитесь и вернитесь к плану «Стоп» на титульной странице. Дописать можно позже, лучше вместе с психологом. Письмо никуда не денется: оно хранится только у вас.</div>
+<div class="qblock"><div class="qlabel"><span>Письмо маме, которое не будет отправлено</span><span class="sav" data-for="s6_letter_mom">— сохранено ✓</span></div><p class="qhint">Начните словами «Мама, я хочу, чтобы ты знала…» и пишите без редактуры: всё, что не было сказано. Это письмо никто не прочитает, если вы сами не решите иначе. Его задача — не сообщить ей, а разгрузить вас.</p><textarea class="qf" id="s6_letter_mom" data-step="s6" data-q="Письмо маме, которое не будет отправлено" data-export="field" rows="10" placeholder="Мама, я хочу, чтобы ты знала…"></textarea></div>
+<div class="wlines"><div class="wlines-label">…или напишите письмо от руки</div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div></div>
+<div class="grid-2x2" data-cols="2"><div class="qcard" data-tone="warn"><div class="qcard-title">Что я хотел(а) бы услышать от неё — даже если она этого никогда не скажет</div><textarea class="qf" id="s6_wish_hear" data-step="s6" data-q="Что я хотел(а) бы услышать от неё — даже если она этого никогда не скажет" data-export="field" rows="5" placeholder=""></textarea><span class="sav" data-for="s6_wish_hear">— сохранено ✓</span></div><div class="qcard" data-tone="succ"><div class="qcard-title">Письмо себе-ребёнку: что я скажу тому, кто отвечал за взрослых</div><textarea class="qf" id="s6_letter_child" data-step="s6" data-q="Письмо себе-ребёнку: что я скажу тому, кто отвечал за взрослых" data-export="field" rows="5" placeholder=""></textarea><span class="sav" data-for="s6_letter_child">— сохранено ✓</span></div></div>
+<details class="deeper" data-level="childhood" data-export="section" data-q="[из детства] Из детства: где родилась вина" data-step="s6"><summary><span>Из детства: где родилась вина</span><span class="depth-tag">из детства</span></summary><div class="deeper-body"><div class="qblock"><div class="qlabel"><span>Первая сцена, где я почувствовал(а) себя «плохим(ой)»</span><span class="sav" data-for="s6_ch_first">— сохранено ✓</span></div><textarea class="qf" id="s6_ch_first" data-step="s6" data-q="Первая сцена, где я почувствовал(а) себя «плохим(ой)»" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Чьим голосом говорит моя вина (мама, бабушка, отец, школа, церковь)?</span><span class="sav" data-for="s6_ch_voice">— сохранено ✓</span></div><textarea class="qf" id="s6_ch_voice" data-step="s6" data-q="Чьим голосом говорит моя вина (мама, бабушка, отец, школа, церковь)?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что этот голос когда-то пытался защитить (безопасность, любовь, место в семье)?</span><span class="sav" data-for="s6_ch_protect">— сохранено ✓</span></div><textarea class="qf" id="s6_ch_protect" data-step="s6" data-q="Что этот голос когда-то пытался защитить (безопасность, любовь, место в семье)?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что я отвечаю этому голосу теперь — из взрослой позиции?</span><span class="sav" data-for="s6_ch_answer">— сохранено ✓</span></div><textarea class="qf" id="s6_ch_answer" data-step="s6" data-q="Что я отвечаю этому голосу теперь — из взрослой позиции?" data-export="field" rows="4" placeholder=""></textarea></div></div></details>
+<div class="flags"><h4 style="margin-top:0;">Когда вина становится самонаказанием</h4>Если вина перерастает в мысли «я не заслуживаю хорошего», «лучше бы меня не было», в самоповреждение или в отказ от еды, сна, помощи — остановитесь и свяжитесь со специалистом или близким человеком в тот же день. Это не про силу воли: такие состояния требуют профессиональной поддержки.</div>
+<div class="qblock"><div class="qlabel"><span>Кому я могу позвонить в такой момент (имя и телефон)</span><span class="sav" data-for="s6_who_call">— сохранено ✓</span></div><input type="text" class="qf" id="s6_who_call" data-step="s6" data-q="Кому я могу позвонить в такой момент (имя и телефон)" data-export="field" placeholder="Например: сестра Ирина +38…; психолог +43…; линия помощи…"></div>
+<div class="session-block" data-export="section" data-q="★ Для встречи 6" data-step="s6"><div class="sb-title">★ Для встречи 6</div><div class="qblock"><div class="qlabel"><span>Что оказалось труднее: написать письмо или разобрать вину в таблице?</span><span class="sav" data-for="s6_s_guilt">— сохранено ✓</span></div><textarea class="qf" id="s6_s_guilt" data-step="s6" data-q="Что оказалось труднее: написать письмо или разобрать вину в таблице?" data-export="field" rows="4" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Готов(а) ли я что-то из письма сказать вслух — и нужно ли это вообще?</span><span class="sav" data-for="s6_s_ready">— сохранено ✓</span></div><textarea class="qf" id="s6_s_ready" data-step="s6" data-q="Готов(а) ли я что-то из письма сказать вслух — и нужно ли это вообще?" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="s7">
+<span class="badge">Неделя 7 · Встреча 7</span>
+<h2><span class="num">7</span>Шаг 7 · Своя жизнь: опора на себя</h2><p class="lead">Сепарация завершается не дистанцией от мамы, а наполненностью своей жизни. Освободившееся место должно быть чем-то занято — иначе его снова займёт вина.</p>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Шаг 7 · цели, мишени, интервенции</div><h4>Цель шага</h4><p>Консолидация: освободившееся место заполняется своей жизнью, а не виной или новой зависимостью. Профилактика отката при её кризисе, праздниках, её болезни.</p><h4>Терапевтические мишени</h4><ul><li>Пустота после сепарации: «я не знаю, чего хочу».</li><li>Потеря идентичности «хорошей дочери / хорошего сына».</li><li>Риск замены: партнёр, терапевт, работа или ребёнок занимают место матери.</li><li>Откат при провокации (болезнь матери, юбилей, давление родственников).</li></ul>
+<div class="flags"><h4 style="margin-top:0;">Красные флаги шага</h4><ul><li>«Я всех отпустил(а), у меня никого не осталось» → изоляция под видом сепарации; работаем с одиночеством и восстановлением связей.</li><li>Обесценивание терапии и курса на финале: часто защита от завершения и от горя; обсуждаем прямо.</li><li>Планы «теперь она увидит, кого потеряла» → месть как мотивация, риск эскалации.</li><li>Резкий откат после болезни/кризиса матери: нормализуем и разбираем, а не считаем провалом.</li></ul></div>
+<h4>Что слушать в ответах</h4><ul><li>Появились ли конкретные свои желания и решения (не «надо», а «хочу»).</li><li>Есть ли опоры вне семьи: друзья, тело, дело, сообщество, помощь.</li><li>Как клиент говорит о будущем: есть ли образ своей жизни через год.</li><li>Насколько он разрешает себе радость без отчёта — главный маркер результата.</li></ul><h4>Интервенции</h4><ul><li><b>ACT-ценности:</b> от «правил семьи» к своим ценностям и committed action на месяц.</li><li><b>Ресурсный трекер</b> (дневник своих решений) как ежедневная практика авторства.</li><li><b>План профилактики отката:</b> сценарии — её болезнь, праздники, давление родственников, мой срыв; прописать действия заранее.</li><li><b>Ритуал завершения курса:</b> перечитать манифест вслух, сравнить шкалы с титулом, отметить, что осталось трудным.</li><li><b>Поддерживающие встречи:</b> раз в месяц первые три месяца, дальше по запросу.</li></ul><h4>Домашнее задание</h4><p>Манифест отдельности (5–7 фраз) + план на три месяца. Вести дневник своих решений минимум две недели после курса.</p><h4>Метрики завершения</h4><p>Шкала отдельности выросла минимум на 2–3 пункта; вина снизилась и стала различаемой («реальная / сепарационная»); внедрено не менее двух правил контакта; проведён хотя бы один трудный разговор; появились свои решения и опоры.</p><h4>Когда не завершать курс</h4><p>Выявленная травма насилия, активная зависимость, РПП, депрессия средней и тяжёлой степени, суицидальный риск — продолжаем в соответствующем протоколе; тетрадь при этом остаётся полезным инструментом самонаблюдения.</p><h4>Супервизионный вопрос</h4><p>Что я чувствую на завершении: гордость, пустоту, желание продолжить? Не держу ли я клиента дольше, чем нужно ему?</p></div>
+<div class="card"><h3 style="margin-top:0;">Куда уходит освободившаяся энергия</h3><p>Когда вы перестаёте обслуживать чужие чувства, высвобождается много сил — и часто приходит пустота: «а чего хочу я?» Это нормальный этап. Пустота заполняется не размышлениями, а маленькими собственными решениями: что есть, куда идти, с кем видеться, что купить, как провести воскресенье.</p><p>Признак завершённой сепарации — не «я больше не злюсь на маму», а: <b>я знаю, чего хочу; я делаю это; я выдерживаю её недовольство; я остаюсь в тепле там, где тепло возможно</b>.</p></div>
+<div class="widget widget-diary" data-widget="diary" data-wid="w_diary_11" data-spec="{&quot;fields&quot;: [{&quot;key&quot;: &quot;decision&quot;, &quot;label&quot;: &quot;Решение: что я решил(а) сам(а)&quot;, &quot;placeholder&quot;: &quot;«В субботу еду с друзьями в горы, маме позвоню в воскресенье»&quot;}, {&quot;key&quot;: &quot;hard&quot;, &quot;label&quot;: &quot;Что было трудно&quot;, &quot;placeholder&quot;: &quot;Сказать и не объяснять дважды&quot;}, {&quot;key&quot;: &quot;support&quot;, &quot;label&quot;: &quot;Чем я поддержал(а) себя&quot;, &quot;placeholder&quot;: &quot;Прогулка, разговор с мужем, дыхание&quot;}, {&quot;key&quot;: &quot;sep&quot;, &quot;label&quot;: &quot;Насколько я чувствовал(а) себя автором&quot;, &quot;options&quot;: [&quot;0–3 · слабо&quot;, &quot;4–6 · заметно&quot;, &quot;7–10 · сильно&quot;]}], &quot;badge_field&quot;: &quot;sep&quot;, &quot;badge_label&quot;: &quot;Авторство:&quot;, &quot;quick&quot;: [{&quot;field&quot;: &quot;support&quot;, &quot;value&quot;: &quot;дыхание 4-4-6&quot;, &quot;label&quot;: &quot;дыхание&quot;}, {&quot;field&quot;: &quot;support&quot;, &quot;value&quot;: &quot;прогулка&quot;, &quot;label&quot;: &quot;прогулка&quot;}, {&quot;field&quot;: &quot;support&quot;, &quot;value&quot;: &quot;разговор с близким&quot;, &quot;label&quot;: &quot;разговор&quot;}, {&quot;field&quot;: &quot;support&quot;, &quot;value&quot;: &quot;сон и отдых&quot;, &quot;label&quot;: &quot;отдых&quot;}, {&quot;field&quot;: &quot;support&quot;, &quot;value&quot;: &quot;тело: душ, движение&quot;, &quot;label&quot;: &quot;тело&quot;}]}" data-step="s7" data-export="widget" data-q="Дневник своих решений"><h3>Дневник своих решений</h3><p class="qhint">Записывайте решения, которые вы приняли сами — даже мелкие. Это тренировка авторства своей жизни.</p><div class="chip-container"></div><div class="diary-form"><div class="diary-form-grid"></div><div style="margin-top:.85rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;"><button type="button" class="btn btn-primary btn-sm" data-act="add-entry">+ Добавить запись</button><span class="counter" data-role="count">0 записей</span></div></div><div class="diary-list"></div></div>
+<div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Моя отдельность сегодня</span><span class="sav" data-for="s7_scale_sep">— сохранено ✓</span></div></div><output class="scale-value" data-for="s7_scale_sep">0</output></div><input type="range" class="rng" id="s7_scale_sep" min="0" max="10" step="1" value="0" data-step="s7" data-q="Моя отдельность сегодня" data-export="field"><div class="scale-anchors"><span>0 — растворён(а) в её жизни</span><span>5 — наполовину своя жизнь</span><span>10 — я автор своей жизни</span></div></div>
+<div class="widget widget-sort_matrix" data-widget="sort_matrix" data-wid="w_sort_matrix_12" data-spec="{&quot;columns&quot;: [{&quot;key&quot;: &quot;has&quot;, &quot;label&quot;: &quot;Опора есть&quot;}, {&quot;key&quot;: &quot;grow&quot;, &quot;label&quot;: &quot;Хочу укрепить&quot;}, {&quot;key&quot;: &quot;empty&quot;, &quot;label&quot;: &quot;Пока пусто&quot;}], &quot;items&quot;: [{&quot;id&quot;: &quot;o_work&quot;, &quot;label&quot;: &quot;Дело, работа, мастерство&quot;}, {&quot;id&quot;: &quot;o_friends&quot;, &quot;label&quot;: &quot;Дружба&quot;}, {&quot;id&quot;: &quot;o_body&quot;, &quot;label&quot;: &quot;Тело и здоровье&quot;}, {&quot;id&quot;: &quot;o_creative&quot;, &quot;label&quot;: &quot;Творчество, хобби&quot;}, {&quot;id&quot;: &quot;o_sense&quot;, &quot;label&quot;: &quot;Смыслы, вера, духовность&quot;}, {&quot;id&quot;: &quot;o_family&quot;, &quot;label&quot;: &quot;Семья, которую я выбрал(а)&quot;}, {&quot;id&quot;: &quot;o_rest&quot;, &quot;label&quot;: &quot;Отдых и удовольствие&quot;}, {&quot;id&quot;: &quot;o_money&quot;, &quot;label&quot;: &quot;Деньги и финансовая устойчивость&quot;}, {&quot;id&quot;: &quot;o_group&quot;, &quot;label&quot;: &quot;Сообщество, группы, единомышленники&quot;}, {&quot;id&quot;: &quot;o_help&quot;, &quot;label&quot;: &quot;Профессиональная помощь (психолог, врач)&quot;}]}" data-step="s7" data-export="widget" data-q="Мои опоры: что держит меня, кроме семьи происхождения"><h3>Мои опоры: что держит меня, кроме семьи происхождения</h3><p class="qhint">Опора — то, к чему вы можете обратиться в трудный день. Отметьте честно: где опора есть, где её хочется укрепить, где пока пусто.</p><div class="matrix"><div class="matrix-legend"><b><i style="background:var(--acc)"></i>Опора есть</b><b><i style="background:var(--warn)"></i>Хочу укрепить</b><b><i style="background:var(--mut)"></i>Пока пусто</b></div></div></div>
+<div class="qblock"><div class="qlabel"><span>Три вещи в моей жизни, которые существуют только потому, что я выбрал(а) их сам(а)</span><span class="sav" data-for="s7_three">— сохранено ✓</span></div><textarea class="qf" id="s7_three" data-step="s7" data-q="Три вещи в моей жизни, которые существуют только потому, что я выбрал(а) их сам(а)" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Мой манифест отдельности: 5–7 фраз, начинающихся с «Я имею право…» или «Я выбираю…»</span><span class="sav" data-for="s7_manifest">— сохранено ✓</span></div><textarea class="qf" id="s7_manifest" data-step="s7" data-q="Мой манифест отдельности: 5–7 фраз, начинающихся с «Я имею право…» или «Я выбираю…»" data-export="field" rows="8" placeholder=""></textarea></div>
+<div class="wlines"><div class="wlines-label">Манифест — начисто, от руки</div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div><div class="wline"></div></div>
+<div class="session-block" data-export="section" data-q="★ Для итоговой встречи" data-step="s7"><div class="sb-title">★ Для итоговой встречи</div><div class="qblock"><div class="qlabel"><span>Что изменилось за 7 недель: в отношениях, в себе, в быту</span><span class="sav" data-for="s7_s_changed">— сохранено ✓</span></div><textarea class="qf" id="s7_s_changed" data-step="s7" data-q="Что изменилось за 7 недель: в отношениях, в себе, в быту" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что остаётся трудным — и что я хочу делать с этим дальше</span><span class="sav" data-for="s7_s_hard">— сохранено ✓</span></div><textarea class="qf" id="s7_s_hard" data-step="s7" data-q="Что остаётся трудным — и что я хочу делать с этим дальше" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Нужна ли мне продолжение работы: с какой темой и в каком формате</span><span class="sav" data-for="s7_s_next">— сохранено ✓</span></div><textarea class="qf" id="s7_s_next" data-step="s7" data-q="Нужна ли мне продолжение работы: с какой темой и в каком формате" data-export="field" rows="4" placeholder=""></textarea></div></div>
+</section>
+
+<section class="lec" id="map">
+<span class="badge badge-succ">Итоги курса</span>
+<h2><span class="num">★</span>Моя карта и после курса</h2>
+<div class="core">Курс закончен не тогда, когда заполнены все поля, а когда у вас появились <b>свои правила контакта</b>, <b>своя стоп-фраза</b> и <b>свои опоры</b>. Дальше это работает в ежедневном режиме — без подвигов.</div>
+<div class="qblock"><div class="qlabel"><span>После курса: что изменилось во мне и в наших отношениях</span><span class="sav" data-for="map_changed">— сохранено ✓</span></div><p class="qhint">Сравните с тем, что вы написали на титуле в поле «С чем я прихожу».</p><textarea class="qf" id="map_changed" data-step="map" data-q="После курса: что изменилось во мне и в наших отношениях" data-export="field" rows="6" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Что остаётся в ежедневном режиме (моя рутина отдельности)</span><span class="sav" data-for="map_daily">— сохранено ✓</span></div><p class="qhint">Например: не отвечаю на звонки сразу, дышу 4-4-6 перед разговором, веду дневник решений, раз в месяц проверяю границы.</p><textarea class="qf" id="map_daily" data-step="map" data-q="Что остаётся в ежедневном режиме (моя рутина отдельности)" data-export="field" rows="5" placeholder=""></textarea></div>
+<div class="qblock"><div class="qlabel"><span>Мой план на первые три месяца</span><span class="sav" data-for="map_3months">— сохранено ✓</span></div><p class="qhint">Что я делаю, если захлёстывает вина; если она звонит в слезах; если я срываюсь в старые реакции; когда и с кем я сверяюсь.</p><textarea class="qf" id="map_3months" data-step="map" data-q="Мой план на первые три месяца" data-export="field" rows="6" placeholder=""></textarea></div>
+<div class="grid-2x2" data-cols="2"><div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Вина сегодня (сравните с Шагом 6)</span><span class="sav" data-for="map_scale_guilt">— сохранено ✓</span></div></div><output class="scale-value" data-for="map_scale_guilt">0</output></div><input type="range" class="rng" id="map_scale_guilt" min="0" max="10" step="1" value="0" data-step="map" data-q="Вина сегодня (сравните с Шагом 6)" data-export="field"><div class="scale-anchors"><span>0 — нет</span><span>5 — иногда</span><span>10 — захлёстывает</span></div></div><div class="scale-widget"><div class="scale-head"><div style="flex:1;min-width:200px;"><div class="qlabel"><span>Моя отдельность сегодня (сравните с титулом)</span><span class="sav" data-for="map_scale_sep">— сохранено ✓</span></div></div><output class="scale-value" data-for="map_scale_sep">0</output></div><input type="range" class="rng" id="map_scale_sep" min="0" max="10" step="1" value="0" data-step="map" data-q="Моя отдельность сегодня (сравните с титулом)" data-export="field"><div class="scale-anchors"><span>0 — растворён(а)</span><span>5 — по-разному</span><span>10 — автор своей жизни</span></div></div></div>
+<div class="chk-wrap" data-export="checklist" data-q="Я умею: отметьте, что стало моим" data-step="map"><div class="chk-title">Я умею: отметьте, что стало моим</div><div class="chk-grid" data-cols="1"><label class="chk-card"><input type="checkbox" id="map_s1" data-step="map"><span>Говорить «нет» без длинных объяснений</span></label><label class="chk-card"><input type="checkbox" id="map_s2" data-step="map"><span>Выдерживать её обиду, не бросаясь всё исправлять</span></label><label class="chk-card"><input type="checkbox" id="map_s3" data-step="map"><span>Различать: чьё чувство, чья задача, что в моём контроле</span></label><label class="chk-card"><input type="checkbox" id="map_s4" data-step="map"><span>Завершать разговор стоп-фразой</span></label><label class="chk-card"><input type="checkbox" id="map_s5" data-step="map"><span>Заботиться о себе без чувства вины</span></label><label class="chk-card"><input type="checkbox" id="map_s6" data-step="map"><span>Просить о помощи и принимать её</span></label><label class="chk-card"><input type="checkbox" id="map_s7" data-step="map"><span>Радоваться своему, ни перед кем не отчитываясь</span></label><label class="chk-card"><input type="checkbox" id="map_s8" data-step="map"><span>Замечать телесный сигнал «нет» и делать паузу</span></label></div></div>
+<div class="note-box">Этот курс — не про «плохую маму» и не про поиск виноватых. Он про то, чтобы вы перестали жить чужую жизнь и смогли быть в отношениях тем, кто у вас есть: взрослым, отдельным, способным любить без исчезновения.</div>
+<div class="pro-block"><span class="pro-tag">для специалиста</span><div class="sb-title">🧭 Завершение курса: критерии и документация</div><h4>Критерии завершения</h4><ul><li>Динамика шкал: отдельность +2–3 пункта и выше, вина различима и ниже исходной.</li><li>Поведенческие маркеры: не менее двух внедрённых правил контакта, один проведённый трудный разговор, регулярный дневник решений.</li><li>Клиент формулирует свои желания без ссылки на мать и выдерживает её недовольство без исчезновения и без самонаказания.</li></ul><h4>Документирование</h4><p>Сохраняйте экспорт ответов клиента (.txt) по неделям: динамика текста (появление «я», сокращение оправданий, появление злости и затем тепла) — лучший качественный показатель. В карте фиксируйте: исходные шкалы, красные флаги, план безопасности, договорённости о частоте встреч.</p><h4>Что делать после курса</h4><p>Поддерживающие встречи раз в месяц на три месяца, затем по запросу. Типичные поводы возврата: болезнь или утрата родителя, её юбилей, свадьба/рождение ребёнка клиента, переезд, финансовая зависимость. Эти события закономерно активируют старый сценарий — это не регресс, а новая итерация работы.</p><h4>Этика и границы специалиста</h4><ul><li>Не давать оценок матери клиента и не присоединяться к обвинениям — удерживаем исследовательскую позицию.</li><li>Не рекомендовать разрыв как универсальное решение; разрыв — выбор клиента, а не показатель успеха терапии.</li><li>При угрозах суицида со стороны родителя — не брать на себя роль кризисной службы: подключаем профильные службы и родственников.</li><li>Культурная чувствительность: в семьях с высокой включённостью поколений цель — не «автономия по западному образцу», а снижение страдания клиента при сохранении значимых связей.</li></ul></div>
+<div class="card"><div id="mapStats"></div></div>
+<div class="map-actions"><button class="btn btn-primary" id="btnExport">⬇ Экспорт для психолога (.txt)</button><button class="btn" id="btnPrint">🖨 Распечатать / сохранить в PDF</button><button class="btn btn-ghost btn-danger" id="btnClear">🗑 Очистить все записи</button></div>
+<div class="note-box">Все ответы хранятся только в этом браузере на этом устройстве и никуда не отправляются автоматически: в файле нет сетевых запросов и внешних ресурсов. Экспорт создаёт текстовый файл только по вашей кнопке — вы сами решаете, кому его показать. Никто не вправе требовать от вас эту тетрадь или отчёт.</div>
+</section>
+    </div>
+  </main>
+</div>
+
+<script>
+window.WB_SPEC = {"storageKey": "sep-pro-v1", "themeKey": "sep-pro-v1-theme", "exportTitle": "СВОЁ И МАМИНО — ОТЧЁТ ПО ТЕТРАДИ (версия для психолога, v1.0)", "exportFilename": "otchet_separaciya_specialist_v1.txt", "steps": [{"id": "front", "name": "О курсе и безопасность", "exportName": "ПРОТОКОЛ КУРСА ДЛЯ СПЕЦИАЛИСТА"}, {"id": "s1", "name": "Где я сейчас", "exportName": "ШАГ 1 · ЧЕСТНАЯ КАРТА СВЯЗИ"}, {"id": "s2", "name": "Чьи это чувства", "exportName": "ШАГ 2 · РАЗЛИЧЕНИЕ ЧУВСТВ И ПАРЕНТИФИКАЦИЯ"}, {"id": "s3", "name": "Тело говорит «нет»", "exportName": "ШАГ 3 · ТЕЛЕСНЫЕ ГРАНИЦЫ"}, {"id": "s4", "name": "Круги близости", "exportName": "ШАГ 4 · ПЕРЕСБОРКА ДИСТАНЦИИ"}, {"id": "s5", "name": "Трудные разговоры", "exportName": "ШАГ 5 · ТРЕНАЖЁР ТРУДНЫХ РАЗГОВОРОВ"}, {"id": "s6", "name": "Вина и долг", "exportName": "ШАГ 6 · ВИНА, ДОЛГ И САМООБВИНЕНИЕ"}, {"id": "s7", "name": "Своя жизнь", "exportName": "ШАГ 7 · ОПОРЫ И СВОЯ ЖИЗНЬ"}, {"id": "map", "name": "Моя карта и итоги", "exportName": "МОЯ КАРТА И ПОСЛЕ КУРСА"}]};
+</script>
+<script>
+/* ==========================================================================
+   WORKBOOK ENGINE · engine.js
+   Универсальный рантайм терапевтической тетради.
+   Читает window.WB_SPEC ( injecting сборщиком ) и разметку data-*.
+   Возможности:
+     · навигация по шагам (drawer-меню, поиск, ←/→, M, хэш)
+     · темы light / dark / auto
+     · автосохранение всех полей, чекбоксов и шкал в localStorage
+     · счётчик заполнения + экран «Моя карта» с прогрессом по шагам
+     · реестр интерактивных механик (виджетов) с собственным состоянием
+     · экспорт ответов текстовым файлом (.txt) для психолога
+     · подготовка к печати (раскрытие блоков глубины)
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var SPEC = window.WB_SPEC || {};
+  var STEPS = SPEC.steps || [];
+  var ORDER = STEPS.map(function (s) { return s.id; });
+
+  /* ------------------------------------------------------------------ */
+  /* 0. Хранилище                                                        */
+  /* ------------------------------------------------------------------ */
+  var KEY = SPEC.storageKey || 'workbook-v1';
+  var THEME_KEY = SPEC.themeKey || (KEY + '-theme');
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+  if (!store.__w) store.__w = {};
+
+  function saveAll() {
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* приватный режим */ }
+  }
+
+  function plural(n, one, few, many) {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return few;
+    return many;
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function nowStamp() {
+    var d = new Date();
+    return d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: '2-digit' }) + ' ' +
+      d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 1. Навигация по шагам                                               */
+  /* ------------------------------------------------------------------ */
+  var secs = [].slice.call(document.querySelectorAll('section.lec'));
+  var items = [].slice.call(document.querySelectorAll('#tocList li'));
+  var counter = document.getElementById('counter');
+
+  function stepTitle(id) {
+    for (var i = 0; i < STEPS; i++) { if (STEPS[i].id === id) return STEPS[i].name; }
+    var li = items.filter(function (x) { return x.getAttribute('data-t') === id; })[0];
+    return li ? li.textContent.trim() : id;
+  }
+
+  function buildNavs() {
+    secs.forEach(function (s, idx) {
+      if (s.querySelector('.lecnav')) return;
+      var d = document.createElement('div');
+      d.className = 'lecnav';
+      var h = '';
+      var prev = ORDER[idx - 1], next = ORDER[idx + 1];
+      if (prev) h += '<a href="#' + prev + '">← ' + esc(stepTitle(prev)) + '</a>';
+      h += '<span class="cnt">' + (idx + 1) + ' / ' + ORDER.length + '</span>';
+      if (next) h += '<a href="#' + next + '">' + esc(stepTitle(next)) + ' →</a>';
+      d.innerHTML = h;
+      s.appendChild(d);
+    });
+  }
+
+  function answeredCount() {
+    return [].slice.call(document.querySelectorAll('.qf')).filter(function (t) {
+      return String(t.value || '').trim() !== '';
+    }).length;
+  }
+
+  function updateCounter() {
+    if (!counter) return;
+    counter.textContent = 'заполнено: ' + answeredCount() + ' / ' + document.querySelectorAll('.qf').length;
+  }
+
+  function show(id) {
+    if (ORDER.indexOf(id) < 0) id = ORDER[0];
+    secs.forEach(function (s) { s.classList.toggle('act', s.id === id); });
+    items.forEach(function (li) { li.classList.toggle('on', li.getAttribute('data-t') === id); });
+    updateCounter();
+    window.scrollTo(0, 0);
+    var cb = document.getElementById('menu');
+    if (cb) cb.checked = false;
+    if (id === 'map') renderMap();
+  }
+
+  function move(delta) {
+    var cur = secs.filter(function (s) { return s.classList.contains('act'); })[0];
+    var idx = cur ? ORDER.indexOf(cur.id) : 0;
+    var next = ORDER[Math.min(Math.max(idx + delta, 0), ORDER.length - 1)];
+    if (next) location.hash = '#' + next;
+  }
+
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1) || ORDER[0]); });
+
+  var q = document.getElementById('q');
+  if (q) q.addEventListener('input', function () {
+    var v = q.value.trim().toLowerCase();
+    items.forEach(function (li) {
+      li.classList.toggle('hide', !!v && li.textContent.toLowerCase().indexOf(v) < 0);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT' || t.tagName === 'SELECT')) return;
+    if (e.key === 'm' || e.key === 'M' || e.key === 'ь' || e.key === 'Ь') {
+      var m = document.getElementById('menu');
+      if (m) m.checked = !m.checked;
+    } else if (e.key === 'ArrowRight') { move(1); }
+    else if (e.key === 'ArrowLeft') { move(-1); }
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 2. Темы                                                             */
+  /* ------------------------------------------------------------------ */
+  var themeBtn = document.getElementById('themeToggle');
+  var savedTheme = localStorage.getItem(THEME_KEY) || 'auto';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : (cur === 'light' ? 'auto' : 'dark');
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(THEME_KEY, next);
+    themeBtn.title = 'Тема: ' + next;
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 3. Поля, чекбоксы, шкалы                                            */
+  /* ------------------------------------------------------------------ */
+  var fields = [].slice.call(document.querySelectorAll('.qf'));
+  var checks = [].slice.call(document.querySelectorAll('.chk-card input[type=checkbox]'));
+  var ranges = [].slice.call(document.querySelectorAll('input.rng'));
+
+  function flashSaved(id) {
+    var s = document.querySelector('.sav[data-for="' + id + '"]');
+    if (!s) return;
+    s.classList.add('visible');
+    setTimeout(function () { s.classList.remove('visible'); }, 1800);
+  }
+
+  fields.forEach(function (f) {
+    if (!f.id) return;
+    if (typeof store[f.id] === 'string') f.value = store[f.id];
+    f.addEventListener('input', function () {
+      store[f.id] = f.value;
+      saveAll(); updateCounter(); flashSaved(f.id);
+    });
+  });
+
+  checks.forEach(function (c) {
+    if (!c.id) return;
+    if (store[c.id] === true) c.checked = true;
+    c.addEventListener('change', function () {
+      store[c.id] = c.checked; saveAll(); updateCounter();
+    });
+  });
+
+  ranges.forEach(function (r) {
+    var out = document.querySelector('output[data-for="' + r.id + '"]');
+    function sync() { if (out) out.textContent = r.value; }
+    if (typeof store[r.id] !== 'undefined') { r.value = store[r.id]; }
+    sync();
+    r.addEventListener('input', function () {
+      store[r.id] = r.value; saveAll(); sync(); flashSaved(r.id); updateCounter();
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 4. Реестр механик (виджетов)                                        */
+  /* ------------------------------------------------------------------ */
+  var WB = { widgets: {} };
+  WB.widget = function (type, impl) { WB.widgets[type] = impl; };
+
+  function apiFor(el) {
+    var wid = el.getAttribute('data-wid');
+    var spec = {};
+    try { spec = JSON.parse(el.getAttribute('data-spec') || '{}'); } catch (e) { spec = {}; }
+    return {
+      wid: wid,
+      spec: spec,
+      get: function () { return store.__w[wid]; },
+      set: function (v) { store.__w[wid] = v; saveAll(); },
+      state: function (fallback) {
+        if (typeof store.__w[wid] === 'undefined') store.__w[wid] = fallback;
+        return store.__w[wid];
+      },
+      el: el
+    };
+  }
+
+  /* --- 4.1 Сортировочная матрица ------------------------------------ */
+  WB.widget('sort_matrix', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({});
+      var host = el.querySelector('.matrix');
+      spec.items.forEach(function (item) {
+        var row = document.createElement('div');
+        row.className = 'matrix-row';
+        row.setAttribute('data-item', item.id);
+        var h = '<div class="matrix-item-label">' + esc(item.label) + '</div>' +
+          (item.hint ? '<div class="matrix-item-hint">' + esc(item.hint) + '</div>' : '') +
+          '<div class="matrix-choices">';
+        spec.columns.forEach(function (c) {
+          h += '<button type="button" class="matrix-btn" data-col="' + esc(c.key) + '">' + esc(c.label) + '</button>';
+        });
+        h += '<span class="matrix-chosen"></span></div>';
+        row.innerHTML = h;
+        host.appendChild(row);
+
+        function paint() {
+          var val = st[item.id];
+          [].slice.call(row.querySelectorAll('.matrix-btn')).forEach(function (b) {
+            b.classList.toggle('on', b.getAttribute('data-col') === val);
+          });
+          var chosen = row.querySelector('.matrix-chosen');
+          var col = spec.columns.filter(function (c) { return c.key === val; })[0];
+          chosen.textContent = val ? ('→ ' + col.label) : '';
+        }
+        [].slice.call(row.querySelectorAll('.matrix-btn')).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var col = b.getAttribute('data-col');
+            st[item.id] = (st[item.id] === col) ? null : col;
+            api.set(st); paint();
+          });
+        });
+        paint();
+      });
+    },
+    exportLines: function (el, api) {
+      var spec = api.spec, st = api.get() || {}, out = [];
+      spec.items.forEach(function (item) {
+        var col = spec.columns.filter(function (c) { return c.key === st[item.id]; })[0];
+        out.push('  ' + item.label + ' — ' + (col ? col.label : 'не выбрано'));
+      });
+      return out;
+    }
+  });
+
+  /* --- 4.2 Когнитивная таблица -------------------------------------- */
+  WB.widget('cog_table', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({ rows: [] });
+      if (!st.rows) st.rows = [];
+      var host = el.querySelector('.ctable');
+      var addBtn = el.querySelector('[data-act="add-row"]');
+
+      function blank() {
+        var r = {};
+        spec.columns.forEach(function (c) { r[c.key || c.label] = ''; });
+        return r;
+      }
+      function key(col) { return col.key || col.label; }
+
+      function render() {
+        host.innerHTML = '';
+        if (!st.rows.length) {
+          host.innerHTML = '<div class="diary-empty">Строк пока нет — добавьте первую ситуацию кнопкой ниже.</div>';
+          return;
+        }
+        st.rows.forEach(function (row, idx) {
+          var d = document.createElement('div');
+          d.className = 'ctable-row';
+          var h = '<div class="ctable-row-head"><span>Ситуация ' + (idx + 1) + '</span>' +
+            '<button type="button" class="btn-del" data-act="del-row" data-idx="' + idx + '" title="Удалить строку">✕</button></div>' +
+            '<div class="ctable-cols">';
+          spec.columns.forEach(function (c) {
+            h += '<div class="ctable-col"><label>' + esc(c.label) + '</label>' +
+              '<textarea rows="2" data-col="' + esc(key(c)) + '" placeholder="' + esc(c.placeholder || '') + '">' +
+              esc(row[key(c)] || '') + '</textarea></div>';
+          });
+          h += '</div>';
+          d.innerHTML = h;
+          host.appendChild(d);
+          [].slice.call(d.querySelectorAll('textarea')).forEach(function (t) {
+            t.addEventListener('input', function () {
+              st.rows[idx][t.getAttribute('data-col')] = t.value;
+              api.set(st);
+            });
+          });
+        });
+        [].slice.call(host.querySelectorAll('[data-act="del-row"]')).forEach(function (b) {
+          b.addEventListener('click', function () {
+            st.rows.splice(parseInt(b.getAttribute('data-idx'), 10), 1);
+            api.set(st); render();
+          });
+        });
+      }
+
+      if (addBtn) addBtn.addEventListener('click', function () {
+        var max = spec.max_rows || 12;
+        if (st.rows.length >= max) { alert('Максимум строк: ' + max + '. Удалите лишние.'); return; }
+        st.rows.push(blank()); api.set(st); render();
+      });
+      while (st.rows.length < (spec.rows || 1)) st.rows.push(blank());
+      api.set(st);
+      render();
+    },
+    exportLines: function (el, api) {
+      var spec = api.spec, st = api.get() || { rows: [] }, out = [];
+      function key(c) { return c.key || c.label; }
+      (st.rows || []).forEach(function (row, i) {
+        var filled = spec.columns.some(function (c) { return String(row[key(c)] || '').trim(); });
+        if (!filled) return;
+        out.push('  ' + (i + 1) + ') ' + spec.columns.map(function (c) {
+          return c.label + ': ' + (String(row[key(c)] || '').trim() || '—');
+        }).join(' | '));
+      });
+      return out;
+    }
+  });
+
+  /* --- 4.3 Дневник повторяющихся записей ---------------------------- */
+  WB.widget('diary', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({ entries: [] });
+      if (!st.entries) st.entries = [];
+      var list = el.querySelector('.diary-list');
+      var countEl = el.querySelector('[data-role="count"]');
+      var addBtn = el.querySelector('[data-act="add-entry"]');
+      var formHost = el.querySelector('.diary-form-grid');
+
+      spec.fields.forEach(function (f) {
+        var w = document.createElement('div');
+        var lab = '<label for="' + esc(api.wid + '_' + f.key) + '">' + esc(f.label) + '</label>';
+        var ctl;
+        if (f.options && f.options.length) {
+          ctl = '<select id="' + esc(api.wid + '_' + f.key) + '" data-f="' + esc(f.key) + '">' +
+            '<option value="">— выберите —</option>' +
+            f.options.map(function (o) { return '<option>' + esc(o) + '</option>'; }).join('') + '</select>';
+        } else if (f.kind === 'textarea') {
+          ctl = '<textarea id="' + esc(api.wid + '_' + f.key) + '" data-f="' + esc(f.key) + '" rows="2" placeholder="' + esc(f.placeholder || '') + '"></textarea>';
+        } else {
+          ctl = '<input type="text" id="' + esc(api.wid + '_' + f.key) + '" data-f="' + esc(f.key) + '" placeholder="' + esc(f.placeholder || '') + '">';
+        }
+        w.innerHTML = lab + ctl;
+        formHost.appendChild(w);
+      });
+
+      function fieldEl(k) { return formHost.querySelector('[data-f="' + k + '"]'); }
+
+      (spec.quick || []).forEach(function (chip) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'chip'; b.textContent = chip.label || chip.value;
+        b.addEventListener('click', function () {
+          var el2 = fieldEl(chip.field);
+          if (!el2) return;
+          el2.value = chip.value; el2.focus();
+        });
+        el.querySelector('.chip-container').appendChild(b);
+      });
+
+      function render() {
+        if (countEl) {
+          countEl.textContent = st.entries.length + ' ' + plural(st.entries.length, 'запись', 'записи', 'записей');
+        }
+        if (!st.entries.length) {
+          list.innerHTML = '<div class="diary-empty">' + esc(spec.empty || 'Записей пока нет. Добавьте первую — это занимает меньше минуты.') + '</div>';
+          return;
+        }
+        list.innerHTML = '';
+        st.entries.forEach(function (e, idx) {
+          var d = document.createElement('div');
+          d.className = 'diary-item';
+          var head = '<div class="diary-item-header"><span>🕒 ' + esc(e.__time || '—') + '</span>' +
+            '<span style="display:flex;align-items:center;gap:.5rem;">' +
+            (e[spec.badge_field] ? '<span class="diary-badge">' + esc(spec.badge_label || '') + ' ' + esc(e[spec.badge_field]) + '</span>' : '') +
+            '<button type="button" class="btn-del" data-idx="' + idx + '" title="Удалить запись">✕</button></span></div>';
+          var body = spec.fields.map(function (f) {
+            if (!e[f.key]) return '';
+            var cls = f.kind === 'textarea' ? 'diary-item-line' : 'diary-item-line';
+            return '<div class="' + cls + '"><b>' + esc(f.label) + ':</b> ' + esc(e[f.key]) + '</div>';
+          }).join('');
+          d.innerHTML = head + body;
+          list.appendChild(d);
+        });
+        [].slice.call(list.querySelectorAll('.btn-del')).forEach(function (b) {
+          b.addEventListener('click', function () {
+            st.entries.splice(parseInt(b.getAttribute('data-idx'), 10), 1);
+            api.set(st); render();
+          });
+        });
+      }
+
+      if (addBtn) addBtn.addEventListener('click', function () {
+        var e = { __time: nowStamp() };
+        var any = false;
+        spec.fields.forEach(function (f) {
+          var el2 = fieldEl(f.key);
+          e[f.key] = el2 ? el2.value.trim() : '';
+          if (e[f.key]) any = true;
+        });
+        if (!any) { alert('Заполните хотя бы одно поле записи.'); return; }
+        st.entries.unshift(e); api.set(st); render();
+        spec.fields.forEach(function (f) { var el2 = fieldEl(f.key); if (el2) el2.value = ''; });
+      });
+
+      render();
+    },
+    exportLines: function (el, api) {
+      var spec = api.spec, st = api.get() || { entries: [] }, out = [];
+      (st.entries || []).forEach(function (e, i) {
+        out.push('  ' + (i + 1) + '. [' + (e.__time || '') + '] ' + spec.fields.map(function (f) {
+          return f.label + ': ' + (e[f.key] || '—');
+        }).join(' · '));
+      });
+      return out;
+    }
+  });
+
+  /* --- 4.4 Круги близости ------------------------------------------- */
+  WB.widget('circles', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({});
+      var host = el.querySelector('.rings');
+      spec.rings.forEach(function (ring) {
+        if (!st[ring.key]) st[ring.key] = [];
+        var d = document.createElement('div');
+        d.className = 'ring';
+        d.setAttribute('data-tone', ring.tone || 'middle');
+        d.innerHTML = '<div class="ring-head">' + esc(ring.label) + '</div>' +
+          (ring.hint ? '<div class="ring-hint">' + esc(ring.hint) + '</div>' : '') +
+          '<div class="ring-input"><input type="text" placeholder="' + esc(ring.placeholder || 'Имя или роль…') + '">' +
+          '<button type="button" class="btn btn-sm">Добавить</button></div>' +
+          '<div class="ring-items"></div>';
+        host.appendChild(d);
+
+        var input = d.querySelector('input');
+        var itemsHost = d.querySelector('.ring-items');
+
+        function render() {
+          itemsHost.innerHTML = '';
+          if (!st[ring.key].length) {
+            itemsHost.innerHTML = '<span class="ring-empty">пока пусто</span>';
+            return;
+          }
+          st[ring.key].forEach(function (name, i) {
+            var c = document.createElement('span');
+            c.className = 'ring-chip';
+            c.innerHTML = esc(name) + ' <button type="button" title="Убрать">✕</button>';
+            c.querySelector('button').addEventListener('click', function () {
+              st[ring.key].splice(i, 1); api.set(st); render();
+            });
+            itemsHost.appendChild(c);
+          });
+        }
+        function add() {
+          var v = input.value.trim();
+          if (!v) return;
+          st[ring.key].push(v); api.set(st); input.value = ''; render(); input.focus();
+        }
+        d.querySelector('button.btn').addEventListener('click', add);
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); add(); } });
+        render();
+      });
+      api.set(st);
+    },
+    exportLines: function (el, api) {
+      var spec = api.spec, st = api.get() || {}, out = [];
+      spec.rings.forEach(function (r) {
+        out.push('  ' + r.label + ': ' + ((st[r.key] || []).join(', ') || '—'));
+      });
+      return out;
+    }
+  });
+
+  /* --- 4.5 Карточки-разрешения -------------------------------------- */
+  WB.widget('permission_cards', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({ custom: [] });
+      if (!st.custom) st.custom = [];
+      var host = el.querySelector('.pcards');
+      var input = el.querySelector('[data-role="new-card"]');
+      var addBtn = el.querySelector('[data-act="add-card"]');
+
+      function render() {
+        host.innerHTML = '';
+        (spec.preset || []).forEach(function (t) {
+          var d = document.createElement('div');
+          d.className = 'pcard';
+          d.innerHTML = '<b>Разрешение</b><span>' + esc(t) + '</span>';
+          host.appendChild(d);
+        });
+        st.custom.forEach(function (t, i) {
+          var d = document.createElement('div');
+          d.className = 'pcard pcard-custom';
+          d.innerHTML = '<b>Моя формулировка</b><span>' + esc(t) + '</span>' +
+            '<button type="button" class="btn-del pcard-del" data-idx="' + i + '" title="Удалить">✕</button>';
+          host.appendChild(d);
+        });
+        [].slice.call(host.querySelectorAll('.pcard-del')).forEach(function (b) {
+          b.addEventListener('click', function () {
+            st.custom.splice(parseInt(b.getAttribute('data-idx'), 10), 1);
+            api.set(st); render();
+          });
+        });
+      }
+      function add() {
+        var v = input.value.trim();
+        if (!v) return;
+        st.custom.push(v); api.set(st); input.value = ''; render();
+      }
+      if (addBtn) addBtn.addEventListener('click', add);
+      if (input) input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); add(); } });
+      render();
+    },
+    exportLines: function (el, api) {
+      var st = api.get() || { custom: [] };
+      return (st.custom || []).map(function (t, i) { return '  ' + (i + 1) + '. ' + t; });
+    }
+  });
+
+  /* --- 4.6 Диалоговый тренажёр -------------------------------------- */
+  WB.widget('dialog_trainer', {
+    mount: function (el, api) {
+      var target = el.querySelector('[data-role="target-field"]');
+      [].slice.call(el.querySelectorAll('.dlg-opt')).forEach(function (b) {
+        b.addEventListener('click', function () {
+          var text = b.getAttribute('data-text') || b.textContent.trim();
+          if (!target) return;
+          target.value = (target.value.trim() ? target.value.trim().replace(/\s+$/, '') + '\n' : '') + '— ' + text;
+          target.dispatchEvent(new Event('input'));
+          target.focus();
+          target.scrollTop = target.scrollHeight;
+        });
+      });
+    },
+    exportLines: function () { return []; }
+  });
+
+  /* --- 4.7 Рейтинги зон (телесная карта и др.) ---------------------- */
+  WB.widget('rating_list', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var st = api.state({});
+      var host = el.querySelector('.rating-list');
+      spec.items.forEach(function (item) {
+        var row = document.createElement('div');
+        row.className = 'rating-row';
+        var h = '<span class="rating-label">' + esc(item.label) + '</span><span class="rating-btns">';
+        spec.levels.forEach(function (lv) {
+          h += '<button type="button" class="rating-btn" data-v="' + esc(lv.value) + '" data-tone="' + esc(lv.tone || 'acc') + '">' + esc(lv.label) + '</button>';
+        });
+        h += '</span>';
+        row.innerHTML = h;
+        host.appendChild(row);
+        function paint() {
+          [].slice.call(row.querySelectorAll('.rating-btn')).forEach(function (b) {
+            b.classList.toggle('on', String(st[item.id]) === b.getAttribute('data-v'));
+          });
+        }
+        [].slice.call(row.querySelectorAll('.rating-btn')).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var v = b.getAttribute('data-v');
+            st[item.id] = (String(st[item.id]) === v) ? null : v;
+            api.set(st); paint();
+          });
+        });
+        paint();
+      });
+    },
+    exportLines: function (el, api) {
+      var spec = api.spec, st = api.get() || {}, out = [];
+      spec.items.forEach(function (item) {
+        var lv = spec.levels.filter(function (l) { return String(l.value) === String(st[item.id]); })[0];
+        out.push('  ' + item.label + ' — ' + (lv ? lv.label : 'не отмечено'));
+      });
+      return out;
+    }
+  });
+
+  /* --- 4.8 Дыхание и таймер паузы ----------------------------------- */
+  WB.widget('breather', {
+    mount: function (el, api) {
+      var spec = api.spec;
+      var inhale = spec.inhale || 4, hold = spec.hold || 2, exhale = spec.exhale || 6;
+      var circle = el.querySelector('.breather-circle');
+      var text = el.querySelector('.breather-text');
+      var startBtn = el.querySelector('[data-act="start"]');
+      var pauseBtn = el.querySelector('[data-act="pause"]');
+      var resetBtn = el.querySelector('[data-act="reset"]');
+      var display = el.querySelector('.timer-display');
+      var totalMin = spec.countdown_minutes || 0;
+      var left = totalMin * 60, timer = null, breath = null;
+
+      function ui() {
+        if (!display) return;
+        var m = Math.floor(left / 60), s = left % 60;
+        display.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+      function stopBreath(msg) {
+        if (breath) clearTimeout(breath);
+        breath = null;
+        if (circle) circle.className = 'breather-circle';
+        if (text) text.textContent = msg || 'Дышите в своём ритме.';
+      }
+      function startBreath() {
+        // фазы идут своими таймерами: вдох / задержка / выдох — ровно столько секунд, сколько задано
+        var phases = [
+          { cls: 'inhale', secs: inhale, text: 'Вдох через нос… (' + inhale + ' сек)' },
+          { cls: 'hold', secs: hold, text: 'Мягкая задержка… (' + hold + ' сек)' },
+          { cls: 'exhale', secs: exhale, text: 'Длинный плавный выдох… (' + exhale + ' сек)' }
+        ].filter(function (p) { return p.secs > 0; });
+        var i = 0;
+        function cycle() {
+          var p = phases[i % phases.length];
+          circle.className = 'breather-circle ' + p.cls;
+          circle.style.transitionDuration = p.secs + 's, 2s, ' + p.secs + 's';
+          text.textContent = p.text;
+          i++;
+          breath = setTimeout(cycle, p.secs * 1000);
+        }
+        cycle();
+      }
+      ui();
+      if (startBtn) startBtn.addEventListener('click', function () {
+        if (timer) return;
+        startBtn.style.display = 'none';
+        if (pauseBtn) pauseBtn.style.display = 'inline-flex';
+        startBreath();
+        if (!totalMin) return;
+        timer = setInterval(function () {
+          if (left > 0) { left--; ui(); }
+          else {
+            clearInterval(timer); timer = null; stopBreath('🎉 Пауза выдержана. Острая волна спала.');
+            startBtn.style.display = 'inline-flex';
+            if (pauseBtn) pauseBtn.style.display = 'none';
+          }
+        }, 1000);
+      });
+      if (pauseBtn) pauseBtn.addEventListener('click', function () {
+        if (timer) { clearInterval(timer); timer = null; }
+        stopBreath('Пауза. Можно продолжить, когда будете готовы.');
+        pauseBtn.style.display = 'none';
+        if (startBtn) startBtn.style.display = 'inline-flex';
+      });
+      if (resetBtn) resetBtn.addEventListener('click', function () {
+        if (timer) { clearInterval(timer); timer = null; }
+        stopBreath('Нажмите «Начать», когда будете готовы.');
+        left = totalMin * 60; ui();
+        if (pauseBtn) pauseBtn.style.display = 'none';
+        if (startBtn) startBtn.style.display = 'inline-flex';
+      });
+    },
+    exportLines: function () { return []; }
+  });
+
+  /* Монтируем все виджеты на странице */
+  [].slice.call(document.querySelectorAll('[data-widget]')).forEach(function (el) {
+    var impl = WB.widgets[el.getAttribute('data-widget')];
+    if (!impl) { if (window.console) console.warn('Неизвестная механика:', el.getAttribute('data-widget')); return; }
+    try { impl.mount(el, apiFor(el)); } catch (err) { if (window.console) console.error(err); }
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 5. Экран «Моя карта»: прогресс по шагам                             */
+  /* ------------------------------------------------------------------ */
+  function stepStats(stepId) {
+    var root = document.getElementById(stepId);
+    if (!root) return { filled: 0, total: 0, checks: 0, checksTotal: 0 };
+    var fs = [].slice.call(root.querySelectorAll('.qf'));
+    var cs = [].slice.call(root.querySelectorAll('.chk-card input[type=checkbox]'));
+    return {
+      filled: fs.filter(function (f) { return String(f.value || '').trim(); }).length,
+      total: fs.length,
+      checks: cs.filter(function (c) { return c.checked; }).length,
+      checksTotal: cs.length
+    };
+  }
+
+  function renderMap() {
+    var host = document.getElementById('mapStats');
+    if (!host) return;
+    var html = '<h3 style="margin-top:0;">Прогресс по шагам</h3>', totF = 0, totA = 0;
+    STEPS.forEach(function (s) {
+      if (s.id === 'front' || s.id === 'map') return;
+      var st = stepStats(s.id);
+      totF += st.total; totA += st.filled;
+      var pct = st.total ? Math.round(st.filled / st.total * 100) : 0;
+      html += '<div class="map-row"><span><b>' + esc(s.name) + '</b>' +
+        '<span class="map-bar" style="display:block;"><i style="width:' + pct + '%"></i></span></span>' +
+        '<span>полей: ' + st.filled + '/' + st.total +
+        (st.checksTotal ? ' · отметок: ' + st.checks + '/' + st.checksTotal : '') + '</span></div>';
+    });
+    html += '<div style="margin-top:1rem;font-size:.98rem;">Всего заполнено полей: <b>' + totA + '</b> из ' + totF + '</div>';
+    host.innerHTML = html;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 6. Экспорт отчёта                                                   */
+  /* ------------------------------------------------------------------ */
+  function collectStep(stepId) {
+    var root = document.getElementById(stepId);
+    if (!root) return [];
+    var lines = [];
+    [].slice.call(root.querySelectorAll('[data-export]')).forEach(function (n) {
+      var kind = n.getAttribute('data-export');
+      var label = n.getAttribute('data-q') || '';
+      if (kind === 'section') {
+        lines.push('');
+        lines.push('  ' + label.toUpperCase());
+      } else if (kind === 'field') {
+        if (n.classList.contains('rng')) { lines.push('• ' + label + ': ' + n.value); }
+        else { lines.push('• ' + label + ':'); lines.push(String(n.value || '').trim() || '—'); }
+      } else if (kind === 'checklist') {
+        lines.push('• ' + label + ':');
+        [].slice.call(n.querySelectorAll('input[type=checkbox]')).forEach(function (c) {
+          var span = c.parentNode.querySelector('span');
+          var text = span ? span.textContent.replace(/\s+/g, ' ').trim() : c.id;
+          lines.push('   ' + (c.checked ? '[✓] ' : '[ ] ') + text);
+        });
+      } else if (kind === 'widget') {
+        var impl = WB.widgets[n.getAttribute('data-widget')];
+        if (!impl || !impl.exportLines) return;
+        var sub = impl.exportLines(n, apiFor(n));
+        if (sub && sub.length) { lines.push('• ' + label + ':'); lines = lines.concat(sub); }
+      }
+    });
+    return lines;
+  }
+
+  function doExport() {
+    var lines = [
+      SPEC.exportTitle || 'ОТЧЁТ ПО РАБОЧЕЙ ТЕТРАДИ',
+      'Дата экспорта: ' + new Date().toLocaleString('ru-RU'),
+      'Устройство/браузер: ' + navigator.userAgent,
+      '====================================================================',
+      ''
+    ];
+    STEPS.forEach(function (s) {
+      var body = collectStep(s.id);
+      if (!body.length && s.id !== 'front') return;
+      lines.push('─── ' + (s.exportName || s.name).toUpperCase() + ' ───');
+      lines = lines.concat(body);
+      lines.push('');
+    });
+    var blob = new Blob(['\ufeff' + lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = SPEC.exportFilename || 'otchet.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
+  }
+
+  ['btnExport', 'btnExportTop'].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', doExport);
+  });
+  var pb = document.getElementById('btnPrint');
+  if (pb) pb.addEventListener('click', function () { window.print(); });
+
+  var clr = document.getElementById('btnClear');
+  if (clr) clr.addEventListener('click', function () {
+    if (!confirm('Стереть ВСЕ записи этой тетради на данном устройстве? Действие необратимо.')) return;
+    store = { __w: {} };
+    saveAll();
+    fields.forEach(function (f) { f.value = ''; });
+    checks.forEach(function (c) { c.checked = false; });
+    ranges.forEach(function (r) {
+      r.value = r.min || 0;
+      var out = document.querySelector('output[data-for="' + r.id + '"]');
+      if (out) out.textContent = r.value;
+    });
+    location.reload();
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 7. Печать: раскрываем блоки глубины                                 */
+  /* ------------------------------------------------------------------ */
+  var openedByPrint = [];
+  window.addEventListener('beforeprint', function () {
+    openedByPrint = [];
+    [].slice.call(document.querySelectorAll('details.deeper')).forEach(function (d) {
+      if (!d.open) { d.open = true; openedByPrint.push(d); }
+    });
+    renderMap();
+  });
+  window.addEventListener('afterprint', function () {
+    openedByPrint.forEach(function (d) { d.open = false; });
+    openedByPrint = [];
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 8. Старт                                                            */
+  /* ------------------------------------------------------------------ */
+  buildNavs();
+  renderMap();
+  updateCounter();
+  show(location.hash.slice(1) || ORDER[0]);
+
+  window.WB = WB;
+})();
+
+</script>
+</body>
+</html>

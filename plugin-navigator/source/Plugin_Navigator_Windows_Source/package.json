@@ -1,0 +1,13 @@
+{
+  "name": "plugin-navigator-windows-build",
+  "private": true,
+  "version": "2.7.0",
+  "type": "module",
+  "description": "Reproducible Windows packaging tools for Plugin Navigator",
+  "devDependencies": {
+    "@electron/asar": "4.2.1",
+    "@mlc-ai/web-llm": "0.2.84",
+    "postject": "1.0.0-alpha.6",
+    "resedit": "3.0.2"
+  }
+}
