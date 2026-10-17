@@ -16,11 +16,11 @@ assert first == second
 
 soup = BeautifulSoup(first.decode("utf-8"), "html.parser")
 assert soup.html.get("lang") == "ru"
-assert "Plugin Navigator 2.7.6" in soup.title.string
+assert "Plugin Navigator 2.8.0" in soup.title.string
 assert not soup.select("script[src], link[rel=stylesheet]")
-assert len(soup.select("article h2")) == 23
-assert len(soup.select("nav a")) == 23
-assert len({h.get("id") for h in soup.select("article h2")}) == 23
+assert len(soup.select("article h2")) == 24
+assert len(soup.select("nav a")) == 24
+assert len({h.get("id") for h in soup.select("article h2")}) == 24
 assert all(soup.select_one(a.get("href")) for a in soup.select("nav a"))
 text = soup.get_text(" ", strip=True)
 for token in (
@@ -35,6 +35,7 @@ for token in (
     "ИИ-панель на всех экранах",
     "Мои плагины: вопросы «у меня есть»",
     "Импорт списка",
+    "Сканер установленных плагинов",
     "Частые проблемы",
 ):
     assert token in text
@@ -44,7 +45,7 @@ assert "```" not in first.decode("utf-8")
 assert len(first) < 100_000
 print({
     "status": "PASS",
-    "sections": 23,
+    "sections": 24,
     "html_bytes": len(first),
     "sha256": hashlib.sha256(first).hexdigest(),
     "source_lines": len(SOURCE.read_text(encoding="utf-8").splitlines()),
