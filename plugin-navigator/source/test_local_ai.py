@@ -52,12 +52,12 @@ assert not list(ROOT.glob("**/params_shard_*.bin"))
 assert "≈1,1 ГБ" in HTML
 assert "Первая загрузка требует интернет" in HTML
 assert "после этого ответы формируются локально" in HTML.lower()
-assert "slice(0,5800)" in HTML and "max_tokens:600" in HTML
+assert "slice(0,6800)" in HTML and "max_tokens:800" in HTML
 
 # Ollama connector (2.7.1): второй движок рядом с WebLLM. Использует тот же
 # строгий retrieval-контекст и system prompt; стриминг через локальный /api/chat.
 OLLAMA_REPORT = (
-    ROOT.parent / "reports" / "Plugin_Navigator_v2.7.2_Local_AI_Report.md"
+    ROOT.parent / "reports" / "Plugin_Navigator_v2.7.3_Local_AI_Report.md"
 ).read_text(encoding="utf-8")
 for marker in (
     "aiOllamaPing",
@@ -71,22 +71,31 @@ for marker in (
     "pn-ai-backend",
     "aiBackend",
     "OLLAMA_ORIGINS",
-    "num_predict:600",
+    "num_predict:800",
+    "num_ctx:8192",
     "/api/pull",
     "aiOllamaPull",
     "data-ai-pull",
     "aiOllamaPullBtn",
     "qwen3.5:2b-q4_K_M",
+    # Actions (2.7.3): chain proposals require explicit user confirmation.
+    "aiParseAction",
+    "aiApplyChain",
+    "apply_chain",
+    "data-ai-apply",
+    "ТРЕБУЕТ ПОДТВЕРЖДЕНИЯ",
+    "ДОСТУПНЫЕ ЭТАПЫ",
+    "Изменения цепочки применяются только после вашего подтверждения",
 ):
     assert marker in SOURCE and marker in HTML, marker
 assert "Движок локального ИИ" in HTML
 assert "Ollama на этом компьютере" in HTML
 assert "Строгая защита фактов" in HTML
-assert "Ollama" in OLLAMA_REPORT and "2.7.1" in OLLAMA_REPORT
+assert "Ollama" in OLLAMA_REPORT and "2.7.3" in OLLAMA_REPORT
 
 print(
     json.dumps(
-        {"status": "PASS", "version": "2.7.2", "model": MODEL_ID, "ollama": True},
+        {"status": "PASS", "version": "2.7.3", "model": MODEL_ID, "ollama": True},
         ensure_ascii=False,
     )
 )
