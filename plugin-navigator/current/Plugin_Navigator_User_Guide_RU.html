@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Plugin Navigator 2.7.1 — инструкция пользователя</title>
+<style>
+:root{--bg:#0c111b;--panel:#121a28;--panel2:#172235;--line:#26344a;--text:#eef4ff;--muted:#aebdd1;--blue:#5b8cff;--cyan:#32c6d4;--green:#59d68b;--yellow:#f7c65c;--shadow:0 18px 60px rgba(0,0,0,.32)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,"Segoe UI",Arial,sans-serif}button,a{font:inherit}a{color:#9ec0ff}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:#0f1724;border-right:1px solid var(--line);padding:22px 16px}.brand{padding:8px 10px 18px;border-bottom:1px solid var(--line);margin-bottom:12px}.brand b{display:block;font-size:18px}.brand small{color:var(--muted)}nav{display:grid;gap:3px}nav a{display:grid;grid-template-columns:28px 1fr;gap:7px;align-items:start;color:var(--muted);text-decoration:none;padding:7px 9px;border-radius:9px;font-size:13px;line-height:1.35}nav a span{color:#6f829e}nav a:hover,nav a.active{background:var(--panel2);color:var(--text)}main{min-width:0}.topbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 22px;background:rgba(12,17,27,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topbar b{font-size:14px}.tools{display:flex;gap:8px}button,.button{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:9px;text-decoration:none;cursor:pointer}button:hover,.button:hover{border-color:#4a607e}#menu{display:none}article{width:min(920px,100%);margin:auto;padding:34px 38px 80px}h1{font-size:38px;line-height:1.12;margin:0 0 24px;padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#17233a,#121a28 55%,#10222a);box-shadow:var(--shadow)}h2{font-size:25px;line-height:1.25;margin:52px 0 17px;padding-top:8px;scroll-margin-top:76px}p,li{color:#d2dbea}strong{color:#fff}ul,ol{padding-left:24px}li{margin:6px 0}hr{border:0;border-top:1px solid var(--line);margin:36px 0}pre{overflow:auto;padding:14px 16px;background:#08101b;border:1px solid var(--line);border-radius:11px;color:#d9e9ff}code{font-family:"Cascadia Code",Consolas,monospace;background:#101b2c;border:1px solid #263a56;padding:2px 6px;border-radius:6px;color:#cbe0ff}pre code{background:none;border:0;padding:0}blockquote{margin:20px 0;padding:15px 18px;border-left:4px solid var(--cyan);background:#101a29;border-radius:0 11px 11px 0;color:#e6f7ff;font-weight:650}.notice{padding:13px 15px;border:1px solid rgba(89,214,139,.3);background:rgba(89,214,139,.07);border-radius:11px;color:#a8f0c2;margin:0 0 22px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:fixed;left:-330px;z-index:20;width:310px;transition:.2s;box-shadow:var(--shadow)}aside.open{left:0}#menu{display:block}article{padding:24px 18px 70px}h1{font-size:29px;padding:20px}h2{font-size:22px}.topbar{padding:10px 12px}}
+@media print{aside,.topbar{display:none}.layout{display:block}article{width:100%;padding:0}body{background:#fff;color:#111}h1{box-shadow:none}p,li,strong,blockquote{color:#111}pre,code{color:#111;background:#f4f4f4;border-color:#bbb}h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside id="sidebar"><div class="brand"><b>Plugin Navigator 2.7.1</b><small>Инструкция пользователя</small></div><nav><a href="#section-1"><span>1</span>Что это за программа</a>
+<a href="#section-2"><span>2</span>Как запустить программу</a>
+<a href="#section-3"><span>3</span>Простой и экспертный режимы</a>
+<a href="#section-4"><span>4</span>Рекомендуемый порядок работы</a>
+<a href="#section-5"><span>5</span>Раздел «Сессия — до плагинов»</a>
+<a href="#section-6"><span>6</span>Как подобрать готовую цепочку</a>
+<a href="#section-7"><span>7</span>Что означают цветные статусы этапов</a>
+<a href="#section-8"><span>8</span>Каталог плагинов</a>
+<a href="#section-9"><span>9</span>Карточка плагина</a>
+<a href="#section-10"><span>10</span>Уровень точности Controls</a>
+<a href="#section-11"><span>11</span>Конструктор цепочек</a>
+<a href="#section-12"><span>12</span>Помощник порядка плагинов</a>
+<a href="#section-13"><span>13</span>Маршруты в конструкторе</a>
+<a href="#section-14"><span>14</span>Как использовать Melodyne</a>
+<a href="#section-15"><span>15</span>Аналоги</a>
+<a href="#section-16"><span>16</span>Сравнение плагинов</a>
+<a href="#section-17"><span>17</span>Избранное и личные заметки</a>
+<a href="#section-18"><span>18</span>Сохранённые цепочки</a>
+<a href="#section-19"><span>19</span>Резервная копия данных</a>
+<a href="#section-20"><span>20</span>Локальный ИИ</a>
+<a href="#section-21"><span>21</span>Что программа не делает</a>
+<a href="#section-22"><span>22</span>Частые проблемы</a>
+<a href="#section-23"><span>23</span>Короткая памятка</a></nav></aside>
+<main>
+<div class="topbar"><div class="tools"><button id="menu" aria-label="Открыть оглавление">☰</button><b>Инструкция пользователя</b></div><div class="tools"><a class="button" href="#top">В начало</a><button onclick="window.print()">Печать / PDF</button></div></div>
+<article><div class="notice">Автономный документ: интернет для чтения не требуется.</div><h1 id="top">Plugin Navigator 2.7.1 — инструкция пользователя</h1>
+<h2 id="section-1">1. Что это за программа</h2>
+<p>Plugin Navigator — автономный русскоязычный справочник по аудиоплагинам и помощник по построению цепочек обработки.</p>
+<p>В программе есть:</p>
+<ul>
+<li>365 плагинов;</li>
+<li>33 типа источников;</li>
+<li>99 готовых цепочек;</li>
+<li>простой и экспертный режимы;</li>
+<li>подробные карточки плагинов;</li>
+<li>стартовые настройки;</li>
+<li>конструктор собственных цепочек;</li>
+<li>избранное, заметки и резервные копии;</li>
+<li>опциональный локальный ИИ Qwen3.5 2B в Windows-версии.</li>
+</ul>
+<p><strong>Важно:</strong> Plugin Navigator не обрабатывает звук и не заменяет DAW. Он объясняет, какой плагин выбрать, куда его поставить, с чего начать настройку и что слушать.</p>
+<hr>
+<h2 id="section-2">2. Как запустить программу</h2>
+<p>### HTML-версия</p>
+<ol>
+<li>Распакуйте общий ZIP.</li>
+<li>Найдите файл:</li>
+</ol>
+<pre><code>Plugin_Navigator_Full_v2.7.1.html</code></pre>
+<ol>
+<li>Дважды нажмите на него.</li>
+<li>Файл откроется в Chrome, Edge, Firefox или другом современном браузере.</li>
+</ol>
+<p>Установка и интернет для основной работы не нужны.</p>
+<p>Если Windows сохранил файл как <code>.txt</code>, включите отображение расширений файлов и переименуйте:</p>
+<pre><code>Plugin_Navigator_Full_v2.7.1.txt</code></pre>
+<p>в:</p>
+<pre><code>Plugin_Navigator_Full_v2.7.1.html</code></pre>
+<p>### Windows-версия</p>
+<p>Используйте только исправленную версию <strong>2.7.1 или новее</strong>.</p>
+<ol>
+<li>Распакуйте <code>Plugin_Navigator_Full_v2.7.1_Windows_x64.zip</code>.</li>
+<li>Запустите <code>Plugin_Navigator_Full_v2.7.1_Windows_x64.exe</code>.</li>
+<li>Если Windows SmartScreen покажет предупреждение, нажмите:</li>
+</ol>
+<pre><code>Подробнее → Выполнить в любом случае</code></pre>
+<p>Коммерческой цифровой подписи у EXE нет. Для отображения окна нужен Microsoft Edge WebView2 Runtime, который обычно уже установлен в Windows 10/11.</p>
+<p>Версию 2.5.6 использовать не нужно: её EXE мог открывать стандартную страницу Neutralinojs.</p>
+<hr>
+<h2 id="section-3">3. Простой и экспертный режимы</h2>
+<p>В верхней части программы находится кнопка:</p>
+<pre><code>Простой / Экспертный</code></pre>
+<p>### Простой режим</p>
+<p>Подходит, если нужно быстро:</p>
+<ul>
+<li>выбрать источник;</li>
+<li>получить готовую цепочку;</li>
+<li>узнать назначение плагина;</li>
+<li>посмотреть безопасные стартовые настройки;</li>
+<li>заменить плагин аналогом.</li>
+</ul>
+<p>### Экспертный режим</p>
+<p>Открывает дополнительные возможности:</p>
+<ul>
+<li>полный каталог и расширенные фильтры;</li>
+<li>смысловые семейства;</li>
+<li>все готовые цепочки;</li>
+<li>подробные Controls;</li>
+<li>сравнение плагинов;</li>
+<li>ручную маршрутизацию;</li>
+<li>Sidechain;</li>
+<li>экспорт и импорт данных;</li>
+<li>локальный ИИ для объяснения каталога и текущей цепочки.</li>
+</ul>
+<p>Переключение режима не удаляет текущую цепочку.</p>
+<hr>
+<h2 id="section-4">4. Рекомендуемый порядок работы</h2>
+<p>Для первого знакомства используйте такой маршрут:</p>
+<ol>
+<li>Откройте <strong>Сессия — до плагинов</strong>.</li>
+<li>Проверьте подготовку проекта.</li>
+<li>Откройте <strong>Подобрать цепочку</strong>.</li>
+<li>Выберите группу источников.</li>
+<li>Выберите конкретный источник.</li>
+<li>Выберите желаемый результат.</li>
+<li>Посмотрите предложенную цепочку.</li>
+<li>Удалите ненужные условные этапы.</li>
+<li>При необходимости замените плагины аналогами.</li>
+<li>При желании попросите локальный ИИ объяснить цепочку.</li>
+<li>Перенесите порядок и стартовые настройки в свою DAW.</li>
+</ol>
+<p>Не включайте все этапы автоматически. Каждый плагин должен решать слышимую задачу.</p>
+<hr>
+<h2 id="section-5">5. Раздел «Сессия — до плагинов»</h2>
+<p>Этот раздел помогает подготовить проект до обработки.</p>
+<p>Проверяются:</p>
+<ul>
+<li>порядок и названия дорожек;</li>
+<li>Clip Gain и рабочий уровень;</li>
+<li>главный элемент песни;</li>
+<li>монтаж и лишние шумы;</li>
+<li>polarity и фаза многомикрофонных источников;</li>
+<li>баланс фейдеров и панорама;</li>
+<li>headroom;</li>
+<li>референсы;</li>
+<li>mono-совместимость.</li>
+</ul>
+<p>### Обозначения</p>
+<ul>
+<li><strong>БАЗА</strong> — желательно выполнить до перехода к обработке;</li>
+<li><strong>УСЛОВНЫЙ</strong> — нужен не в каждом проекте;</li>
+<li><strong>СДЕЛАНО</strong> — пункт отмечен;</li>
+<li><strong>НЕ НУЖНО</strong> — пункт осознанно пропущен.</li>
+</ul>
+<p>Чеклист сохраняется локально.</p>
+<hr>
+<h2 id="section-6">6. Как подобрать готовую цепочку</h2>
+<p>Откройте <strong>Подобрать цепочку</strong>.</p>
+<p>### Шаг 1. Выберите группу</p>
+<p>Например:</p>
+<ul>
+<li>вокал и речь;</li>
+<li>барабаны;</li>
+<li>бас;</li>
+<li>гитары;</li>
+<li>клавишные;</li>
+<li>оркестровые инструменты;</li>
+<li>группы, шины и мастеринг.</li>
+</ul>
+<p>### Шаг 2. Выберите источник</p>
+<p>Например:</p>
+<ul>
+<li>Lead Vocal;</li>
+<li>Backing Vocals;</li>
+<li>Бочка / Kick;</li>
+<li>Bass Guitar;</li>
+<li>Electric Guitar;</li>
+<li>Mix Bus / Stereo Bus.</li>
+</ul>
+<p>### Шаг 3. Выберите результат</p>
+<p>Для каждого источника подготовлено три варианта. Это стартовые конструкции, а не обязательные рецепты.</p>
+<p>### Шаг 4. Проверьте цепочку</p>
+<p>Для каждого этапа показано:</p>
+<ul>
+<li>что он делает;</li>
+<li>когда его включать;</li>
+<li>когда пропускать;</li>
+<li>с чего начать настройку;</li>
+<li>что слушать;</li>
+<li>где он находится: Insert, Send или Monitoring.</li>
+</ul>
+<p>Кнопка <strong>Использовать цепь</strong> загружает её в простой конструктор. Кнопка <strong>Изменить вручную</strong> открывает экспертный редактор.</p>
+<hr>
+<h2 id="section-7">7. Что означают цветные статусы этапов</h2>
+<p>### БАЗОВЫЙ СТАРТ — НЕ ОБЯЗАТЕЛЬНО</p>
+<p>Обычная начальная стадия, но она всё равно должна улучшать материал.</p>
+<p>### ЕСЛИ ТРЕБУЕТСЯ</p>
+<p>Этап нужен только при конкретной проблеме: шум, сибилянты, фаза, резкость и т. п.</p>
+<p>### CREATIVE — ПРОСЛУШАТЬ</p>
+<p>Творческий эффект. Его нужно оценивать в контексте, часто на отдельной копии или Send.</p>
+<p>### MONITORING — НЕ EXPORT</p>
+<p>Служебная проверка: LUFS, True Peak, mono, референс или контроль перевода. Такой плагин не должен попадать в итоговый экспорт.</p>
+<hr>
+<h2 id="section-8">8. Каталог плагинов</h2>
+<p>Откройте <strong>Каталог</strong> или <strong>Плагины</strong>.</p>
+<p>Можно использовать:</p>
+<ul>
+<li>строку поиска;</li>
+<li>фильтр источника;</li>
+<li>фильтр категории;</li>
+<li>фильтр производителя;</li>
+<li>в экспертном режиме — семейство и приоритет.</li>
+</ul>
+<p>Поиск видит:</p>
+<ul>
+<li>названия;</li>
+<li>производителей;</li>
+<li>русские описания;</li>
+<li>Controls;</li>
+<li>стартовые настройки;</li>
+<li>аналоги.</li>
+</ul>
+<p>Горячая клавиша для поиска:</p>
+<pre><code>Ctrl + K</code></pre>
+<p>В простом режиме сначала показываются 12 результатов. Кнопка <strong>Показать остальные</strong> открывает весь список.</p>
+<hr>
+<h2 id="section-9">9. Карточка плагина</h2>
+<p>Нажмите на карточку плагина.</p>
+<p>### В простом режиме</p>
+<p>Доступны вкладки:</p>
+<ul>
+<li><strong>Быстро</strong> — что это и зачем;</li>
+<li><strong>Настройки</strong> — стартовые значения;</li>
+<li><strong>Подробнее</strong> — расширенное объяснение.</li>
+</ul>
+<p>### В экспертном режиме</p>
+<p>Доступны вкладки:</p>
+<ul>
+<li><strong>Быстро</strong>;</li>
+<li><strong>Подробно</strong>;</li>
+<li><strong>Controls</strong>;</li>
+<li><strong>Настройки</strong>;</li>
+<li><strong>Цепочки</strong>;</li>
+<li><strong>Аналоги</strong>.</li>
+</ul>
+<p>Внизу карточки можно:</p>
+<ul>
+<li>сохранить личную заметку;</li>
+<li>добавить плагин в избранное;</li>
+<li>добавить его к сравнению;</li>
+<li>добавить его в текущую цепочку;</li>
+<li>открыть официальную страницу или Help Center.</li>
+</ul>
+<p>Официальные ссылки требуют интернета. Остальная программа работает офлайн.</p>
+<hr>
+<h2 id="section-10">10. Уровень точности Controls</h2>
+<p>В карточках встречаются три уровня данных.</p>
+<p>### Product-specific curated map</p>
+<p>Controls привязаны к известной структуре конкретного продукта. Всё равно учитывайте версию установленного плагина.</p>
+<p>### Product-informed curated map</p>
+<p>Карта подготовлена с учётом назначения продукта и практического применения, но не является дословной копией GUI.</p>
+<p>### Family-level control model</p>
+<p>Это общая безопасная модель семейства. Названия и наличие ручек могут отличаться от установленного плагина.</p>
+<p>Если карта не product-specific, обязательно сверяйте названия с реальным окном плагина.</p>
+<hr>
+<h2 id="section-11">11. Конструктор цепочек</h2>
+<p>### Простой конструктор</p>
+<p>Показывает готовую цепочку по отдельным маршрутам. Можно:</p>
+<ul>
+<li>открыть карточку плагина;</li>
+<li>выбрать аналог;</li>
+<li>удалить этап;</li>
+<li>сохранить цепочку;</li>
+<li>перейти в экспертный редактор.</li>
+</ul>
+<p>### Экспертный конструктор</p>
+<p>Основной порядок добавления:</p>
+<pre><code>Источник → Этап обработки → Плагин</code></pre>
+<p>Можно:</p>
+<ul>
+<li>загрузить готовый пресет;</li>
+<li>добавить несколько экземпляров одного плагина;</li>
+<li>заменить плагин;</li>
+<li>изменить этап;</li>
+<li>изменить маршрут;</li>
+<li>добавить Sidechain;</li>
+<li>двигать этапы стрелками;</li>
+<li>копировать цепочку как текст;</li>
+<li>экспортировать и импортировать данные;</li>
+<li>собрать базовую цепочку автоматически.</li>
+</ul>
+<p>Перед полной заменой или очисткой цепочки программа спрашивает подтверждение.</p>
+<hr>
+<h2 id="section-12">12. Помощник порядка плагинов</h2>
+<p>Начиная с версии 2.6.0 доступен детерминированный помощник, который работает без ИИ и интернета.</p>
+<p>### Расставить автоматически</p>
+<p>Кнопка:</p>
+<pre><code>Расставить автоматически</code></pre>
+<ul>
+<li>переносит инструменты в маршрут Source;</li>
+<li>ставит Melodyne и другую pitch/timing correction в начало inserts;</li>
+<li>располагает cleanup, phase и Gate до основной dynamics;</li>
+<li>ставит Amp/Cab до большинства post-EQ и compressor stages;</li>
+<li>переносит Delay, Reverb и типичную modulation в Sends;</li>
+<li>оставляет parallel compression/saturation на Parallel return;</li>
+<li>ставит Clipper и Limiter ближе к концу;</li>
+<li>переносит meters и references в Monitoring;</li>
+<li>не удаляет плагины и не меняет их Starting settings.</li>
+</ul>
+<p>Перед применением программа сохраняет все экземпляры и меняет только routing и порядок.</p>
+<p>### Объяснить порядок</p>
+<p>Кнопка:</p>
+<pre><code>Почему такой порядок</code></pre>
+<p>показывает для каждого этапа:</p>
+<ul>
+<li>его номер;</li>
+<li>текущий маршрут;</li>
+<li>роль в цепочке;</li>
+<li>почему он обычно находится здесь;</li>
+<li>насколько правило является гибким.</li>
+</ul>
+<p>### Типы сообщений</p>
+<ul>
+<li><strong>Рекомендуемый</strong> — безопасный обычный порядок;</li>
+<li><strong>Гибкий</strong> — место зависит от задачи и прослушивания;</li>
+<li><strong>Творческий</strong> — допустимое осознанное исключение;</li>
+<li><strong>Предупреждение</strong> — порядок стоит проверить;</li>
+<li><strong>Техническая ошибка</strong> — вероятно неверный routing или явно поздняя коррекция.</li>
+</ul>
+<p>Примеры:</p>
+<pre><code>Melodyne после Compressor
+→ техническая ошибка: обычно Melodyne нужен первым insert.</code></pre>
+<pre><code>Saturation перед Compressor
+→ творческий вариант: compressor реагирует на добавленные гармоники.</code></pre>
+<pre><code>De-esser до Compressor
+→ допустимо на очень резком исходнике; после compressor может понадобиться второй лёгкий этап.</code></pre>
+<pre><code>Reverb в Main Inserts
+→ рекомендуется отдельный post-fader Send со 100% Wet return.</code></pre>
+<p>Помощник не объявляет творческие решения запрещёнными. После автоматической расстановки всегда сравнивайте результат при одинаковой громкости.</p>
+<hr>
+<h2 id="section-13">13. Маршруты в конструкторе</h2>
+<p>### Источник / Instrument</p>
+<p>Виртуальный инструмент или генератор звука.</p>
+<p>### Основные Inserts</p>
+<p>Последовательная обработка самого сигнала:</p>
+<pre><code>Melodyne → EQ → Compression → De-essing</code></pre>
+<p>### Sends / Returns</p>
+<p>Параллельные эффекты:</p>
+<ul>
+<li>Delay;</li>
+<li>Reverb;</li>
+<li>modulation;</li>
+<li>parallel compression;</li>
+<li>creative effects.</li>
+</ul>
+<p>Для Delay и Reverb return обычно работает на 100% Wet.</p>
+<p>### Monitoring</p>
+<p>Служебные инструменты контроля. Не экспортировать вместе с аудио.</p>
+<hr>
+<h2 id="section-14">14. Как использовать Melodyne</h2>
+<p>Melodyne находится в источниках <strong>Lead Vocal</strong> и <strong>Backing Vocals</strong>.</p>
+<p>Он помечен:</p>
+<pre><code>ЕСЛИ НУЖЕН TUNING</code></pre>
+<p>Рекомендуемый порядок:</p>
+<ol>
+<li>Сделайте comping и выберите лучшие дубли.</li>
+<li>Выполните Clip Gain и монтаж.</li>
+<li>Откройте Melodyne через ARA.</li>
+<li>Если ARA нет, поставьте Melodyne первым Insert и выполните Transfer.</li>
+<li>Проверьте Algorithm и Note Assignment.</li>
+<li>Исправляйте только слышимые ошибки pitch и timing.</li>
+<li>После Melodyne используйте EQ, compression и de-essing.</li>
+<li>Delay и Reverb оставьте на отдельных Sends.</li>
+</ol>
+<p>Не выравнивайте автоматически каждую ноту на 100%. Сохраняйте vibrato, transitions и естественную фразировку.</p>
+<p>Набор инструментов Melodyne зависит от edition: Essential, Assistant, Editor или Studio.</p>
+<hr>
+<h2 id="section-15">15. Аналоги</h2>
+<p>В готовой или собственной цепочке можно открыть поле <strong>Аналог</strong>.</p>
+<p>Программа разделяет варианты на:</p>
+<ul>
+<li><strong>То же семейство</strong> — максимально близкая задача;</li>
+<li><strong>Тот же этап</strong> — другой способ выполнить этот этап.</li>
+</ul>
+<p>После замены программа показывает, чем новый вариант отличается. Стартовые настройки старого плагина сбрасываются, потому что они могут не подходить новому.</p>
+<hr>
+<h2 id="section-16">16. Сравнение плагинов</h2>
+<p>В экспертном режиме откройте карточку и нажмите <strong>Сравнить</strong>.</p>
+<p>Можно выбрать до четырёх плагинов. Сравниваются:</p>
+<ul>
+<li>производитель;</li>
+<li>категория;</li>
+<li>семейство;</li>
+<li>характер;</li>
+<li>приоритет;</li>
+<li>область применения;</li>
+<li>место в цепочке;</li>
+<li>Routing;</li>
+<li>уровень точности Controls;</li>
+<li>подробное описание.</li>
+</ul>
+<p>Сравнение помогает выбрать подходящий инструмент, но не заменяет прослушивание в DAW.</p>
+<hr>
+<h2 id="section-17">17. Избранное и личные заметки</h2>
+<p>### Избранное</p>
+<p>Нажмите звезду на карточке. Плагин появится в разделе <strong>Избранное</strong>.</p>
+<p>### Личная заметка</p>
+<p>Внизу карточки можно записать:</p>
+<ul>
+<li>любимые настройки;</li>
+<li>удачные цепочки;</li>
+<li>особенности конкретной версии;</li>
+<li>замечания по проектам.</li>
+</ul>
+<p>Нажмите <strong>Сохранить</strong>. Информация хранится только на текущем устройстве.</p>
+<hr>
+<h2 id="section-18">18. Сохранённые цепочки</h2>
+<p>В конструкторе нажмите <strong>Сохранить</strong> и задайте название.</p>
+<p>В разделе <strong>Мои цепочки</strong> доступны действия:</p>
+<ul>
+<li>загрузить;</li>
+<li>переименовать;</li>
+<li>создать дубликат;</li>
+<li>экспортировать одну цепочку;</li>
+<li>удалить.</li>
+</ul>
+<p>Перед удалением программа запрашивает подтверждение.</p>
+<hr>
+<h2 id="section-19">19. Резервная копия данных</h2>
+<p>Пользовательские данные хранятся локально. Они не отправляются в облако.</p>
+<p>Резервная копия включает:</p>
+<ul>
+<li>избранное;</li>
+<li>заметки;</li>
+<li>текущую цепочку;</li>
+<li>сохранённые цепочки;</li>
+<li>выбранный режим;</li>
+<li>чеклист сессии.</li>
+</ul>
+<p>На телефоне кнопки находятся в разделе <strong>Ещё</strong>.</p>
+<p>На компьютере переключитесь в <strong>Экспертный режим</strong>, откройте <strong>Конструктор</strong> и используйте:</p>
+<ul>
+<li><strong>Экспорт</strong> — сохранить резервную копию;</li>
+<li><strong>Импорт</strong> — восстановить данные.</li>
+</ul>
+<p>Файл имеет формат JSON. Не редактируйте его вручную без необходимости.</p>
+<p>HTML-версия и Windows-версия хранят данные отдельно. Чтобы перенести данные между ними, используйте экспорт и импорт.</p>
+<hr>
+<h2 id="section-20">20. Локальный ИИ</h2>
+<p>Раздел <strong>Локальный ИИ</strong> доступен в Windows-версии Plugin Navigator 2.7.1.</p>
+<p>Доступны два движка:</p>
+<ul>
+<li><strong>Встроенный Qwen3.5 2B Q4</strong> — работает через встроенный WebLLM, без облачного сервера, подписки и API-ключа;</li>
+<li><strong>Ollama на этом компьютере</strong> — если у вас установлен Ollama, программа использует любую модель из его библиотеки.</li>
+</ul>
+<p>Оба движка получают одинаковый строгий контекст: текущая цепочка, результат Помощника порядка и несколько подходящих карточек локальной базы.</p>
+<p>### Первый движок: встроенная модель (первая установка)</p>
+<ol>
+<li>Откройте <strong>Локальный ИИ</strong>.</li>
+<li>Нажмите <strong>Скачать и запустить</strong>.</li>
+<li>Не закрывайте программу до окончания загрузки.</li>
+<li>Дождитесь статуса <strong>Локальный ИИ готов</strong>.</li>
+</ol>
+<p>Для первой загрузки нужен интернет и около 1,5 ГБ свободного места. Файлы модели занимают примерно 1,1 ГБ. После загрузки они хранятся в локальном WebView2 cache, и модель может отвечать офлайн.</p>
+<p>### Что можно спросить</p>
+<ul>
+<li>объяснить текущую цепочку;</li>
+<li>проверить порядок и routing;</li>
+<li>назвать необязательные этапы;</li>
+<li>объяснить оригинальные English Control names;</li>
+<li>предложить безопасные Starting Settings;</li>
+<li>подобрать варианты из локального каталога.</li>
+</ul>
+<p>Программа передаёт модели только текущую цепочку, результат строгой проверки порядка и несколько подходящих карточек из локальной базы. Весь каталог целиком в один запрос не отправляется.</p>
+<p>### Что важнее ответа ИИ</p>
+<p><strong>Помощник порядка плагинов</strong> использует строгие детерминированные правила. Его ошибки и предупреждения считаются главными. ИИ может только объяснить результат, но не отменить его.</p>
+<p>Ответ модели всегда является практической рекомендацией. Модель:</p>
+<ul>
+<li>не слышит ваше аудио;</li>
+<li>не видит Cubase или другую DAW;</li>
+<li>не управляет плагинами;</li>
+<li>может ошибиться;</li>
+<li>не должна придумывать Controls или выдавать Family-level данные за Product-specific.</li>
+</ul>
+<p>Проверяйте результат на слух, используйте level-matched Bypass и сверяйте точные значения с GUI/manual установленной версии.</p>
+<p>### Второй движок: Ollama</p>
+<ol>
+<li>Установите Ollama (ollama.com) и запустите его — приложение Ollama или команда <code>ollama serve</code>.</li>
+<li>Скачайте модель, например: <code>ollama pull qwen3.5:2b</code>.</li>
+<li>В разделе <strong>Локальный ИИ</strong> переведите «Движок локального ИИ» в положение «Ollama на этом компьютере».</li>
+<li>Нажмите <strong>Проверить соединение</strong> и выберите модель из списка установленных.</li>
+</ol>
+<p>Веса моделей Ollama скачивает сама Ollama, а не Plugin Navigator. Рекомендации: <code>qwen3.5:2b</code> — быстрые ответы даже на слабых видеокартах; <code>qwen3.5:4b</code> — точнее и подробнее, но требует больше памяти. Если соединение блокируется, запустите Ollama с переменной окружения <code>OLLAMA_ORIGINS=*</code>.</p>
+<p>### Если WebGPU недоступен</p>
+<p>Обновите Microsoft Edge WebView2 Runtime и драйвер видеокарты. Рекомендуется 16 ГБ RAM; минимум — 8 ГБ.</p>
+<p>Без WebGPU не работает только встроенный движок — Ollama продолжает работать, ему WebGPU не нужен. Каталог, карточки, цепочки, конструктор и Помощник порядка остаются полностью доступными.</p>
+<p>### Как удалить модель</p>
+<p>Откройте <strong>Локальный ИИ</strong> и нажмите <strong>Удалить модель</strong>. Для повторной установки снова понадобится интернет и загрузка около 1,1 ГБ.</p>
+<hr>
+<h2 id="section-21">21. Что программа не делает</h2>
+<p>Plugin Navigator:</p>
+<ul>
+<li>не загружает VST3;</li>
+<li>не сканирует установленные плагины;</li>
+<li>не проверяет лицензии;</li>
+<li>не меняет настройки DAW;</li>
+<li>не обрабатывает и не экспортирует аудио;</li>
+<li>не гарантирует, что каждый плагин установлен на компьютере;</li>
+<li>не заменяет слух и level-matched A/B.</li>
+</ul>
+<p>Это справочник и конструктор рекомендаций.</p>
+<hr>
+<h2 id="section-22">22. Частые проблемы</h2>
+<p>### HTML открылся как текст</p>
+<p>Проверьте расширение. Оно должно быть <code>.html</code>, а не <code>.txt</code>. Надёжнее распаковывать HTML из общего ZIP.</p>
+<p>### EXE открыл страницу Neutralinojs</p>
+<p>Используется старая ошибочная Windows-сборка 2.5.6. Удалите её и скачайте версию 2.7.1 или новее.</p>
+<p>### EXE не запускается</p>
+<p>Проверьте:</p>
+<ul>
+<li>распакован ли ZIP;</li>
+<li>не блокирует ли файл SmartScreen;</li>
+<li>установлен ли Microsoft Edge WebView2 Runtime;</li>
+<li>используется ли Windows 10/11 x64.</li>
+</ul>
+<p>### В HTML-версии ИИ недоступен</p>
+<p>Это штатное ограничение. Локальный ИИ запускается в Windows-приложении, где есть локальный адрес, WebView2 cache и WebGPU. Обычный HTML-справочник остаётся полностью автономным.</p>
+<p>### Модель ИИ не загружается</p>
+<p>Для первой установки проверьте:</p>
+<ul>
+<li>подключён ли интернет;</li>
+<li>есть ли минимум 1,5 ГБ свободного места;</li>
+<li>обновлён ли Microsoft Edge WebView2 Runtime;</li>
+<li>обновлён ли драйвер видеокарты;</li>
+<li>не блокирует ли загрузку антивирус или корпоративная сеть.</li>
+</ul>
+<p>Если появляется сообщение о нехватке памяти, закройте тяжёлые программы и перезапустите Plugin Navigator.</p>
+<p>### Раньше модель была установлена, но программа снова предлагает загрузку</p>
+<p>WebView2 cache мог быть очищен Windows, браузерной утилитой или программой очистки. Повторно нажмите <strong>Скачать и запустить</strong>.</p>
+<p>### Исчезли заметки или цепочки</p>
+<p>Возможно, были очищены данные браузера, файл открыт другим браузером или используется другая версия приложения. Восстановите резервную копию через импорт.</p>
+<p>### Не открывается официальная ссылка</p>
+<p>Для внешних ссылок нужен интернет. Основная база продолжает работать офлайн.</p>
+<p>### Плагин в программе есть, но на компьютере его нет</p>
+<p>Каталог показывает доступные знания, а не фактическую установку. Выберите аналог, который установлен в вашей системе.</p>
+<hr>
+<h2 id="section-23">23. Короткая памятка</h2>
+<pre><code>1. Сначала подготовить сессию.
+2. Выбрать источник.
+3. Выбрать готовую цепочку.
+4. Оставить только нужные этапы.
+5. Перенести порядок в DAW.
+6. Настраивать на сложном участке.
+7. Сравнивать Bypass при одинаковой громкости.
+8. Проверять полный микс, mono и тихую громкость.
+9. Сохранять удачные цепочки.
+10. Помечать советы ИИ как рекомендации и проверять их на слух.
+11. Регулярно делать резервную копию.</code></pre>
+<p>Главное правило Plugin Navigator:</p>
+<blockquote>Не включайте плагин только потому, что он есть в цепочке. Сначала назовите слышимую задачу, затем выберите минимальную обработку, которая её решает.</blockquote></article>
+</main>
+</div>
+<script>
+const sidebar=document.getElementById('sidebar');document.getElementById('menu').onclick=()=>sidebar.classList.toggle('open');
+document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>sidebar.classList.remove('open'));
+const links=[...document.querySelectorAll('nav a')],map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;links.forEach(a=>a.classList.remove('active'));map.get(e.target.id)?.classList.add('active')}),{rootMargin:'-15% 0px -75% 0px'});
+document.querySelectorAll('h2').forEach(h=>observer.observe(h));
+</script>
+</body>
+</html>
