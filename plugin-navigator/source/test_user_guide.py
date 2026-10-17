@@ -16,7 +16,7 @@ assert first == second
 
 soup = BeautifulSoup(first.decode("utf-8"), "html.parser")
 assert soup.html.get("lang") == "ru"
-assert "Plugin Navigator 2.7.5" in soup.title.string
+assert "Plugin Navigator 2.7.6" in soup.title.string
 assert not soup.select("script[src], link[rel=stylesheet]")
 assert len(soup.select("article h2")) == 23
 assert len(soup.select("nav a")) == 23
@@ -34,6 +34,7 @@ for token in (
     "Действия ИИ: составление цепочек",
     "ИИ-панель на всех экранах",
     "Мои плагины: вопросы «у меня есть»",
+    "Импорт списка",
     "Частые проблемы",
 ):
     assert token in text

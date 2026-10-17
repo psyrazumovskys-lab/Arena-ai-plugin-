@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent
 DIST = ROOT.parent / "current"  # готовые файлы: plugin-navigator/current
 SOURCE = DIST / "Plugin_Navigator_User_Guide_RU.md"
 OUTPUT = DIST / "Plugin_Navigator_User_Guide_RU.html"
-GUIDE_VERSION = "2.7.5"
+GUIDE_VERSION = "2.7.6"
 
 
 def inline(text: str) -> str:
