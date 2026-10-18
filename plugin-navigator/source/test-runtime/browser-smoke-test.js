@@ -12,7 +12,7 @@ async function check(browser, name, viewport, mobile) {
   await page.waitForSelector('#content .hero');
 
   const version = await page.locator('#db').evaluate(el => JSON.parse(el.textContent).version);
-  if (version !== '2.8.2') throw new Error(`${name}: wrong version ${version}`);
+  if (version !== '2.8.3') throw new Error(`${name}: wrong version ${version}`);
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   if (overflow > 2) throw new Error(`${name}: horizontal overflow ${overflow}px`);
@@ -41,7 +41,7 @@ async function check(browser, name, viewport, mobile) {
   try {
     await check(browser, 'desktop', { width: 1440, height: 900 }, false);
     await check(browser, 'mobile', { width: 390, height: 844 }, true);
-    console.log(JSON.stringify({ status: 'PASS', version: '2.8.2', viewports: ['1440x900', '390x844'] }));
+    console.log(JSON.stringify({ status: 'PASS', version: '2.8.3', viewports: ['1440x900', '390x844'] }));
   } finally {
     await browser.close();
   }
