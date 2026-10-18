@@ -16,7 +16,7 @@ assert first == second
 
 soup = BeautifulSoup(first.decode("utf-8"), "html.parser")
 assert soup.html.get("lang") == "ru"
-assert "Plugin Navigator 2.8.4" in soup.title.string
+assert "Plugin Navigator 2.8.5" in soup.title.string
 assert not soup.select("script[src], link[rel=stylesheet]")
 assert len(soup.select("article h2")) == 24
 assert len(soup.select("nav a")) == 24
