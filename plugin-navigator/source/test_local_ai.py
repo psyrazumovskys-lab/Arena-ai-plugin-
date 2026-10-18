@@ -57,7 +57,7 @@ assert "slice(0,8000)" in HTML and "max_tokens:800" in HTML
 # Ollama connector (2.7.1): второй движок рядом с WebLLM. Использует тот же
 # строгий retrieval-контекст и system prompt; стриминг через локальный /api/chat.
 OLLAMA_REPORT = (
-    ROOT.parent / "reports" / "Plugin_Navigator_v2.8.0_Local_AI_Report.md"
+    ROOT.parent / "reports" / "Plugin_Navigator_v2.8.1_Local_AI_Report.md"
 ).read_text(encoding="utf-8")
 for marker in (
     "aiOllamaPing",
@@ -71,7 +71,7 @@ for marker in (
     "pn-ai-backend",
     "aiBackend",
     "OLLAMA_ORIGINS",
-    "num_predict:800",
+    "num_predict:numPredict",
     "num_ctx:8192",
     "/api/pull",
     "aiOllamaPull",
@@ -128,16 +128,22 @@ for marker in (
     "СКАНЕР УСТАНОВЛЕННЫХ ПЛАГИНОВ",
     "Скопировать список для ИИ-агента",
     "Отметить совпавшие «у меня есть»",
+    # Ollama thinking fix (2.8.1): hidden reasoning must not eat the budget.
+    "think:thinkOn",
+    "ask(false,800)",
+    "ask(null,1600)",
+    "Модель размышляет",
+    "потратила лимит токенов на рассуждения",
 ):
     assert marker in SOURCE and marker in HTML, marker
 assert "Движок локального ИИ" in HTML
 assert "Ollama на этом компьютере" in HTML
 assert "Строгая защита фактов" in HTML
-assert "Ollama" in OLLAMA_REPORT and "2.8.0" in OLLAMA_REPORT
+assert "Ollama" in OLLAMA_REPORT and "2.8.1" in OLLAMA_REPORT
 
 print(
     json.dumps(
-        {"status": "PASS", "version": "2.8.0", "model": MODEL_ID, "ollama": True},
+        {"status": "PASS", "version": "2.8.1", "model": MODEL_ID, "ollama": True},
         ensure_ascii=False,
     )
 )

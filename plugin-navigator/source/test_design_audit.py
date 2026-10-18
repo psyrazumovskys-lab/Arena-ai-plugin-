@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 html=Path(__file__).resolve().parent.parent.joinpath('current','Plugin_Navigator_Full.html').read_text()
 soup=BeautifulSoup(html,'html.parser')
 DB=json.loads(soup.select_one('#db').string)
-assert DB['version']=='2.8.0'
+assert DB['version']=='2.8.1'
 
 # Autonomous/offline shell and static accessibility.
 assert not soup.select('script[src],link[rel="stylesheet"]')
