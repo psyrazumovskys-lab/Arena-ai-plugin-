@@ -52,12 +52,12 @@ assert not list(ROOT.glob("**/params_shard_*.bin"))
 assert "≈1,1 ГБ" in HTML
 assert "Первая загрузка требует интернет" in HTML
 assert "после этого ответы формируются локально" in HTML.lower()
-assert "slice(0,8000)" in HTML and "max_tokens:800" in HTML
+assert "slice(0,8000)" in HTML and "max_tokens:aiNP(800)" in HTML
 
 # Ollama connector (2.7.1): второй движок рядом с WebLLM. Использует тот же
 # строгий retrieval-контекст и system prompt; стриминг через локальный /api/chat.
 OLLAMA_REPORT = (
-    ROOT.parent / "reports" / "Plugin_Navigator_v2.8.5_Local_AI_Report.md"
+    ROOT.parent / "reports" / "Plugin_Navigator_v2.9.0_Local_AI_Report.md"
 ).read_text(encoding="utf-8")
 for marker in (
     "aiOllamaPing",
@@ -72,7 +72,6 @@ for marker in (
     "aiBackend",
     "OLLAMA_ORIGINS",
     "num_predict:numPredict",
-    "num_ctx:8192",
     "/api/pull",
     "aiOllamaPull",
     "data-ai-pull",
@@ -80,9 +79,9 @@ for marker in (
     "qwen3.5:2b-q4_K_M",
     # Actions (2.7.3): chain proposals require explicit user confirmation.
     "aiParseAction",
-    "aiApplyChain",
+    "aiExecApplyChain",
     "apply_chain",
-    "data-ai-apply",
+    "data-ai-act",
     "ТРЕБУЕТ ПОДТВЕРЖДЕНИЯ",
     "ДОСТУПНЫЕ ЭТАПЫ",
     "Изменения цепочки применяются только после вашего подтверждения",
@@ -130,8 +129,8 @@ for marker in (
     "Отметить совпавшие «у меня есть»",
     # Ollama thinking fix (2.8.1): hidden reasoning must not eat the budget.
     "think:thinkOn",
-    "ask(false,800)",
-    "ask(null,1600)",
+    "ask(false,aiNP(800))",
+    "ask(null,aiNP(1600))",
     "Модель размышляет",
     "потратила лимит токенов на рассуждения",
     # Plugin suggestions without source (2.8.2): ask for a plugin, get options.
@@ -158,16 +157,33 @@ for marker in (
     "a.mode==='append'?'Добавить в цепочку'",
     "top[1]>=2",
     "&&!state.builderSource",
+    # 2.9.0: multi-action engine, settings, memory, regenerate.
+    "aiParseActions",
+    "chain_edit",
+    "open_card",
+    "mark_owned",
+    "save_chain",
+    "set_filter",
+    "update_memory",
+    "aiDelegate",
+    "aiSettingsPersist",
+    "ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ",
+    "ПАМЯТЬ О ПОЛЬЗОВАТЕЛЕ",
+    "ВРАЧ ЦЕПОЧКИ",
+    "СВОБОДНЫЙ РЕЖИМ",
+    "data-ai-regen",
+    "aiNP(",
+    "num_ctx:state.aiCtx",
 ):
     assert marker in SOURCE and marker in HTML, marker
 assert "Движок локального ИИ" in HTML
 assert "Ollama на этом компьютере" in HTML
 assert "Строгая защита фактов" in HTML
-assert "Ollama" in OLLAMA_REPORT and "2.8.5" in OLLAMA_REPORT
+assert "Ollama" in OLLAMA_REPORT and "2.9.0" in OLLAMA_REPORT
 
 print(
     json.dumps(
-        {"status": "PASS", "version": "2.8.5", "model": MODEL_ID, "ollama": True},
+        {"status": "PASS", "version": "2.9.0", "model": MODEL_ID, "ollama": True},
         ensure_ascii=False,
     )
 )
