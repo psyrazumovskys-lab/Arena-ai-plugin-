@@ -1,4 +1,4 @@
-PLUGIN NAVIGATOR 2.8.3 — WINDOWS x64
+PLUGIN NAVIGATOR 2.8.4 — WINDOWS x64
 
 Этот каталог содержит конфигурацию и воспроизводимые инструменты упаковки Plugin Navigator в оболочку Neutralinojs 6.9.0.
 
@@ -6,8 +6,8 @@ PLUGIN NAVIGATOR 2.8.3 — WINDOWS x64
 - resources/index.html
 - resources/ai/worker.js
 - WebLLM 0.2.84 копируется из node_modules внутрь EXE во время сборки
-- версия: 2.8.3
-- HTML совпадает с Plugin_Navigator_Full_v2.8.3.html
+- версия: 2.8.4
+- HTML совпадает с Plugin_Navigator_Full_v2.8.4.html
 
 ЛОКАЛЬНЫЙ ИИ
 - модель: Qwen3.5 2B Q4 (`Qwen3.5-2B-q4f16_1-MLC`)
