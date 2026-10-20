@@ -1,5 +1,5 @@
 {
-  "version": "2.9.0",
+  "version": "3.0.0",
   "generated": "2026-10-17",
   "plugins": [
     {
@@ -167291,6 +167291,6 @@
     "webAuditedChains": 99,
     "researchSources": 27,
     "conditionalStepGuides": 353,
-    "mode": "Полная база v2.9.0: 365 валидных записей, 1 standalone utility, Помощник порядка, 99 цепочек и опциональный локальный ИИ Qwen3.5 2B и подключение Ollama."
+    "mode": "Полная база v3.0.0: 365 валидных записей, 1 standalone utility, Помощник порядка, 99 цепочек и опциональный локальный ИИ Qwen3.5 2B и подключение Ollama."
   }
 }

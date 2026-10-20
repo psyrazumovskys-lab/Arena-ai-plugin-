@@ -57,7 +57,7 @@ assert "slice(0,8000)" in HTML and "max_tokens:aiNP(800)" in HTML
 # Ollama connector (2.7.1): второй движок рядом с WebLLM. Использует тот же
 # строгий retrieval-контекст и system prompt; стриминг через локальный /api/chat.
 OLLAMA_REPORT = (
-    ROOT.parent / "reports" / "Plugin_Navigator_v2.9.0_Local_AI_Report.md"
+    ROOT.parent / "reports" / "Plugin_Navigator_v3.0.0_Local_AI_Report.md"
 ).read_text(encoding="utf-8")
 for marker in (
     "aiOllamaPing",
@@ -174,16 +174,28 @@ for marker in (
     "data-ai-regen",
     "aiNP(",
     "num_ctx:state.aiCtx",
+    # 3.0.0: tool loop.
+    "ЗАПРОС ДАННЫХ",
+    "aiParseToolRequest",
+    "aiRunTool",
+    "aiStripToolRequests",
+    "search_plugins",
+    "family_plugins",
+    "source_tasks",
+    "owned_plugins",
+    "ДАННЫЕ ИНСТРУМЕНТА",
+    "toolCalls",
+    "aiToolCallsHTML",
 ):
     assert marker in SOURCE and marker in HTML, marker
 assert "Движок локального ИИ" in HTML
 assert "Ollama на этом компьютере" in HTML
 assert "Строгая защита фактов" in HTML
-assert "Ollama" in OLLAMA_REPORT and "2.9.0" in OLLAMA_REPORT
+assert "Ollama" in OLLAMA_REPORT and "3.0.0" in OLLAMA_REPORT
 
 print(
     json.dumps(
-        {"status": "PASS", "version": "2.9.0", "model": MODEL_ID, "ollama": True},
+        {"status": "PASS", "version": "3.0.0", "model": MODEL_ID, "ollama": True},
         ensure_ascii=False,
     )
 )
