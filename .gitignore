@@ -2,3 +2,8 @@
 _ключ*
 ключ*
 *.local.md
+# локальные сборки с клиническими данными — в git не попадают
+app/clients/
+app/example-client.html
+export/
+__pycache__/
