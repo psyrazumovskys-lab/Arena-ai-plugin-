@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>Тетрадь практики</title>
+<style>
+  :root{
+    --ink:#0f1720; --body:#26333f; --muted:#6b7a89; --faint:#93a3b1;
+    --line:#e3e9ee; --line-soft:#eef2f6; --bg:#f5f7f9; --card:#ffffff;
+    --accent:#0e7490; --accent-soft:#ecf6f8;
+    --danger:#b42318; --danger-soft:#fdf1f0;
+    --warn:#9a5b00; --warn-soft:#fdf5e6;
+    --ok:#166534; --ok-soft:#eef7f0;
+    --radius:14px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--body);font-family:var(--font);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+  .shell{display:grid;grid-template-columns:274px minmax(0,1fr);min-height:100vh}
+
+  /* ---------- sidebar ---------- */
+  .side{background:var(--card);border-right:1px solid var(--line);padding:22px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+  .brand small{display:block;font-weight:400;font-size:12px;color:var(--faint);letter-spacing:0;margin-top:2px}
+  .search{margin:18px 0 16px;position:relative}
+  .search input{width:100%;padding:9px 11px 9px 32px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:13.5px;background:var(--bg);color:var(--ink);outline:none}
+  .search input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.45}
+
+  .side-label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:18px 0 8px}
+
+  .client-link{display:flex;align-items:baseline;gap:8px;width:100%;text-align:left;background:none;border:0;border-radius:9px;padding:8px 10px;cursor:pointer;font:inherit;color:var(--body);transition:background .12s}
+  .client-link:hover{background:var(--bg)}
+  .client-link[aria-current="true"]{background:var(--accent-soft);color:var(--ink)}
+  .client-link[aria-current="true"] .code{color:var(--accent)}
+  .code{font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .client-meta{margin-left:auto;font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-left:6px;vertical-align:middle}
+  .dot.risk{background:var(--danger)}
+
+  .navlink{display:flex;align-items:center;gap:8px;width:100%;background:none;border:0;border-radius:9px;padding:8px 10px;font:inherit;font-size:13.5px;color:var(--body);cursor:pointer;text-align:left}
+  .navlink:hover{background:var(--bg)}
+  .navlink[aria-current="true"]{background:var(--bg);font-weight:600;color:var(--ink)}
+
+  .side-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:11.5px;color:var(--faint);line-height:1.5}
+
+  /* ---------- main ---------- */
+  .main{padding:40px 44px 96px;max-width:1000px}
+  .crumbs{font-size:12.5px;color:var(--faint);margin-bottom:10px;letter-spacing:.01em}
+  h1{font-size:27px;line-height:1.22;letter-spacing:-.02em;color:var(--ink);font-weight:700}
+  .lede{font-size:15.5px;color:var(--muted);margin-top:8px;max-width:62ch}
+
+  .risk-banner{margin-top:18px;background:var(--danger-soft);border:1px solid #f3cfcb;border-left:3px solid var(--danger);border-radius:10px;padding:12px 15px;font-size:14px;color:#7a1a13}
+  .risk-banner b{color:var(--danger)}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:20px}
+  .panel h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:600;margin-bottom:10px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px 34px}
+
+  .field{min-width:0}
+  .field + .field{margin-top:16px}
+  .field .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:600;margin-bottom:4px}
+  .field .v{font-size:14.5px;color:var(--body)}
+  .field .v p + p{margin-top:8px}
+
+  .hyp{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+  .hyp:last-child{border-bottom:0}
+  .tag{flex:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap;letter-spacing:.01em;margin-top:2px}
+  .tag.подтвердилась{background:var(--ok-soft);color:var(--ok)}
+  .tag.не{background:#f3f5f7;color:#6b7a89}
+  .tag.проверяется{background:var(--warn-soft);color:var(--warn)}
+  .tag.новая{background:var(--accent-soft);color:var(--accent)}
+
+  /* ---------- dynamics ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 12px 8px}
+  .metric .lab{font-size:11px;color:var(--faint);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .metric .val{font-size:20px;font-weight:650;color:var(--ink);line-height:1.2;font-variant-numeric:tabular-nums;margin-top:2px}
+  .metric .val span{font-size:12px;color:var(--faint);font-weight:400}
+  .metric svg{display:block;width:100%;height:26px;margin-top:4px;overflow:visible}
+
+  /* ---------- sessions ---------- */
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin:38px 0 4px}
+  .section-head h2{font-size:16px;font-weight:650;color:var(--ink);letter-spacing:-.01em}
+  .section-head .count{font-size:12.5px;color:var(--faint)}
+
+  .session{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-top:14px;overflow:hidden}
+  .session > summary{list-style:none;cursor:pointer;padding:15px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .session > summary::-webkit-details-marker{display:none}
+  .session > summary:hover{background:#fcfdfe}
+  .s-date{font-weight:650;color:var(--ink);font-size:14.5px;font-variant-numeric:tabular-nums}
+  .s-num{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .s-focus{flex:1;min-width:180px;font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .s-score{display:flex;gap:3px;align-items:flex-end;height:14px;flex:none}
+  .s-score i{display:block;width:4px;border-radius:1px;background:#dbe3ea}
+  .s-score i.on{background:var(--accent)}
+  .chev{flex:none;color:var(--faint);transition:transform .15s}
+  .session[open] .chev{transform:rotate(90deg)}
+
+  .s-body{border-top:1px solid var(--line-soft);padding:6px 20px 20px}
+  .block{padding:16px 0;border-bottom:1px solid var(--line-soft)}
+  .block:last-child{border-bottom:0;padding-bottom:4px}
+  .block-h{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
+  .block-h .t{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--faint)}
+  .block-h .d{font-size:11.5px;color:var(--faint)}
+  .block.rec .t{color:var(--accent)}
+  .prose{font-size:14.5px;line-height:1.68;color:var(--body);max-width:74ch}
+  .prose p + p{margin-top:9px}
+  .prose ul{margin:6px 0 0 18px}
+  .prose li{margin-bottom:4px}
+  .prose strong{font-weight:650;color:var(--ink)}
+  .prose code{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:4px}
+  .prose pre,.doc pre{background:#f2f5f8;border:1px solid var(--line);border-radius:9px;padding:12px 14px;overflow-x:auto;margin:10px 0 14px}
+  .prose pre code,.doc pre code{background:none;padding:0;font-size:12.5px;line-height:1.55;white-space:pre;color:#31414f}
+  .prose em{color:var(--muted)}
+  .prose > .sub{font-weight:650;color:var(--ink);margin-top:12px}
+  .prose h2,.prose h3,.prose h4,.prose h5{font-weight:650;color:var(--ink);margin:14px 0 6px;font-size:14.5px;letter-spacing:-.01em}
+  .prose .tablewrap,.doc .tablewrap{overflow-x:auto;margin:10px 0 14px}
+  .empty{color:var(--faint);font-style:italic;font-size:14px}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:11px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.code{font-weight:600;color:var(--ink);white-space:nowrap}
+
+  /* ---------- guide ---------- */
+  .doc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 30px;margin-top:18px;max-width:820px}
+  .doc .doc-title{font-size:22px;margin-bottom:12px}
+  .doc h1{font-size:22px;margin-bottom:12px}
+  .doc h2{font-size:16px;margin:24px 0 8px;color:var(--ink);letter-spacing:-.01em}
+  .doc > h2:first-child{font-size:22px;letter-spacing:-.02em;margin-top:0}
+  .doc h3{font-size:14px;margin:18px 0 6px;color:var(--ink)}
+  .doc h4{font-size:13px;margin:14px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .doc p{margin-bottom:10px;max-width:72ch;font-size:14.5px}
+  .doc ul,.doc ol{margin:0 0 12px 20px;font-size:14.5px}
+  .doc li{margin-bottom:5px}
+  .doc code{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:4px}
+  .doc table{margin:10px 0 16px;font-size:13.5px}
+  .doc blockquote{border-left:3px solid var(--line);padding-left:14px;color:var(--muted);margin:10px 0}
+  .doc strong{color:var(--ink)}
+
+  .foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--faint);max-width:70ch}
+
+  /* ---------- mobile ---------- */
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}
+    .side .side-label{margin-top:14px}
+    .clients{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+    .client-link{flex:none;background:var(--bg);padding:7px 11px;gap:6px}
+    .client-link .client-meta{margin-left:4px}
+    .side-foot{display:none}
+    .main{padding:24px 16px 72px}
+    h1{font-size:23px}
+    .grid2{grid-template-columns:1fr}
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .metric:last-child{grid-column:span 2}
+    .session > summary{padding:13px 15px;gap:10px}
+    .s-focus{order:3;flex-basis:100%;padding-left:0}
+    .s-body{padding:4px 15px 16px}
+    .doc{padding:18px 16px}
+    .panel{padding:16px}
+    .tablewrap{overflow-x:auto}
+  }
+  @media print{
+    .side{display:none}.shell{display:block}.main{padding:0;max-width:none}
+    .session{border:0;page-break-inside:avoid}.session > summary{cursor:default}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand">Тетрадь практики<small>записи и супервизия</small></div>
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Поиск по записям" autocomplete="off">
+    </div>
+    <div class="side-label">Клиенты</div>
+    <div class="clients" id="clients"></div>
+    <div class="side-label">Практика</div>
+    <div id="nav-extra"></div>
+    <div class="side-foot" id="side-foot"></div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+const DATA = {"clients": [{"code": "К-07", "tetrad": {"updated": "2026-10-14", "gipotezy": [{"status": "не подтвердилась", "text": "Избегание близости из страха отвержения (с 2026-09-16). За встречи 02–05 материал про отвержение не появлялся; трижды — про контроль и «правильность»."}, {"status": "проверяется", "text": "Контроль как способ не оказаться в позиции оцениваемого (с 2026-10-05)."}, {"status": "новая", "text": "Обобщённость в рассказе о матери защищает от конкретного аффекта (с 2026-10-14)."}], "zapros": "тревога, мешает работать; «постоянно чувствую, что не справляюсь». Отдельно — отношения с матерью, которые сам называет «сложными», но подробно не описывает.", "formulirovka": "(версия от 2026-10-05)\nТревога возникает в ситуациях, где результат оценивается извне; снижается, когда есть внешняя опора — план, подтверждение, понятная инструкция. Отношения с матерью описываются обобщённо, без эпизодов. Рабочая версия: тревога связана с необходимостью самому определять «достаточно ли», при отсутствии опыта, где достаточно определял кто-то другой. Проверяется.", "dinamika": "Обращается на «вы» к терапевту с четвёртой встречи, хотя в начале переходил на «ты». Материал о работе приходит легко и структурно; о матери — только если спросить, и всегда в обобщениях. Усталость терапевта растёт: третья встреча подряд с ощущением, что разговор идёт по кругу.\n\nШкалы: встреча 03 — 2/2/2/2/1 · 04 — 2/2/3/2/2 · 05 — 2/2/3/1/2", "riski": "нет", "proveryayu": "удержится ли конкретный эпизод про мать, если не заполнять паузы; что происходит, когда терапевт не структурирует.", "vstrechi": "01 (2026-09-02) · 02 (2026-09-16) · 03 (2026-09-30) · 04 (2026-10-07) · 05 (2026-10-14)\n\n> Вымышленный пример."}, "sessions": [{"code": "К-07", "n": "04", "date": "2026-10-07", "scores": {"контакт": 2, "напряжение": 2, "вовлечённость": 3, "ясность": 2, "усталость": 2}, "focus": "проверить, что происходит, если не предлагать структуру", "risk": "", "zapis": "Начал с того, что неделя была «нормальная», но к среде накрыло. Долго, подробно — про отчёт, про то, как переделывал три раза, про то, что руководитель «не говорит прямо». Сам предложил разложить ситуацию по пунктам.\nЯ согласился. Минут десять мы раскладывали. Стало спокойнее, но и как-то пусто.\nСпросил про мать — он ответил общими словами: «ну, у нас всегда было сложно». Конкретики не дал, я не стал настаивать.\nЧувствовал: облегчение, когда мы вернулись к отчёту. И лёгкое раздражение на себя за это.", "otklik": "Набл.: облегчение пришло ровно в тот момент, когда разговор вернулся к рабочей задаче, — а не когда стало легче клиенту.\nВопрос: что вы почувствовали бы, если бы оставили «сложно» без уточнения и просто помолчали?", "otklikDate": "2026-10-07", "razbor": "Прочитано: _тетрадь.md, встречи 02–04 (2026-09-16 … 2026-10-07)\n\n**Вижу в материале**\n- Структура предлагается клиентом, не терапевтом: «сам предложил разложить по пунктам». Это его привычный способ, и он же приносит облегчение.\n- Тема матери закрывается за одну реплику и без сопротивления — что подозрительно. Сопротивление обычно заметно; здесь его нет, есть гладкий обход.\n- Терапевт фиксирует облегчение, когда разговор уходит от матери. Это не нейтрально.\n\n**Динамика**\nТри встречи подряд одна и та же последовательность: тревога → разбор по пунктам → спокойствие → пустота. Меняется только содержание (отчёт, планёрка, письмо). Усталость терапевта растёт на фоне внешне «хороших» сессий.\n\n**Гипотезы**\n- Избегание близости из страха отвержения — `проверяется` с 09-16, признаков за три встречи мало. Статус под вопросом.\n- Контроль как способ не оказаться оцениваемым — `новая`. Опора: разбор по пунктам снижает тревогу; тревога привязана к внешней оценке; он же выбирает структуру, а не терапевт.\n\n**Что обходится**\nМать. Оба — и клиент, и терапевт — согласились на «сложно» и разошлись. Облегчение терапевта в этот момент говорит о том, что тема задевает и его: скорее всего, тянет в долгую историю, где непонятно, куда идти.\n\n**Проверить**\n1. Не предлагать структуру в первые минуты. Смотреть, что делает клиент.\n2. На «сложно» — пауза вместо вопроса. Одна, не больше.\n3. Отмечать момент облегчения у себя и не следовать за ним.\n\n**Вопрос**\nЕсли разговор уходит от матери и вам становится легче — что именно становится легче?", "razborDate": "2026-10-11", "file": "2026-10-07_04.md"}, {"code": "К-07", "n": "05", "date": "2026-10-14", "scores": {"контакт": 2, "напряжение": 2, "вовлечённость": 3, "ясность": 1, "усталость": 2}, "focus": "удержать паузу на «сложно» и не предлагать структуру", "risk": "", "zapis": "Пришёл с тревогой из-за работы: перенос защиты проекта, сроки сдвинулись. Подробно, по хронологии, минут пятнадцать.\nЯ не предлагал структуру. Он разложил сам, потом сказал: «Ну вот, вроде разобрались».\nСпросил про мать. Он начал говорить — и почти сразу ушёл в общее: «она всегда всё контролировала, но это же нормально». Я попробовал вернуться к конкретному эпизоду. Он ответил: «сейчас уже не помню точно» — и снова про проект.\nПо дороге к проекту было ощущение, что он интеллектуализирует, и мне стало скучно. Я это заметил, но ничего не сделал: продолжил за ним.\nК концу — раздражение. Не на него, на себя: я опять пошёл по его маршруту.", "otklik": "Набл.: раздражение появилось в момент, когда он ушёл от тела эпизода в общее «это же нормально», — и вы это заметили, но не использовали.\nВопрос: что вы сделали со своим раздражением в следующую минуту?", "otklikDate": "2026-10-14", "razbor": "Прочитано: _тетрадь.md (обн. 10-14), встречи 03–05 (2026-09-30 … 2026-10-14), разборы от 2026-10-05 и 2026-10-11. Встречи 01–02 не перечитывал — они старше месяца, скажите, если нужны.\n\n**Вижу в материале**\n- Один и тот же ход с обеих сторон: клиент уходит в общее («всегда всё контролировала», «это же нормально»), терапевт идёт следом. На встрече 04 — через разбор по пунктам, на 05 — просто продолжая его рассказ.\n- Фраза «сейчас уже не помню точно» возникает на первом же конкретном вопросе. Это не отказ, а гладкая замена эпизода оценкой.\n- Скука и раздражение терапевта появляются в одной и той же точке: там, где материал должен был стать конкретным. Два раза подряд.\n\n**Динамика**\nШкалы: 03 — 2/2/2/2/1 · 04 — 2/2/3/2/2 · 05 — 2/2/3/1/2. Вовлечённость растёт, ясность падает. Он приносит больше, а вы держите линию хуже — это не регресс, а следствие того, что материала стало больше и он менее структурирован.\n\nСодержание меняется (отчёт → перенос сроков), последовательность одна: тревога → структура → «разобрались» → пустота. За пять встреч — ни одного эпизода из детства, ни одной сцены. Только оценки.\n\n**Гипотезы**\n- **Избегание близости из страха отвержения** — `не подтвердилась` (с 09-16, закрыта). За встречи 02–05 ни одного материала про отвержение, зато трижды — про контроль и «правильность». Держать её дальше нет смысла: она незаметно подсказывает, что искать, и мешает видеть то, что есть.\n- **Контроль как способ не оказаться оцениваемым** — `проверяется` (с 10-05). Новое подтверждение: он разложил всё сам, ещё до того, как вы предложили что-то, и облегчение наступило именно от структуры, а не от контакта.\n- **Обобщённость защищает от конкретного аффекта** — `новая`. Опора: «не помню точно» на первом конкретном вопросе, «это же нормально» вместо эпизода, ровный тон при явно заряженной теме.\n\n**Что обходится**\nСцена. Пять встреч — ноль эпизодов из прошлого. Это не случайность: и вы, и он одинаково охотно остаётесь на уровне оценок. Скука здесь — не фон, а сигнал: именно в этот момент разговор перестаёт быть про живого человека и становится про схему.\n\nВторое: вы дважды заметили свой ход и не воспользовались им. Это не ошибка, а паттерн — и он, скорее всего, про то, что удерживать неопределённость дольше нескольких секунд неприятно.\n\n**Проверить**\n1. На «не помню точно» — не переспрашивать и не помогать. Пауза, потом: «а что помните, даже если неточно».\n2. Не называть структуру и не резюмировать сессию в конце. Посмотреть, что произойдёт с тревогой без закрытия.\n3. Своё раздражение — вслух, если оно возникнет: «я сейчас заскучал, когда вы сказали „это же нормально“». Один раз, без объяснений.\n\n**Вопрос**\nВы дважды замечали, что идёте за ним, и оба раза шли дальше. Что происходит с вами в ту секунду, когда вы решаете не останавливать?", "razborDate": "2026-10-19", "file": "2026-10-14_05.md"}], "count": 2, "last": "2026-10-14"}], "index": [{"code": "К-07", "zapros": "тревога, работа, отношения с матерью", "vstrech": "5", "last": "2026-10-14", "status": "активен", "risk": "нет"}, {"code": "К-08", "zapros": "пара, границы, ревность", "vstrech": "2", "last": "2026-10-09", "status": "пауза", "risk": "нет"}, {"code": "К-11", "zapros": "выгорание, сон", "vstrech": "7", "last": "2026-10-15", "status": "активен", "risk": "нет"}], "weeks": [], "guide": [{"title": "Начать здесь", "text": "# Начать здесь\n\nТетрадь практики: краткие записи по консультациям + супервизорская обратная связь.\n\n## Что писать в чат\n\n| Команда | Что произойдёт |\n|---|---|\n| «К-07, встреча 6: [текст как помню]» | запись встречи, отклик 3–5 строк, обновление тетради и индекса |\n| «Разбор по К-07» | супервизия по накопленному: динамика, гипотезы, что обходится |\n| «Неделя» | обзор по всем клиентам: кто двигается, где я устал, три приоритета |\n| «Разбери инбокс» | превратить сырые заметки из `_входящие` в записи |\n\nТекст можно писать как удобно, в любом порядке. Главное, чтобы было три вещи: что происходило, что вы делали, что чувствовали.\n\n## Папки\n\n- `_индекс.md` — все клиенты, одна строка на каждого.\n- `_входящие` — ваша папка. Сюда можно скидывать сырой текст с телефона, когда меня нет рядом.\n- `_неделя` — недельные обзоры.\n- `К-NN` — папка клиента: `_тетрадь.md` (сводка) и файлы встреч `ГГГГ-ММ-ДД_NN.md`.\n- `00 · Формат и инструкции` — формат, инструкции, шаблоны.\n- `_пример (вымышленный, можно удалить)` — образец заполнения.\n\n## Три правила\n\n1. **В файлах только коды клиентов.** `К-07`, никогда имя. Ключ соответствия — в менеджере паролей, вне Диска.\n2. **Запись не переписывается.** Слова терапевта остаются как есть. Разбор дописывается ниже.\n3. **Риск — наверх.** Суицид, насилие, психоз, этический конфликт: в начало файла и в чат сразу. Не в конце.\n\n## Три уровня обратной связи\n\n- **Отклик** — сразу, 3–5 строк: одно наблюдение, один вопрос. Дешёвый по замыслу: одна встреча почти ничего не доказывает.\n- **Разбор** — по запросу или раз в неделю: динамика через встречи, статус гипотез, что обходится.\n- **Неделя** — кто двигается, кто застрял, где усталость, три приоритета.\n\nГипотеза всегда со статусом: `новая` → `проверяется` → `подтвердилась` / `не подтвердилась`. Гипотеза без статуса через месяц читается как факт — это главный вред, который супервизия может нанести.\n\n## Что это не заменяет\n\nЖивую супервизию и интервизию. При темах риска и при выходе за границы компетенции разбор начинается с фразы о том, что нужен человек, — и дальше уже идёт текст.\n"}, {"title": "Формат записей", "text": "# Формат\n\nСпецификация файлов. Всё, что не описано здесь, не появляется в записях.\n\n## Имена файлов\n\n```\nК-07/2026-10-14_05.md      встреча: дата_номер\nК-07/_тетрадь.md           сводка по клиенту\n_индекс.md                 все клиенты\n_неделя/2026-W42.md        недельный обзор\n```\n\n- Дата — ISO, номер встречи — два знака с ведущим нулём. Сортируется само, читается без открытия.\n- Файлы с подчёркиванием в начале — «сводные», они перезаписываются. Остальные — история, они не меняются.\n- Код клиента: `К-` + две цифры. Тематические группы допустимы (`К-07а` для пары), но не более одного уровня вложенности.\n\n## Файл встречи\n\nЧетыре блока, всегда в этом порядке:\n\n```markdown\n# К-07 · встреча 05 · 2026-10-14\n\nШкалы: контакт 2 · напряжение 2 · вовлечённость 3 · ясность 1 · усталость 2\nФокус: что проверяю на этой встрече\n! Риск: только если есть, иначе строки нет\n\n## Запись\n## Отклик\n## Разбор\n```\n\n### Шкалы\n\nПять осей, 0–3, заполняются сразу после сессии, до всякого анализа. Смысл — не точность, а динамика: через десять встреч видно то, чего не видно в прозе.\n\n| Ось | 0 | 3 |\n|---|---|---|\n| Контакт | клиент закрыт, формален | живой контакт, есть совместная работа |\n| Напряжение | спокойно | тревога или конфликт в комнате |\n| Вовлечённость | пассивен, отстранён | работает, приносит материал сам |\n| Моя ясность | не понимал, что делаю | ясно держал линию |\n| Моя усталость | вышел с ресурсом | истощён |\n\nДве первые — про клиента, две последние — про терапевта. Не смешивать: усталость терапевта не характеристика клиента.\n\n### Лимиты объёма\n\n| Блок | Потолок |\n|---|---|\n| Запись | 10 строк |\n| Отклик | 5 строк |\n| Разбор | одна страница |\n| Тетрадь | одна страница |\n\nПотолки жёсткие. Шаблон, который длиннее, чем удобно заполнять, перестают заполнять через три недели — и это единственный реальный способ провалить всю затею.\n\n### Запись\n\nСлова терапевта. Без обработки, без «правильных» формулировок. Допустимо некрасиво. Не редактируется никогда, никем, включая автора: если появилось уточнение — оно идёт в разбор отдельным абзацем.\n\nМинимум, без которого запись неполная:\n\n- что происходило (факты, не интерпретации);\n- что делал терапевт;\n- что терапевт чувствовал.\n\nПоследнее — не украшение. Контрперенос и есть материал супервизии; без него разбор скатывается к пересказу.\n\n### Отклик\n\n3–5 строк сразу. Структура:\n\n```\nНаблюдение: одно, конкретное, с указанием момента\nВопрос: один, на который нельзя ответить «да» или «нет»\n```\n\nПравила: не хвалить, не пересказывать, не выдавать гипотезу за факт. Если сказать нечего — так и написать: «здесь пока нечего разбирать, материала мало». Это допустимый и честный ответ.\n\n### Разбор\n\nПишется по запросу или раз в неделю, дописывается в тот же файл, датируется.\n\n```markdown\n## Разбор · 2026-10-19\n\nПрочитано: _тетрадь.md, встречи 03–05 (2026-09-30 … 2026-10-14), разбор от 2026-10-05\n\n**Вижу в материале**\n**Динамика** — по шкалам и по повторяющемуся\n**Гипотезы** — со статусом\n**Что обходится** — материал, который не берётся; мои реакции\n**Проверить** — на следующей встрече\n**Вопрос**\n```\n\n### Разметка уверенности\n\nТри пометки, обязательны:\n\n- **Набл.** — то, что буквально в записи. «Три встречи подряд разговор уходит в работу».\n- **Гип.** — догадка. Может быть неверной, и это нормально. «Гип.: контроль защищает от близости».\n- **Вопрос** — то, что проверяется на следующей встрече, а не то, что уже решено.\n\nГипотеза живёт со статусом: `новая` → `проверяется` → `подтвердилась` / `не подтвердилась`. Гипотеза без статуса через месяц читается как факт — это главный вред, который супервизия может нанести.\n\n## Файл тетради\n\nСводка по клиенту, одна страница. Читается первой при любой работе с клиентом.\n\n```markdown\n# К-07 · тетрадь\n\nОбновлено: 2026-10-14\nЗапрос:\nФормулировка:            ← рабочая, меняется; указывать дату версии\nДинамика:                ← 3–5 строк, не пересказ встреч\nРиски:\nГипотезы:                ← активные, со статусом\nЧто проверяю:\nВстречи: 01 … 05\n```\n\nПравило: если тетрадь пустая или устарела, разбор будет общим независимо от количества записей. Тетрадь — не архив, а сжатие.\n\n## Индекс\n\nОдна строка на клиента, перезаписывается целиком.\n\n```markdown\n| Код | Запрос | Встреч | Последняя | Статус | Риск |\n|---|---|---|---|---|---|\n| К-07 | тревога, работа | 5 | 2026-10-14 | активен | нет |\n| К-08 | пара, границы | 2 | 2026-10-09 | пауза | нет |\n```\n\n## Неделя\n\n```markdown\n# Неделя 42 · 2026-10-12 … 10-18\n\nСделано: N встреч, M записей\nДвигается:\nЗастряло:\nМои реакции и усталость:\nОткладываю:\nТри приоритета на следующую неделю:\n```\n\n## Риски\n\nОтдельная строка в шапке встречи, отдельный раздел в тетради, отдельный пункт в неделе.\n\nПоводы: суицидальные мысли, самоповреждение, насилие (своё или чужое), психоз, зависимость, резкое ухудшение, этический конфликт, границы компетенции.\n\nФормат: `! Риск: [что именно] · [что сделано] · [дата]`.\n\nРазбор по такому случаю начинается с риска, а не заканчивается им. И содержит фразу о том, что требуется живая супервизия или интервизия, если ситуация выходит за рамки документации.\n\n## Чего в записях не бывает\n\n- Диагнозов и диагностических предположений, выданных как вывод. Формулировка случая — да, диагноз — нет.\n- Имён, дат рождения, адресов, мест работы, названий компаний, узнаваемых деталей.\n- Оценок личности клиента («манипулятивный», «сложный»). Только поведение и контекст.\n- Уверенных предсказаний. «Скорее всего», «похоже», «есть версия» — нормальный язык разбора.\n"}], "metrics": [{"key": "контакт", "label": "Контакт", "color": "#0e7490"}, {"key": "напряжение", "label": "Напряжение", "color": "#b45309"}, {"key": "вовлечённость", "label": "Вовлечённость", "color": "#15803d"}, {"key": "ясность", "label": "Моя ясность", "color": "#4f46e5"}, {"key": "усталость", "label": "Моя усталость", "color": "#b91c1c"}]};
+const METRICS = DATA.metrics;
+
+const state = { view: "client", code: DATA.clients[0] ? DATA.clients[0].code : null, q: "" };
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function md(src){
+  if(!src || !src.trim()) return "";
+  const lines = src.replace(/\r/g,"").split("\n");
+  let html = "", list = false, para = [], table = [], fence = false, fenceBuf = [];
+  const flushPara = () => { if(para.length){ html += "<p>" + inline(para.join(" ")) + "</p>"; para = []; } };
+  const closeList = () => { if(list){ html += "</ul>"; list = false; } };
+  const closeTable = () => {
+    if(!table.length) return;
+    const rows = table.filter(r => !/^\|[\s:|-]+\|$/.test(r));
+    const cells = r => r.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+    if(rows.length){
+      const head = cells(rows[0]);
+      const body = rows.slice(1).map(r => "<tr>" + cells(r).map(c => `<td>${inline(c)}</td>`).join("") + "</tr>").join("");
+      html += `<div class="tablewrap"><table><thead><tr>${head.map(c => `<th>${inline(c)}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div>`;
+    }
+    table = [];
+  };
+
+  for(const raw of lines){
+    const line = raw.trim();
+    if(line.startsWith("```")){
+      if(!fence){ flushPara(); closeList(); closeTable(); fence = true; fenceBuf = []; }
+      else { html += "<pre><code>" + esc(fenceBuf.join("\n")) + "</code></pre>"; fence = false; }
+      continue;
+    }
+    if(fence){ fenceBuf.push(raw); continue; }
+    if(!line){ flushPara(); closeList(); closeTable(); continue; }
+    let m;
+    if(line.startsWith("|")){ flushPara(); closeList(); table.push(line); continue; }
+    closeTable();
+    if(m = line.match(/^[-*]\s+(.*)$/)){
+      flushPara();
+      if(!list){ html += "<ul>"; list = true; }
+      html += "<li>" + inline(m[1]) + "</li>";
+      continue;
+    }
+    if(m = line.match(/^(#{1,4})\s+(.*)$/)){
+      flushPara(); closeList();
+      const lvl = Math.min(m[1].length + 1, 5);
+      html += `<h${lvl}>` + inline(m[2]) + `</h${lvl}>`;
+      continue;
+    }
+    if(m = line.match(/^>\s?(.*)$/)){
+      flushPara(); closeList();
+      html += "<blockquote>" + inline(m[1]) + "</blockquote>";
+      continue;
+    }
+    if(/^\*\*[^*]+:?\*\*$/.test(line) || /^\*\*.+\*\*$/.test(line) && line.length < 90){
+      flushPara(); closeList();
+      html += "<p class='sub'>" + inline(line) + "</p>";
+      continue;
+    }
+    closeList();
+    para.push(line);
+  }
+  flushPara(); closeList(); closeTable();
+  return html;
+}
+function inline(s){
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/(^|[\s(])_([^_]+)_(?=[\s).,;!?]|$)/g, "$1<em>$2</em>")
+    .replace(/\[(.+?)\]\((https?:[^)]+)\)/g, '$1');
+}
+
+function fmtDate(iso){
+  if(!iso) return "";
+  const [y,m,d] = iso.split("-");
+  const months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+  return `${+d} ${months[+m-1]} ${y}`;
+}
+
+function spark(sessions, key, color){
+  const pts = sessions.map(s => s.scores ? s.scores[key] : undefined).filter(v => v !== undefined);
+  if(!pts.length) return "";
+  const W = 100, H = 26, pad = 3;
+  const step = pts.length > 1 ? (W - pad*2) / (pts.length - 1) : 0;
+  const y = v => H - pad - (v/3) * (H - pad*2);
+  const d = pts.map((v,i) => `${i ? "L" : "M"}${(pad + i*step).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const dots = pts.map((v,i) => `<circle cx="${(pad + i*step).toFixed(1)}" cy="${y(v).toFixed(1)}" r="1.9" fill="${color}"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity=".85"/>
+    ${dots}</svg>`;
+}
+
+/* ---------- sidebar ---------- */
+function renderSide(){
+  document.getElementById("clients").innerHTML = DATA.clients.map(c => {
+    const risk = c.tetrad.riski && !/^(нет|—|-)$/i.test(c.tetrad.riski.trim());
+    return `<button class="client-link" data-code="${esc(c.code)}" aria-current="${state.view==='client' && state.code===c.code}">
+      <span class="code">${esc(c.code)}</span>
+      <span class="client-meta">${c.count}${risk ? '<span class="dot risk" title="есть риск"></span>' : ""}</span>
+    </button>`;
+  }).join("");
+
+  document.getElementById("nav-extra").innerHTML = `
+    <button class="navlink" data-view="index" aria-current="${state.view==='index'}">Все клиенты</button>
+    ${DATA.weeks.length ? `<button class="navlink" data-view="weeks" aria-current="${state.view==='weeks'}">Недельные обзоры</button>` : ""}
+    <button class="navlink" data-view="guide" aria-current="${state.view==='guide'}">Как это работает</button>`;
+
+  document.getElementById("side-foot").innerHTML =
+    `${DATA.clients.length} клиентов · ${DATA.clients.reduce((a,c)=>a+c.count,0)} встреч<br>собрано ${new Date().toLocaleDateString("ru-RU")}`;
+}
+
+/* ---------- views ---------- */
+function viewClient(){
+  const c = DATA.clients.find(x => x.code === state.code);
+  if(!c) return `<div class="crumbs">Клиент</div><h1>${esc(state.code || "Пусто")}</h1>
+    <p class="lede">Записей по этому коду пока нет — он есть в индексе, но папки на Диске ещё не создано.</p>
+    <div class="panel"><p class="empty">Пришлите консультацию в чат, и папка появится.</p></div>`;
+  const t = c.tetrad || {};
+  const risk = t.riski && !/^(нет|—|-)$/i.test(t.riski.trim());
+  const q = state.q.toLowerCase();
+  const sessions = c.sessions.filter(s => !q || [s.date, s.focus, s.zapis, s.otklik, s.razbor].join(" ").toLowerCase().includes(q));
+  const sorted = [...c.sessions].sort((a,b)=> a.date.localeCompare(b.date));
+
+  const lastScore = k => { for(let i=sorted.length-1;i>=0;i--){ if(sorted[i].scores && sorted[i].scores[k]!==undefined) return sorted[i].scores[k]; } return null; };
+
+  return `
+  <div class="crumbs">Клиент · ${c.count} ${c.count === 1 ? "встреча" : c.count < 5 ? "встречи" : "встреч"}</div>
+  <h1>${esc(c.code)}</h1>
+  ${t.zapros ? `<p class="lede">${esc(t.zapros.split("\n")[0])}</p>` : ""}
+  ${risk ? `<div class="risk-banner"><b>Риск.</b> ${esc(t.riski)}</div>` : ""}
+
+  <div class="metrics">
+    ${METRICS.map(m => {
+      const v = lastScore(m.key);
+      return `<div class="metric">
+        <div class="lab">${esc(m.label)}</div>
+        <div class="val">${v === null ? "—" : v}<span>/3</span></div>
+        ${spark(sorted, m.key, m.color)}
+      </div>`;
+    }).join("")}
+  </div>
+
+  <div class="panel">
+    <h2>Случай</h2>
+    ${t.formulirovka ? `<div class="field"><div class="k">Формулировка</div><div class="v">${md(t.formulirovka)}</div></div>` : ""}
+    ${t.dinamika ? `<div class="field"><div class="k">Динамика</div><div class="v">${md(t.dinamika)}</div></div>` : ""}
+    ${t.proveryayu ? `<div class="field"><div class="k">Что проверяю</div><div class="v">${md(t.proveryayu)}</div></div>` : ""}
+    ${(t.gipotezy && t.gipotezy.length) ? `<div class="field"><div class="k">Гипотезы</div>
+      ${t.gipotezy.map(g => `<div class="hyp"><span class="tag ${esc(g.status)}">${esc(g.status)}</span><span>${esc(g.text)}</span></div>`).join("")}
+    </div>` : ""}
+    ${t.updated ? `<div class="field"><div class="k">Обновлено</div><div class="v">${fmtDate(t.updated)}</div></div>` : ""}
+  </div>
+
+  <div class="section-head"><h2>Встречи</h2><span class="count">${sessions.length}${q ? " из " + c.count : ""}</span></div>
+  ${sessions.length ? sessions.slice().reverse().map(s => viewSession(s)).join("")
+    : `<div class="panel"><p class="empty">${q ? "Ничего не найдено." : "Записей пока нет."}</p></div>`}
+  `;
+}
+
+function viewSession(s){
+  const dots = METRICS.map(m => {
+    const v = s.scores ? s.scores[m.key] : undefined;
+    if(v === undefined) return "";
+    return `<span title="${esc(m.label)}: ${v}/3" style="display:flex;flex-direction:column;gap:2px;margin-left:5px">${
+      [1,2,3].map(i => `<i style="height:3px;width:9px;border-radius:1px;background:${i<=v ? m.color : "#dbe3ea"};display:block"></i>`).join("")
+    }</span>`;
+  }).join("");
+
+  return `<details class="session">
+    <summary>
+      <span class="s-date">${fmtDate(s.date)}</span>
+      <span class="s-num">№${esc(s.n)}</span>
+      <span class="s-focus">${esc(s.focus || "")}</span>
+      <span class="s-score">${dots}</span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="s-body">
+      ${s.risk ? `<div class="risk-banner" style="margin:12px 0 0"><b>Риск.</b> ${esc(s.risk)}</div>` : ""}
+      <div class="block rec">
+        <div class="block-h"><span class="t">Запись</span><span class="d">слова терапевта, не редактируется</span></div>
+        <div class="prose">${s.zapis ? md(s.zapis) : `<span class="empty">не записано</span>`}</div>
+      </div>
+      <div class="block">
+        <div class="block-h"><span class="t">Отклик</span>${s.otklikDate ? `<span class="d">${fmtDate(s.otklikDate)}</span>` : ""}</div>
+        <div class="prose">${s.otklik ? md(s.otklik) : `<span class="empty">нет</span>`}</div>
+      </div>
+      <div class="block">
+        <div class="block-h"><span class="t">Разбор</span>${s.razborDate ? `<span class="d">${fmtDate(s.razborDate)}</span>` : ""}</div>
+        <div class="prose">${s.razbor ? md(s.razbor) : `<span class="empty">разбора по этой встрече нет — он может быть в недельном обзоре или в разборе следующей встречи</span>`}</div>
+      </div>
+    </div>
+  </details>`;
+}
+
+function viewIndex(){
+  return `<div class="crumbs">Практика</div>
+  <h1>Все клиенты</h1>
+  <p class="lede">Индекс. Нажмите на код, чтобы открыть записи.</p>
+  <div class="panel"><div class="tablewrap"><table>
+    <thead><tr><th>Код</th><th>Запрос</th><th>Встреч</th><th>Последняя</th><th>Статус</th><th>Риск</th></tr></thead>
+    <tbody>${DATA.index.map(r => `<tr>
+      <td class="code"><a href="#" data-code="${esc(r.code)}" style="color:var(--accent);text-decoration:none">${esc(r.code)}</a></td>
+      <td>${esc(r.zapros)}</td><td>${esc(r.vstrech)}</td><td>${esc(r.last)}</td>
+      <td>${esc(r.status)}</td><td>${esc(r.risk)}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+}
+
+function viewWeeks(){
+  return `<div class="crumbs">Практика</div><h1>Недельные обзоры</h1>
+  ${DATA.weeks.length ? DATA.weeks.map(w => `<div class="doc">${md(w.text)}</div>`).join("")
+    : `<div class="panel"><p class="empty">Пока нет.</p></div>`}`;
+}
+
+function viewGuide(){
+  return `<div class="crumbs">Справка</div><h1>Как это работает</h1>
+  ${DATA.guide.map(g => `<div class="doc">${md(g.text)}</div>`).join("")}
+  <p class="foot">Данные — markdown-файлы на Google Диске. Это приложение — сборка для чтения: оно не меняет записи. Обновление — командой в чате.</p>`;
+}
+
+/* ---------- render ---------- */
+function render(){
+  renderSide();
+  const main = document.getElementById("main");
+  main.innerHTML = state.view === "index" ? viewIndex()
+    : state.view === "weeks" ? viewWeeks()
+    : state.view === "guide" ? viewGuide()
+    : viewClient();
+}
+
+document.addEventListener("click", e => {
+  const cl = e.target.closest("[data-code]");
+  if(cl){ e.preventDefault(); state.code = cl.dataset.code; state.view = "client"; state.q = ""; document.getElementById("q").value = ""; render(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  const nv = e.target.closest("[data-view]");
+  if(nv){ state.view = nv.dataset.view; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+});
+
+document.getElementById("q").addEventListener("input", e => {
+  state.q = e.target.value.trim();
+  if(state.view !== "client"){ state.view = "client"; }
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

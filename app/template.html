@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>Тетрадь практики</title>
+<style>
+  :root{
+    --ink:#0f1720; --body:#26333f; --muted:#6b7a89; --faint:#93a3b1;
+    --line:#e3e9ee; --line-soft:#eef2f6; --bg:#f5f7f9; --card:#ffffff;
+    --accent:#0e7490; --accent-soft:#ecf6f8;
+    --danger:#b42318; --danger-soft:#fdf1f0;
+    --warn:#9a5b00; --warn-soft:#fdf5e6;
+    --ok:#166534; --ok-soft:#eef7f0;
+    --radius:14px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--body);font-family:var(--font);font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+  .shell{display:grid;grid-template-columns:274px minmax(0,1fr);min-height:100vh}
+
+  /* ---------- sidebar ---------- */
+  .side{background:var(--card);border-right:1px solid var(--line);padding:22px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .brand{font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+  .brand small{display:block;font-weight:400;font-size:12px;color:var(--faint);letter-spacing:0;margin-top:2px}
+  .search{margin:18px 0 16px;position:relative}
+  .search input{width:100%;padding:9px 11px 9px 32px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:13.5px;background:var(--bg);color:var(--ink);outline:none}
+  .search input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.45}
+
+  .side-label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:18px 0 8px}
+
+  .client-link{display:flex;align-items:baseline;gap:8px;width:100%;text-align:left;background:none;border:0;border-radius:9px;padding:8px 10px;cursor:pointer;font:inherit;color:var(--body);transition:background .12s}
+  .client-link:hover{background:var(--bg)}
+  .client-link[aria-current="true"]{background:var(--accent-soft);color:var(--ink)}
+  .client-link[aria-current="true"] .code{color:var(--accent)}
+  .code{font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .client-meta{margin-left:auto;font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-left:6px;vertical-align:middle}
+  .dot.risk{background:var(--danger)}
+
+  .navlink{display:flex;align-items:center;gap:8px;width:100%;background:none;border:0;border-radius:9px;padding:8px 10px;font:inherit;font-size:13.5px;color:var(--body);cursor:pointer;text-align:left}
+  .navlink:hover{background:var(--bg)}
+  .navlink[aria-current="true"]{background:var(--bg);font-weight:600;color:var(--ink)}
+
+  .side-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line-soft);font-size:11.5px;color:var(--faint);line-height:1.5}
+
+  /* ---------- main ---------- */
+  .main{padding:40px 44px 96px;max-width:1000px}
+  .crumbs{font-size:12.5px;color:var(--faint);margin-bottom:10px;letter-spacing:.01em}
+  h1{font-size:27px;line-height:1.22;letter-spacing:-.02em;color:var(--ink);font-weight:700}
+  .lede{font-size:15.5px;color:var(--muted);margin-top:8px;max-width:62ch}
+
+  .risk-banner{margin-top:18px;background:var(--danger-soft);border:1px solid #f3cfcb;border-left:3px solid var(--danger);border-radius:10px;padding:12px 15px;font-size:14px;color:#7a1a13}
+  .risk-banner b{color:var(--danger)}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:20px}
+  .panel h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:600;margin-bottom:10px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px 34px}
+
+  .field{min-width:0}
+  .field + .field{margin-top:16px}
+  .field .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:600;margin-bottom:4px}
+  .field .v{font-size:14.5px;color:var(--body)}
+  .field .v p + p{margin-top:8px}
+
+  .hyp{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+  .hyp:last-child{border-bottom:0}
+  .tag{flex:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap;letter-spacing:.01em;margin-top:2px}
+  .tag.подтвердилась{background:var(--ok-soft);color:var(--ok)}
+  .tag.не{background:#f3f5f7;color:#6b7a89}
+  .tag.проверяется{background:var(--warn-soft);color:var(--warn)}
+  .tag.новая{background:var(--accent-soft);color:var(--accent)}
+
+  /* ---------- dynamics ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 12px 8px}
+  .metric .lab{font-size:11px;color:var(--faint);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .metric .val{font-size:20px;font-weight:650;color:var(--ink);line-height:1.2;font-variant-numeric:tabular-nums;margin-top:2px}
+  .metric .val span{font-size:12px;color:var(--faint);font-weight:400}
+  .metric svg{display:block;width:100%;height:26px;margin-top:4px;overflow:visible}
+
+  /* ---------- sessions ---------- */
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin:38px 0 4px}
+  .section-head h2{font-size:16px;font-weight:650;color:var(--ink);letter-spacing:-.01em}
+  .section-head .count{font-size:12.5px;color:var(--faint)}
+
+  .session{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-top:14px;overflow:hidden}
+  .session > summary{list-style:none;cursor:pointer;padding:15px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .session > summary::-webkit-details-marker{display:none}
+  .session > summary:hover{background:#fcfdfe}
+  .s-date{font-weight:650;color:var(--ink);font-size:14.5px;font-variant-numeric:tabular-nums}
+  .s-num{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .s-focus{flex:1;min-width:180px;font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .s-score{display:flex;gap:3px;align-items:flex-end;height:14px;flex:none}
+  .s-score i{display:block;width:4px;border-radius:1px;background:#dbe3ea}
+  .s-score i.on{background:var(--accent)}
+  .chev{flex:none;color:var(--faint);transition:transform .15s}
+  .session[open] .chev{transform:rotate(90deg)}
+
+  .s-body{border-top:1px solid var(--line-soft);padding:6px 20px 20px}
+  .block{padding:16px 0;border-bottom:1px solid var(--line-soft)}
+  .block:last-child{border-bottom:0;padding-bottom:4px}
+  .block-h{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
+  .block-h .t{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--faint)}
+  .block-h .d{font-size:11.5px;color:var(--faint)}
+  .block.rec .t{color:var(--accent)}
+  .prose{font-size:14.5px;line-height:1.68;color:var(--body);max-width:74ch}
+  .prose p + p{margin-top:9px}
+  .prose ul{margin:6px 0 0 18px}
+  .prose li{margin-bottom:4px}
+  .prose strong{font-weight:650;color:var(--ink)}
+  .prose code{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:4px}
+  .prose pre,.doc pre{background:#f2f5f8;border:1px solid var(--line);border-radius:9px;padding:12px 14px;overflow-x:auto;margin:10px 0 14px}
+  .prose pre code,.doc pre code{background:none;padding:0;font-size:12.5px;line-height:1.55;white-space:pre;color:#31414f}
+  .prose em{color:var(--muted)}
+  .prose > .sub{font-weight:650;color:var(--ink);margin-top:12px}
+  .prose h2,.prose h3,.prose h4,.prose h5{font-weight:650;color:var(--ink);margin:14px 0 6px;font-size:14.5px;letter-spacing:-.01em}
+  .prose .tablewrap,.doc .tablewrap{overflow-x:auto;margin:10px 0 14px}
+  .empty{color:var(--faint);font-style:italic;font-size:14px}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:11px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.code{font-weight:600;color:var(--ink);white-space:nowrap}
+
+  /* ---------- guide ---------- */
+  .doc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 30px;margin-top:18px;max-width:820px}
+  .doc .doc-title{font-size:22px;margin-bottom:12px}
+  .doc h1{font-size:22px;margin-bottom:12px}
+  .doc h2{font-size:16px;margin:24px 0 8px;color:var(--ink);letter-spacing:-.01em}
+  .doc > h2:first-child{font-size:22px;letter-spacing:-.02em;margin-top:0}
+  .doc h3{font-size:14px;margin:18px 0 6px;color:var(--ink)}
+  .doc h4{font-size:13px;margin:14px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .doc p{margin-bottom:10px;max-width:72ch;font-size:14.5px}
+  .doc ul,.doc ol{margin:0 0 12px 20px;font-size:14.5px}
+  .doc li{margin-bottom:5px}
+  .doc code{font-family:var(--mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:4px}
+  .doc table{margin:10px 0 16px;font-size:13.5px}
+  .doc blockquote{border-left:3px solid var(--line);padding-left:14px;color:var(--muted);margin:10px 0}
+  .doc strong{color:var(--ink)}
+
+  .foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--faint);max-width:70ch}
+
+  /* ---------- mobile ---------- */
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}
+    .side .side-label{margin-top:14px}
+    .clients{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+    .client-link{flex:none;background:var(--bg);padding:7px 11px;gap:6px}
+    .client-link .client-meta{margin-left:4px}
+    .side-foot{display:none}
+    .main{padding:24px 16px 72px}
+    h1{font-size:23px}
+    .grid2{grid-template-columns:1fr}
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .metric:last-child{grid-column:span 2}
+    .session > summary{padding:13px 15px;gap:10px}
+    .s-focus{order:3;flex-basis:100%;padding-left:0}
+    .s-body{padding:4px 15px 16px}
+    .doc{padding:18px 16px}
+    .panel{padding:16px}
+    .tablewrap{overflow-x:auto}
+  }
+  @media print{
+    .side{display:none}.shell{display:block}.main{padding:0;max-width:none}
+    .session{border:0;page-break-inside:avoid}.session > summary{cursor:default}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand">Тетрадь практики<small>записи и супервизия</small></div>
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Поиск по записям" autocomplete="off">
+    </div>
+    <div class="side-label">Клиенты</div>
+    <div class="clients" id="clients"></div>
+    <div class="side-label">Практика</div>
+    <div id="nav-extra"></div>
+    <div class="side-foot" id="side-foot"></div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+const DATA = __DATA_JSON__;
+const METRICS = DATA.metrics;
+
+const state = { view: "client", code: DATA.clients[0] ? DATA.clients[0].code : null, q: "" };
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function md(src){
+  if(!src || !src.trim()) return "";
+  const lines = src.replace(/\r/g,"").split("\n");
+  let html = "", list = false, para = [], table = [], fence = false, fenceBuf = [];
+  const flushPara = () => { if(para.length){ html += "<p>" + inline(para.join(" ")) + "</p>"; para = []; } };
+  const closeList = () => { if(list){ html += "</ul>"; list = false; } };
+  const closeTable = () => {
+    if(!table.length) return;
+    const rows = table.filter(r => !/^\|[\s:|-]+\|$/.test(r));
+    const cells = r => r.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+    if(rows.length){
+      const head = cells(rows[0]);
+      const body = rows.slice(1).map(r => "<tr>" + cells(r).map(c => `<td>${inline(c)}</td>`).join("") + "</tr>").join("");
+      html += `<div class="tablewrap"><table><thead><tr>${head.map(c => `<th>${inline(c)}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div>`;
+    }
+    table = [];
+  };
+
+  for(const raw of lines){
+    const line = raw.trim();
+    if(line.startsWith("```")){
+      if(!fence){ flushPara(); closeList(); closeTable(); fence = true; fenceBuf = []; }
+      else { html += "<pre><code>" + esc(fenceBuf.join("\n")) + "</code></pre>"; fence = false; }
+      continue;
+    }
+    if(fence){ fenceBuf.push(raw); continue; }
+    if(!line){ flushPara(); closeList(); closeTable(); continue; }
+    let m;
+    if(line.startsWith("|")){ flushPara(); closeList(); table.push(line); continue; }
+    closeTable();
+    if(m = line.match(/^[-*]\s+(.*)$/)){
+      flushPara();
+      if(!list){ html += "<ul>"; list = true; }
+      html += "<li>" + inline(m[1]) + "</li>";
+      continue;
+    }
+    if(m = line.match(/^(#{1,4})\s+(.*)$/)){
+      flushPara(); closeList();
+      const lvl = Math.min(m[1].length + 1, 5);
+      html += `<h${lvl}>` + inline(m[2]) + `</h${lvl}>`;
+      continue;
+    }
+    if(m = line.match(/^>\s?(.*)$/)){
+      flushPara(); closeList();
+      html += "<blockquote>" + inline(m[1]) + "</blockquote>";
+      continue;
+    }
+    if(/^\*\*[^*]+:?\*\*$/.test(line) || /^\*\*.+\*\*$/.test(line) && line.length < 90){
+      flushPara(); closeList();
+      html += "<p class='sub'>" + inline(line) + "</p>";
+      continue;
+    }
+    closeList();
+    para.push(line);
+  }
+  flushPara(); closeList(); closeTable();
+  return html;
+}
+function inline(s){
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/(^|[\s(])_([^_]+)_(?=[\s).,;!?]|$)/g, "$1<em>$2</em>")
+    .replace(/\[(.+?)\]\((https?:[^)]+)\)/g, '$1');
+}
+
+function fmtDate(iso){
+  if(!iso) return "";
+  const [y,m,d] = iso.split("-");
+  const months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+  return `${+d} ${months[+m-1]} ${y}`;
+}
+
+function spark(sessions, key, color){
+  const pts = sessions.map(s => s.scores ? s.scores[key] : undefined).filter(v => v !== undefined);
+  if(!pts.length) return "";
+  const W = 100, H = 26, pad = 3;
+  const step = pts.length > 1 ? (W - pad*2) / (pts.length - 1) : 0;
+  const y = v => H - pad - (v/3) * (H - pad*2);
+  const d = pts.map((v,i) => `${i ? "L" : "M"}${(pad + i*step).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const dots = pts.map((v,i) => `<circle cx="${(pad + i*step).toFixed(1)}" cy="${y(v).toFixed(1)}" r="1.9" fill="${color}"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity=".85"/>
+    ${dots}</svg>`;
+}
+
+/* ---------- sidebar ---------- */
+function renderSide(){
+  document.getElementById("clients").innerHTML = DATA.clients.map(c => {
+    const risk = c.tetrad.riski && !/^(нет|—|-)$/i.test(c.tetrad.riski.trim());
+    return `<button class="client-link" data-code="${esc(c.code)}" aria-current="${state.view==='client' && state.code===c.code}">
+      <span class="code">${esc(c.code)}</span>
+      <span class="client-meta">${c.count}${risk ? '<span class="dot risk" title="есть риск"></span>' : ""}</span>
+    </button>`;
+  }).join("");
+
+  document.getElementById("nav-extra").innerHTML = `
+    <button class="navlink" data-view="index" aria-current="${state.view==='index'}">Все клиенты</button>
+    ${DATA.weeks.length ? `<button class="navlink" data-view="weeks" aria-current="${state.view==='weeks'}">Недельные обзоры</button>` : ""}
+    <button class="navlink" data-view="guide" aria-current="${state.view==='guide'}">Как это работает</button>`;
+
+  document.getElementById("side-foot").innerHTML =
+    `${DATA.clients.length} клиентов · ${DATA.clients.reduce((a,c)=>a+c.count,0)} встреч<br>собрано ${new Date().toLocaleDateString("ru-RU")}`;
+}
+
+/* ---------- views ---------- */
+function viewClient(){
+  const c = DATA.clients.find(x => x.code === state.code);
+  if(!c) return `<div class="crumbs">Клиент</div><h1>${esc(state.code || "Пусто")}</h1>
+    <p class="lede">Записей по этому коду пока нет — он есть в индексе, но папки на Диске ещё не создано.</p>
+    <div class="panel"><p class="empty">Пришлите консультацию в чат, и папка появится.</p></div>`;
+  const t = c.tetrad || {};
+  const risk = t.riski && !/^(нет|—|-)$/i.test(t.riski.trim());
+  const q = state.q.toLowerCase();
+  const sessions = c.sessions.filter(s => !q || [s.date, s.focus, s.zapis, s.otklik, s.razbor].join(" ").toLowerCase().includes(q));
+  const sorted = [...c.sessions].sort((a,b)=> a.date.localeCompare(b.date));
+
+  const lastScore = k => { for(let i=sorted.length-1;i>=0;i--){ if(sorted[i].scores && sorted[i].scores[k]!==undefined) return sorted[i].scores[k]; } return null; };
+
+  return `
+  <div class="crumbs">Клиент · ${c.count} ${c.count === 1 ? "встреча" : c.count < 5 ? "встречи" : "встреч"}</div>
+  <h1>${esc(c.code)}</h1>
+  ${t.zapros ? `<p class="lede">${esc(t.zapros.split("\n")[0])}</p>` : ""}
+  ${risk ? `<div class="risk-banner"><b>Риск.</b> ${esc(t.riski)}</div>` : ""}
+
+  <div class="metrics">
+    ${METRICS.map(m => {
+      const v = lastScore(m.key);
+      return `<div class="metric">
+        <div class="lab">${esc(m.label)}</div>
+        <div class="val">${v === null ? "—" : v}<span>/3</span></div>
+        ${spark(sorted, m.key, m.color)}
+      </div>`;
+    }).join("")}
+  </div>
+
+  <div class="panel">
+    <h2>Случай</h2>
+    ${t.formulirovka ? `<div class="field"><div class="k">Формулировка</div><div class="v">${md(t.formulirovka)}</div></div>` : ""}
+    ${t.dinamika ? `<div class="field"><div class="k">Динамика</div><div class="v">${md(t.dinamika)}</div></div>` : ""}
+    ${t.proveryayu ? `<div class="field"><div class="k">Что проверяю</div><div class="v">${md(t.proveryayu)}</div></div>` : ""}
+    ${(t.gipotezy && t.gipotezy.length) ? `<div class="field"><div class="k">Гипотезы</div>
+      ${t.gipotezy.map(g => `<div class="hyp"><span class="tag ${esc(g.status)}">${esc(g.status)}</span><span>${esc(g.text)}</span></div>`).join("")}
+    </div>` : ""}
+    ${t.updated ? `<div class="field"><div class="k">Обновлено</div><div class="v">${fmtDate(t.updated)}</div></div>` : ""}
+  </div>
+
+  <div class="section-head"><h2>Встречи</h2><span class="count">${sessions.length}${q ? " из " + c.count : ""}</span></div>
+  ${sessions.length ? sessions.slice().reverse().map(s => viewSession(s)).join("")
+    : `<div class="panel"><p class="empty">${q ? "Ничего не найдено." : "Записей пока нет."}</p></div>`}
+  `;
+}
+
+function viewSession(s){
+  const dots = METRICS.map(m => {
+    const v = s.scores ? s.scores[m.key] : undefined;
+    if(v === undefined) return "";
+    return `<span title="${esc(m.label)}: ${v}/3" style="display:flex;flex-direction:column;gap:2px;margin-left:5px">${
+      [1,2,3].map(i => `<i style="height:3px;width:9px;border-radius:1px;background:${i<=v ? m.color : "#dbe3ea"};display:block"></i>`).join("")
+    }</span>`;
+  }).join("");
+
+  return `<details class="session">
+    <summary>
+      <span class="s-date">${fmtDate(s.date)}</span>
+      <span class="s-num">№${esc(s.n)}</span>
+      <span class="s-focus">${esc(s.focus || "")}</span>
+      <span class="s-score">${dots}</span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="s-body">
+      ${s.risk ? `<div class="risk-banner" style="margin:12px 0 0"><b>Риск.</b> ${esc(s.risk)}</div>` : ""}
+      <div class="block rec">
+        <div class="block-h"><span class="t">Запись</span><span class="d">слова терапевта, не редактируется</span></div>
+        <div class="prose">${s.zapis ? md(s.zapis) : `<span class="empty">не записано</span>`}</div>
+      </div>
+      <div class="block">
+        <div class="block-h"><span class="t">Отклик</span>${s.otklikDate ? `<span class="d">${fmtDate(s.otklikDate)}</span>` : ""}</div>
+        <div class="prose">${s.otklik ? md(s.otklik) : `<span class="empty">нет</span>`}</div>
+      </div>
+      <div class="block">
+        <div class="block-h"><span class="t">Разбор</span>${s.razborDate ? `<span class="d">${fmtDate(s.razborDate)}</span>` : ""}</div>
+        <div class="prose">${s.razbor ? md(s.razbor) : `<span class="empty">разбора по этой встрече нет — он может быть в недельном обзоре или в разборе следующей встречи</span>`}</div>
+      </div>
+    </div>
+  </details>`;
+}
+
+function viewIndex(){
+  return `<div class="crumbs">Практика</div>
+  <h1>Все клиенты</h1>
+  <p class="lede">Индекс. Нажмите на код, чтобы открыть записи.</p>
+  <div class="panel"><div class="tablewrap"><table>
+    <thead><tr><th>Код</th><th>Запрос</th><th>Встреч</th><th>Последняя</th><th>Статус</th><th>Риск</th></tr></thead>
+    <tbody>${DATA.index.map(r => `<tr>
+      <td class="code"><a href="#" data-code="${esc(r.code)}" style="color:var(--accent);text-decoration:none">${esc(r.code)}</a></td>
+      <td>${esc(r.zapros)}</td><td>${esc(r.vstrech)}</td><td>${esc(r.last)}</td>
+      <td>${esc(r.status)}</td><td>${esc(r.risk)}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+}
+
+function viewWeeks(){
+  return `<div class="crumbs">Практика</div><h1>Недельные обзоры</h1>
+  ${DATA.weeks.length ? DATA.weeks.map(w => `<div class="doc">${md(w.text)}</div>`).join("")
+    : `<div class="panel"><p class="empty">Пока нет.</p></div>`}`;
+}
+
+function viewGuide(){
+  return `<div class="crumbs">Справка</div><h1>Как это работает</h1>
+  ${DATA.guide.map(g => `<div class="doc">${md(g.text)}</div>`).join("")}
+  <p class="foot">Данные — markdown-файлы на Google Диске. Это приложение — сборка для чтения: оно не меняет записи. Обновление — командой в чате.</p>`;
+}
+
+/* ---------- render ---------- */
+function render(){
+  renderSide();
+  const main = document.getElementById("main");
+  main.innerHTML = state.view === "index" ? viewIndex()
+    : state.view === "weeks" ? viewWeeks()
+    : state.view === "guide" ? viewGuide()
+    : viewClient();
+}
+
+document.addEventListener("click", e => {
+  const cl = e.target.closest("[data-code]");
+  if(cl){ e.preventDefault(); state.code = cl.dataset.code; state.view = "client"; state.q = ""; document.getElementById("q").value = ""; render(); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  const nv = e.target.closest("[data-view]");
+  if(nv){ state.view = nv.dataset.view; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+});
+
+document.getElementById("q").addEventListener("input", e => {
+  state.q = e.target.value.trim();
+  if(state.view !== "client"){ state.view = "client"; }
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
