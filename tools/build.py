@@ -85,7 +85,7 @@ def parse_session(path: Path) -> dict | None:
     risk = ""
     for line in lines[:12]:
         s = line.strip()
-        if s.lower().startswith("шкалы:"):
+        if s.lower().startswith("шкалы"):
             scores = parse_scores(s)
         elif s.lower().startswith("фокус:"):
             focus = s[6:].strip()
@@ -164,6 +164,11 @@ def parse_tetrad(path: Path) -> dict:
                 if gm:
                     data["gipotezy"].append({"status": gm.group(1).strip(), "text": gm.group(2).strip()})
         else:
+            # строка-версия в скобках: «(рабочая, версия от 2026-10-22)»
+            vm = re.match(r"^\(([^)\n]{4,60})\)\s*(?:\n|$)", body)
+            if vm and key in ("formulirovka", "formulirovka"):
+                data["version"] = vm.group(1).strip()
+                body = body[vm.end():].strip()
             data[key] = body
     return data
 
@@ -193,7 +198,11 @@ def parse_index(path: Path) -> list[dict]:
 
 def collect(src: Path) -> dict:
     clients = []
-    for folder in sorted(p for p in src.iterdir() if p.is_dir() and p.name.upper().startswith("К")):
+    for folder in sorted(p for p in src.iterdir() if p.is_dir()):
+        if folder.name.startswith(("_", ".")):
+            continue
+        if not (folder / "_тетрадь.md").exists() and not any(parse_session(f) for f in folder.glob("*.md") if not f.name.startswith("_")):
+            continue
         tetrad_path = folder / "_тетрадь.md"
         tetrad = parse_tetrad(tetrad_path) if tetrad_path.exists() else {}
         sessions = []

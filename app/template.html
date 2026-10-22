@@ -322,7 +322,7 @@ function viewClient(){
   return `
   <div class="crumbs">Клиент · ${c.count} ${c.count === 1 ? "встреча" : c.count < 5 ? "встречи" : "встреч"}</div>
   <h1>${esc(c.code)}</h1>
-  ${t.zapros ? `<p class="lede">${esc(t.zapros.split("\n")[0])}</p>` : ""}
+  ${(t.formulirovka || t.zapros) ? `<p class="lede">${esc((t.formulirovka || t.zapros).split(/(?<=[.!?])\s/)[0])}</p>` : ""}
   ${risk ? `<div class="risk-banner"><b>Риск.</b> ${esc(t.riski)}</div>` : ""}
 
   <div class="metrics">
@@ -338,7 +338,8 @@ function viewClient(){
 
   <div class="panel">
     <h2>Случай</h2>
-    ${t.formulirovka ? `<div class="field"><div class="k">Формулировка</div><div class="v">${md(t.formulirovka)}</div></div>` : ""}
+    ${t.zapros ? `<div class="field"><div class="k">Запрос</div><div class="v">${md(t.zapros)}</div></div>` : ""}
+    ${t.formulirovka ? `<div class="field"><div class="k">Формулировка${t.version ? ` <span style="text-transform:none;letter-spacing:0;color:var(--faint);font-weight:400">· ${esc(t.version)}</span>` : ""}</div><div class="v">${md(t.formulirovka)}</div></div>` : ""}
     ${t.dinamika ? `<div class="field"><div class="k">Динамика</div><div class="v">${md(t.dinamika)}</div></div>` : ""}
     ${t.proveryayu ? `<div class="field"><div class="k">Что проверяю</div><div class="v">${md(t.proveryayu)}</div></div>` : ""}
     ${(t.gipotezy && t.gipotezy.length) ? `<div class="field"><div class="k">Гипотезы</div>
