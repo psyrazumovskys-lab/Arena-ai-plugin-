@@ -62,14 +62,6 @@
       margin-bottom: 10px;
     }
 
-    .quote-box {
-      font-size: 15px;
-      line-height: 1.6;
-      border-left: 3px solid var(--terracotta);
-      border-radius: 0 10px 10px 0;
-      background: #F4F1EA;
-      box-shadow: 0 2px 8px rgba(44, 53, 57, 0.03);
-    }
 
     /* МЯГКИЕ ТАКТИЛЬНЫЕ КНОПКИ С ЭФФЕКТОМ ВДАВЛИВАНИЯ */
     .btn-nav-step, .btn-breath-start, .btn-copy-chip, .btn-bridge, .choice-chip, .wb-step-btn {
@@ -81,9 +73,6 @@
       transform: scale(0.96);
     }
 
-    .btn-nav-step.primary {
-      box-shadow: 0 4px 12px rgba(90, 115, 101, 0.25);
-    }
     .btn-nav-step.primary:hover {
       box-shadow: 0 6px 16px rgba(90, 115, 101, 0.35);
       background: #4A6154;
@@ -93,9 +82,6 @@
       transform: scale(0.95);
     }
 
-    .page-card {
-      box-shadow: 0 4px 20px rgba(44, 53, 57, 0.06);
-    }
 
     body_old_rule {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -274,8 +260,10 @@
       padding: 12px 16px;
       font-style: italic;
       font-size: 13.5px;
+      line-height: 1.6;
       color: #4A555B;
       margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(44, 53, 57, 0.03);
     }
 
     .interactive-card {
@@ -462,26 +450,26 @@
 
     /* SOS-ВИДЖЕТ БЛОКИРОВКИ (СТР. 6) */
     .sos-lockscreen-widget {
-      background: #2C3539;
-      color: #FFFFFF;
+      background: #FDF3E7;
+      color: #3B474C;
       border-radius: 18px;
       padding: 24px 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(44, 53, 57, 0.25);
+      box-shadow: 0 10px 30px rgba(194, 125, 101, 0.25);
       margin: 20px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 3px solid var(--terracotta);
     }
     .sos-clock {
       font-size: 28px;
       font-weight: 300;
       letter-spacing: 1px;
       margin-bottom: 12px;
-      color: #E2DDD5;
+      color: #7A5A4B;
     }
     .sos-pill-badge {
       display: inline-block;
-      background: rgba(200, 125, 101, 0.25);
-      color: #FDF3E7;
+      background: rgba(194, 125, 101, 0.18);
+      color: #7A5A4B;
       border: 1px solid var(--terracotta);
       font-size: 11px;
       font-weight: 700;
@@ -494,10 +482,10 @@
       font-size: 15px;
       line-height: 1.5;
       font-weight: 500;
-      color: #F7F5F0;
+      color: #3B474C;
       margin: 12px 0;
       padding: 12px;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.75);
       border-radius: 10px;
     }
 
@@ -554,6 +542,7 @@
       background: var(--sage-primary);
       color: #FFFFFF;
       border-color: var(--sage-primary);
+      box-shadow: 0 4px 12px rgba(90, 115, 101, 0.25);
     }
 
     /* ПЛАВАЮЩИЙ ИНДИКАТОР */
@@ -593,29 +582,6 @@
     }
     .marker.paper { background: var(--terracotta); }
     .marker.shield { background: #C27D65; }
-
-    /* БЛОК САМОРЕФЛЕКСИИ (дневник внизу каждой страницы) */
-    /* СИЛЬНАЯ SOS-КАРТОЧКА (стр. 6 — терракотовый акцент) */
-    .sos-lockscreen-widget {
-      background: #FDF3E7 !important;
-      color: #3B474C !important;
-      border-radius: 18px;
-      padding: 24px 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(194, 125, 101, 0.25);
-      margin: 20px 0;
-      border: 3px solid var(--terracotta);
-    }
-    .sos-clock { color: #7A5A4B !important; }
-    .sos-pill-badge {
-      background: rgba(194, 125, 101, 0.18) !important;
-      color: #7A5A4B !important;
-      border: 1px solid var(--terracotta) !important;
-    }
-    .sos-quote {
-      color: #3B474C !important;
-      background: rgba(255, 255, 255, 0.75) !important;
-    }
 
     /* БЛОК ЗАПИСИ (дневник с сохранением) */
     .entry-block {
