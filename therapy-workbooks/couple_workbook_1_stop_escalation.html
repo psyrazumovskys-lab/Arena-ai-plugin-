@@ -727,6 +727,29 @@
       /* Поля ввода: 16px — иначе iOS сам приближает страницу при фокусе */
       .journal-entry { font-size: 16px; min-height: 104px; }
       .entry-hint { font-size: 14.5px; line-height: 1.5; }
+
+    /* Метка типа задания: кто заполняет блок */
+    .entry-kind {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding: 4px 11px 4px 8px;
+      border-radius: 100px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .entry-kind .kind-icon {
+      width: 15px;
+      height: 15px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .entry-kind.kind-solo { background: var(--sage-light); color: var(--sage-primary); }
+    .entry-kind.kind-pair { background: var(--terracotta-light); color: #A4603F; }
       .entry-item { font-size: 15.5px; padding: 10px 0; }
       .entry-empty { font-size: 14px; }
 
@@ -851,9 +874,10 @@
       </p>
     </div>
     <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
       <div class="entry-header">
-        <span class="entry-lamp" title="Одно слово о ваших отношениях прямо сейчас. Какое оно?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-        <span class="entry-hint">Одно слово о ваших отношениях прямо сейчас. Какое оно?</span>
+        <span class="entry-lamp" title="Вспомните прошедшую неделю. Каким одним словом вы бы описали ваши отношения?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Вспомните прошедшую неделю. Каким одним словом вы бы описали ваши отношения?</span>
       </div>
       <textarea class="journal-entry" id="q_first_word" placeholder="Например: тепло, усталость, надежда, тупик, нежность..."></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q_first_word')">Сохранить запись</button>
@@ -876,12 +900,12 @@
     </div>
     <span class="badge-label">Шаг 1 из 6 · Градусник эмоций</span>
     <h1>Почему в ссоре отключается голова</h1>
-    <p>В сильном гневе наше тело думает, что на нас напал медведь. Пульс подскакивает выше 100 ударов, кровь отливает от зоны логики. В этот момент мы <strong>физически не способны</strong> слышать чужие доводы. Попробуйте шкалу:</p>
+    <p>В сильном гневе наше тело думает, что на нас напал медведь. Пульс подскакивает выше 100 ударов, кровь отливает от зоны логики. В этот момент мы <strong>физически не способны</strong> слышать чужие доводы. Вспомните последнюю ссору и отметьте, насколько сильно закипало:</p>
 
     <!-- ИНТЕРАКТИВНЫЙ ГРАДУСНИК -->
     <div class="scale-gauge-container">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="tx-label">На сколько баллов кипит внутри?</span>
+        <span class="tx-label">На сколько баллов кипело внутри?</span>
         <span id="scaleScoreText" style="font-size: 16px; font-weight: 800; color: var(--sage-primary);">4 из 10</span>
       </div>
 
@@ -906,14 +930,15 @@
     </div>
 
     <div class="interactive-card">
-      <h3><span class="marker paper">✎</span>Как ваше тело подает сигнал тревоги?</h3>
-      <p class="tx-small">Что вы чувствуете первым делом, когда начинаете закипать?</p>
+      <h3><span class="marker paper">✎</span>Телесные сигналы тревоги</h3>
+      <p class="tx-small">Какие сигналы тела обычно предупреждают вас, что конфликт нарастает?</p>
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Запишите первые телесные сигналы тревоги — то, что вы чувствуете в теле, когда начинаете закипать."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Запишите первые телесные сигналы тревоги — то, что вы чувствуете в теле, когда начинаете закипать.</span>
+    <span class="entry-lamp" title="Вспомните последнюю ссору: что вы заметили в теле за минуту до того, как стало совсем горячо?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Вспомните последнюю ссору: что вы заметили в теле за минуту до того, как стало совсем горячо?</span>
   </div>
   <textarea class="journal-entry" id="q_body_signals" placeholder="Например: перехватывает дыхание, сжимаются кулаки или челюсти, горит лицо, хочется закричать или уйти в другую комнату..."></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_body_signals')">Сохранить запись</button>
@@ -941,7 +966,7 @@
     <!-- ДЫХАТЕЛЬНЫЙ КРУГ -->
     <div class="breath-tool-card">
       <span class="badge-label" style="background:#fff;">Сброс напряжения</span>
-      <h3 style="margin-top: 4px;">Сделайте 4 глубоких вдоха прямо сейчас</h3>
+      <h3 style="margin-top: 4px;">Сделайте 4 глубоких вдоха</h3>
       <p class="tx-small" style="margin-bottom: 10px;">Вдох носом — круг растет. Выдох через рот — отпустите плечи и челюсть.</p>
 
       <div class="breath-circle-outer" id="breathCircle">
@@ -968,9 +993,10 @@
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Что помогает вам остыть за 20 минут паузы? Перечислите свои способы."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Что помогает вам остыть за 20 минут паузы? Перечислите свои способы.</span>
+    <span class="entry-lamp" title="Что уже помогало вам остывать раньше? Перечислите способы, которые срабатывали."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Что уже помогало вам остывать раньше? Перечислите способы, которые срабатывали.</span>
   </div>
   <textarea class="journal-entry" id="q_timeout_plan" placeholder="Выйти на балкон подышать, включить тихую музыку, помыть руки теплой водой, погладить кота..."></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_timeout_plan')">Сохранить запись</button>
@@ -1036,15 +1062,16 @@
     </div>
 
     <div class="interactive-card">
-      <h3><span class="marker paper">✎</span>Или напишите фразу своими словами:</h3>
+      <h3><span class="marker paper">✎</span>Ваша фраза своими словами</h3>
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Напишите свою версию фразы-стоп-слова для паузы во время ссоры."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Напишите свою версию фразы-стоп-слова для паузы во время ссоры.</span>
+    <span class="entry-lamp" title="Какую фразу вы хотите сказать в следующий раз, когда почувствуете, что закипаете?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Какую фразу вы хотите сказать в следующий раз, когда почувствуете, что закипаете?</span>
   </div>
-  <textarea class="journal-entry" id="q_my_stopper" placeholder="Как вам проще всего сказать партнеру о паузе, чтобы это звучало тепло и искренне?"></textarea>
+  <textarea class="journal-entry" id="q_my_stopper" placeholder="Например: «Мне нужно 20 минут, чтобы остыть. Я вернусь, и мы спокойно договорим»."></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_my_stopper')">Сохранить запись</button>
   <div class="entry-list" id="list_q_my_stopper">
     <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1077,15 +1104,16 @@
     </div>
 
     <div class="interactive-card">
-      <h3><span class="marker paper">✎</span>Ваша договоренность:</h3>
+      <h3><span class="marker paper">✎</span>Ваша общая договорённость</h3>
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-pair"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.1"/><path d="M2.8 19.5c0-2.9 2.8-4.7 6.2-4.7s6.2 1.8 6.2 4.7"/><circle cx="17" cy="9.5" r="2.6"/><path d="M17.6 14.9c2.2.3 3.6 1.7 3.6 3.8"/></svg><span>Вместе с партнёром</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Запишите выбранное стоп-слово и договорённость о его использовании."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Запишите выбранное стоп-слово и договорённость о его использовании.</span>
+    <span class="entry-lamp" title="Обсудите это вместе в спокойный вечер и запишите, к чему вы пришли."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Обсудите это вместе в спокойный вечер и запишите, к чему вы пришли.</span>
   </div>
-  <textarea class="journal-entry" id="q_invivo_report" placeholder="Какое стоп-слово вы выбрали? Когда планируете обсудить это с партнером?"></textarea>
+  <textarea class="journal-entry" id="q_invivo_report" placeholder="Например: слово «Чайник». Кто его произнёс — оба расходятся на 20 минут и возвращаются без обид."></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_invivo_report')">Сохранить запись</button>
   <div class="entry-list" id="list_q_invivo_report">
     <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1131,11 +1159,12 @@
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Ваше главное напоминание себе — то, что вы хотите прошептать в момент сильного гнева."><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Ваше главное напоминание себе — то, что вы хотите прошептать в момент сильного гнева.</span>
+    <span class="entry-lamp" title="Какую фразу вы хотите себе напомнить в следующий конфликт?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Какую фразу вы хотите себе напомнить в следующий конфликт?</span>
   </div>
-  <textarea class="journal-entry" id="q_sos_note" placeholder="Что вам важнее всего помнить в момент злости? (Например: 'Мы в одной лодке против проблемы, а не против друг друга')"></textarea>
+  <textarea class="journal-entry" id="q_sos_note" placeholder="Например: «Мы в одной лодке против проблемы, а не против друг друга»"></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_sos_note')">Сохранить запись</button>
   <div class="entry-list" id="list_q_sos_note">
     <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1176,9 +1205,10 @@
     
     </div>
 <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
   <div class="entry-header">
-    <span class="entry-lamp" title="Маленькая благодарность себе за пройденный путь. Что вы бы хотели отметить?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
-    <span class="entry-hint">Маленькая благодарность себе за пройденный путь. Что вы бы хотели отметить?</span>
+    <span class="entry-lamp" title="Оглянитесь на пройденный путь. Что вы хотите отметить у себя?"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+    <span class="entry-hint">Оглянитесь на пройденный путь. Что вы хотите отметить у себя?</span>
   </div>
   <textarea class="journal-entry" id="q_gratitude" placeholder="За что вы благодарны себе сегодня после прохождения этой тетради?"></textarea>
   <button type="button" class="btn-save-entry" onclick="saveEntry('q_gratitude')">Сохранить запись</button>
@@ -1315,10 +1345,10 @@
       banner.innerHTML = '<strong><span class="zone-dot green"></span>Зеленая зона (1–4 балла):</strong> Голова ясная. Вы слышите партнера, можете пошутить и спокойно объяснить свою мысль.';
     } else if (val <= 7) {
       banner.className = 'scale-status-banner status-yellow';
-      banner.innerHTML = '<strong><span class="zone-dot yellow"></span>Желтая зона (5–7 баллов):</strong> Растет напряжение. Дыхание чаще, фразы резче. <strong>Сигнал:</strong> замедляйтесь прямо сейчас, пока не вспыхнул скандал.';
+      banner.innerHTML = '<strong><span class="zone-dot yellow"></span>Желтая зона (5–7 баллов):</strong> Растет напряжение. Дыхание чаще, фразы резче. Здесь ещё можно притормозить — пока не вспыхнул скандал.';
     } else {
       banner.className = 'scale-status-banner status-red';
-      banner.innerHTML = '<strong><span class="zone-dot red"></span>Красная зона (8–10 баллов):</strong> Чайник кипит. В голове только обида и желание уколоть побольнее. <strong>Любой разговор сейчас разрушителен. Срочно берите 20 минут паузы!</strong>';
+      banner.innerHTML = '<strong><span class="zone-dot red"></span>Красная зона (8–10 баллов):</strong> Чайник кипит. В голове только обида и желание уколоть побольнее. <strong>В таком состоянии любой разговор разрушителен — его лучше остановить и взять 20 минут паузы.</strong>';
     }
     saveData('somatic_scale_val', val);
   }
