@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Рабочий журнал по 12 Шагам ВДА (Взрослые Дети Алкоголиков и дисфункциональных семей)</title>
+  <style>
+    :root {
+--primary-dark: #075985;
+
+      --primary: #0369a1;
+      --primary-soft: #f0f9ff;
+      --accent: #0284c7;
+      --accent-soft: #f0f9ff;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #cbd5e1;
+      --border-focus: #6366f1;
+      --therapy-block: #faf5ff;
+      --therapy-border: #a855f7;
+      --reparent-block: #fdf2f8;
+      --reparent-border: #ec4899;
+      --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font);
+      line-height: 1.6;
+      font-size: 16px;
+      padding: 16px 12px 60px;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #075985 0%, #0d9488 100%);
+      color: #ffffff;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+    }
+
+    .badge-top {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .header-desc {
+      font-size: 0.95rem;
+      opacity: 0.94;
+      line-height: 1.5;
+    }
+
+    .header-meta {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    @media (min-width: 600px) {
+      body { padding: 24px 20px 80px; }
+      header { padding: 32px 28px; margin-bottom: 24px; }
+      h1 { font-size: 1.9rem; }
+      .header-desc { font-size: 1.05rem; }
+      .header-meta { flex-direction: row; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; }
+    }
+
+    /* TABS */
+    .nav-tabs-wrapper {
+      position: sticky;
+      top: 8px;
+      z-index: 100;
+      margin-bottom: 20px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 6px;
+      border-radius: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex: 1 0 auto;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: #475569;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      min-height: 42px;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: var(--bg-card);
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-panel {
+      display: none;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .step-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    @media (min-width: 600px) {
+      .card { padding: 26px; }
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-intro {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .block-theory {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 14px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    .block-reparent {
+      background: var(--reparent-block);
+      border-left: 4px solid var(--reparent-border);
+      padding: 14px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    .block-reparent h4 {
+      color: #be185d;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .block-therapy {
+      background: var(--therapy-block);
+      border-left: 4px solid var(--therapy-border);
+      padding: 14px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    .block-therapy h4 {
+      color: #7e22ce;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #fafbfc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.15s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      min-height: 46px;
+      transition: background 0.15s ease;
+    }
+
+    @media (min-width: 600px) {
+      .btn { width: auto; }
+    }
+
+    .btn:hover { background: #4338ca; }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .btn-secondary:hover { background: #cbd5e1; }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      width: auto;
+      min-height: 32px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-danger:hover { background: #fecaca; }
+
+    .entries-feed {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .entry-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      position: relative;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      gap: 8px;
+    }
+
+    .entry-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .entry-body p {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .actions-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (min-width: 600px) {
+      .actions-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .actions-buttons {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
+    .actions-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 480px) {
+      .actions-buttons { flex-direction: row; }
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #0f172a !important;
+        font-size: 10pt !important;
+        line-height: 1.4 !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      header {
+        background: #ffffff !important;
+        color: #ffffff;
+        border: 1.5px solid #64748b !important;
+        box-shadow: none !important;
+        padding: 12px 14px !important;
+        margin-bottom: 14px !important;
+        page-break-after: avoid !important;
+      }
+
+      header h1 {
+        font-size: 1.35rem !important;
+        margin-bottom: 4px !important;
+        color: #0f172a !important;
+      }
+
+      .badge-top {
+        border: 1px solid #64748b !important;
+        color: #334155 !important;
+        background: transparent !important;
+        padding: 2px 8px !important;
+        font-size: 0.7rem !important;
+        margin-bottom: 6px !important;
+      }
+
+      .header-desc {
+        color: #334155 !important;
+        font-size: 0.88rem !important;
+        line-height: 1.35 !important;
+      }
+
+      .header-meta {
+        border-top: 1px solid #cbd5e1 !important;
+        color: #475569 !important;
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+        font-size: 0.78rem !important;
+        gap: 12px !important;
+      }
+
+      .nav-tabs-wrapper,
+      .actions-bar,
+      .btn,
+      .btn-danger,
+      .entries-feed {
+        display: none !important;
+      }
+
+      .step-panel {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        page-break-after: auto !important;
+        page-break-inside: auto !important;
+        margin-bottom: 14px !important;
+      }
+
+      .card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 14px 16px !important;
+        margin-bottom: 14px !important;
+        page-break-inside: avoid !important;
+      }
+
+      .card h2 {
+        font-size: 1.15rem !important;
+        margin-bottom: 4px !important;
+        color: #0f172a !important;
+      }
+
+      .card-intro {
+        font-size: 0.85rem !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+        color: #475569 !important;
+      }
+
+      .block-theory,
+      .block-reparent,
+      .block-therapy {
+        padding: 8px 12px !important;
+        margin-bottom: 10px !important;
+        font-size: 0.84rem !important;
+        line-height: 1.35 !important;
+        page-break-inside: avoid !important;
+        background: #f8fafc !important;
+      }
+
+      .block-theory {
+        border-left: 3px solid #4f46e5 !important;
+      }
+
+      .block-reparent {
+        border-left: 3px solid #db2777 !important;
+      }
+
+      .block-therapy {
+        border-left: 3px solid #7e22ce !important;
+      }
+
+      .block-reparent h4,
+      .block-therapy h4 {
+        font-size: 0.88rem !important;
+        margin-bottom: 3px !important;
+      }
+
+      .form-group {
+        margin-bottom: 10px !important;
+        page-break-inside: avoid !important;
+      }
+
+      label {
+        font-size: 0.84rem !important;
+        margin-bottom: 3px !important;
+        color: #1e293b !important;
+      }
+
+      .hint {
+        font-size: 0.75rem !important;
+        margin-top: 2px !important;
+        color: #64748b !important;
+      }
+
+      input[type="text"],
+      select {
+        border: 1px solid #94a3b8 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        padding: 6px 8px !important;
+        font-size: 9pt !important;
+        min-height: 28px !important;
+      }
+
+      textarea {
+        border: 1px solid #94a3b8 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        padding: 6px 8px !important;
+        font-size: 9pt !important;
+        min-height: 52px !important;
+        height: 52px !important;
+      }
+
+      @page {
+        margin: 1.2cm 1cm;
+        size: A4 portrait;
+      }
+    }
+  
+    /* --- Интерактивная мастерская (Dynamic Journal & Log Entries) --- */
+    .workshop-card {
+      background: #ffffff;
+      border: 2px dashed var(--border);
+      border-radius: 14px;
+      padding: 18px 18px 20px;
+      margin: 22px 0 16px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    }
+    .workshop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .workshop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .workshop-entries-count {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .workshop-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .workshop-form textarea {
+      min-height: 80px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      color: var(--text-main);
+      background: var(--bg-page);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .workshop-form textarea:focus {
+      border-color: var(--border-focus);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .workshop-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .btn-add-entry {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-add-entry:hover {
+      filter: brightness(0.9);
+    }
+    .workshop-entries-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .entry-item {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .entry-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .entry-date {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .btn-del-entry {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .btn-del-entry:hover {
+      color: #ef4444;
+      background: #fee2e2;
+    }
+    .entry-content {
+      font-size: 13.5px;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .entries-empty-hint {
+      text-align: center;
+      padding: 14px;
+      color: #94a3b8;
+      font-size: 13px;
+      font-style: italic;
+    }
+    @media print {
+      .workshop-card { display: none !important; }
+    }
+
+  
+    /* === РАСШИРЕННЫЙ АДАПТИВНЫЙ И ВЫСОКОКОНТРАСТНЫЙ ДИЗАЙН (MOBILE & ACCESSIBILITY) === */
+    :root {
+      --text-main: #0f172a !important;
+      --text-muted: #334155 !important;
+      --border: #cbd5e1 !important;
+    }
+
+    body {
+      color: #0f172a !important;
+      background-color: #f8fafc !important;
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Высококонтрастные и четкие заголовки */
+    h1, h2, h3, h4 {
+      color: #0f172a !important;
+      letter-spacing: -0.01em;
+    }
+    p, li, td, th, div, span, label {
+      color: inherit;
+    }
+    .text-muted, [style*="color: var(--text-muted)"], [style*="color: #64748b"] {
+      color: #334155 !important;
+    }
+
+    /* Контейнер и отступы */
+    .container {
+      width: 100% !important;
+      max-width: 860px !important;
+      margin: 0 auto !important;
+      padding: 16px 14px 60px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Адаптивная липкая шапка навигации по страницам (Tabs Bar) */
+    .tabs-nav-wrapper {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 100 !important;
+      background: rgba(248, 250, 252, 0.98) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      padding: 10px 0 !important;
+      margin: 0 0 16px 0 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .tabs-nav {
+      display: flex !important;
+      gap: 8px !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin !important;
+      padding: 4px 2px 6px !important;
+      white-space: nowrap !important;
+    }
+    .tabs-nav::-webkit-scrollbar {
+      height: 4px !important;
+    }
+    .tabs-nav::-webkit-scrollbar-thumb {
+      background: #cbd5e1 !important;
+      border-radius: 4px !important;
+    }
+    .tab-nav-btn {
+      flex: 0 0 auto !important;
+      padding: 9px 15px !important;
+      background: #ffffff !important;
+      color: #1e293b !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      transition: all 0.2s ease !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .tab-nav-btn:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+      color: #0f172a !important;
+    }
+    .tab-nav-btn.active {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-dark, var(--primary)) !important;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Карточка страницы */
+    .page-card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 16px !important;
+      padding: 22px 20px !important;
+      margin-bottom: 24px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Шапка страницы */
+    .page-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+      margin-bottom: 18px !important;
+      padding-bottom: 12px !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .page-title {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .page-number {
+      font-size: 12.5px !important;
+      color: #334155 !important;
+      background: #f1f5f9 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      font-weight: 600 !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Карточки упражнений и интерактивные блоки */
+    .interactive-box, .card, .tool-box, .notice-banner {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 12px !important;
+      padding: 16px 18px !important;
+      margin: 14px 0 !important;
+      box-sizing: border-box !important;
+    }
+    .notice-banner {
+      border-left: 4px solid var(--primary) !important;
+      background: #f8fafc !important;
+      color: #1e293b !important;
+    }
+
+    /* Баннер безопасного пространства */
+    .safe-space-banner {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid #6366f1 !important;
+      border-radius: 12px !important;
+      padding: 14px 16px !important;
+      margin-bottom: 20px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      color: #1e293b !important;
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+    }
+    .safe-space-icon {
+      font-size: 22px !important;
+      flex-shrink: 0 !important;
+      line-height: 1 !important;
+    }
+
+    /* Раскрывающийся блок клинической подсказки (Details / Summary) */
+    .exercise-tip-details {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      padding: 10px 14px !important;
+      margin: 14px 0 16px !important;
+      font-size: 13.5px !important;
+      box-sizing: border-box !important;
+    }
+    .exercise-tip-summary {
+      font-weight: 700 !important;
+      color: #0369a1 !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      padding: 2px 0 !important;
+    }
+    .exercise-tip-content {
+      margin-top: 10px !important;
+      padding-top: 10px !important;
+      border-top: 1px dashed #cbd5e1 !important;
+      color: #1e293b !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Контрастные примеры Было/Стало */
+    .example-contrast-box {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      padding: 12px 14px !important;
+      margin: 12px 0 !important;
+      font-size: 13.5px !important;
+    }
+    .example-line-bad {
+      color: #991b1b !important;
+      font-weight: 500 !important;
+      margin-bottom: 6px !important;
+      line-height: 1.5 !important;
+    }
+    .example-line-good {
+      color: #166534 !important;
+      font-weight: 600 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Интерактивная мастерская записей */
+    .workshop-card {
+      background: #ffffff !important;
+      border: 2px solid #cbd5e1 !important;
+      border-radius: 14px !important;
+      padding: 18px !important;
+      margin-top: 24px !important;
+      box-sizing: border-box !important;
+    }
+    .workshop-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      margin-bottom: 12px !important;
+    }
+    .workshop-badge {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    .workshop-entries-count {
+      font-size: 12px !important;
+      color: #334155 !important;
+      font-weight: 600 !important;
+    }
+    .workshop-form textarea {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      min-height: 75px !important;
+      padding: 12px !important;
+      font-size: 14px !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      font-family: inherit !important;
+      resize: vertical !important;
+    }
+    .workshop-form textarea:focus {
+      outline: none !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.15) !important;
+    }
+    .btn-add-entry {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 10px 18px !important;
+      border-radius: 8px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      transition: background 0.2s !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .btn-add-entry:hover {
+      background: var(--primary-dark, #075985) !important;
+    }
+    .btn-del-entry {
+      background: #fee2e2 !important;
+      color: #991b1b !important;
+      border: 1px solid #fecdd3 !important;
+      border-radius: 6px !important;
+      padding: 4px 8px !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      min-height: 28px !important;
+    }
+    .btn-del-entry:hover {
+      background: #fecdd3 !important;
+    }
+    .entry-item {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid var(--primary) !important;
+      border-radius: 8px !important;
+      padding: 12px 14px !important;
+      margin-top: 10px !important;
+    }
+    .entry-meta {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-bottom: 6px !important;
+    }
+    .entry-date {
+      font-size: 12px !important;
+      color: #475569 !important;
+      font-weight: 600 !important;
+    }
+    .entry-content {
+      font-size: 13.5px !important;
+      color: #0f172a !important;
+      line-height: 1.55 !important;
+      white-space: pre-wrap !important;
+    }
+    .entries-empty-hint {
+      font-size: 13px !important;
+      color: #475569 !important;
+      padding: 12px 0 !important;
+      text-align: center !important;
+    }
+
+    /* Таблицы с безопасным горизонтальным скроллом */
+    .table-responsive {
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin-bottom: 16px !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+    }
+    table {
+      width: 100% !important;
+      min-width: 500px !important;
+      border-collapse: collapse !important;
+      font-size: 13.5px !important;
+    }
+    th {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-weight: 700 !important;
+      padding: 10px 12px !important;
+      border-bottom: 2px solid #cbd5e1 !important;
+      text-align: left !important;
+    }
+    td {
+      padding: 10px 12px !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      color: #1e293b !important;
+      vertical-align: top !important;
+    }
+
+    /* Текстовые поля и инпуты */
+    textarea, input[type="text"] {
+      color: #0f172a !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      padding: 10px 12px !important;
+      font-size: 14px !important;
+      box-sizing: border-box !important;
+      font-family: inherit !important;
+    }
+    textarea:focus, input[type="text"]:focus {
+      outline: none !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.15) !important;
+    }
+
+    /* Нижняя навигация между страницами */
+    .page-footer-nav {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+      margin-top: 26px !important;
+      padding-top: 18px !important;
+      border-top: 1px solid #e2e8f0 !important;
+    }
+    .btn-page-step {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #1e293b !important;
+      cursor: pointer !important;
+      transition: all 0.2s !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .btn-page-step:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+    }
+    .btn-page-step.primary {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-dark, var(--primary)) !important;
+    }
+    .btn-page-step.primary:hover {
+      background: var(--primary-dark, #075985) !important;
+    }
+
+    /* Мобильная адаптивность под экраны смартфонов (<= 640px) */
+    @media screen and (max-width: 640px) {
+      .container {
+        padding: 10px 10px 60px !important;
+      }
+      header {
+        padding: 20px 14px !important;
+        margin-bottom: 14px !important;
+        border-radius: 14px !important;
+      }
+      header h1 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+      }
+      header p {
+        font-size: 13px !important;
+      }
+      .page-card {
+        padding: 16px 12px !important;
+        border-radius: 12px !important;
+      }
+      .page-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+      }
+      .page-footer-nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+      }
+      .btn-page-step {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+      .tabs-nav {
+        padding: 4px 0 6px !important;
+      }
+      .tab-nav-btn {
+        padding: 8px 12px !important;
+        font-size: 12.5px !important;
+      }
+      .save-status-pill {
+        bottom: 12px !important;
+        right: 12px !important;
+        font-size: 11.5px !important;
+        padding: 6px 10px !important;
+      }
+      .workshop-card {
+        padding: 14px 10px !important;
+      }
+      .safe-space-banner {
+        padding: 12px !important;
+        font-size: 12.5px !important;
+      }
+      .example-contrast-box {
+        padding: 10px 12px !important;
+      }
+    }
+
+  
+    /* === РЕШЕНИЕ ПРОБЛЕМ МОБИЛЬНОГО ОТОБРАЖЕНИЯ (SCREENSHOT FIX) === */
+    
+    /* 1. Шкалы оценки и радио-кнопки (Rating Group & Rating Scale) */
+    .rating-group {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 8px !important;
+      padding: 10px 0 !important;
+      border-bottom: 1px dashed #e2e8f0 !important;
+    }
+    .rating-group > span {
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      color: #0f172a !important;
+      display: block !important;
+    }
+    .rating-scale {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      margin-top: 2px !important;
+    }
+    .rating-scale label {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 12px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #1e293b !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      min-height: 36px !important;
+      flex: 1 1 auto !important;
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    .rating-scale label:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+    }
+    .rating-scale input[type="radio"] {
+      width: 16px !important;
+      height: 16px !important;
+      margin: 0 !important;
+      accent-color: var(--primary) !important;
+    }
+
+    /* 2. Нижняя панель действий (Action Bar) */
+    .action-bar {
+      position: static !important; /* Убираем sticky, чтобы не перекрывать контент и не конфликтовать со статусом */
+      margin-top: 28px !important;
+      margin-bottom: 40px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 14px !important;
+      padding: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    }
+    .action-bar > span {
+      text-align: center !important;
+      font-size: 13px !important;
+      color: #475569 !important;
+    }
+    .action-bar > div {
+      display: flex !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      width: 100% !important;
+    }
+    .action-bar button, .action-bar .btn {
+      flex: 1 1 180px !important;
+      min-height: 44px !important;
+      justify-content: center !important;
+      text-align: center !important;
+      font-size: 13.5px !important;
+    }
+
+    /* 3. Плавающий индикатор автосохранения (Save Status Pill) */
+    .save-status-pill {
+      position: fixed !important;
+      bottom: 12px !important;
+      right: 12px !important;
+      z-index: 1000 !important;
+      background: rgba(15, 23, 42, 0.92) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(8px) !important;
+      padding: 6px 12px !important;
+      border-radius: 999px !important;
+      font-size: 11.5px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18) !important;
+      pointer-events: none !important;
+    }
+
+    /* 4. Отступ внизу контейнера, чтобы мобильные тулбары браузера ничего не перекрывали */
+    .container {
+      padding-bottom: 90px !important;
+    }
+
+    @media screen and (min-width: 641px) {
+      .rating-group {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .rating-group > span {
+        max-width: 65% !important;
+      }
+      .rating-scale {
+        flex: 0 0 auto !important;
+      }
+      .rating-scale label {
+        flex: 0 0 auto !important;
+      }
+      .action-bar {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .action-bar > span {
+        text-align: left !important;
+      }
+      .action-bar > div {
+        width: auto !important;
+      }
+    }
+
+  
+  /* УЛЬТРА-КОМПАКТНАЯ НАВИГАЦИЯ ДЛЯ СМАРТФОНОВ И TELEGRAM MINI APPS */
+  .wb-navigation-bar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 8px 10px !important;
+    margin: 8px 0 16px !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .wb-nav-header-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .wb-nav-stepper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+  }
+
+  .wb-step-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 6px 10px !important;
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+    min-height: 36px !important;
+    min-width: 36px !important;
+  }
+  .wb-step-btn:hover:not(:disabled) {
+    background: #e2e8f0 !important;
+    border-color: #94a3b8 !important;
+  }
+  .wb-step-btn:disabled {
+    opacity: 0.35 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: #f8fafc !important;
+  }
+
+  .wb-page-selector-wrapper {
+    position: relative !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .wb-page-select {
+    width: 100% !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1.5px solid #0284c7 !important;
+    border-radius: 8px !important;
+    padding: 6px 26px 6px 10px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+    min-height: 36px !important;
+    outline: none !important;
+  }
+  .wb-select-caret {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    color: #0284c7 !important;
+    font-size: 10px !important;
+  }
+
+  .wb-nav-counter {
+    display: none !important;
+  }
+
+  /* Скрываем горизонтальную синюю ленту табов на мобильных экранах, чтобы не загромождать интерфейс */
+  @media (max-width: 640px) {
+    .wb-nav-segmented {
+      display: none !important;
+    }
+    .wb-step-btn .label {
+      display: none !important;
+    }
+    .page-footer-nav {
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+    .page-footer-nav .btn-page-step {
+      width: 100% !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* Нижняя панель навигации страниц */
+  .page-footer-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin-top: 24px !important;
+    padding: 16px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+  }
+  .btn-page-step {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 18px !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+  }
+  .btn-page-step:hover {
+    background: #f1f5f9 !important;
+    border-color: #94a3b8 !important;
+  }
+  .btn-page-step.primary {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25) !important;
+  }
+  .btn-page-step.primary:hover {
+    background: #0369a1 !important;
+  }
+  .page-counter-badge {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-align: center !important;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <span class="badge-top">Терапевтический воркбук</span>
+    <h1>Журнал выздоровления по 12 Шагам ВДА</h1>
+    <p class="header-desc">Бережная интеграция программы 12 Шагов Взрослых Детей Алкоголиков и дисфункциональных семей с психологической практикой, развитием Любящего Родителя и исцелением Внутреннего Ребенка.</p>
+    <div class="header-meta">
+      <span>🌱 Личная работа или с попутчиком/спонсором</span>
+      <span>🤝 Мостики для сессий с психотерапевтом</span>
+      <span>📱 Оптимизировано для всех устройств</span>
+      <span>🔒 Конфиденциальное хранение в браузере</span>
+    </div>
+  </header>
+
+  <div class="nav-tabs-wrapper">
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" onclick="switchStep('s1_3', this)">Фаза I: Шаги 1–3 (Бессилие & Опора)</button>
+      <button class="tab-btn" onclick="switchStep('s4_5', this)">Фаза II: Шаги 4–5 (Инвентаризация)</button>
+      <button class="tab-btn" onclick="switchStep('s6_7', this)">Фаза III: Шаги 6–7 (Готовность к изменениям)</button>
+      <button class="tab-btn" onclick="switchStep('s8_9', this)">Фаза IV: Шаги 8–9 (Возмещение ущерба себе)</button>
+      <button class="tab-btn" onclick="switchStep('s10_12', this)">Фаза V: Шаги 10–12 (Осознанность & Служение)</button>
+    </nav>
+  </div>
+
+  <!-- ФАЗА 1: ШАГИ 1-3 -->
+  <div id="panel-s1_3" class="step-panel active">
+    <div class="card">
+      <h2>Шаги 1–3: Признание бессилия перед последствиями дисфункции и поиск опоры</h2>
+      <p class="card-intro">Перестать отрицать влияние прошлого на настоящее. Отказаться от иллюзии гиперконтроля над чужими чувствами и найти надежную внутреннюю и внешнюю опору.</p>
+
+      <div class="block-theory">
+        <strong>Смысл Шагов 1–3 в психотерапевтическом ключе:</strong> Шаг 1 — это не капитуляция в беспомощность, а освобождение: <em>«Я признаю, что вырос в условиях, которые ранили меня, и попытки контролировать всех вокруг делают мою жизнь неуправляемой»</em>. Шаги 2 и 3 — это поиск Высшей Силы или здоровой Ресурсной части (Любящего Родителя, терапевта, группы), которой можно доверить процесс исцеления, сняв груз с испуганного Внутреннего Ребенка.
+      </div>
+
+      <form id="formS1" onsubmit="saveS1(event)">
+        <div class="form-group">
+          <label for="s1_controlArea">В чем я продолжаю истощать себя попытками гиперконтроля?</label>
+          <textarea id="s1_controlArea" placeholder="Например: пытаюсь контролировать настроение партнера, предугадать реакцию начальника, переделать родителей, быть идеальным..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="s1_unmanageable">Как этот контроль делает мою жизнь неуправляемой?</label>
+          <input type="text" id="s1_unmanageable" placeholder="Постоянная фоновая тревога, физическое бессилие, забытые собственные цели...">
+        </div>
+
+        <div class="block-reparent">
+          <h4>💖 Послание Любящего Внутреннего Родителя</h4>
+          <p>«Малыш, тебе больше не нужно спасать этот мир и заслуживать право на существование. Ты в безопасности, я рядом и позабочусь о тебе».</p>
+        </div>
+
+        <div class="block-therapy">
+          <h4>🛋 В фокус сессии с психологом</h4>
+          <p>«Что страшного случится, если я отпущу контроль над взрослыми людьми в моей жизни? Чья это тревога — взрослого меня или детской части?»</p>
+          <textarea id="s1_therapy" style="margin-top:8px;" placeholder="Мои мысли для обсуждения со специалистом..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Зафиксировать Шаги 1–3</button>
+      </form>
+
+      <div class="entries-feed" id="feedS1"></div>
+    </div>
+  </div>
+
+  <!-- ФАЗА 2: ШАГИ 4-5 -->
+  <div id="panel-s4_5" class="step-panel">
+    <div class="card">
+      <h2>Шаги 4–5: Нравственная инвентаризация и бережное раскрытие тайн</h2>
+      <p class="card-intro">Глубокое и бесстрашное исследование черт выживания ВДА (Списка из 14 черт) без стыда и самобичевания.</p>
+
+      <div class="block-theory">
+        <strong>Черты выживания — это адаптация:</strong> Мы не ищем «грехи». Мы исследуем черты (страх перед авторитетами, зависимость от одобрения, изоляция, путаница любви и жалости) как способы выживания, которые ребенок выработал в непредсказуемой семье. Раскрывая их перед доверенным человеком (Шаг 5), мы освобождаемся от изоляции и токсичного стыда.
+      </div>
+
+      <form id="formS4" onsubmit="saveS4(event)">
+        <div class="form-group">
+          <label for="s4_trait">Черта ВДА, проявившаяся в недавней ситуации:</label>
+          <select id="s4_trait">
+            <option value="Страх перед разгневанными людьми и авторитетами">Страх перед сердитыми людьми и авторитетами</option>
+            <option value="Постоянный поиск одобрения">Постоянный поиск одобрения и подтверждения своей ценности</option>
+            <option value="Изоляция и страх быть покинутым">Изоляция и страх быть отвергнутым</option>
+            <option value="Путаница любви и жалости">Путаница любви и жалости (склонность «спасать»)</option>
+            <option value="Сверхответственность / сверхобязательность">Сверхответственность и трудности с отдыхом</option>
+            <option value="Чувство вины при отстаивании себя">Острое чувство вины при отстаивании своих потребностей</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="s4_situation">Как эта черта проявилась (ситуация):</label>
+          <textarea id="s4_situation" placeholder="Опишите факт происшедшего..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="s4_childNeed">Какая неудовлетворенная потребность стояла за этим поведением?</label>
+          <input type="text" id="s4_childNeed" placeholder="Потребность быть замеченным, принятым, в безопасности, любимым просто так...">
+        </div>
+
+        <div class="block-therapy">
+          <h4>🛋 В фокус сессии с психологом</h4>
+          <p>«Шаг 5: Проговаривание стыдного или пугающего опыта в безопасном терапевтическом пространстве без осуждения».</p>
+          <textarea id="s4_therapy" style="margin-top:8px;" placeholder="Что мне пока трудно открыть даже самому себе?"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Сохранить запись инвентаризации</button>
+      </form>
+
+      <div class="entries-feed" id="feedS4"></div>
+    </div>
+  </div>
+
+  <!-- ФАЗА 3: ШАГИ 6-7 -->
+  <div id="panel-s6_7" class="step-panel">
+    <div class="card">
+      <h2>Шаги 6–7: Готовность отпустить защитные механизмы и взросление</h2>
+      <p class="card-intro">Переход от детских автоматических реакций к зрелым навыкам самоуважения и заботы.</p>
+
+      <div class="block-theory">
+        <strong>Отказ от дефектов характера как от устаревшей брони:</strong> То, что спасало в 7 лет (замереть, угодить, спрятаться, притвориться невидимым), во взрослом возрасте превращается в тюрьму. Шаг 6 — это осознание готовности снять эту броню. Шаг 7 — смиренное обращение за помощью к своей взрослой мудрой части.
+      </div>
+
+      <form id="formS6" onsubmit="saveS6(event)">
+        <div class="form-group">
+          <label for="s6_defense">Устаревший защитный механизм, который я готов(а) отпускать:</label>
+          <input type="text" id="s6_defense" placeholder="Например: привычка дуться и молчать вместо прямого разговора; угождение; уход в изоляцию...">
+        </div>
+
+        <div class="form-group">
+          <label for="s6_newSkill">Зрелый навык взамен (что выбирает Взрослый):</label>
+          <textarea id="s6_newSkill" placeholder="Прямо сказать о своем чувстве; взять паузу; попросить о поддержке словом через рот..."></textarea>
+        </div>
+
+        <div class="block-therapy">
+          <h4>🛋 В фокус сессии с психологом</h4>
+          <p>«Какую скрытую выгоду или защиту дает мне этот привычный способ реагирования? Чем рискованно отказаться от него?»</p>
+          <textarea id="s6_therapy" style="margin-top:8px;" placeholder="Заметки для терапевтической встречи..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Сохранить готовность к изменениям</button>
+      </form>
+
+      <div class="entries-feed" id="feedS6"></div>
+    </div>
+  </div>
+
+  <!-- ФАЗА 4: ШАГИ 8-9 -->
+  <div id="panel-s8_9" class="step-panel">
+    <div class="card">
+      <h2>Шаги 8–9: Возмещение ущерба — в первую очередь СЕБЕ</h2>
+      <p class="card-intro">Исцеление последствий самопредательства, исправление вреда и экологичное завершение старых долгов.</p>
+
+      <div class="block-theory">
+        <strong>Специфика ВДА в Шагах 8 и 9:</strong> В традиционных программах говорят об ущербе другим. Но для Взрослого Ребенка главный человек, которому был нанесен колоссальный ущерб — это <strong>он сам</strong> (годы самобичевания, игнорирования боли, жизни на износ). Возмещение ущерба себе — это возврат права на отдых, здоровье и любовь.
+      </div>
+
+      <form id="formS8" onsubmit="saveS8(event)">
+        <div class="form-group">
+          <label for="s8_selfDamage">В чем я нанес(ла) ущерб себе ради других или из страха?</label>
+          <textarea id="s8_selfDamage" placeholder="Терпел(а) недопустимое обращение, забросил(а) здоровье, не дал(а) себе возможности учиться/отдыхать..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="s8_amendsAction">Конкретное действие по возмещению ущерба себе (Акт исцеления):</label>
+          <input type="text" id="s8_amendsAction" placeholder="Записаться к врачу, купить себе удобную постель, установить строгий выходной без работы...">
+        </div>
+
+        <div class="block-therapy">
+          <h4>🛋 В фокус сессии с психологом</h4>
+          <p>«Шаг 9 по отношению к другим: где прямое возмещение ущерба полезно, а где оно может нанести вред мне или другому человеку (принцип экологичности)?»</p>
+          <textarea id="s8_therapy" style="margin-top:8px;" placeholder="Заметки перед обсуждением..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Сохранить Шаги 8–9</button>
+      </form>
+
+      <div class="entries-feed" id="feedS8"></div>
+    </div>
+  </div>
+
+  <!-- ФАЗА 5: ШАГИ 10-12 -->
+  <div id="panel-s10_12" class="step-panel">
+    <div class="card">
+      <h2>Шаги 10–12: Ежедневная осознанность, контакт с собой и передача опыта</h2>
+      <p class="card-intro">Поддержание эмоциональной трезвости, ежедневная сверка с чувствами и жизнь в контакте с Обещаниями ВДА.</p>
+
+      <div class="block-theory">
+        <strong>Обещания ВДА воплощаются в реальность:</strong> <em>«Мы перестанем прятаться и чувствовать себя другими. Мы научимся играть и радоваться. Мы станем любить и принимать себя»</em>. Шаг 10 — это вечерняя рефлексия. Шаг 11 — молитва/медитация/контакт с телом. Шаг 12 — служение и несение вести выздоровления.
+      </div>
+
+      <form id="formS10" onsubmit="saveS10(event)">
+        <div class="form-group">
+          <label for="s10_check">Вечерняя инвентаризация (Шаг 10): Где я сегодня был(а) в контакте с собой?</label>
+          <textarea id="s10_check" placeholder="Где удалось позаботиться о себе? А где проскочила старая черта выживания и я могу сразу признать это без вины?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="s10_promise">Какое из 12 Обещаний ВДА проявилось в моей жизни сегодня?</label>
+          <input type="text" id="s10_promise" placeholder="Например: почувствовал(а) себя взрослым человеком; ощутил(а) спокойствие наедине с собой...">
+        </div>
+
+        <div class="block-therapy">
+          <h4>🛋 В фокус сессии с психологом</h4>
+          <p>«Как изменилось мое чувство базовой безопасности за время пути по Шагам? В чем я опираюсь на себя уже сейчас?»</p>
+          <textarea id="s10_therapy" style="margin-top:8px;" placeholder="Итоговые инсайты..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Сохранить ежедневную практику</button>
+      </form>
+
+      <div class="entries-feed" id="feedS10"></div>
+    </div>
+  </div>
+
+  <div class="actions-bar">
+    <div style="font-size:0.85rem;color:var(--text-muted);">
+      💾 Записи Шагов ВДА сохраняются локально на этом устройстве
+    </div>
+    <div class="actions-buttons">
+      <button class="btn btn-secondary" onclick="window.print()">🖨 Распечатать / В PDF</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchStep(stepKey, btnElement) {
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    
+    const panel = document.getElementById('panel-' + stepKey);
+    if (panel) panel.classList.add('active');
+    
+    if (btnElement) {
+      btnElement.classList.add('active');
+      btnElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
+
+  // --- SAVE / RENDER S1 ---
+  function saveS1(e) {
+    e.preventDefault();
+    const list = JSON.parse(localStorage.getItem('vda_steps_1_3') || '[]');
+    const item = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
+      control: document.getElementById('s1_controlArea').value,
+      unmanageable: document.getElementById('s1_unmanageable').value,
+      therapy: document.getElementById('s1_therapy').value
+    };
+    list.unshift(item);
+    localStorage.setItem('vda_steps_1_3', JSON.stringify(list));
+    document.getElementById('formS1').reset();
+    renderS1();
+  }
+
+  function deleteS1(id) {
+    let list = JSON.parse(localStorage.getItem('vda_steps_1_3') || '[]');
+    list = list.filter(i => i.id !== id);
+    localStorage.setItem('vda_steps_1_3', JSON.stringify(list));
+    renderS1();
+  }
+
+  function renderS1() {
+    const box = document.getElementById('feedS1');
+    const list = JSON.parse(localStorage.getItem('vda_steps_1_3') || '[]');
+    if (!list.length) {
+      box.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:12px;">Пока нет сохраненных записей по Шагам 1–3.</div>';
+      return;
+    }
+    box.innerHTML = list.map(i => `
+      <div class="entry-card">
+        <div class="entry-head">
+          <span class="entry-pill">Шаги 1–3</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span>📅 ${i.date}</span>
+            <button class="btn-danger" onclick="deleteS1(${i.id})">✕</button>
+          </div>
+        </div>
+        <div class="entry-body">
+          <p><strong>Зона гиперконтроля:</strong> ${escapeHtml(i.control)}</p>
+          <p><strong>Неуправляемость:</strong> ${escapeHtml(i.unmanageable)}</p>
+          ${i.therapy ? `<p style="margin-top:8px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Для психолога:</strong> ${escapeHtml(i.therapy)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // --- SAVE / RENDER S4 ---
+  function saveS4(e) {
+    e.preventDefault();
+    const list = JSON.parse(localStorage.getItem('vda_steps_4_5') || '[]');
+    const item = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
+      trait: document.getElementById('s4_trait').value,
+      situation: document.getElementById('s4_situation').value,
+      childNeed: document.getElementById('s4_childNeed').value,
+      therapy: document.getElementById('s4_therapy').value
+    };
+    list.unshift(item);
+    localStorage.setItem('vda_steps_4_5', JSON.stringify(list));
+    document.getElementById('formS4').reset();
+    renderS4();
+  }
+
+  function deleteS4(id) {
+    let list = JSON.parse(localStorage.getItem('vda_steps_4_5') || '[]');
+    list = list.filter(i => i.id !== id);
+    localStorage.setItem('vda_steps_4_5', JSON.stringify(list));
+    renderS4();
+  }
+
+  function renderS4() {
+    const box = document.getElementById('feedS4');
+    const list = JSON.parse(localStorage.getItem('vda_steps_4_5') || '[]');
+    if (!list.length) {
+      box.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:12px;">Пока нет сохраненных записей по Шагам 4–5.</div>';
+      return;
+    }
+    box.innerHTML = list.map(i => `
+      <div class="entry-card">
+        <div class="entry-head">
+          <span class="entry-pill" style="background:#fef3c7;color:#92400e;">${i.trait}</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span>📅 ${i.date}</span>
+            <button class="btn-danger" onclick="deleteS4(${i.id})">✕</button>
+          </div>
+        </div>
+        <div class="entry-body">
+          <p><strong>Ситуация:</strong> ${escapeHtml(i.situation)}</p>
+          <p><strong>Потребность Внутреннего Ребенка:</strong> ${escapeHtml(i.childNeed)}</p>
+          ${i.therapy ? `<p style="margin-top:8px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Для психолога:</strong> ${escapeHtml(i.therapy)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // --- SAVE / RENDER S6 ---
+  function saveS6(e) {
+    e.preventDefault();
+    const list = JSON.parse(localStorage.getItem('vda_steps_6_7') || '[]');
+    const item = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
+      defense: document.getElementById('s6_defense').value,
+      newSkill: document.getElementById('s6_newSkill').value,
+      therapy: document.getElementById('s6_therapy').value
+    };
+    list.unshift(item);
+    localStorage.setItem('vda_steps_6_7', JSON.stringify(list));
+    document.getElementById('formS6').reset();
+    renderS6();
+  }
+
+  function deleteS6(id) {
+    let list = JSON.parse(localStorage.getItem('vda_steps_6_7') || '[]');
+    list = list.filter(i => i.id !== id);
+    localStorage.setItem('vda_steps_6_7', JSON.stringify(list));
+    renderS6();
+  }
+
+  function renderS6() {
+    const box = document.getElementById('feedS6');
+    const list = JSON.parse(localStorage.getItem('vda_steps_6_7') || '[]');
+    if (!list.length) {
+      box.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:12px;">Пока нет записей по Шагам 6–7.</div>';
+      return;
+    }
+    box.innerHTML = list.map(i => `
+      <div class="entry-card">
+        <div class="entry-head">
+          <span class="entry-pill" style="background:#f0fdf4;color:#166534;">Шаги 6–7</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span>📅 ${i.date}</span>
+            <button class="btn-danger" onclick="deleteS6(${i.id})">✕</button>
+          </div>
+        </div>
+        <div class="entry-body">
+          <p><strong>Устаревшая защита:</strong> ${escapeHtml(i.defense)}</p>
+          <p><strong>Новый зрелый навык:</strong> ${escapeHtml(i.newSkill)}</p>
+          ${i.therapy ? `<p style="margin-top:8px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Для психолога:</strong> ${escapeHtml(i.therapy)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // --- SAVE / RENDER S8 ---
+  function saveS8(e) {
+    e.preventDefault();
+    const list = JSON.parse(localStorage.getItem('vda_steps_8_9') || '[]');
+    const item = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
+      selfDamage: document.getElementById('s8_selfDamage').value,
+      amendsAction: document.getElementById('s8_amendsAction').value,
+      therapy: document.getElementById('s8_therapy').value
+    };
+    list.unshift(item);
+    localStorage.setItem('vda_steps_8_9', JSON.stringify(list));
+    document.getElementById('formS8').reset();
+    renderS8();
+  }
+
+  function deleteS8(id) {
+    let list = JSON.parse(localStorage.getItem('vda_steps_8_9') || '[]');
+    list = list.filter(i => i.id !== id);
+    localStorage.setItem('vda_steps_8_9', JSON.stringify(list));
+    renderS8();
+  }
+
+  function renderS8() {
+    const box = document.getElementById('feedS8');
+    const list = JSON.parse(localStorage.getItem('vda_steps_8_9') || '[]');
+    if (!list.length) {
+      box.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:12px;">Пока нет записей по Шагам 8–9.</div>';
+      return;
+    }
+    box.innerHTML = list.map(i => `
+      <div class="entry-card">
+        <div class="entry-head">
+          <span class="entry-pill" style="background:#fdf2f8;color:#be185d;">Возмещение ущерба</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span>📅 ${i.date}</span>
+            <button class="btn-danger" onclick="deleteS8(${i.id})">✕</button>
+          </div>
+        </div>
+        <div class="entry-body">
+          <p><strong>Ущерб себе:</strong> ${escapeHtml(i.selfDamage)}</p>
+          <p><strong>Действие исцеления:</strong> ${escapeHtml(i.amendsAction)}</p>
+          ${i.therapy ? `<p style="margin-top:8px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Для психолога:</strong> ${escapeHtml(i.therapy)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // --- SAVE / RENDER S10 ---
+  function saveS10(e) {
+    e.preventDefault();
+    const list = JSON.parse(localStorage.getItem('vda_steps_10_12') || '[]');
+    const item = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }),
+      check: document.getElementById('s10_check').value,
+      promise: document.getElementById('s10_promise').value,
+      therapy: document.getElementById('s10_therapy').value
+    };
+    list.unshift(item);
+    localStorage.setItem('vda_steps_10_12', JSON.stringify(list));
+    document.getElementById('formS10').reset();
+    renderS10();
+  }
+
+  function deleteS10(id) {
+    let list = JSON.parse(localStorage.getItem('vda_steps_10_12') || '[]');
+    list = list.filter(i => i.id !== id);
+    localStorage.setItem('vda_steps_10_12', JSON.stringify(list));
+    renderS10();
+  }
+
+  function renderS10() {
+    const box = document.getElementById('feedS10');
+    const list = JSON.parse(localStorage.getItem('vda_steps_10_12') || '[]');
+    if (!list.length) {
+      box.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;text-align:center;padding:12px;">Пока нет записей по Шагам 10–12.</div>';
+      return;
+    }
+    box.innerHTML = list.map(i => `
+      <div class="entry-card">
+        <div class="entry-head">
+          <span class="entry-pill" style="background:#e0f2fe;color:#0369a1;">Шаги 10–12</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span>📅 ${i.date}</span>
+            <button class="btn-danger" onclick="deleteS10(${i.id})">✕</button>
+          </div>
+        </div>
+        <div class="entry-body">
+          <p><strong>Осознанность дня:</strong> ${escapeHtml(i.check)}</p>
+          <p><strong>Проявившееся Обещание ВДА:</strong> ${escapeHtml(i.promise)}</p>
+          ${i.therapy ? `<p style="margin-top:8px;padding-top:6px;border-top:1px dashed #cbd5e1;color:#7e22ce;"><strong>Для психолога:</strong> ${escapeHtml(i.therapy)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function loadAllSteps() {
+    renderS1();
+    renderS4();
+    renderS6();
+    renderS8();
+    renderS10();
+  }
+
+  function exportVdaData() {
+    const exportData = {
+      product: "Журнал выздоровления по 12 Шагам ВДА",
+      exportedAt: new Date().toISOString(),
+      steps1_3: JSON.parse(localStorage.getItem('vda_steps_1_3') || '[]'),
+      steps4_5: JSON.parse(localStorage.getItem('vda_steps_4_5') || '[]'),
+      steps6_7: JSON.parse(localStorage.getItem('vda_steps_6_7') || '[]'),
+      steps8_9: JSON.parse(localStorage.getItem('vda_steps_8_9') || '[]'),
+      steps10_12: JSON.parse(localStorage.getItem('vda_steps_10_12') || '[]')
+    };
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `VDA_12_Steps_Journal_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  window.addEventListener('DOMContentLoaded', loadAllSteps);
+
+  // --- ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ ДЛЯ СПЕЦИАЛЬНЫХ ТЕТРАДЕЙ ---
+  function getWorkshopEntriesSpecial(key) {
+    try {
+      const raw = localStorage.getItem('special_ws_' + key);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e) { return []; }
+  }
+  function saveWorkshopEntriesSpecial(key, entries) {
+    localStorage.setItem('special_ws_' + key, JSON.stringify(entries));
+  }
+  function renderWorkshopEntriesSpecial(key) {
+    const listEl = document.getElementById('list-workshop-p' + key);
+    const countEl = document.getElementById('count-workshop-p' + key);
+    if (!listEl) return;
+    const entries = getWorkshopEntriesSpecial(key);
+    if (countEl) {
+      countEl.textContent = entries.length + ' ' + (entries.length === 1 ? 'запись' : (entries.length >= 2 && entries.length <= 4 ? 'записи' : 'записей'));
+    }
+    if (entries.length === 0) {
+      listEl.innerHTML = '<div class="entries-empty-hint">Пока нет сохраненных записей. Добавьте запись выше и нажмите «Сохранить новую запись».</div>';
+      return;
+    }
+    listEl.innerHTML = entries.map((entry, idx) => `
+      <div class="entry-item">
+        <div class="entry-meta">
+          <span class="entry-date">📅 ${escapeHtmlSpecial(entry.timestamp)}</span>
+          <button type="button" class="btn-del-entry" onclick="deleteWorkshopEntrySpecial('${key}', ${idx})" title="Удалить запись">✕ Удалить</button>
+        </div>
+        <div class="entry-content">${escapeHtmlSpecial(entry.text)}</div>
+      </div>
+    `).reverse().join('');
+  }
+  function addWorkshopEntrySpecial(key) {
+    const inputEl = document.getElementById('input-workshop-p' + key);
+    if (!inputEl) return;
+    const text = inputEl.value.trim();
+    if (!text) {
+      alert('Пожалуйста, введите текст записи перед сохранением.');
+      return;
+    }
+    const entries = getWorkshopEntriesSpecial(key);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('ru-RU') + ' в ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    entries.push({ id: Date.now(), timestamp: dateStr, text: text });
+    saveWorkshopEntriesSpecial(key, entries);
+    inputEl.value = '';
+    renderWorkshopEntriesSpecial(key);
+  }
+  function deleteWorkshopEntrySpecial(key, idx) {
+    if (!confirm('Удалить эту запись из мастерской?')) return;
+    const entries = getWorkshopEntriesSpecial(key);
+    entries.splice(idx, 1);
+    saveWorkshopEntriesSpecial(key, entries);
+    renderWorkshopEntriesSpecial(key);
+  }
+  function escapeHtmlSpecial(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.workshop-card').forEach(w => {
+      const k = w.id.replace('workshop-p', '');
+      renderWorkshopEntriesSpecial(k);
+    });
+  });
+
+</script>
+
+</body>
+</html>
