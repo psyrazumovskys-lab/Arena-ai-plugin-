@@ -9,7 +9,7 @@
 #
 # Актуальная загрузка выполняется через коннектор Google Drive.
 # Журнал «Пары: деэскалация ссор, уровень 1» (папка 1e9ICbUM2oZaIHTba9uxQZZzlxT4EwTfp):
-#   HTML  1iv0pREARLeuGkyXDQvq6hgA1fkS_0Bse   1 390 893 байт
+#   HTML  1iv0pREARLeuGkyXDQvq6hgA1fkS_0Bse   1 390 890 байт
 #   PDF   1FOJZajnZ-IM1DAZI-yzmFAdQ9KibM7nw   1 247 975 байт
 #
 # Остальные строки mapping требуют перепривязки к новым file_id.
