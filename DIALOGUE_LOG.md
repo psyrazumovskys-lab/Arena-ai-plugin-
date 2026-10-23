@@ -96,7 +96,9 @@
 - Папка тетрадей уровня 1–2: `1e9ICbUM2oZaIHTba9uxQZZzlxT4EwTfp`.
 - Актуальный HTML тетради 1: `1WJ3weZLbdlHcoD1qxqNnaqGRdGthBD9_`.
 - PDF: `1FOJZajnZ-IM1DAZI-yzmFAdQ9KibM7nw` (отстаёт от HTML).
-- **Правила общения (универсальные):** `13JtzF0E4IBwershZYWB0VGTPlvcHc0RCvjhf15DMJO8` — читаются из любого чата с подключённым Drive.
+- **Правила общения (универсальные):** `13JtzF0E4IBwershZYWB0VGTPlvcHc0RCvjhf15DMJO8`.
+- **Журнал диалога (эта копия в Drive):** `1YWjzHBCn0K59ZZAsGJkhkKuUVk41IHe1a201Tk0FGGA`.
+- Оба читаются из любого чата с подключённым Drive. Фраза-вызов: «Прочитай документы „Правила общения (универсальные)“ и „Журнал диалога“ в моём Google Drive и следуй им.»
 
 **Хранилище в браузере**
 
