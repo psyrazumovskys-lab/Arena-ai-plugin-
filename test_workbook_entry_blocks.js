@@ -72,7 +72,14 @@ const open = async (seed = {}) => {
   check('Все блоки внутри своей страницы', blocks.every(b => b.closest('.page-card')));
   check('Страниц ровно 8', doc.querySelectorAll('.page-card').length === 8);
   check('У каждой страницы есть навигация',
-    [...doc.querySelectorAll('.page-card')].every(p => p.querySelector('.page-footer-nav')));
+    [...doc.querySelectorAll('.page-card')].every(p =>
+      p.id === 'p0' ? !!p.querySelector('.btn-cover-start') : !!p.querySelector('.page-footer-nav')));
+  const coverBtn = doc.querySelector('.btn-cover-start');
+  check('Кнопка «Начать» работает и без JavaScript (ссылка на #p1)',
+    coverBtn && coverBtn.getAttribute('href') === '#p1');
+  check('Все кнопки перехода между шагами — ссылки с onclick',
+    [...doc.querySelectorAll('.btn-nav-step')].every(a =>
+      a.tagName === 'A' && a.getAttribute('href')?.startsWith('#p') && /goToPage/.test(a.getAttribute('onclick') || '')));
 
   // ── 2. Логика saveEntry() ────────────────────────────────────────────────
   console.log('— Логика сохранения записи —');
