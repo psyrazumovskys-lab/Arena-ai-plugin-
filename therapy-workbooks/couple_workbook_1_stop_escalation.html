@@ -797,6 +797,18 @@
     }
     .return-box p:last-child { margin-bottom: 0; }
 
+    /* Мягкая сноска-развилка */
+    .fallback-note {
+      margin: 18px 0 4px;
+      padding: 14px 16px;
+      background: var(--sage-light);
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #4A5559;
+    }
+    .fallback-note strong { color: var(--text-main); }
+
     /* Строка про безопасность */
     .safety-note {
       margin: 24px 0 6px;
@@ -810,6 +822,7 @@
       .return-box { padding: 15px 16px; }
       .return-box p, .return-phrases li { font-size: 16px; }
       .safety-note { font-size: 14px; }
+      .fallback-note { font-size: 15px; padding: 13px 14px; }
     }
 
     .entry-kind.kind-solo { background: var(--sage-light); color: var(--sage-primary); }
@@ -980,7 +993,7 @@
           <option value="p2">Стр. 2 • Тест: закипает ли чайник?</option>
           <option value="p3">Стр. 3 • Правило 20 минут + Дыхание</option>
           <option value="p4">Стр. 4 • Собери фразу, чтобы не обидеть</option>
-          <option value="p5">Стр. 5 • Репетиция в тихий вечер</option>
+          <option value="p5">Стр. 5 • Репетиция в спокойный вечер</option>
           <option value="p6">Стр. 6 • Шпаргалка в карман (SMS)</option>
           <option value="p7">Стр. 7 • Что делать дальше</option>
         </select>
@@ -1251,7 +1264,7 @@
 
     <div class="page-footer-nav">
       <button type="button" class="btn-nav-step" onclick="goToPage('p3')">‹ Назад</button>
-      <button type="button" class="btn-nav-step primary" onclick="goToPage('p5')">Шаг 4. Репетиция в тихий вечер ›</button>
+      <button type="button" class="btn-nav-step primary" onclick="goToPage('p5')">Шаг 4. Репетиция в спокойный вечер ›</button>
     </div>
   </div>
 
@@ -1290,6 +1303,8 @@
   </div>
 </div>
 
+
+    <p class="fallback-note"><strong>Если партнёр пока не готов.</strong> Не настаивайте и не превращайте это в ещё одну ссору. Свою фразу можно сказать и без общего слова — для паузы не нужно согласие обоих. Просто назовите время, когда вернётесь.</p>
 
     <div class="page-footer-nav">
       <button type="button" class="btn-nav-step" onclick="goToPage('p4')">‹ Назад</button>
