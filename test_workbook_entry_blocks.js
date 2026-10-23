@@ -70,7 +70,7 @@ const open = async (seed = {}) => {
   check('Перед каждым блоком стоит карточка-вопрос',
     blocks.every(b => b.previousElementSibling?.classList.contains('interactive-card')));
   check('Все блоки внутри своей страницы', blocks.every(b => b.closest('.page-card')));
-  check('Страниц ровно 7', doc.querySelectorAll('.page-card').length === 7);
+  check('Страниц ровно 8', doc.querySelectorAll('.page-card').length === 8);
   check('У каждой страницы есть навигация',
     [...doc.querySelectorAll('.page-card')].every(p => p.querySelector('.page-footer-nav')));
 
