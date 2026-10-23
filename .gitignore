@@ -1,0 +1,11 @@
+# Зависимости Node (используются только для проверки HTML-тетрадей)
+node_modules/
+package-lock.json
+
+# Сгенерированные артефакты: PDF и превью страниц собираются скриптами
+therapy-workbooks/page_previews/
+
+# Служебное
+__pycache__/
+*.pyc
+.DS_Store
