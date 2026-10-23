@@ -748,6 +748,70 @@
       display: block;
       flex-shrink: 0;
     }
+    /* Возврат после паузы */
+    .return-box {
+      background: var(--sage-light);
+      border-left: 3px solid var(--sage-primary);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 18px;
+      margin: 20px 0 8px;
+    }
+    .return-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: var(--sage-primary);
+      margin-bottom: 9px;
+    }
+    .return-box p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #3B474C;
+      margin-bottom: 11px;
+    }
+    .return-phrases {
+      list-style: none;
+      margin: 0 0 12px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .return-phrases li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+    .return-phrases li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage-primary);
+    }
+    .return-box p:last-child { margin-bottom: 0; }
+
+    /* Строка про безопасность */
+    .safety-note {
+      margin: 24px 0 6px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      line-height: 1.5;
+      color: #7A8288;
+    }
+    @media (max-width: 640px) {
+      .return-box { padding: 15px 16px; }
+      .return-box p, .return-phrases li { font-size: 16px; }
+      .safety-note { font-size: 14px; }
+    }
+
     .entry-kind.kind-solo { background: var(--sage-light); color: var(--sage-primary); }
     .entry-kind.kind-pair { background: var(--terracotta-light); color: #A4603F; }
 
@@ -963,7 +1027,7 @@
     <div class="interactive-card">
       <h3><span class="marker">•</span>Здесь вас никто не судит</h3>
       <p class="tx-card">
-        Ссорятся абсолютно все пары. Но счастливые пары отличаются не тем, что у них нет разногласий, а тем, что они умеют вовремя <strong>притормозить</strong>, пока разговор не превратился в перестрелку. Эти 7 коротких экранов помогут сделать это легко.
+        Ссорятся абсолютно все пары. Но счастливые пары отличаются не тем, что у них нет разногласий, а тем, что они умеют вовремя <strong>притормозить</strong>, пока разговор не превратился в перестрелку. Эти 6 коротких шагов помогут сделать это легко.
       </p>
     </div>
     <div class="entry-block">
@@ -978,6 +1042,8 @@
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
       </div>
     </div>
+
+    <p class="safety-note">Если в ссорах звучат угрозы, доходит до ударов или вам страшно оставаться рядом — это не решается техникой паузы. Здесь нужна помощь специалиста, и лучше найти её до следующего раза.</p>
 
 
     <div class="page-footer-nav">
@@ -1054,7 +1120,7 @@
     </div>
     <span class="badge-label">Шаг 2 из 6 · Простое правило</span>
     <h1>Правило 20 минут тишины</h1>
-    <p>Пауза — это <strong>не наказание молчанием</strong> (бойкот). Это договор разойтись по углам на 20 минут, чтобы защитить друг друга от лишних обид. Гормонам стресса нужно ровно 20 минут, чтобы схлынуть.</p>
+    <p>Пауза — это <strong>не наказание молчанием</strong> (бойкот). Это договор разойтись по углам на 20 минут, чтобы защитить друг друга от лишних обид. Гормонам стресса нужно минимум 20 минут, чтобы схлынуть.</p>
 
     <!-- ДЫХАТЕЛЬНЫЙ КРУГ -->
     <div class="breath-tool-card">
@@ -1097,6 +1163,17 @@
     <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
   </div>
 </div>
+
+    <div class="return-box">
+      <div class="return-label">Вы вернулись — это половина дела</div>
+      <p>Пауза сработала наполовину, если разговор так и не продолжился. Вернуться — тоже шаг, и его лучше назвать вслух.</p>
+      <ul class="return-phrases">
+        <li>«Я вернулся, как обещал. Продолжим?»</li>
+        <li>«Спасибо, что подождал. Мне важно договорить это спокойно.»</li>
+        <li>«Я не хочу тебя переспорить. Я хочу, чтобы мы поняли друг друга.»</li>
+      </ul>
+      <p><strong>Если снова накрыло</strong> — не дожимайте. Скажите «мне нужно ещё 20 минут» и назовите время. Если и второй раз не вышло — перенесите на завтра и договоритесь о часе. Дольше суток не откладывайте.</p>
+    </div>
 
 
     <div class="page-footer-nav">
