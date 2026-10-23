@@ -26,9 +26,9 @@ from aiogram.types import (
 )
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
-BASE_WEB_URL = os.getenv(
+SITE_URL = os.getenv(
     "BASE_WEB_URL",
-    "https://psyrazumovskys-lab.github.io/Arena-ai-plugin-/therapy-workbooks",
+    "https://psyrazumovskys-lab.github.io/Arena-ai-plugin-",
 ).rstrip("/")
 PORT = int(os.getenv("PORT", "10000"))
 
@@ -47,7 +47,7 @@ BOOKS = [
         "id": "couple_l1",
         "title": "Как вовремя остановить ссору",
         "label": "Тетрадь для пар · Уровень 1",
-        "file": "couple_workbook_1_stop_escalation.html",
+        "file": "w.html",
         "active": True,
     },
 ]
@@ -56,7 +56,9 @@ ACTIVE_BOOKS = [b for b in BOOKS if b["active"]]
 
 
 def book_url(book: dict) -> str:
-    return f"{BASE_WEB_URL}/{book['file']}"
+    # w.html — короткая ссылка на тетрадь. Она работает и до перехода
+    # сайта на папку docs/, и после, поэтому адрес в боте не ломается.
+    return f"{SITE_URL}/{book['file']}"
 
 
 def open_keyboard(book: dict) -> InlineKeyboardMarkup:

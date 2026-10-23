@@ -178,8 +178,9 @@ const open = async (seed = {}) => {
   check('Опубликованная копия в docs/ совпадает с исходником',
     fsCheck.existsSync(published) &&
     hash(published) === hash('therapy-workbooks/couple_workbook_1_stop_escalation.html'));
-  check('В docs/ на сайте только одна тетрадь',
-    fsCheck.readdirSync('docs').filter(f => f.endsWith('.html')).length === 2);
+  check('В docs/ только тетрадь и две короткие ссылки на неё',
+    JSON.stringify(fsCheck.readdirSync('docs').sort()) ===
+    JSON.stringify(['couple_workbook_1_stop_escalation.html', 'index.html', 'w.html']));
 
   check('Все изображения встроены в файл', images.every(img => img.src.startsWith('data:image')));
   check('У всех изображений есть описание', images.every(img => img.alt && img.alt.length > 3));
