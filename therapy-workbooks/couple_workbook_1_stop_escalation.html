@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -211,7 +211,7 @@
     /* ТИПОГРАФИКА */
     .badge-label {
       display: inline-block;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -248,7 +248,7 @@
     }
 
     p {
-      font-size: 14.5px;
+      font-size: 16px;
       color: #3B474C;
       margin-bottom: 14px;
     }
@@ -259,7 +259,7 @@
       border-radius: 0 8px 8px 0;
       padding: 12px 16px;
       font-style: italic;
-      font-size: 13.5px;
+      font-size: 15.5px;
       line-height: 1.6;
       color: #4A555B;
       margin: 16px 0;
@@ -308,7 +308,7 @@
       border-radius: 8px;
       padding: 12px 14px;
       margin-top: 10px;
-      font-size: 13.5px;
+      font-size: 14.5px;
       line-height: 1.5;
       transition: all 0.25s ease;
     }
@@ -616,7 +616,7 @@
       color: var(--terracotta);
     }
     .entry-hint {
-      font-size: 12.5px;
+      font-size: 14px;
       color: #6B7378;
       flex: 1;
       line-height: 1.4;
@@ -624,10 +624,10 @@
     .journal-entry {
       width: 100%;
       min-height: 90px;
-      padding: 12px 14px;
+      padding: 13px 14px;
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.5;
       font-family: inherit;
       color: var(--text-main);
@@ -666,7 +666,7 @@
       border-top: 1px dashed var(--border-color);
     }
     .entry-item {
-      font-size: 13.5px;
+      font-size: 15px;
       color: #3B474C;
       padding: 8px 0;
       border-bottom: 1px solid #F0F0F0;
@@ -694,12 +694,117 @@
     .zone-dot.yellow { background: #D9B87A; }
     .zone-dot.red    { background: #C4644C; }
     .entry-empty {
-      font-size: 12.5px;
+      font-size: 13.5px;
       color: #6B7378;
       font-style: italic;
       margin-top: 6px;
     }
-  </style>
+  
+    /* ==========================================================================
+       ЧИТАЕМОСТЬ НА ТЕЛЕФОНЕ
+       Тетрадь чаще всего открывают с телефона в браузере или Telegram.
+       На узком экране увеличиваем текст и кнопки, чтобы не приходилось щуриться.
+       ========================================================================== */
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 10px 96px;
+        line-height: 1.7;
+      }
+      .page-card {
+        padding: 22px 16px;
+        border-radius: 14px;
+      }
+      h1 { font-size: 27px; line-height: 1.22; }
+      h2 { font-size: 21px; }
+      h3 { font-size: 18px; }
+      p { font-size: 16.5px; line-height: 1.62; margin-bottom: 15px; }
+      .quote-box { font-size: 17px; line-height: 1.5; padding: 14px 16px; }
+      .badge-label { font-size: 12px; letter-spacing: 0.6px; }
+      .interactive-card { padding: 18px 15px; }
+      .interactive-card h3 { font-size: 18px; }
+      .interactive-card p { font-size: 16px; }
+
+      /* Поля ввода: 16px — иначе iOS сам приближает страницу при фокусе */
+      .journal-entry { font-size: 16px; min-height: 104px; }
+      .entry-hint { font-size: 14.5px; line-height: 1.5; }
+      .entry-item { font-size: 15.5px; padding: 10px 0; }
+      .entry-empty { font-size: 14px; }
+
+      /* Кнопки — крупнее и выше: палец не должен целиться */
+      .btn-save-entry {
+        font-size: 15.5px;
+        padding: 14px 22px;
+        min-height: 48px;
+        width: 100%;
+        border-radius: 12px;
+      }
+      .btn-nav-step {
+        font-size: 15px;
+        padding: 13px 16px;
+        min-height: 48px;
+      }
+      .choice-chip, .btn-copy-chip, .btn-breath-start {
+        font-size: 15px;
+        min-height: 44px;
+      }
+      .scale-status-banner { font-size: 15px; line-height: 1.55; }
+      .sos-quote { font-size: 17px; line-height: 1.55; }
+      .sos-clock { font-size: 34px; }
+      .page-footer-nav { margin-top: 26px; padding-top: 18px; }
+    }
+
+    /* Совсем узкие экраны (iPhone SE и подобные) */
+    @media (max-width: 380px) {
+      p { font-size: 16px; }
+      h1 { font-size: 24px; }
+      .page-card { padding: 18px 13px; }
+      .quote-box { font-size: 16px; }
+    }
+
+    /* Утилиты размера текста: классы вместо инлайновых font-size,
+       чтобы мобильные правила могли их переопределять */
+    .tx-card  { font-size: 13.5px; margin-bottom: 0; }
+    .tx-small { font-size: 13px; }
+    .tx-label { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .tx-list  { padding-left: 20px; font-size: 14px; color: #3B474C; }
+    .tx-note  { font-size: 12px; color: #6B7378; margin-top: 10px; }
+
+    @media (max-width: 640px) {
+      .tx-card  { font-size: 16px; }
+      .tx-small { font-size: 15.5px; }
+      .tx-label { font-size: 15.5px; }
+      .tx-list  { font-size: 16px; padding-left: 22px; }
+      .tx-note  { font-size: 13.5px; }
+    }
+
+    /* Врезка с проверяемым фактом вместо лирической цитаты */
+    .fact-box {
+      background: #F4F1EA;
+      border-left: 3px solid var(--terracotta);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 18px;
+      margin: 18px 0;
+    }
+    .fact-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+    .fact-box p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #3B474C;
+      margin-bottom: 0;
+    }
+    @media (max-width: 640px) {
+      .fact-box { padding: 16px 16px; }
+      .fact-label { font-size: 12.5px; }
+      .fact-box p { font-size: 16.5px; line-height: 1.6; }
+    }
+</style>
 </head>
 <body>
 
@@ -734,13 +839,14 @@
     <h1>Как вовремя остановиться в ссоре</h1>
     <p><em>Простая инструкция, как нажать на паузу, остыть и не наговорить слов, о которых потом больно вспоминать.</em></p>
     
-    <div class="quote-box">
-      «Когда в комнате бушует буря, цель — не перекричать ветер, а вовремя укрыться в безопасной гавани. Каждый из вас имеет полное право сказать: "Мне нужно выдохнуть"».
+    <div class="fact-box">
+      <div class="fact-label">У паузы две границы</div>
+      <p>Короче двадцати минут она не работает: тело ещё не остыло, и разговор пойдёт по второму кругу. Дольше суток — это уже не пауза, а способ не возвращаться. Всё, что делает паузу паузой, живёт между этими двумя границами.</p>
     </div>
 
     <div class="interactive-card">
       <h3><span class="marker">•</span>Здесь вас никто не судит</h3>
-      <p style="font-size: 13.5px; margin-bottom: 0;">
+      <p class="tx-card">
         Ссорятся абсолютно все пары. Но счастливые пары отличаются не тем, что у них нет разногласий, а тем, что они умеют вовремя <strong>притормозить</strong>, пока разговор не превратился в перестрелку. Эти 7 коротких экранов помогут сделать это легко.
       </p>
     </div>
@@ -775,7 +881,7 @@
     <!-- ИНТЕРАКТИВНЫЙ ГРАДУСНИК -->
     <div class="scale-gauge-container">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 13px; font-weight: 700; color: var(--text-main);">На сколько баллов кипит внутри?</span>
+        <span class="tx-label">На сколько баллов кипит внутри?</span>
         <span id="scaleScoreText" style="font-size: 16px; font-weight: 800; color: var(--sage-primary);">4 из 10</span>
       </div>
 
@@ -801,7 +907,7 @@
 
     <div class="interactive-card">
       <h3><span class="marker paper">✎</span>Как ваше тело подает сигнал тревоги?</h3>
-      <p style="font-size: 13px;">Что вы чувствуете первым делом, когда начинаете закипать?</p>
+      <p class="tx-small">Что вы чувствуете первым делом, когда начинаете закипать?</p>
     
     </div>
 <div class="entry-block">
@@ -836,7 +942,7 @@
     <div class="breath-tool-card">
       <span class="badge-label" style="background:#fff;">Сброс напряжения</span>
       <h3 style="margin-top: 4px;">Сделайте 4 глубоких вдоха прямо сейчас</h3>
-      <p style="font-size: 13px; margin-bottom: 10px;">Вдох носом — круг растет. Выдох через рот — отпустите плечи и челюсть.</p>
+      <p class="tx-small" style="margin-bottom: 10px;">Вдох носом — круг растет. Выдох через рот — отпустите плечи и челюсть.</p>
 
       <div class="breath-circle-outer" id="breathCircle">
         <div class="breath-circle-inner" id="breathInner">
@@ -850,7 +956,7 @@
 
     <div class="interactive-card">
       <h3>Что делать в эти 20 минут:</h3>
-      <ol style="padding-left: 20px; font-size: 14px; color: #3B474C;">
+      <ol class="tx-list">
         <li style="margin-bottom: 6px;"><strong>Разойтись в разные комнаты:</strong> Не стойте друг напротив друга.</li>
         <li style="margin-bottom: 6px;"><strong>Не крутите в голове обвинения:</strong> Не сочиняйте мысленные монологи — это снова разжигает злость.</li>
         <li style="margin-bottom: 6px;"><strong>Телесный сброс:</strong> Умойте лицо прохладной водой, выпейте стакан воды мелкими глотками.</li>
@@ -963,7 +1069,7 @@
 
     <div class="interactive-card">
       <h3>План из 3 шагов:</h3>
-      <p style="font-size: 13.5px;">
+      <p class="tx-card">
         1. В спокойную минуту покажите этот экран: <em>«Я хочу, чтобы мы берегли друг друга и не ранили в спорах. Давай придумаем общее стоп-слово»</em>.<br><br>
         2. Выберите смешное или простое слово (например: <strong>«Пауза»</strong>, <strong>«Чайник закипел»</strong>, <strong>«Маяк»</strong>).<br><br>
         3. Договоритесь: кто бы ни произнес это слово — оба молча расходятся на 20 минут без обид и споров.
@@ -1011,7 +1117,7 @@
         «Я люблю тебя. Сейчас я чувствую, что закипаю. Мне нужно 20 минут тишины, чтобы остыть и услышать тебя спокойно. Я вернусь и договорим.»
       </div>
 
-      <div style="font-size: 12px; color: #6B7378; margin-top: 10px;">
+      <div class="tx-note">
         1. Медленный выдох · 2. Стакан воды · 3. Возврат через 20 минут
       </div>
 
@@ -1059,7 +1165,7 @@
     <div class="bridge-card">
       <span class="badge-label" style="background:#fff;">Следующий логичный шаг</span>
       <h2 style="color: var(--sage-primary); margin: 8px 0 12px;">Практикум Уровня 2: 14 дней бережного диалога</h2>
-      <p style="font-size: 13.5px; color: #3B474C; margin-bottom: 14px;">
+      <p class="tx-card" style="margin-bottom: 14px;">
         Если вы хотите перейти от тушения пожаров к настоящей близости: понять, почему вы наступаете на одни и те же грабли в спорах, как просить без претензий и как вернуть нежность в общение.
       </p>
       <a href="https://t.me/psy_workbook_bot" class="btn-bridge">Открыть Практикум Уровня 2 в боте</a>
