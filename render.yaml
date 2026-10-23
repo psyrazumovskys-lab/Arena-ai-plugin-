@@ -1,9 +1,14 @@
 services:
-  - type: worker
+  # Веб-сервис, а не worker: у Render бесплатные worker-процессы не запускаются,
+  # поэтому бот молча «отключался». Веб-сервис отдаёт /healthz, по нему Render
+  # понимает, что процесс жив, а внешний пинг не даёт ему уснуть.
+  - type: web
     name: psy-workbook-bot
-    env: python
+    runtime: python
+    plan: free
     buildCommand: pip install -r bot/requirements.txt
     startCommand: python bot/main.py
+    healthCheckPath: /healthz
     autoDeploy: true
     envVars:
       - key: BOT_TOKEN

@@ -9,3 +9,7 @@ therapy-workbooks/page_previews/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Секреты и локальное окружение бота
+.env
+bot/.env
