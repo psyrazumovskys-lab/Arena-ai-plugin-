@@ -23,7 +23,7 @@ mapping = [
     ('therapy-workbooks/workbook_3_clinical_alliance.html', '1V0zePUsnvUHPgTjhr_IaGpyZmwPm-w7p', '03_Личные_границы_Уровень_3_Суверенитет_Я_Интерактив_8стр.html'),
 
     # Series 2: Couple Quarrels
-    ('therapy-workbooks/couple_workbook_1_stop_escalation.html', '1ZvLQFrRS9hQup_xN4tklqlRb39QO8Zkn', '04_Пары_и_ссоры_Уровень_1_Стоп_эскалация_Интерактив.html'),
+    ('therapy-workbooks/couple_workbook_1_stop_escalation.html', '15TtPrUSR3PMLhKCBT8Dy9ePG8G7ZbZQp', '04_Пары_и_ссоры_Уровень_1_Стоп_эскалация_Интерактив.html'),
     ('therapy-workbooks/couple_workbook_2_safe_dialogue.html', '1UlW5lfzW3P8395Gve2AnV93UzxsYEKdv', '05_Пары_Ссоры_Уровень_2_Безопасный_диалог_Интерактив_6стр.html'),
     ('therapy-workbooks/couple_workbook_3_clinical_cycle.html', '1ZpHivAjfVusrBDXzQaZRJx7N9QDKKJ8k', '06_Пары_Ссоры_Уровень_3_Деконструкция_цикла_Интерактив_8стр.html'),
 
