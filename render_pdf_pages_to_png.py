@@ -169,6 +169,26 @@ def draw_background_and_header(canvas, doc):
     canvas.setLineWidth(0.5)
     canvas.line(22*mm, 272*mm, 188*mm, 272*mm)
 
+    # Индикатор прохождения: точки-шаги, заполненные до текущей страницы
+    total = 7
+    dot_r = 1.15*mm
+    gap = 5.2*mm
+    start_x = 105*mm - (total - 1) * gap / 2
+    dot_y = 27*mm
+    for i in range(total):
+        x = start_x + i * gap
+        if i + 1 < doc.page:
+            canvas.setFillColor(C_SAGE)
+            canvas.setStrokeColor(C_SAGE)
+        elif i + 1 == doc.page:
+            canvas.setFillColor(C_TERRA)
+            canvas.setStrokeColor(C_TERRA)
+        else:
+            canvas.setFillColor(colors.HexColor('#FFFFFF'))
+            canvas.setStrokeColor(C_BORDER_DARK)
+        canvas.setLineWidth(0.7)
+        canvas.circle(x, dot_y, dot_r, fill=1, stroke=1)
+
     canvas.line(22*mm, 22*mm, 188*mm, 22*mm)
     canvas.setFont('DejaVu', 7.5)
     canvas.setFillColor(C_MUTED)
@@ -269,12 +289,12 @@ story = []
 # =========================================================================
 # СТРАНИЦА 1: ОБЛОЖКА-МАНИФЕСТ
 # =========================================================================
-story.append(RLImage('therapy-workbooks/assets/cover_couples_l1.jpg', width=166*mm, height=84*mm))
+story.append(RLImage('therapy-workbooks/assets/cover_couples_l1.jpg', width=166*mm, height=72*mm))
 story.append(Spacer(1, 8))
 story.append(Paragraph("СКОРАЯ ПОМОЩЬ · УРОВЕНЬ 1", s_badge))
 story.append(Paragraph("Как вовремя остановиться в ссоре", s_title))
 story.append(Paragraph("Простая инструкция, как нажать на паузу, остыть и не наговорить слов, о которых потом больно вспоминать.", s_subtitle))
-story.append(make_quote("Когда в комнате бушует буря, цель — не перекричать ветер, а вовремя укрыться в безопасной гавани. Каждый из вас имеет полное право сказать: «Мне нужно выдохнуть»"))
+story.append(make_quote("Когда в комнате бушует буря, цель — не перекричать ветер, а вовремя укрыться в безопасной гавани. Каждый из вас имеет полное право сказать: „Мне нужно выдохнуть“"))
 story.append(Spacer(1, 8))
 safe_space = [
     Paragraph("Здесь вас никто не судит", s_body_bold),
