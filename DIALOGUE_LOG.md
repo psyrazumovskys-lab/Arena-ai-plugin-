@@ -129,7 +129,7 @@
 **Google Drive**
 
 - Папка тетрадей уровня 1–2: `1e9ICbUM2oZaIHTba9uxQZZzlxT4EwTfp`.
-- Актуальный HTML тетради 1: единственный файл `04_..._Интерактив.html` в этой папке, 1 393 242 байт, ID `1j8hsS5XzCM4yIbGE1Z6gzxlAT6y8EsdM`. ID меняется при перезаливке — искать по имени и дате.
+- Актуальный HTML тетради 1: единственный файл `04_..._Интерактив.html` в этой папке, 1 393 322 байт, ID `1B9seDy3DOsjOn2wlenU_9RlQI6RIVIYI`. ID меняется при перезаливке — искать по имени и дате.
 - PDF: `1FOJZajnZ-IM1DAZI-yzmFAdQ9KibM7nw` (отстаёт от HTML).
 - **Правила общения (универсальные):** `13JtzF0E4IBwershZYWB0VGTPlvcHc0RCvjhf15DMJO8`.
 - **Журнал диалога (этот документ):** `1YWjzHBCn0K59ZZAsGJkhkKuUVk41IHe1a201Tk0FGGA`.
