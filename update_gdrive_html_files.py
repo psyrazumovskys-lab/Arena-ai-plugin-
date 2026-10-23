@@ -9,7 +9,7 @@
 #
 # Актуальная загрузка выполняется через коннектор Google Drive.
 # Журнал «Пары: деэскалация ссор, уровень 1» (папка 1e9ICbUM2oZaIHTba9uxQZZzlxT4EwTfp):
-#   HTML  1Fxl6Hc8bXEZihwF-g3MoWgALM8vISc57   1 391 707 байт
+#   HTML  1sCAeZ2AVzVQm2Rfws5_fwGY3MRuZ64jL   1 392 005 байт
 #   PDF   1FOJZajnZ-IM1DAZI-yzmFAdQ9KibM7nw   1 247 975 байт
 #
 # Остальные строки mapping требуют перепривязки к новым file_id.
@@ -23,7 +23,7 @@ mapping = [
     ('therapy-workbooks/workbook_3_clinical_alliance.html', '1V0zePUsnvUHPgTjhr_IaGpyZmwPm-w7p', '03_Личные_границы_Уровень_3_Суверенитет_Я_Интерактив_8стр.html'),
 
     # Series 2: Couple Quarrels
-    ('therapy-workbooks/couple_workbook_1_stop_escalation.html', '1Fxl6Hc8bXEZihwF-g3MoWgALM8vISc57', '04_Пары_и_ссоры_Уровень_1_Стоп_эскалация_Интерактив.html'),
+    ('therapy-workbooks/couple_workbook_1_stop_escalation.html', '1sCAeZ2AVzVQm2Rfws5_fwGY3MRuZ64jL', '04_Пары_и_ссоры_Уровень_1_Стоп_эскалация_Интерактив.html'),
     ('therapy-workbooks/couple_workbook_2_safe_dialogue.html', '1UlW5lfzW3P8395Gve2AnV93UzxsYEKdv', '05_Пары_Ссоры_Уровень_2_Безопасный_диалог_Интерактив_6стр.html'),
     ('therapy-workbooks/couple_workbook_3_clinical_cycle.html', '1ZpHivAjfVusrBDXzQaZRJx7N9QDKKJ8k', '06_Пары_Ссоры_Уровень_3_Деконструкция_цикла_Интерактив_8стр.html'),
 
