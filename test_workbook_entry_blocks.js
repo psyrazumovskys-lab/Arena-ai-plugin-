@@ -77,6 +77,14 @@ const open = async (seed = {}) => {
   const coverBtn = doc.querySelector('.btn-cover-start');
   check('Кнопка «Начать» работает и без JavaScript (ссылка на #p1)',
     coverBtn && coverBtn.getAttribute('href') === '#p1');
+  const backToStart = [...doc.querySelectorAll('.btn-nav-step')]
+    .find(a => /В начало тетради/.test(a.textContent));
+  check('Кнопка «В начало тетради» ведёт на обложку (#p0)',
+    backToStart && backToStart.getAttribute('href') === '#p0');
+  const firstPageBack = [...doc.querySelectorAll('#p1 .btn-nav-step')]
+    .find(a => /Назад/.test(a.textContent));
+  check('Со стр. 1 можно вернуться на обложку',
+    firstPageBack && firstPageBack.getAttribute('href') === '#p0');
   check('Все кнопки перехода между шагами — ссылки с onclick',
     [...doc.querySelectorAll('.btn-nav-step')].every(a =>
       a.tagName === 'A' && a.getAttribute('href')?.startsWith('#p') && /goToPage/.test(a.getAttribute('onclick') || '')));
