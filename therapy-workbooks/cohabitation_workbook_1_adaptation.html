@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Уровень 1: Экспресс-интенсив «Съехались: Экспресс-адаптация под одной крышей» (3 страницы)</title>
+  <style>
+    :root {
+
+      --primary: #047857;
+      --primary-dark: #065f46;
+      --primary-soft: #ecfdf5;
+      --accent: #d97706;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #cbd5e1;
+      --border-focus: #059669;
+      --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font);
+      line-height: 1.6;
+      font-size: 15px;
+      padding: 16px 12px 60px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #065f46 0%, #0f766e 100%);
+      color: #ffffff;
+      padding: 26px 22px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.15);
+      text-align: center;
+    }
+
+    .badge-top {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.95;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .notice-banner {
+      background: var(--primary-soft);
+      border-left: 4px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 22px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .page-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 26px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .page-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 18px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    p, ul, ol {
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .interactive-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-main);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .rating-group {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .rating-group:last-child {
+      border-bottom: none;
+    }
+
+    .rating-scale {
+      display: flex;
+      gap: 6px;
+    }
+
+    .rating-scale label {
+      font-weight: normal;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 0;
+      background: #ffffff;
+      padding: 2px 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .action-bar {
+      position: sticky;
+      bottom: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      z-index: 100;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13.5px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid var(--border);
+      color: #334155;
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        font-size: 12px;
+      }
+      .page-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        page-break-after: always;
+        break-after: page;
+      }
+      .action-bar, .notice-banner {
+        display: none !important;
+      }
+    }
+  
+    /* --- Вкладки по страницам (Tabs Navigation) --- */
+    .tabs-nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 10px 0 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tabs-nav::-webkit-scrollbar {
+      height: 4px;
+    }
+    .tabs-nav::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+    .tab-nav-btn {
+      flex: 0 0 auto;
+      padding: 9px 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .tab-nav-btn:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+      border-color: #94a3b8;
+    }
+    .tab-nav-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .page-card {
+      display: none;
+    }
+    .page-card.active {
+      display: block;
+      animation: tabFadeIn 0.25s ease forwards;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Интерактивная мастерская (Dynamic Journal & Log Entries) --- */
+    .workshop-card {
+      background: #ffffff;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 18px 18px 20px;
+      margin: 22px 0 16px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    }
+    .workshop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .workshop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .workshop-entries-count {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .workshop-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .workshop-form textarea {
+      min-height: 80px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      color: var(--text-main);
+      background: #f8fafc;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .workshop-form textarea:focus {
+      border-color: var(--border-focus);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    .workshop-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .btn-add-entry {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-add-entry:hover {
+      background: var(--primary-dark);
+    }
+    .workshop-entries-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .entry-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .entry-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+    .entry-date {
+      font-weight: 600;
+      color: #475569;
+    }
+    .btn-del-entry {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .btn-del-entry:hover {
+      color: #ef4444;
+      background: #fee2e2;
+    }
+    .entry-content {
+      font-size: 13.5px;
+      color: #1e293b;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .entries-empty-hint {
+      text-align: center;
+      padding: 14px;
+      color: #94a3b8;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+  
+    /* --- Кнопки переключения страниц внизу (Bottom Page Switcher) --- */
+    .page-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--border);
+      gap: 12px;
+    }
+    .btn-page-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-page-step:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .btn-page-step.primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .btn-page-step.primary:hover {
+      background: var(--primary-dark, #0284c7);
+    }
+    .page-counter-badge {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    @media print {
+      .tabs-nav-wrapper, .page-footer-nav {
+        display: none !important;
+      }
+    }
+
+  
+    /* --- Интерактивный прогресс-бар прохождения тетради --- */
+    .workbook-progress-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .workbook-progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .progress-bar-track {
+      background: #e2e8f0;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--primary) 0%, #06b6d4 100%);
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    /* --- Соматическая саморегуляция и заземление --- */
+    .somatic-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid #10b981;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: #0f172a;
+    }
+    .somatic-box-title {
+      font-weight: 700;
+      color: #047857;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* --- Нормализация срывов и самосострадание --- */
+    .relapse-protocol-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: #78350f;
+    }
+    .relapse-title {
+      font-weight: 700;
+      color: #b45309;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* --- Быстрые шаблоны для мастерской (Prompt Chips) --- */
+    .workshop-chips-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .workshop-chips-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .workshop-chip-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .workshop-chip-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+
+    /* --- Партнерская дифференциация (для линеек по парам) --- */
+    .partner-toggle-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .partner-badge-guide {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    @media print {
+      .workbook-progress-wrapper, .workshop-chips-row, .workshop-chips-label, .partner-toggle-container {
+        display: none !important;
+      }
+    }
+
+  
+    /* --- ПРЕМИАЛЬНЫЙ ДИЗАЙН И СОВРЕМЕННЫЙ UX (MENTAL HEALTH EDITION) --- */
+    body {
+      background-color: #f8fafc;
+      letter-spacing: -0.011em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Плавающий статус автосохранения (Peace of mind indicator) */
+    .save-status-pill {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.88);
+      color: #ffffff;
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.9;
+    }
+    .save-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      transition: background 0.2s ease;
+    }
+    .save-status-dot.saving {
+      background: #f59e0b;
+      animation: pulseDot 1s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    /* Кнопки быстрого копирования речевых формулировок */
+    .btn-copy-phrase {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-phrase:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+    .btn-copy-phrase.copied {
+      background: #dcfce7;
+      color: #15803d;
+      border-color: #86efac;
+    }
+
+    /* Авто-растягивающиеся поля ввода (Auto-grow Textareas) */
+    textarea {
+      overflow-y: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Анимация переключения страниц (Smooth Slide-Fade) */
+    .page-card, .page-tab-content {
+      animation: tabSlideFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes tabSlideFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Карточка времени прохождения в шапке */
+    .reading-time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 500;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    @media print {
+      .save-status-pill, .btn-copy-phrase, .reading-time-pill {
+        display: none !important;
+      }
+    }
+
+  
+    /* --- ТЕРАПЕВТИЧЕСКАЯ БЕЗОПАСНОСТЬ: ПРАВИЛО «НЕТ НЕПРАВИЛЬНЫХ ОТВЕТОВ» --- */
+    .safe-space-banner {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #6366f1;
+      border-radius: 10px;
+      padding: 11px 15px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .safe-space-icon {
+      font-size: 16px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    /* --- СКЛАДНЫЕ ИНСТРУКЦИИ К ПРАКТИКАМ (JUST-IN-TIME TIPS) --- */
+    .exercise-tip-details {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 9px;
+      padding: 9px 13px;
+      margin: 12px 0 14px;
+      font-size: 12.5px;
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+    .exercise-tip-details[open] {
+      background: #ffffff;
+      border-color: #94a3b8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .exercise-tip-summary {
+      font-weight: 600;
+      color: #0369a1;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    .exercise-tip-summary::-webkit-details-marker {
+      display: none;
+    }
+    .exercise-tip-content {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #e2e8f0;
+      line-height: 1.55;
+    }
+
+    /* --- НАГЛЯДНЫЕ ПРИМЕРЫ «КАК ЗАПОЛНЯТЬ» (BEFORE / AFTER) --- */
+    .example-contrast-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 12.5px;
+    }
+    .example-line-bad {
+      color: #b91c1c;
+      margin-bottom: 5px;
+      line-height: 1.45;
+    }
+    .example-line-good {
+      color: #15803d;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    @media print {
+      .safe-space-banner, .exercise-tip-details {
+        display: none !important;
+      }
+    }
+
+  
+    /* === РАСШИРЕННЫЙ АДАПТИВНЫЙ И ВЫСОКОКОНТРАСТНЫЙ ДИЗАЙН (MOBILE & ACCESSIBILITY) === */
+    :root {
+      --text-main: #0f172a !important;
+      --text-muted: #334155 !important;
+      --border: #cbd5e1 !important;
+    }
+
+    body {
+      color: #0f172a !important;
+      background-color: #f8fafc !important;
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Высококонтрастные и четкие заголовки */
+    h1, h2, h3, h4 {
+      color: #0f172a !important;
+      letter-spacing: -0.01em;
+    }
+    p, li, td, th, div, span, label {
+      color: inherit;
+    }
+    .text-muted, [style*="color: var(--text-muted)"], [style*="color: #64748b"] {
+      color: #334155 !important;
+    }
+
+    /* Контейнер и отступы */
+    .container {
+      width: 100% !important;
+      max-width: 860px !important;
+      margin: 0 auto !important;
+      padding: 16px 14px 60px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Адаптивная липкая шапка навигации по страницам (Tabs Bar) */
+    .tabs-nav-wrapper {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 100 !important;
+      background: rgba(248, 250, 252, 0.98) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      padding: 10px 0 !important;
+      margin: 0 0 16px 0 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .tabs-nav {
+      display: flex !important;
+      gap: 8px !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin !important;
+      padding: 4px 2px 6px !important;
+      white-space: nowrap !important;
+    }
+    .tabs-nav::-webkit-scrollbar {
+      height: 4px !important;
+    }
+    .tabs-nav::-webkit-scrollbar-thumb {
+      background: #cbd5e1 !important;
+      border-radius: 4px !important;
+    }
+    .tab-nav-btn {
+      flex: 0 0 auto !important;
+      padding: 9px 15px !important;
+      background: #ffffff !important;
+      color: #1e293b !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      transition: all 0.2s ease !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .tab-nav-btn:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+      color: #0f172a !important;
+    }
+    .tab-nav-btn.active {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-dark, var(--primary)) !important;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Карточка страницы */
+    .page-card {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 16px !important;
+      padding: 22px 20px !important;
+      margin-bottom: 24px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Шапка страницы */
+    .page-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+      margin-bottom: 18px !important;
+      padding-bottom: 12px !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .page-title {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .page-number {
+      font-size: 12.5px !important;
+      color: #334155 !important;
+      background: #f1f5f9 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      font-weight: 600 !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Карточки упражнений и интерактивные блоки */
+    .interactive-box, .card, .tool-box, .notice-banner {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 12px !important;
+      padding: 16px 18px !important;
+      margin: 14px 0 !important;
+      box-sizing: border-box !important;
+    }
+    .notice-banner {
+      border-left: 4px solid var(--primary) !important;
+      background: #f8fafc !important;
+      color: #1e293b !important;
+    }
+
+    /* Баннер безопасного пространства */
+    .safe-space-banner {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid #6366f1 !important;
+      border-radius: 12px !important;
+      padding: 14px 16px !important;
+      margin-bottom: 20px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      color: #1e293b !important;
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+    }
+    .safe-space-icon {
+      font-size: 22px !important;
+      flex-shrink: 0 !important;
+      line-height: 1 !important;
+    }
+
+    /* Раскрывающийся блок клинической подсказки (Details / Summary) */
+    .exercise-tip-details {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      padding: 10px 14px !important;
+      margin: 14px 0 16px !important;
+      font-size: 13.5px !important;
+      box-sizing: border-box !important;
+    }
+    .exercise-tip-summary {
+      font-weight: 700 !important;
+      color: #0369a1 !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      padding: 2px 0 !important;
+    }
+    .exercise-tip-content {
+      margin-top: 10px !important;
+      padding-top: 10px !important;
+      border-top: 1px dashed #cbd5e1 !important;
+      color: #1e293b !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Контрастные примеры Было/Стало */
+    .example-contrast-box {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      padding: 12px 14px !important;
+      margin: 12px 0 !important;
+      font-size: 13.5px !important;
+    }
+    .example-line-bad {
+      color: #991b1b !important;
+      font-weight: 500 !important;
+      margin-bottom: 6px !important;
+      line-height: 1.5 !important;
+    }
+    .example-line-good {
+      color: #166534 !important;
+      font-weight: 600 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Интерактивная мастерская записей */
+    .workshop-card {
+      background: #ffffff !important;
+      border: 2px solid #cbd5e1 !important;
+      border-radius: 14px !important;
+      padding: 18px !important;
+      margin-top: 24px !important;
+      box-sizing: border-box !important;
+    }
+    .workshop-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      margin-bottom: 12px !important;
+    }
+    .workshop-badge {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    .workshop-entries-count {
+      font-size: 12px !important;
+      color: #334155 !important;
+      font-weight: 600 !important;
+    }
+    .workshop-form textarea {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      min-height: 75px !important;
+      padding: 12px !important;
+      font-size: 14px !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      font-family: inherit !important;
+      resize: vertical !important;
+    }
+    .workshop-form textarea:focus {
+      outline: none !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.15) !important;
+    }
+    .btn-add-entry {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 10px 18px !important;
+      border-radius: 8px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      transition: background 0.2s !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .btn-add-entry:hover {
+      background: var(--primary-dark, #075985) !important;
+    }
+    .btn-del-entry {
+      background: #fee2e2 !important;
+      color: #991b1b !important;
+      border: 1px solid #fecdd3 !important;
+      border-radius: 6px !important;
+      padding: 4px 8px !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      min-height: 28px !important;
+    }
+    .btn-del-entry:hover {
+      background: #fecdd3 !important;
+    }
+    .entry-item {
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid var(--primary) !important;
+      border-radius: 8px !important;
+      padding: 12px 14px !important;
+      margin-top: 10px !important;
+    }
+    .entry-meta {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-bottom: 6px !important;
+    }
+    .entry-date {
+      font-size: 12px !important;
+      color: #475569 !important;
+      font-weight: 600 !important;
+    }
+    .entry-content {
+      font-size: 13.5px !important;
+      color: #0f172a !important;
+      line-height: 1.55 !important;
+      white-space: pre-wrap !important;
+    }
+    .entries-empty-hint {
+      font-size: 13px !important;
+      color: #475569 !important;
+      padding: 12px 0 !important;
+      text-align: center !important;
+    }
+
+    /* Таблицы с безопасным горизонтальным скроллом */
+    .table-responsive {
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin-bottom: 16px !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+    }
+    table {
+      width: 100% !important;
+      min-width: 500px !important;
+      border-collapse: collapse !important;
+      font-size: 13.5px !important;
+    }
+    th {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-weight: 700 !important;
+      padding: 10px 12px !important;
+      border-bottom: 2px solid #cbd5e1 !important;
+      text-align: left !important;
+    }
+    td {
+      padding: 10px 12px !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      color: #1e293b !important;
+      vertical-align: top !important;
+    }
+
+    /* Текстовые поля и инпуты */
+    textarea, input[type="text"] {
+      color: #0f172a !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      padding: 10px 12px !important;
+      font-size: 14px !important;
+      box-sizing: border-box !important;
+      font-family: inherit !important;
+    }
+    textarea:focus, input[type="text"]:focus {
+      outline: none !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.15) !important;
+    }
+
+    /* Нижняя навигация между страницами */
+    .page-footer-nav {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+      margin-top: 26px !important;
+      padding-top: 18px !important;
+      border-top: 1px solid #e2e8f0 !important;
+    }
+    .btn-page-step {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #1e293b !important;
+      cursor: pointer !important;
+      transition: all 0.2s !important;
+      min-height: 42px !important;
+      touch-action: manipulation !important;
+    }
+    .btn-page-step:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+    }
+    .btn-page-step.primary {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-dark, var(--primary)) !important;
+    }
+    .btn-page-step.primary:hover {
+      background: var(--primary-dark, #075985) !important;
+    }
+
+    /* Мобильная адаптивность под экраны смартфонов (<= 640px) */
+    @media screen and (max-width: 640px) {
+      .container {
+        padding: 10px 10px 60px !important;
+      }
+      header {
+        padding: 20px 14px !important;
+        margin-bottom: 14px !important;
+        border-radius: 14px !important;
+      }
+      header h1 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+      }
+      header p {
+        font-size: 13px !important;
+      }
+      .page-card {
+        padding: 16px 12px !important;
+        border-radius: 12px !important;
+      }
+      .page-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+      }
+      .page-footer-nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+      }
+      .btn-page-step {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+      .tabs-nav {
+        padding: 4px 0 6px !important;
+      }
+      .tab-nav-btn {
+        padding: 8px 12px !important;
+        font-size: 12.5px !important;
+      }
+      .save-status-pill {
+        bottom: 12px !important;
+        right: 12px !important;
+        font-size: 11.5px !important;
+        padding: 6px 10px !important;
+      }
+      .workshop-card {
+        padding: 14px 10px !important;
+      }
+      .safe-space-banner {
+        padding: 12px !important;
+        font-size: 12.5px !important;
+      }
+      .example-contrast-box {
+        padding: 10px 12px !important;
+      }
+    }
+
+  
+    /* === РЕШЕНИЕ ПРОБЛЕМ МОБИЛЬНОГО ОТОБРАЖЕНИЯ (SCREENSHOT FIX) === */
+    
+    /* 1. Шкалы оценки и радио-кнопки (Rating Group & Rating Scale) */
+    .rating-group {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 8px !important;
+      padding: 10px 0 !important;
+      border-bottom: 1px dashed #e2e8f0 !important;
+    }
+    .rating-group > span {
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      color: #0f172a !important;
+      display: block !important;
+    }
+    .rating-scale {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      margin-top: 2px !important;
+    }
+    .rating-scale label {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 12px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #1e293b !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      min-height: 36px !important;
+      flex: 1 1 auto !important;
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    .rating-scale label:hover {
+      background: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+    }
+    .rating-scale input[type="radio"] {
+      width: 16px !important;
+      height: 16px !important;
+      margin: 0 !important;
+      accent-color: var(--primary) !important;
+    }
+
+    /* 2. Нижняя панель действий (Action Bar) */
+    .action-bar {
+      position: static !important; /* Убираем sticky, чтобы не перекрывать контент и не конфликтовать со статусом */
+      margin-top: 28px !important;
+      margin-bottom: 40px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 14px !important;
+      padding: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    }
+    .action-bar > span {
+      text-align: center !important;
+      font-size: 13px !important;
+      color: #475569 !important;
+    }
+    .action-bar > div {
+      display: flex !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      width: 100% !important;
+    }
+    .action-bar button, .action-bar .btn {
+      flex: 1 1 180px !important;
+      min-height: 44px !important;
+      justify-content: center !important;
+      text-align: center !important;
+      font-size: 13.5px !important;
+    }
+
+    /* 3. Плавающий индикатор автосохранения (Save Status Pill) */
+    .save-status-pill {
+      position: fixed !important;
+      bottom: 12px !important;
+      right: 12px !important;
+      z-index: 1000 !important;
+      background: rgba(15, 23, 42, 0.92) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(8px) !important;
+      padding: 6px 12px !important;
+      border-radius: 999px !important;
+      font-size: 11.5px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18) !important;
+      pointer-events: none !important;
+    }
+
+    /* 4. Отступ внизу контейнера, чтобы мобильные тулбары браузера ничего не перекрывали */
+    .container {
+      padding-bottom: 90px !important;
+    }
+
+    @media screen and (min-width: 641px) {
+      .rating-group {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .rating-group > span {
+        max-width: 65% !important;
+      }
+      .rating-scale {
+        flex: 0 0 auto !important;
+      }
+      .rating-scale label {
+        flex: 0 0 auto !important;
+      }
+      .action-bar {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .action-bar > span {
+        text-align: left !important;
+      }
+      .action-bar > div {
+        width: auto !important;
+      }
+    }
+
+  
+    
+    /* Гарантированное отображение активной вкладки и скрытие остальных */
+    .page-card, .page-tab-content {
+      display: none !important;
+    }
+    .page-card.active, .page-tab-content.active {
+      display: block !important;
+      animation: tabSlideFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+    @media print {
+      .page-card, .page-tab-content {
+        display: block !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+    }
+
+  
+  /* ==========================================================================
+     НОВАЯ СОВРЕМЕННАЯ ПАНЕЛЬ НАВИГАЦИИ (SMART STEPPER + SEGMENTED PILLS + DROPDOWN)
+     ========================================================================== */
+  .wb-navigation-bar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 14px !important;
+    padding: 10px 14px !important;
+    margin: 16px 0 24px !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .wb-nav-header-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .wb-nav-stepper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 1 320px !important;
+  }
+
+  .wb-step-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 14px !important;
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.18s ease !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+    min-height: 38px !important;
+  }
+  .wb-step-btn:hover:not(:disabled) {
+    background: #e2e8f0 !important;
+    border-color: #94a3b8 !important;
+    transform: translateY(-1px) !important;
+  }
+  .wb-step-btn:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #94a3b8 !important;
+  }
+  .wb-step-btn .arrow {
+    font-size: 16px !important;
+    line-height: 1 !important;
+    font-weight: bold !important;
+  }
+
+  .wb-page-selector-wrapper {
+    position: relative !important;
+    flex: 1 1 auto !important;
+    min-width: 170px !important;
+  }
+  .wb-page-select {
+    width: 100% !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1.5px solid #0284c7 !important;
+    border-radius: 8px !important;
+    padding: 8px 30px 8px 12px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    min-height: 38px !important;
+    outline: none !important;
+  }
+  .wb-page-select:focus {
+    border-color: #0369a1 !important;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25) !important;
+  }
+  .wb-select-caret {
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    color: #0284c7 !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+  }
+
+  .wb-nav-counter {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+  }
+  .wb-nav-counter .cur {
+    color: #38bdf8 !important;
+  }
+
+  .wb-nav-segmented {
+    display: flex !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    padding-top: 10px !important;
+    margin-top: 8px !important;
+    border-top: 1px solid #e2e8f0 !important;
+    scrollbar-width: thin !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .wb-nav-segmented::-webkit-scrollbar {
+    height: 4px !important;
+  }
+  .wb-nav-segmented::-webkit-scrollbar-thumb {
+    background: #cbd5e1 !important;
+    border-radius: 4px !important;
+  }
+
+  .wb-nav-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 7px 12px !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    transition: all 0.15s ease !important;
+  }
+  .wb-nav-item:hover {
+    background: #f1f5f9 !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+  }
+  .wb-nav-item.active {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3) !important;
+  }
+  .wb-nav-item .wb-nav-num {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 50% !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+  .wb-nav-item.active .wb-nav-num {
+    background: #ffffff !important;
+    color: #0284c7 !important;
+  }
+
+  @media (max-width: 640px) {
+    .wb-navigation-bar {
+      padding: 8px 10px !important;
+      margin: 10px 0 16px !important;
+      border-radius: 10px !important;
+    }
+    .wb-nav-stepper {
+      flex: 1 1 100% !important;
+      justify-content: space-between !important;
+    }
+    .wb-step-btn .label {
+      display: none !important;
+    }
+    .wb-step-btn {
+      padding: 8px 12px !important;
+      min-width: 40px !important;
+    }
+    .wb-nav-counter {
+      display: none !important;
+    }
+    .wb-page-select {
+      font-size: 12.5px !important;
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
+    }
+  }
+
+  @media print {
+    .wb-navigation-bar, .tabs-nav-wrapper {
+      display: none !important;
+    }
+  }
+
+
+  /* УЛЬТРА-КОМПАКТНАЯ НАВИГАЦИЯ ДЛЯ СМАРТФОНОВ И TELEGRAM MINI APPS */
+  .wb-navigation-bar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 8px 10px !important;
+    margin: 8px 0 16px !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .wb-nav-header-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  .wb-nav-stepper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+  }
+
+  .wb-step-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 6px 10px !important;
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+    min-height: 36px !important;
+    min-width: 36px !important;
+  }
+  .wb-step-btn:hover:not(:disabled) {
+    background: #e2e8f0 !important;
+    border-color: #94a3b8 !important;
+  }
+  .wb-step-btn:disabled {
+    opacity: 0.35 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: #f8fafc !important;
+  }
+
+  .wb-page-selector-wrapper {
+    position: relative !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .wb-page-select {
+    width: 100% !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1.5px solid #0284c7 !important;
+    border-radius: 8px !important;
+    padding: 6px 26px 6px 10px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+    min-height: 36px !important;
+    outline: none !important;
+  }
+  .wb-select-caret {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    color: #0284c7 !important;
+    font-size: 10px !important;
+  }
+
+  .wb-nav-counter {
+    display: none !important;
+  }
+
+  /* Скрываем горизонтальную синюю ленту табов на мобильных экранах, чтобы не загромождать интерфейс */
+  @media (max-width: 640px) {
+    .wb-nav-segmented {
+      display: none !important;
+    }
+    .wb-step-btn .label {
+      display: none !important;
+    }
+    .page-footer-nav {
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+    .page-footer-nav .btn-page-step {
+      width: 100% !important;
+      justify-content: center !important;
+    }
+  }
+
+  /* Нижняя панель навигации страниц */
+  .page-footer-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin-top: 24px !important;
+    padding: 16px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+  }
+  .btn-page-step {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 18px !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+  }
+  .btn-page-step:hover {
+    background: #f1f5f9 !important;
+    border-color: #94a3b8 !important;
+  }
+  .btn-page-step.primary {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25) !important;
+  }
+  .btn-page-step.primary:hover {
+    background: #0369a1 !important;
+  }
+  .page-counter-badge {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-align: center !important;
+  }
+
+</style>
+
+  
+  
+
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge-top">Уровень 1 • Экспресс-интенсив (3 страницы)</div>
+    <h1>Съехались: Экспресс-адаптация под одной крышей</h1>
+    <p>Клинический 3-дневный экспресс-гайд для молодых пар: как преодолеть бытовую притирку, синхронизировать привычки и сохранить романтику</p>
+  </header>
+  <!-- ИНТЕРАКТИВНЫЙ ПРОГРЕСС-БАР ТЕТРАДИ (ДОФАМИНОВОЕ ПОДКРЕПЛЕНИЕ) -->
+  <div class="workbook-progress-wrapper">
+    <div class="workbook-progress-meta">
+      <span>🌱 Личный прогресс освоения практик</span>
+      <span id="progress-percent-text">0% заполнено</span>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+  </div>
+  <!-- ТЕРАПЕВТИЧЕСКИЙ ДИСКЛЕЙМЕР: ЗДЕСЬ НЕТ ОЦЕНОК И НЕПРАВИЛЬНЫХ ОТВЕТОВ -->
+  <div class="safe-space-banner">
+    <span class="safe-space-icon">🌱</span>
+    <div>
+      <strong>Безопасное пространство без оценок:</strong> В этой тетради нет «правильных» или «неправильных» ответов. Ваши записи — это зеркало вашего личного опыта, а не экзамен. Пишите своими словами, сокращайте, сомневайтесь — здесь можно быть настоящим и уязвимым.
+    </div>
+  </div>
+
+
+
+  <div class="notice-banner">
+    <strong>Терапевтический фокус:</strong> Руководство разработано специально для пар в первые 12 месяцев совместного проживания. Помогает перевести невысказанное раздражение в ясные договоренности без упреков.
+  </div>
+
+  <!-- СТРАНИЦА 1 -->
+    <!-- НАВИГАЦИЯ ПО СТРАНИЦАМ (ВКЛАДКИ) -->
+  
+  <!-- ПРЕМИАЛЬНАЯ ПАНЕЛЬ НАВИГАЦИИ ПО СТРАНИЦАМ (DESKTOP + MOBILE) -->
+  <div class="wb-navigation-bar" id="wbNavigationBar">
+    <div class="wb-nav-header-row">
+      <div class="wb-nav-stepper">
+        <button type="button" class="wb-step-btn prev" id="wbNavPrevBtn" onclick="switchPageStep(-1)" title="Предыдущая страница" disabled>
+          <span class="arrow">‹</span>
+          <span class="label">Назад</span>
+        </button>
+        
+        <div class="wb-page-selector-wrapper">
+          <select id="wbPageSelect" class="wb-page-select" onchange="switchPageTab(this.value)" aria-label="Выберите страницу тетради">
+            <option value="page-1">Стр. 1 из 3: Чек-лист скрытых бытовых мин (10 триггеров)</option><option value="page-2">Стр. 2 из 3: 4-шаговый протокол экологичной бытовой просьбы</option><option value="page-3">Стр. 3 из 3: 3-дневный трекер сонастройки и Пакт общего дома</option>
+          </select>
+          <span class="wb-select-caret">▾</span>
+        </div>
+
+        <button type="button" class="wb-step-btn next" id="wbNavNextBtn" onclick="switchPageStep(1)" title="Следующая страница">
+          <span class="label">Вперед</span>
+          <span class="arrow">›</span>
+        </button>
+      </div>
+
+      <div class="wb-nav-counter" id="wbNavCounter">
+        Стр. <span class="cur" id="wbNavCurPage">1</span> / <span class="tot">3</span>
+      </div>
+    </div>
+
+    <!-- Сегментированная лента страниц -->
+    <div class="wb-nav-segmented" role="tablist">
+      <button type="button" class="wb-nav-item active" data-page="page-1" onclick="switchPageTab('page-1')"><span class="wb-nav-num">1</span><span class="wb-nav-title">Чек-лист скрытых бытовых мин (10 триггеров)</span></button><button type="button" class="wb-nav-item" data-page="page-2" onclick="switchPageTab('page-2')"><span class="wb-nav-num">2</span><span class="wb-nav-title">4-шаговый протокол экологичной бытовой просьбы</span></button><button type="button" class="wb-nav-item" data-page="page-3" onclick="switchPageTab('page-3')"><span class="wb-nav-num">3</span><span class="wb-nav-title">3-дневный трекер сонастройки и Пакт общего дома</span></button>
+    </div>
+  </div>
+
+<div class="page-card active" id="page-1">
+    <div class="page-header">
+      <div class="page-title">Страница 1 • Чек-лист скрытых бытовых мин (10 триггеров)</div>
+      <div class="page-number">Стр. 1 из 3</div>
+    </div>
+
+    <h2>1. Скрининг бытового напряжения в общем пространстве</h2>
+    <p>Оцените, насколько каждый пункт вызывает глухое раздражение в вашей паре (0 — не беспокоит, 1 — редко, 2 — часто, 3 — постоянный повод для ссоры):</p>
+
+    
+    <!-- МИКРО-ПОДСКАЗКА: КАК ПРОХОДИТЬ САМОДИАГНОСТИКУ -->
+    <details class="exercise-tip-details" style="margin: 14px 0 16px;">
+      <summary class="exercise-tip-summary">💡 Как диагностировать бытовое напряжение под одной крышей:</summary>
+      <div class="exercise-tip-content">
+        • <strong>Разница привычек — это не нелюбовь:</strong> У вас и вашего партнера были разные семьи и разные сценарии порядка. Стыковать их — нормальный процесс притирки.<br/>
+• <strong>Отделите мелочи от базовых ценностей:</strong> Разбросанные носки или немытая чашка не означают неуважения, если не наделять их катастрофическим смыслом.<br/>
+• <strong>Говорите о фактах:</strong> Отмечайте конкретные триггеры, вызывающие вздох раздражения.
+      </div>
+    </details>
+<div class="interactive-box">
+      <div class="rating-group">
+        <span>1. Разбросанные по комнате вещи, одежда на стульях, открытые дверцы шкафов.</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m1" value="0"> 0</label>
+          <label><input type="radio" name="m1" value="1"> 1</label>
+          <label><input type="radio" name="m1" value="2"> 2</label>
+          <label><input type="radio" name="m1" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>2. Посуда в раковине: «помыть сразу» vs «пусть постоит до вечера/утра».</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m2" value="0"> 0</label>
+          <label><input type="radio" name="m2" value="1"> 1</label>
+          <label><input type="radio" name="m2" value="2"> 2</label>
+          <label><input type="radio" name="m2" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>3. Разница биоритмов («сова» ложится в 2 ночи со светом, «жаворонок» встает в 7 утра).</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m3" value="0"> 0</label>
+          <label><input type="radio" name="m3" value="1"> 1</label>
+          <label><input type="radio" name="m3" value="2"> 2</label>
+          <label><input type="radio" name="m3" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>4. Степень чистоты пола и поверхностей (для одного это норма, для другого — недопустимый беспорядок).</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m4" value="0"> 0</label>
+          <label><input type="radio" name="m4" value="1"> 1</label>
+          <label><input type="radio" name="m4" value="2"> 2</label>
+          <label><input type="radio" name="m4" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>5. Невидимый быт (кто помнит про туалетную бумагу, мешки для мусора, закупку еды).</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m5" value="0"> 0</label>
+          <label><input type="radio" name="m5" value="1"> 1</label>
+          <label><input type="radio" name="m5" value="2"> 2</label>
+          <label><input type="radio" name="m5" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>6. Удаленная работа в одной квартире: созвоны, шум, перебивание фокуса.</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m6" value="0"> 0</label>
+          <label><input type="radio" name="m6" value="1"> 1</label>
+          <label><input type="radio" name="m6" value="2"> 2</label>
+          <label><input type="radio" name="m6" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>7. Гости, друзья или родственники без предварительного согласования с партнером.</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m7" value="0"> 0</label>
+          <label><input type="radio" name="m7" value="1"> 1</label>
+          <label><input type="radio" name="m7" value="2"> 2</label>
+          <label><input type="radio" name="m7" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>8. Личное пространство: отсутствие возможности побыть одному в тишине.</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m8" value="0"> 0</label>
+          <label><input type="radio" name="m8" value="1"> 1</label>
+          <label><input type="radio" name="m8" value="2"> 2</label>
+          <label><input type="radio" name="m8" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>9. Туалетные и гигиенические привычки (стыд звуков, запахов, закрытые/открытые двери).</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m9" value="0"> 0</label>
+          <label><input type="radio" name="m9" value="1"> 1</label>
+          <label><input type="radio" name="m9" value="2"> 2</label>
+          <label><input type="radio" name="m9" value="3"> 3</label>
+        </div>
+      </div>
+      <div class="rating-group">
+        <span>10. Пропажа свиданий: пара везде вместе в трениках, но романтика умерла.</span>
+        <div class="rating-scale">
+          <label><input type="radio" name="m10" value="0"> 0</label>
+          <label><input type="radio" name="m10" value="1"> 1</label>
+          <label><input type="radio" name="m10" value="2"> 2</label>
+          <label><input type="radio" name="m10" value="3"> 3</label>
+        </div>
+      </div>
+    </div>
+
+    <h2>2. Психообразовательный закон совместного быта</h2>
+    <div class="interactive-box">
+      <p style="margin-bottom: 0;"><em>«Разница в бытовых привычках — это не признак того, что вы «не подходите друг другу». Это естественное столкновение двух разных семейных культур. Разбросанный носок — это просто носок, а не свидетельство того, что вас разлюбили».</em></p>
+    </div>
+  
+    <!-- ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ: ДИНАМИЧЕСКИЙ ЖУРНАЛ ЗАПИСЕЙ КЛИЕНТА -->
+    <div class="workshop-card" id="workshop-p1">
+      <div class="workshop-header">
+        <span class="workshop-badge">✍️ Интерактивная мастерская • Страница 1</span>
+        <span class="workshop-entries-count" id="count-workshop-p1">0 записей</span>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+        Вы можете добавлять неограниченное число наблюдений, инсайтов и практических заметок по этой странице. Каждая новая запись сохраняется с отметкой даты и времени в ваш личный журнал.
+      </p>
+      <div class="workshop-form">
+        <textarea id="input-workshop-p1" placeholder="Введите новую запись, пример из жизни, наблюдение или шаг практики..."></textarea>
+        <div class="workshop-actions">
+          <button type="button" class="btn-add-entry" onclick="addWorkshopEntry('1')">
+            <span>💾 Сохранить новую запись</span>
+          </button>
+        </div>
+      </div>
+      <div class="workshop-entries-list" id="list-workshop-p1">
+        <!-- Dynamic entry items go here -->
+      </div>
+    </div>
+
+  
+    <!-- КНОПКИ ПЕРЕХОДА МЕЖДУ СТРАНИЦАМИ -->
+    <div class="page-footer-nav">
+      <div></div>
+      <span class="page-counter-badge">Страница 1 из 3</span>
+      <button type="button" class="btn-page-step primary" onclick="switchPageTab('page-2')">Вперед (Стр. 2) →</button>
+    </div>
+</div>
+
+  <!-- СТРАНИЦА 2 -->
+  <div class="page-card" id="page-2">
+    <div class="page-header">
+      <div class="page-title">Страница 2 • 4-шаговый протокол экологичной бытовой просьбы</div>
+      <div class="page-number">Стр. 2 из 3</div>
+    </div>
+
+    <h2>1. Как просить о бытовых вещах без сарказма и вздохов</h2>
+    <p>Типичная ошибка молодых пар — копить раздражение, демонстративно вздыхать и мыть посуду с грохотом. Примените алгоритм чистой просьбы:</p>
+
+    
+    <!-- НАГЛЯДНЫЙ ПРИМЕР: КАК СФОРМУЛИРОВАТЬ ОТВЕТ -->
+    <details class="exercise-tip-details" open style="margin: 14px 0 16px;">
+      <summary class="exercise-tip-summary">💡 Образец перевода бытовой претензии в ясную договоренность:</summary>
+      <div class="exercise-tip-content">
+        <div class="example-contrast-box">
+          <div class="example-line-bad">❌ <strong>Привычный бытовой сарказм:</strong> «Конечно, посуда сама себя помоет! Я что, единственный(ая), кому в этом доме нужен порядок?!»</div>
+          <div class="example-line-good">✅ <strong>Ясная договоренность по контракту:</strong> «Когда я прихожу уставший(ая) и вижу полную раковину, мне тяжело начать готовить ужин, я раздражаюсь. Давай договоримся: каждый моет свою посуду сразу после еды либо загружает в посудомойку до 20:00».</div>
+        </div>
+        <small style="color: #64748b; font-size: 11.5px; display: block; margin-top: 4px;">Формула: Конкретный факт + Мое эмоциональное состояние + Простое правило с понятным дедлайном.</small>
+      </div>
+    </details>
+<div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%;">Шаг</th>
+            <th style="width: 35%;">Психологическая задача</th>
+            <th style="width: 45%;">Пример речевой формулы</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Нейтральный факт</strong></td>
+            <td>Описать конкретное действие без слов «вечно», «никогда» и обобщений.</td>
+            <td><em>«На столе осталась посуда после ужина...» (вместо: «Ты вечно свинячишь»).</em></td>
+          </tr>
+          <tr>
+            <td><strong>2. Моё чувство</strong></td>
+            <td>Озвучить своё состояние через «Я-послание».</td>
+            <td><em>«...я сильно устал(а) и мне тяжело убирать одному(ой)...»</em></td>
+          </tr>
+          <tr>
+            <td><strong>3. Точная просьба</strong></td>
+            <td>Назвать конкретное действие с понятным сроком.</td>
+            <td><em>«...пожалуйста, помой тарелки до того, как мы ляжем спать».</em></td>
+          </tr>
+          <tr>
+            <td><strong>4. Благодарность</strong></td>
+            <td>Закрепить партнерский союз теплом.</td>
+            <td><em>«Для меня это будет огромной заботой и поддержкой, спасибо».</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>2. Практикум: Перевод бытовой претензии</h2>
+    <div class="interactive-box">
+      <label for="p2_annoyance">Бытовая мелочь, которая выводит меня из себя прямо сейчас:</label>
+      <input type="text" id="p2_annoyance" placeholder="Например: мокрые полотенца на кровати...">
+
+      <label for="p2_clean_request" style="margin-top: 10px;">Моя переформулированная чистая просьба по 4 шагам:</label>
+      <textarea id="p2_clean_request" placeholder="Пожалуйста, вешай полотенце на сушилку, когда выходишь из душа, для меня очень важна сухая постель..."></textarea>
+    </div>
+  
+    <!-- ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ: ДИНАМИЧЕСКИЙ ЖУРНАЛ ЗАПИСЕЙ КЛИЕНТА -->
+    <div class="workshop-card" id="workshop-p2">
+      <div class="workshop-header">
+        <span class="workshop-badge">✍️ Интерактивная мастерская • Страница 2</span>
+        <span class="workshop-entries-count" id="count-workshop-p2">0 записей</span>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+        Вы можете добавлять неограниченное число наблюдений, инсайтов и практических заметок по этой странице. Каждая новая запись сохраняется с отметкой даты и времени в ваш личный журнал.
+      </p>
+      <div class="workshop-form">
+        <textarea id="input-workshop-p2" placeholder="Введите новую запись, пример из жизни, наблюдение или шаг практики..."></textarea>
+        <div class="workshop-actions">
+          <button type="button" class="btn-add-entry" onclick="addWorkshopEntry('2')">
+            <span>💾 Сохранить новую запись</span>
+          </button>
+        </div>
+      </div>
+      <div class="workshop-entries-list" id="list-workshop-p2">
+        <!-- Dynamic entry items go here -->
+      </div>
+    </div>
+
+  
+    <!-- КНОПКИ ПЕРЕХОДА МЕЖДУ СТРАНИЦАМИ -->
+    <div class="page-footer-nav">
+      <button type="button" class="btn-page-step" onclick="switchPageTab('page-1')">← Назад (Стр. 1)</button>
+      <span class="page-counter-badge">Страница 2 из 3</span>
+      <button type="button" class="btn-page-step primary" onclick="switchPageTab('page-3')">Вперед (Стр. 3) →</button>
+    </div>
+</div>
+
+  <!-- СТРАНИЦА 3 -->
+  <div class="page-card" id="page-3">
+    <div class="page-header">
+      <div class="page-title">Страница 3 • 3-дневный трекер сонастройки и Пакт общего дома</div>
+      <div class="page-number">Стр. 3 из 3</div>
+    </div>
+
+    <h2>1. 3-дневный трекер бытовой синхронизации</h2>
+    <p>Фиксируйте микродоговоренности и то, как вам удалось решить бытовой вопрос без обид:</p>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 15%;">День</th>
+            <th style="width: 30%;">Бытовой повод</th>
+            <th style="width: 30%;">Как договорились</th>
+            <th style="width: 25%;">Уровень уюта (0–10)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>День 1</strong></td>
+            <td><input type="text" placeholder="Ужин и посуда..."></td>
+            <td><input type="text" placeholder="Один готовит, второй моет..."></td>
+            <td><input type="text" placeholder="8 / 10"></td>
+          </tr>
+          <tr>
+            <td><strong>День 2</strong></td>
+            <td><input type="text" placeholder="Время отхода ко сну..."></td>
+            <td><input type="text" placeholder="Наушники + ночник..."></td>
+            <td><input type="text" placeholder="9 / 10"></td>
+          </tr>
+          <tr>
+            <td><strong>День 3</strong></td>
+            <td><input type="text" placeholder="..."></td>
+            <td><input type="text" placeholder="..."></td>
+            <td><input type="text" placeholder="..."></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>2. Пакт первого года совместной жизни</h2>
+    <div class="interactive-box" style="background: #ecfdf5; border-color: #a7f3d0;">
+      <p style="color: #047857; font-weight: 700; margin-bottom: 6px;">НАШИ ДОМАШНИЕ ПРАВИЛА УЮТА:</p>
+      <ul style="color: #065f46; font-size: 13.5px; margin-bottom: 0;">
+        <li>1. Мы не читаем мысли друг друга: если что-то нужно — просим прямо и доброжелательно.</li>
+        <li>2. Право на личное время: когда партнер в наушниках или говорит «мне нужно побыть одному», это не обида, а законный отдых.</li>
+        <li>3. Наш дом — это убежище от внешнего мира, а не поле боя за идеальный порядок.</li>
+      </ul>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+        <input type="text" placeholder="Партнер 1">
+        <input type="text" placeholder="Партнер 2">
+      </div>
+    </div>
+  
+    <!-- ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ: ДИНАМИЧЕСКИЙ ЖУРНАЛ ЗАПИСЕЙ КЛИЕНТА -->
+    <div class="workshop-card" id="workshop-p3">
+      <div class="workshop-header">
+        <span class="workshop-badge">✍️ Интерактивная мастерская • Страница 3</span>
+        <span class="workshop-entries-count" id="count-workshop-p3">0 записей</span>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+        Вы можете добавлять неограниченное число наблюдений, инсайтов и практических заметок по этой странице. Каждая новая запись сохраняется с отметкой даты и времени в ваш личный журнал.
+      </p>
+      <div class="workshop-form">
+        <textarea id="input-workshop-p3" placeholder="Введите новую запись, пример из жизни, наблюдение или шаг практики..."></textarea>
+        <div class="workshop-actions">
+          <button type="button" class="btn-add-entry" onclick="addWorkshopEntry('3')">
+            <span>💾 Сохранить новую запись</span>
+          </button>
+        </div>
+      </div>
+      <div class="workshop-entries-list" id="list-workshop-p3">
+        <!-- Dynamic entry items go here -->
+      </div>
+    </div>
+
+  <!-- КНОПКИ ПЕРЕХОДА МЕЖДУ СТРАНИЦАМИ -->
+    <div class="page-footer-nav">
+      <button type="button" class="btn-page-step" onclick="switchPageTab('page-2')">← Назад (Стр. 2)</button>
+      <span class="page-counter-badge">Страница 3 из 3</span>
+      <button type="button" class="btn-page-step" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ К началу</button>
+    </div>
+</div>
+
+  <div class="action-bar">
+    <span style="font-size: 13px; color: #64748b;">Данные сохраняются автоматически</span>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-outline" onclick="window.print()">Распечатать / Сохранить в PDF</button>
+      <button class="btn btn-primary" onclick="alert('Все данные сохранены в вашем браузере!')">Сохранить прогресс</button>
+    </div>
+  </div>
+
+<script>
+  // ==========================================================================
+  // БЕЗОПАСНОЕ ХРАНИЛИЩЕ (SAFE STORAGE ДЛЯ IFRAME / SANDBOX / OPAQUE ORIGIN)
+  // ==========================================================================
+  var safeStorage = {
+    _mem: {},
+    getItem: function(key) {
+      try {
+        if (typeof window !== 'undefined' && 'localStorage' in window && window.localStorage) {
+          return window.localStorage.getItem(key);
+        }
+      } catch(e) {}
+      return Object.prototype.hasOwnProperty.call(this._mem, key) ? this._mem[key] : null;
+    },
+    setItem: function(key, val) {
+      try {
+        if (typeof window !== 'undefined' && 'localStorage' in window && window.localStorage) {
+          window.localStorage.setItem(key, String(val));
+          return;
+        }
+      } catch(e) {}
+      this._mem[key] = String(val);
+    },
+    removeItem: function(key) {
+      try {
+        if (typeof window !== 'undefined' && 'localStorage' in window && window.localStorage) {
+          window.localStorage.removeItem(key);
+          return;
+        }
+      } catch(e) {}
+      delete this._mem[key];
+    }
+  };
+
+  // ==========================================================================
+  // ГЛОБАЛЬНЫЙ БЕЗОТКАЗНЫЙ ДВИЖОК ПЕРЕКЛЮЧЕНИЯ СТРАНИЦ ТЕТРАДИ (SMART PAGE ENGINE)
+  // ==========================================================================
+  window.CURRENT_PAGE_ID = 'page-1';
+
+  function getCurrentPageNumber() {
+    var raw = window.CURRENT_PAGE_ID || 'page-1';
+    var num = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+    return isNaN(num) || num < 1 ? 1 : num;
+  }
+
+  function switchPageTab(pageId) {
+    if (!pageId) return;
+    try {
+      // Нормализуем ID страницы (например 'page-2' или 2 -> 'page-2')
+      if (typeof pageId === 'number' || !pageId.startsWith('page-')) {
+        pageId = 'page-' + pageId;
+      }
+      
+      var targetPage = document.getElementById(pageId);
+      if (!targetPage) {
+        console.warn('Страница не найдена:', pageId);
+        return;
+      }
+
+      window.CURRENT_PAGE_ID = pageId;
+      var curNum = getCurrentPageNumber();
+
+      // 1. Показываем ТОЛЬКО целевую страницу, скрываем остальные
+      var allPages = document.querySelectorAll('.page-card, .page-tab-content');
+      for (var i = 0; i < allPages.length; i++) {
+        var p = allPages[i];
+        if (p.id === pageId) {
+          p.classList.add('active');
+          p.style.setProperty('display', 'block', 'important');
+        } else {
+          p.classList.remove('active');
+          p.style.setProperty('display', 'none', 'important');
+        }
+      }
+
+      // 2. Обновляем верхний Select в шапке (ровно на текущую страницу)
+      var selectEl = document.getElementById('wbPageSelect');
+      if (selectEl && selectEl.value !== pageId) {
+        selectEl.value = pageId;
+      }
+
+      // 3. Обновляем верхние кнопки страниц (сегментированные табы)
+      var segItems = document.querySelectorAll('.wb-nav-item');
+      for (var j = 0; j < segItems.length; j++) {
+        var item = segItems[j];
+        var itemPage = item.getAttribute('data-page');
+        if (itemPage === pageId) {
+          item.classList.add('active');
+          item.setAttribute('aria-selected', 'true');
+          try {
+            if (typeof item.scrollIntoView === 'function') {
+              item.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+          } catch(e) {}
+        } else {
+          item.classList.remove('active');
+          item.setAttribute('aria-selected', 'false');
+        }
+      }
+
+      // 4. Обновляем счетчик страниц
+      var curEl = document.getElementById('wbNavCurPage');
+      if (curEl) curEl.textContent = curNum;
+
+      // 5. Обновляем состояние кнопок Вперед / Назад в шапке (СТРОГО НА 1 СТРАНИЦУ)
+      var totalPages = allPages.length || (selectEl ? selectEl.options.length : 1);
+      var prevBtn = document.getElementById('wbNavPrevBtn');
+      var nextBtn = document.getElementById('wbNavNextBtn');
+      if (prevBtn) {
+        prevBtn.disabled = (curNum <= 1);
+        prevBtn.setAttribute('data-target', 'page-' + (curNum - 1));
+      }
+      if (nextBtn) {
+        nextBtn.disabled = (curNum >= totalPages);
+        nextBtn.setAttribute('data-target', 'page-' + (curNum + 1));
+      }
+
+      // 6. Плавная прокрутка к началу содержимого страницы
+      try {
+        var navBar = document.getElementById('wbNavigationBar');
+        if (navBar) {
+          var rect = navBar.getBoundingClientRect();
+          if (rect.top < 0) {
+            window.scrollTo({ top: window.pageYOffset + rect.top - 8, behavior: 'smooth' });
+          }
+        }
+      } catch(e) {}
+    } catch(err) {
+      console.error('Ошибка переключения страницы:', err);
+    }
+  }
+
+  // Переключение СТРОГО на одну страницу вперед (+1) или назад (-1)
+  function switchPageStep(delta) {
+    try {
+      var allPages = document.querySelectorAll('.page-card, .page-tab-content');
+      var total = allPages.length;
+      var curNum = getCurrentPageNumber();
+      var nextNum = curNum + delta;
+
+      if (nextNum >= 1 && nextNum <= total) {
+        switchPageTab('page-' + nextNum);
+      }
+    } catch(err) {
+      console.error('Ошибка шага страницы:', err);
+    }
+  }
+
+  // Экспорт в глобальную область видимости
+  window.switchPageTab = switchPageTab;
+  window.switchPageStep = switchPageStep;
+
+  // Инициализация при загрузке DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      switchPageTab(window.CURRENT_PAGE_ID || 'page-1');
+    });
+  } else {
+    switchPageTab(window.CURRENT_PAGE_ID || 'page-1');
+  }
+
+  // --- ДЕЛЕГИРОВАНИЕ КЛИКОВ (EVENT DELEGATION ДЛЯ 100% РЕАКЦИИ) ---
+  document.addEventListener('click', function(e) {
+    // 1. Верхние кнопки страниц (табы)
+    var navItem = e.target.closest('.wb-nav-item');
+    if (navItem) {
+      var targetPage = navItem.getAttribute('data-page');
+      if (targetPage) {
+        e.preventDefault();
+        e.stopPropagation();
+        switchPageTab(targetPage);
+        return;
+      }
+    }
+
+    // 2. Верхняя кнопка "Назад"
+    var prevBtn = e.target.closest('#wbNavPrevBtn');
+    if (prevBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      switchPageStep(-1);
+      return;
+    }
+
+    // 3. Верхняя кнопка "Вперед"
+    var nextBtn = e.target.closest('#wbNavNextBtn');
+    if (nextBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      switchPageStep(1);
+      return;
+    }
+
+    // 4. Кнопки перелистывания внизу страниц (.btn-page-step)
+    var stepBtn = e.target.closest('.btn-page-step');
+    if (stepBtn) {
+      var oc = stepBtn.getAttribute('onclick') || '';
+      var m = oc.match(/switchPageTab\(['"](page-\d+)['"]\)/);
+      if (m && m[1]) {
+        e.preventDefault();
+        e.stopPropagation();
+        switchPageTab(m[1]);
+        return;
+      }
+    }
+  }, true);
+
+  // Фаза перехвата capture: true гарантирует срабатывание раньше любых стопов
+
+const STORAGE_PREFIX = 'wb1_cohabit_';
+  const WORKSHOP_PREFIX = 'wb1_cohabit_workshop_';
+
+  function getWorkshopEntries(pageKey) {
+    try {
+      const raw = safeStorage.getItem(WORKSHOP_PREFIX + pageKey);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e) {
+      return [];
+    }
+  }
+
+  function saveWorkshopEntries(pageKey, entries) {
+    safeStorage.setItem(WORKSHOP_PREFIX + pageKey, JSON.stringify(entries));
+  }
+
+  function renderWorkshopEntries(pageKey) {
+    const listEl = document.getElementById('list-workshop-p' + pageKey);
+    const countEl = document.getElementById('count-workshop-p' + pageKey);
+    if (!listEl) return;
+    const entries = getWorkshopEntries(pageKey);
+    if (countEl) {
+      countEl.textContent = entries.length + ' ' + (entries.length === 1 ? 'запись' : (entries.length >= 2 && entries.length <= 4 ? 'записи' : 'записей'));
+    }
+    if (entries.length === 0) {
+      listEl.innerHTML = '<div class="entries-empty-hint">Пока нет сохраненных записей. Напишите мысль или практический опыт выше и нажмите «Сохранить новую запись».</div>';
+      return;
+    }
+    listEl.innerHTML = entries.map((entry, idx) => `
+      <div class="entry-item">
+        <div class="entry-meta">
+          <span class="entry-date">📅 ${escapeHtml(entry.timestamp)}</span>
+          <button type="button" class="btn-del-entry" onclick="deleteWorkshopEntry('${pageKey}', ${idx})" title="Удалить запись">✕ Удалить</button>
+        </div>
+        <div class="entry-content">${escapeHtml(entry.text)}</div>
+      </div>
+    `).reverse().join('');
+  }
+
+  function addWorkshopEntry(pageKey) {
+    const inputEl = document.getElementById('input-workshop-p' + pageKey);
+    if (!inputEl) return;
+    const text = inputEl.value.trim();
+    if (!text) {
+      alert('Пожалуйста, введите текст записи перед сохранением.');
+      return;
+    }
+    const entries = getWorkshopEntries(pageKey);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('ru-RU') + ' в ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    entries.push({
+      id: Date.now(),
+      timestamp: dateStr,
+      text: text
+    });
+    saveWorkshopEntries(pageKey, entries);
+    inputEl.value = '';
+    renderWorkshopEntries(pageKey);
+  }
+
+  function deleteWorkshopEntry(pageKey, index) {
+    if (!confirm('Вы уверены, что хотите удалить эту запись из мастерской?')) return;
+    const entries = getWorkshopEntries(pageKey);
+    entries.splice(index, 1);
+    saveWorkshopEntries(pageKey, entries);
+    renderWorkshopEntries(pageKey);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // --- СОХРАНЕНИЕ СТАТИЧЕСКИХ ПОЛЕЙ (ИНПУТЫ, ЧЕКБОКСЫ, ТЕКСТАРИИ) ---
+  function initStaticPersistence() {
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      if (input.id && input.id.startsWith('input-workshop-')) return; // handled by workshop
+      const key = STORAGE_PREFIX + (input.id || input.name + '_' + (input.placeholder || input.value));
+      if (input.type === 'radio') {
+        const saved = safeStorage.getItem(STORAGE_PREFIX + input.name);
+        if (saved && saved === input.value) input.checked = true;
+        input.addEventListener('change', () => {
+          if (input.checked) safeStorage.setItem(STORAGE_PREFIX + input.name, input.value);
+        });
+      } else if (input.type === 'checkbox') {
+        const saved = safeStorage.getItem(key);
+        if (saved !== null) input.checked = (saved === 'true');
+        input.addEventListener('change', () => {
+          safeStorage.setItem(key, input.checked);
+        });
+      } else {
+        const saved = safeStorage.getItem(key);
+        if (saved) input.value = saved;
+        input.addEventListener('input', () => {
+          safeStorage.setItem(key, input.value);
+        });
+      }
+    });
+  }
+
+  
+  // --- ПСИХОЛОГИЧЕСКИЕ ШАБЛОНЫ ДЛЯ МАСТЕРСКОЙ (CHIPS) ---
+  const WORKSHOP_TEMPLATES = {
+    trigger: "🔴 [СИТУАЦИЯ / ТРИГГЕР]\n• Что произошло:\n• Моя автоматическая реакция:\n• Что почувствовал(а) в теле (зажим, дыхание):\n• Как я могу поддержать себя прямо сейчас:",
+    success: "🟢 [МОЯ МАЛЕНЬКАЯ ПОБЕДА]\n• В какой момент мне удалось поступить иначе:\n• Что я себе сказал(а):\n• Мое новое приятное ощущение от этого выбора:",
+    relapse: "🟠 [РАЗБОР СРЫВА БЕЗ САМОКРИТИКИ]\n• Что пошло не по плану:\n• В каком состоянии (усталость, голод, стресс) я находился(лась):\n• Что я говорю себе с состраданием вместо упреков:\n• Чему эта ситуация меня научила на будущее:",
+    partner: "🤝 [МОЙ ВЗГЛЯД / ДИАЛОГ С ПАРТНЕРОМ]\n• Что мне сейчас важно донести без обвинений:\n• Какая моя уязвимая потребность за этим стоит:\n• В чем я готов(а) пойти навстречу:"
+  };
+
+  function applyWorkshopTemplate(pageKey, type) {
+    const inputEl = document.getElementById('input-workshop-p' + pageKey);
+    if (!inputEl) return;
+    const tpl = WORKSHOP_TEMPLATES[type] || '';
+    if (inputEl.value.trim() !== '') {
+      inputEl.value += "\n\n" + tpl;
+    } else {
+      inputEl.value = tpl;
+    }
+    inputEl.focus();
+    inputEl.style.height = 'auto';
+    inputEl.style.height = (inputEl.scrollHeight + 10) + 'px';
+  }
+
+  // --- ИНТЕРАКТИВНЫЙ РАСЧЕТ ПРОГРЕССА ТЕТРАДИ ---
+  function updateWorkbookProgress() {
+    const inputs = document.querySelectorAll('input[type="text"], input[type="radio"]:checked, input[type="checkbox"]:checked, textarea:not([id^="input-workshop"])');
+    const allFillableTargets = document.querySelectorAll('input[type="text"], input[type="radio"], input[type="checkbox"], textarea:not([id^="input-workshop"])');
+    
+    // Group radio by name
+    const radioNames = new Set();
+    document.querySelectorAll('input[type="radio"]').forEach(r => radioNames.add(r.name));
+    
+    let filledCount = 0;
+    // Checked radios
+    radioNames.forEach(name => {
+      if (document.querySelector(`input[name="${name}"]:checked`)) filledCount++;
+    });
+    // Checkboxes
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(() => filledCount++);
+    // Text inputs & textareas
+    document.querySelectorAll('input[type="text"], textarea:not([id^="input-workshop"])').forEach(el => {
+      if (el.value.trim().length > 3) filledCount++;
+    });
+
+    const totalEstimate = Math.max(10, radioNames.size + document.querySelectorAll('input[type="checkbox"]').length + document.querySelectorAll('input[type="text"], textarea:not([id^="input-workshop"])').length);
+    const percent = Math.min(100, Math.round((filledCount / totalEstimate) * 100));
+
+    const fillEl = document.getElementById('progress-bar-fill');
+    const textEl = document.getElementById('progress-percent-text');
+    if (fillEl) fillEl.style.width = percent + '%';
+    if (textEl) textEl.textContent = `${percent}% заполнено (${filledCount} шагов)`;
+  }
+
+  
+  // --- ПЛАВАЮЩИЙ ИНДИКАТОР СОХРАНЕНИЯ (PEACE OF MIND UX) ---
+  let saveTimeout = null;
+  function triggerSaveFeedback() {
+    const dot = document.getElementById('saveStatusDot');
+    const text = document.getElementById('saveStatusText');
+    if (!dot || !text) return;
+    dot.className = 'save-status-dot saving';
+    text.textContent = 'Сохранение...';
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      dot.className = 'save-status-dot';
+      text.textContent = '✓ Сохранено локально';
+    }, 400);
+  }
+
+  // --- АВТОМАТИЧЕСКИ РАСТЯГИВАЮЩИЕСЯ ТЕКСТОВЫЕ ПОЛЯ (AUTO-EXPANDING) ---
+  function initAutoGrowTextareas() {
+    document.querySelectorAll('textarea').forEach(tx => {
+      const adjust = () => {
+        tx.style.height = 'auto';
+        tx.style.height = Math.max(70, tx.scrollHeight) + 'px';
+      };
+      tx.addEventListener('input', () => {
+        adjust();
+        triggerSaveFeedback();
+      });
+      adjust();
+    });
+  }
+
+  // --- БЫСТРОЕ КОПИРОВАНИЕ ФРАЗ В БУФЕР ОБМЕНА ---
+  function copyTextToClipboard(text, btnEl) {
+    if (!navigator.clipboard) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    } else {
+      navigator.clipboard.writeText(text);
+    }
+    if (btnEl) {
+      const origHtml = btnEl.innerHTML;
+      btnEl.className = 'btn-copy-phrase copied';
+      btnEl.innerHTML = '✓ Скопировано';
+      setTimeout(() => {
+        btnEl.className = 'btn-copy-phrase';
+        btnEl.innerHTML = origHtml;
+      }, 2000);
+    }
+  }
+
+  function enhanceCopyableQuotes() {
+    document.querySelectorAll('td em, li > em, p > em').forEach(em => {
+      const text = em.textContent.trim();
+      if (text.length > 15 && text.startsWith('«') && text.endsWith('»')) {
+        if (!em.nextElementSibling || !em.nextElementSibling.classList.contains('btn-copy-phrase')) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'btn-copy-phrase';
+          btn.title = 'Скопировать эту фразу в буфер обмена';
+          btn.innerHTML = '📋 Копировать';
+          const cleanText = text.replace(/^«|»$/g, '');
+          btn.onclick = () => copyTextToClipboard(cleanText, btn);
+          em.parentNode.insertBefore(btn, em.nextSibling);
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initStaticPersistence();
+    updateWorkbookProgress();
+    initAutoGrowTextareas();
+    enhanceCopyableQuotes();
+    document.addEventListener('input', () => {
+      updateWorkbookProgress();
+      triggerSaveFeedback();
+    });
+    // Инициализация всех мастерских на страницах
+    document.querySelectorAll('.workshop-card').forEach(w => {
+      const pKey = w.id.replace('workshop-p', '');
+      renderWorkshopEntries(pKey);
+    });
+  });
+
+</script>
+
+  <!-- ПЛАВАЮЩИЙ ИНДИКАТОР АВТОСОХРАНЕНИЯ (PEACE OF MIND) -->
+  <div class="save-status-pill" id="saveStatusPill">
+    <span class="save-status-dot" id="saveStatusDot"></span>
+    <span id="saveStatusText">✓ Сохранено локально</span>
+  </div>
+
+</body>
+</html>
