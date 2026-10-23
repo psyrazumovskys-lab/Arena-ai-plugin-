@@ -170,6 +170,17 @@ const open = async (seed = {}) => {
   check('Нет эмодзи в тексте тетради', !/[\u{1F300}-\u{1FAFF}]/u.test(text));
   check('Нет символов табуляции', !text.includes('\t'));
   const images = [...doc.querySelectorAll('img')];
+  // ── Опубликованная копия ──────────────────────────────────────────────────
+  const fsCheck = require('fs');
+  const crypto = require('crypto');
+  const published = 'docs/couple_workbook_1_stop_escalation.html';
+  const hash = f => crypto.createHash('sha256').update(fsCheck.readFileSync(f)).digest('hex');
+  check('Опубликованная копия в docs/ совпадает с исходником',
+    fsCheck.existsSync(published) &&
+    hash(published) === hash('therapy-workbooks/couple_workbook_1_stop_escalation.html'));
+  check('В docs/ на сайте только одна тетрадь',
+    fsCheck.readdirSync('docs').filter(f => f.endsWith('.html')).length === 2);
+
   check('Все изображения встроены в файл', images.every(img => img.src.startsWith('data:image')));
   check('У всех изображений есть описание', images.every(img => img.alt && img.alt.length > 3));
 
