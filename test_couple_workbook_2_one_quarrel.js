@@ -126,14 +126,14 @@ const open = async (seed = {}) => {
     }));
 
   // Плотность: писать есть где везде, кроме обложки и страницы безопасности
-  const noWriting = ['p0', byTitle('Содержание').id, byTitle('Если это не ссора').id];
+  const noWriting = ['p0', byTitle('Содержание').id, byTitle('Если в ссоре есть страх').id];
   const pagesWithWriting = pages.filter(p =>
     !noWriting.includes(p.id) && p.querySelector('.entry-block, .line-block, .tick-list'));
   check('Везде, кроме обложки и страницы безопасности, есть где писать',
     pagesWithWriting.length === pages.length - noWriting.length,
     `без письма: ${pages.length - noWriting.length - pagesWithWriting.length}`);
   check('На странице безопасности нет заданий',
-    !byTitle('Если это не ссора').querySelector('.entry-block, .line-field, .tick-list'));
+    !byTitle('Если в ссоре есть страх').querySelector('.entry-block, .line-field, .tick-list'));
 
   // Вопрос, обращённый к читателю, не остаётся без места для ответа
   const askItems = [...doc.querySelectorAll('.ask-list > li')];
@@ -158,9 +158,9 @@ const open = async (seed = {}) => {
   // ── 2-Б. Контекст, роли и безопасность ───────────────────────────────────
   console.log('— Контекст, роли и безопасность —');
 
-  const safety = byTitle('Если это не ссора');
+  const safety = byTitle('Если в ссоре есть страх');
   check('Страница безопасности стоит сразу после введения',
-    safety.querySelector('h1').textContent.trim() === 'Если это не ссора');
+    safety.querySelector('h1').textContent.trim() === 'Если в ссоре есть страх');
   check('На странице безопасности есть стоп-фраза',
     !!safety.querySelector('.stop-box'));
   check('На странице безопасности сказано про 112',
