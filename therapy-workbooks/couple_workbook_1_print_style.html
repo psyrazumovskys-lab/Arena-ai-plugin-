@@ -494,6 +494,10 @@
       outline: none;
     }
 
+    @media (hover: none) {
+      .journal-entry { resize: none; }
+    }
+
     .journal-entry::placeholder {
       font-style: italic;
       color: #A9A296;
@@ -765,40 +769,109 @@
 
     /* ---------------------------------------------------------------- низ страницы */
     .page-footer-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
       border-top: 1px solid var(--rule);
-      margin-top: 30px;
-      padding: 16px 0 4px;
+      margin-top: 34px;
+      padding-top: 14px;
     }
 
+    /* номер страницы — отдельной строкой над кнопками */
+    .page-counter {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    /* кнопки перехода — с рамкой и во всю высоту, чтобы было видно,
+       что это кнопки, а не подпись */
     .btn-nav-step,
     .btn-nav-step.primary {
-      border: 0;
-      background: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid var(--rule);
       border-radius: 0;
+      background: transparent;
       box-shadow: none;
-      padding: 0;
+      padding: 11px 16px;
       font-family: "PT Sans", Arial, sans-serif;
-      font-size: 9.5px;
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--sage);
-      max-width: 40%;
-      line-height: 1.45;
+      line-height: 1.35;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .btn-nav-step.primary { color: var(--terra); text-align: right; max-width: 56%; }
-    .btn-nav-step:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-    .page-number {
+    .btn-nav-step:hover,
+    .btn-nav-step:focus-visible {
+      border-color: var(--sage);
+      background: var(--sage-wash);
+      text-decoration: none;
+      outline: none;
+    }
+
+    .btn-nav-step.primary {
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: 3px;
+      border-color: var(--terra);
+      color: var(--terra);
+      text-align: center;
+    }
+
+    .btn-nav-step.primary:hover,
+    .btn-nav-step.primary:focus-visible {
+      border-color: var(--terra);
+      background: var(--terra-wash);
+    }
+
+    /* назад — узкая кнопка слева, вперёд — широкая справа */
+    .nav-row > .btn-nav-step:not(.primary) {
+      flex: 0 0 auto;
+      min-width: 104px;
+    }
+
+    .nav-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .nav-label { display: inline-block; white-space: nowrap; }
+
+    .nav-arrow { font-size: 13px; line-height: 1; }
+
+    /* куда ведёт кнопка — мелкой подписью под «Дальше» */
+    .nav-sub {
       font-family: "PT Serif", Georgia, serif;
-      font-size: 12.5px;
+      font-size: 11.5px;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--muted);
-      letter-spacing: .04em;
+      line-height: 1.35;
+      max-width: 100%;
+      text-wrap: pretty;
+    }
+
+    .nav-row.wide > .btn-nav-step.primary {
+      flex-direction: row;
+      gap: 8px;
     }
 
     /* ---------------------------------------------------------------- плашка «сохранено» */
@@ -835,8 +908,14 @@
       .cover-lead { font-size: 17px; }
       .hero-image { max-width: 100%; }
       .quote-box { font-size: 17.5px; }
-      .btn-nav-step, .btn-nav-step.primary { font-size: 9px; letter-spacing: .1em; }
-      .page-footer-nav { gap: 8px; }
+      .nav-row { gap: 8px; }
+      .btn-nav-step, .btn-nav-step.primary {
+        font-size: 10px;
+        letter-spacing: .12em;
+        padding: 11px 12px;
+      }
+      .nav-row > .btn-nav-step:not(.primary) { min-width: 92px; }
+      .nav-sub { font-size: 11px; }
     }
 </style>
 </head>
@@ -920,11 +999,7 @@
     <p class="safety-note">Если в ссорах звучат угрозы, доходит до ударов или вам страшно оставаться рядом — это не решается техникой паузы. Здесь нужна помощь специалиста, и лучше найти её до следующего раза.</p>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p0" onclick="goToPage('p0'); return false;">‹ Назад</a>
-      <span class="page-number">2</span>
-      <a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;">Шаг 1. Проверить градус ссоры ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 1 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p0" onclick="goToPage('p0'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 1. Проверить градус ссоры</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 2: ТЕСТ НА ЗАКИПАНИЕ -->
@@ -981,11 +1056,7 @@
 </div>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
-      <span class="page-number">3</span>
-      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">Шаг 2. Как остыть за 20 минут ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 2 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p1" onclick="goToPage('p1'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 2. Как остыть за 20 минут</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 3: ПРАВИЛО 20 МИНУТ + ДЫХАНИЕ -->
@@ -1051,11 +1122,7 @@
     </div>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
-      <span class="page-number">4</span>
-      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">Шаг 3. Что сказать партнеру ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 3 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p2" onclick="goToPage('p2'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 3. Что сказать партнеру</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 4: КОНСТРУКТОР ФРАЗЫ -->
@@ -1125,11 +1192,7 @@
 </div>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
-      <span class="page-number">5</span>
-      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">Шаг 4. Репетиция в спокойный вечер ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 4 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p3" onclick="goToPage('p3'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 4. Репетиция в спокойный вечер</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 5: РЕПЕТИЦИЯ В ТИХИЙ ВЕЧЕР -->
@@ -1170,11 +1233,7 @@
 
     <p class="fallback-note"><strong>Если партнёр пока не готов.</strong> Не настаивайте и не превращайте это в ещё одну ссору. Свою фразу можно сказать и без общего слова — для паузы не нужно согласие обоих. Просто назовите время, когда вернётесь.</p>
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
-      <span class="page-number">6</span>
-      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">Шаг 5. Шпаргалка в карман ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 5 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p4" onclick="goToPage('p4'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 5. Шпаргалка в карман</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 6: ШПАРГАЛКА В КАРМАН -->
@@ -1222,11 +1281,7 @@
 </div>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
-      <span class="page-number">7</span>
-      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">Шаг 6. Что дальше ›</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 6 из 7</div><div class="nav-row"><a class="btn-nav-step" href="#p5" onclick="goToPage('p5'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;"><span class="nav-main"><span class="nav-label">Дальше</span><span class="nav-arrow">›</span></span><span class="nav-sub">Шаг 6. Что дальше</span></a></div></div>
   </div>
 
   <!-- СТРАНИЦА 7: МОСТИК КО 2 УРОВНЮ -->
@@ -1267,11 +1322,7 @@
 </div>
 
 
-    <div class="page-footer-nav">
-      <a class="btn-nav-step" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
-      <span class="page-number">8</span>
-      <a class="btn-nav-step primary" href="#p0" onclick="goToPage('p0'); return false;">↑ В начало тетради</a>
-    </div>
+    <div class="page-footer-nav"><div class="page-counter">Стр. 7 из 7</div><div class="nav-row wide"><a class="btn-nav-step" href="#p6" onclick="goToPage('p6'); return false;"><span class="nav-main"><span class="nav-arrow">‹</span><span class="nav-label">Назад</span></span></a><a class="btn-nav-step primary wide" href="#p0" onclick="goToPage('p0'); return false;"><span class="nav-main"><span class="nav-label">В начало тетради</span><span class="nav-arrow">›</span></span></a></div></div>
   </div>
 
 </div>

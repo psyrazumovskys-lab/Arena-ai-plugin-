@@ -510,6 +510,10 @@ CSS = r"""
       outline: none;
     }
 
+    @media (hover: none) {
+      .journal-entry { resize: none; }
+    }
+
     .journal-entry::placeholder {
       font-style: italic;
       color: #A9A296;
@@ -781,40 +785,109 @@ CSS = r"""
 
     /* ---------------------------------------------------------------- низ страницы */
     .page-footer-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
       border-top: 1px solid var(--rule);
-      margin-top: 30px;
-      padding: 16px 0 4px;
+      margin-top: 34px;
+      padding-top: 14px;
     }
 
+    /* номер страницы — отдельной строкой над кнопками */
+    .page-counter {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    /* кнопки перехода — с рамкой и во всю высоту, чтобы было видно,
+       что это кнопки, а не подпись */
     .btn-nav-step,
     .btn-nav-step.primary {
-      border: 0;
-      background: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid var(--rule);
       border-radius: 0;
+      background: transparent;
       box-shadow: none;
-      padding: 0;
+      padding: 11px 16px;
       font-family: "PT Sans", Arial, sans-serif;
-      font-size: 9.5px;
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--sage);
-      max-width: 40%;
-      line-height: 1.45;
+      line-height: 1.35;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .btn-nav-step.primary { color: var(--terra); text-align: right; max-width: 56%; }
-    .btn-nav-step:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-    .page-number {
+    .btn-nav-step:hover,
+    .btn-nav-step:focus-visible {
+      border-color: var(--sage);
+      background: var(--sage-wash);
+      text-decoration: none;
+      outline: none;
+    }
+
+    .btn-nav-step.primary {
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: 3px;
+      border-color: var(--terra);
+      color: var(--terra);
+      text-align: center;
+    }
+
+    .btn-nav-step.primary:hover,
+    .btn-nav-step.primary:focus-visible {
+      border-color: var(--terra);
+      background: var(--terra-wash);
+    }
+
+    /* назад — узкая кнопка слева, вперёд — широкая справа */
+    .nav-row > .btn-nav-step:not(.primary) {
+      flex: 0 0 auto;
+      min-width: 104px;
+    }
+
+    .nav-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .nav-label { display: inline-block; white-space: nowrap; }
+
+    .nav-arrow { font-size: 13px; line-height: 1; }
+
+    /* куда ведёт кнопка — мелкой подписью под «Дальше» */
+    .nav-sub {
       font-family: "PT Serif", Georgia, serif;
-      font-size: 12.5px;
+      font-size: 11.5px;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--muted);
-      letter-spacing: .04em;
+      line-height: 1.35;
+      max-width: 100%;
+      text-wrap: pretty;
+    }
+
+    .nav-row.wide > .btn-nav-step.primary {
+      flex-direction: row;
+      gap: 8px;
     }
 
     /* ---------------------------------------------------------------- плашка «сохранено» */
@@ -851,8 +924,14 @@ CSS = r"""
       .cover-lead { font-size: 17px; }
       .hero-image { max-width: 100%; }
       .quote-box { font-size: 17.5px; }
-      .btn-nav-step, .btn-nav-step.primary { font-size: 9px; letter-spacing: .1em; }
-      .page-footer-nav { gap: 8px; }
+      .nav-row { gap: 8px; }
+      .btn-nav-step, .btn-nav-step.primary {
+        font-size: 10px;
+        letter-spacing: .12em;
+        padding: 11px 12px;
+      }
+      .nav-row > .btn-nav-step:not(.primary) { min-width: 92px; }
+      .nav-sub { font-size: 11px; }
     }
 """
 
@@ -885,19 +964,62 @@ def main():
     ]:
         html = html.replace(old, new)
 
-    # 5. номера страниц в подвале — как в книжечке
-    counter = {"n": 1}
+    # 5. подвал: крупные кнопки перехода и номер страницы отдельной строкой
+    page_cards = len(re.findall(r'id="p\d+"', html))
+    total_pages = max(page_cards - 1, 1)   # без обложки
+    counter = {"n": 0}
 
-    def footer(match):
+    anchor_re = re.compile(
+        r'<a class="btn-nav-step(?P<primary>\s+primary)?"\s+'
+        r'href="(?P<href>#[^"]+)"\s+'
+        r'onclick="(?P<onclick>[^"]*)">(?P<text>.*?)</a>',
+        re.S)
+
+    def build_footer(match):
         counter["n"] += 1
-        block = match.group(0)
         number = counter["n"]
-        block = block.replace(
-            '<a class="btn-nav-step primary"',
-            f'<span class="page-number">{number}</span>\n      <a class="btn-nav-step primary"', 1)
-        return block
+        anchors = list(anchor_re.finditer(match.group(1)))
+        back = next((a for a in anchors if not a.group("primary")), None)
+        forward = next((a for a in anchors if a.group("primary")), None)
 
-    html = re.sub(r'<div class="page-footer-nav">.*?</div>', footer, html, flags=re.S)
+        back_html = ""
+        if back:
+            back_html = (
+                f'<a class="btn-nav-step" href="{back.group("href")}" '
+                f'onclick="{back.group("onclick")}">'
+                '<span class="nav-main"><span class="nav-arrow">‹</span>'
+                '<span class="nav-label">Назад</span></span></a>'
+            )
+
+        forward_html = ""
+        if forward:
+            raw = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", forward.group("text"))).strip()
+            raw = re.sub(r"^[↑↓→←›«»\s]+", "", raw).rstrip(" ›»").strip()
+            label = raw
+            sub = ""
+            # длинная подпись вида «Шаг 4. Репетиция в спокойный вечер» —
+            # на кнопке оставляем «Дальше», а куда ведёт — подписываем под ней
+            if re.match(r"^Шаг\s*\d", raw) or (len(raw) > 18 and " " in raw):
+                label = "Дальше"
+                sub = raw
+            forward_html = (
+                f'<a class="btn-nav-step primary{" wide" if not sub else ""}" '
+                f'href="{forward.group("href")}" onclick="{forward.group("onclick")}">'
+                f'<span class="nav-main"><span class="nav-label">{label}</span>'
+                '<span class="nav-arrow">›</span></span>'
+                + (f'<span class="nav-sub">{sub}</span>' if sub else "")
+                + '</a>'
+            )
+
+        wide_row = " wide" if forward and not sub else ""
+        return (
+            '<div class="page-footer-nav">'
+            f'<div class="page-counter">Стр. {number} из {total_pages}</div>'
+            f'<div class="nav-row{wide_row}">{back_html}{forward_html}</div>'
+            '</div>'
+        )
+
+    html = re.sub(r'<div class="page-footer-nav">(.*?)</div>', build_footer, html, flags=re.S)
 
     OUT.write_text(html, encoding="utf-8")
     print(f"собрано: {OUT.name} — {OUT.stat().st_size:,} байт")
