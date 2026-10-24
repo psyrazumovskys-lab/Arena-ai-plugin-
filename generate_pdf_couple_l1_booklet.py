@@ -32,6 +32,8 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph
 
+import pdf_plates as plates
+
 ROOT = Path(__file__).resolve().parent
 SRC_HTML = ROOT / "therapy-workbooks" / "couple_workbook_1_stop_escalation.html"
 FONT_DIR = ROOT / "therapy-workbooks" / "assets" / "fonts"
@@ -46,11 +48,12 @@ TOP = H - 16 * mm
 # ── палитра из HTML ─────────────────────────────────────────────────────────
 CREAM = HexColor("#F7F5F0")
 TEXT = HexColor("#2C3539")
-MUTED = HexColor("#7A8288")
+MUTED = HexColor("#6A7378")      # тот же приглушённый, что в тетрадях: 4,4:1
 BODY = HexColor("#3B474C")
 SAGE = HexColor("#5A7365")
 SAGE_LIGHT = HexColor("#EBF1ED")
 TERRA = HexColor("#C87D65")
+TERRA_TEXT = HexColor("#B1634B")   # мелкий текст терракотой — только этот
 TERRA_LIGHT = HexColor("#FDF3E7")
 RULE = HexColor("#DDD6CB")
 DOTS = HexColor("#C9C3B8")
@@ -270,48 +273,24 @@ def extract_images() -> list[Path]:
 
 
 def on_cream(path: Path) -> Path:
-    """Сажает иллюстрацию на бумагу страницы — точно, а не «на глаз».
-
-    У картинок из тетради своя бумага, чуть темнее фона. Считаем цвет этой
-    бумаги по рамке кадра и сдвигаем весь кадр так, чтобы бумага стала ровно
-    цвета страницы: out = cream + (v - paper). Белое становится кремовым,
-    тени и линии остаются, прямоугольника на печати не видно.
-    Картинка при этом не обрезается — меняется только подложка.
-    """
-    out = IMG_DIR / f"cream_{path.stem}.jpg"
-    if out.exists():
-        return out
-    im = Image.open(path).convert("RGB")
-    w, h = im.size
-    k = max(2, int(min(w, h) * 0.02))  # рамка, по которой меряем бумагу
-    px = im.load()
-    samples = [px[x, k] for x in range(0, w, max(1, w // 40))]
-    samples += [px[x, h - 1 - k] for x in range(0, w, max(1, w // 40))]
-    samples += [px[k, y] for y in range(0, h, max(1, h // 40))]
-    samples += [px[w - 1 - k, y] for y in range(0, h, max(1, h // 40))]
-    paper = [max(1, sum(s[i] for s in samples) // len(samples)) for i in range(3)]
-    cream = (247, 245, 240)
-    lut = []
-    for i in range(3):
-        shift = cream[i] - paper[i]
-        lut += [max(0, min(255, v + shift)) for v in range(256)]
-    im.point(lut).save(out, quality=92, optimize=True)
-    return out
+    """Иллюстрация на бумаге страницы — из общего модуля, как во второй тетради."""
+    return plates.on_cream(path, IMG_DIR)
 
 
 def draw_plate(c, path: Path, x, y, width):
-    """Иллюстрация в родной пропорции, без обрезки.
+    """Иллюстрация в родной пропорции, без обрезки, с мягким краем.
 
     В тетради арт не кадрируется: композиция нарисована целиком, и обрезка
     отрезает руки и лица. Поэтому в печати картинка ставится «плашкой»
-    на своём соотношении сторон.
+    на своём соотношении сторон, а края растворяются в бумаге страницы.
     """
     from reportlab.lib.utils import ImageReader
 
     im = Image.open(path)
     height = width * im.height / im.width
-    src = on_cream(path)
-    c.drawImage(ImageReader(str(src)), x, y - height, width, height, mask="auto")
+    src = ImageReader(str(on_cream(path)))
+    mask = ImageReader(plates.feather_mask(path, IMG_DIR, (im.width, im.height)))
+    c.drawImage(src, x, y - height, width, height, mask=mask)
     return height
 
 
@@ -324,12 +303,14 @@ def page_cover(c, imgs):
 
     im0 = Image.open(imgs[0])
     cover_h = W * im0.height / im0.width
+    mask0 = ImageReader(plates.feather_mask(imgs[0], IMG_DIR,
+                                            (im0.width, im0.height)))
     c.drawImage(ImageReader(str(on_cream(imgs[0]))), 0, H - cover_h, W, cover_h,
-                mask="auto")
+                mask=mask0)
     h = cover_h
 
     y = H - cover_h - 19 * mm
-    kicker(c, "Тетрадь для пар · уровень 1", M, y, TERRA)
+    kicker(c, "Тетрадь для пар · уровень 1", M, y, TERRA_TEXT)
     y -= 11 * mm
     y = heading(c, "Как вовремя<br/>остановить ссору", M, y, CW, "h1_cover")
     y -= 5 * mm
@@ -808,7 +789,7 @@ def page_notes(c, imgs):
 def page_back(c, imgs):
     new_page(c)
     y = H - 26 * mm
-    kicker(c, "Если это про вас", M, y, TERRA)
+    kicker(c, "Если это про вас", M, y, TERRA_TEXT)
     y -= 10 * mm
 
     bw = CW - 14 * mm
