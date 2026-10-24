@@ -858,6 +858,23 @@
     }
     .ask-list .line-field { min-height: 38px; padding: 4px 2px 4px; }
 
+    /* ── СТОП-БЛОК: ГЛАВНАЯ ФРАЗА СТРАНИЦЫ ────────────────────────────────── */
+    .stop-box {
+      margin: 20px 0 8px;
+      padding: 15px 18px;
+      background: #FDF3E7;
+      border-left: 3px solid var(--terracotta);
+      border-radius: 0 8px 8px 0;
+    }
+    .stop-box p {
+      margin: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.35;
+      font-style: italic;
+      color: var(--terracotta-deep);
+    }
+
     /* ── КОРОТКАЯ ЗАПИСЬ: СТРОКА В КНИГЕ ──────────────────────────────────── */
     .line-block {
       margin: 22px 0 26px;
@@ -1051,18 +1068,20 @@
         <select id="pageSelect" class="wb-page-select" onchange="goToPage(this.value)">
           <option value="p0">Обложка</option>
           <option value="p1">Стр. 1 · Перед началом</option>
-          <option value="p2">Стр. 2 · Та самая ссора</option>
-          <option value="p3">Стр. 3 · Почему она возвращается</option>
-          <option value="p4">Стр. 4 · Круг</option>
-          <option value="p5">Стр. 5 · Что каждый защищает</option>
-          <option value="p6">Стр. 6 · Упрёк и просьба</option>
-          <option value="p7">Стр. 7 · Тридцать минут</option>
-          <option value="p8">Стр. 8 · Два овала</option>
-          <option value="p9">Стр. 9 · Первый разговор</option>
-          <option value="p10">Стр. 10 · Как прошло</option>
-          <option value="p11">Стр. 11 · Между встречами</option>
-          <option value="p12">Стр. 12 · Второй разговор</option>
-          <option value="p13">Стр. 13 · Что дальше</option>
+          <option value="p2">Стр. 2 · Если это не ссора</option>
+          <option value="p3">Стр. 3 · Та самая ссора</option>
+          <option value="p4">Стр. 4 · Почему она возвращается</option>
+          <option value="p5">Стр. 5 · Круг</option>
+          <option value="p6">Стр. 6 · Если круг другой</option>
+          <option value="p7">Стр. 7 · Что каждый защищает</option>
+          <option value="p8">Стр. 8 · Упрёк и просьба</option>
+          <option value="p9">Стр. 9 · Тридцать минут</option>
+          <option value="p10">Стр. 10 · Два овала</option>
+          <option value="p11">Стр. 11 · Первый разговор</option>
+          <option value="p12">Стр. 12 · Как прошло</option>
+          <option value="p13">Стр. 13 · Между встречами</option>
+          <option value="p14">Стр. 14 · Второй разговор</option>
+          <option value="p15">Стр. 15 · Что дальше</option>
         </select>
         <span class="wb-select-caret">▾</span>
       </div>
@@ -1086,7 +1105,7 @@
         <div class="cover-item"><span class="cover-dot"></span><span>Как сказать о важном так, чтобы услышали</span></div>
       </div>
       <a class="btn-cover-start" href="#p1" onclick="goToPage('p1'); return false;">Начать</a>
-      <div class="cover-meta">8 записей · две встречи по 35 минут · можно возвращаться</div>
+      <div class="cover-meta">8 записей · две встречи по 40 минут · можно возвращаться</div>
     </div>
   </div>
 
@@ -1134,18 +1153,67 @@
 
     <p class="safety-note">Если в ссорах звучат угрозы, доходит до ударов или вам страшно оставаться рядом — это не решается тетрадью. Здесь нужен специалист, и лучше найти его до следующего раза.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 1 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 1 из 15</span></div>
     <div class="page-footer-nav">
       <a class="btn-nav-step back" href="#p0" onclick="goToPage('p0'); return false;">‹ Обложка</a>
       <a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Важно · Если это не ссора</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 2: ГЛАВА 1 -->
+    <!-- СТРАНИЦА: БЕЗОПАСНОСТЬ -->
+  <div class="page-card" id="p2">
+    <div class="running-head"><span>Перед началом</span><span class="rh-right">Важно</span></div>
+    <h1>Если это не ссора</h1>
+    <p class="chapter-lead">Тетрадь — про разговор. Есть случаи, когда разговор начинать опасно.</p>
+
+    <p class="dropcap">Ссора — это когда двое не могут договориться и обоим от этого плохо. Бывает иначе: один боится другого. Тогда дело не в том, как вы говорите, и упражнения не помогут.</p>
+
+    <div class="stop-box">
+      <p>Не ссора — если в ней есть страх.</p>
+    </div>
+
+    <h2>Признаки</h2>
+    <ul class="key-list">
+      <li>Угрозы, удары, толчки, брошенные вещи.</li>
+      <li>Страшно остаться с этим человеком в одной комнате.</li>
+      <li>Контроль: деньги, телефон, встречи, «где ты была».</li>
+      <li>После разговора становится страшнее, а не легче.</li>
+    </ul>
+
+    <p>Если вы узнали хотя бы один пункт, отложите тетрадь. Совместные упражнения здесь могут сделать хуже: они учат договариваться там, где договариваться небезопасно.</p>
+
+    <h2>Что можно сделать вместо</h2>
+    <ul class="key-list">
+      <li>Если опасность сейчас — уходить туда, где есть люди. Телефон 112 работает даже без денег на счёте.</li>
+      <li>Рассказать одному человеку, которому доверяете. Не «всё плохо», а конкретно: что происходит и чего вы боитесь.</li>
+      <li>Обратиться в кризисный центр: в крупных городах они есть, многие консультируют по телефону и онлайн. Для женщин таких центров больше.</li>
+      <li>Если кажется, что уйти некуда, — это чаще про деньги и жильё, чем про чувства. Об этом консультируют юристы центров, и уходить прямо в тот же день не обязательно.</li>
+    </ul>
+
+    <div class="margin-note">Тетрадь подождёт. Она не пропадёт и не обидится.</div>
+
+    <h2>Про алкоголь</h2>
+    <p>В России две трети тяжёлого насилия в семье происходит, когда выпивают. Поэтому разговор не начинают, если кто-то пил. Но трезвость ничего не гарантирует: примерно треть тех, кто применяет силу дома, не пьют вообще.</p>
+
+    <p class="safety-note">Если вы читаете это и понимаете, что речь про вас, — вы не обязаны справляться сами. И не обязаны никому объяснять, почему вам страшно.</p>
+
+    <p class="source-note">О двух третях и о трети — по данным криминологических исследований семейного насилия в России. В 2017 году побои в семье переведены в административные правонарушения; по оценкам правозащитных организаций, 60–70% пострадавших никуда не обращаются. В опросе ВЦИОМ 2025 года 10% россиян сказали, что в их семье бывают конфликты с применением силы.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 2 из 15</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 1 · Та самая ссора</span>
       </a>
     </div>
   </div>
 
-  <!-- СТРАНИЦА 2: ГЛАВА 1 -->
-  <div class="page-card" id="p2">
+<div class="page-card" id="p3">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 1</span></div>
     <div class="chapter-open"><span class="chapter-fig">01</span><span class="chapter-kicker">Глава первая</span></div>
     <h1>Та самая ссора</h1>
@@ -1154,6 +1222,8 @@
     <p class="dropcap">Она начинается с мелочи. Кто-то не помыл чашку, опоздал на пятнадцать минут, сказал «как хочешь». Через минуту это уже не чашка. Через десять вы оба защищаетесь — и никто не помнит, с чего началось.</p>
 
     <p>У такой ссоры есть приметы. Одни и те же слова, иногда дословно. Одно и то же время: поздний вечер, дорога, сборы. Один и тот же поворот, после которого становится ясно, куда всё идёт.</p>
+
+    <p>Тема при этом часто одна из трёх: деньги и жильё, родители, дети и быт. Ипотека, которая съедает отпуск. Мама, которая приезжает без звонка. Кто забирает из сада и кто садится на больничный.</p>
 
     <figure class="figure-bleed">
       <img src="{{IMG_KITCHEN}}" alt="Кухня после ссоры: две чашки на столе, отодвинутый стул, женщина стоит у окна">
@@ -1200,10 +1270,10 @@
       </div>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 2 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 3 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">
+      <a class="btn-nav-step back" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 2 · Почему она возвращается</span>
       </a>
@@ -1211,7 +1281,7 @@
   </div>
 
   <!-- СТРАНИЦА 3: ГЛАВА 2 -->
-  <div class="page-card" id="p3">
+  <div class="page-card" id="p4">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 2</span></div>
     <div class="chapter-open"><span class="chapter-fig">02</span><span class="chapter-kicker">Глава вторая</span></div>
     <h1>Почему она возвращается</h1>
@@ -1220,6 +1290,12 @@
     <p class="dropcap">Джон Готтман и его коллеги наблюдали пары годами: приглашали в лабораторию, записывали разговоры, возвращались через несколько лет. Оказалось, что около 69% разногласий — постоянные. Они не решаются раз и навсегда и возвращаются в узнаваемой форме: иногда через годы, иногда через неделю.</p>
 
     <p>Остальные 31% — задачи, у которых есть решение. Их можно закрыть и больше к ним не возвращаться.</p>
+
+    <div class="fact-box">
+      <div class="fact-label">Ближе к дому</div>
+      <p>В России за 2024 год — 880 тысяч браков и 644 тысячи разводов. На десять свадеб восемь разводов. Цифра ничего не говорит о причинах, но говорит, что таких разговоров много.</p>
+    </div>
+    <p class="source-note">Росстат, 2024; соотношение браков и разводов — оценка ВЦИОМ.</p>
 
     <div class="compare">
       <div class="compare-col">
@@ -1256,10 +1332,10 @@
 
     <p class="source-note">Цифра о 69% — из исследований Джона Готтмана и его коллег; Gottman Institute, «Managing Conflict: Solvable vs. Perpetual Problems».</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 3 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">
+      <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 3 · Круг</span>
       </a>
@@ -1267,7 +1343,7 @@
   </div>
 
   <!-- СТРАНИЦА 4: ГЛАВА 3 -->
-  <div class="page-card" id="p4">
+  <div class="page-card" id="p5">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 3</span></div>
     <div class="chapter-open"><span class="chapter-fig">03</span><span class="chapter-kicker">Глава третья</span></div>
     <h1>Круг, в который вы попадаете</h1>
@@ -1275,7 +1351,7 @@
 
     <div class="fact-box">
       <div class="fact-label">Насколько это часто</div>
-      <p>В большом опросе, где анкету заполнили оба партнёра, — 6 159 пар — 74% оказались в одном и том же круге: один идёт навстречу и требует ответа, второй отступает. При этом каждый называет отступающим другого.</p>
+      <p>В международном онлайн-опросе, где анкету заполнили оба партнёра, — 6 159 пар — 74% оказались в одном и том же круге: один идёт навстречу и требует ответа, второй отступает. При этом каждый называет отступающим другого.</p>
     </div>
 
     <p class="dropcap">Один хочет близости и ответа — и идёт за ним с вопросами, напором, иногда с претензией. Второй хочет покоя и не выдерживает напора — и отступает: молчанием, телефоном, работой. Первый читает отступление как «тебе всё равно» и усиливает нажим. Второй читает нажим как атаку и отступает дальше.</p>
@@ -1292,8 +1368,8 @@
         </defs>
         <circle cx="64" cy="96" r="28" fill="#EBF1ED" stroke="#5A7365" stroke-width="1"/>
         <circle cx="296" cy="96" r="28" fill="#FDF3E7" stroke="#C87D65" stroke-width="1"/>
-        <text x="64" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#5A7365">ВЫ</text>
-        <text x="296" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#A95F4C">ПАРТНЁР</text>
+        <text x="64" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#5A7365">ОДИН</text>
+        <text x="296" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#A95F4C">ДРУГОЙ</text>
         <path d="M100 74 C 150 48 210 48 260 74" fill="none" stroke="#C87D65" stroke-width="1.3" marker-end="url(#arrowTerracotta)"/>
         <text x="180" y="42" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" letter-spacing="1.8" fill="#A95F4C">НАЖИМ</text>
         <path d="M260 122 C 210 148 150 148 100 122" fill="none" stroke="#5A7365" stroke-width="1.3" marker-end="url(#arrowSage)"/>
@@ -1301,6 +1377,9 @@
       </svg>
       <figcaption>Круг. Ни у кого нет злого умысла — и обоим больно.</figcaption>
     </figure>
+    <p>Кто нажимает, а кто отступает, зависит не от характера, а от темы и от того, кому что важнее. В другой ссоре вы можете оказаться на другом конце. У пар, которые справляются, роли меняются; у пар, которые застряли, застывают.</p>
+
+    <div class="margin-note">Тот, кто сейчас молчит, часто не холодный. Он раньше просил — и перестал. Молчание со смыслом, обида, «сам догадайся» — это тоже отступление, и оно бьёт сильнее слов.</div>
 
     <p>Через несколько кругов первый уже не спрашивает, а требует. Второй уже не отступает, а исчезает. И оба уверены, что защищаются.</p>
 
@@ -1340,18 +1419,73 @@
       <textarea class="line-field" id="l4_partner_view" rows="1" placeholder="Со стороны это выглядит так: ..."></textarea>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 5 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">
+      <a class="btn-nav-step back" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Если ваш круг другой</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 5: ГЛАВА 4 -->
+    <!-- СТРАНИЦА: ДРУГОЙ КРУГ -->
+  <div class="page-card" id="p6">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">После главы 3</span></div>
+    <h1>Если ваш круг другой</h1>
+    <p class="chapter-lead">Нажим и отступление — самый частый круг, но не единственный.</p>
+
+    <p class="dropcap">В том же опросе, где набралось 74% пар с нажимом и отступлением, остальные разделились почти пополам: 13% — две погони, 13% — два отступления. Если вы не узнали себя в прошлой главе, скорее всего, вы здесь.</p>
+
+    <h2>Три круга</h2>
+    <ol class="num-list">
+      <li>
+        <h3>Нажим — отступление</h3>
+        <p>Один требует ответа, второй замолкает. В какой-то момент роли могут поменяться местами.</p>
+      </li>
+      <li>
+        <h3>Две погони</h3>
+        <p>Оба наступают, никто не отступает. Ссора быстро переходит в крик, и оба потом помнят, кто что сказал.</p>
+      </li>
+      <li>
+        <h3>Два отступления</h3>
+        <p>Никто не начинает. Ссор мало, но и разговоров нет: вы давно не говорили о важном.</p>
+      </li>
+    </ol>
+
+    <div class="line-block">
+      <div class="line-label">Ваш круг</div>
+      <p class="line-prompt">Отметьте, что больше похоже на вас. Можно несколько.</p>
+      <div class="tick-list">
+        <label class="tick-item"><input type="checkbox" data-tick="pC_which" value="1"><span class="tick-box"></span><span>Один нажимает, другой замолкает</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="pC_which" value="2"><span class="tick-box"></span><span>Оба наступаем, никто не отступает</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="pC_which" value="3"><span class="tick-box"></span><span>Оба молчим, разговора нет</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="pC_which" value="4"><span class="tick-box"></span><span>По-разному: зависит от темы</span></label>
+      </div>
+    </div>
+
+    <h2>Если это про две погони</h2>
+    <p>Тетрадь работает, но начинать надо не с разговора, а с паузы. Двоим, которые говорят одновременно, тридцать минут не помогут: сначала стоп-слово и десять минут в разных комнатах, и только потом разговор.</p>
+
+    <h2>Если это про два отступления</h2>
+    <p>Здесь нет ссоры, которую надо разобрать, — есть тишина. Начните с главы о том, что каждый защищает, и с просьбы. Первый шаг делает тот, кто читает: второй может вообще не считать, что что-то не так.</p>
+
+    <div class="margin-note">Дальше главы читаются как обычно: они про то, что вы защищаете, и про разговор, а не про то, кто первый начал.</div>
+
+    <p class="source-note">74%, 13% и 13% — международный онлайн-опрос сервиса Empathi, 2022–2026: 6 159 пар, где анкету заполнили оба партнёра. Это не российская выборка, поэтому цифры говорят о том, как бывает, а не о том, как бывает у нас.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 6 из 15</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 4 · Что каждый защищает</span>
       </a>
     </div>
   </div>
 
-  <!-- СТРАНИЦА 5: ГЛАВА 4 -->
-  <div class="page-card" id="p5">
+<div class="page-card" id="p7">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 4</span></div>
     <div class="chapter-open"><span class="chapter-fig">04</span><span class="chapter-kicker">Глава четвёртая</span></div>
     <h1>Что каждый защищает</h1>
@@ -1411,10 +1545,10 @@
 
     <div class="margin-note">Когда человек защищает важное, он не пытается вас победить. Он пытается сохранить себя. Это касается и вас.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 5 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 7 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">
+      <a class="btn-nav-step back" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p8" onclick="goToPage('p8'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 5 · Упрёк и просьба</span>
       </a>
@@ -1422,7 +1556,7 @@
   </div>
 
   <!-- СТРАНИЦА 6: ГЛАВА 5 -->
-  <div class="page-card" id="p6">
+  <div class="page-card" id="p8">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 5</span></div>
     <div class="chapter-open"><span class="chapter-fig">05</span><span class="chapter-kicker">Глава пятая</span></div>
     <h1>Упрёк и просьба</h1>
@@ -1479,12 +1613,17 @@
     </div>
     <div class="line-note">Если что-то осталось пустым — вернитесь к записи и поправьте.</div>
 
+    <div class="fact-box">
+      <div class="fact-label">Если просьба не работает</div>
+      <p>Форма просьбы меняет многое, но не всё. Если вы просите одно и то же годами и ничего не меняется, дело уже не в словах, а в том, хотят ли слышать. И если быт держится на одном человеке, никакая формула «когда ты..., я...» этого не исправит.</p>
+    </div>
+
     <div class="margin-note">Просьба — не слабость. Это единственная форма, в которой вас могут услышать.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 6 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 8 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">
+      <a class="btn-nav-step back" href="#p7" onclick="goToPage('p7'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p9" onclick="goToPage('p9'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 6 · Тридцать минут</span>
       </a>
@@ -1492,7 +1631,7 @@
   </div>
 
   <!-- СТРАНИЦА 7: ГЛАВА 6 -->
-  <div class="page-card" id="p7">
+  <div class="page-card" id="p9">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 6</span></div>
     <div class="chapter-open"><span class="chapter-fig">06</span><span class="chapter-kicker">Глава шестая</span></div>
     <h1>Тридцать минут</h1>
@@ -1507,7 +1646,10 @@
       <li><span class="checkbox"></span><span>Один говорит — другой только слушает.</span></li>
       <li><span class="checkbox"></span><span>Об одной ссоре, а не обо всей жизни.</span></li>
       <li><span class="checkbox"></span><span>Можно остановиться и вернуться.</span></li>
+      <li><span class="checkbox"></span><span>Оба трезвые. Хотя бы сегодня.</span></li>
     </ul>
+
+    <div class="margin-note">Если кто-то выпил, разговор не начинают — даже немного. Не потому, что человек плохой, а потому что так не удержать ни времени, ни правил.</div>
 
     <div class="line-block">
       <div class="line-label">Наш разговор</div>
@@ -1563,7 +1705,7 @@
     <ul class="key-list">
       <li>Не вспоминать прошлые ссоры — это отдельный разговор.</li>
       <li>Не начинать с «но».</li>
-      <li>Не обсуждать третьих лиц.</li>
+      <li>Про третьих — только через себя: не «твоя мать вмешивается», а «мне важно, чтобы мы решали сами».</li>
       <li>Не спорить о том, кто что сказал. Говорите о том, что вы почувствовали.</li>
     </ul>
 
@@ -1584,10 +1726,10 @@
       <figcaption>Тридцать минут — это не сеанс. Это время, которое вы выделили друг другу.</figcaption>
     </figure>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 7 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 9 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p8" onclick="goToPage('p8'); return false;">
+      <a class="btn-nav-step back" href="#p8" onclick="goToPage('p8'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p10" onclick="goToPage('p10'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 7 · Два овала</span>
       </a>
@@ -1595,7 +1737,7 @@
   </div>
 
   <!-- СТРАНИЦА 8: ГЛАВА 7 -->
-  <div class="page-card" id="p8">
+  <div class="page-card" id="p10">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 7</span></div>
     <div class="chapter-open"><span class="chapter-fig">07</span><span class="chapter-kicker">Глава седьмая</span></div>
     <h1>Два овала</h1>
@@ -1665,10 +1807,10 @@
 
     <div class="margin-note">Делайте это в спокойный час и один. Во время ссоры овалы не рисуют.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 8 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 10 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p7" onclick="goToPage('p7'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p9" onclick="goToPage('p9'); return false;">
+      <a class="btn-nav-step back" href="#p9" onclick="goToPage('p9'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p11" onclick="goToPage('p11'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Часть II · Первый разговор</span>
       </a>
@@ -1676,7 +1818,7 @@
   </div>
 
   <!-- СТРАНИЦА 9: ЧАСТЬ II, ГЛАВА 8 -->
-  <div class="page-card" id="p9">
+  <div class="page-card" id="p11">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 8</span></div>
     <div class="part-head">
       <div class="part-num">II</div>
@@ -1735,10 +1877,10 @@
       <strong>Если сегодня разговор не состоялся.</strong> Это бывает: не то время, не то настроение, у кого-то нет сил. Не превращайте это в новую ссору. Скажите, что вам важно поговорить, и предложите конкретный день. Если разговоров о важном не получается совсем — об этом есть на последней странице.
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 9 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 11 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p8" onclick="goToPage('p8'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p10" onclick="goToPage('p10'); return false;">
+      <a class="btn-nav-step back" href="#p10" onclick="goToPage('p10'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p12" onclick="goToPage('p12'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 9 · Как прошло</span>
       </a>
@@ -1746,7 +1888,7 @@
   </div>
 
   <!-- СТРАНИЦА 10: ГЛАВА 9 -->
-  <div class="page-card" id="p10">
+  <div class="page-card" id="p12">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 9</span></div>
     <div class="chapter-open"><span class="chapter-fig">09</span><span class="chapter-kicker">Глава девятая</span></div>
     <h1>Как прошло</h1>
@@ -1808,10 +1950,10 @@
 
     <div class="margin-note">Один разговор не переписывает годы. Второй важнее первого.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 10 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p9" onclick="goToPage('p9'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p11" onclick="goToPage('p11'); return false;">
+      <a class="btn-nav-step back" href="#p11" onclick="goToPage('p11'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p13" onclick="goToPage('p13'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 10 · Между встречами</span>
       </a>
@@ -1819,7 +1961,7 @@
   </div>
 
   <!-- СТРАНИЦА 11: ГЛАВА 10 -->
-  <div class="page-card" id="p11">
+  <div class="page-card" id="p13">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 10</span></div>
     <div class="chapter-open"><span class="chapter-fig">10</span><span class="chapter-kicker">Глава десятая</span></div>
     <h1>Между встречами</h1>
@@ -1858,10 +2000,10 @@
     <p>Если ссора всё-таки случилась на этой неделе — не отменяйте вторую встречу. Скажите себе: это та самая ссора, она снова здесь. Запишите, с чего началось, и вернитесь к разговору в назначенный день.</p>
     <p>Если в такие минуты становится страшно, тетрадь подождёт. Сначала безопасность.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 11 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 13 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p10" onclick="goToPage('p10'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p12" onclick="goToPage('p12'); return false;">
+      <a class="btn-nav-step back" href="#p12" onclick="goToPage('p12'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p14" onclick="goToPage('p14'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 11 · Второй разговор</span>
       </a>
@@ -1869,7 +2011,7 @@
   </div>
 
   <!-- СТРАНИЦА 12: ГЛАВА 11 -->
-  <div class="page-card" id="p12">
+  <div class="page-card" id="p14">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 11</span></div>
     <div class="chapter-open"><span class="chapter-fig">11</span><span class="chapter-kicker">Глава одиннадцатая</span></div>
     <h1>Второй разговор</h1>
@@ -1919,10 +2061,10 @@
 
     <p class="source-note">Если вы проходите тетрадь один, запишите свою часть договора. Договор из одной части тоже работает.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 14 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p11" onclick="goToPage('p11'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p13" onclick="goToPage('p13'); return false;">
+      <a class="btn-nav-step back" href="#p13" onclick="goToPage('p13'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p15" onclick="goToPage('p15'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Послесловие · Что дальше</span>
       </a>
@@ -1930,7 +2072,7 @@
   </div>
 
   <!-- СТРАНИЦА 13: ПОСЛЕСЛОВИЕ -->
-  <div class="page-card" id="p13">
+  <div class="page-card" id="p15">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Послесловие</span></div>
     <h1>Что дальше</h1>
     <p class="chapter-lead">Три вещи, которые останутся с вами.</p>
@@ -1980,9 +2122,9 @@
       <p>Тетрадь для пар · Уровень 2</p>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 13 из 13</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 15 из 15</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p12" onclick="goToPage('p12'); return false;">‹ Назад</a>
+      <a class="btn-nav-step back" href="#p14" onclick="goToPage('p14'); return false;">‹ Назад</a>
       <a class="btn-nav-step primary" href="#p0" onclick="goToPage('p0'); return false;">
         <span class="nav-main">В начало тетради <span class="nav-arrow">↑</span></span>
         <span class="nav-sub">Обложка</span>
@@ -2050,7 +2192,7 @@
     triggerSaveIndicator();
   }
 
-  var pages = ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12', 'p13'];
+  var pages = ['p0', 'p1', 'p3', 'p4', 'p5', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12', 'p13', 'p14', 'p15'];
   var currentPageIndex = 0;
 
   function updateView() {
@@ -2156,7 +2298,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('.line-field'), initLineField);
     Array.prototype.forEach.call(document.querySelectorAll('.tick-item input'), initTick);
 
-    // Прямая ссылка на страницу (#p7) должна открывать эту страницу, а не обложку
+    // Прямая ссылка на страницу (#p9) должна открывать эту страницу, а не обложку
     var hashId = window.location.hash.replace('#', '');
     if (pages.indexOf(hashId) !== -1) {
       goToPage(hashId);

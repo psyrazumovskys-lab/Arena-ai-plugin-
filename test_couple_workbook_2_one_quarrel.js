@@ -2,10 +2,11 @@
 // Запуск:  npm install jsdom --no-save && node test_couple_workbook_2_one_quarrel.js
 //
 // Что проверяем:
-//   1. Структуру: 14 экранов (обложка + 13 страниц), 8 блоков записи.
-//   2. Книжную вёрстку: бегущая строка, колонцифра «Стр. N из 13», картинки
+//   1. Структуру: 16 экранов (обложка + 15 страниц), 8 блоков записи.
+//   2. Книжную вёрстку: бегущая строка, колонцифра «Стр. N из 15», картинки
 //      в тексте, а не только сверху.
 //   2-А. Точки письма: 8 больших записей, короткие строки без кнопки и списки с отметками.
+//   2-Б. Контекст и роли: страница безопасности, другие круги, трезвость, российские цифры.
 //   3. Логику saveEntry(): запись добавляется, поле очищается, записи копятся.
 //   4. Сохранение: записи и черновики переживают перезагрузку.
 //   5. Язык: нет запрещённых формулировок и терминов.
@@ -55,10 +56,10 @@ const open = async (seed = {}) => {
 
   // ── 1. Структура ─────────────────────────────────────────────────────────
   console.log('— Структура —');
-  check('14 экранов: обложка и 13 страниц', pages.length === 14, `получено ${pages.length}`);
+  check('16 экранов: обложка и 15 страниц', pages.length === 16, `получено ${pages.length}`);
   check(
-    'Страницы идут по порядку p0…p13',
-    pages.map(p => p.id).join(',') === Array.from({ length: 14 }, (_, i) => `p${i}`).join(',')
+    'Страницы идут по порядку p0…p15',
+    pages.map(p => p.id).join(',') === Array.from({ length: 16 }, (_, i) => `p${i}`).join(',')
   );
   check('8 блоков записи', blocks.length === 8, `получено ${blocks.length}`);
   check('Обложка — отдельная поверхность', doc.getElementById('p0').classList.contains('cover-card'));
@@ -111,8 +112,8 @@ const open = async (seed = {}) => {
 
   const ticks = [...doc.querySelectorAll('.tick-item input[type=checkbox]')];
   const groups = [...new Set(ticks.map(t => t.getAttribute('data-tick')))];
-  check('Четыре списка с отметками', groups.length === 4, groups.join(', '));
-  check('Отметок всего двадцать две', ticks.length === 22, `получено ${ticks.length}`);
+  check('Пять списков с отметками', groups.length === 5, groups.join(', '));
+  check('Отметок всего двадцать шесть', ticks.length === 26, `получено ${ticks.length}`);
   check('У каждой отметки есть подпись рядом',
     [...doc.querySelectorAll('.tick-item')].every(t => t.textContent.trim().length > 8));
   check('У каждой отметки свой номер внутри списка',
@@ -121,12 +122,15 @@ const open = async (seed = {}) => {
       return new Set(vals).size === vals.length;
     }));
 
-  // Плотность: на каждой странице от 2-й до 12-й есть где писать
-  const pagesWithWriting = pages.slice(1).filter(p =>
-    p.querySelector('.entry-block, .line-block, .tick-list'));
-  check('На каждой странице после обложки есть где писать',
-    pagesWithWriting.length === pages.length - 1,
-    `без письма: ${pages.length - 1 - pagesWithWriting.length}`);
+  // Плотность: писать есть где везде, кроме обложки и страницы безопасности
+  const noWriting = ['p0', 'p2'];
+  const pagesWithWriting = pages.filter(p =>
+    !noWriting.includes(p.id) && p.querySelector('.entry-block, .line-block, .tick-list'));
+  check('Везде, кроме обложки и страницы безопасности, есть где писать',
+    pagesWithWriting.length === pages.length - noWriting.length,
+    `без письма: ${pages.length - noWriting.length - pagesWithWriting.length}`);
+  check('На странице безопасности нет заданий',
+    !doc.querySelector('#p2 .entry-block, #p2 .line-field, #p2 .tick-list'));
 
   // Вопрос, обращённый к читателю, не остаётся без места для ответа
   const askItems = [...doc.querySelectorAll('.ask-list > li')];
@@ -141,12 +145,62 @@ const open = async (seed = {}) => {
   check('Ответы на пять вопросов — отдельные ключи',
     new Set(askItems.map(li => li.querySelector('.line-field').id)).size === 5);
 
-  const p6 = doc.getElementById('p6');
-  const p6Entry = p6.querySelector('.entry-block');
-  const p6Check = p6.querySelector('.tick-list');
+  const p8 = doc.getElementById('p8');
+  const p6Entry = p8.querySelector('.entry-block');
+  const p6Check = p8.querySelector('.tick-list');
   check('Проверка просьбы стоит после записи',
     !!p6Entry && !!p6Check &&
     p6Entry.compareDocumentPosition(p6Check) === 4 /* FOLLOWING */);
+
+  // ── 2-Б. Контекст, роли и безопасность ───────────────────────────────────
+  console.log('— Контекст, роли и безопасность —');
+
+  const safety = doc.getElementById('p2');
+  check('Страница безопасности стоит сразу после введения',
+    safety.querySelector('h1').textContent.trim() === 'Если это не ссора');
+  check('На странице безопасности есть стоп-фраза',
+    !!safety.querySelector('.stop-box'));
+  check('На странице безопасности сказано про 112',
+    safety.textContent.includes('112'));
+  check('На странице безопасности сказано про алкоголь',
+    /алкогол|выпил|трезв/i.test(safety.textContent));
+  check('Страница безопасности предупреждает, что упражнения могут навредить',
+    /могут сделать хуже/i.test(safety.textContent));
+
+  const circle = doc.getElementById('p5');
+  check('Роль не назначается: на схеме «ОДИН» и «ДРУГОЙ»',
+    circle.querySelector('svg').textContent.includes('ОДИН') &&
+    circle.querySelector('svg').textContent.includes('ДРУГОЙ') &&
+    !circle.querySelector('svg').textContent.includes('ВЫ') &&
+    !circle.querySelector('svg').textContent.includes('ПАРТНЁР'));
+  check('Сказано, что роль зависит от темы',
+    /зависит не от характера, а от темы/.test(circle.textContent));
+
+  const other = doc.getElementById('p6');
+  check('Есть страница про другие круги', other.querySelector('h1').textContent.includes('круг другой'));
+  check('Показаны три круга', other.querySelectorAll('.num-list > li').length === 3);
+  check('Можно отметить свой круг', other.querySelectorAll('input[data-tick="pC_which"]').length === 4);
+  check('Про 74% сказано, что это не российская выборка',
+    /не российская выборка/.test(other.textContent));
+
+  const why = doc.getElementById('p4');
+  check('Есть российские цифры о браках и разводах',
+    /880 тысяч/.test(why.textContent) && /644 тысячи/.test(why.textContent));
+
+  const protocol = doc.getElementById('p9');
+  check('В протоколе есть трезвость',
+    protocol.textContent.includes('Оба трезвые'));
+  check('Сказано, что про третьих — через себя',
+    /Про третьих — только через себя/.test(protocol.textContent));
+
+  const request = doc.getElementById('p8');
+  check('Честно сказано, что форма просьбы решает не всё',
+    /дело уже не в словах/.test(request.textContent));
+
+  check('Цепочка переходов непрерывна',
+    pages.slice(1, -1).every((p, i) =>
+      p.querySelector('.btn-nav-step.primary').getAttribute('href') === '#' + pages[i + 2].id &&
+      p.querySelector('.btn-nav-step.back').getAttribute('href') === '#' + pages[i].id));
 
   // ── 3. Книжная вёрстка ───────────────────────────────────────────────────
   console.log('— Книжная вёрстка —');
@@ -155,9 +209,9 @@ const open = async (seed = {}) => {
   check('На обложке бегущей строки нет', !doc.querySelector('#p0 .running-head'));
   check('У каждой страницы есть колонцифра',
     pages.slice(1).every(p => !!p.querySelector('.folio-page')));
-  check('Колонцифры идут по порядку: «Стр. N из 13»',
+  check('Колонцифры идут по порядку: «Стр. N из 15»',
     pages.slice(1).every((p, i) =>
-      p.querySelector('.folio-page').textContent.trim() === `Стр. ${i + 1} из 13`));
+      p.querySelector('.folio-page').textContent.trim() === `Стр. ${i + 1} из 15`));
   check('На обложке нет колонцифры', !doc.querySelector('#p0 .folio'));
 
   const figures = [...doc.querySelectorAll('figure')];
@@ -175,7 +229,7 @@ const open = async (seed = {}) => {
   check('В протоколе пять отрезков времени по порядку',
     [...doc.querySelectorAll('.protocol-step .protocol-time')].map(el => el.textContent.replace(/\s|мин/g, '')).join('|')
       === '0–3|3–12|12–21|21–27|27–30');
-  check('Часть II открывается титульным блоком', !!doc.querySelector('#p9 .part-head'));
+  check('Часть II открывается титульным блоком', !!doc.querySelector('#p11 .part-head'));
 
   // ── 4. Навигация ─────────────────────────────────────────────────────────
   console.log('— Навигация —');
@@ -184,7 +238,7 @@ const open = async (seed = {}) => {
   check('На каждой странице по две кнопки перехода',
     pages.slice(1).every(p => p.querySelectorAll('.page-footer-nav .btn-nav-step').length === 2));
   check('Последняя кнопка всегда ведёт в начало тетради',
-    doc.querySelector('#p13 .page-footer-nav .btn-nav-step.primary')?.getAttribute('href') === '#p0');
+    doc.querySelector('#p15 .page-footer-nav .btn-nav-step.primary')?.getAttribute('href') === '#p0');
   check('Все кнопки перехода — ссылки с onclick',
     [...doc.querySelectorAll('.btn-nav-step')].every(a =>
       a.tagName === 'A' && a.getAttribute('href')?.startsWith('#p') && /goToPage/.test(a.getAttribute('onclick') || '')));
