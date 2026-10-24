@@ -2,8 +2,8 @@
 // Запуск:  npm install jsdom --no-save && node test_couple_workbook_2_one_quarrel.js
 //
 // Что проверяем:
-//   1. Структуру: 19 экранов (обложка + 18 страниц), 8 блоков записи.
-//   2. Книжную вёрстку: бегущая строка, колонцифра «Стр. N из 18», картинки
+//   1. Структуру: 18 экранов (обложка + 17 страниц), 8 блоков записи.
+//   2. Книжную вёрстку: бегущая строка, колонцифра «Стр. N из 17», картинки
 //      в тексте, а не только сверху.
 //   2-А. Точки письма: 8 больших записей, короткие строки без кнопки и списки с отметками.
 //   2-Б. Контекст и роли: страница безопасности, другие круги, трезвость, российские цифры.
@@ -59,10 +59,10 @@ const open = async (seed = {}) => {
 
   // ── 1. Структура ─────────────────────────────────────────────────────────
   console.log('— Структура —');
-  check('19 экранов: обложка и 18 страниц', pages.length === 19, `получено ${pages.length}`);
+  check('18 экранов: обложка и 17 страниц', pages.length === 18, `получено ${pages.length}`);
   check(
-    'Страницы идут по порядку p0…p18',
-    pages.map(p => p.id).join(',') === Array.from({ length: 19 }, (_, i) => `p${i}`).join(',')
+    'Страницы идут по порядку p0…p17',
+    pages.map(p => p.id).join(',') === Array.from({ length: 18 }, (_, i) => `p${i}`).join(',')
   );
   check('8 блоков записи', blocks.length === 8, `получено ${blocks.length}`);
   check('Обложка — отдельная поверхность', doc.getElementById('p0').classList.contains('cover-card'));
@@ -99,7 +99,7 @@ const open = async (seed = {}) => {
   // ── 2-А. Короткие строки и отметки ───────────────────────────────────────
   console.log('— Короткие строки и отметки —');
   const lines = [...doc.querySelectorAll('.line-field')];
-  check('Двадцать шесть коротких строк', lines.length === 26, `получено ${lines.length}`);
+  check('Двадцать пять коротких строк', lines.length === 25, `получено ${lines.length}`);
   check('У каждой строки свой id', new Set(lines.map(l => l.id)).size === lines.length);
   check('Строки не пересекаются с большими записями',
     lines.every(l => !ids.includes(l.id)));
@@ -212,9 +212,9 @@ const open = async (seed = {}) => {
   check('На обложке бегущей строки нет', !doc.querySelector('#p0 .running-head'));
   check('У каждой страницы есть колонцифра',
     pages.slice(1).every(p => !!p.querySelector('.folio-page')));
-  check('Колонцифры идут по порядку: «Стр. N из 18»',
+  check('Колонцифры идут по порядку: «Стр. N из 17»',
     pages.slice(1).every((p, i) =>
-      p.querySelector('.folio-page').textContent.trim() === `Стр. ${i + 1} из 18`));
+      p.querySelector('.folio-page').textContent.trim() === `Стр. ${i + 1} из 17`));
   check('На обложке нет колонцифры', !doc.querySelector('#p0 .folio'));
 
   const figures = [...doc.querySelectorAll('figure')];
@@ -401,11 +401,11 @@ const open = async (seed = {}) => {
 
   check('На обложке обещаны разговоры, а не встречи',
     /два разговора по 30 минут/.test(doc.querySelector('.cover-meta').textContent));
-  check('Введение объясняет слово «партнёр»',
+  check('Объяснено слово «партнёр»',
     /значит мужа, жену или того/.test(doc.querySelector('.partner-note')?.textContent || ''));
-  check('Правил стало четыре',
-    doc.querySelectorAll('#p2 .checklist li').length === 4 &&
-      /Четыре правила/.test(doc.getElementById('p2').textContent));
+  check('Правила умещаются в одну фразу на первой странице',
+    /Читайте в спокойное время/.test(doc.getElementById('p1').textContent) &&
+      !doc.querySelector('#p1 .checklist'));
 
   const thirty = byTitle('Тридцать минут');
   check('Сказано, что делать с детьми',

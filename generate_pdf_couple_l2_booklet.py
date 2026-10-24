@@ -503,6 +503,9 @@ PRINT_REPLACE = {
     "Если неудобно печатать — наговорите ответ голосом в заметки телефона и "
     "перенесите сюда.": "",
     "Эти строки сохраняются сами, кнопки нет.": "",
+    # в бумаге запись и так остаётся на странице — повторять нечего
+    "Всё, что вы напишете, остаётся в этом браузере: никуда не отправляется, "
+    "и мы этого не видим.": "",
 }
 
 PRINT_COVER_NOTE = (
@@ -1267,6 +1270,20 @@ def render_week(book: Book, el: Tag) -> None:
     book.y -= 12 * mm
 
 
+def render_notes_page(book: Book) -> None:
+    """Страница «Для заметок»: строки для письма во всю полосу."""
+    c = book.c
+    c.saveState()
+    c.setFont("PTSerif-Bold", 15)
+    c.setFillColor(INK)
+    c.drawString(M, book.y - 5 * mm, "Для заметок")
+    c.restoreState()
+    book.y -= 9 * mm
+    rule(c, M, book.y, 22 * mm, TERRA, 1.2)
+    book.y -= 5 * mm
+    book.writing_lines(rows=99, fill_to_bottom=True)
+
+
 def render_colophon(book: Book, el: Tag) -> None:
     c = book.c
     lines = [text_of(p) for p in el.find_all("p")]
@@ -1290,6 +1307,13 @@ def render_colophon(book: Book, el: Tag) -> None:
         c.drawCentredString(cx, book.y, line)
         c.restoreState()
         book.y -= 5.4 * mm
+    # одна строка на прощание: без неё последняя страница выглядит пустой
+    book.y -= 6 * mm
+    c.saveState()
+    c.setFont("PTSerif-Italic", 9.4)
+    c.setFillColor(BODY)
+    c.drawCentredString(cx, book.y, "Тетрадь закончилась, а разговор — нет.")
+    c.restoreState()
 
 
 
@@ -1597,8 +1621,9 @@ def main() -> int:
     ctx = {"images": images, "image_by_src": image_by_src, "toc_pages": {}}
 
     cards = soup.select(".page-card")
-    if len(cards) != 19:
-        raise SystemExit(f"Экранов {len(cards)}, ожидалось 19")
+    ids = [c.get("id") for c in cards]
+    if ids != [f"p{i}" for i in range(len(cards))]:
+        raise SystemExit(f"Страницы идут не подряд: {ids}")
 
     tight: set[str] = set()
     notebook_page: dict[int, int] = {}
@@ -1646,16 +1671,22 @@ def main() -> int:
             if cid != "p0" and book.page > starts[cid] and (TOP - book.y) < 42 * mm:
                 tight.add(cid)
             book.folio()
+        # ── конец книги ─────────────────────────────────────────────────
+        # Книжка печатается брошюрой: число страниц должно делиться на четыре,
+        # иначе последняя тетрадь листа останется пустой половиной.
+        # Добираем недостающие страницы «Для заметок» — они всегда пригодятся.
+        note_running = ("", "")
+        # выходные данные займут ещё одну страницу — её и считаем
+        while (book.page + 1) % 4:
+            book.new_page(running=note_running)
+            render_notes_page(book)
         # выходные данные — на последней странице, у нижнего поля
         if ctx.get("colophon") is not None:
-            need = 30 * mm
-            if book.y - BOTTOM < need and book.y > TOP - 60 * mm:
-                book.new_page()
+            book.new_page(running=("", ""))
+            book.folio()
             book.y = BOTTOM + 26 * mm
             render_colophon(book, ctx["colophon"])
-        # последняя страница
-        book.folio()
-        c.showPage()
+            c.showPage()
         total = book.page
         return c, book, starts, total
 

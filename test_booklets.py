@@ -56,7 +56,10 @@ def main() -> int:
         check("формат A5 (148×210 мм)", abs(w - 419.5) < 2 and abs(h - 595.3) < 2,
               f"— {w:.1f}×{h:.1f} пт")
 
-        empty = [i + 1 for i in range(len(pdf)) if len(page_text(pdf, i)) < 40]
+        # страница «Для заметок» намеренно почти без текста — это не брак
+        empty = [i + 1 for i in range(len(pdf))
+                 if len(page_text(pdf, i)) < 40
+                 and "заметок" not in page_text(pdf, i).lower()]
         check("нет пустых страниц", not empty, f"— пустые: {empty}")
 
         bad = []
@@ -70,8 +73,11 @@ def main() -> int:
     # содержание второй тетради должно указывать на настоящие страницы
     print("\n— содержание второй тетради")
     pdf = pdfium.PdfDocument(WB2)
-    toc = page_text(pdf, 4)
-    rows = re.findall(r"([А-ЯЁA-Z][^0-9]{6,60}?)\s+(\d+)\s+мин\s+(\d+)", toc)
+    toc_page = next((i for i in range(len(pdf))
+                     if "Сколько времени занимает" in page_text(pdf, i)), None)
+    check("страница содержания найдена", toc_page is not None)
+    toc = page_text(pdf, toc_page or 0)
+    rows = re.findall(r"([А-ЯЁ][^0-9]{5,60}?)\s+(\d+)\s+мин\s+(\d+)", toc)
     check("содержание распознано", len(rows) >= 15, f"— строк {len(rows)}")
     mismatched = []
     for title, _mins, page in rows:
