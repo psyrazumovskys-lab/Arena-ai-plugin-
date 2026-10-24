@@ -480,7 +480,10 @@ const open = async (seed = {}) => {
   check('Нет внешних скриптов', !/<script[^>]+src=/.test(html));
 
   check('Кнопки перехода не ниже 48 px', /\.btn-nav-step\s*\{[^}]*min-height:\s*48px/.test(css));
-  check('Иллюстрации врезаются в поля страницы', /\.figure-bleed\s*\{[^}]*margin:[^;]*-22px/.test(css));
+  const cardPad = css.match(/\.page-card\s*\{[^}]*padding:\s*[\d.]+px\s+([\d.]+)px/);
+  const bleed = css.match(/\.figure-bleed\s*\{[^}]*margin:\s*[\d.]+px\s+(-[\d.]+)px/);
+  check('Иллюстрации врезаются ровно в поля страницы',
+    !!cardPad && !!bleed && Math.abs(parseFloat(bleed[1])) === parseFloat(cardPad[1]));
   check('Есть стиль буквицы', /\.dropcap::first-letter/.test(css));
 
   console.log(`\nИтог: ${pass} прошло, ${fail} не прошло`);
