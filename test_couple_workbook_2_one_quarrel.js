@@ -95,7 +95,7 @@ const open = async (seed = {}) => {
   // ── 2-А. Короткие строки и отметки ───────────────────────────────────────
   console.log('— Короткие строки и отметки —');
   const lines = [...doc.querySelectorAll('.line-field')];
-  check('Пятнадцать коротких строк', lines.length === 15, `получено ${lines.length}`);
+  check('Двадцать коротких строк', lines.length === 20, `получено ${lines.length}`);
   check('У каждой строки свой id', new Set(lines.map(l => l.id)).size === lines.length);
   check('Строки не пересекаются с большими записями',
     lines.every(l => !ids.includes(l.id)));
@@ -111,8 +111,8 @@ const open = async (seed = {}) => {
 
   const ticks = [...doc.querySelectorAll('.tick-item input[type=checkbox]')];
   const groups = [...new Set(ticks.map(t => t.getAttribute('data-tick')))];
-  check('Три списка с отметками', groups.length === 3, groups.join(', '));
-  check('Отметок всего девятнадцать', ticks.length === 19, `получено ${ticks.length}`);
+  check('Четыре списка с отметками', groups.length === 4, groups.join(', '));
+  check('Отметок всего двадцать две', ticks.length === 22, `получено ${ticks.length}`);
   check('У каждой отметки есть подпись рядом',
     [...doc.querySelectorAll('.tick-item')].every(t => t.textContent.trim().length > 8));
   check('У каждой отметки свой номер внутри списка',
@@ -123,15 +123,30 @@ const open = async (seed = {}) => {
 
   // Плотность: на каждой странице от 2-й до 12-й есть где писать
   const pagesWithWriting = pages.slice(1).filter(p =>
-    p.querySelector('.entry-block, .line-block'));
-  check('Есть страницы без письма — это сделано намеренно',
-    pages.length - pagesWithWriting.length === 1,
-    `без письма: ${pages.length - pagesWithWriting.length}`);
-  check('Страницы 6 и 8 остались только с большой записью',
-    ['p6', 'p8'].every(id => {
-      const p = doc.getElementById(id);
-      return p.querySelectorAll('.entry-block').length === 1 && !p.querySelector('.line-block');
+    p.querySelector('.entry-block, .line-block, .tick-list'));
+  check('На каждой странице после обложки есть где писать',
+    pagesWithWriting.length === pages.length - 1,
+    `без письма: ${pages.length - 1 - pagesWithWriting.length}`);
+
+  // Вопрос, обращённый к читателю, не остаётся без места для ответа
+  const askItems = [...doc.querySelectorAll('.ask-list > li')];
+  check('Пять вопросов — у каждого своя строка',
+    askItems.length === 5 && askItems.every(li => li.querySelector('.line-field')));
+  check('Строка стоит под вопросом, а не отдельно',
+    askItems.every(li => {
+      const q = li.querySelector('.ask-q');
+      return q && q.nextElementSibling &&
+        q.nextElementSibling.classList.contains('line-field');
     }));
+  check('Ответы на пять вопросов — отдельные ключи',
+    new Set(askItems.map(li => li.querySelector('.line-field').id)).size === 5);
+
+  const p6 = doc.getElementById('p6');
+  const p6Entry = p6.querySelector('.entry-block');
+  const p6Check = p6.querySelector('.tick-list');
+  check('Проверка просьбы стоит после записи',
+    !!p6Entry && !!p6Check &&
+    p6Entry.compareDocumentPosition(p6Check) === 4 /* FOLLOWING */);
 
   // ── 3. Книжная вёрстка ───────────────────────────────────────────────────
   console.log('— Книжная вёрстка —');

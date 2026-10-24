@@ -69,6 +69,18 @@ def clean(chunk: str) -> str:
     chunk = re.sub(r'<label class="tick-item">[\s\S]*?<span class="tick-box"></span><span>(.*?)</span></label>',
                    tick, chunk)
 
+    def number_list(m: re.Match) -> str:
+        inner = m.group(1)
+        counter = {"n": 0}
+
+        def num(_m: re.Match) -> str:
+            counter["n"] += 1
+            return f"\n{counter['n']}. "  # номер приклеится к следующей строке
+
+        return re.sub(r"<li[^>]*>", num, inner)
+
+    chunk = re.sub(r'<ol class="(?:num-list|ask-list)[^"]*">([\s\S]*?)</ol>', number_list, chunk)
+
     chunk = re.sub(r"<br\s*/?>", "\n", chunk)
     chunk = re.sub(r"</(p|h1|h2|h3|h4|li|figcaption|div|span|text)>", "\n", chunk)
     chunk = re.sub(r"<[^>]+>", "", chunk)
@@ -86,6 +98,7 @@ def clean(chunk: str) -> str:
             blank = 0
             out.append(line.strip())
     text = "\n".join(out).strip()
+    text = re.sub(r"^(\d+)\.\n(?=\S)", r"\1. ", text, flags=re.M)
     return re.sub(r"\n{3,}", "\n\n", text)
 
 
