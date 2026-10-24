@@ -5,6 +5,7 @@
 //   1. Структуру: 14 экранов (обложка + 13 страниц), 8 блоков записи.
 //   2. Книжную вёрстку: бегущая строка, колонцифра «Стр. N из 13», картинки
 //      в тексте, а не только сверху.
+//   2-А. Точки письма: 8 больших записей, короткие строки без кнопки и списки с отметками.
 //   3. Логику saveEntry(): запись добавляется, поле очищается, записи копятся.
 //   4. Сохранение: записи и черновики переживают перезагрузку.
 //   5. Язык: нет запрещённых формулировок и терминов.
@@ -90,6 +91,47 @@ const open = async (seed = {}) => {
       .every((n, i) => n === i + 1));
   check('Пустой список показывает подсказку',
     blocks.every(b => !!b.querySelector('.entry-empty')));
+
+  // ── 2-А. Короткие строки и отметки ───────────────────────────────────────
+  console.log('— Короткие строки и отметки —');
+  const lines = [...doc.querySelectorAll('.line-field')];
+  check('Пятнадцать коротких строк', lines.length === 15, `получено ${lines.length}`);
+  check('У каждой строки свой id', new Set(lines.map(l => l.id)).size === lines.length);
+  check('Строки не пересекаются с большими записями',
+    lines.every(l => !ids.includes(l.id)));
+  check('У каждой строки есть вопрос или начало фразы',
+    lines.every(l => (l.getAttribute('placeholder') || '').length > 6));
+  check('Короткие строки без кнопки сохранения',
+    [...doc.querySelectorAll('.line-block')].every(b => !b.querySelector('.btn-save-entry')));
+  check('Короткие строки не оформлены как большие записи',
+    [...doc.querySelectorAll('.line-block')].every(b => !b.classList.contains('entry-block')));
+  check('У коротких строк есть подпись блока или вопрос',
+    [...doc.querySelectorAll('.line-block')].every(b =>
+      b.querySelector('.line-label') || b.querySelector('.line-prompt')));
+
+  const ticks = [...doc.querySelectorAll('.tick-item input[type=checkbox]')];
+  const groups = [...new Set(ticks.map(t => t.getAttribute('data-tick')))];
+  check('Три списка с отметками', groups.length === 3, groups.join(', '));
+  check('Отметок всего девятнадцать', ticks.length === 19, `получено ${ticks.length}`);
+  check('У каждой отметки есть подпись рядом',
+    [...doc.querySelectorAll('.tick-item')].every(t => t.textContent.trim().length > 8));
+  check('У каждой отметки свой номер внутри списка',
+    groups.every(g => {
+      const vals = ticks.filter(t => t.getAttribute('data-tick') === g).map(t => t.value);
+      return new Set(vals).size === vals.length;
+    }));
+
+  // Плотность: на каждой странице от 2-й до 12-й есть где писать
+  const pagesWithWriting = pages.slice(1).filter(p =>
+    p.querySelector('.entry-block, .line-block'));
+  check('Есть страницы без письма — это сделано намеренно',
+    pages.length - pagesWithWriting.length === 1,
+    `без письма: ${pages.length - pagesWithWriting.length}`);
+  check('Страницы 6 и 8 остались только с большой записью',
+    ['p6', 'p8'].every(id => {
+      const p = doc.getElementById(id);
+      return p.querySelectorAll('.entry-block').length === 1 && !p.querySelector('.line-block');
+    }));
 
   // ── 3. Книжная вёрстка ───────────────────────────────────────────────────
   console.log('— Книжная вёрстка —');
@@ -190,6 +232,36 @@ const open = async (seed = {}) => {
       restored[1]?.textContent === 'Партнёр замолкает');
   check('Черновик восстановлен',
     doc2.getElementById('q2_our_agreement').value === 'недописанный договор');
+
+  // ── 6-А. Короткие строки и отметки переживают перезагрузку ───────────────
+  console.log('— Короткие строки сохраняются сами —');
+  const third = await open();
+  const line = third.document.getElementById('l11_noticed');
+  line.value = 'Начинаю с вопросов, партнёр замолкает';
+  line.dispatchEvent(new third.Event('input'));
+  const tick = third.document.querySelector('input[data-tick="p2_signs"][value="3"]');
+  tick.checked = true;
+  tick.dispatchEvent(new third.Event('change'));
+
+  const store2 = {};
+  for (let i = 0; i < third.localStorage.length; i++) {
+    const key = third.localStorage.key(i);
+    store2[key] = third.localStorage.getItem(key);
+  }
+  check('Строка записана без кнопки', !!store2['wb_couples_l2_one_quarrel_line_l11_noticed']);
+  check('Отметка записана', store2['wb_couples_l2_one_quarrel_tick_p2_signs_3'] === '1');
+
+  const fourth = await open(store2);
+  check('Строка восстановлена',
+    fourth.document.getElementById('l11_noticed').value === 'Начинаю с вопросов, партнёр замолкает');
+  check('Отметка восстановлена',
+    fourth.document.querySelector('input[data-tick="p2_signs"][value="3"]').checked === true);
+  check('Соседние отметки остались пустыми',
+    fourth.document.querySelector('input[data-tick="p2_signs"][value="4"]').checked === false);
+  check('Пустая строка в том же блоке не помечена',
+    !fourth.document.getElementById('l11_helped').classList.contains('is-written'));
+  check('Заполненная строка помечена, соседние — нет',
+    fourth.document.getElementById('l11_noticed').classList.contains('is-written'));
 
   // ── 7. Навигация в работе ────────────────────────────────────────────────
   console.log('— Переходы —');

@@ -848,6 +848,110 @@
     }
     body.on-cover .wb-navigation-bar { display: none; }
 
+    /* ── КОРОТКАЯ ЗАПИСЬ: СТРОКА В КНИГЕ ──────────────────────────────────── */
+    .line-block {
+      margin: 22px 0 26px;
+    }
+    .line-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage-primary);
+      margin-bottom: 5px;
+    }
+    .line-prompt {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.38;
+      font-style: italic;
+      color: #4A5459;
+      margin-bottom: 4px;
+    }
+    .line-field {
+      display: block;
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 2px 6px;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      background: transparent;
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text-main);
+      resize: none;
+      overflow: hidden;
+    }
+    .line-field + .line-field { margin-top: 10px; }
+    .line-field:focus {
+      outline: none;
+      border-bottom-color: var(--sage-primary);
+    }
+    .line-field::placeholder {
+      color: #A6ACAC;
+      font-style: italic;
+    }
+    .line-field.is-written { border-bottom-color: rgba(90, 115, 101, 0.55); }
+    .line-note {
+      margin-top: 8px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      font-style: italic;
+      color: #8A918F;
+    }
+
+    /* ── ОТМЕТКИ В СПИСКЕ ─────────────────────────────────────────────────── */
+    .tick-list { margin: 6px 0 2px; }
+    .tick-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 9px 0;
+      font-size: 15.5px;
+      line-height: 1.45;
+      color: #3B474C;
+      cursor: pointer;
+      position: relative;
+    }
+    .tick-item + .tick-item { border-top: 1px dashed rgba(226, 221, 213, 0.85); }
+    .tick-item input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    .tick-box {
+      flex-shrink: 0;
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      border: 1.3px solid var(--sage-primary);
+      border-radius: 3px;
+      background: #FFFFFF;
+      position: relative;
+    }
+    .tick-item input:checked + .tick-box {
+      background: var(--sage-primary);
+      border-color: var(--sage-primary);
+    }
+    .tick-item input:checked + .tick-box::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: solid #FFFFFF;
+      border-width: 0 1.8px 1.8px 0;
+      transform: rotate(42deg);
+    }
+    .tick-item input:focus-visible + .tick-box {
+      outline: 2px solid var(--terracotta);
+      outline-offset: 2px;
+    }
+
     /* ── ПЛАВКАЯ ПЛАШКА ────────────────────────────────────────────────────── */
     .save-indicator {
       position: fixed;
@@ -896,6 +1000,10 @@
       .protocol-step { grid-template-columns: 56px 1fr; gap: 12px; }
       .protocol-body p { font-size: 15.5px; }
       .entry-hint { font-size: 14.5px; }
+      .line-field { font-size: 16.5px; min-height: 48px; }
+      .line-prompt { font-size: 18.5px; }
+      .tick-item { font-size: 16px; padding: 11px 0; }
+      .tick-box { width: 19px; height: 19px; }
       .entry-empty { font-size: 14px; }
       .btn-save-entry { width: 100%; min-height: 48px; font-size: 15.5px; border-radius: 12px; }
       .journal-entry { min-height: 120px; }
@@ -997,6 +1105,13 @@
       <li><span class="checkbox"></span><span>Если станет слишком больно — остановитесь. Тетрадь подождёт.</span></li>
     </ul>
 
+    <div class="line-block">
+      <div class="line-label">Спокойный час</div>
+      <p class="line-prompt">Когда у меня бывает час без спешки, чтобы сесть за это?</p>
+      <textarea class="line-field" id="l1_quiet_hour" rows="1" placeholder="Например: суббота утром, пока все спят"></textarea>
+      <div class="line-note">Эти строки сохраняются сами, кнопки нет.</div>
+    </div>
+
     <div class="bridge-note">
       <div class="bridge-label">Если вы пришли из первой тетради</div>
       <p>Первая тетрадь учила останавливать ссору: пауза, стоп-слово, возвращение. Эта начинает там, где та заканчивается: ссора возвращается — что с ней делать.</p>
@@ -1043,6 +1158,18 @@
       <li>После неё никто не выиграл.</li>
       <li>Проходит день-два, всё возвращается на места — до следующего раза.</li>
     </ul>
+
+    <div class="line-block">
+      <div class="line-label">Приметы</div>
+      <p class="line-prompt">Отметьте, что узнаёте про вашу ссору.</p>
+      <div class="tick-list">
+        <label class="tick-item"><input type="checkbox" data-tick="p2_signs" value="1"><span class="tick-box"></span><span>Могу пересказать её заранее, почти слово в слово</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p2_signs" value="2"><span class="tick-box"></span><span>Начинается с мелочи, а заканчивается темой постарше</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p2_signs" value="3"><span class="tick-box"></span><span>Знаю, чем кончится, и всё равно иду</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p2_signs" value="4"><span class="tick-box"></span><span>После неё никто не выиграл</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p2_signs" value="5"><span class="tick-box"></span><span>Через день-два всё как прежде — до следующего раза</span></label>
+      </div>
+    </div>
 
     <div class="margin-note">Если ссор несколько, выберите ту, что случается чаще. Остальные никуда не денутся — но разбирать их одновременно бессмысленно.</div>
 
@@ -1096,6 +1223,13 @@
     </div>
 
     <p>Это не значит «терпите». Это значит, что цель разговора — не победа в споре, у которого нет финала, а договор о том, как жить с этой разницей. Готтман называл это диалогом о постоянной проблеме: в нём слышно обоих, и никто не обязан отказаться от себя.</p>
+
+    <div class="line-block">
+      <div class="line-label">Ваша ссора</div>
+      <p class="line-prompt">Перенесите на неё: что здесь решается, а что нет?</p>
+      <textarea class="line-field" id="l3_solvable" rows="1" placeholder="Решается: ..."></textarea>
+      <textarea class="line-field" id="l3_perpetual" rows="1" placeholder="Не решается: ..."></textarea>
+    </div>
 
     <div class="pull-quote">Постоянные разногласия не исчезают. Меняется то, как о них говорят.</div>
 
@@ -1191,6 +1325,11 @@
       </div>
     </div>
 
+    <div class="line-block">
+      <p class="line-prompt">Если бы партнёр описал мой шаг в этом круге — что бы он сказал?</p>
+      <textarea class="line-field" id="l4_partner_view" rows="1" placeholder="Со стороны это выглядит так: ..."></textarea>
+    </div>
+
     <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 13</span></div>
     <div class="page-footer-nav">
       <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
@@ -1236,6 +1375,12 @@
     </div>
 
     <p>Ответ — и есть то, что вы защищаете. Не каприз и не оправдание. Важное.</p>
+
+    <div class="line-block">
+      <p class="line-prompt">Две строки под эти вопросы — коротко, как есть.</p>
+      <textarea class="line-field" id="l5_if_forever" rows="1" placeholder="Если это останется так навсегда, я буду..."></textarea>
+      <textarea class="line-field" id="l5_what_fear" rows="1" placeholder="Если уступлю, я боюсь потерять..."></textarea>
+    </div>
 
     <div class="interactive-card card-title-only ask">
       <div class="ask-num">Запись 3</div>
@@ -1352,6 +1497,13 @@
       <li><span class="checkbox"></span><span>Можно остановиться и вернуться.</span></li>
     </ul>
 
+    <div class="line-block">
+      <div class="line-label">Наш разговор</div>
+      <p class="line-prompt">Когда и где вы попробуете эти тридцать минут?</p>
+      <textarea class="line-field" id="l7_when_day" rows="1" placeholder="День: ..."></textarea>
+      <textarea class="line-field" id="l7_where" rows="1" placeholder="Где: ..."></textarea>
+    </div>
+
     <h2>Как идут эти полчаса</h2>
     <ol class="protocol">
       <li class="protocol-step">
@@ -1402,6 +1554,18 @@
       <li>Не обсуждать третьих лиц.</li>
       <li>Не спорить о том, кто что сказал. Говорите о том, что вы почувствовали.</li>
     </ul>
+
+    <div class="line-block">
+      <div class="line-label">Перед первым разговором</div>
+      <p class="line-prompt">Что будет труднее всего? Отметьте — потом проверите себя.</p>
+      <div class="tick-list">
+        <label class="tick-item"><input type="checkbox" data-tick="p7_hardest" value="1"><span class="tick-box"></span><span>Не перебивать, пока говорит другой</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p7_hardest" value="2"><span class="tick-box"></span><span>Держаться тридцати минут и не съехать в старое</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p7_hardest" value="3"><span class="tick-box"></span><span>Говорить «я», а не «ты»</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p7_hardest" value="4"><span class="tick-box"></span><span>Не вспоминать прошлые ссоры</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p7_hardest" value="5"><span class="tick-box"></span><span>Остановиться, когда становится горячо</span></label>
+      </div>
+    </div>
 
     <figure class="figure-bleed">
       <img src="{{IMG_THIRTY}}" alt="Двое сидят за столом с песочными часами и листом бумаги между ними">
@@ -1517,6 +1681,11 @@
       <p>Я хочу поговорить о нашей ссоре, потому что она возвращается и мне от этого плохо. Я не хочу выяснить, кто виноват. Я хочу, чтобы мы поняли друг друга. Мне немного страшно начинать.</p>
     </div>
 
+    <div class="line-block">
+      <p class="line-prompt">Что вы хотите, чтобы партнёр понял в этом разговоре?</p>
+      <textarea class="line-field" id="l9_what_understood" rows="1" placeholder="Самое главное, что должно дойти: ..."></textarea>
+    </div>
+
     <div class="interactive-card card-title-only ask">
       <div class="ask-num">Запись 6</div>
       <h3>С чего я начну</h3>
@@ -1573,6 +1742,22 @@
       <li>Появился старый счёт: «а помнишь, ты...».</li>
       <li>Разговор закончился не решением, а усталостью.</li>
     </ul>
+
+    <div class="line-block">
+      <div class="line-label">Что было в этот раз</div>
+      <p class="line-prompt">Отметьте, что заметили. Можно и то, и другое.</p>
+      <div class="tick-list">
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="1"><span class="tick-box"></span><span>Прозвучало что-то новое</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="2"><span class="tick-box"></span><span>Голос повысился — и кто-то сам остановился</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="3"><span class="tick-box"></span><span>Не дошли до знакомого финала</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="4"><span class="tick-box"></span><span>Появилось конкретное действие, а не «я постараюсь»</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="5"><span class="tick-box"></span><span>Разошлись не по разным комнатам</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="6"><span class="tick-box"></span><span>Те же фразы, почти дословно</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="7"><span class="tick-box"></span><span>Один замолчал, второй говорил громче</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="8"><span class="tick-box"></span><span>Появился старый счёт: «а помнишь, ты...»</span></label>
+        <label class="tick-item"><input type="checkbox" data-tick="p10_what_happened" value="9"><span class="tick-box"></span><span>Разговор закончился усталостью, а не решением</span></label>
+      </div>
+    </div>
 
     <p>И то, и другое — не приговор. Первый разговор редко бывает красивым. Важно не то, как он прошёл, а то, что вы теперь знаете, где именно круг замыкается.</p>
 
@@ -1633,6 +1818,14 @@
     </div>
     <div class="week-caption">Достаточно одного наблюдения в день.</div>
 
+    <div class="line-block">
+      <div class="line-label">Неделя наблюдений</div>
+      <p class="line-prompt">Три строки за неделю — этого достаточно.</p>
+      <textarea class="line-field" id="l11_noticed" rows="1" placeholder="Один раз круг был заметен так: ..."></textarea>
+      <textarea class="line-field" id="l11_helped" rows="1" placeholder="Остановиться помогло: ..."></textarea>
+      <textarea class="line-field" id="l11_try" rows="1" placeholder="Во второй раз хочу попробовать: ..."></textarea>
+    </div>
+
     <h2>Если накрыло</h2>
     <p>Если ссора всё-таки случилась на этой неделе — не отменяйте вторую встречу. Скажите себе: это та самая ссора, она снова здесь. Запишите, с чего началось, и вернитесь к разговору в назначенный день.</p>
     <p>Если в такие минуты становится страшно, тетрадь подождёт. Сначала безопасность.</p>
@@ -1691,6 +1884,11 @@
       </div>
     </div>
 
+    <div class="line-block">
+      <p class="line-prompt">Одно изменение, с которого начну — самое маленькое.</p>
+      <textarea class="line-field" id="l12_one_change" rows="1" placeholder="В следующий раз я..."></textarea>
+    </div>
+
     <p class="source-note">Если вы проходите тетрадь один, запишите свою часть договора. Договор из одной части тоже работает.</p>
 
     <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 13</span></div>
@@ -1718,6 +1916,13 @@
     <p>Этого достаточно, чтобы следующий раз прошёл иначе. Не идеально — иначе. Один разговор не делает отношения другими, но показывает, что они могут быть другими. Дальше это повторяется: та же ссора, тот же круг, тот же выбор. Постепенно выбор становится привычкой.</p>
 
     <p>Через месяц вернитесь к записи 8 и посмотрите, что из договора живёт, а что нет. Это и будет проверка — не для отчёта, а для себя.</p>
+
+    <div class="line-block">
+      <div class="line-label">После тетради</div>
+      <p class="line-prompt">Две строки на прощание.</p>
+      <textarea class="line-field" id="l13_take_away" rows="1" placeholder="Забираю с собой: ..."></textarea>
+      <textarea class="line-field" id="l13_not_yet" rows="1" placeholder="Пока не получается: ..."></textarea>
+    </div>
 
     <h2>Когда нужен специалист</h2>
     <p>Тетрадь не заменяет терапию. Обратитесь за помощью, если:</p>
@@ -1878,6 +2083,36 @@
     setTimeout(function () { ind.classList.remove('show'); }, 1500);
   }
 
+  // Короткие строки и отметки: сохраняются сами, без кнопки
+  var LINE_PREFIX = 'wb_couples_l2_one_quarrel_line_';
+  var TICK_PREFIX = 'wb_couples_l2_one_quarrel_tick_';
+
+  function fitLine(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.max(44, el.scrollHeight) + 'px';
+  }
+
+  function initLineField(el) {
+    var saved = null;
+    try { saved = localStorage.getItem(LINE_PREFIX + el.id); } catch (e) {}
+    if (saved) el.value = saved;
+    fitLine(el);
+    el.classList.toggle('is-written', !!el.value.trim());
+    el.addEventListener('input', function () {
+      fitLine(el);
+      try { localStorage.setItem(LINE_PREFIX + el.id, el.value); } catch (e) {}
+      el.classList.toggle('is-written', !!el.value.trim());
+    });
+  }
+
+  function initTick(input) {
+    var key = TICK_PREFIX + input.getAttribute('data-tick') + '_' + input.value;
+    try { if (localStorage.getItem(key) === '1') input.checked = true; } catch (e) {}
+    input.addEventListener('change', function () {
+      try { localStorage.setItem(key, input.checked ? '1' : ''); } catch (e) {}
+    });
+  }
+
   window.addEventListener('DOMContentLoaded', function () {
     inputIds.forEach(function (id) {
       var el = document.getElementById(id);
@@ -1889,6 +2124,9 @@
       }
       renderEntries(id);
     });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.line-field'), initLineField);
+    Array.prototype.forEach.call(document.querySelectorAll('.tick-item input'), initTick);
 
     // Прямая ссылка на страницу (#p7) должна открывать эту страницу, а не обложку
     var hashId = window.location.hash.replace('#', '');
