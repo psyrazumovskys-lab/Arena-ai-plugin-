@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Одна и та же ссора: разобрать разговор, который возвращается | PsyLab</title>
+
+  <style>
+    /* ==========================================================================
+       ТА ЖЕ ПАЛИТРА, ЧТО В ПЕРВОЙ ТЕТРАДИ: ШАЛФЕЙ + ТЕРРАКОТА + ТЕПЛЫЙ ЛЕН
+       ========================================================================== */
+    :root {
+      --bg-body: #F7F5F0;
+      --bg-card: #FFFFFF;
+      --text-main: #2C3539;
+      --text-muted: #64748B;
+      --sage-primary: #5A7365;
+      --sage-deep: #475B50;
+      --sage-light: #EBF1ED;
+      --terracotta: #C87D65;
+      --terracotta-deep: #A95F4C;
+      --terracotta-light: #FDF3E7;
+      --border-color: #E2DDD5;
+      --paper: #F7F4EC;
+      --shadow-sm: 0 2px 8px rgba(44, 53, 57, 0.05);
+      --shadow-md: 0 8px 24px rgba(44, 53, 57, 0.08);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-body);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 16px 12px 96px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; }
+
+    /* ── ВЕРХНЯЯ НАВИГАЦИЯ ─────────────────────────────────────────────────── */
+    .wb-navigation-bar {
+      position: sticky;
+      top: 8px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .wb-nav-stepper { display: flex; align-items: center; gap: 8px; }
+    .wb-step-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 38px;
+      background: var(--sage-light);
+      color: var(--sage-primary);
+      border: 1px solid rgba(90, 115, 101, 0.2);
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+    .wb-step-btn:hover:not(:disabled) { background: var(--sage-primary); color: #fff; }
+    .wb-step-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .wb-page-selector-wrapper { position: relative; flex: 1; }
+    .wb-page-select {
+      width: 100%;
+      height: 38px;
+      appearance: none;
+      -webkit-appearance: none;
+      background: #FFFFFF;
+      color: var(--text-main);
+      border: 1.5px solid var(--sage-primary);
+      border-radius: 8px;
+      padding: 0 28px 0 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      outline: none;
+    }
+    .wb-select-caret {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--sage-primary);
+      font-size: 10px;
+    }
+
+    /* ── СТРАНИЦА ──────────────────────────────────────────────────────────── */
+    .page-card {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 26px 22px 20px;
+      box-shadow: var(--shadow-sm);
+      animation: fadeIn 0.25s ease;
+    }
+    .page-card.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── КНИЖНАЯ ТИПОГРАФИКА ───────────────────────────────────────────────── */
+    h1, h2, h3, .quote-box, .chapter-lead, .pull-quote, .figure-bleed figcaption,
+    .figure-plate figcaption, .colophon p, .part-lead, .chapter-fig, .part-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    h1 {
+      font-size: 31px;
+      line-height: 1.14;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 23px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 30px 0 10px;
+      padding-top: 10px;
+      position: relative;
+    }
+    h2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 2px;
+      background: var(--terracotta);
+    }
+
+    h3 { font-size: 16px; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+
+    .badge-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--sage-light);
+      color: var(--sage-primary);
+    }
+    .badge-label.terracotta { background: var(--terracotta-light); color: var(--terracotta-deep); }
+
+    p {
+      font-size: 16px;
+      line-height: 1.68;
+      color: #3B474C;
+      margin-bottom: 15px;
+      orphans: 2;
+      widows: 2;
+      text-wrap: pretty;
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 700; color: var(--text-main); }
+    em { font-style: italic; }
+
+    .chapter-lead {
+      font-size: 19.5px;
+      line-height: 1.42;
+      font-style: italic;
+      color: #4A5459;
+      margin-bottom: 20px;
+    }
+
+    /* Буквица — первая буква первой фразы главы */
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3.35em;
+      line-height: 0.78;
+      font-weight: 600;
+      color: var(--sage-primary);
+      padding: 6px 9px 0 0;
+    }
+
+    /* Бегущая строка вверху страницы */
+    .running-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8A918F;
+    }
+    .running-head .rh-right { color: var(--sage-primary); white-space: nowrap; }
+
+    /* Номер и название главы */
+    .chapter-open {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .chapter-fig {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      color: var(--terracotta);
+    }
+    .chapter-kicker {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── ВРЕЗКИ И ЦИТАТЫ ───────────────────────────────────────────────────── */
+    .fact-box {
+      background: var(--paper);
+      border-left: 3px solid var(--terracotta);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 18px;
+      margin: 20px 0;
+    }
+    .fact-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--terracotta-deep);
+      margin-bottom: 8px;
+    }
+    .fact-box p { font-size: 15.5px; line-height: 1.58; margin-bottom: 0; }
+
+    .quote-box {
+      background: transparent;
+      border-left: 2px solid var(--terracotta);
+      border-radius: 0;
+      padding: 4px 0 4px 18px;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #4A555B;
+      margin: 22px 0;
+    }
+    .quote-box p { font-size: inherit; line-height: inherit; color: inherit; margin-bottom: 8px; }
+    .quote-box p:last-child { margin-bottom: 0; }
+    .quote-label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8A918F;
+      margin-bottom: 6px;
+    }
+    .quote-label.after { color: var(--terracotta-deep); margin-top: 14px; }
+
+    .pull-quote {
+      margin: 32px 0;
+      text-align: center;
+      font-size: 24px;
+      line-height: 1.3;
+      font-style: italic;
+      color: var(--sage-primary);
+    }
+    .pull-quote::before {
+      content: '';
+      display: block;
+      width: 38px;
+      height: 1px;
+      background: var(--terracotta);
+      margin: 0 auto 18px;
+    }
+
+    /* Пометка на полях */
+    .margin-note {
+      margin: 24px 0;
+      padding-left: 16px;
+      border-left: 1px solid var(--terracotta);
+      font-size: 14.5px;
+      line-height: 1.55;
+      font-style: italic;
+      color: #5C666B;
+    }
+
+    /* ── ИЛЛЮСТРАЦИИ ───────────────────────────────────────────────────────── */
+    .figure-bleed {
+      margin: 26px -22px;
+      background: var(--paper);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .figure-bleed img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: darken;
+    }
+    .figure-bleed figcaption {
+      padding: 10px 22px 12px;
+      font-size: 14.5px;
+      line-height: 1.35;
+      font-style: italic;
+      color: #6B7378;
+    }
+
+    .figure-plate {
+      width: 58%;
+      max-width: 240px;
+      margin: 28px auto;
+      padding: 10px 10px 0;
+      background: #FBF8F1;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 3px 10px rgba(44, 53, 57, 0.05);
+    }
+    .figure-plate img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: darken;
+    }
+    .figure-plate figcaption {
+      padding: 9px 2px 11px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.35;
+      font-style: italic;
+      color: #6B7378;
+    }
+
+    /* ── СПИСКИ ────────────────────────────────────────────────────────────── */
+    .key-list { list-style: none; margin: 16px 0; }
+    .key-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 11px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: #3B474C;
+    }
+    .key-list li::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      background: var(--terracotta);
+      transform: rotate(45deg);
+    }
+
+    .checklist { list-style: none; margin: 14px 0 18px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: #3B474C;
+    }
+    .checkbox {
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      margin-top: 3px;
+      border: 1.3px solid var(--sage-primary);
+      border-radius: 2px;
+      background: #FFFFFF;
+    }
+
+    /* ── СРАВНЕНИЕ ДВУХ КОЛОНОК ────────────────────────────────────────────── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .compare-col {
+      background: var(--sage-light);
+      border: 1px solid #D6E2DA;
+      border-radius: 10px;
+      padding: 14px 15px;
+    }
+    .compare-col.alt { background: var(--terracotta-light); border-color: #EFCDB9; }
+    .compare-col h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--sage-primary);
+    }
+    .compare-col.alt h4 { color: var(--terracotta-deep); }
+    .compare-col p { font-size: 14.5px; line-height: 1.5; margin-bottom: 0; }
+
+    /* ── НУМЕРОВАННЫЙ СПИСОК ───────────────────────────────────────────────── */
+    .num-list { list-style: none; counter-reset: nl; margin: 18px 0 22px; }
+    .num-list > li { counter-increment: nl; position: relative; padding-left: 42px; margin-bottom: 18px; }
+    .num-list > li::before {
+      content: counter(nl);
+      position: absolute;
+      left: 0;
+      top: -3px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      line-height: 1;
+      color: var(--terracotta);
+    }
+    .num-list h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-weight: 700; margin-bottom: 3px; }
+    .num-list p { font-size: 15.5px; line-height: 1.55; margin-bottom: 0; }
+
+    /* ── КРУГ НА СХЕМЕ ─────────────────────────────────────────────────────── */
+    .circle-diagram { margin: 24px 0; padding: 4px 0 0; }
+    .circle-diagram svg { display: block; width: 100%; height: auto; }
+    .circle-diagram figcaption {
+      margin-top: 4px;
+      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 14.5px;
+      line-height: 1.35;
+      color: #6B7378;
+    }
+
+    /* ── ПРОТОКОЛ НА 30 МИНУТ ──────────────────────────────────────────────── */
+    .protocol { list-style: none; margin: 10px 0 22px; border-top: 1px solid var(--border-color); }
+    .protocol-step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .protocol-time {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.05;
+      color: var(--terracotta);
+      white-space: nowrap;
+    }
+    .protocol-time span {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8A918F;
+      margin-top: 4px;
+    }
+    .protocol-body h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; margin-bottom: 4px; }
+    .protocol-body p { font-size: 15px; line-height: 1.55; margin-bottom: 0; }
+
+    /* ── ЧАСТЬ II ──────────────────────────────────────────────────────────── */
+    .part-head {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 0 0 26px;
+      padding: 22px 0;
+      border-top: 2px solid var(--sage-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .part-num {
+      font-size: 62px;
+      line-height: 0.82;
+      font-weight: 600;
+      color: var(--terracotta);
+    }
+    .part-kicker {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage-primary);
+      margin-bottom: 5px;
+    }
+    .part-lead {
+      font-size: 17px;
+      line-height: 1.4;
+      font-style: italic;
+      color: #4A5459;
+      margin-bottom: 0;
+    }
+
+    /* ── НЕДЕЛЬНАЯ ЛИНЕЙКА ─────────────────────────────────────────────────── */
+    .week-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      margin: 26px 0 8px;
+      padding: 16px 6px 12px;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .week-day {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8A918F;
+    }
+    .week-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 1px solid var(--sage-primary);
+      background: #FFFFFF;
+    }
+    .week-day:nth-child(7) .week-dot { border-color: var(--terracotta); }
+    .week-caption {
+      text-align: center;
+      font-size: 12.5px;
+      color: #8A918F;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+
+    /* ── БЛОК ВОПРОСА И ЗАПИСИ ─────────────────────────────────────────────── */
+    .interactive-card {
+      background: #FAF8F5;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin: 18px 0;
+    }
+    .interactive-card.card-title-only {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      margin: 30px 0 12px;
+    }
+    .ask-num {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 5px;
+    }
+    .ask h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 0; }
+
+    .entry-block {
+      margin: 0 0 26px;
+      padding: 18px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: #FFFDFA;
+      box-shadow: 0 1px 3px rgba(44, 53, 57, 0.04);
+    }
+    .entry-kind {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding: 4px 11px 4px 8px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .entry-kind .kind-icon { width: 15px; height: 15px; display: block; flex-shrink: 0; }
+    .entry-kind.kind-solo { background: var(--sage-light); color: var(--sage-primary); }
+    .entry-kind.kind-pair { background: var(--terracotta-light); color: var(--terracotta-deep); }
+
+    .entry-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+    .entry-lamp { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; margin-top: 1px; }
+    .entry-lamp .lamp-icon { display: block; width: 19px; height: 19px; color: var(--terracotta); }
+    .entry-hint { font-size: 14px; line-height: 1.45; color: #6B7378; flex: 1; }
+
+    .journal-entry {
+      width: 100%;
+      min-height: 104px;
+      padding: 13px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 9px;
+      font-size: 16px;
+      line-height: 1.55;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #FFFFFF;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .journal-entry:focus { outline: none; border-color: var(--sage-primary); }
+    .btn-save-entry {
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: var(--terracotta);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      width: fit-content;
+      transition: all 0.15s ease;
+    }
+    .btn-save-entry:hover { background: var(--terracotta-deep); }
+    .btn-save-entry:active { transform: scale(0.97); }
+
+    .entry-list { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color); }
+    .entry-item {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #3B474C;
+      padding: 8px 0;
+      border-bottom: 1px solid #F0EDE7;
+      white-space: pre-line;
+    }
+    .entry-item:last-child { border-bottom: none; }
+    .entry-item.is-new { animation: entryIn 0.25s ease-out; }
+    @keyframes entryIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .entry-empty {
+      font-size: 13.5px;
+      font-style: italic;
+      color: #6B7378;
+      margin-top: 6px;
+    }
+
+    /* ── СНОСКИ ПО ХОДУ ТЕКСТА ─────────────────────────────────────────────── */
+    .fallback-note {
+      margin: 22px 0 4px;
+      padding: 14px 16px;
+      background: var(--sage-light);
+      border-radius: 8px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #4A5559;
+    }
+    .fallback-note strong { color: var(--text-main); }
+
+    .safety-note {
+      margin: 24px 0 6px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 13px;
+      line-height: 1.5;
+      color: #7A8288;
+    }
+
+    .source-note {
+      margin: 24px 0 0;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      line-height: 1.5;
+      color: #8A918F;
+    }
+
+    .bridge-note {
+      margin: 22px 0;
+      padding: 16px 18px;
+      background: var(--paper);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+    }
+    .bridge-note .bridge-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage-primary);
+      margin-bottom: 6px;
+    }
+    .bridge-note p { font-size: 14.5px; line-height: 1.55; margin-bottom: 8px; }
+    .bridge-note p:last-child { margin-bottom: 0; }
+
+    /* ── КОЛОФОН ───────────────────────────────────────────────────────────── */
+    .colophon { margin: 32px 0 8px; text-align: center; }
+    .colophon .orn { margin-bottom: 12px; }
+    .colophon p {
+      font-size: 14.5px;
+      line-height: 1.5;
+      font-style: italic;
+      color: #7A8288;
+      margin-bottom: 4px;
+    }
+    .orn { display: flex; justify-content: center; }
+
+    /* ── ПОДВАЛ: СЧЁТЧИК СТРОКИ И КНОПКИ ───────────────────────────────────── */
+    .folio {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 34px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      color: #8A918F;
+    }
+    .folio-page {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7A8288;
+      white-space: nowrap;
+    }
+    .page-footer-nav {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn-nav-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 10px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 9px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+    .btn-nav-step:hover { border-color: var(--sage-primary); }
+    .btn-nav-step:active { transform: scale(0.98); }
+    .btn-nav-step.primary {
+      flex: 1;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--sage-primary);
+      border-color: var(--sage-primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(90, 115, 101, 0.22);
+    }
+    .btn-nav-step.primary:hover { background: var(--sage-deep); border-color: var(--sage-deep); }
+    .btn-nav-step.back { min-width: 96px; flex: 0 0 auto; }
+    .nav-main { display: inline-flex; align-items: center; gap: 7px; }
+    .nav-arrow { font-size: 16px; line-height: 1; }
+    .nav-sub {
+      display: block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      opacity: 0.85;
+    }
+
+    /* ── ОБЛОЖКА ───────────────────────────────────────────────────────────── */
+    .cover-card {
+      padding: 0;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 2px 18px rgba(44, 53, 57, 0.08);
+    }
+    .cover-art { width: 100%; margin: 0; background: var(--paper); overflow: hidden; }
+    .cover-image { display: block; width: 100%; height: auto; mix-blend-mode: darken; }
+    .cover-body { padding: 24px 22px 26px; }
+    .cover-title {
+      font-size: 40px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      color: var(--text-main);
+      margin: 14px 0 0;
+    }
+    .cover-rule { width: 54px; height: 2px; background: var(--terracotta); margin: 16px 0; }
+    .cover-lead {
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: #4A5459;
+      margin-bottom: 22px;
+    }
+    .cover-list { display: flex; flex-direction: column; gap: 11px; margin-bottom: 22px; }
+    .cover-item { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; line-height: 1.45; }
+    .cover-dot { flex-shrink: 0; width: 6px; height: 6px; margin-top: 8px; border-radius: 50%; background: var(--terracotta); }
+    .btn-cover-start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 56px;
+      background: var(--sage-primary);
+      color: #FFFFFF;
+      font-size: 17px;
+      font-weight: 650;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(90, 115, 101, 0.28);
+    }
+    .btn-cover-start:active { transform: translateY(1px); }
+    .cover-meta {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+      color: #7A8288;
+    }
+    body.on-cover .wb-navigation-bar { display: none; }
+
+    /* ── ПЛАВКАЯ ПЛАШКА ────────────────────────────────────────────────────── */
+    .save-indicator {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(44, 53, 57, 0.9);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .save-indicator.show { opacity: 1; }
+
+    /* ── НАВИГАЦИЯ БЕЗ JAVASCRIPT ──────────────────────────────────────────── */
+    /* На телефоне у поля ввода нет ручки изменения размера: она читается как точка в углу */
+    @media (hover: none) {
+      .journal-entry { resize: none; }
+    }
+
+    .page-card:target { display: block; }
+    body:has(.page-card:target) .page-card.active:not(:target) { display: none; }
+
+    /* ── ТЕЛЕФОН ───────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      body { padding: 12px 10px 90px; }
+      .page-card { padding: 22px 16px 18px; border-radius: 14px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; margin-top: 28px; }
+      h3 { font-size: 17px; }
+      p { font-size: 16.5px; line-height: 1.62; }
+      .chapter-lead { font-size: 18.5px; line-height: 1.44; }
+      .pull-quote { font-size: 22px; }
+      .quote-box { font-size: 17.5px; padding-left: 15px; }
+      .margin-note { font-size: 15.5px; }
+      .figure-bleed { margin-left: -16px; margin-right: -16px; }
+      .figure-bleed figcaption { padding: 9px 16px 11px; font-size: 14.5px; }
+      .figure-plate { width: 64%; }
+      .compare { grid-template-columns: 1fr; }
+      .compare-col p { font-size: 15.5px; }
+      .protocol-step { grid-template-columns: 56px 1fr; gap: 12px; }
+      .protocol-body p { font-size: 15.5px; }
+      .entry-hint { font-size: 14.5px; }
+      .entry-empty { font-size: 14px; }
+      .btn-save-entry { width: 100%; min-height: 48px; font-size: 15.5px; border-radius: 12px; }
+      .journal-entry { min-height: 120px; }
+      .btn-nav-step { font-size: 14.5px; min-height: 50px; }
+      .wb-page-select { font-size: 16px; }
+      .btn-nav-step.back { min-width: 92px; }
+      .folio { margin-top: 30px; }
+      .cover-title { font-size: 36px; }
+      .cover-body { padding: 22px 18px 24px; }
+      .cover-lead { font-size: 15px; }
+    }
+    @media (max-width: 380px) {
+      .page-card { padding: 20px 13px 16px; }
+      h1 { font-size: 25px; }
+      .cover-title { font-size: 31px; }
+      .chapter-lead { font-size: 17.5px; }
+      .part-num { font-size: 52px; }
+      .part-head { grid-template-columns: 60px 1fr; gap: 12px; }
+    }
+
+    /* На широком экране текст выключен по формату книги */
+    @media (min-width: 700px) {
+      p, .chapter-lead, .key-list li, .checklist li, .compare-col p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+    }
+  </style>
+</head>
+<body class="on-cover">
+
+<div class="container">
+
+  <div class="wb-navigation-bar">
+    <div class="wb-nav-stepper">
+      <button type="button" class="wb-step-btn" id="prevBtn" onclick="stepPage(-1)">‹</button>
+      <div class="wb-page-selector-wrapper">
+        <select id="pageSelect" class="wb-page-select" onchange="goToPage(this.value)">
+          <option value="p0">Обложка</option>
+          <option value="p1">Стр. 1 · Перед началом</option>
+          <option value="p2">Стр. 2 · Та самая ссора</option>
+          <option value="p3">Стр. 3 · Почему она возвращается</option>
+          <option value="p4">Стр. 4 · Круг</option>
+          <option value="p5">Стр. 5 · Что каждый защищает</option>
+          <option value="p6">Стр. 6 · Упрёк и просьба</option>
+          <option value="p7">Стр. 7 · Тридцать минут</option>
+          <option value="p8">Стр. 8 · Два овала</option>
+          <option value="p9">Стр. 9 · Первый разговор</option>
+          <option value="p10">Стр. 10 · Как прошло</option>
+          <option value="p11">Стр. 11 · Между встречами</option>
+          <option value="p12">Стр. 12 · Второй разговор</option>
+          <option value="p13">Стр. 13 · Что дальше</option>
+        </select>
+        <span class="wb-select-caret">▾</span>
+      </div>
+      <button type="button" class="wb-step-btn" id="nextBtn" onclick="stepPage(1)">›</button>
+    </div>
+  </div>
+
+  <!-- ОБЛОЖКА -->
+  <div class="page-card cover-card active" id="p0">
+    <div class="cover-art">
+      <img class="cover-image" src="{{IMG_COVER}}" alt="Мужчина и женщина сидят за столом друг напротив друга, между ними чайник и две чашки">
+    </div>
+    <div class="cover-body">
+      <span class="badge-label terracotta">Тетрадь для пар · Уровень 2</span>
+      <h1 class="cover-title">Одна и та же ссора</h1>
+      <div class="cover-rule"></div>
+      <p class="cover-lead">Тетрадь о разговоре, который возвращается. Разобрать один спор — и увидеть, что за ним стоит.</p>
+      <div class="cover-list">
+        <div class="cover-item"><span class="cover-dot"></span><span>Почему один и тот же спор идёт по кругу</span></div>
+        <div class="cover-item"><span class="cover-dot"></span><span>Что каждый из вас защищает в нём</span></div>
+        <div class="cover-item"><span class="cover-dot"></span><span>Как сказать о важном так, чтобы услышали</span></div>
+      </div>
+      <a class="btn-cover-start" href="#p1" onclick="goToPage('p1'); return false;">Начать</a>
+      <div class="cover-meta">8 записей · две встречи по 35 минут · можно возвращаться</div>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 1: ВВЕДЕНИЕ -->
+  <div class="page-card" id="p1">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Введение</span></div>
+    <h1>Эта тетрадь — про одну ссору</h1>
+    <p class="chapter-lead">Не про все сразу и не про то, кто прав. Про тот разговор, который у вас повторяется.</p>
+
+    <p class="dropcap">У большинства пар есть разговоры, которые возвращаются. Меняются слова, время суток, повод — а разговор тот же. Через десять минут вы оба уже на знакомых местах, и каждый знает, чем это закончится.</p>
+
+    <p>Когда такой спор называют вслух, с ним впервые можно что-то сделать. Поэтому первая часть — про то, чтобы его узнать. Вторая — про разговор, в котором можно услышать друг друга и не потерять себя.</p>
+
+    <h2>Две встречи</h2>
+    <p>Первая встреча — разобраться: что это за ссора, почему она держится и что вы оба в ней защищаете. Вторая — попробовать разговор, у которого есть рамка, и посмотреть, что получится.</p>
+    <p>Между ними — неделя обычной жизни. В ней нет заданий: нужно просто замечать.</p>
+
+    <div class="margin-note">Тетрадь не требует, чтобы партнёр читал её вместе с вами. Но требует, чтобы вы читали её в спокойный час, а не посреди ссоры.</div>
+
+    <h2>Пять правил</h2>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Читайте в спокойное время. Не в ссору и не сразу после: тогда любое слово звучит как её продолжение.</span></li>
+      <li><span class="checkbox"></span><span>Пишите как говорите. Здесь не проверяют орфографию и не ставят оценок.</span></li>
+      <li><span class="checkbox"></span><span>Можно проходить одному. Если партнёр не участвует, вы всё равно увидите свой шаг в круге и сможете его изменить.</span></li>
+      <li><span class="checkbox"></span><span>Не спешите. Между первой и второй встречей должна пройти хотя бы неделя.</span></li>
+      <li><span class="checkbox"></span><span>Если станет слишком больно — остановитесь. Тетрадь подождёт.</span></li>
+    </ul>
+
+    <div class="bridge-note">
+      <div class="bridge-label">Если вы пришли из первой тетради</div>
+      <p>Первая тетрадь учила останавливать ссору: пауза, стоп-слово, возвращение. Эта начинает там, где та заканчивается: ссора возвращается — что с ней делать.</p>
+      <p>Если первой тетради не было — ничего страшного. Но если ссоры пока нечем остановить, начните с неё: без паузы любой разговор быстро становится продолжением ссоры.</p>
+    </div>
+
+    <div class="fallback-note">
+      <strong>Если вы проходите это сами.</strong> Часть заданий помечена «Вместе с партнёром». Это значит «обсудить вдвоём», но не требует партнёра рядом: свою половину можно написать и одному. Если разговор не складывается, оставьте его на потом и вернитесь к своей части.
+    </div>
+
+    <p class="safety-note">Если в ссорах звучат угрозы, доходит до ударов или вам страшно оставаться рядом — это не решается тетрадью. Здесь нужен специалист, и лучше найти его до следующего раза.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 1 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p0" onclick="goToPage('p0'); return false;">‹ Обложка</a>
+      <a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 1 · Та самая ссора</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 2: ГЛАВА 1 -->
+  <div class="page-card" id="p2">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 1</span></div>
+    <div class="chapter-open"><span class="chapter-fig">01</span><span class="chapter-kicker">Глава первая</span></div>
+    <h1>Та самая ссора</h1>
+    <p class="chapter-lead">Сначала её нужно назвать. Не «мы плохо общаемся», а конкретный разговор.</p>
+
+    <p class="dropcap">Она начинается с мелочи. Кто-то не помыл чашку, опоздал на пятнадцать минут, сказал «как хочешь». Через минуту это уже не чашка. Через десять вы оба защищаетесь — и никто не помнит, с чего началось.</p>
+
+    <p>У такой ссоры есть приметы. Одни и те же слова, иногда дословно. Одно и то же время: поздний вечер, дорога, сборы. Один и тот же поворот, после которого становится ясно, куда всё идёт.</p>
+
+    <figure class="figure-bleed">
+      <img src="{{IMG_KITCHEN}}" alt="Кухня после ссоры: две чашки на столе, отодвинутый стул, женщина стоит у окна">
+      <figcaption>Кухня, где это чаще всего и происходит: две чашки, отодвинутый стул, разговор, который уже был.</figcaption>
+    </figure>
+
+    <h2>Как её узнать</h2>
+    <ul class="key-list">
+      <li>Вы можете пересказать её заранее, почти слово в слово.</li>
+      <li>Она начинается с мелочи, а заканчивается темой, которая старше этой мелочи.</li>
+      <li>Вы оба знаете, чем кончится, и всё равно идёте.</li>
+      <li>После неё никто не выиграл.</li>
+      <li>Проходит день-два, всё возвращается на места — до следующего раза.</li>
+    </ul>
+
+    <div class="margin-note">Если ссор несколько, выберите ту, что случается чаще. Остальные никуда не денутся — но разбирать их одновременно бессмысленно.</div>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 1</div>
+      <h3>Опишите её своими словами</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Не пересказывайте всю историю отношений — только один разговор"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Одна ссора, которая повторяется. Не вся история — один разговор.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_the_quarrel" placeholder="Из-за чего началось... что было сказано... чем закончилось..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_the_quarrel')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_the_quarrel">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 2 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 2 · Почему она возвращается</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 3: ГЛАВА 2 -->
+  <div class="page-card" id="p3">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 2</span></div>
+    <div class="chapter-open"><span class="chapter-fig">02</span><span class="chapter-kicker">Глава вторая</span></div>
+    <h1>Почему она возвращается</h1>
+    <p class="chapter-lead">Не потому, что вы плохо стараетесь. И не потому, что выбрали не того человека.</p>
+
+    <p class="dropcap">Джон Готтман и его коллеги наблюдали пары годами: приглашали в лабораторию, записывали разговоры, возвращались через несколько лет. Оказалось, что около 69% разногласий — постоянные. Они не решаются раз и навсегда и возвращаются в узнаваемой форме: иногда через годы, иногда через неделю.</p>
+
+    <p>Остальные 31% — задачи, у которых есть решение. Их можно закрыть и больше к ним не возвращаться.</p>
+
+    <div class="compare">
+      <div class="compare-col">
+        <h4>Решается</h4>
+        <p>Кто моет посуду. Сколько тратить на отпуск. Куда ехать в мае. У этого есть конкретный ответ, и его можно выполнить.</p>
+      </div>
+      <div class="compare-col alt">
+        <h4>Не решается</h4>
+        <p>Сколько близости нужно. Как проводить вечера. Насколько близко могут быть родители. Что значит «уважать». Ответа нет: у каждого своя правда.</p>
+      </div>
+    </div>
+
+    <p>Это не значит «терпите». Это значит, что цель разговора — не победа в споре, у которого нет финала, а договор о том, как жить с этой разницей. Готтман называл это диалогом о постоянной проблеме: в нём слышно обоих, и никто не обязан отказаться от себя.</p>
+
+    <div class="pull-quote">Постоянные разногласия не исчезают. Меняется то, как о них говорят.</div>
+
+    <h2>Почему тогда так больно</h2>
+    <p>Потому что в этом споре вы слышите не «мы по-разному распределяем обязанности». Вы слышите «тебя не ценят». Партнёр слышит то же самое, только про себя.</p>
+    <p>Вот почему один и тот же разговор задевает так сильно: он не про чашку. И не про пятнадцать минут.</p>
+
+    <h2>Что это меняет</h2>
+    <ul class="key-list">
+      <li>Вы перестаёте ждать, что однажды партнёр «поймёт» и станет другим.</li>
+      <li>Вы начинаете замечать, что стоит за спором.</li>
+      <li>Вы выбираете, о чём договариваться, вместо того чтобы спорить до утра.</li>
+    </ul>
+
+    <p class="source-note">Цифра о 69% — из исследований Джона Готтмана и его коллег; Gottman Institute, «Managing Conflict: Solvable vs. Perpetual Problems».</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 3 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 3 · Круг</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 4: ГЛАВА 3 -->
+  <div class="page-card" id="p4">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 3</span></div>
+    <div class="chapter-open"><span class="chapter-fig">03</span><span class="chapter-kicker">Глава третья</span></div>
+    <h1>Круг, в который вы попадаете</h1>
+    <p class="chapter-lead">Ссора не начинается с нуля. Она начинается с шага, который вы делаете раньше, чем успеваете заметить.</p>
+
+    <div class="fact-box">
+      <div class="fact-label">Насколько это часто</div>
+      <p>В большом опросе, где анкету заполнили оба партнёра, — 6 159 пар — 74% оказались в одном и том же круге: один идёт навстречу и требует ответа, второй отступает. При этом каждый называет отступающим другого.</p>
+    </div>
+
+    <p class="dropcap">Один хочет близости и ответа — и идёт за ним с вопросами, напором, иногда с претензией. Второй хочет покоя и не выдерживает напора — и отступает: молчанием, телефоном, работой. Первый читает отступление как «тебе всё равно» и усиливает нажим. Второй читает нажим как атаку и отступает дальше.</p>
+
+    <figure class="circle-diagram">
+      <svg viewBox="0 0 360 190" role="img" aria-label="Круг: один наступает, второй отступает">
+        <defs>
+          <marker id="arrowTerracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#C87D65"/>
+          </marker>
+          <marker id="arrowSage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#5A7365"/>
+          </marker>
+        </defs>
+        <circle cx="64" cy="96" r="28" fill="#EBF1ED" stroke="#5A7365" stroke-width="1"/>
+        <circle cx="296" cy="96" r="28" fill="#FDF3E7" stroke="#C87D65" stroke-width="1"/>
+        <text x="64" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#5A7365">ВЫ</text>
+        <text x="296" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" letter-spacing="1.6" fill="#A95F4C">ПАРТНЁР</text>
+        <path d="M100 74 C 150 48 210 48 260 74" fill="none" stroke="#C87D65" stroke-width="1.3" marker-end="url(#arrowTerracotta)"/>
+        <text x="180" y="42" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" letter-spacing="1.8" fill="#A95F4C">НАЖИМ</text>
+        <path d="M260 122 C 210 148 150 148 100 122" fill="none" stroke="#5A7365" stroke-width="1.3" marker-end="url(#arrowSage)"/>
+        <text x="180" y="176" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" letter-spacing="1.8" fill="#5A7365">ОТСТУПЛЕНИЕ</text>
+      </svg>
+      <figcaption>Круг. Ни у кого нет злого умысла — и обоим больно.</figcaption>
+    </figure>
+
+    <p>Через несколько кругов первый уже не спрашивает, а требует. Второй уже не отступает, а исчезает. И оба уверены, что защищаются.</p>
+
+    <div class="margin-note">Оба правы в своих чувствах — и оба неправы в выводах о другом.</div>
+
+    <h2>Какой шаг ваш</h2>
+    <div class="compare">
+      <div class="compare-col">
+        <h4>Если вы идёте навстречу</h4>
+        <p>Вы не «слишком много хотите». Вам нужен контакт. Но чем громче вы добиваетесь, тем дальше отходит партнёр.</p>
+      </div>
+      <div class="compare-col alt">
+        <h4>Если вы отступаете</h4>
+        <p>Вы не «холодный человек». Вам нужен воздух. Но чем дальше вы отходите, тем сильнее вас догоняют.</p>
+      </div>
+    </div>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 2</div>
+      <h3>Ваш круг</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Пишите своими словами, без красивых формулировок"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Три строки: что делаю я, что делает партнёр, чем это заканчивается.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_my_circle" placeholder="Когда всё начинается, я...&#10;Партнёр в ответ...&#10;Через полчаса мы..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_my_circle')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_my_circle">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 4 · Что каждый защищает</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 5: ГЛАВА 4 -->
+  <div class="page-card" id="p5">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 4</span></div>
+    <div class="chapter-open"><span class="chapter-fig">04</span><span class="chapter-kicker">Глава четвёртая</span></div>
+    <h1>Что каждый защищает</h1>
+    <p class="chapter-lead">Под спором о чашке почти всегда лежит что-то, что невозможно взвесить.</p>
+
+    <p class="dropcap">В этой ссоре вы защищаете не чашку и не пятнадцать минут. Вы защищаете что-то из этого:</p>
+
+    <ul class="key-list">
+      <li>Чтобы меня замечали, а не только мои обязанности.</li>
+      <li>Чтобы мои слова что-то значили.</li>
+      <li>Чтобы у меня оставалось место, где я решаю сам.</li>
+      <li>Чтобы рядом можно было быть слабым и не получить за это.</li>
+      <li>Чтобы важное для меня не называли ерундой.</li>
+    </ul>
+
+    <p>У партнёра свой список. Часто он про то же самое, только другими словами: чтобы его уважали, чтобы у него было место, чтобы его не переделывали.</p>
+
+    <figure class="figure-plate">
+      <img src="{{IMG_HANDS}}" alt="Две ладони бережно держат маленький огонь">
+      <figcaption>То, что вы защищаете, снаружи почти не видно. Поэтому спор идёт о чашке.</figcaption>
+    </figure>
+
+    <h2>Как это заметить</h2>
+    <p>Два вопроса. Ответьте на них письменно — не в голове: в голове ответы слишком быстро становятся удобными.</p>
+
+    <div class="quote-box">
+      <span class="quote-label">Вопрос первый</span>
+      <p>Если это останется так навсегда, что я буду чувствовать?</p>
+      <span class="quote-label after">Вопрос второй</span>
+      <p>Что я боюсь потерять, если уступлю?</p>
+    </div>
+
+    <p>Ответ — и есть то, что вы защищаете. Не каприз и не оправдание. Важное.</p>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 3</div>
+      <h3>Что я защищаю</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Можно написать несколько вариантов и оставить один"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Закончите фразу: «Для меня в этом споре важно...» Напишите несколько вариантов, потом оставьте самый точный.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_what_i_protect" placeholder="Для меня в этом споре важно..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_what_i_protect')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_what_i_protect">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="margin-note">Когда человек защищает важное, он не пытается вас победить. Он пытается сохранить себя. Это касается и вас.</div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 5 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 5 · Упрёк и просьба</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 6: ГЛАВА 5 -->
+  <div class="page-card" id="p6">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 5</span></div>
+    <div class="chapter-open"><span class="chapter-fig">05</span><span class="chapter-kicker">Глава пятая</span></div>
+    <h1>Упрёк и просьба</h1>
+    <p class="chapter-lead">Одно и то же можно сказать так, что услышат, и так, что ударят.</p>
+
+    <p class="dropcap">В ссоре мы говорим претензиями. «Ты никогда...», «Ты всегда...», «Сколько можно...». Претензия описывает человека, а не просьбу. На неё можно ответить только защитой.</p>
+
+    <h2>Три сдвига</h2>
+    <ol class="num-list">
+      <li>
+        <h3>«Ты» становится «я»</h3>
+        <p>Не «ты меня не слушаешь», а «когда ты смотришь в телефон, пока я рассказываю, я чувствую, что говорю в пустоту».</p>
+      </li>
+      <li>
+        <h3>«Всегда» становится случаем</h3>
+        <p>Не «ты всегда в телефоне», а «вчера за ужином ты смотрел в телефон». Одно событие можно обсудить. «Всегда» можно только оспорить.</p>
+      </li>
+      <li>
+        <h3>Претензия становится просьбой</h3>
+        <p>Не «будь внимательнее», а «можешь отложить телефон на десять минут, когда я рассказываю?». Просьба выполнима сегодня.</p>
+      </li>
+    </ol>
+
+    <div class="quote-box">
+      <span class="quote-label">Как звучит</span>
+      <p>Ты никогда меня не слушаешь. Тебе вообще всё равно.</p>
+      <span class="quote-label after">Как слышно</span>
+      <p>Когда я рассказываю про работу, а ты смотришь в телефон, мне кажется, что я говорю в пустоту. Можешь отложить его на десять минут?</p>
+    </div>
+
+    <h2>Проверка</h2>
+    <ul class="key-list">
+      <li>Просьба выполнима сегодня? Не «стань другим».</li>
+      <li>В ней одно действие, а не список?</li>
+      <li>Её можно выполнить, не отказавшись от себя?</li>
+    </ul>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 4</div>
+      <h3>Просьба вместо упрёка</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Берите настоящую фразу, а не удобный пример"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Возьмите фразу, которую говорите в этой ссоре чаще всего. Перепишите её как просьбу.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_my_request" placeholder="Вместо «ты...» — «когда..., я..., можешь...?»"></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_my_request')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_my_request">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="margin-note">Просьба — не слабость. Это единственная форма, в которой вас могут услышать.</div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 6 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 6 · Тридцать минут</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 7: ГЛАВА 6 -->
+  <div class="page-card" id="p7">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 6</span></div>
+    <div class="chapter-open"><span class="chapter-fig">06</span><span class="chapter-kicker">Глава шестая</span></div>
+    <h1>Тридцать минут</h1>
+    <p class="chapter-lead">Разговор, у которого есть начало, середина и конец.</p>
+
+    <p class="dropcap">Эта ссора не решается за один вечер. Но её можно обсуждать так, чтобы после разговора не становилось хуже. Для этого нужны рамки: время, место и правила, которые вы оба знаете заранее.</p>
+
+    <h2>Перед началом</h2>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Тридцать минут и таймер. Не больше.</span></li>
+      <li><span class="checkbox"></span><span>Сидя, лицом друг к другу, без телефонов.</span></li>
+      <li><span class="checkbox"></span><span>Один говорит — другой только слушает.</span></li>
+      <li><span class="checkbox"></span><span>Об одной ссоре, а не обо всей жизни.</span></li>
+      <li><span class="checkbox"></span><span>Можно остановиться и вернуться.</span></li>
+    </ul>
+
+    <h2>Как идут эти полчаса</h2>
+    <ol class="protocol">
+      <li class="protocol-step">
+        <div class="protocol-time">0–3<span>мин</span></div>
+        <div class="protocol-body">
+          <h3>Зачем мы здесь</h3>
+          <p>Начните одной фразой: «Я хочу разобраться в нашей ссоре, а не победить». Дальше — по очереди.</p>
+        </div>
+      </li>
+      <li class="protocol-step">
+        <div class="protocol-time">3–12<span>мин</span></div>
+        <div class="protocol-body">
+          <h3>Что я чувствую</h3>
+          <p>Один рассказывает, что с ним происходит в этой ссоре и что он защищает. Второй слушает, не возражает и не объясняет. Можно переспросить: «Правильно ли я понял, что...»</p>
+        </div>
+      </li>
+      <li class="protocol-step">
+        <div class="protocol-time">12–21<span>мин</span></div>
+        <div class="protocol-body">
+          <h3>Меняемся</h3>
+          <p>Теперь рассказывает второй, первый слушает.</p>
+        </div>
+      </li>
+      <li class="protocol-step">
+        <div class="protocol-time">21–27<span>мин</span></div>
+        <div class="protocol-body">
+          <h3>Один шаг</h3>
+          <p>Каждый предлагает одно маленькое действие, которое может сделать сам. Не обещание «больше никогда», а конкретное дело.</p>
+        </div>
+      </li>
+      <li class="protocol-step">
+        <div class="protocol-time">27–30<span>мин</span></div>
+        <div class="protocol-body">
+          <h3>Когда вернёмся</h3>
+          <p>Договоритесь, когда обсудите, как идёт. Не «как-нибудь», а день.</p>
+        </div>
+      </li>
+    </ol>
+
+    <h2>Если стало горячо</h2>
+    <p>Если голос повышается или хочется уколоть — остановитесь. Скажите: «Мне нужно двадцать минут». Это пауза в разговоре, а не уход из отношений.</p>
+    <p>Если обстановка спокойная, назовите время возврата — это забота, а не побег. Если в ответ можно услышать угрозу или вам страшно оставаться в комнате, ничего не объявляйте и не объясняйтесь — просто выйдите. Безопасность важнее вежливости, и если такое повторяется, нужен специалист.</p>
+
+    <h2>Чего не делать</h2>
+    <ul class="key-list">
+      <li>Не вспоминать прошлые ссоры — это отдельный разговор.</li>
+      <li>Не начинать с «но».</li>
+      <li>Не обсуждать третьих лиц.</li>
+      <li>Не спорить о том, кто что сказал. Говорите о том, что вы почувствовали.</li>
+    </ul>
+
+    <figure class="figure-bleed">
+      <img src="{{IMG_THIRTY}}" alt="Двое сидят за столом с песочными часами и листом бумаги между ними">
+      <figcaption>Тридцать минут — это не сеанс. Это время, которое вы выделили друг другу.</figcaption>
+    </figure>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 7 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p8" onclick="goToPage('p8'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 7 · Два овала</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 8: ГЛАВА 7 -->
+  <div class="page-card" id="p8">
+    <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 7</span></div>
+    <div class="chapter-open"><span class="chapter-fig">07</span><span class="chapter-kicker">Глава седьмая</span></div>
+    <h1>Два овала</h1>
+    <p class="chapter-lead">Уступить можно в чём угодно, кроме того, что делает вас вами.</p>
+
+    <p class="dropcap">Есть вещи, которые не обсуждаются: они про то, кто вы и что для вас важно. И есть вещи, в которых вы можете двигаться. Готтман предложил рисовать для этого два овала: внутренний — то, что вы не отдадите, внешний — то, в чём можно искать компромисс.</p>
+
+    <figure class="figure-bleed">
+      <img src="{{IMG_OVALS}}" alt="Двое сидят над листом бумаги, на котором нарисованы два пересекающихся овала">
+      <figcaption>Внутренний овал — то, что не отдам. Внешний — то, в чём могу двигаться.</figcaption>
+    </figure>
+
+    <p>Смысл не в том, чтобы уступить побольше. Смысл в том, чтобы отличать важное от привычного. Многие ссоры держатся не на важном, а на форме: во сколько, в каком порядке, какими словами.</p>
+
+    <h2>Пять вопросов</h2>
+    <ol class="num-list">
+      <li><p>Что мне на самом деле нужно в этой ссоре? Не «чего я требую», а «что мне нужно».</p></li>
+      <li><p>Чего я боюсь, если этого не будет?</p></li>
+      <li><p>Откуда это взялось в моей жизни?</p></li>
+      <li><p>Что я могу дать, не потеряв себя?</p></li>
+      <li><p>Какой маленький шаг я готов сделать?</p></li>
+    </ol>
+
+    <div class="compare">
+      <div class="compare-col">
+        <h4>Внутренний овал</h4>
+        <p>То, что не отдам: близость, уважение, свобода, безопасность. То, что делает вас вами.</p>
+      </div>
+      <div class="compare-col alt">
+        <h4>Внешний овал</h4>
+        <p>То, в чём могу двигаться: время, форма, порядок, слова. То, о чём можно договориться.</p>
+      </div>
+    </div>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 5</div>
+      <h3>Ваши два овала</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Два списка, а не один. Второй важнее первого"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Два списка. В первом — то, что вы не отдадите. Во втором — то, в чём можете двигаться.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_two_ovals" placeholder="Не отдам: ...&#10;Могу двигаться: ..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_two_ovals')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_two_ovals">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="margin-note">Делайте это в спокойный час и один. Во время ссоры овалы не рисуют.</div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 8 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p7" onclick="goToPage('p7'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p9" onclick="goToPage('p9'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Часть II · Первый разговор</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 9: ЧАСТЬ II, ГЛАВА 8 -->
+  <div class="page-card" id="p9">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 8</span></div>
+    <div class="part-head">
+      <div class="part-num">II</div>
+      <div>
+        <div class="part-kicker">Вторая встреча</div>
+        <p class="part-lead">Через неделю. С записями — и с разговором, который вы проведёте иначе.</p>
+      </div>
+    </div>
+    <div class="chapter-open"><span class="chapter-fig">08</span><span class="chapter-kicker">Глава восьмая</span></div>
+    <h1>Первый разговор</h1>
+    <p class="chapter-lead">Не в тот же вечер, когда прочитали. Дайте себе день-два и выберите спокойное время.</p>
+
+    <p class="dropcap">Этот разговор отличается от обычной ссоры не темой, а рамкой. Вы садитесь не для того, чтобы выяснить, кто прав, а чтобы услышать, что каждый защищает. Всё нужное уже есть: ваша просьба из пятой главы и два овала из седьмой.</p>
+
+    <p>Не начинайте в тот день, когда произошла ссора. И не начинайте поздно вечером, когда оба устали. Хорошее время — выходной день, после еды, когда впереди есть полчаса и никто никуда не спешит.</p>
+
+    <h2>Перед началом</h2>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Оба не голодны и не после тяжёлого дня.</span></li>
+      <li><span class="checkbox"></span><span>Телефоны в другой комнате.</span></li>
+      <li><span class="checkbox"></span><span>Есть тридцать минут, и никто не ждёт.</span></li>
+      <li><span class="checkbox"></span><span>Вы договорились, что это не ссора.</span></li>
+    </ul>
+
+    <h2>С чего начать</h2>
+    <p>Первые две фразы решают больше, чем следующие двадцать. Скажите, зачем вы сели, и признайте, что вам тоже неловко или страшно. Это не слабость — это приглашение.</p>
+
+    <div class="quote-box">
+      <span class="quote-label">Можно сказать так</span>
+      <p>Я хочу поговорить о нашей ссоре, потому что она возвращается и мне от этого плохо. Я не хочу выяснить, кто виноват. Я хочу, чтобы мы поняли друг друга. Мне немного страшно начинать.</p>
+    </div>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 6</div>
+      <h3>С чего я начну</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Пишите те слова, которые действительно скажете, а не красивые"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Первые две фразы, с которыми начнёте разговор. Их можно прочитать вслух.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_first_words" placeholder="Я хочу поговорить о... Я не хочу..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_first_words')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_first_words">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="fallback-note">
+      <strong>Если сегодня разговор не состоялся.</strong> Это бывает: не то время, не то настроение, у кого-то нет сил. Не превращайте это в новую ссору. Скажите, что вам важно поговорить, и предложите конкретный день. Если разговоров о важном не получается совсем — об этом есть на последней странице.
+    </div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 9 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p8" onclick="goToPage('p8'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p10" onclick="goToPage('p10'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 9 · Как прошло</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 10: ГЛАВА 9 -->
+  <div class="page-card" id="p10">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 9</span></div>
+    <div class="chapter-open"><span class="chapter-fig">09</span><span class="chapter-kicker">Глава девятая</span></div>
+    <h1>Как прошло</h1>
+    <p class="chapter-lead">Без «мы молодцы» и без «всё зря». Просто посмотреть, что было.</p>
+
+    <p class="dropcap">После разговора полезно записать не впечатление, а детали. Через неделю вы забудете половину, и останется только «было тяжело» или «было нормально». А изменения живут в деталях.</p>
+
+    <h2>Признаки, что было иначе</h2>
+    <ul class="key-list">
+      <li>Вы услышали что-то, чего не знали.</li>
+      <li>Кто-то повысил голос — и сам остановился.</li>
+      <li>Вы не дошли до знакомого финала.</li>
+      <li>В конце появилось конкретное действие, а не «я постараюсь».</li>
+      <li>Вы разошлись не по разным комнатам, а с ощущением, что разговор был.</li>
+    </ul>
+
+    <h2>Признаки, что всё пошло по кругу</h2>
+    <ul class="key-list">
+      <li>Те же фразы, почти дословно.</li>
+      <li>Один замолчал, второй говорил громче.</li>
+      <li>Появился старый счёт: «а помнишь, ты...».</li>
+      <li>Разговор закончился не решением, а усталостью.</li>
+    </ul>
+
+    <p>И то, и другое — не приговор. Первый разговор редко бывает красивым. Важно не то, как он прошёл, а то, что вы теперь знаете, где именно круг замыкается.</p>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 7</div>
+      <h3>Что я заметил</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-solo"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.3 3.1-5.4 7-5.4s7 2.1 7 5.4"/></svg><span>Индивидуально</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Пишите сразу после разговора, пока помните детали"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Три вещи: что было иначе, где стало горячо и что вы сделали.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_how_it_went" placeholder="Иначе было...&#10;Горячо стало, когда...&#10;Я сделал..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_how_it_went')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_how_it_went">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <div class="margin-note">Один разговор не переписывает годы. Второй важнее первого.</div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 10 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p9" onclick="goToPage('p9'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p11" onclick="goToPage('p11'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 10 · Между встречами</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 11: ГЛАВА 10 -->
+  <div class="page-card" id="p11">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 10</span></div>
+    <div class="chapter-open"><span class="chapter-fig">10</span><span class="chapter-kicker">Глава десятая</span></div>
+    <h1>Между встречами</h1>
+    <p class="chapter-lead">Неделя, в которую ничего не нужно чинить.</p>
+
+    <p class="dropcap">Между первым и вторым разговором не нужно всё время говорить о ссоре. Наоборот: дайте друг другу воздух. Ваша задача — не решить, а заметить.</p>
+
+    <h2>Что делать эту неделю</h2>
+    <ul class="key-list">
+      <li>Замечайте круг. Не останавливайте его, просто отмечайте: вот я нажал, вот партнёр отступил.</li>
+      <li>Делайте одно маленькое дело в день. Не про отношения — про дом, про день, про заботу.</li>
+      <li>Не поднимайте большую тему в середине недели. Для неё есть время.</li>
+      <li>Если сорвались — это данные, а не провал. Запишите, с чего началось.</li>
+    </ul>
+
+    <div class="week-line">
+      <span class="week-day"><span class="week-dot"></span>Пн</span>
+      <span class="week-day"><span class="week-dot"></span>Вт</span>
+      <span class="week-day"><span class="week-dot"></span>Ср</span>
+      <span class="week-day"><span class="week-dot"></span>Чт</span>
+      <span class="week-day"><span class="week-dot"></span>Пт</span>
+      <span class="week-day"><span class="week-dot"></span>Сб</span>
+      <span class="week-day"><span class="week-dot"></span>Вс</span>
+    </div>
+    <div class="week-caption">Достаточно одного наблюдения в день.</div>
+
+    <h2>Если накрыло</h2>
+    <p>Если ссора всё-таки случилась на этой неделе — не отменяйте вторую встречу. Скажите себе: это та самая ссора, она снова здесь. Запишите, с чего началось, и вернитесь к разговору в назначенный день.</p>
+    <p>Если в такие минуты становится страшно, тетрадь подождёт. Сначала безопасность.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 11 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p10" onclick="goToPage('p10'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p12" onclick="goToPage('p12'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Глава 11 · Второй разговор</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 12: ГЛАВА 11 -->
+  <div class="page-card" id="p12">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 11</span></div>
+    <div class="chapter-open"><span class="chapter-fig">11</span><span class="chapter-kicker">Глава одиннадцатая</span></div>
+    <h1>Второй разговор</h1>
+    <p class="chapter-lead">Тот же разговор, но с одной поправкой.</p>
+
+    <p class="dropcap">Ко второй встрече у вас есть то, чего не было на первой: записи. Перечитайте их до разговора — не вместе, каждый свои. Выберите одну вещь, которую измените. Не пять. Одну.</p>
+
+    <h2>Что можно изменить</h2>
+    <ul class="key-list">
+      <li>Начать мягче: не с претензии, а с того, что вам важно.</li>
+      <li>Спросить вместо того, чтобы додумывать: «Ты сейчас молчишь, потому что злишься или потому что устал?»</li>
+      <li>Остановиться раньше: не на крике, а на первом повышении голоса.</li>
+      <li>Говорить о своём: «мне», а не «ты».</li>
+    </ul>
+
+    <p>Дальше — те же тридцать минут. Разница в том, что теперь вы знаете, где обычно замыкается круг, и можете сделать шаг в сторону.</p>
+
+    <figure class="figure-bleed">
+      <img src="{{IMG_SECOND}}" alt="Утро, двое за столом, один наливает чай другому">
+      <figcaption>Второй разговор отличается не темой, а тем, как вы в него входите.</figcaption>
+    </figure>
+
+    <h2>Договор</h2>
+    <p>Договор — это не обещание никогда не ссориться. Это ответ на вопрос: что мы делаем, когда эта ссора начнётся снова. Хороший договор: одно действие от каждого, выполнимое, конкретное, с датой проверки.</p>
+
+    <div class="interactive-card card-title-only ask">
+      <div class="ask-num">Запись 8</div>
+      <h3>Наш договор</h3>
+    </div>
+    <div class="entry-block">
+      <div class="entry-kind kind-pair"><svg class="kind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.1"/><path d="M2.8 19.5c0-2.9 2.8-4.7 6.2-4.7s6.2 1.8 6.2 4.7"/><circle cx="17" cy="9.5" r="2.6"/><path d="M17.6 14.9c2.2.3 3.6 1.7 3.6 3.8"/></svg><span>Вместе с партнёром</span></div>
+      <div class="entry-header">
+        <span class="entry-lamp" title="Одно действие, а не список обещаний"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
+        <span class="entry-hint">Обсудите и запишите: что каждый из вас будет делать, когда эта ссора начнётся снова.</span>
+      </div>
+      <textarea class="journal-entry" id="q2_our_agreement" placeholder="Когда ссора начнётся, я...&#10;А ты...&#10;Через месяц мы..."></textarea>
+      <button type="button" class="btn-save-entry" onclick="saveEntry('q2_our_agreement')">Сохранить запись</button>
+      <div class="entry-list" id="list_q2_our_agreement">
+        <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
+      </div>
+    </div>
+
+    <p class="source-note">Если вы проходите тетрадь один, запишите свою часть договора. Договор из одной части тоже работает.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p11" onclick="goToPage('p11'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p13" onclick="goToPage('p13'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Послесловие · Что дальше</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА 13: ПОСЛЕСЛОВИЕ -->
+  <div class="page-card" id="p13">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Послесловие</span></div>
+    <h1>Что дальше</h1>
+    <p class="chapter-lead">Три вещи, которые останутся с вами.</p>
+
+    <ol class="num-list">
+      <li><p>Вы знаете свою ссору в лицо.</p></li>
+      <li><p>Вы видите круг и свой шаг в нём.</p></li>
+      <li><p>У вас есть просьба вместо упрёка и разговор, у которого есть правила.</p></li>
+    </ol>
+
+    <p>Этого достаточно, чтобы следующий раз прошёл иначе. Не идеально — иначе. Один разговор не делает отношения другими, но показывает, что они могут быть другими. Дальше это повторяется: та же ссора, тот же круг, тот же выбор. Постепенно выбор становится привычкой.</p>
+
+    <p>Через месяц вернитесь к записи 8 и посмотрите, что из договора живёт, а что нет. Это и будет проверка — не для отчёта, а для себя.</p>
+
+    <h2>Когда нужен специалист</h2>
+    <p>Тетрадь не заменяет терапию. Обратитесь за помощью, если:</p>
+    <ul class="key-list">
+      <li>в ссорах есть угрозы, удары или страх;</li>
+      <li>вам страшно оставаться в комнате;</li>
+      <li>разговор о важном невозможен: любая попытка заканчивается криком или молчанием на дни;</li>
+      <li>вы оба стараетесь, а легче не становится месяцами.</li>
+    </ul>
+    <p>Это не значит, что с вами что-то не так. Это значит, что некоторые вещи лучше разбирать с человеком, который умеет держать рамку.</p>
+
+    <div class="bridge-note">
+      <div class="bridge-label">Первая тетрадь</div>
+      <p>Если ссора ещё не научилась останавливаться, начните с первой тетради — «Как вовремя остановить ссору». Там про паузу, стоп-слово и возвращение.</p>
+      <p>Она бесплатная.</p>
+    </div>
+
+    <div class="colophon">
+      <div class="orn">
+        <svg width="120" height="14" viewBox="0 0 120 14" aria-hidden="true">
+          <path d="M0 7h46" stroke="#D8D1C4" stroke-width="1"/>
+          <path d="M74 7h46" stroke="#D8D1C4" stroke-width="1"/>
+          <circle cx="60" cy="7" r="3" fill="none" stroke="#C87D65" stroke-width="1"/>
+        </svg>
+      </div>
+      <p>Одна и та же ссора</p>
+      <p>Тетрадь для пар · Уровень 2</p>
+    </div>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 13 из 13</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p12" onclick="goToPage('p12'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p0" onclick="goToPage('p0'); return false;">
+        <span class="nav-main">В начало тетради <span class="nav-arrow">↑</span></span>
+        <span class="nav-sub">Обложка</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="save-indicator" id="saveIndicator">Сохранено на устройстве</div>
+
+<script>
+  var ENTRIES_PREFIX = 'wb_couples_l2_one_quarrel_entries_';
+  var DRAFT_PREFIX = 'wb_couples_l2_one_quarrel_';
+
+  function readEntries(fieldId) {
+    try {
+      return JSON.parse(localStorage.getItem(ENTRIES_PREFIX + fieldId)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function writeEntries(fieldId, arr) {
+    try {
+      localStorage.setItem(ENTRIES_PREFIX + fieldId, JSON.stringify(arr));
+    } catch (e) {}
+  }
+
+  function appendEntryItem(list, text, animate) {
+    var empty = list.querySelector('.entry-empty');
+    if (empty) empty.remove();
+    var item = document.createElement('div');
+    item.className = animate ? 'entry-item is-new' : 'entry-item';
+    item.textContent = text;
+    list.appendChild(item);
+    if (animate) {
+      setTimeout(function () { item.classList.remove('is-new'); }, 300);
+    }
+  }
+
+  function renderEntries(fieldId) {
+    var list = document.getElementById('list_' + fieldId);
+    if (!list) return;
+    var arr = readEntries(fieldId);
+    if (!arr.length) return;
+    arr.forEach(function (text) { appendEntryItem(list, text, false); });
+  }
+
+  function saveEntry(fieldId) {
+    var textarea = document.getElementById(fieldId);
+    var list = document.getElementById('list_' + fieldId);
+    if (!textarea || !list) return;
+    var text = textarea.value.trim();
+    if (!text) return;
+
+    appendEntryItem(list, text, true);
+
+    var arr = readEntries(fieldId);
+    arr.push(text);
+    writeEntries(fieldId, arr);
+
+    textarea.value = '';
+    saveData(fieldId, '');
+    triggerSaveIndicator();
+  }
+
+  var pages = ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12', 'p13'];
+  var currentPageIndex = 0;
+
+  function updateView() {
+    pages.forEach(function (pId, idx) {
+      var el = document.getElementById(pId);
+      if (el) el.classList.toggle('active', idx === currentPageIndex);
+    });
+    var sel = document.getElementById('pageSelect');
+    if (sel) sel.value = pages[currentPageIndex];
+
+    document.body.classList.toggle('on-cover', currentPageIndex === 0);
+    var prev = document.getElementById('prevBtn');
+    var next = document.getElementById('nextBtn');
+    if (prev) prev.disabled = (currentPageIndex === 0);
+    if (next) next.disabled = (currentPageIndex === pages.length - 1);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goToPage(pId) {
+    var idx = pages.indexOf(pId);
+    if (idx !== -1) {
+      currentPageIndex = idx;
+      updateView();
+    }
+  }
+
+  function stepPage(delta) {
+    var nextIdx = currentPageIndex + delta;
+    if (nextIdx >= 0 && nextIdx < pages.length) {
+      currentPageIndex = nextIdx;
+      updateView();
+    }
+  }
+
+  var inputIds = [
+    'q2_the_quarrel',
+    'q2_my_circle',
+    'q2_what_i_protect',
+    'q2_my_request',
+    'q2_two_ovals',
+    'q2_first_words',
+    'q2_how_it_went',
+    'q2_our_agreement'
+  ];
+
+  function saveData(key, val) {
+    try {
+      localStorage.setItem(DRAFT_PREFIX + key, val);
+      triggerSaveIndicator();
+    } catch (e) {}
+  }
+
+  function triggerSaveIndicator() {
+    var ind = document.getElementById('saveIndicator');
+    if (!ind) return;
+    ind.classList.add('show');
+    setTimeout(function () { ind.classList.remove('show'); }, 1500);
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    inputIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        var saved = null;
+        try { saved = localStorage.getItem(DRAFT_PREFIX + id); } catch (e) {}
+        if (saved) el.value = saved;
+        el.addEventListener('input', function () { saveData(id, el.value); });
+      }
+      renderEntries(id);
+    });
+
+    // Прямая ссылка на страницу (#p7) должна открывать эту страницу, а не обложку
+    var hashId = window.location.hash.replace('#', '');
+    if (pages.indexOf(hashId) !== -1) {
+      goToPage(hashId);
+    } else {
+      updateView();
+    }
+  });
+
+  window.addEventListener('hashchange', function () {
+    var id = window.location.hash.replace('#', '');
+    if (pages.indexOf(id) !== -1) goToPage(id);
+  });
+</script>
+</body>
+</html>
