@@ -6,7 +6,8 @@
 - формат A5 (148×210 мм): 12 страниц = 3 листа A4 при двусторонней печати,
   ровно под буклетную брошюровку;
 - книжная типографика: PT Serif для текста, PT Sans для надзаголовков;
-- вместо полей ввода — пунктирные строки под ручку;
+- вместо полей ввода — пунктирные строки под ручку с шагом 7 мм (как в обычной
+  тетради в линейку), число строк считается от нижней границы страницы;
 - шкала кипения — печатная линейка из 10 делений вместо ползунка;
 - шпаргалка — карточка 85×54 мм под вырезание (влезает в кошелёк);
 - блок возврата после паузы вынесен на отдельную страницу;
@@ -81,18 +82,18 @@ STYLES = {}
 
 def build_styles() -> None:
     STYLES["body"] = ParagraphStyle(
-        "body", fontName="PTSerif", fontSize=10.2, leading=14.8,
+        "body", fontName="PTSerif", fontSize=10.2, leading=14.2,
         textColor=BODY, alignment=0,
     )
     STYLES["body_small"] = ParagraphStyle(
         "body_small", parent=STYLES["body"], fontSize=9.0, leading=13.0,
     )
     STYLES["lead"] = ParagraphStyle(
-        "lead", fontName="PTSerif-Italic", fontSize=10.4, leading=15.2,
+        "lead", fontName="PTSerif-Italic", fontSize=10.3, leading=14.6,
         textColor=HexColor("#4A5459"),
     )
     STYLES["h1"] = ParagraphStyle(
-        "h1", fontName="PTSerif-Bold", fontSize=21, leading=24.5,
+        "h1", fontName="PTSerif-Bold", fontSize=20, leading=23.6,
         textColor=TEXT,
     )
     STYLES["h1_cover"] = ParagraphStyle(
@@ -100,7 +101,7 @@ def build_styles() -> None:
         textColor=TEXT,
     )
     STYLES["h3"] = ParagraphStyle(
-        "h3", fontName="PTSans-Bold", fontSize=9.4, leading=13,
+        "h3", fontName="PTSans-Bold", fontSize=9.4, leading=12.6,
         textColor=TEXT,
     )
     STYLES["quote"] = ParagraphStyle(
@@ -108,7 +109,7 @@ def build_styles() -> None:
         textColor=HexColor("#41544A"),
     )
     STYLES["note"] = ParagraphStyle(
-        "note", fontName="PTSans", fontSize=8.0, leading=11.6,
+        "note", fontName="PTSans", fontSize=8.0, leading=11.2,
         textColor=MUTED,
     )
     STYLES["label"] = ParagraphStyle(
@@ -164,7 +165,16 @@ def rule(c, x, y, width, color=RULE, lw=0.6):
     c.restoreState()
 
 
-def dotted_lines(c, x, y, width, count, gap=9 * mm):
+def writing_lines(c, x, y, width, bottom=18 * mm, gap=7 * mm, count=None):
+    """Пунктирные строки под ручку.
+
+    Шаг 7 мм — как в обычной тетради в линейку: взрослому человеку так писать
+    удобнее, и строк на странице помещается больше. Число строк считается само
+    от нижней границы (bottom), поэтому низ страницы не пустует и ничего
+    не наезжает на номер страницы.
+    """
+    if count is None:
+        count = max(1, int((y - bottom) // gap) + 1)
     c.saveState()
     c.setStrokeColor(DOTS)
     c.setLineWidth(0.55)
@@ -410,9 +420,9 @@ def page_how_to(c, imgs):
 def page_intro(c, imgs):
     new_page(c)
     footer(c, 3, "")
-    plate_w = 74 * mm
-    h = draw_plate(c, imgs[1], (W - plate_w) / 2, H - 15 * mm, plate_w)
-    y = H - 15 * mm - h - 8 * mm
+    plate_w = 49 * mm
+    h = draw_plate(c, imgs[1], (W - plate_w) / 2, H - 14 * mm, plate_w)
+    y = H - 14 * mm - h - 7 * mm
 
     kicker(c, "Введение", M, y)
     y -= 10 * mm
@@ -423,7 +433,7 @@ def page_intro(c, imgs):
     y -= 5 * mm
 
     # факт-бокс
-    box_h = 35 * mm
+    box_h = 33 * mm
     box_top = y
     card_bg(c, M, box_top, CW, box_h, TERRA_LIGHT)
     c.saveState()
@@ -451,7 +461,7 @@ def page_intro(c, imgs):
     y = para(c, "Вспомните прошедшую неделю. Каким одним словом вы бы описали "
                 "ваши отношения?", M, y, CW, "h3")
     y -= 5.5 * mm
-    dotted_lines(c, M, y, CW, 2, 9.5 * mm)
+    writing_lines(c, M, y, CW)
 
 
 def page_step1(c, imgs):
@@ -470,18 +480,18 @@ def page_step1(c, imgs):
     y = para(c, "Вспомните последнюю ссору и отметьте, на сколько баллов кипело:",
              M, y, CW, "h3")
     y -= 6 * mm
-    seg_w = (CW - 9 * 1.3 * mm) / 10
+    seg_w = (CW - 9 * 1.1 * mm) / 10
     for i in range(10):
-        x = M + i * (seg_w + 1.3 * mm)
+        x = M + i * (seg_w + 1.1 * mm)
         col = Z_GREEN if i < 4 else (Z_SAND if i < 7 else Z_RED)
         c.saveState()
         c.setFillColor(col)
-        c.roundRect(x, y - 5 * mm, seg_w, 5 * mm, 1.0 * mm, stroke=0, fill=1)
+        c.roundRect(x, y - 4.4 * mm, seg_w, 4.4 * mm, 0.9 * mm, stroke=0, fill=1)
         c.setFillColor(HexColor("#6E6862"))
-        c.setFont("PTSans", 7.2)
-        c.drawCentredString(x + seg_w / 2, y - 10.6 * mm, str(i + 1))
+        c.setFont("PTSans", 7.0)
+        c.drawCentredString(x + seg_w / 2, y - 9.2 * mm, str(i + 1))
         c.restoreState()
-    y -= 16 * mm
+    y -= 14 * mm
 
     zones = [
         (Z_GREEN, "1–4", "Голова ясная. Вы слышите партнёра, можете пошутить "
@@ -501,7 +511,7 @@ def page_step1(c, imgs):
         c.drawString(M + 5.0 * mm, y - 3.6 * mm, num)
         c.restoreState()
         y = para(c, txt, M + 14 * mm, y, CW - 14 * mm, "body_small")
-        y -= 3.2 * mm
+        y -= 2.4 * mm
 
     y -= 4 * mm
     kicker(c, "Запишите · индивидуально", M, y, HexColor("#8E7A52"), size=6.8)
@@ -510,7 +520,7 @@ def page_step1(c, imgs):
                 "Что вы заметили за минуту до того, как стало совсем горячо?",
              M, y, CW, "h3")
     y -= 7 * mm
-    dotted_lines(c, M, y, CW, 3, 9 * mm)
+    writing_lines(c, M, y, CW)
 
 
 def page_step2(c, imgs):
@@ -526,7 +536,7 @@ def page_step2(c, imgs):
 
     # дыхание
     y -= 7 * mm
-    card_bg(c, M, y, CW, 25 * mm, SAGE_LIGHT)
+    card_bg(c, M, y, CW, 24 * mm, SAGE_LIGHT)
     tracked(c, "СБРОС НАПРЯЖЕНИЯ", M + 6 * mm, y - 7 * mm, size=7.2)
     c.saveState()
     c.setFillColor(TEXT)
@@ -535,7 +545,7 @@ def page_step2(c, imgs):
     c.restoreState()
     para(c, "Вдох носом — круг растёт. Выдох через рот — отпустите плечи и челюсть.",
          M + 6 * mm, y - 14.6 * mm, CW - 12 * mm, "body_small")
-    y -= 31 * mm
+    y -= 29.5 * mm
 
     y = para(c, "Что делать в эти 20 минут:", M, y, CW, "h3")
     y -= 5 * mm
@@ -552,7 +562,7 @@ def page_step2(c, imgs):
     y = para(c, "Что уже помогало остывать именно вам? Перечислите способы, "
                 "которые срабатывали.", M, y, CW, "h3")
     y -= 7 * mm
-    dotted_lines(c, M, y, CW, 3, 9 * mm)
+    writing_lines(c, M, y, CW)
 
 
 def page_return(c, imgs):
@@ -618,12 +628,12 @@ def page_step3(c, imgs):
     y -= 6 * mm
     for title, opts in parts:
         y = para(c, title, M, y, CW, "h3")
-        y -= 2 * mm
+        y -= 1.5 * mm
         y = para(c, opts, M + 4 * mm, y, CW - 4 * mm, "body_small")
-        y -= 4.5 * mm
+        y -= 2.2 * mm
 
     # готовая фраза
-    box_h = 35 * mm
+    box_h = 28.5 * mm
     card_bg(c, M, y, CW, box_h, SAGE_LIGHT)
     tracked(c, "ВАША ГОТОВАЯ ФРАЗА", M + 7 * mm, y - 8 * mm, size=7.2)
     para(c, "«Я очень люблю тебя. Сейчас я закипаю и боюсь наговорить обидного. "
@@ -638,7 +648,7 @@ def page_step3(c, imgs):
     y = para(c, "Какую фразу вы скажете в следующий раз, когда почувствуете, "
                 "что закипаете?", M, y, CW, "h3")
     y -= 7 * mm
-    dotted_lines(c, M, y, CW, 3, 9 * mm)
+    writing_lines(c, M, y, CW)
 
 
 def page_step4(c, imgs):
@@ -670,7 +680,7 @@ def page_step4(c, imgs):
     y = para(c, "Обсудите это в спокойный вечер и запишите, к чему вы пришли.",
              M, y, CW, "h3")
     y -= 7 * mm
-    dotted_lines(c, M, y, CW, 3, 9 * mm)
+    writing_lines(c, M, y, CW, bottom=46 * mm)
 
     rule(c, M, 42 * mm, CW)
     para(c, "<b>Если партнёр пока не готов.</b> Не настаивайте и не превращайте это "
@@ -736,7 +746,7 @@ def page_cheatsheet(c, imgs):
     y = para(c, "Какую фразу вы хотите себе напомнить в следующий конфликт?",
              M, y, CW, "h3")
     y -= 8 * mm
-    dotted_lines(c, M, y, CW, 4, 10 * mm)
+    writing_lines(c, M, y, CW, bottom=20 * mm)
 
 
 def page_step6(c, imgs):
@@ -776,7 +786,7 @@ def page_step6(c, imgs):
     y = para(c, "Оглянитесь на пройденный путь. Что вы хотите отметить у себя?",
              M, y, CW, "h3")
     y -= 7 * mm
-    dotted_lines(c, M, y, CW, 3, 10 * mm)
+    writing_lines(c, M, y, CW)
 
 
 def page_notes(c, imgs):
@@ -789,7 +799,7 @@ def page_notes(c, imgs):
                 "задать партнёру. Фразы, которые хочется попробовать.",
              M, y, CW, "body_small")
     y -= 10 * mm
-    dotted_lines(c, M, y, CW, 12, 9.5 * mm)
+    writing_lines(c, M, y, CW, gap=7.5 * mm)
 
 
 def page_back(c, imgs):
