@@ -541,6 +541,9 @@ def estimate_block(el: Tag, ctx: dict) -> float:
 
     if cls & SKIP or "running-head" in cls or "folio" in cls:
         return 0.0
+    # выходные данные уезжают на последнюю страницу — место на экране не занимают
+    if "colophon" in cls:
+        return 0.0
     if name == "h1":
         return measure(markup(el), "h1", CW) + 7 * mm
     if name == "h2":

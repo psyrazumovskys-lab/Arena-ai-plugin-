@@ -43,7 +43,7 @@ def page_text(pdf, i: int) -> str:
 
 
 def main() -> int:
-    for path, expected in ((WB1, 12), (WB2, 44)):
+    for path, expected in ((WB1, 12), (WB2, 40)):
         print(f"\n— {path.name}")
         check("файл собран", path.exists())
         if not path.exists():
