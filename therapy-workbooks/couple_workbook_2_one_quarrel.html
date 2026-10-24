@@ -858,6 +858,274 @@
     }
     .ask-list .line-field { min-height: 38px; padding: 4px 2px 4px; }
 
+    /* ── ВОЗВРАТ, ПРОГРЕСС, ПРИВАТНОСТЬ ───────────────────────────────────── */
+    .resume-btn {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      padding: 13px 18px;
+      border: 1.5px solid var(--sage-primary);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--sage-deep);
+      font-family: inherit;
+      font-size: 15.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+    .resume-btn.show { display: block; }
+    .resume-btn small {
+      display: block;
+      margin-top: 2px;
+      font-size: 12.5px;
+      font-weight: 400;
+      font-style: italic;
+      color: #7C8783;
+    }
+
+    .progress-line {
+      margin: 14px 0 2px;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
+      color: #7C8783;
+      text-align: center;
+    }
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 7px 0 0;
+    }
+    .progress-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      border: 1px solid rgba(90, 115, 101, 0.45);
+      background: transparent;
+    }
+    .progress-dot.done { background: var(--sage-primary); border-color: var(--sage-primary); }
+
+    .cover-note {
+      margin: 14px 0 0;
+      font-size: 12.5px;
+      line-height: 1.5;
+      font-style: italic;
+      color: #7C8783;
+      text-align: center;
+    }
+
+    .privacy-note {
+      margin: 18px 0 6px;
+      padding: 13px 15px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 9px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #55605F;
+    }
+    .privacy-note strong { color: var(--sage-deep); }
+
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 6px;
+    }
+    .tool-btn {
+      flex: 1 1 44%;
+      min-height: 46px;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 11px;
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 14.5px;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .tool-btn:hover { border-color: var(--sage-primary); }
+    .tool-btn.danger { color: #9B4B3C; border-color: #E4C9C1; }
+
+    /* ── СТРАНИЦА «С ЧЕГО НАЧАТЬ» ─────────────────────────────────────────── */
+    .start-steps {
+      list-style: none;
+      counter-reset: ss;
+      margin: 18px 0 10px;
+      padding: 0;
+    }
+    .start-steps > li {
+      counter-increment: ss;
+      position: relative;
+      padding-left: 42px;
+      margin-bottom: 18px;
+    }
+    .start-steps > li::before {
+      content: counter(ss);
+      position: absolute;
+      left: 0;
+      top: -4px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      line-height: 1;
+      color: var(--terracotta);
+    }
+    .start-steps h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .start-steps p { font-size: 15.5px; line-height: 1.55; margin: 0; }
+    .start-steps .start-where {
+      margin-top: 4px;
+      font-size: 12.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--sage-primary);
+    }
+
+    /* ── ПАМЯТКА ──────────────────────────────────────────────────────────── */
+    .memo {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: #FFFFFF;
+    }
+    .memo h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .memo ol { margin: 0; padding-left: 20px; }
+    .memo li { font-size: 15px; line-height: 1.55; margin-bottom: 5px; }
+
+    /* ── ПЕЧАТЬ ───────────────────────────────────────────────────────────── */
+    @media print {
+      @page { size: A5 portrait; margin: 14mm 12mm; }
+
+      html, body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .wb-header, .page-footer-nav, .save-indicator,
+      .btn-save-entry, .resume-btn, .tools-row, .entry-empty,
+      .progress-line, .progress-dots, .wb-page-selector-wrapper { display: none !important; }
+
+      .container { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+
+      .page-card {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 0 0 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #FFFFFF !important;
+        break-after: page;
+        page-break-after: always;
+        break-inside: avoid;
+      }
+      .page-card:last-of-type { break-after: auto; page-break-after: auto; }
+
+      .cover-card { border: none !important; }
+      .cover-art img { max-height: 95mm; width: auto; }
+      figure img { max-height: 70mm; }
+
+      h1 { font-size: 22pt; }
+      p, li { font-size: 10.5pt; line-height: 1.45; }
+
+      .running-head { font-size: 8pt; border-bottom: 0.5pt solid #999; padding-bottom: 2mm; }
+      .folio { font-size: 8pt; border-top: 0.5pt solid #999; padding-top: 2mm; margin-top: 4mm; }
+
+      /* Поля для письма: строка = 7 мм, текст ложится на линии */
+      textarea, input[type="text"] {
+        display: block !important;
+        width: 100% !important;
+        border: none !important;
+        background: transparent !important;
+        font-size: 10.5pt !important;
+        line-height: 7mm !important;
+        color: #000 !important;
+        padding: 0 !important;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 7mm,
+          #BBB 7mm,
+          #BBB calc(7mm + 0.3pt)
+        );
+        background-size: 100% 7mm;
+        background-position: 0 0;
+        resize: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      textarea { min-height: 21mm !important; }
+      textarea.journal-entry { min-height: 56mm !important; }
+
+      .line-field { min-height: 7mm !important; }
+      .tick-box { border: 0.7pt solid #666 !important; background: #FFF !important; }
+
+      a { color: #000 !important; text-decoration: none !important; }
+    }
+
+
+    /* ── СОДЕРЖАНИЕ ─────────────────────────────────────────── */
+    .contents-list {
+      list-style: none;
+      margin: 4mm 0 0;
+      padding: 0;
+      font-size: 14px;
+    }
+    .contents-list li {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: baseline;
+      gap: 6px;
+      padding: 1.7mm 0;
+      border-bottom: 0.4pt dotted #C9C3B8;
+    }
+    .contents-list li:last-child { border-bottom: none; }
+    .contents-list li.toc-part { border-bottom: none; padding-bottom: 0; display: block; }
+    .toc-title { color: #2C3539; }
+    .toc-pair {
+      display: inline-block;
+      margin-left: 2mm;
+      padding: 0.2mm 1.6mm;
+      border: 0.4pt solid #C87D65;
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #A95F4C;
+      vertical-align: 1px;
+    }
+    .toc-min {
+      font-size: 12px;
+      color: #8A8578;
+      min-width: 10mm;
+      text-align: right;
+    }
+    .toc-page {
+      font-variant-numeric: tabular-nums;
+      color: #5A7365;
+      min-width: 8mm;
+      text-align: right;
+    }
+    .toc-part {
+      list-style: none;
+      margin: 5mm 0 1mm;
+      padding: 0;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #A95F4C;
+    }
+
     /* ── СТОП-БЛОК: ГЛАВНАЯ ФРАЗА СТРАНИЦЫ ────────────────────────────────── */
     .stop-box {
       margin: 20px 0 8px;
@@ -1067,21 +1335,24 @@
       <div class="wb-page-selector-wrapper">
         <select id="pageSelect" class="wb-page-select" onchange="goToPage(this.value)">
           <option value="p0">Обложка</option>
-          <option value="p1">Стр. 1 · Перед началом</option>
-          <option value="p2">Стр. 2 · Если это не ссора</option>
-          <option value="p3">Стр. 3 · Та самая ссора</option>
-          <option value="p4">Стр. 4 · Почему она возвращается</option>
-          <option value="p5">Стр. 5 · Круг</option>
-          <option value="p6">Стр. 6 · Если круг другой</option>
-          <option value="p7">Стр. 7 · Что каждый защищает</option>
-          <option value="p8">Стр. 8 · Упрёк и просьба</option>
-          <option value="p9">Стр. 9 · Тридцать минут</option>
-          <option value="p10">Стр. 10 · Два овала</option>
-          <option value="p11">Стр. 11 · Первый разговор</option>
-          <option value="p12">Стр. 12 · Как прошло</option>
-          <option value="p13">Стр. 13 · Между встречами</option>
-          <option value="p14">Стр. 14 · Второй разговор</option>
-          <option value="p15">Стр. 15 · Что дальше</option>
+          <option value="p1">Стр. 1 · Если у вас 15 минут · 15 мин</option>
+          <option value="p2">Стр. 2 · Эта тетрадь — про одну ссору · 4 мин</option>
+          <option value="p3">Стр. 3 · Содержание · 2 мин</option>
+          <option value="p4">Стр. 4 · Если это не ссора · 3 мин</option>
+          <option value="p5">Стр. 5 · Та самая ссора · 5 мин</option>
+          <option value="p6">Стр. 6 · Почему она возвращается · 5 мин</option>
+          <option value="p7">Стр. 7 · Круг, в который вы попадаете · 6 мин</option>
+          <option value="p8">Стр. 8 · Если ваш круг другой · 4 мин</option>
+          <option value="p9">Стр. 9 · Что каждый защищает · 5 мин</option>
+          <option value="p10">Стр. 10 · Упрёк и просьба · 6 мин</option>
+          <option value="p11">Стр. 11 · Тридцать минут · 7 мин</option>
+          <option value="p12">Стр. 12 · Два овала · 5 мин</option>
+          <option value="p13">Стр. 13 · Первый разговор · 6 мин · вдвоём</option>
+          <option value="p14">Стр. 14 · Как прошло · 5 мин</option>
+          <option value="p15">Стр. 15 · Между встречами · 4 мин</option>
+          <option value="p16">Стр. 16 · Второй разговор · 6 мин · вдвоём</option>
+          <option value="p17">Стр. 17 · Что дальше · 4 мин</option>
+          <option value="p18">Стр. 18 · Вернитесь через месяц · 3 мин</option>
         </select>
         <span class="wb-select-caret">▾</span>
       </div>
@@ -1105,25 +1376,82 @@
         <div class="cover-item"><span class="cover-dot"></span><span>Как сказать о важном так, чтобы услышали</span></div>
       </div>
       <a class="btn-cover-start" href="#p1" onclick="goToPage('p1'); return false;">Начать</a>
+      <button type="button" class="resume-btn" id="resumeBtn" onclick="goToPage(this.getAttribute('data-page'))">Продолжить</button>
+      <div class="progress-line" id="progressLine">Записей пока нет</div>
+      <div class="progress-dots" id="progressDots">
+        <span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span>
+        <span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span>
+      </div>
       <div class="cover-meta">8 записей · две встречи по 40 минут · можно возвращаться</div>
+      <p class="cover-note">Если вы бросили на неделю — ничего не потерялось. Откройте и продолжите с того места, где остановились. Тетрадь не обидится.</p>
     </div>
   </div>
 
-  <!-- СТРАНИЦА 1: ВВЕДЕНИЕ -->
-  <div class="page-card" id="p1">
+  <!-- СТРАНИЦА: С ЧЕГО НАЧАТЬ -->
+    <div class="page-card" id="p1">
+    <div class="running-head"><span>Перед началом</span><span class="rh-right">Короткий путь</span></div>
+    <h1>Если у вас 15 минут</h1>
+    <p class="chapter-lead">Тетрадь можно читать подряд, а можно — с этого места.</p>
+
+    <p class="dropcap">Читать подряд не обязательно: такие тетради редко проходят по порядку, чаще заглядывают в нужное место — в содержании видно, сколько занимает каждая глава. Если у вас есть четверть часа, сделайте три вещи: они и есть вся суть.</p>
+
+    <ol class="start-steps">
+      <li>
+        <h3>Назовите ссору</h3>
+        <p>Не «мы плохо общаемся», а конкретный разговор, который у вас повторяется. Одна фраза — этого достаточно.</p>
+        <div class="line-block">
+          <textarea class="line-field" id="l_start_name" rows="1" placeholder="Мы ссоримся из-за..."></textarea>
+        </div>
+        <div class="start-where">Подробнее — глава 1</div>
+      </li>
+      <li>
+        <h3>Найдите свой шаг</h3>
+        <p>В такой ссоре обычно один нажимает, а второй отступает. Подумайте, где вы в этом круге и что защищаете.</p>
+        <div class="line-block">
+          <textarea class="line-field" id="l_start_step" rows="1" placeholder="Когда всё начинается, я..."></textarea>
+        </div>
+        <div class="start-where">Подробнее — главы 3 и 4</div>
+      </li>
+      <li>
+        <h3>Перепишите одну фразу</h3>
+        <p>Возьмите то, что говорите в этой ссоре чаще всего, и скажите это как просьбу: что происходит, что вы чувствуете, о чём просите.</p>
+        <div class="line-block">
+          <textarea class="line-field" id="l_start_request" rows="1" placeholder="Когда..., я..., можешь...?"></textarea>
+        </div>
+        <div class="start-where">Подробнее — глава 5</div>
+      </li>
+    </ol>
+
+    <div class="privacy-note">
+      <strong>Где ваши записи.</strong> Всё, что вы пишете, остаётся в этом браузере на этом устройстве. Никуда не отправляется, и мы их не видим. Если открыть тетрадь на другом телефоне или компьютере — там будет пусто. В конце есть кнопки «скачать» и «стереть всё».
+    </div>
+
+    <p class="cover-note">Если вы откроете тетрадь через неделю, она предложит продолжить с того места, где вы остановились.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 1 из 18</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p0" onclick="goToPage('p0'); return false;">‹ Обложка</a>
+      <a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Введение · Про что эта тетрадь</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="page-card" id="p2">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Введение</span></div>
     <h1>Эта тетрадь — про одну ссору</h1>
     <p class="chapter-lead">Не про все сразу и не про то, кто прав. Про тот разговор, который у вас повторяется.</p>
 
     <p class="dropcap">У большинства пар есть разговоры, которые возвращаются. Меняются слова, время суток, повод — а разговор тот же. Через десять минут вы оба уже на знакомых местах, и каждый знает, чем это закончится.</p>
 
-    <p>Когда такой спор называют вслух, с ним впервые можно что-то сделать. Поэтому первая часть — про то, чтобы его узнать. Вторая — про разговор, в котором можно услышать друг друга и не потерять себя.</p>
+    <p>Когда такой спор называют вслух, с ним впервые можно что-то сделать. Первая часть — про то, чтобы его узнать, вторая — про разговор, в котором можно услышать друг друга и не потерять себя.</p>
 
     <h2>Две встречи</h2>
     <p>Первая встреча — разобраться: что это за ссора, почему она держится и что вы оба в ней защищаете. Вторая — попробовать разговор, у которого есть рамка, и посмотреть, что получится.</p>
     <p>Между ними — неделя обычной жизни. В ней нет заданий: нужно просто замечать.</p>
 
-    <div class="margin-note">Тетрадь не требует, чтобы партнёр читал её вместе с вами. Но требует, чтобы вы читали её в спокойный час, а не посреди ссоры.</div>
+    <div class="margin-note">Тетрадь не требует, чтобы партнёр читал её вместе с вами, — и не требует, чтобы он вообще участвовал. Но требует спокойного часа, а не ссоры.</div>
 
     <h2>Пять правил</h2>
     <ul class="checklist">
@@ -1132,6 +1460,7 @@
       <li><span class="checkbox"></span><span>Можно проходить одному. Если партнёр не участвует, вы всё равно увидите свой шаг в круге и сможете его изменить.</span></li>
       <li><span class="checkbox"></span><span>Не спешите. Между первой и второй встречей должна пройти хотя бы неделя.</span></li>
       <li><span class="checkbox"></span><span>Если станет слишком больно — остановитесь. Тетрадь подождёт.</span></li>
+      <li><span class="checkbox"></span><span>Тетрадь не делает вас семейным психологом. Если после неё кажется, что теперь вы должны вести все разговоры правильно, — это не цель.</span></li>
     </ul>
 
     <div class="line-block">
@@ -1143,20 +1472,16 @@
 
     <div class="bridge-note">
       <div class="bridge-label">Если вы пришли из первой тетради</div>
-      <p>Первая тетрадь учила останавливать ссору: пауза, стоп-слово, возвращение. Эта начинает там, где та заканчивается: ссора возвращается — что с ней делать.</p>
-      <p>Если первой тетради не было — ничего страшного. Но если ссоры пока нечем остановить, начните с неё: без паузы любой разговор быстро становится продолжением ссоры.</p>
-    </div>
-
-    <div class="fallback-note">
-      <strong>Если вы проходите это сами.</strong> Часть заданий помечена «Вместе с партнёром». Это значит «обсудить вдвоём», но не требует партнёра рядом: свою половину можно написать и одному. Если разговор не складывается, оставьте его на потом и вернитесь к своей части.
+      <p>Первая учила останавливать ссору: пауза, стоп-слово, возвращение. Эта начинает там, где та заканчивается. Если первой тетради не было — ничего страшного, но если ссоры пока нечем остановить, начните с неё: без паузы разговор быстро становится её продолжением.</p>
+      <p><strong>Если вы проходите тетрадь без партнёра.</strong> Всё, что помечено «вместе с партнёром», можно сделать и в одиночку: записать свою часть, примерить свою фразу. Партнёр нужен только для одного — для самого разговора, и то не обязательно.</p>
     </div>
 
     <p class="safety-note">Если в ссорах звучат угрозы, доходит до ударов или вам страшно оставаться рядом — это не решается тетрадью. Здесь нужен специалист, и лучше найти его до следующего раза.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 1 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 2 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p0" onclick="goToPage('p0'); return false;">‹ Обложка</a>
-      <a class="btn-nav-step primary" href="#p2" onclick="goToPage('p2'); return false;">
+      <a class="btn-nav-step back" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Важно · Если это не ссора</span>
       </a>
@@ -1165,7 +1490,46 @@
 
   <!-- СТРАНИЦА 2: ГЛАВА 1 -->
     <!-- СТРАНИЦА: БЕЗОПАСНОСТЬ -->
-  <div class="page-card" id="p2">
+  <!-- СТРАНИЦА: СОДЕРЖАНИЕ -->
+  <div class="page-card" id="p3">
+    <div class="running-head"><span>Перед началом</span><span class="rh-right">Содержание</span></div>
+    <h1>Содержание</h1>
+    <p class="chapter-lead">Сколько времени занимает каждая глава и где партнёр не нужен.</p>
+
+    <ol class="contents-list">
+      <li data-target="p1"><span class="toc-title">Если у вас 15 минут</span><span class="toc-page">1</span><span class="toc-min">15 мин</span></li>
+      <li data-target="p2"><span class="toc-title">Эта тетрадь — про одну ссору</span><span class="toc-page">2</span><span class="toc-min">4 мин</span></li>
+      <li data-target="p4"><span class="toc-title">Если это не ссора</span><span class="toc-page">4</span><span class="toc-min">3 мин</span></li>
+      <li data-target="p5"><span class="toc-title">Та самая ссора</span><span class="toc-page">5</span><span class="toc-min">5 мин</span></li>
+      <li data-target="p6"><span class="toc-title">Почему она возвращается</span><span class="toc-page">6</span><span class="toc-min">5 мин</span></li>
+      <li data-target="p7"><span class="toc-title">Круг, в который вы попадаете</span><span class="toc-page">7</span><span class="toc-min">6 мин</span></li>
+      <li data-target="p8"><span class="toc-title">Если ваш круг другой</span><span class="toc-page">8</span><span class="toc-min">4 мин</span></li>
+      <li data-target="p9"><span class="toc-title">Что каждый защищает</span><span class="toc-page">9</span><span class="toc-min">5 мин</span></li>
+      <li data-target="p10"><span class="toc-title">Упрёк и просьба</span><span class="toc-page">10</span><span class="toc-min">6 мин</span></li>
+      <li data-target="p11"><span class="toc-title">Тридцать минут</span><span class="toc-page">11</span><span class="toc-min">7 мин</span></li>
+      <li data-target="p12"><span class="toc-title">Два овала</span><span class="toc-page">12</span><span class="toc-min">5 мин</span></li>
+      <li class="toc-part">Часть II · Попробовать</li>
+      <li data-target="p13"><span class="toc-title">Первый разговор<span class="toc-pair">вдвоём</span></span><span class="toc-page">13</span><span class="toc-min">6 мин</span></li>
+      <li data-target="p14"><span class="toc-title">Как прошло</span><span class="toc-page">14</span><span class="toc-min">5 мин</span></li>
+      <li data-target="p15"><span class="toc-title">Между встречами</span><span class="toc-page">15</span><span class="toc-min">4 мин</span></li>
+      <li data-target="p16"><span class="toc-title">Второй разговор<span class="toc-pair">вдвоём</span></span><span class="toc-page">16</span><span class="toc-min">6 мин</span></li>
+      <li data-target="p17"><span class="toc-title">Что дальше</span><span class="toc-page">17</span><span class="toc-min">4 мин</span></li>
+      <li data-target="p18"><span class="toc-title">Вернитесь через месяц</span><span class="toc-page">18</span><span class="toc-min">3 мин</span></li>
+    </ol>
+
+    <p class="source-note">Время примерное: оно посчитано для человека, который читает и пишет без спешки. Главы можно проходить не по порядку — но первые две лучше прочитать до заданий.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 3 из 18</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Важно · Если это не ссора</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="page-card" id="p4">
     <div class="running-head"><span>Перед началом</span><span class="rh-right">Важно</span></div>
     <h1>Если это не ссора</h1>
     <p class="chapter-lead">Тетрадь — про разговор. Есть случаи, когда разговор начинать опасно.</p>
@@ -1203,17 +1567,17 @@
 
     <p class="source-note">О двух третях и о трети — по данным криминологических исследований семейного насилия в России. В 2017 году побои в семье переведены в административные правонарушения; по оценкам правозащитных организаций, 60–70% пострадавших никуда не обращаются. В опросе ВЦИОМ 2025 года 10% россиян сказали, что в их семье бывают конфликты с применением силы.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 2 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p1" onclick="goToPage('p1'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p3" onclick="goToPage('p3'); return false;">
+      <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 1 · Та самая ссора</span>
       </a>
     </div>
   </div>
 
-<div class="page-card" id="p3">
+  <div class="page-card" id="p5">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 1</span></div>
     <div class="chapter-open"><span class="chapter-fig">01</span><span class="chapter-kicker">Глава первая</span></div>
     <h1>Та самая ссора</h1>
@@ -1263,17 +1627,17 @@
         <span class="entry-lamp" title="Не пересказывайте всю историю отношений — только один разговор"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
         <span class="entry-hint">Одна ссора, которая повторяется. Не вся история — один разговор.</span>
       </div>
-      <textarea class="journal-entry" id="q2_the_quarrel" placeholder="Из-за чего началось... что было сказано... чем закончилось..."></textarea>
+      <textarea class="journal-entry" id="q2_the_quarrel" placeholder="Начинается с того, что...&#10;Дальше я...&#10;Заканчивается тем, что..."></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q2_the_quarrel')">Сохранить запись</button>
       <div class="entry-list" id="list_q2_the_quarrel">
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
       </div>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 3 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 5 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p2" onclick="goToPage('p2'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p4" onclick="goToPage('p4'); return false;">
+      <a class="btn-nav-step back" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 2 · Почему она возвращается</span>
       </a>
@@ -1281,7 +1645,7 @@
   </div>
 
   <!-- СТРАНИЦА 3: ГЛАВА 2 -->
-  <div class="page-card" id="p4">
+  <div class="page-card" id="p6">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 2</span></div>
     <div class="chapter-open"><span class="chapter-fig">02</span><span class="chapter-kicker">Глава вторая</span></div>
     <h1>Почему она возвращается</h1>
@@ -1332,10 +1696,10 @@
 
     <p class="source-note">Цифра о 69% — из исследований Джона Готтмана и его коллег; Gottman Institute, «Managing Conflict: Solvable vs. Perpetual Problems».</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 4 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 6 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p3" onclick="goToPage('p3'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p5" onclick="goToPage('p5'); return false;">
+      <a class="btn-nav-step back" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 3 · Круг</span>
       </a>
@@ -1343,7 +1707,7 @@
   </div>
 
   <!-- СТРАНИЦА 4: ГЛАВА 3 -->
-  <div class="page-card" id="p5">
+  <div class="page-card" id="p7">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 3</span></div>
     <div class="chapter-open"><span class="chapter-fig">03</span><span class="chapter-kicker">Глава третья</span></div>
     <h1>Круг, в который вы попадаете</h1>
@@ -1419,10 +1783,10 @@
       <textarea class="line-field" id="l4_partner_view" rows="1" placeholder="Со стороны это выглядит так: ..."></textarea>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 5 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 7 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p4" onclick="goToPage('p4'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p6" onclick="goToPage('p6'); return false;">
+      <a class="btn-nav-step back" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p8" onclick="goToPage('p8'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Если ваш круг другой</span>
       </a>
@@ -1431,7 +1795,7 @@
 
   <!-- СТРАНИЦА 5: ГЛАВА 4 -->
     <!-- СТРАНИЦА: ДРУГОЙ КРУГ -->
-  <div class="page-card" id="p6">
+  <div class="page-card" id="p8">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">После главы 3</span></div>
     <h1>Если ваш круг другой</h1>
     <p class="chapter-lead">Нажим и отступление — самый частый круг, но не единственный.</p>
@@ -1475,17 +1839,17 @@
 
     <p class="source-note">74%, 13% и 13% — международный онлайн-опрос сервиса Empathi, 2022–2026: 6 159 пар, где анкету заполнили оба партнёра. Это не российская выборка, поэтому цифры говорят о том, как бывает, а не о том, как бывает у нас.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 6 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 8 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p5" onclick="goToPage('p5'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p7" onclick="goToPage('p7'); return false;">
+      <a class="btn-nav-step back" href="#p7" onclick="goToPage('p7'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p9" onclick="goToPage('p9'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 4 · Что каждый защищает</span>
       </a>
     </div>
   </div>
 
-<div class="page-card" id="p7">
+  <div class="page-card" id="p9">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 4</span></div>
     <div class="chapter-open"><span class="chapter-fig">04</span><span class="chapter-kicker">Глава четвёртая</span></div>
     <h1>Что каждый защищает</h1>
@@ -1536,7 +1900,7 @@
         <span class="entry-lamp" title="Можно написать несколько вариантов и оставить один"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
         <span class="entry-hint">Закончите фразу: «Для меня в этом споре важно...» Напишите несколько вариантов, потом оставьте самый точный.</span>
       </div>
-      <textarea class="journal-entry" id="q2_what_i_protect" placeholder="Для меня в этом споре важно..."></textarea>
+      <textarea class="journal-entry" id="q2_what_i_protect" placeholder="Если это останется так навсегда, я буду...&#10;Если уступлю, я боюсь потерять...&#10;Самое важное здесь..."></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q2_what_i_protect')">Сохранить запись</button>
       <div class="entry-list" id="list_q2_what_i_protect">
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1545,10 +1909,10 @@
 
     <div class="margin-note">Когда человек защищает важное, он не пытается вас победить. Он пытается сохранить себя. Это касается и вас.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 7 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 9 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p6" onclick="goToPage('p6'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p8" onclick="goToPage('p8'); return false;">
+      <a class="btn-nav-step back" href="#p8" onclick="goToPage('p8'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p10" onclick="goToPage('p10'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 5 · Упрёк и просьба</span>
       </a>
@@ -1556,7 +1920,7 @@
   </div>
 
   <!-- СТРАНИЦА 6: ГЛАВА 5 -->
-  <div class="page-card" id="p8">
+  <div class="page-card" id="p10">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 5</span></div>
     <div class="chapter-open"><span class="chapter-fig">05</span><span class="chapter-kicker">Глава пятая</span></div>
     <h1>Упрёк и просьба</h1>
@@ -1597,7 +1961,7 @@
         <span class="entry-lamp" title="Берите настоящую фразу, а не удобный пример"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
         <span class="entry-hint">Возьмите фразу, которую говорите в этой ссоре чаще всего. Перепишите её как просьбу.</span>
       </div>
-      <textarea class="journal-entry" id="q2_my_request" placeholder="Вместо «ты...» — «когда..., я..., можешь...?»"></textarea>
+      <textarea class="journal-entry" id="q2_my_request" placeholder="Вместо «ты всегда...» — «когда..., я..., можешь...?»"></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q2_my_request')">Сохранить запись</button>
       <div class="entry-list" id="list_q2_my_request">
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1620,10 +1984,10 @@
 
     <div class="margin-note">Просьба — не слабость. Это единственная форма, в которой вас могут услышать.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 8 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 10 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p7" onclick="goToPage('p7'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p9" onclick="goToPage('p9'); return false;">
+      <a class="btn-nav-step back" href="#p9" onclick="goToPage('p9'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p11" onclick="goToPage('p11'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 6 · Тридцать минут</span>
       </a>
@@ -1631,7 +1995,7 @@
   </div>
 
   <!-- СТРАНИЦА 7: ГЛАВА 6 -->
-  <div class="page-card" id="p9">
+  <div class="page-card" id="p11">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 6</span></div>
     <div class="chapter-open"><span class="chapter-fig">06</span><span class="chapter-kicker">Глава шестая</span></div>
     <h1>Тридцать минут</h1>
@@ -1726,10 +2090,10 @@
       <figcaption>Тридцать минут — это не сеанс. Это время, которое вы выделили друг другу.</figcaption>
     </figure>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 9 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 11 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p8" onclick="goToPage('p8'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p10" onclick="goToPage('p10'); return false;">
+      <a class="btn-nav-step back" href="#p10" onclick="goToPage('p10'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p12" onclick="goToPage('p12'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 7 · Два овала</span>
       </a>
@@ -1737,7 +2101,7 @@
   </div>
 
   <!-- СТРАНИЦА 8: ГЛАВА 7 -->
-  <div class="page-card" id="p10">
+  <div class="page-card" id="p12">
     <div class="running-head"><span>Часть I · Разобрать</span><span class="rh-right">Глава 7</span></div>
     <div class="chapter-open"><span class="chapter-fig">07</span><span class="chapter-kicker">Глава седьмая</span></div>
     <h1>Два овала</h1>
@@ -1807,10 +2171,10 @@
 
     <div class="margin-note">Делайте это в спокойный час и один. Во время ссоры овалы не рисуют.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 10 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p9" onclick="goToPage('p9'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p11" onclick="goToPage('p11'); return false;">
+      <a class="btn-nav-step back" href="#p11" onclick="goToPage('p11'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p13" onclick="goToPage('p13'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Часть II · Первый разговор</span>
       </a>
@@ -1818,13 +2182,14 @@
   </div>
 
   <!-- СТРАНИЦА 9: ЧАСТЬ II, ГЛАВА 8 -->
-  <div class="page-card" id="p11">
+  <div class="page-card" id="p13">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 8</span></div>
     <div class="part-head">
       <div class="part-num">II</div>
       <div>
         <div class="part-kicker">Вторая встреча</div>
         <p class="part-lead">Через неделю. С записями — и с разговором, который вы проведёте иначе.</p>
+        <p class="part-lead">Вторую часть можно пройти и одной. Разговор вдвоём — возможность, а не экзамен, который надо сдать.</p>
       </div>
     </div>
     <div class="chapter-open"><span class="chapter-fig">08</span><span class="chapter-kicker">Глава восьмая</span></div>
@@ -1851,6 +2216,17 @@
       <p>Я хочу поговорить о нашей ссоре, потому что она возвращается и мне от этого плохо. Я не хочу выяснить, кто виноват. Я хочу, чтобы мы поняли друг друга. Мне немного страшно начинать.</p>
     </div>
 
+    <h2>Что можно сказать, не сочиняя</h2>
+    <p>Возьмите любую и доскажите своими словами. Ночью, когда не придумывается, это важнее красоты.</p>
+    <ul class="key-list">
+      <li>«Я хочу разобраться, а не победить. Давай тридцать минут, и всё».</li>
+      <li>«Когда ты смотришь в телефон, пока я рассказываю, я чувствую, что говорю в пустоту».</li>
+      <li>«Мне не нужно твоё согласие — достаточно, чтобы мои слова дошли».</li>
+      <li>«Мне важно, чтобы мы решали это сами — вдвоём, без подсказок снаружи».</li>
+      <li>«Я не хочу отвечать наспех. Мне нужно подумать».</li>
+      <li>«Дай мне минуту, я хочу ответить, а не защититься».</li>
+    </ul>
+
     <div class="line-block">
       <p class="line-prompt">Что вы хотите, чтобы партнёр понял в этом разговоре?</p>
       <textarea class="line-field" id="l9_what_understood" rows="1" placeholder="Самое главное, что должно дойти: ..."></textarea>
@@ -1866,7 +2242,7 @@
         <span class="entry-lamp" title="Пишите те слова, которые действительно скажете, а не красивые"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
         <span class="entry-hint">Первые две фразы, с которыми начнёте разговор. Их можно прочитать вслух.</span>
       </div>
-      <textarea class="journal-entry" id="q2_first_words" placeholder="Я хочу поговорить о... Я не хочу..."></textarea>
+      <textarea class="journal-entry" id="q2_first_words" placeholder="Я хочу поговорить о...&#10;Потому что для меня...&#10;Мне страшно, что..."></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q2_first_words')">Сохранить запись</button>
       <div class="entry-list" id="list_q2_first_words">
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1877,10 +2253,10 @@
       <strong>Если сегодня разговор не состоялся.</strong> Это бывает: не то время, не то настроение, у кого-то нет сил. Не превращайте это в новую ссору. Скажите, что вам важно поговорить, и предложите конкретный день. Если разговоров о важном не получается совсем — об этом есть на последней странице.
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 11 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 13 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p10" onclick="goToPage('p10'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p12" onclick="goToPage('p12'); return false;">
+      <a class="btn-nav-step back" href="#p12" onclick="goToPage('p12'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p14" onclick="goToPage('p14'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 9 · Как прошло</span>
       </a>
@@ -1888,7 +2264,7 @@
   </div>
 
   <!-- СТРАНИЦА 10: ГЛАВА 9 -->
-  <div class="page-card" id="p12">
+  <div class="page-card" id="p14">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 9</span></div>
     <div class="chapter-open"><span class="chapter-fig">09</span><span class="chapter-kicker">Глава девятая</span></div>
     <h1>Как прошло</h1>
@@ -1941,7 +2317,7 @@
         <span class="entry-lamp" title="Пишите сразу после разговора, пока помните детали"><svg class="lamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/></svg></span>
         <span class="entry-hint">Три вещи: что было иначе, где стало горячо и что вы сделали.</span>
       </div>
-      <textarea class="journal-entry" id="q2_how_it_went" placeholder="Иначе было...&#10;Горячо стало, когда...&#10;Я сделал..."></textarea>
+      <textarea class="journal-entry" id="q2_how_it_went" placeholder="Что получилось...&#10;Где сорвались, и из-за чего...&#10;В следующий раз я..."></textarea>
       <button type="button" class="btn-save-entry" onclick="saveEntry('q2_how_it_went')">Сохранить запись</button>
       <div class="entry-list" id="list_q2_how_it_went">
         <div class="entry-empty">Записей пока нет. Напишите что-то и нажмите «Сохранить запись».</div>
@@ -1950,10 +2326,10 @@
 
     <div class="margin-note">Один разговор не переписывает годы. Второй важнее первого.</div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 12 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 14 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p11" onclick="goToPage('p11'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p13" onclick="goToPage('p13'); return false;">
+      <a class="btn-nav-step back" href="#p13" onclick="goToPage('p13'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p15" onclick="goToPage('p15'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 10 · Между встречами</span>
       </a>
@@ -1961,7 +2337,7 @@
   </div>
 
   <!-- СТРАНИЦА 11: ГЛАВА 10 -->
-  <div class="page-card" id="p13">
+  <div class="page-card" id="p15">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 10</span></div>
     <div class="chapter-open"><span class="chapter-fig">10</span><span class="chapter-kicker">Глава десятая</span></div>
     <h1>Между встречами</h1>
@@ -2000,10 +2376,10 @@
     <p>Если ссора всё-таки случилась на этой неделе — не отменяйте вторую встречу. Скажите себе: это та самая ссора, она снова здесь. Запишите, с чего началось, и вернитесь к разговору в назначенный день.</p>
     <p>Если в такие минуты становится страшно, тетрадь подождёт. Сначала безопасность.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 13 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 15 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p12" onclick="goToPage('p12'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p14" onclick="goToPage('p14'); return false;">
+      <a class="btn-nav-step back" href="#p14" onclick="goToPage('p14'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p16" onclick="goToPage('p16'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
         <span class="nav-sub">Глава 11 · Второй разговор</span>
       </a>
@@ -2011,7 +2387,7 @@
   </div>
 
   <!-- СТРАНИЦА 12: ГЛАВА 11 -->
-  <div class="page-card" id="p14">
+  <div class="page-card" id="p16">
     <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Глава 11</span></div>
     <div class="chapter-open"><span class="chapter-fig">11</span><span class="chapter-kicker">Глава одиннадцатая</span></div>
     <h1>Второй разговор</h1>
@@ -2059,21 +2435,20 @@
       <textarea class="line-field" id="l12_one_change" rows="1" placeholder="В следующий раз я..."></textarea>
     </div>
 
-    <p class="source-note">Если вы проходите тетрадь один, запишите свою часть договора. Договор из одной части тоже работает.</p>
+    <p class="source-note">Если вы проходите тетрадь без партнёра, запишите свою часть договора. Договор из одной части тоже работает.</p>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 14 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 16 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p13" onclick="goToPage('p13'); return false;">‹ Назад</a>
-      <a class="btn-nav-step primary" href="#p15" onclick="goToPage('p15'); return false;">
+      <a class="btn-nav-step back" href="#p15" onclick="goToPage('p15'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p17" onclick="goToPage('p17'); return false;">
         <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
-        <span class="nav-sub">Послесловие · Что дальше</span>
+        <span class="nav-sub">Итог · Что дальше</span>
       </a>
     </div>
   </div>
 
-  <!-- СТРАНИЦА 13: ПОСЛЕСЛОВИЕ -->
-  <div class="page-card" id="p15">
-    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Послесловие</span></div>
+  <div class="page-card" id="p17">
+    <div class="running-head"><span>Часть II · Попробовать</span><span class="rh-right">Итог</span></div>
     <h1>Что дальше</h1>
     <p class="chapter-lead">Три вещи, которые останутся с вами.</p>
 
@@ -2085,7 +2460,7 @@
 
     <p>Этого достаточно, чтобы следующий раз прошёл иначе. Не идеально — иначе. Один разговор не делает отношения другими, но показывает, что они могут быть другими. Дальше это повторяется: та же ссора, тот же круг, тот же выбор. Постепенно выбор становится привычкой.</p>
 
-    <p>Через месяц вернитесь к записи 8 и посмотрите, что из договора живёт, а что нет. Это и будет проверка — не для отчёта, а для себя.</p>
+    <p>Через месяц вернитесь сюда: на следующей странице три вопроса, по которым видно, сдвинулось ли что-то.</p>
 
     <div class="line-block">
       <div class="line-label">После тетради</div>
@@ -2122,9 +2497,54 @@
       <p>Тетрадь для пар · Уровень 2</p>
     </div>
 
-    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 15 из 15</span></div>
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 17 из 18</span></div>
     <div class="page-footer-nav">
-      <a class="btn-nav-step back" href="#p14" onclick="goToPage('p14'); return false;">‹ Назад</a>
+      <a class="btn-nav-step back" href="#p16" onclick="goToPage('p16'); return false;">‹ Назад</a>
+      <a class="btn-nav-step primary" href="#p18" onclick="goToPage('p18'); return false;">
+        <span class="nav-main">Дальше <span class="nav-arrow">›</span></span>
+        <span class="nav-sub">Вернуться через месяц</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- СТРАНИЦА: ЧЕРЕЗ МЕСЯЦ -->
+  <div class="page-card" id="p18">
+    <div class="running-head"><span>Послесловие</span><span class="rh-right">Через месяц</span></div>
+    <h1>Вернитесь через месяц</h1>
+    <p class="chapter-lead">Не для отчёта. Чтобы увидеть, что изменилось, а что нет.</p>
+
+    <p class="dropcap">Один разговор не делает отношения другими — он показывает, что они могут быть другими. Понять, стало ли что-то меняться, можно не по ощущению «вроде лучше», а по трём вопросам. Задайте их себе примерно через месяц.</p>
+
+    <div class="line-block">
+      <div class="line-label">Три вопроса через месяц</div>
+      <textarea class="line-field" id="l_month_alive" rows="1" placeholder="Из нашего договора живёт: ..."></textarea>
+      <textarea class="line-field" id="l_month_dead" rows="1" placeholder="Не живёт: ..."></textarea>
+      <textarea class="line-field" id="l_month_new" rows="1" placeholder="Важнее, чем казалось: ..."></textarea>
+    </div>
+
+    <div class="memo">
+      <h3>Одна страница на память</h3>
+      <ol>
+        <li>У вашей ссоры есть имя. Она не про чашку.</li>
+        <li>Она возвращается не потому, что вы плохие, а потому что разница настоящая.</li>
+        <li>В ней у каждого есть свой шаг. Роль зависит от темы, а не от характера.</li>
+        <li>За упрёком стоит просьба. Просьбу можно выполнить сегодня.</li>
+        <li>Тридцать минут с правилами лучше трёх часов без них.</li>
+        <li>Если становится страшно — это уже не ссора, и тетрадь здесь не поможет.</li>
+      </ol>
+    </div>
+
+    <h2>Ваши записи</h2>
+    <p>Их можно забрать с собой или стереть. Ни то, ни другое не обязательно.</p>
+    <div class="tools-row">
+      <button type="button" class="tool-btn" onclick="downloadEntries()">Скачать мои записи</button>
+      <button type="button" class="tool-btn danger" onclick="clearAllData()">Стереть всё</button>
+    </div>
+    <p class="source-note">Записи хранятся только в этом браузере. Если вы открываете тетрадь на другом устройстве или в другом браузере, там будет пусто. Общий доступ к устройству тетрадь не закрывает: если это важно, проходите её со своего телефона.</p>
+
+    <div class="folio"><span>Одна и та же ссора</span><span class="folio-page">Стр. 18 из 18</span></div>
+    <div class="page-footer-nav">
+      <a class="btn-nav-step back" href="#p17" onclick="goToPage('p17'); return false;">‹ Назад</a>
       <a class="btn-nav-step primary" href="#p0" onclick="goToPage('p0'); return false;">
         <span class="nav-main">В начало тетради <span class="nav-arrow">↑</span></span>
         <span class="nav-sub">Обложка</span>
@@ -2132,7 +2552,9 @@
     </div>
   </div>
 
+
 </div>
+
 
 <div class="save-indicator" id="saveIndicator">Сохранено на устройстве</div>
 
@@ -2190,9 +2612,14 @@
     textarea.value = '';
     saveData(fieldId, '');
     triggerSaveIndicator();
+    updateProgress();
   }
 
-  var pages = ['p0', 'p1', 'p3', 'p4', 'p5', 'p7', 'p8', 'p9', 'p10', 'p11', 'p12', 'p13', 'p14', 'p15'];
+  // Список страниц берём из разметки: так он не разъедется при добавлении страниц.
+  var pages = Array.prototype.map.call(
+    document.querySelectorAll('.page-card'),
+    function (el) { return el.id; }
+  );
   var currentPageIndex = 0;
 
   function updateView() {
@@ -2217,6 +2644,11 @@
     if (idx !== -1) {
       currentPageIndex = idx;
       updateView();
+      if (pId !== 'p0') {
+        rememberPage(pId);
+        showResume();
+      }
+      updateProgress();
     }
   }
 
@@ -2249,8 +2681,9 @@
   function triggerSaveIndicator() {
     var ind = document.getElementById('saveIndicator');
     if (!ind) return;
+    ind.textContent = 'Записано на устройстве';
     ind.classList.add('show');
-    setTimeout(function () { ind.classList.remove('show'); }, 1500);
+    setTimeout(function () { ind.classList.remove('show'); }, 1800);
   }
 
   // Короткие строки и отметки: сохраняются сами, без кнопки
@@ -2283,6 +2716,131 @@
     });
   }
 
+
+  // ── Возврат на последнюю страницу ─────────────────────────────────────────
+  var LAST_PAGE_KEY = 'wb_couples_l2_one_quarrel_last_page';
+
+  function rememberPage(pId) {
+    if (pId === 'p0') return;
+    try { localStorage.setItem(LAST_PAGE_KEY, pId); } catch (e) {}
+  }
+
+  function currentTitle(pId) {
+    var sel = document.getElementById('pageSelect');
+    if (sel) {
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === pId) {
+          var t = sel.options[i].textContent.replace(/^Стр\.\s*\d+\s*·\s*/, '');
+          var cut = t.indexOf(' · ');
+          return cut === -1 ? t : t.slice(0, cut);
+        }
+      }
+    }
+    return pId;
+  }
+
+  function showResume() {
+    var btn = document.getElementById('resumeBtn');
+    if (!btn) return;
+    var saved = null;
+    try { saved = localStorage.getItem(LAST_PAGE_KEY); } catch (e) {}
+    if (!saved || saved === 'p0' || pages.indexOf(saved) === -1) {
+      btn.classList.remove('show');
+      return;
+    }
+    var t = currentTitle(saved);
+    btn.innerHTML = 'Продолжить' + (t ? '<small>' + t + '</small>' : '');
+    btn.setAttribute('data-page', saved);
+    btn.classList.add('show');
+  }
+
+  // ── Счётчик сделанного ────────────────────────────────────────────────────
+  function updateProgress() {
+    var done = 0;
+    for (var i = 0; i < inputIds.length; i++) {
+      if (readEntries(inputIds[i]).length) done++;
+    }
+    var line = document.getElementById('progressLine');
+    if (line) {
+      line.textContent = done === 0
+        ? 'Записей пока нет'
+        : 'Сделано записей: ' + done + ' из ' + inputIds.length;
+    }
+    var dots = document.getElementById('progressDots');
+    if (dots) {
+      Array.prototype.forEach.call(dots.children, function (dot, idx) {
+        dot.classList.toggle('done', idx < done);
+      });
+    }
+  }
+
+  // ── Скачать и стереть ─────────────────────────────────────────────────────
+  function downloadEntries() {
+    var lines = ['Одна и та же ссора — мои записи', ''];
+    var data = false;
+
+    for (var i = 0; i < inputIds.length; i++) {
+      var arr = readEntries(inputIds[i]);
+      if (!arr.length) continue;
+      data = true;
+      lines.push('— — —');
+      lines.push('');
+      arr.forEach(function (t) { lines.push(t); lines.push(''); });
+    }
+
+    var lineFields = document.querySelectorAll('.line-field, .journal-entry');
+    var extra = [];
+    Array.prototype.forEach.call(lineFields, function (el) {
+      var v = '';
+      try { v = localStorage.getItem('wb_couples_l2_one_quarrel_line_' + el.id) || ''; } catch (e) {}
+      if (!v && el.value) v = el.value;
+      if (v.trim()) extra.push(v.trim());
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.tick-item input'), function (input) {
+      try {
+        if (localStorage.getItem('wb_couples_l2_one_quarrel_tick_' + input.getAttribute('data-tick') + '_' + input.value) === '1') {
+          var label = input.parentElement.textContent.trim();
+          extra.push('— ' + label);
+        }
+      } catch (e) {}
+    });
+    if (extra.length) {
+      data = true;
+      lines.push('— — —');
+      lines.push('');
+      lines.push('Короткие заметки:');
+      lines.push('');
+      extra.forEach(function (t) { lines.push(t); });
+    }
+
+    if (!data) {
+      alert('Пока нечего сохранять: вы ещё ничего не написали.');
+      return;
+    }
+
+    var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'одна-и-та-же-ссора-мои-записи.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function clearAllData() {
+    var ok = confirm('Стереть все записи? Это навсегда — вернуть их будет нельзя.\n\nЕсли хотите сохранить, сначала нажмите «Скачать мои записи».');
+    if (!ok) return;
+    var keys = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k && k.indexOf('wb_couples_l2_one_quarrel') === 0) keys.push(k);
+    }
+    keys.forEach(function (k) { try { localStorage.removeItem(k); } catch (e) {} });
+    location.reload();
+  }
+
   window.addEventListener('DOMContentLoaded', function () {
     inputIds.forEach(function (id) {
       var el = document.getElementById(id);
@@ -2298,7 +2856,10 @@
     Array.prototype.forEach.call(document.querySelectorAll('.line-field'), initLineField);
     Array.prototype.forEach.call(document.querySelectorAll('.tick-item input'), initTick);
 
-    // Прямая ссылка на страницу (#p9) должна открывать эту страницу, а не обложку
+    updateProgress();
+    showResume();
+
+    // Прямая ссылка на страницу (#p9) открывает именно её, а не обложку
     var hashId = window.location.hash.replace('#', '');
     if (pages.indexOf(hashId) !== -1) {
       goToPage(hashId);
