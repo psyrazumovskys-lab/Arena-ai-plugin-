@@ -81,6 +81,7 @@ def clean(chunk: str) -> str:
 
     chunk = re.sub(r'<ol class="(?:num-list|ask-list)[^"]*">([\s\S]*?)</ol>', number_list, chunk)
 
+    chunk = re.sub(r'<span class="toc-pair">(.*?)</span>', r' — \1', chunk)
     chunk = re.sub(r"<br\s*/?>", "\n", chunk)
     chunk = re.sub(r"</(p|h1|h2|h3|h4|li|figcaption|div|span|text)>", "\n", chunk)
     chunk = re.sub(r"<[^>]+>", "", chunk)
