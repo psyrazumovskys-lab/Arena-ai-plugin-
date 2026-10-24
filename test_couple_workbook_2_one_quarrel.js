@@ -479,12 +479,24 @@ const open = async (seed = {}) => {
     images.every(img => img.closest('figure') || img.classList.contains('cover-image')));
   check('Нет внешних скриптов', !/<script[^>]+src=/.test(html));
 
-  check('Кнопки перехода не ниже 48 px', /\.btn-nav-step\s*\{[^}]*min-height:\s*48px/.test(css));
-  const cardPad = css.match(/\.page-card\s*\{[^}]*padding:\s*[\d.]+px\s+([\d.]+)px/);
-  const bleed = css.match(/\.figure-bleed\s*\{[^}]*margin:\s*[\d.]+px\s+(-[\d.]+)px/);
-  check('Иллюстрации врезаются ровно в поля страницы',
-    !!cardPad && !!bleed && Math.abs(parseFloat(bleed[1])) === parseFloat(cardPad[1]));
+  // Печатный набор идёт отдельным блоком в конце стилей — проверяем его.
+  const edition = css.slice(css.indexOf('ПЕЧАТНОЕ ИЗДАНИЕ'));
+
+  check('Кнопки перехода не ниже 48 px',
+    /\.btn-nav-step,[\s\S]{0,400}?min-height:\s*48px/.test(edition));
+  check('Лист без рамки и тени, как страница книги',
+    /\.page-card\s*\{[\s\S]{0,200}?box-shadow:\s*none/.test(edition) &&
+    /\.page-card\s*\{[\s\S]{0,200}?background:\s*transparent/.test(edition));
+  check('Иллюстрации врезаются ровно в поля листа',
+    /padding:\s*0 22px 96px/.test(edition) &&
+    /\.figure-bleed\s*\{[\s\S]{0,120}?margin:\s*24px -22px/.test(edition));
   check('Есть стиль буквицы', /\.dropcap::first-letter/.test(css));
+  check('Поле записи — линованная бумага, а не рамка',
+    /\.journal-entry\s*\{[\s\S]{0,400}?repeating-linear-gradient/.test(edition));
+  check('Подписи набраны PT Sans',
+    (edition.match(/font-family:\s*"PT Sans"/g) || []).length >= 10);
+  check('Номер страницы стоит по центру', /\.folio\s*\{[\s\S]{0,120}?justify-content:\s*center/.test(edition));
+  check('Шрифты вложены в файл', (html.match(/@font-face/g) || []).length >= 8 && !/fonts\.googleapis/.test(html));
 
   console.log(`\nИтог: ${pass} прошло, ${fail} не прошло`);
   process.exit(fail ? 1 : 0);

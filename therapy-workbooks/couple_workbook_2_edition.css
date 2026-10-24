@@ -1,0 +1,919 @@
+    /* ==========================================================================
+       ПЕЧАТНОЕ ИЗДАНИЕ — общий стиль с первой тетрадью
+       Кремовая бумага, PT Serif в тексте, PT Sans в подписях, волосяные линии,
+       линейки для письма, номера страниц. Без теней, скруглений и «пилюль».
+       Этот блок идёт последним: он переводит вторую тетрадь в тот же набор,
+       что и первая, и не трогает разметку и сценарий.
+       ========================================================================== */
+    :root {
+      --paper: #F7F5F0;
+      --paper-deep: #F1EDE4;
+      --ink: #2C3539;
+      --body-text: #3B474C;
+      --muted: #6A7378;
+      --sage: #5A7365;
+      --sage-wash: #EBF1ED;
+      --terra: #C87D65;
+      --terra-deep: #B1634B;
+      --terra-wash: #FDF3E7;
+      --rule: #DDD6CB;
+      --rule-soft: #E8E2D8;
+
+      /* прежние имена — по ним размечена вторая тетрадь */
+      --bg-body: #F7F5F0;
+      --bg-card: #F7F5F0;
+      --text-main: #2C3539;
+      --text-muted: #7A8288;
+      --sage-primary: #5A7365;
+      --sage-deep: #475B50;
+      --sage-light: #EBF1ED;
+      --terracotta: #C87D65;
+      --terracotta-deep: #B1634B;
+      --terracotta-light: #FDF3E7;
+      --border-color: #DDD6CB;
+    }
+
+    /* ------------------------------------------------------------- полоса набора */
+    body {
+      font-family: "PT Serif", Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.62;
+      color: var(--body-text);
+      background-color: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+      padding: 0 22px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 620px; margin: 0 auto; }
+
+    .page-card {
+      display: none;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0 0 8px;
+      animation: none;
+    }
+    .page-card.active { display: block; animation: fadeIn .28s ease both; }
+
+    /* ------------------------------------------------------------- шапка */
+    .wb-navigation-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--paper);
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      border-radius: 0;
+      box-shadow: none;
+      padding: 12px 0 10px;
+      margin-bottom: 30px;
+    }
+    .wb-nav-stepper { gap: 10px; }
+
+    .wb-step-btn {
+      min-width: 40px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--sage);
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1;
+      padding: 0;
+    }
+    .wb-step-btn:hover:not(:disabled) { background: transparent; color: var(--ink); }
+    .wb-step-btn:disabled { opacity: .25; }
+
+    .wb-page-select {
+      width: 100%;
+      height: auto;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10.5px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 4px 0;
+    }
+    .wb-page-select:focus { color: var(--ink); }
+    .wb-select-caret { display: none; }
+
+    /* ------------------------------------------------------------- набор */
+    h1 {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 33px;
+      line-height: 1.14;
+      font-weight: 700;
+      letter-spacing: -0.012em;
+      color: var(--ink);
+      margin: 6px 0 14px;
+    }
+
+    h2 {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 23px;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--ink);
+      margin: 28px 0 10px;
+      padding-top: 0;
+    }
+    h2::before { display: none; }
+
+    h3 {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 19px;
+      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.62;
+      color: var(--body-text);
+      margin-bottom: 14px;
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--ink); }
+
+    .chapter-lead {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 18.5px;
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--body-text);
+      margin-bottom: 20px;
+    }
+
+    .dropcap::first-letter {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 2.9em;
+      line-height: .86;
+      font-weight: 700;
+      color: var(--terra-deep);
+      padding: 3px 7px 0 0;
+    }
+
+    /* ------------------------------------------------------------- колонтитул */
+    .running-head {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 8px;
+      margin-bottom: 22px;
+    }
+    .running-head .rh-right { color: var(--terra-deep); }
+
+    .chapter-lead + p { text-indent: 0; }
+    .chapter-open { margin-bottom: 6px; }
+    .chapter-fig {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      color: var(--terra-deep);
+    }
+    .chapter-kicker {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ------------------------------------------------------------- часть */
+    .part-head {
+      grid-template-columns: 64px 1fr;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 22px 0;
+      margin: 0 0 26px;
+    }
+    .part-num {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 56px;
+      line-height: .86;
+      font-weight: 700;
+      color: var(--terra-deep);
+    }
+    .part-kicker {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      color: var(--terra-deep);
+    }
+    .part-lead {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--body-text);
+    }
+
+    /* ------------------------------------------------------------- списки */
+    .key-list li {
+      font-size: 16.5px;
+      line-height: 1.55;
+      color: var(--body-text);
+    }
+    .key-list li::before {
+      width: 5px;
+      height: 5px;
+      top: 10px;
+      border-radius: 50%;
+      background: var(--terra);
+    }
+
+    .checklist li {
+      font-size: 16.5px;
+      line-height: 1.55;
+      color: var(--body-text);
+    }
+    .checkbox {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .num-list > li::before {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 27px;
+      font-weight: 700;
+      color: var(--terra-deep);
+    }
+    .num-list h3 { font-size: 19px; }
+    .num-list p { font-size: 16.5px; color: var(--body-text); }
+
+    .compare-col {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+    }
+    .compare-col.alt { background: transparent; border-color: var(--rule); }
+    .compare-col h4 {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    .compare-col.alt h4 { color: var(--terra-deep); }
+    .compare-col p { font-size: 16px; line-height: 1.55; }
+
+    /* ------------------------------------------------------------- протокол */
+    .protocol { border-top: 1px solid var(--rule); }
+    .protocol-step { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .protocol-time {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--terra-deep);
+    }
+    .protocol-time span {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 8.5px;
+      letter-spacing: .16em;
+      color: var(--muted);
+    }
+    .protocol-body h3 { font-family: "PT Serif", Georgia, serif; font-size: 18px; }
+    .protocol-body p { font-size: 16px; line-height: 1.55; }
+
+    /* ------------------------------------------------------------- неделя */
+    .week-day {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+    .week-dot { width: 10px; height: 10px; border: 1px solid var(--sage); background: transparent; }
+    .week-day:nth-child(7) .week-dot { border-color: var(--terra-deep); }
+    .week-caption {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .circle-diagram figcaption {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    /* ------------------------------------------------------------- записи */
+    .interactive-card {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+    }
+    .ask-num {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      color: var(--terra-deep);
+    }
+    .ask h3 { font-family: "PT Serif", Georgia, serif; font-size: 21px; font-weight: 700; }
+
+    .entry-block {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      padding: 16px 0 4px;
+    }
+    .entry-kind {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 10px;
+    }
+    .entry-kind.kind-solo { color: var(--sage); background: transparent; }
+    .entry-kind.kind-pair { color: var(--terra-deep); background: transparent; }
+    .entry-kind .kind-icon { stroke: currentColor; color: inherit; }
+    .entry-hint {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    .journal-entry {
+      border: 0;
+      border-radius: 0;
+      background-color: transparent;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 33px,
+        var(--rule) 33px,
+        var(--rule) 34px
+      );
+      background-position: 0 8px;
+      padding: 0;
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 17px;
+      line-height: 34px;
+      min-height: 136px;
+      color: var(--ink);
+    }
+    .journal-entry::placeholder { font-style: italic; color: #A9A296; }
+
+    .btn-save-entry {
+      border: 1px solid var(--terra);
+      border-radius: 0;
+      background: transparent;
+      color: var(--terra-deep);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+    }
+    .btn-save-entry:hover { background: var(--terra); color: #fff; }
+
+    .entry-list { border-top: 0; padding-top: 0; margin-top: 18px; }
+    .entry-item {
+      position: relative;
+      padding: 10px 0 10px 18px;
+      border-bottom: 0;
+      border-top: 1px solid var(--rule-soft);
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .entry-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.05em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--terra);
+    }
+    .entry-item:first-child { border-top: 0; }
+    .entry-empty { font-family: "PT Serif", Georgia, serif; font-style: italic; font-size: 14px; color: var(--muted); }
+
+    /* ------------------------------------------------------------- врезки */
+    .stop-box {
+      background: var(--terra-wash);
+      border-left: 3px solid var(--terra);
+      border-radius: 0;
+      padding: 18px 20px;
+    }
+    .stop-box p {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 19px;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .fact-box {
+      background: var(--terra-wash);
+      border-left: 3px solid var(--terra);
+      border-radius: 0;
+      padding: 18px 20px;
+    }
+    .fact-label {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      color: var(--terra-deep);
+    }
+    .fact-box p { font-size: 16px; line-height: 1.58; }
+
+    .quote-box {
+      border-left: 2px solid var(--terra);
+      border-radius: 0;
+      background: none;
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 18.5px;
+      line-height: 1.5;
+      color: var(--ink);
+      padding: 2px 0 2px 18px;
+    }
+    .quote-label {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      color: var(--muted);
+    }
+
+    .pull-quote {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 23px;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .pull-quote::before { width: 100%; height: 1px; background: var(--rule); }
+
+    .margin-note {
+      border-left: 1px solid var(--rule);
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 15.5px;
+      color: var(--muted);
+    }
+
+    .fallback-note {
+      background: var(--sage-wash);
+      border-left: 3px solid var(--sage);
+      border-radius: 0;
+      padding: 14px 18px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: var(--body-text);
+    }
+    .fallback-note strong { color: var(--ink); }
+
+    .safety-note {
+      border-top: 1px solid var(--rule);
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .source-note {
+      border-top: 1px solid var(--rule);
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .bridge-note {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      border-radius: 0;
+      background: none;
+      padding: 22px 0 0;
+    }
+    .bridge-note .bridge-label {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      color: var(--sage);
+    }
+    .bridge-note p { font-size: 16px; line-height: 1.58; }
+
+    .colophon p {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .memo {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+    }
+    .memo h3 { font-family: "PT Serif", Georgia, serif; font-size: 21px; font-weight: 700; }
+    .memo li { font-size: 16px; line-height: 1.55; color: var(--body-text); }
+
+    /* ------------------------------------------------------------- картинки */
+    .figure-bleed {
+      margin: 24px -22px;
+      background: none;
+      border: 0;
+    }
+    .figure-bleed figcaption {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--muted);
+      padding: 10px 0 0;
+      background: none;
+    }
+    .figure-plate { background: none; border: 0; box-shadow: none; padding: 0; }
+    .figure-plate figcaption {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 14.5px;
+      color: var(--muted);
+    }
+
+    /* ------------------------------------------------------------- обложка */
+    .cover-card { border: 0; box-shadow: none; background: transparent; }
+    .cover-art { margin: 0 -22px 30px; background: transparent; }
+    .cover-body { padding: 0; }
+    .cover-title {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 40px;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.012em;
+      color: var(--ink);
+      margin: 14px 0 0;
+    }
+    .cover-rule { width: 40px; height: 1px; background: var(--terra); margin: 16px 0 20px; }
+    .cover-lead {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--body-text);
+      margin-bottom: 22px;
+    }
+    .cover-list { border-top: 1px solid var(--rule); padding-top: 14px; gap: 0; }
+    .cover-item { font-size: 16px; color: var(--body-text); padding: 6px 0; }
+    .cover-dot { width: 5px; height: 5px; background: var(--terra); border-radius: 50%; margin-top: 9px; }
+
+    .btn-cover-start {
+      border: 1px solid var(--terra);
+      border-radius: 0;
+      background: transparent;
+      color: var(--terra-deep);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      box-shadow: none;
+      min-height: 56px;
+    }
+    .btn-cover-start:hover { background: var(--terra); color: #fff; }
+    .btn-cover-start.is-secondary {
+      border-color: var(--rule);
+      color: var(--muted);
+      font-size: 9.5px;
+      min-height: 48px;
+    }
+
+    .resume-btn {
+      border: 1px solid var(--terra);
+      border-radius: 0;
+      background: transparent;
+      color: var(--terra-deep);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .resume-btn.show { background: var(--terra); border-color: var(--terra-deep); color: #fff; }
+    .resume-btn small {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 12px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .resume-btn.show small { color: rgba(255, 255, 255, .86); }
+
+    .cover-meta {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+    }
+    .cover-note {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .progress-line {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .progress-dot { border: 1px solid var(--rule); }
+    .progress-dot.done { background: var(--terra); border-color: var(--terra-deep); }
+
+    .privacy-note {
+      background: var(--sage-wash);
+      border: 0;
+      border-left: 3px solid var(--sage);
+      border-radius: 0;
+      padding: 16px 18px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--body-text);
+    }
+    .privacy-note strong { color: var(--ink); }
+
+    .tools-row { gap: 8px; }
+    .tool-btn {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+      color: var(--sage);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 13px 16px;
+    }
+    .tool-btn:hover { border-color: var(--sage); background: var(--sage-wash); }
+    .tool-btn.danger { color: var(--terra-deep); border-color: var(--rule); }
+    .tool-btn.danger:hover { background: var(--terra-wash); border-color: var(--terra-deep); }
+
+    /* ------------------------------------------------------------- первая страница */
+    .start-steps > li::before {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--terra-deep);
+    }
+    .start-steps h3 { font-size: 19px; }
+    .start-steps p { font-size: 16.5px; line-height: 1.55; color: var(--body-text); }
+    .start-steps .start-where {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 14px;
+      font-style: italic;
+      letter-spacing: 0;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ------------------------------------------------------------- содержание */
+    .contents-list { font-size: 16px; }
+    .contents-list li { border-bottom: 1px dotted var(--rule); padding: 2.1mm 0; }
+    .toc-title { color: var(--body-text); }
+    .toc-page {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+    .toc-min {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .toc-part {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--terra-deep);
+    }
+    .toc-pair {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 8.5px;
+      letter-spacing: .14em;
+      border: 1px solid var(--terra);
+      color: var(--terra-deep);
+      border-radius: 0;
+      padding: 2px 5px;
+    }
+
+    /* ------------------------------------------------------------- строки для письма */
+    .line-block { margin: 14px 0 18px; }
+    .line-label {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--terra-deep);
+      margin-bottom: 7px;
+    }
+    .line-prompt {
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 17px;
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .line-field {
+      border-bottom: 1px solid var(--rule);
+      font-family: "PT Serif", Georgia, serif;
+      font-size: 17px;
+      line-height: 1.45;
+      color: var(--ink);
+      min-height: 34px;
+      padding: 3px 0 5px;
+    }
+    .line-field::placeholder { font-style: italic; font-size: 15.5px; color: #A9A296; }
+    .line-field:focus { border-bottom-color: var(--sage); }
+    .line-field.is-written { border-bottom-color: var(--ink); }
+    .line-note { font-family: "PT Serif", Georgia, serif; font-style: italic; font-size: 13.5px; color: var(--muted); }
+
+    .ask-list .line-field { min-height: 30px; padding: 2px 0 4px; }
+    .ask-list .ask-q { font-size: 17px; line-height: 1.55; color: var(--body-text); }
+
+    /* ------------------------------------------------------------- отметки */
+    .tick-list { border-top: 1px solid var(--rule-soft); }
+    .tick-item { font-size: 16.5px; line-height: 1.5; color: var(--body-text); padding: 9px 0; }
+    .tick-item + .tick-item { border-top: 1px solid var(--rule-soft); }
+    .tick-box { border: 1px solid var(--rule); border-radius: 0; background: transparent; }
+    .tick-item input:checked + .tick-box { background: var(--sage); border-color: var(--sage); }
+
+    /* ------------------------------------------------------------- подвал листа */
+    .folio {
+      justify-content: center;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+      margin-top: 34px;
+      padding-top: 12px;
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .folio > span:first-child { display: none; }
+    .folio-page {
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--muted);
+    }
+
+    .page-footer-nav { margin-top: 12px; border-top: 0; padding-top: 0; gap: 10px; }
+    .btn-nav-step,
+    .btn-nav-step.primary {
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      min-height: 48px;
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      padding: 11px 16px;
+    }
+    .btn-nav-step:hover { border-color: var(--sage); background: var(--sage-wash); }
+    .btn-nav-step.primary {
+      border-color: var(--terra-deep);
+      color: var(--terra-deep);
+      background: transparent;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .btn-nav-step.primary:hover { border-color: var(--terra-deep); background: var(--terra-wash); }
+    .btn-nav-step.back { min-width: 104px; }
+    .nav-main { gap: 7px; }
+    .nav-arrow { font-size: 13px; }
+    .nav-sub {
+      font-family: "PT Serif", Georgia, serif;
+      font-style: italic;
+      font-size: 11.5px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* ------------------------------------------------------------- плашка «сохранено» */
+    .save-indicator {
+      left: 50%;
+      right: auto;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      color: var(--sage);
+      font-family: "PT Sans", Arial, sans-serif;
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      box-shadow: none;
+    }
+    .save-indicator.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ------------------------------------------------------------- телефон */
+    @media (max-width: 640px) {
+      body { font-size: 16.5px; padding: 0 16px 84px; }
+      .page-card { padding: 0 0 6px; }
+      h1 { font-size: 27px; }
+      h2 { font-size: 21px; margin-top: 26px; }
+      h3 { font-size: 18px; }
+      p { font-size: 16.5px; line-height: 1.62; }
+      .chapter-lead { font-size: 17.5px; }
+      .cover-art { margin-left: -16px; margin-right: -16px; }
+      .cover-title { font-size: 32px; }
+      .figure-bleed { margin-left: -16px; margin-right: -16px; }
+      .figure-bleed figcaption { padding: 9px 0 0; font-size: 14.5px; }
+      .part-num { font-size: 48px; }
+      .part-head { grid-template-columns: 56px 1fr; }
+      .btn-nav-step, .btn-nav-step.primary { font-size: 9.5px; letter-spacing: .12em; padding: 11px 12px; }
+      .btn-nav-step.back { min-width: 92px; }
+      .nav-sub { font-size: 11px; }
+    }
+
+    /* ------------------------------------------------------------- печать */
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+        font-size: 10.5pt;
+      }
+      .wb-navigation-bar, .page-footer-nav, .save-indicator,
+      .btn-save-entry, .btn-cover-start, .resume-btn, .tools-row,
+      .entry-empty, .progress-line, .progress-dots, .wb-page-selector-wrapper {
+        display: none !important;
+      }
+      .figure-bleed { margin-left: 0 !important; margin-right: 0 !important; }
+      a { color: #000 !important; text-decoration: none !important; }
+      .journal-entry {
+        background-image: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 7mm,
+          #BBB 7mm,
+          #BBB calc(7mm + 0.3pt)
+        ) !important;
+        background-size: 100% 7mm !important;
+        line-height: 7mm !important;
+        min-height: 56mm !important;
+        color: #000 !important;
+      }
+    }

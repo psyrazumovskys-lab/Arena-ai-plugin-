@@ -10,7 +10,7 @@
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 
-const PATH = 'therapy-workbooks/couple_workbook_1_stop_escalation.html';
+const PATH = process.env.WB_PATH || 'therapy-workbooks/couple_workbook_1_stop_escalation.html';
 const html = fs.readFileSync(PATH, 'utf8');
 
 let pass = 0;

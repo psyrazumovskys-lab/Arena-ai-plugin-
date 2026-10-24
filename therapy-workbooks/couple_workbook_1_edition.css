@@ -1,0 +1,74 @@
+    /* ==========================================================================
+       ЧТЕНИЕ — слой поверх печатного набора первой тетради
+       Тот же книжный текст, что во второй тетради: абзацы с отступом, переносы
+       на телефоне, выключка только на широкой полосе, линейки для письма
+       высотой 34 px на экране и ровно 7 мм на печати.
+       Идёт последним: правит только набор, разметку и сценарий не трогает.
+       ========================================================================== */
+
+    /* ----------------------------------------------------- абзацы как в книге */
+    .page-card > p + p { text-indent: 1.35em; }
+    .page-card > p:first-child,
+    .page-card > p.dropcap,
+    .chapter-lead + p { text-indent: 0; }
+
+    /* На телефоне строка короткая: без выключки и с переносами,
+       иначе между словами появляются провалы. */
+    p, .chapter-lead, .key-list li, .checklist li, .num-list p,
+    .protocol-body p, .compare-col p, .fact-box p, .bridge-note p,
+    .memo li, .entry-item, .start-steps p, .fallback-note, .quote-box p {
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      text-align: left;
+    }
+
+    @media (min-width: 600px) {
+      p, .chapter-lead, .key-list li, .checklist li, .num-list p,
+      .protocol-body p, .compare-col p, .fact-box p, .bridge-note p,
+      .memo li, .entry-item, .start-steps p, .fallback-note, .quote-box p {
+        text-align: justify;
+      }
+    }
+
+    /* ---------------------------------------------- линейки для письма, 34 px */
+    .journal-entry {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 33px,
+        var(--rule) 33px,
+        var(--rule) 34px
+      );
+      background-position: 0 7px;
+      font-size: 17px;
+      line-height: 34px;
+      min-height: 136px;
+    }
+
+    /* --------------------------------------------------------------- печать */
+    @media print {
+      body {
+        background: #fff !important;
+        background-image: none !important;
+        padding: 0 !important;
+        font-size: 10.5pt;
+      }
+      .page-footer-nav, .save-indicator, .btn-save-entry,
+      .btn-cover-start, .entry-empty, .wb-navigation-bar {
+        display: none !important;
+      }
+      a { color: #000 !important; text-decoration: none !important; }
+      .journal-entry {
+        background-image: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 7mm,
+          #BBB 7mm,
+          #BBB calc(7mm + 0.3pt)
+        ) !important;
+        background-size: 100% 7mm !important;
+        line-height: 7mm !important;
+        min-height: 56mm !important;
+        color: #000 !important;
+      }
+    }

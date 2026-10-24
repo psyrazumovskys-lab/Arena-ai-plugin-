@@ -13,6 +13,8 @@
 import re
 from pathlib import Path
 
+from font_embed import font_css
+
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "therapy-workbooks" / "couple_workbook_1_stop_escalation.html"
 OUT = ROOT / "therapy-workbooks" / "couple_workbook_1_print_style.html"
@@ -939,16 +941,16 @@ CSS = r"""
 def main():
     html = SRC.read_text(encoding="utf-8")
 
-    # 1. шрифты книжечки вместо веб-шрифтов
-    html = re.sub(
-        r'<link href="https://fonts\.googleapis\.com/css2\?family=Cormorant[^"]*"[^>]*>',
-        FONT_LINK, html, count=1)
+    # 1. шрифты книжечки внутрь файла — без обращения к Google
+    html = re.sub(r'\s*<link href="https://fonts\.googleapis\.com[^"]*"[^>]*>', '', html)
+    html = re.sub(r'\s*<link rel="preconnect"[^>]*>', '', html)
 
     # 2. стили целиком заменяются на печатные
     start = html.find("<style>")
     end = html.find("</style>")
     assert start != -1 and end != -1
-    html = html[:start] + "<style>" + CSS + "</style>" + html[end + len("</style>"):]
+    edition = (ROOT / "therapy-workbooks" / "couple_workbook_1_edition.css").read_text(encoding="utf-8")
+    html = html[:start] + "<style>\n" + font_css() + CSS + edition + "</style>" + html[end + len("</style>"):]
 
     # 3. заголовок вкладки
     html = re.sub(r"<title>[^<]*</title>", f"<title>{TITLE}</title>", html, count=1)
